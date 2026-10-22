@@ -857,7 +857,7 @@ for (const [id, k] of Object.entries(CHAR_SIZE))
   for (const sh of charSheets(id)) for (const A of Object.values(SPRITES[sh] || {})) { A.scale *= k; if (A.rate) A.rate /= k; }
 // Un personnage n'apparaît qu'une fois ses planches découpées (src/sprites.js)
 const CHAR_IDS = Object.keys(CHARS).filter(id => SPRITES[CHARS[id].sheet]);
-const COLORS_P = ['#4fe3ff', '#ff4fd8', '#7fff5a', '#ffb13b']; // couleur de chaque joueur
+const COLORS_P = ['#4fe3ff', '#ffb13b', '#7fff5a', '#ff4fd8']; // couleur de chaque joueur
 
 // Couleurs du moment (la forme les remplace) : traînée des lames, impacts, élément
 const trailOf = h => h.boost?.trail || h.C.trail || '#ffffff';
@@ -902,7 +902,7 @@ function startMove(h, name, chain = 0) {
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
   h.trailed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = false;
   if (m.call) say(h, m.call);
-  if (name === h.C.special) audio.voice(h, 'special');
+  if (name === h.C.special && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
   if (m.rubber) audio.stretch();
   if (m.trail) audio.slash();
   if (name === 'dash') { audio.zip(); audio.whoosh(1.3); }
@@ -1178,6 +1178,7 @@ function moveEffects(h, speed) {
   if (m.bolts && h.t > (m.pushAt ?? 0) && h.t < (m.pushAt ?? 0) + (m.pushDur ?? 0.3) && Math.random() < 0.6)
     animFX('green_arc', h.x - h.dir * rand(10, 110), h.y - rand(40, 160), rand(45, 80), 0.18, { filter: boltTint(h), rot: rand(-1, 1) });
   if (m.beam && !h.beamed && h.t >= m.beam.at) {
+    if (h.state === h.C.special) audio.voice(h, 'special');
     h.beamed = true;
     projs.push({ kind: 'beam', owner: h, move: h.state, ...m.beam, dmg: m.beam.dmg * (h.boost ? h.boost.dmg : 1), t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz, color: h.boost ? h.boost.color : m.beam.color });
     flash = 0.4; shake = 14; audio.play('waveFire', 1, 0.8, 0); audio.play('ultraThrow', 0.7, 1.3, 0);
