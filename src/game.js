@@ -2800,7 +2800,7 @@ function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
   const s = th / body[0].h, tw = body[0].w * s, x2 = sx + p.dir * p.len;
   ctx.save(); ctx.globalCompositeOperation = 'lighter';
   ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
-  for (let x = 30, j = 0; x < p.len; x += tw * 0.92, j++) {
+  for (let x = 30, j = 0; x < p.len; x += tw * 0.78, j++) {
     const f = body[(k + j * 7) % n], img = IMG[f.src];
     if (!img) continue;
     const w = Math.min(tw, p.len - x + 10);
