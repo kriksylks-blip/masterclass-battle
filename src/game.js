@@ -37,7 +37,8 @@ const PENDING = {};
 const want = (key, src) => IMG[key] ? Promise.resolve() : PENDING[key] || (PENDING[key] = loadImage(key, src).finally(() => delete PENDING[key]));
 function loadAll() {
   const jobs = [];
-  for (const [k, src] of Object.entries(ASSETS.ui)) if (!k.startsWith('intro_')) jobs.push(want(k, src)); // présentations : à la demande
+  for (const [k, src] of Object.entries(ASSETS.ui)) if (!k.startsWith('intro_') && k !== 'title') jobs.push(want(k, src)); // présentations : à la demande
+  jobs.push(want('title_art', `assets/ui/title/title_${titlePick}.jpg`).then(() => IMG.title_art || want('title', ASSETS.ui.title)));
   if (typeof FX !== 'undefined') for (const list of Object.values(FX)) for (const f of list) jobs.push(want(f.src, f.src));
   for (const C of Object.values(CHARS)) jobs.push(want(C.card, `assets/ui/${C.card}.png`)); // gros plans d'ultime : à la demande
   for (const src of showcaseFrames()) jobs.push(want(src, src)); // garde de chaque perso (vitrine de la sélection)
@@ -4039,11 +4040,14 @@ function drawHUD() {
 
 // Écran titre : l'image de groupe, animée en code (lent zoom, braises qui montent, éclats de lumière)
 const titleFx = Array.from({ length: 40 }, (_, k) => ({ x: Math.random() * W, y: Math.random() * H, v: 20 + Math.random() * 60, r: 1 + Math.random() * 2.5, c: k % 3 ? '#ffb347' : '#8fe9ff' }));
+// Écran titre : une illustration tirée au hasard à chaque lancement (assets/ui/title/title_N.jpg), sinon l'ancienne
+const TITLE_N = 6, titlePick = 1 + Math.floor(Math.random() * TITLE_N);
 function drawTitle() {
-  if (IMG.title) {
-    const z = 1.04 + Math.sin(sceneT * 0.25) * 0.03, s = Math.max(W / IMG.title.width, H / IMG.title.height) * z;
+  const art = IMG['title_art'] || IMG.title;
+  if (art) {
+    const z = 1.04 + Math.sin(sceneT * 0.25) * 0.03, s = Math.max(W / art.width, H / art.height) * z;
     const dx = Math.sin(sceneT * 0.17) * 12, dy = Math.cos(sceneT * 0.21) * 6;
-    ctx.drawImage(IMG.title, (W - IMG.title.width * s) / 2 + dx, (H - IMG.title.height * s) / 2 + dy, IMG.title.width * s, IMG.title.height * s);
+    ctx.drawImage(art, (W - art.width * s) / 2 + dx, (H - art.height * s) / 2 + dy, art.width * s, art.height * s);
     ctx.save(); ctx.globalCompositeOperation = 'lighter';
     for (const p of titleFx) {
       p.y -= p.v / 60; p.x += Math.sin(sceneT * 2 + p.v) * 0.4;
