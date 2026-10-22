@@ -4150,7 +4150,8 @@ function drawSelect() {
     const S = SPRITES[P.sheet], A = S && (S.idle || S.combo || S.punch);
     if (A) {
       const i = S.idle ? Math.floor(sceneT * A.rate) % A.frames.length : 0, f = A.frames[i], img = IMG[f.src];
-      const h = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) * (CHAR_SIZE[id] || 1), k = h / f.h;
+      const an = S.idle ? 'idle' : S.combo ? 'combo' : 'punch'; // même correction de taille qu'en jeu (ANIM_SIZE)
+      const h = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) * (CHAR_SIZE[id] || 1) * (ANIM_SIZE[id]?.[an] || 1), k = h / f.h;
       if (img) {
         const pulse = 1 + Math.sin(sceneT * 3 + q) * 0.03, bob = sel.ready[p] ? 0 : Math.sin(sceneT * 2.5 + q) * 2;
         // aura derrière le perso
