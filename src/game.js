@@ -2800,7 +2800,7 @@ function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
   const s = th / body[0].h, tw = body[0].w * s, x2 = sx + p.dir * p.len;
   ctx.save(); ctx.globalCompositeOperation = 'lighter';
   ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
-  for (let x = 30, j = 0; x < p.len; x += tw * 0.78, j++) {
+  for (let x = 40, j = 0; x < p.len; x += tw * 0.78, j++) {
     const f = body[(k + j * 7) % n], img = IMG[f.src];
     if (!img) continue;
     const w = Math.min(tw, p.len - x + 10);
@@ -2815,7 +2815,10 @@ function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
     if (oimg) { const os = 230 * WORLD * (p.thick || 1) / fo.h; ctx.drawImage(oimg, -fo.w * os / 2, -fo.h * os / 2, fo.w * os, fo.h * os); }
   }
   ctx.restore();
-  energyBall(x2, p.y, (40 + Math.sin(p.t * 40) * 4) * (p.thick || 1) * WORLD, B.body === 'kame_body' ? false : 'violet');
+  // boule de lumière aux mains : la naissance du rayon est ronde, jamais coupée
+  const col = B.body === 'kame_body' ? false : 'violet';
+  energyBall(sx + p.dir * 34 * WORLD, p.y, (46 + Math.sin(p.t * 33) * 5) * (p.thick || 1) * WORLD, col);
+  energyBall(x2, p.y, (40 + Math.sin(p.t * 40) * 4) * (p.thick || 1) * WORLD, col);
 }
 
 function drawProjs() {
