@@ -361,6 +361,9 @@ const audio = {
     if (this.ctx.state === 'suspended') this.ctx.resume();
   },
   async load() {
+    // cris et bruitages des personnages (src/voices.js) : fichiers à part, chargés en arrière-plan
+    if (typeof VOICES !== 'undefined') for (const [k, src] of Object.entries(VOICES))
+      fetch(src).then(r => r.arrayBuffer()).then(b => this.ctx.decodeAudioData(b)).then(buf => { this.buf[k] = [buf]; }).catch(() => {});
     if (typeof SOUNDS === 'undefined') return;
     for (const [k, list] of Object.entries(SOUNDS))
       this.buf[k] = await Promise.all(list.map(uri => {
@@ -368,6 +371,13 @@ const audio = {
         for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
         return this.ctx.decodeAudioData(bytes.buffer);
       }));
+  },
+  // Cri ou bruitage d'un perso (CV dans src/voices.js) ; un seul cri à la fois par perso
+  voice(h, what, vol = 1) {
+    const key = typeof CV !== 'undefined' && CV[h.char]?.[what];
+    if (!key) return;
+    if (h._voice) try { h._voice.s.stop(); } catch (e) { }
+    h._voice = this.play(key, vol, 1, 0);
   },
   // Joue une variante au hasard, légèrement désaccordée pour éviter la répétition
   play(key, vol = 1, rate = 1, spread = 0.06) {
@@ -892,6 +902,7 @@ function startMove(h, name, chain = 0) {
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
   h.trailed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = false;
   if (m.call) say(h, m.call);
+  if (name === h.C.special) audio.voice(h, 'special');
   if (m.rubber) audio.stretch();
   if (m.trail) audio.slash();
   if (name === 'dash') { audio.zip(); audio.whoosh(1.3); }
@@ -976,7 +987,7 @@ function updatePlayer(h, dt) {
     const F = h.nextForm;
     h.inv = Math.max(h.inv, 0.1);
     if (!h.boost && h.t > F.at) {
-      h.boost = F; flash = 0.8; shake = 16; ring(h.x, h.y - 110);
+      h.boost = F; flash = 0.8; shake = 16; ring(h.x, h.y - 110); audio.voice(h, 'transform');
       burst(h.x, h.y - 120, F.color, 40);
       if (F.steam || F.cloud) for (let k = 0; k < 40; k++) particles.push({ x: h.x + rand(-60, 60), y: h.y - rand(0, 180), vx: rand(-200, 200), vy: rand(-260, -60), t: 0, life: 0.9, c: 'rgba(255,240,240,0.6)', r: rand(6, 14), soft: true });
       audio.play('transform', 1, F.sheet === 'gold' ? 1 : 1.2, 0);
@@ -1031,7 +1042,7 @@ function updatePlayer(h, dt) {
         else denied(h);
       }
       else if (pressed.has('ultra')) {
-        if (h.ki >= KI.ultra) { h.power = h.ki; h.ki = 0; powerDown(h); h.state = 'ultra'; h.t = 0; h.vx = 0; h.move = null; C.ultra[0](h); cutins = cutins.filter(c => c.h !== h); cutins.push({ h, t: 0 }); audio.sweep(0.5, 600, 4000, 0.3, 1); }
+        if (h.ki >= KI.ultra) { h.power = h.ki; h.ki = 0; powerDown(h); h.state = 'ultra'; h.t = 0; h.vx = 0; h.move = null; C.ultra[0](h); audio.voice(h, 'ultra'); cutins = cutins.filter(c => c.h !== h); cutins.push({ h, t: 0 }); audio.sweep(0.5, 600, 4000, 0.3, 1); }
         else denied(h, 'KI PAS ASSEZ CHARGÉ');
       }
       else if (pressed.has('transform')) {
@@ -1135,7 +1146,7 @@ function moveEffects(h, speed) {
     const e = nearestEnemy(h, 600);
     if (e) { h.x = e.x - e.dir * 80; h.gz = e.gz; h.y = e.gz; h.dir = Math.sign(e.x - h.x) || h.dir; }
     else h.x += h.dir * 250;
-    ring(h.x, h.y - 110); audio.zip();
+    ring(h.x, h.y - 110); audio.zip(); audio.play('teleport', 0.9, 1, 0.08);
   }
   if (m.clones && !h.cloned && h.t >= m.clones.at) { h.cloned = true; spawnClones(h, m.clones.n); }
   if (m.proj && !h.thrown && h.t >= m.proj.at) {
@@ -1190,7 +1201,8 @@ function formParticles(h) {
 
 // ---------- Clones de Naruto ----------
 let clones = [];
-const puff = (x, y) => { for (let k = 0; k < 14; k++) particles.push({ x: x + rand(-40, 40), y: y - rand(20, 170), vx: rand(-120, 120), vy: rand(-120, 30), t: 0, life: 0.45, c: 'rgba(240,240,240,0.75)', r: rand(10, 20), soft: true }); };
+let puffSnd = 0;
+const puff = (x, y) => { if (sceneT - puffSnd > 0.12) { puffSnd = sceneT; audio.play('clone', 0.55, 1, 0.12); } for (let k = 0; k < 14; k++) particles.push({ x: x + rand(-40, 40), y: y - rand(20, 170), vx: rand(-120, 120), vy: rand(-120, 30), t: 0, life: 0.45, c: 'rgba(240,240,240,0.75)', r: rand(10, 20), soft: true }); };
 function spawnClones(h, n) {
   const dz = [-45, 45, -20, 25];
   for (let k = 0; k < n; k++) {
@@ -2603,7 +2615,7 @@ function impactFX(x, y, c, big) {
   fxs.push({ type: 'impact', x, y, c, t: 0, life: big ? 0.32 : 0.2, r: big ? 95 : 58, n: big ? 14 : 9, rot: rand(0, 1) });
   // gros coup : explosion filmée (tools/video2fx.py) par-dessus, façon FighterZ
   const boom = Math.random() < 0.5 ? 'hitboom_a' : 'hitboom_b';
-  if (big && FX[boom]) animFX(boom, x, y, 230 * WORLD, 0.5);
+  if (big && FX[boom]) { animFX(boom, x, y, 230 * WORLD, 0.5); audio.play('brutal', 0.5, 1, 0.1); }
 }
 // Spirale du Rasengan qui s'ouvre sur l'ennemi
 function spiralFX(x, y, c) { fxs.push({ type: 'spiral', x, y, c, t: 0, life: 0.45 }); }

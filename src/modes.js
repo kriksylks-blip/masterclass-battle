@@ -214,7 +214,7 @@ function duoAttack(h) {
   players.push(A);
   for (const p of [h, A]) {
     p.power = p.power || h.ki; p.state = 'ultra'; p.t = 0; p.vx = 0; p.move = null;
-    p.C.ultra[0](p); cutins = cutins.filter(c => c.h !== p); cutins.push({ h: p, t: 0, duo: p === A });
+    p.C.ultra[0](p); audio.voice(p, 'ultra'); cutins = cutins.filter(c => c.h !== p); cutins.push({ h: p, t: 0, duo: p === A });
   }
   h.power = h.ki; h.ki = 0; powerDown(h);
   flash = 0.6; shake = 20;
