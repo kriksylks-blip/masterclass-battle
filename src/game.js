@@ -821,6 +821,10 @@ const CHARS = {
 // Toutes les planches du perso (formes comprises) sont réduites ; la cadence de marche suit, pour que le pied
 // posé ne glisse pas.
 const CHAR_SIZE = { naruto: 0.88, gon: 0.87, killua: 0.87, tanjiro: 0.92, izuku: 0.95 };
+// Animation dessinée à une autre échelle que les autres poses du même perso (marche vidéo de Kenshin trop petite)
+const ANIM_SIZE = { kenshin: { walk: 1.15, jump: 0.92, fall: 0.92, combo: 0.92, lowair: 0.92, dashcharge: 0.92, special: 0.92 } };
+for (const [sh, anims] of Object.entries(ANIM_SIZE))
+  for (const [an, k] of Object.entries(anims)) { const A = SPRITES[sh]?.[an]; if (A) { A.scale *= k; if (A.rate) A.rate /= k; } }
 for (const [id, k] of Object.entries(CHAR_SIZE))
   for (const sh of charSheets(id)) for (const A of Object.values(SPRITES[sh] || {})) { A.scale *= k; if (A.rate) A.rate /= k; }
 // Un personnage n'apparaît qu'une fois ses planches découpées (src/sprites.js)
