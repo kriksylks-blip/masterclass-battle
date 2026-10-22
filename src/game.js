@@ -825,7 +825,9 @@ const CHAR_SIZE = { naruto: 0.88, gon: 0.87, killua: 0.87, tanjiro: 0.92, izuku:
 const FRAME_HD = { 'goku.combo.0': 'assets/sprites/goku/guard_hd.png' };
 for (const [k, src] of Object.entries(FRAME_HD)) { const [sh, an, i] = k.split('.'); const f = SPRITES[sh]?.[an]?.frames[+i]; if (f) f.src = src; }
 // Animation dessinée à une autre échelle que les autres poses du même perso (marche vidéo de Kenshin trop petite)
-const ANIM_SIZE = { kenshin: { walk: 1.15, jump: 0.92, fall: 0.92, combo: 0.92, lowair: 0.92, dashcharge: 0.92, special: 0.92 } };
+// Mesuré avec tools/facesize.py (taille du visage d'une animation à l'autre) : même tête sur toutes les poses
+const OTHER = (walk, other, anims = ['jump', 'fall', 'combo', 'lowair', 'dashcharge', 'special']) => ({ walk, ...Object.fromEntries(anims.map(a => [a, other])) });
+const ANIM_SIZE = { kenshin: OTHER(1.11, 0.79), zenitsu: OTHER(1.07, 0.76), ichigo: OTHER(1, 1.08), naruto: OTHER(1, 0.88), killua: OTHER(1, 0.9) };
 for (const [sh, anims] of Object.entries(ANIM_SIZE))
   for (const [an, k] of Object.entries(anims)) { const A = SPRITES[sh]?.[an]; if (A) { A.scale *= k; if (A.rate) A.rate /= k; } }
 for (const [id, k] of Object.entries(CHAR_SIZE))
@@ -3598,10 +3600,15 @@ function drawEnemy(e) {
   }
 }
 
+// Ombre de contact : centrée juste sous les pieds (le perso est posé dessus, il ne flotte pas), sombre au centre
+// et fondue sur les bords pour se voir aussi sur un sol sombre ; elle rapetisse et pâlit en l'air.
 function shadow(sx, o, size = 1) {
-  const s = clamp(1 - (o.gz - o.y) / 400, 0.3, 1) * size;
-  ctx.fillStyle = 'rgba(0,0,0,0.35)';
-  ctx.beginPath(); ctx.ellipse(sx, o.gz + 4, 45 * s, 10 * s, 0, 0, 7); ctx.fill();
+  const air = clamp(1 - (o.gz - o.y) / 400, 0.3, 1), rx = 42 * air * size, ry = 10 * air * size;
+  ctx.save(); ctx.translate(sx, o.gz - 1); ctx.scale(1, ry / rx);
+  const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
+  g.addColorStop(0, `rgba(0,0,0,${0.62 * air})`); g.addColorStop(0.55, `rgba(0,0,0,${0.42 * air})`); g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, rx, 0, 7); ctx.fill();
+  ctx.restore();
 }
 
 function drawWaves() {
