@@ -699,12 +699,12 @@ const CHARS = {
   naruto: {
     name: 'NARUTO', title: 'Le ninja de Konoha', sheet: 'naruto', card: 'card_naruto',
     colors: ['#ff8a00', '#2a5cff'], kiColor: '#8fd0ff', hit: '#cfeaff', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 3]],
-    labels: { blast: 'MULTI-CLONAGE', ultra: 'KURAMA' },
+    labels: { blast: 'RASENGAN', ultra: 'MULTI-CLONAGE' },
     // La rage : le manteau de chakra rouge du démon renard, avec ses queues
     forms: [{ ki: 50, name: 'CHAKRA DU RENARD', filter: 'sepia(0.3) saturate(1.5) hue-rotate(-20deg) brightness(1.04) drop-shadow(0 0 5px rgba(255,20,0,0.95)) drop-shadow(0 0 12px rgba(230,0,0,0.7))', speed: 1.3, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(255,40,20,0.55)', '#ff3a1a'], foxCloak: 3, bar: ['#c01010', '#ff8a50'], color: '#ff3a1a', hit: '#ffb090' }],
-    moves: N_MOVES, chain: { punch: ['punch', 'cross', 'rasenfin'], kick: ['kick', 'sidekick', 'axekick'] },
-    special: 'bunshin', speed: 280, pose: stdPose, ultra: [startKyubi, updateKyubi],
-    ultraPose: h => ['special', h.t < 0.6 ? 4 : h.t < KYU.charge ? 5 : h.t < KYU.charge + 0.3 ? 6 : 7],
+    moves: N_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'sidekick', 'axekick'] },
+    special: 'rasengan', speed: 280, pose: stdPose, ultra: [startBunshin, updateBunshin],
+    ultraPose: h => h.t < BUNSHIN.finale ? ['dashcharge', 4 + Math.floor(h.t * 6) % 2] : ['special', h.t < BUNSHIN.finale + 0.25 ? 2 : 3],
   },
   tanjiro: {
     name: 'TANJIRO', title: 'Le pourfendeur de démons', sheet: 'tanjiro', card: 'card_tanjiro',
@@ -1194,35 +1194,75 @@ const puff = (x, y) => { for (let k = 0; k < 14; k++) particles.push({ x: x + ra
 function spawnClones(h, n) {
   const dz = [-45, 45, -20, 25];
   for (let k = 0; k < n; k++) {
-    const c = { owner: h, x: h.x + h.dir * (30 + k * 25), gz: clamp(h.gz + dz[k % 4], Z_TOP, Z_BOT), dir: h.dir, t: -k * 0.07, state: 'rush', run: 0, kick: k % 2 === 1 };
+    const c = { owner: h, x: h.x + h.dir * (30 + k * 25), gz: clamp(h.gz + dz[k % 4], Z_TOP, Z_BOT), dir: h.dir, t: -k * 0.07, state: 'rush', run: 0, kick: k % 2 === 1, hits: 1 };
     c.y = c.gz; clones.push(c); puff(c.x, c.y);
   }
   audio.whoosh(1.4); audio.zip();
+}
+// ---------- Ultime de Naruto : multi-clonage (Tajū Kage Bunshin) ----------
+// Une douzaine de clones surgissent partout dans la fumée, foncent sur les ennemis et frappent plusieurs fois
+// (un sur trois avec un Rasengan), puis tous convergent : flash, explosion et dégâts sur tout l'écran.
+const BUNSHIN = { n: 12, every: 0.06, finale: 2.3, end: 2.9 };
+function startBunshin(h) {
+  h.bun = { spawned: 0, boom: false };
+  say(h, 'MULTI-CLONAGE !'); flash = Math.max(flash, 0.5); shake = 10;
+  audio.whoosh(1.4); audio.play('ultraCharge', 0.6, 1.3, 0);
+}
+function updateBunshin(h, dt) {
+  h.inv = Math.max(h.inv, 0.1); h.vx = 0;
+  const B = h.bun;
+  while (B.spawned < BUNSHIN.n && h.t > B.spawned * BUNSHIN.every) {
+    const k = B.spawned++, x = camX + 60 + ((k * 0.618) % 1) * (W - 120), gz = Z_TOP + 10 + ((k * 0.37) % 1) * (Z_BOT - Z_TOP - 20);
+    const c = { owner: h, x, gz, y: gz, dir: x < h.x ? 1 : -1, t: -0.1, state: 'rush', run: 0, kick: k % 2 === 1, hits: 3, seek: true, rasen: k % 3 === 2, power: 1.4 };
+    clones.push(c); puff(x, gz);
+    if (k % 3 === 0) audio.zip();
+  }
+  if (!B.boom && h.t >= BUNSHIN.finale) {
+    // tous convergent : explosion de fumée et de chakra, dégâts sur tout l'écran
+    B.boom = true;
+    flash = 1; shake = 30; hitstop = 0.14;
+    audio.play('ultraBoom', 1.2, 1.1, 0);
+    for (const c of clones) if (c.owner === h) { puff(c.x, c.y); c.done = true; }
+    for (const e of enemies) {
+      if (!e.alive || e.state === 'down' || Math.abs(e.x - (camX + W / 2)) > W / 2 + 40) continue;
+      damageEnemy(e, 4 + h.power / 10, 620 * (Math.sign(e.x - h.x) || 1), -820, e.x, e.y - 110, h.C.hit);
+      animFX(Math.random() < 0.5 ? 'hitboom_a' : 'hitboom_b', e.x, e.y - 110, 260 * WORLD, 0.5);
+    }
+    popups.push({ x: h.x, y: h.y - 260, t: 0, text: 'UZUMAKI NARUTO RENDAN !!' });
+  }
+  if (h.t > BUNSHIN.end) h.state = 'idle';
 }
 function updateClones(dt) {
   for (const c of clones) {
     c.t += dt;
     if (c.t < 0.12) continue; // il apparaît dans la fumée, les mains jointes
     if (c.state === 'rush') {
-      const e = enemies.filter(e => e.alive && e.state !== 'down' && (e.x - c.x) * c.dir > -30 && Math.abs(e.x - c.x) < 700)
+      const e = enemies.filter(e => e.alive && e.state !== 'down' && (c.seek || (e.x - c.x) * c.dir > -30) && Math.abs(e.x - c.x) < 900)
         .sort((a, b) => Math.abs(a.x - c.x) - Math.abs(b.x - c.x))[0];
-      const step = 900 * dt; c.x += c.dir * step; c.run += step;
+      if (e && c.seek) c.dir = Math.sign(e.x - c.x) || c.dir;
+      const step = (c.rasen ? 1100 : 900) * dt; c.x += c.dir * step; c.run += step;
       if (e) { c.gz += clamp(e.gz - c.gz, -260 * dt, 260 * dt); c.y = c.gz; }
       if (e && Math.abs(e.x - c.x) < 75 && Math.abs(e.gz - c.gz) < 35) {
         c.state = 'hit'; c.ht = 0;
-        const h = c.owner, dmg = 1.6 * (h.boost ? h.boost.dmg : 1);
-        damageEnemy(e, dmg, c.dir * 300, c.kick ? -420 : null, e.x, e.y - 110, h.C.hit);
-      } else if (c.run > 650) c.state = 'poof';
-    } else if (c.state === 'hit' && (c.ht += dt) > 0.22) c.state = 'poof';
+        const h = c.owner, dmg = (c.rasen ? 3 : c.power || 1.6) * (h.boost ? h.boost.dmg : 1);
+        damageEnemy(e, dmg, c.dir * (c.rasen ? 560 : 300), c.rasen ? -620 : c.kick ? -420 : null, e.x, e.y - 110, h.C.hit);
+        if (c.rasen) { spiralFX(e.x, e.y - 110, '#bff3ff'); shake = Math.max(shake, 10); }
+      } else if (c.run > (c.seek ? 1200 : 650)) c.state = 'poof';
+    } else if (c.state === 'hit' && (c.ht += dt) > 0.22) {
+      // encore des coups à donner : il recule d'un pas et repart
+      if (--c.hits > 0) { c.state = 'rush'; c.run = 0; c.x -= c.dir * 40; c.kick = !c.kick; } else c.state = 'poof';
+    }
     if (c.state === 'poof') { puff(c.x, c.y); c.done = true; }
   }
   clones = clones.filter(c => !c.done);
 }
 function drawClone(c) {
   const h = c.owner, sx = c.x - camX;
-  const [anim, i] = c.t < 0.12 ? ['dashcharge', 5] : c.state === 'hit' ? ['combo', c.kick ? 5 : 2] : ['dashcharge', 1];
+  const [anim, i] = c.t < 0.12 ? ['dashcharge', 5] : c.rasen ? ['special', c.state === 'hit' ? 3 : 2]
+    : c.state === 'hit' ? ['combo', c.kick ? 5 : 2] : ['dashcharge', 1];
   shadow(sx, c);
   drawAnim(sheetFor(h, anim), anim, i, sx, c.y, c.dir, h.boost?.filter || '');
+  if (c.rasen && c.t >= 0.12 && FX.rasen_v) fxImg('rasen_v', Math.floor(c.t * 16), sx + c.dir * 62 * WORLD, c.y - 112 * WORLD, 95 * WORLD, null);
 }
 
 function denied(h, msg) {
@@ -3696,7 +3736,7 @@ function drawPlayer(h) {
   }
   // Rasenshuriken : deux clones aident Naruto à former la technique
   // Kurama : le renard à neuf queues se dresse derrière Naruto puis bondit
-  if (h.char === 'naruto' && h.state === 'ultra') {
+  if (h.char === 'naruto' && h.state === 'ultra' && h.C.ultra[0] === startKyubi) {
     const a = Math.min(1, h.t / 0.6) * (h.t > KYU.end - 0.3 ? (KYU.end - h.t) / 0.3 : 1);
     const lunge = h.t > KYU.charge ? Math.min(1, (h.t - KYU.charge) / 0.35) * 650 : 0;
     // il surgit des flammes, rugit, se ramasse puis bondit (planche animée), en respirant

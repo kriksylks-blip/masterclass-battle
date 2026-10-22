@@ -4,7 +4,9 @@
 // Commandes simplifiées : joystick (8 directions), Poing / Pied / Saut / Spécial, Dash, Ki (maintenir = charger,
 // toucher quand la barre est assez pleine = se transformer), Ultime, Pause, Relais. Pas d'accroupi.
 (() => {
-  const TOUCH = matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || /[?&]touch=1/.test(location.search); // ?touch=1 : essai sur ordinateur
+  // Seulement les vrais téléphones et tablettes (écran tactile et pas de souris) : un ordinateur, même avec un écran
+  // tactile, garde le clavier, sans boutons ni plein écran forcé. ?touch=1 / ?touch=0 pour forcer.
+  const q = location.search, TOUCH = /[?&]touch=1/.test(q) || (!/[?&]touch=0/.test(q) && matchMedia('(hover: none) and (pointer: coarse)').matches);
   if (!TOUCH) return;
 
   const codeOf = a => binds[0].keys[a]?.[0];
