@@ -49,11 +49,6 @@ function drawTitleMenu() {
     ctx.restore();
     outlined(label, x + 34 + dx, y, on ? 26 : 22, on ? '#ffe14d' : '#fff', 'left');
   });
-  const desc = TITLE_ITEMS[titleMenu.row][2];
-  ctx.font = 'italic bold 14px sans-serif'; ctx.textAlign = 'left';
-  const tw = ctx.measureText(desc).width;
-  ctx.fillStyle = 'rgba(10,0,25,0.75)'; ctx.fillRect(x, y0 + 4 * 44 - 20, tw + 24, 26);
-  ctx.fillStyle = '#ffd6e8'; ctx.fillText(desc, x + 12, y0 + 4 * 44 - 2);
 }
 
 // ---------- Options ----------
