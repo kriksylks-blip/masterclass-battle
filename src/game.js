@@ -821,6 +821,9 @@ const CHARS = {
 // Toutes les planches du perso (formes comprises) sont réduites ; la cadence de marche suit, pour que le pied
 // posé ne glisse pas.
 const CHAR_SIZE = { naruto: 0.88, gon: 0.87, killua: 0.87, tanjiro: 0.92, izuku: 0.95 };
+// Étapes remplacées par un dessin plus fin (même cadrage) : la garde de Sangoku, trop petite, perdait ses yeux
+const FRAME_HD = { 'goku.combo.0': 'assets/sprites/goku/guard_hd.png' };
+for (const [k, src] of Object.entries(FRAME_HD)) { const [sh, an, i] = k.split('.'); const f = SPRITES[sh]?.[an]?.frames[+i]; if (f) f.src = src; }
 // Animation dessinée à une autre échelle que les autres poses du même perso (marche vidéo de Kenshin trop petite)
 const ANIM_SIZE = { kenshin: { walk: 1.15, jump: 0.92, fall: 0.92, combo: 0.92, lowair: 0.92, dashcharge: 0.92, special: 0.92 } };
 for (const [sh, anims] of Object.entries(ANIM_SIZE))
@@ -3237,8 +3240,8 @@ function luffyPose(h) {
     case 'axe': return ['kicks', t < 0.36 ? 2 : 3];
     case 'dash': return ['rocket', step(t, [0.1, 0.18, 0.45])];
     case 'bazooka': return ['bazooka', step(t, [0.24, 0.32, 0.6])];
-    case 'charge': return ['rocket', t < 0.15 ? 4 : 5];
-    case 'transform': return ['rocket', 4 + step(t, [0.25, 0.5, 0.8])];
+    case 'charge': return ['rocket', 3]; // les étapes 4 et 5 ont un 2e chapeau dessiné par erreur
+    case 'transform': return ['rocket', [3, 3, 6, 7][step(t, [0.25, 0.5, 0.8])]];
     case 'ultra': return ['gigant', step(t, [GIGANT.inflate, GIGANT.punch, GIGANT.end - 0.3])];
     case 'prejump': return ['jump', t < 0.04 ? 0 : 1];
     case 'land': return ['jump', 7];
