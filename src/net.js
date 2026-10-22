@@ -165,6 +165,7 @@ function netSend(a, d) {
 }
 const netActionsOf = code => { const out = Object.entries(binds[0].keys).filter(([, c]) => c.includes(code)).map(([a]) => a); if (code === 'Enter') out.push('start'); return out; };
 addEventListener('keydown', e => {
+  if (e.target instanceof HTMLInputElement) return; // la case de saisie (téléphone) gère elle-même ses touches
   if (scene === 'online' && net.typing) {
     e.preventDefault(); e.stopImmediatePropagation();
     if (e.code === 'Escape') net.typing = false;
@@ -180,6 +181,7 @@ addEventListener('keydown', e => {
   for (const a of netActionsOf(e.code)) netSend(a, true);
 }, true);
 addEventListener('keyup', e => {
+  if (e.target instanceof HTMLInputElement) return;
   if (net.role !== 'guest') return;
   e.stopImmediatePropagation();
   for (const a of netActionsOf(e.code)) netSend(a, false);

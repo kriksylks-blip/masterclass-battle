@@ -156,6 +156,7 @@ const padLabel = i => PAD_NAMES[i] || `Bouton ${i}`;
 const K = (a, p = 0) => binds[p].keys[a].slice(0, 2).map(keyLabel).join(' / ') || '—';
 
 addEventListener('keydown', e => {
+  if (e.target instanceof HTMLInputElement) return; // saisie du code de partie (téléphone) : on laisse taper
   audio.unlock();
   if ((scene === 'play' || scene === 'options') && paused) { e.preventDefault(); menuKey(e); return; }
   const m = KEYMAP[e.code];
@@ -174,7 +175,7 @@ addEventListener('keydown', e => {
   }
   I.keys.add(a);
 });
-addEventListener('keyup', e => { const m = KEYMAP[e.code]; if (m) INPUT[m[0]].keys.delete(m[1]); });
+addEventListener('keyup', e => { if (e.target instanceof HTMLInputElement) return; const m = KEYMAP[e.code]; if (m) INPUT[m[0]].keys.delete(m[1]); });
 
 let padNames = [];
 // Stick qui dérive ou bloqué à fond (manette déréglée, manette virtuelle) : un axe n'est pris en compte qu'après

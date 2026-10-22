@@ -59,7 +59,8 @@
   // Plein écran et paysage au premier contact (refusé sur certains téléphones : on garde le message « Tourne »)
   // Plein écran à chaque contact tant qu'on n'y est pas (le navigateur l'exige pendant un geste, et on peut en sortir
   // d'un balayage). iPhone : Safari ne le permet pas ; « Ajouter à l'écran d'accueil » lance le jeu en plein écran.
-  const goFull = () => {
+  const goFull = e => {
+    if (e?.target?.closest?.('#tcCode')) return; // pas pendant la saisie du code (le clavier se fermerait)
     if (document.fullscreenElement || document.webkitFullscreenElement) return;
     const el = document.documentElement, req = el.requestFullscreen || el.webkitRequestFullscreen;
     if (!req) return;
@@ -141,9 +142,9 @@
   box.innerHTML = `<div class="t">CODE DE LA PARTIE</div><input maxlength="4" autocapitalize="characters" autocomplete="off" spellcheck="false">
     <div class="r"><button data-k="ok">REJOINDRE</button><button data-k="no">ANNULER</button></div>`;
   css.textContent += `
-    #tcCode { position: fixed; inset: 0; z-index: 8; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
+    #tcCode { position: fixed; inset: 0; z-index: 8; touch-action: manipulation; pointer-events: auto; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
       background: rgba(5,3,12,.85); font: 900 italic 22px Impact, sans-serif; color: #ffe14d; }
-    #tcCode input { width: 220px; font: 900 44px Impact, sans-serif; text-align: center; letter-spacing: 12px; text-transform: uppercase;
+    #tcCode input { touch-action: manipulation; -webkit-user-select: text; user-select: text; width: 220px; font: 900 44px Impact, sans-serif; text-align: center; letter-spacing: 12px; text-transform: uppercase;
       background: #120a24; color: #7ff0ff; border: 3px solid #7ff0ff; border-radius: 12px; padding: 8px; }
     #tcCode button { font: 900 italic 18px Impact, sans-serif; padding: 12px 22px; margin: 0 8px; border-radius: 10px; border: 0;
       background: #ff2d55; color: #fff; }
@@ -152,12 +153,15 @@
   const inp = box.querySelector('input');
   const closeBox = () => { box.style.display = 'none'; inp.blur(); };
   inp.addEventListener('input', () => { inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 4); });
-  inp.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') box.querySelector('[data-k=ok]').click(); });
-  box.querySelector('[data-k=ok]').addEventListener('click', () => {
-    if (inp.value.length !== 4) return;
-    closeBox(); net.typing = false; netJoin(inp.value);
-  });
-  box.querySelector('[data-k=no]').addEventListener('click', () => { closeBox(); net.typing = false; });
+  inp.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') ok(); });
+  const ok = () => { if (inp.value.length !== 4) { inp.focus(); return; } const c = inp.value; closeBox(); net.typing = false; netJoin(c); };
+  const no = () => { closeBox(); net.typing = false; };
+  for (const [k, f] of [['ok', ok], ['no', no]]) {
+    const b = box.querySelector(`[data-k=${k}]`);
+    b.addEventListener('pointerup', e => { e.preventDefault(); e.stopPropagation(); f(); });
+    b.addEventListener('click', e => e.preventDefault());
+  }
+  inp.addEventListener('pointerup', e => { e.stopPropagation(); inp.focus(); });
 
   const tick = () => {
     if (typeof net !== 'undefined' && scene === 'online' && net.typing && box.style.display !== 'flex') {
