@@ -448,7 +448,16 @@ const STRIPS = {
   bridge: STRIP('rail_metal', 64, 24), hx_z1: STRIP('curb_city', 46, 22), mh_z1: STRIP('curb_city', 46, 22),
   nr2_z1: STRIP('curb_city', 46, 22), ds2_z1: STRIP('curb_city', 46, 22),
   nr2_z2: STRIP('rail_metal', 64, 24), nr2_z3: STRIP('rail_metal', 64, 24), hx_z3: STRIP('rail_metal', 64, 24),
-  op_z1: STRIP('rail_wood', 70, 26), rk_z3: STRIP('rail_wood', 70, 26),
+  op_z1: STRIP('rail_wood', 70, 26), rk_z3: STRIP('rail_wood', 70, 26), op_z2: STRIP('rail_wood', 70, 26), rk_z1: STRIP('rail_wood', 70, 26),
+  shrine: STRIP('curb_city', 46, 22),
+  op_z3: STRIP('balustrade', 56, 22), op2_z1: STRIP('balustrade', 56, 22), op2_z2: STRIP('balustrade', 56, 22),
+  op2_z3: STRIP('balustrade', 56, 22), bl_z2: STRIP('balustrade', 56, 22), hx_z2: STRIP('balustrade', 56, 22),
+  ds_z3: STRIP('rocks_grass', 60, 26), bl_z1: STRIP('rocks_grass', 60, 26), bl_z3: STRIP('rocks_grass', 60, 26),
+  nr_z1: STRIP('rocks_grass', 60, 26), nr_z2: STRIP('rocks_grass', 60, 26), nr_z3: STRIP('rocks_grass', 60, 26),
+  db_z1: STRIP('rocks_namek', 80, 30), db_z2: STRIP('rocks_namek', 80, 30),
+  db_z3: STRIP('rubble', 70, 30), mh_z2: STRIP('rubble', 70, 30), mh_z3: STRIP('rubble', 70, 30),
+  rk_z2: STRIP('rubble', 70, 30), ds2_z3: STRIP('rubble', 70, 30),
+  db2_z1: STRIP('rocks_desert', 70, 28), db2_z2: STRIP('rocks_desert', 70, 28),
 };
 for (const S of new Set(Object.values(STRIPS).map(S => S.img))) ASSETS.backgrounds[S] = `assets/backgrounds/strips/${S.slice(6)}.png`;
 // Éclairage de la zone (luminosité moyenne du plan moyen : jour ou nuit) : la bordure prend la même lumière que le décor
