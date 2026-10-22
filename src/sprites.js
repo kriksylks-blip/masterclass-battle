@@ -9583,6 +9583,96 @@ const SPRITES = {
      "ay": 297
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3146,
+   "rate": 9.0,
+   "frames": [
+    {
+     "src": "assets/sprites/goku/idlev_0.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_1.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_2.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_3.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_4.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_5.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_6.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_7.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_8.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_9.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_10.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_11.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    }
+   ]
   }
  },
  "zoro": {

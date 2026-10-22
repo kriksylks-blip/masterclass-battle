@@ -746,7 +746,7 @@ const CHARS = {
     name: 'IZUKU', title: 'Le héros One For All', sheet: 'izuku', card: 'card_iz',
     colors: ['#1d6b45', '#7dff9a'], kiColor: '#9dffb0', hit: '#d8ffe0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
     labels: { blast: 'BLACK WHIP', ultra: 'UNITED STATES OF SMASH' },
-    forms: [{ ki: 50, name: 'DARK DEKU', sheet: 'izuku_dark', speed: 1.45, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(20,120,60,0.55)', '#3dff7a'], arcs: true, bar: ['#0a4a24', '#5dff8a'], color: '#3dff7a' }],
+    forms: [{ ki: 50, name: 'DARK DEKU', sheet: 'izuku_dark', speed: 1.45, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(20,120,60,0.55)', '#3dff7a'], arcs: true, arcRate: 0.1, bar: ['#0a4a24', '#5dff8a'], color: '#3dff7a' }],
     moves: IZ_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'blackwhip', speed: 265, pose: stdPose, ultra: [startSmash, updateSmash],
     ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < SMASH.hit - 0.1 ? 5 : h.t < SMASH.hit + 0.4 ? 6 : 7],
@@ -1167,7 +1167,7 @@ function formParticles(h) {
   if (F.steam && Math.random() < 0.5) particles.push({ x: h.x + rand(-35, 35), y: h.y - rand(30, 170), vx: rand(-20, 20), vy: rand(-140, -70), t: 0, life: 0.7, c: 'rgba(255,235,235,0.55)', r: rand(5, 10), soft: true });
   if (F.cloud && Math.random() < 0.6) particles.push({ x: h.x + rand(-45, 45), y: h.y - rand(140, 190), vx: rand(-40, 40), vy: rand(-60, -20), t: 0, life: 0.6, c: 'rgba(255,255,255,0.7)', r: rand(6, 12), soft: true });
   // Éclairs autour du corps (Dark Deku en vert ; Sharingan de Kakashi en bleu, teinte donnée par la forme)
-  if (F.arcs && Math.random() < 0.35) animFX('green_arc', h.x + rand(-45, 45), h.y - rand(40, 180), rand(35, 60), 0.16, { rot: rand(-1, 1), filter: typeof F.arcs === 'string' ? F.arcs : '' });
+  if (F.arcs && Math.random() < (F.arcRate ?? 0.35)) animFX('green_arc', h.x + rand(-45, 45), h.y - rand(40, 180), rand(35, 60), 0.16, { rot: rand(-1, 1), filter: typeof F.arcs === 'string' ? F.arcs : '' });
   // Chidori qui crépite dans la main
   if (F.handArcs && Math.random() < 0.4) animFX('green_arc', h.x + h.dir * rand(30, 70), h.y - rand(90, 130), rand(25, 45), 0.12, { rot: rand(-1.5, 1.5), filter: F.arcs });
   // Manteau du renard : bulles de chakra rouge qui montent
@@ -3176,6 +3176,7 @@ function drawAnim(who, anim, i, x, y, dir, filter, rot = 0) {
   if (dir < 0) ctx.scale(-1, 1);
   if (rot) { const cy = -f.h * s / 2; ctx.translate(0, cy); ctx.rotate(rot); ctx.translate(0, -cy); }
   if (drawAnim.grow) ctx.scale(drawAnim.grow, drawAnim.grow);
+  if (drawAnim.breath) ctx.scale(1 - drawAnim.breath * 0.35, 1 + drawAnim.breath); // respiration, ancrée aux pieds
   if (filter) ctx.filter = filter;
   ctx.drawImage(img, -f.ax * s, -f.ay * s, f.w * s, f.h * s);
   ctx.restore();
@@ -3499,8 +3500,23 @@ function stdPose(h) {
     case 'knock': return ['fall', h.vy < 0 ? 2 : 3];
     case 'floor': return ['fall', 4];
     case 'getup': return ['fall', 5 + step(t, [0.15, 0.3])];
-    default: return ['combo', 0]; // garde
+    default: return idleFrame(h) || ['combo', 0]; // garde (respiration filmée si le perso en a une)
   }
+}
+// Repos tiré d'une vidéo (tools/video2idle.py) : respiration, vêtements et cheveux qui bougent. Seulement si la
+// planche affichée (forme comprise) a la sienne, sinon la garde fixe + la respiration calculée (breathOf).
+const idleAnim = h => h.state === 'idle' && h.onGround ? SPRITES[h.boost?.sheet || h.C.sheet]?.idle : null;
+function idleFrame(h) {
+  const A = idleAnim(h);
+  return A ? ['idle', Math.floor((sceneT + (h._bp || 0)) * A.rate) % A.frames.length] : null;
+}
+
+// Respiration au repos : le buste se soulève très légèrement (1,2 % de la hauteur, un cycle toutes les ~2,5 s),
+// ancrée aux pieds. Chacun a son propre rythme, et l'effet arrive et repart en douceur quand il bouge.
+function breathOf(o, idle) {
+  o._bp ??= Math.random() * 6.28;
+  o._bk = (o._bk || 0) + ((idle ? 1 : 0) - (o._bk || 0)) * 0.08;
+  return o._bk * 0.012 * Math.sin(sceneT * 2.5 + o._bp);
 }
 
 function drawPlayer(h) {
@@ -3552,7 +3568,9 @@ function drawPlayer(h) {
   if (h.out) ctx.globalAlpha = 0.55;
   // Gon adulte : il grandit pendant son ultime
   drawAnim.grow = h.char === 'gon' && h.state === 'ultra' && h.t > 0.45 ? 1 + 0.55 * Math.min(1, (h.t - 0.45) / 0.3) : 0;
+  drawAnim.breath = breathOf(h, h.state === 'idle' && !h.move && h.onGround && !idleAnim(h));
   drawAnim(sheet, anim, i, sx, h.y, h.dir, filter, rot);
+  drawAnim.breath = 0;
   drawAnim.grow = 0;
   ctx.globalAlpha = 1;
   if (F?.sparks === true) drawSaiyanSparks(h, sx);
@@ -3590,7 +3608,9 @@ function drawEnemy(e) {
   const own = !!SPRITES[T.sheet], sheet = own ? T.sheet : T.alt;
   // Le ninja, tout en noir, reçoit un liseré lumineux pour rester visible dans la nuit
   const filter = [own ? '' : T.altTint, e.tint, e.enraged ? 'saturate(1.6) brightness(1.1) drop-shadow(0 0 6px #ff3000)' : '', T.glow ? 'drop-shadow(0 0 3px rgba(255,70,235,0.95))' : '', e.flash > 0 ? 'brightness(2.5)' : ''].filter(Boolean).join(' ');
+  drawAnim.breath = breathOf(e, e.alive && e.state === 'walk' && !e.moving);
   drawAnim(sheet, anim, i, sx, e.y, e.dir, filter);
+  drawAnim.breath = 0;
   if (e.state === 'windup') outlined('!', sx, e.y - T.h, 34, '#ff3355');
   // Jauge de vie de la brute
   if ((['brute', 'samurai', 'biker'].includes(e.type) || T.armor && !T.isBoss) && e.alive && e.hp < e.maxHp) {
