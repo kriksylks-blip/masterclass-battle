@@ -481,6 +481,190 @@ const FXV = {
    "w": 660,
    "h": 660
   }
+ ],
+ "getsuga_v": [
+  {
+   "src": "assets/fx/getsuga_v_0.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_1.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_2.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_3.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_4.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_5.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_6.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_7.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_8.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_9.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_10.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_11.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_12.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_13.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_14.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_15.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_16.png",
+   "w": 1100,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/getsuga_v_17.png",
+   "w": 1100,
+   "h": 680
+  }
+ ],
+ "genki_v": [
+  {
+   "src": "assets/fx/genki_v_0.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_1.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_2.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_3.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_4.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_5.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_6.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_7.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_8.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_9.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_10.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_11.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_12.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_13.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_14.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_15.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_16.png",
+   "w": 680,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/genki_v_17.png",
+   "w": 680,
+   "h": 680
+  }
  ]
 };
 Object.assign(FX, FXV);

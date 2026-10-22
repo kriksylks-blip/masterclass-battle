@@ -40,9 +40,15 @@ function loadAll() {
   for (const [k, src] of Object.entries(ASSETS.ui)) if (!k.startsWith('intro_')) jobs.push(want(k, src)); // présentations : à la demande
   if (typeof FX !== 'undefined') for (const list of Object.values(FX)) for (const f of list) jobs.push(want(f.src, f.src));
   for (const C of Object.values(CHARS)) jobs.push(want(C.card, `assets/ui/${C.card}.png`)); // gros plans d'ultime : à la demande
+  for (const src of showcaseFrames()) jobs.push(want(src, src)); // garde de chaque perso (vitrine de la sélection)
   for (const L of LEVELS) for (const key of levelPreviewKeys(L)) jobs.push(want('pv_' + key, `assets/web/preview/${key}.webp`));
   return Promise.all(jobs);
 }
+// Vitrine de la sélection : la garde (ou la respiration filmée) de chaque perso
+const showcaseFrames = () => Object.values(CHARS).flatMap(C => {
+  const S = SPRITES[C.sheet] || {}, A = S.idle || S.combo || S.punch;
+  return A ? (S.idle ? A.frames : [A.frames[0]]).map(f => f.src) : [];
+});
 const levelPreviewKeys = L => [L.zones[0].sky || L.sky, L.zones[0].mid, L.zones[0].ground, ...(L.far ? ['far'] : [])].filter(Boolean);
 // Planches de sprites d'un personnage (avec ses formes) et d'un niveau (ennemis, boss et renforts)
 const charSheets = id => { const C = CHARS[id]; return C ? [C.sheet, ...(C.forms || []).map(F => F.sheet).filter(Boolean)] : []; };
@@ -61,7 +67,7 @@ function requireGame(chars, L) {
   const frames = [...sheets].flatMap(sh => Object.values(SPRITES[sh] || {}).flatMap(a => a.frames.map(f => f.src)));
   const { bgs, intros } = levelNeeds(L), cuts = chars.map(id => 'cutin_' + id);
   // on libère les sprites, décors et images de présentation qui ne servent plus (mémoire du téléphone)
-  const keep = new Set([...frames, ...bgs, ...intros, ...cuts]);
+  const keep = new Set([...frames, ...bgs, ...intros, ...cuts, ...showcaseFrames()]);
   for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin)_/.test(k)) && !keep.has(k)) delete IMG[k];
   const todo = [...frames.map(src => [src, src]), ...bgs.map(k => [k, ASSETS.backgrounds[k]]), ...intros.map(k => [k, ASSETS.ui[k]]),
     ...cuts.map(k => [k, `assets/ui/cutin/${k.slice(6)}.jpg`])].filter(([k]) => !IMG[k]);
@@ -2776,6 +2782,18 @@ function drawProjs() {
     if (p.kind === 'shuriken') { ctx.restore(); drawShuriken(sx, p.y, 1, p.t); continue; }
     // Croissants en images : lame d'air, Getsuga Tensho, vague d'eau ou de feu
     const sprite = { airblade: ['crescent', 'hue-rotate(-60deg) saturate(0.5) brightness(1.3)'], getsuga: ['crescent', p.filter || ''], wave: ['water_arc', ''], firewave: ['fire_arc', ''] }[p.kind];
+    if (p.kind === 'getsuga' && FX.getsuga_v) {
+      // Getsuga filmé : lame de flammes bleues, pointe en avant (91 % de l'image), traînée derrière
+      ctx.restore();
+      const L = FX.getsuga_v, f = L[Math.floor(p.t * 14) % L.length], img = IMG[f.src];
+      if (img) {
+        const hh = 190 * (p.scale || 1) * WORLD, ww = hh * f.w / f.h;
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; if (p.filter) ctx.filter = p.filter;
+        ctx.translate(sx + p.dir * 30, p.y); ctx.scale(p.dir, 1);
+        ctx.drawImage(img, -ww * 0.91, -hh / 2, ww, hh); ctx.restore();
+      }
+      continue;
+    }
     if (sprite && FX[sprite[0]]) {
       ctx.restore();
       const sc = p.scale || 1, wv = sprite[0] === 'crescent';
@@ -2890,13 +2908,19 @@ const selCols = () => { const n = CHAR_IDS.length; return n <= 3 ? n : n <= 6 ? 
 
 function updateSelect(dt) {
   const n = CHAR_IDS.length;
+  // le carrousel glisse vers le perso du joueur qui a bougé en dernier (par le plus court chemin)
+  const target = sel.pick[sel.focus || 0];
+  sel.cur ??= target;
+  let d = target - sel.cur; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+  sel.cur = (sel.cur + d * Math.min(1, dt * 9) + n) % n;
+  sel.flash = Math.max(0, (sel.flash || 0) - dt * 3);
   for (let p = 0; p < 4; p++) {
     if (!sel.joined[p] || (p > 0 && sel.skip)) continue;
     const I = INPUT[p], hit = a => I.pressed.has(a);
     if (!sel.ready[p]) {
-      const dk = hit('left') ? -1 : hit('right') ? 1 : hit('up') ? -selCols() : hit('down') ? selCols() : 0;
+      const dk = hit('left') || hit('up') ? -1 : hit('right') || hit('down') ? 1 : 0;
       if (dk) {
-        sel.pick[p] = (sel.pick[p] + dk + n) % n;
+        sel.pick[p] = (sel.pick[p] + dk + n) % n; sel.focus = p; sel.flash = 1;
         audio.tone(520 + p * 120, 0.06, 'triangle', 0.08);
       }
       if (hit('punch') || hit('jump') || hit('start')) {
@@ -3716,7 +3740,12 @@ function drawBomb(b) {
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(hx, hy, 30 * flick, 0, 7); ctx.fill();
     ctx.restore();
   }
-  if (b.state !== 'boom') { energyBall(sx, b.y, b.r * (1 + Math.sin(sceneT * 30) * 0.03), false); return; }
+  if (b.state !== 'boom') {
+    // sphère filmée (genki_v) : 680 px d'image pour une sphère de ~560 px de diamètre
+    const r = b.r * (1 + Math.sin(sceneT * 30) * 0.03);
+    if (!(FX.genki_v && fxImg('genki_v', Math.floor(sceneT * 12), sx, b.y, r * 2.45, null))) energyBall(sx, b.y, r, false);
+    return;
+  }
   // Explosion : un dôme de lumière qui s'étend puis s'éteint
   const k = b.t / 1.1, R = 120 + 520 * Math.sqrt(k);
   ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k;
@@ -3927,37 +3956,108 @@ function drawTitle() {
 }
 
 // ---------- Écran de sélection : une carte par personnage ----------
+// Écran de sélection façon jeu de combat : le portrait du perso en fond, le perso en grand dans sa garde avec son
+// aura, son nom et ses coups, et en bas un carrousel de médaillons qui glisse vers le perso choisi.
+// À plusieurs, chaque joueur a son perso en vitrine (côte à côte) et sa marque de couleur sur le carrousel.
 function drawSelect() {
-  // La rue qui défile derrière, assombrie, traversée de lignes de vitesse
-  camX = sceneT * 60; drawBackground();
-  ctx.fillStyle = 'rgba(8,2,24,0.74)'; ctx.fillRect(0, 0, W, H);
-  ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,0.16)'; ctx.lineWidth = 2;
-  for (let k = 0; k < 22; k++) {
-    const x = W + 200 - ((k * 173 + sceneT * 900) % (W + 400)), y = 30 + (k * 97) % 480;
-    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 90 + (k % 4) * 30, y); ctx.stroke();
+  const n = CHAR_IDS.length, ps = [0, 1, 2, 3].filter(p => sel.joined[p]), focus = sel.focus || 0;
+  const pickOf = p => sel.first[p] !== null && sel.ready[p] ? sel.first[p] : sel.pick[p];
+  const C = CHARS[CHAR_IDS[sel.pick[focus]]], art = IMG[C.card];
+  // Fond : portrait agrandi, assombri, teinté aux couleurs du perso, qui dérive lentement
+  ctx.fillStyle = '#05030c'; ctx.fillRect(0, 0, W, H);
+  if (art) {
+    const s = H * 1.5 / art.height, [fx, fy] = FACES[C.card] || [0.5, 0.25];
+    ctx.save(); ctx.globalAlpha = 0.45; ctx.filter = 'blur(2px)';
+    ctx.drawImage(art, W * 0.62 - fx * art.width * s + Math.sin(sceneT * 0.3) * 20, H * 0.32 - fy * art.height * s, art.width * s, art.height * s);
+    ctx.restore();
   }
+  const g = ctx.createLinearGradient(0, 0, W, 0);
+  g.addColorStop(0, 'rgba(5,3,12,0.92)'); g.addColorStop(0.45, C.colors[0] + '55'); g.addColorStop(1, 'rgba(5,3,12,0.7)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // Rayons qui tournent et lignes de vitesse
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  ctx.translate(W * 0.3, H * 0.55); ctx.rotate(sceneT * 0.15);
+  ctx.fillStyle = C.colors[1]; ctx.globalAlpha = 0.06;
+  for (let r = 0; r < 16; r++) { ctx.rotate(Math.PI / 8); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(700, -60); ctx.lineTo(700, 60); ctx.fill(); }
   ctx.restore();
-  outlined('CHOISIS TON COMBATTANT', W / 2, 50, 38, '#ffe14d');
-
-  // Grille de cartes (3 par rangée au-delà de 3 personnages), réduites pour tenir à l'écran
-  const n = CHAR_IDS.length, cols = selCols(), rows = Math.ceil(n / cols);
-  // Réduction pour que toutes les rangées tiennent entre le titre et l'aide du bas
-  const cw = 220, ch = rows > 1 ? 260 : 320, gx = cols > 3 ? 18 : 34, gy = 12;
-  const S = rows > 1 ? Math.min(0.72, (H - 84 - 70 - (rows - 1) * gy) / (rows * ch), (W - 40 - (cols - 1) * gx) / (cols * cw)) : 1;
-  const x0 = W / 2 - (cols * cw * S + (cols - 1) * gx) / 2;
-  CHAR_IDS.forEach((id, k) => drawCard(k, x0 + (k % cols) * (cw * S + gx), 84 + Math.floor(k / cols) * (ch * S + gy), cw, ch, S));
-
+  ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 2;
+  for (let k = 0; k < 18; k++) { const x = W + 200 - ((k * 173 + sceneT * 700) % (W + 400)), y = 70 + (k * 97) % 320; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 80 + (k % 4) * 30, y); ctx.stroke(); }
+  ctx.restore();
+  // Titre
+  ctx.save(); ctx.fillStyle = 'rgba(10,0,25,0.75)'; ctx.beginPath(); ctx.moveTo(0, 14); ctx.lineTo(470, 14); ctx.lineTo(440, 56); ctx.lineTo(0, 56); ctx.fill();
+  ctx.fillStyle = '#ffe14d'; ctx.fillRect(0, 56, 440, 3); ctx.restore();
+  outlined('CHOISIS TON COMBATTANT', 22, 46, 30, '#ffe14d', 'left');
+  if (OPTS.tag) outlined(ps.some(p => !sel.ready[p] && sel.first[p] !== null) ? 'CHOISIS TON PARTENAIRE DE RELAIS' : 'ÉQUIPE DE DEUX : choisis 2 combattants', W - 20, 44, 16, '#ff8ae6', 'right');
+  // Vitrine : un emplacement par joueur
+  const slotW = Math.min(W * 0.62, W / ps.length), y0 = 400;
+  ps.forEach((p, q) => {
+    const id = CHAR_IDS[pickOf(p)], P = CHARS[id], cx = ps.length === 1 ? W * 0.3 : slotW * (q + 0.5);
+    const S = SPRITES[P.sheet], A = S && (S.idle || S.combo || S.punch);
+    if (A) {
+      const i = S.idle ? Math.floor(sceneT * A.rate) % A.frames.length : 0, f = A.frames[i], img = IMG[f.src];
+      const h = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) * (CHAR_SIZE[id] || 1), k = h / f.h;
+      if (img) {
+        const pulse = 1 + Math.sin(sceneT * 3 + q) * 0.03, bob = sel.ready[p] ? 0 : Math.sin(sceneT * 2.5 + q) * 2;
+        // aura derrière le perso
+        const ag = ctx.createRadialGradient(cx, y0 - h * 0.5, 10, cx, y0 - h * 0.5, h * 0.75 * pulse);
+        ag.addColorStop(0, P.kiColor + 'aa'); ag.addColorStop(0.6, P.colors[0] + '44'); ag.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = ag; ctx.beginPath(); ctx.ellipse(cx, y0 - h * 0.5, h * 0.55 * pulse, h * 0.75 * pulse, 0, 0, 7); ctx.fill(); ctx.restore();
+        ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.beginPath(); ctx.ellipse(cx, y0 + 2, h * 0.28, h * 0.05, 0, 0, 7); ctx.fill();
+        ctx.save(); if (sel.flash > 0 && p === focus) ctx.filter = `brightness(${1 + sel.flash})`;
+        ctx.drawImage(img, cx - f.ax * k, y0 - f.ay * k + bob, f.w * k, f.h * k); ctx.restore();
+      }
+    }
+    if (ps.length > 1) {
+      outlined(`J${p + 1}`, cx, 76, 18, COLORS_P[p]);
+      outlined(P.name, cx, 104, 26, '#fff');
+    }
+    if (sel.ready[p]) outlined('PRÊT !', cx, y0 - 120, 44, COLORS_P[p]);
+  });
+  // Fiche du perso (un seul joueur : grande fiche à droite)
+  if (ps.length === 1) {
+    const x = W * 0.56, slide = sel.flash * 40;
+    outlined(C.name, x + slide, 150, 64, '#fff', 'left');
+    outlined(C.title, x + 4 + slide, 184, 20, C.colors[1], 'left');
+    C.stats.forEach(([label, v], r) => {
+      const yy = 214 + r * 28;
+      ctx.fillStyle = '#e4e6ff'; ctx.font = 'bold 14px sans-serif'; ctx.fillText(label, x + 4, yy + 13);
+      for (let q = 0; q < 5; q++) {
+        ctx.fillStyle = q < v ? C.colors[1] : 'rgba(255,255,255,0.15)';
+        ctx.beginPath(); ctx.moveTo(x + 120 + q * 34, yy + 16); ctx.lineTo(x + 130 + q * 34, yy); ctx.lineTo(x + 152 + q * 34, yy); ctx.lineTo(x + 142 + q * 34, yy + 16); ctx.fill();
+      }
+    });
+    ctx.font = 'bold 15px sans-serif'; ctx.fillStyle = '#ffd6e8';
+    ctx.fillText(`SPÉCIAL : ${C.labels.blast}`, x + 4, 318); ctx.fillText(`ULTIME : ${C.labels.ultra}`, x + 4, 342);
+    if (C.forms?.[0]) ctx.fillText(`TRANSFORMATION : ${C.forms[0].name}`, x + 4, 366);
+  }
+  // Carrousel de médaillons (arc de cercle, le perso choisi agrandi au centre)
+  const cy = 452, R = 30, items = [];
+  for (let k = 0; k < n; k++) {
+    let d = k - sel.cur; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+    if (Math.abs(d) <= 7.5) items.push([k, d]);
+  }
+  items.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+  for (const [k, d] of items) {
+    const P = CHARS[CHAR_IDS[k]], img = IMG[P.card], on = Math.abs(d) < 0.5;
+    const sc = Math.max(0.55, 1.35 - Math.abs(d) * 0.13), x = W / 2 + Math.sin(d * 0.2) * 560, y = cy + (1 - Math.cos(d * 0.2)) * 60, r = R * sc;
+    ctx.save(); ctx.globalAlpha = Math.max(0.25, 1 - Math.abs(d) * 0.11);
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fillStyle = P.colors[0]; ctx.fill(); ctx.clip();
+    if (img) { const [fx, fy, fk] = FACES[P.card] || [0.5, 0.2, 4], s = r * fk / img.height; ctx.drawImage(img, x - img.width * s * fx, y - img.height * s * fy, img.width * s, img.height * s); }
+    ctx.restore();
+    const who = ps.filter(p => sel.pick[p] === k);
+    ctx.lineWidth = on ? 4 : 2; ctx.strokeStyle = who.length ? COLORS_P[who[0]] : on ? '#ffe14d' : 'rgba(255,255,255,0.45)';
+    if (on) { ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 16; }
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke(); ctx.shadowBlur = 0;
+    who.forEach((p, q) => outlined(`J${p + 1}`, x + (q - (who.length - 1) / 2) * 26, y - r - 6, 13, COLORS_P[p]));
+  }
+  const pulse = 1 + Math.sin(sceneT * 6) * 0.12;
+  outlined('◀', 18 - pulse * 3, cy + 28, 30 * pulse, '#ffe14d');
+  outlined('▶', W - 18 + pulse * 3, cy + 28, 30 * pulse, '#ffe14d');
   // Aide en bas d'écran
-  ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 62, W, 62);
-  ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillStyle = COLORS_P[0];
-  ctx.fillText(`J1 :  ${K('left')} ${K('right')} choisir     ${K('punch')} ou Entrée valider     ${K('kick')} annuler     (manette : A valider, Y annuler)`, W / 2, H - 38);
-  ctx.fillStyle = COLORS_P[1];
-  const nj = sel.joined.filter(Boolean).length;
-  if (sel.joined[1]) ctx.fillText(`J2 :  ${K('left', 1)} ${K('right', 1)} choisir     ${K('punch', 1)} valider     ${K('kick', 1)} annuler ou quitter${nj < 4 ? '     —     J3 / J4 : A sur une autre manette, ou en ligne' : ''}`, W / 2, H - 14);
-  else if (Math.floor(sceneT * 2) % 2 === 0) ctx.fillText(`JOUEURS 2 à 4 : ${K('punch', 1)} (pavé numérique) ou A sur une autre manette pour rejoindre${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}`, W / 2, H - 14);
-  if (OPTS.tag) outlined([0, 1, 2, 3].some(p => sel.joined[p] && !sel.ready[p] && sel.first[p] !== null) ? 'CHOISIS TON PARTENAIRE DE RELAIS' : 'ÉQUIPE DE DEUX : choisis 2 combattants', W / 2, 76, 16, '#ff8ae6');
-  if (sel.go > 0) outlined('EN AVANT !', W / 2, H / 2 + 10, 70 + sel.go * 30, '#ffe14d');
+  ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 30, W, 30);
+  ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
+  ctx.fillText(`${K('left')} ${K('right')} choisir    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
+  if (sel.go > 0) outlined('EN AVANT !', W / 2, H / 2 - 20, 70 + sel.go * 30, '#ffe14d');
 }
 
 // La carte est dessinée à sa taille de référence (w × h) puis réduite de S pour tenir dans la grille.
