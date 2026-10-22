@@ -1686,6 +1686,7 @@ function updateSanzen(h, dt) {
     for (const e of enemies) if (e.sanzen) {
       e.sanzen = false;
       damageEnemy(e, 4 + h.power / 10, 500 * h.dir, -800, e.x, e.y - 110, hitOf(h));
+      if (FX.zoro_x) animFX('zoro_x', e.x, e.y - 110 * WORLD, 300 * WORLD, 0.5);
       slashFX(e.x, e.y - 110, h.dir, { x: true, r: 120, c: trailOf(h), life: 0.45, w: 18 });
     }
     score += 2000;
@@ -2786,8 +2787,16 @@ function superDim() {
 // Kamehameha tiré d'une vidéo (tools/video2fx.py) : gerbe d'énergie aux mains, rayon en tronçons animés mis bout à
 // bout à l'échelle (chacun décalé dans l'animation pour ne pas se répéter), boule au bout. Fond assombri autour.
 const KAME = { th: 100, src: 165, fps: 14 };
-function drawKameBeam(p, sx) {
-  const body = FX.kame_body, n = body.length, k = Math.floor(p.t * KAME.fps), th = KAME.th * (p.thick || 1) * WORLD;
+// Rayons filmés par perso : corps du rayon, gerbe aux mains (src, ancrée à gauche) ou sphère (orb, centrée)
+function beamFxOf(p) {
+  const c = p.owner?.char;
+  if (c === 'goku' && FX.kame_body) return { body: 'kame_body', src: 'kame_src' };
+  if (c === 'vegeta' && p.move === 'galick' && FX.galick_body) return { body: 'galick_body', src: 'galick_src' };
+  if (c === 'gojo' && p.move === 'ultra' && FX.violet_body) return { body: 'violet_body', orb: 'violet_orb' };
+  return null;
+}
+function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
+  const body = FX[B.body], n = body.length, k = Math.floor(p.t * KAME.fps), th = KAME.th * (p.thick || 1) * WORLD;
   const s = th / body[0].h, tw = body[0].w * s, x2 = sx + p.dir * p.len;
   ctx.save(); ctx.globalCompositeOperation = 'lighter';
   ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
@@ -2797,17 +2806,24 @@ function drawKameBeam(p, sx) {
     const w = Math.min(tw, p.len - x + 10);
     ctx.drawImage(img, 0, 0, f.w * (w / tw), f.h, x, -th / 2, w, th);
   }
-  const fs = FX.kame_src[k % FX.kame_src.length], simg = IMG[fs.src];
-  if (simg) { const ss = KAME.src * WORLD * (p.thick || 1) / fs.h; ctx.drawImage(simg, -150 * ss, -300 * ss, fs.w * ss, fs.h * ss); }
+  if (B.src && FX[B.src]) {
+    const fs = FX[B.src][k % FX[B.src].length], simg = IMG[fs.src];
+    if (simg) { const ss = KAME.src * WORLD * (p.thick || 1) / fs.h; ctx.drawImage(simg, -150 * ss, -300 * ss, fs.w * ss, fs.h * ss); }
+  }
+  if (B.orb && FX[B.orb]) {
+    const L = FX[B.orb], fo = L[L.length - 1 - (k % 4)], oimg = IMG[fo.src];
+    if (oimg) { const os = 230 * WORLD * (p.thick || 1) / fo.h; ctx.drawImage(oimg, -fo.w * os / 2, -fo.h * os / 2, fo.w * os, fo.h * os); }
+  }
   ctx.restore();
-  energyBall(x2, p.y, (40 + Math.sin(p.t * 40) * 4) * (p.thick || 1) * WORLD, false);
+  energyBall(x2, p.y, (40 + Math.sin(p.t * 40) * 4) * (p.thick || 1) * WORLD, B.body === 'kame_body' ? false : 'violet');
 }
 
 function drawProjs() {
   for (const p of projs) {
     const sx = p.x - camX;
     ctx.save(); ctx.globalCompositeOperation = 'lighter';
-    if (p.kind === 'beam' && FX.kame_body && p.owner?.char === 'goku') { ctx.restore(); drawKameBeam(p, sx); continue; }
+    const bfx = p.kind === 'beam' && beamFxOf(p);
+    if (bfx) { ctx.restore(); drawKameBeam(p, sx, bfx); continue; }
     if (p.kind === 'beam' && FX.beam) {
       // Rayon en images : éclat dans les mains, tronçon étiré, tête qui explose ; la couleur vient d'un filtre
       ctx.restore();
@@ -3626,7 +3642,7 @@ function drawSaiyanSparks(h, sx) {
 
 // Boule d'énergie ronde : halo, cœur blanc, anneau qui crépite
 function energyBall(x, y, r, gold) {
-  const [c1, c2, c3] = gold ? ['#fffbe0', '#ffe066', 'rgba(255,170,0,0)'] : ['#ffffff', '#8fe9ff', 'rgba(30,110,255,0)'];
+  const [c1, c2, c3] = gold === 'violet' ? ['#ffffff', '#d79bff', 'rgba(140,40,255,0)'] : gold ? ['#fffbe0', '#ffe066', 'rgba(255,170,0,0)'] : ['#ffffff', '#8fe9ff', 'rgba(30,110,255,0)'];
   ctx.save(); ctx.globalCompositeOperation = 'lighter';
   const halo = ctx.createRadialGradient(x, y, r * 0.2, x, y, r * 2.2);
   halo.addColorStop(0, c2); halo.addColorStop(1, c3);
@@ -3781,6 +3797,18 @@ function drawPlayer(h) {
     const orb = !m.orbFx && FX.rasen_v ? 'rasen_v' : m.orbFx || 'rasengan', fox = h.boost && h.char === 'naruto';
     const orbFilter = orb === 'rasen_v' ? (fox ? 'hue-rotate(170deg) saturate(1.4)' : '') : fox ? 'hue-rotate(170deg) saturate(1.6)' : '';
     if (!fxImg(orb, Math.floor(h.t * 16), hx, hy, r * (orb === 'rasen_v' ? 3.8 : 3.2), null, { filter: orbFilter })) drawRasengan(hx, hy, r, h.t);
+  }
+  if (h.char === 'gojo' && h.state === 'ultra' && h.t < 0.95 && FX.violet_orb) {
+    const L = FX.violet_orb, i = Math.min(L.length - 1, Math.floor(h.t / 0.95 * L.length));
+    fxImg('violet_orb', i, sx + h.dir * 70 * WORLD, h.y - 130 * WORLD, (120 + 160 * h.t) * WORLD, null);
+  }
+  if (h.char === 'luffy' && h.state === 'ultra' && h.t >= GIGANT.punch && FX.gigant_v) {
+    const L = FX.gigant_v, k = (h.t - GIGANT.punch) / (GIGANT.end - GIGANT.punch), f = L[Math.min(L.length - 1, Math.floor(k * L.length))], img = IMG[f.src];
+    if (img) {
+      const w = 820 * WORLD, s2 = w / f.w;
+      ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.translate(sx + h.dir * 90 * WORLD, h.y - 125 * WORLD); ctx.scale(h.dir, 1);
+      ctx.drawImage(img, -170 * s2, -f.h * s2 / 2, w, f.h * s2); ctx.restore();
+    }
   }
   if (h.char === 'vegeta' && h.state === 'ultra' && h.t < 0.95) {
     const close = h.t > 0.75; // mains ramenées devant la poitrine

@@ -16056,120 +16056,120 @@ const SPRITES = {
  },
  "mh_boss": {
   "walk": {
-   "scale": 0.5154,
+   "scale": 0.5144,
    "rate": 17.78,
    "frames": [
     {
      "src": "assets/sprites/mh_boss/walkv_0.png",
-     "w": 406,
-     "h": 518,
-     "ax": 250.5,
-     "ay": 518
+     "w": 402,
+     "h": 520,
+     "ax": 245.5,
+     "ay": 520
     },
     {
      "src": "assets/sprites/mh_boss/walkv_1.png",
-     "w": 408,
-     "h": 518,
-     "ax": 252.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/mh_boss/walkv_2.png",
-     "w": 400,
-     "h": 518,
-     "ax": 245.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/mh_boss/walkv_3.png",
-     "w": 376,
+     "w": 380,
      "h": 520,
      "ax": 219.5,
      "ay": 520
     },
     {
-     "src": "assets/sprites/mh_boss/walkv_4.png",
-     "w": 360,
-     "h": 524,
-     "ax": 197.9,
-     "ay": 524
-    },
-    {
-     "src": "assets/sprites/mh_boss/walkv_5.png",
-     "w": 344,
-     "h": 528,
-     "ax": 181.6,
-     "ay": 528
-    },
-    {
-     "src": "assets/sprites/mh_boss/walkv_6.png",
-     "w": 315,
+     "src": "assets/sprites/mh_boss/walkv_2.png",
+     "w": 334,
      "h": 532,
-     "ax": 140.1,
+     "ax": 167.5,
      "ay": 532
     },
     {
-     "src": "assets/sprites/mh_boss/walkv_7.png",
-     "w": 306,
-     "h": 534,
-     "ax": 133.3,
-     "ay": 534
+     "src": "assets/sprites/mh_boss/walkv_3.png",
+     "w": 322,
+     "h": 532,
+     "ax": 149.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/mh_boss/walkv_8.png",
-     "w": 304,
-     "h": 534,
-     "ax": 129.5,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/mh_boss/walkv_9.png",
-     "w": 300,
-     "h": 534,
-     "ax": 126.4,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/mh_boss/walkv_10.png",
-     "w": 306,
-     "h": 534,
-     "ax": 131.6,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/mh_boss/walkv_11.png",
-     "w": 336,
+     "src": "assets/sprites/mh_boss/walkv_4.png",
+     "w": 332,
      "h": 530,
-     "ax": 166.0,
+     "ax": 150.7,
      "ay": 530
     },
     {
-     "src": "assets/sprites/mh_boss/walkv_12.png",
-     "w": 348,
-     "h": 528,
-     "ax": 187.0,
-     "ay": 528
+     "src": "assets/sprites/mh_boss/walkv_5.png",
+     "w": 360,
+     "h": 526,
+     "ax": 169.7,
+     "ay": 526
     },
     {
-     "src": "assets/sprites/mh_boss/walkv_13.png",
-     "w": 364,
+     "src": "assets/sprites/mh_boss/walkv_6.png",
+     "w": 414,
      "h": 524,
-     "ax": 206.1,
+     "ax": 199.5,
      "ay": 524
     },
     {
-     "src": "assets/sprites/mh_boss/walkv_14.png",
-     "w": 394,
+     "src": "assets/sprites/mh_boss/walkv_7.png",
+     "w": 422,
      "h": 518,
-     "ax": 237.5,
+     "ax": 213.5,
      "ay": 518
     },
     {
-     "src": "assets/sprites/mh_boss/walkv_15.png",
+     "src": "assets/sprites/mh_boss/walkv_8.png",
      "w": 406,
-     "h": 518,
-     "ax": 249.5,
-     "ay": 518
+     "h": 520,
+     "ax": 209.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/mh_boss/walkv_9.png",
+     "w": 384,
+     "h": 522,
+     "ax": 201.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/mh_boss/walkv_10.png",
+     "w": 360,
+     "h": 528,
+     "ax": 183.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/mh_boss/walkv_11.png",
+     "w": 326,
+     "h": 536,
+     "ax": 146.3,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/mh_boss/walkv_12.png",
+     "w": 312,
+     "h": 540,
+     "ax": 134.8,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/mh_boss/walkv_13.png",
+     "w": 304,
+     "h": 540,
+     "ax": 128.9,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/mh_boss/walkv_14.png",
+     "w": 346,
+     "h": 532,
+     "ax": 178.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/mh_boss/walkv_15.png",
+     "w": 388,
+     "h": 520,
+     "ax": 231.7,
+     "ay": 520
     }
    ]
   },
@@ -18980,63 +18980,120 @@ const SPRITES = {
  },
  "db2_jr": {
   "walk": {
-   "scale": 0.4728,
+   "scale": 0.2855,
+   "rate": 20.71,
    "frames": [
     {
-     "src": "assets/sprites/db2_jr/walk_0.png",
-     "w": 229,
-     "h": 333,
-     "ax": 149.5,
-     "ay": 333
+     "src": "assets/sprites/db2_jr/walkv_0.png",
+     "w": 450,
+     "h": 564,
+     "ax": 338.5,
+     "ay": 564
     },
     {
-     "src": "assets/sprites/db2_jr/walk_1.png",
-     "w": 214,
-     "h": 319,
-     "ax": 137.5,
-     "ay": 319
+     "src": "assets/sprites/db2_jr/walkv_1.png",
+     "w": 447,
+     "h": 564,
+     "ax": 336.5,
+     "ay": 564
     },
     {
-     "src": "assets/sprites/db2_jr/walk_2.png",
-     "w": 213,
-     "h": 316,
-     "ax": 124.0,
-     "ay": 316
+     "src": "assets/sprites/db2_jr/walkv_2.png",
+     "w": 500,
+     "h": 558,
+     "ax": 332.5,
+     "ay": 558
     },
     {
-     "src": "assets/sprites/db2_jr/walk_3.png",
-     "w": 205,
-     "h": 345,
-     "ax": 120.5,
-     "ay": 345
+     "src": "assets/sprites/db2_jr/walkv_3.png",
+     "w": 504,
+     "h": 552,
+     "ax": 314.5,
+     "ay": 552
     },
     {
-     "src": "assets/sprites/db2_jr/walk_4.png",
-     "w": 226,
-     "h": 339,
-     "ax": 145.0,
-     "ay": 339
+     "src": "assets/sprites/db2_jr/walkv_4.png",
+     "w": 486,
+     "h": 542,
+     "ax": 313.5,
+     "ay": 542
     },
     {
-     "src": "assets/sprites/db2_jr/walk_5.png",
-     "w": 214,
-     "h": 323,
-     "ax": 119.0,
-     "ay": 323
+     "src": "assets/sprites/db2_jr/walkv_5.png",
+     "w": 453,
+     "h": 540,
+     "ax": 299.5,
+     "ay": 540
     },
     {
-     "src": "assets/sprites/db2_jr/walk_6.png",
-     "w": 204,
-     "h": 330,
-     "ax": 125.5,
-     "ay": 330
+     "src": "assets/sprites/db2_jr/walkv_6.png",
+     "w": 426,
+     "h": 540,
+     "ax": 312.5,
+     "ay": 540
     },
     {
-     "src": "assets/sprites/db2_jr/walk_7.png",
-     "w": 203,
-     "h": 349,
-     "ax": 117.5,
-     "ay": 349
+     "src": "assets/sprites/db2_jr/walkv_7.png",
+     "w": 429,
+     "h": 550,
+     "ax": 320.5,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_8.png",
+     "w": 432,
+     "h": 554,
+     "ax": 313.5,
+     "ay": 554
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_9.png",
+     "w": 434,
+     "h": 556,
+     "ax": 325.5,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_10.png",
+     "w": 464,
+     "h": 548,
+     "ax": 307.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_11.png",
+     "w": 480,
+     "h": 541,
+     "ax": 309.5,
+     "ay": 541
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_12.png",
+     "w": 466,
+     "h": 540,
+     "ax": 302.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_13.png",
+     "w": 440,
+     "h": 544,
+     "ax": 304.5,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_14.png",
+     "w": 431,
+     "h": 548,
+     "ax": 306.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/db2_jr/walkv_15.png",
+     "w": 428,
+     "h": 558,
+     "ax": 317.5,
+     "ay": 558
     }
    ]
   },

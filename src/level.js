@@ -124,6 +124,8 @@ const CLIMB = new Set(['ds_g1']), LADDER = 190; // l'échelle se dresse 190 px a
 for (const list of Object.values(GATES)) for (const g of list) ASSETS.backgrounds[g] = `assets/backgrounds/gates/${g}.png`;
 const GATE_H = 470;          // hauteur affichée de l'élément de passage (son pied est au bas de l'écran)
 const TRANS = { walk: 0.75, black: 0.25, back: 0.6 };
+// Passages filmés (vidéo Flow) : au noir, la vidéo montre le décor qui change (ex. Kyoto qui s'embrase)
+const TRANS_VIDEO = { rk_z2: 'assets/web/trans/trans_rk.mp4' };
 
 // Niveau en cours (choisi sur l'écran des niveaux)
 let LVL = TOKYO, ZONES = TOKYO.zones, WAVES = TOKYO.waves, PROPS = TOKYO.props, LEVEL_END = TOKYO.end;
@@ -242,11 +244,22 @@ function updateTransition(dt) {
   const Z = nextZone();
   if (!level.trans) {
     if (!Z || !level.cleared || camX < Z.from - W - 4 || !players.some(h => !h.out && h.x > Z.from - 120)) return false;
-    level.trans = { t: 0, Z, jumped: false };
+    level.trans = { t: 0, Z, jumped: false, vt: 0 };
     level.goT = 0; audio.whoosh(0.8);
+    if (TRANS_VIDEO[Z.id]) {
+      const v = document.createElement('video');
+      Object.assign(v, { src: TRANS_VIDEO[Z.id], muted: true, playsInline: true, preload: 'auto' });
+      level.trans.vid = v;
+    }
   }
   const T = level.trans;
   T.t += dt;
+  // vidéo de passage : le noir dure le temps de la vidéo (7 s au plus si elle ne se charge pas)
+  if (T.vid && T.t >= TRANS.walk && !T.vdone) {
+    if (!T.vt) { T.vid.play().catch(() => {}); audio.play('boom', 0.7, 0.8, 0); }
+    T.vt += dt; T.t = TRANS.walk;
+    if (T.vid.ended || T.vt > 7 || (T.vt > 1.5 && T.vid.readyState < 2)) T.vdone = true;
+  }
   if (!T.jumped && T.t >= TRANS.walk + TRANS.black / 2) {
     // dans le noir : on reprend juste après le passage, dans la nouvelle zone
     T.jumped = true; level.passed++;
@@ -515,6 +528,12 @@ function harmonizedMid(key, img, groundKey) {
 function drawLevelOverlay() {
   const fade = transitionFade();
   if (fade > 0) { ctx.fillStyle = `rgba(0,0,0,${fade})`; ctx.fillRect(0, 0, W, H); }
+  const V = level.trans?.vid;
+  if (V && level.trans.vt > 0 && !level.trans.vdone && V.readyState >= 2) {
+    const d = V.duration || 5, c = V.currentTime, k = Math.max(0, Math.min(1, c / 0.35, (d - c) / 0.35));
+    const s = Math.max(W / V.videoWidth, H / V.videoHeight), w = V.videoWidth * s, h = V.videoHeight * s;
+    ctx.save(); ctx.globalAlpha = k; ctx.drawImage(V, (W - w) / 2, (H - h) / 2, w, h); ctx.restore();
+  }
   // Flèche « GO » quand une vague est nettoyée
   if (level.goT > 0 && Math.floor(level.goT * 3) % 2 === 0 && scene === 'play') {
     outlined('GO  ▶', W - 110, H / 2 - 40, 48, '#ffe14d');
