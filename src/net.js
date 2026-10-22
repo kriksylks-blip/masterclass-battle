@@ -4,6 +4,10 @@
 // joueur de l'hôte (J2, J3 ou J4). Rejoindre = taper le code à 4 lettres affiché chez l'hôte.
 
 const NET_PREFIX = 'mcbattle-v1-';
+// Serveurs pour que deux appareils sur des réseaux différents (4G, box, machine virtuelle…) se trouvent.
+// STUN suffit souvent ; sinon il faut un relais TURN : ses identifiants vont dans NET_TURN (voir docs/prompts.md).
+const NET_TURN = null; // ex. { urls: ['turn:…:80', 'turns:…:443?transport=tcp'], username: '…', credential: '…' }
+const NET_OPTS = { config: { iceServers: [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302', 'stun:stun.cloudflare.com:3478'] }, ...(NET_TURN ? [NET_TURN] : [])] } };
 const net = { role: null, peer: null, code: '', status: '', guests: {}, conn: null, slot: -1, typed: '', row: 0, video: null, err: '' };
 
 function openOnline() { scene = 'online'; sceneT = 0; net.row = 0; net.typed = ''; if (!net.role) net.status = ''; }
@@ -69,7 +73,7 @@ function netHost() {
   audio.unlock();
   net.role = 'host'; net.code = Array.from({ length: 4 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ'[Math.floor(Math.random() * 24)]).join('');
   net.status = 'Ouverture de la partie…';
-  net.peer = new Peer(NET_PREFIX + net.code);
+  net.peer = new Peer(NET_PREFIX + net.code, NET_OPTS);
   net.peer.on('open', () => { net.status = 'En attente de joueurs…'; });
   net.peer.on('error', e => { net.status = 'Erreur réseau : ' + (e.type || e.message); if (e.type === 'unavailable-id') { netClose(); netHost(); } });
   net.peer.on('connection', conn => conn.on('open', () => netAccept(conn)));
@@ -133,13 +137,17 @@ function netClose() {
 function netJoin(code) {
   if (typeof Peer === 'undefined') { net.err = 'PeerJS introuvable : vérifie la connexion Internet'; return; }
   audio.unlock();
-  net.role = 'guest'; net.status = `Connexion à la partie ${code}…`; net.err = '';
-  net.peer = new Peer();
+  net.role = 'guest'; net.slot = -1; net.status = `Connexion à la partie ${code}…`; net.err = '';
+  net.peer = new Peer(NET_OPTS);
+  // Pas de réponse au bout de 15 s : la partie existe mais les deux réseaux ne se joignent pas directement
+  const watchdog = setTimeout(() => {
+    if (net.role === 'guest' && net.slot < 0) { netClose(); openOnline(); net.err = 'Connexion impossible entre vos deux réseaux (il faut un relais TURN). Essayez sur le même wifi.'; }
+  }, 15000);
   net.peer.on('error', e => { net.err = e.type === 'peer-unavailable' ? 'Aucune partie avec ce code.' : 'Erreur réseau : ' + (e.type || e.message); setTimeout(() => { if (net.role === 'guest' && !net.video) { netClose(); openOnline(); net.err = 'Aucune partie avec ce code.'; } }, 2500); });
   net.peer.on('open', () => {
     const conn = net.conn = net.peer.connect(NET_PREFIX + code, { reliable: true });
     conn.on('data', m => {
-      if (m.t === 'hello') { net.slot = m.slot; net.status = `Connecté : tu es le joueur ${m.slot + 1}. Attente de l'image…`; }
+      if (m.t === 'hello') { clearTimeout(watchdog); net.slot = m.slot; net.status = `Connecté : tu es le joueur ${m.slot + 1}. Attente de l'image…`; }
       if (m.t === 'full') net.err = 'La partie est complète (4 joueurs).';
     });
     conn.on('close', () => { netShowVideo(null); netClose(); openOnline(); net.err = 'La partie a été fermée par l\'hôte.'; });
