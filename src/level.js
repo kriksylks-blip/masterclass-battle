@@ -429,9 +429,41 @@ function drawZoneLayer(kind) {
       g.addColorStop(0, `rgba(0,0,0,${STEP.dark})`); g.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = g; ctx.fillRect(-10, y0, W + 20, STEP.shadow);
       ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.fillRect(-10, y0, W + 20, 2);
+      // bordure de premier plan (muret, rambarde, rochers…) posée sur la jointure : la séparation devient un objet
+      const S = STRIPS[Z.id], simg = S && IMG[S.img];
+      if (simg) {
+        const sh = S.h, sw = simg.width * sh / simg.height;
+        ctx.save(); ctx.filter = `brightness(${groundLight(Z.mid, IMG[Z.mid])})`;
+        drawTiled(simg, f, L.y + S.dy - sh, sh, sw, true);
+        ctx.restore();
+      }
     } else drawTiled(img, f, L.y, L.h, L.w, mirror);
     ctx.restore();
   }
+}
+// Bordures de premier plan par zone (tools/make_strip.py) : image, hauteur affichée, bas de la bordure sous le haut du sol
+const STRIP = (img, h, dy) => ({ img: 'strip_' + img, h, dy });
+const STRIPS = {
+  street: STRIP('curb_city', 46, 22), neon: STRIP('curb_city', 46, 22), dock: STRIP('curb_city', 46, 22),
+  bridge: STRIP('rail_metal', 64, 24), hx_z1: STRIP('curb_city', 46, 22), mh_z1: STRIP('curb_city', 46, 22),
+  nr2_z1: STRIP('curb_city', 46, 22), ds2_z1: STRIP('curb_city', 46, 22),
+  nr2_z2: STRIP('rail_metal', 64, 24), nr2_z3: STRIP('rail_metal', 64, 24), hx_z3: STRIP('rail_metal', 64, 24),
+  op_z1: STRIP('rail_wood', 70, 26), rk_z3: STRIP('rail_wood', 70, 26),
+};
+for (const S of new Set(Object.values(STRIPS).map(S => S.img))) ASSETS.backgrounds[S] = `assets/backgrounds/strips/${S.slice(6)}.png`;
+// Éclairage de la zone (luminosité moyenne du plan moyen : jour ou nuit) : la bordure prend la même lumière que le décor
+const lightCache = {};
+function groundLight(key, img) {
+  if (key in lightCache) return lightCache[key];
+  let v = 1;
+  try {
+    const c = document.createElement('canvas'); c.width = 64; c.height = 16;
+    const g = c.getContext('2d'); g.drawImage(img, 0, 0, 64, 16);
+    const d = g.getImageData(0, 0, 64, 16).data; let sum = 0, n = 0;
+    for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 128) { sum += 0.3 * d[i] + 0.59 * d[i + 1] + 0.11 * d[i + 2]; n++; }
+    v = Math.max(0.7, Math.min(1, sum / Math.max(1, n) / 100));
+  } catch (e) { v = 1; }
+  return (lightCache[key] = v);
 }
 // Jointure plan moyen / sol. Les deux calques défilent à des vitesses différentes : un fondu entre eux superpose
 // deux textures (image double, floue). On garde donc une jointure nette, comme un rebord : ombre portée sur le haut

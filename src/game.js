@@ -57,7 +57,7 @@ function levelNeeds(L) {
   for (const w of L.waves || []) for (const t of w.foes) types.add(t);
   const known = [...types].filter(t => t && ETYPES[t]), sheets = known.map(t => ETYPES[t].sheet || t);
   const bgs = new Set([L.sky, ...(L.far ? ['far'] : [])]);
-  for (const Z of L.zones) for (const k of [Z.sky, Z.mid, Z.ground]) if (k) bgs.add(k);
+  for (const Z of L.zones) for (const k of [Z.sky, Z.mid, Z.ground, STRIPS[Z.id]?.img]) if (k) bgs.add(k);
   for (const k of GATES[L.id] || []) bgs.add(k);
   return { sheets, bgs: [...bgs].filter(k => ASSETS.backgrounds[k]), intros: known.map(t => 'intro_' + t).filter(k => ASSETS.ui[k]) };
 }
@@ -1213,7 +1213,7 @@ function updateBunshin(h, dt) {
   const B = h.bun;
   while (B.spawned < BUNSHIN.n && h.t > B.spawned * BUNSHIN.every) {
     const k = B.spawned++, x = camX + 60 + ((k * 0.618) % 1) * (W - 120), gz = Z_TOP + 10 + ((k * 0.37) % 1) * (Z_BOT - Z_TOP - 20);
-    const c = { owner: h, x, gz, y: gz, dir: x < h.x ? 1 : -1, t: -0.1, state: 'rush', run: 0, kick: k % 2 === 1, hits: 3, seek: true, rasen: k % 3 === 2, power: 1.4 };
+    const c = { owner: h, x, gz, y: gz, dir: x < h.x ? 1 : -1, t: -0.1, state: 'rush', run: 0, kick: k % 2 === 1, hits: 2, seek: true, rasen: k % 3 === 2, power: 0.6 }; // équilibré : ~27 de dégâts sur un seul ennemi, comme les autres ultimes
     clones.push(c); puff(x, gz);
     if (k % 3 === 0) audio.zip();
   }
@@ -1225,7 +1225,7 @@ function updateBunshin(h, dt) {
     for (const c of clones) if (c.owner === h) { puff(c.x, c.y); c.done = true; }
     for (const e of enemies) {
       if (!e.alive || e.state === 'down' || Math.abs(e.x - (camX + W / 2)) > W / 2 + 40) continue;
-      damageEnemy(e, 4 + h.power / 10, 620 * (Math.sign(e.x - h.x) || 1), -820, e.x, e.y - 110, h.C.hit);
+      damageEnemy(e, 3 + h.power / 20, 620 * (Math.sign(e.x - h.x) || 1), -820, e.x, e.y - 110, h.C.hit);
       animFX(Math.random() < 0.5 ? 'hitboom_a' : 'hitboom_b', e.x, e.y - 110, 260 * WORLD, 0.5);
     }
     popups.push({ x: h.x, y: h.y - 260, t: 0, text: 'UZUMAKI NARUTO RENDAN !!' });
@@ -1244,7 +1244,7 @@ function updateClones(dt) {
       if (e) { c.gz += clamp(e.gz - c.gz, -260 * dt, 260 * dt); c.y = c.gz; }
       if (e && Math.abs(e.x - c.x) < 75 && Math.abs(e.gz - c.gz) < 35) {
         c.state = 'hit'; c.ht = 0;
-        const h = c.owner, dmg = (c.rasen ? 3 : c.power || 1.6) * (h.boost ? h.boost.dmg : 1);
+        const h = c.owner, dmg = (c.rasen ? (c.seek ? 1.2 : 3) : c.power || 1.6) * (h.boost ? h.boost.dmg : 1);
         damageEnemy(e, dmg, c.dir * (c.rasen ? 560 : 300), c.rasen ? -620 : c.kick ? -420 : null, e.x, e.y - 110, h.C.hit);
         if (c.rasen) { spiralFX(e.x, e.y - 110, '#bff3ff'); shake = Math.max(shake, 10); }
       } else if (c.run > (c.seek ? 1200 : 650)) c.state = 'poof';
