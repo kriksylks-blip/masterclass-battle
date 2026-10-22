@@ -41,7 +41,8 @@ function drawOnline() {
     const names = [1, 2, 3].map(s => net.guests[s] ? `J${s + 1} : en ligne ✔` : `J${s + 1} : libre`);
     names.forEach((t, k) => outlined(t, W / 2, 330 + k * 30, 18, net.guests[k + 1] ? COLORS_P[k + 1] : '#8a80a8'));
     ctx.font = '14px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#ffd6e8';
-    ctx.fillText('Donne ce code à tes amis : menu EN LIGNE → REJOINDRE. Ils peuvent arriver aussi sur l\'écran de sélection.', W / 2, 450);
+    ctx.fillText('Donne ce code à tes amis : menu EN LIGNE → REJOINDRE. Ils peuvent arriver aussi sur l\'écran de sélection.', W / 2, 425);
+    ctx.fillStyle = '#7ff0ff'; ctx.fillText(`ou envoie ce lien : ${location.origin + location.pathname}?join=${net.code}`, W / 2, 450);
     ctx.fillText(`${K('punch')} / Entrée : aller au choix des combattants     ${K('kick')} : fermer la partie`, W / 2, 476);
     return;
   }
@@ -201,4 +202,11 @@ const netPadOn = new Set();
     }
   }
   requestAnimationFrame(netPadLoop);
+})();
+
+// Lien d'invitation : index.html?join=ABCD rejoint directement la partie (pratique depuis un téléphone)
+(() => {
+  const code = (new URLSearchParams(location.search).get('join') || '').toUpperCase().replace(/[^A-Z]/g, '');
+  if (code.length !== 4) return;
+  const wait = setInterval(() => { if (scene === 'title') { clearInterval(wait); openOnline(); netJoin(code); } }, 200);
 })();

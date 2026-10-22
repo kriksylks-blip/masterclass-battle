@@ -255,6 +255,232 @@ const FXV = {
    "w": 1280,
    "h": 620
   }
+ ],
+ "rasen_v": [
+  {
+   "src": "assets/fx/rasen_v_0.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_1.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_2.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_3.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_4.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_5.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_6.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_7.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_8.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_9.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_10.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_11.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_12.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_13.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_14.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_15.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_16.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_17.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_18.png",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rasen_v_19.png",
+   "w": 600,
+   "h": 600
+  }
+ ],
+ "hitboom_a": [
+  {
+   "src": "assets/fx/hitboom_a_0.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_1.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_2.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_3.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_4.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_5.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_6.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_7.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_8.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_9.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_10.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_a_11.png",
+   "w": 660,
+   "h": 660
+  }
+ ],
+ "hitboom_b": [
+  {
+   "src": "assets/fx/hitboom_b_0.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_1.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_2.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_3.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_4.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_5.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_6.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_7.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_8.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_9.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_10.png",
+   "w": 660,
+   "h": 660
+  },
+  {
+   "src": "assets/fx/hitboom_b_11.png",
+   "w": 660,
+   "h": 660
+  }
  ]
 };
 Object.assign(FX, FXV);

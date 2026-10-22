@@ -218,7 +218,7 @@ function pollPad() {
 // ---------- Menu pause : voir et modifier les commandes de chaque joueur ----------
 // Lignes : le joueur, une ligne par action, puis « Commandes par défaut » et « Reprendre ». Colonnes : clavier, manette.
 const menu = { p: 0, row: 0, col: 0, capture: null, msg: '' };
-const MENU_ROWS = ACTIONS.length + 4, ROW_DEFAULT = ACTIONS.length + 1, ROW_RESUME = ACTIONS.length + 2;
+const MENU_ROWS = ACTIONS.length + 5, ROW_MUSIC = ACTIONS.length + 1, ROW_DEFAULT = ACTIONS.length + 2, ROW_RESUME = ACTIONS.length + 3;
 
 function openMenu() { menu.row = ROW_RESUME; menu.col = 0; menu.capture = null; menu.msg = ''; }
 function closeMenu() { paused = false; menu.capture = null; INPUT.forEach(I => { I.keys.clear(); I.pressed.clear(); }); }
@@ -234,6 +234,7 @@ function menuMove(dr, dc) {
 function menuActivate() {
   if (menu.row === 0) { menu.p = (menu.p + 1) % 4; return; }
   if (menu.row <= ACTIONS.length) { menu.capture = menu.col ? 'pad' : 'key'; menu.msg = ''; return; }
+  if (menu.row === ROW_MUSIC) { OPTS.musicOff = !OPTS.musicOff; saveOpts(); return; } // musique seule (les bruitages restent)
   if (menu.row === ROW_DEFAULT) {
     binds[menu.p] = copy(DEFAULT_BINDS[menu.p]); saveBinds(); rebuildKeymap();
     menu.msg = `Commandes par défaut rétablies (joueur ${menu.p + 1})`;
@@ -293,7 +294,7 @@ function menuPad(fresh, n) {
 function drawPauseMenu() {
   ctx.fillStyle = 'rgba(5,0,20,0.85)'; ctx.fillRect(0, 0, W, H);
   outlined('PAUSE', W / 2, 42, 36);
-  const x0 = 170, xk = 520, xp = 720, top = 64, rh = 20, B = binds[menu.p];
+  const x0 = 170, xk = 520, xp = 720, top = 58, rh = 19, B = binds[menu.p];
   const blink = Math.floor(performance.now() / 300) % 2;
   for (let r = 0; r < MENU_ROWS; r++) {
     const y = top + r * rh + (r > 0 ? 22 : 0) + (r > ACTIONS.length ? 10 : 0), sel = r === menu.row;
@@ -325,7 +326,7 @@ function drawPauseMenu() {
       });
     } else {
       ctx.fillStyle = sel ? '#ffe14d' : '#cfd3ff';
-      ctx.fillText(r === ROW_DEFAULT ? `↺  Commandes par défaut (joueur ${menu.p + 1})` : r === ROW_RESUME ? (scene === 'options' ? '▶  Retour aux options' : '▶  Reprendre la partie') : (scene === 'options' ? '' : '✕  Quitter la partie (écran titre)'), x0, y + 14);
+      ctx.fillText(r === ROW_MUSIC ? `♪  Musique : ${OPTS.musicOff ? 'NON' : 'OUI'}   (les bruitages restent)` : r === ROW_DEFAULT ? `↺  Commandes par défaut (joueur ${menu.p + 1})` : r === ROW_RESUME ? (scene === 'options' ? '▶  Retour aux options' : '▶  Reprendre la partie') : (scene === 'options' ? '' : '✕  Quitter la partie (écran titre)'), x0, y + 14);
     }
   }
   ctx.textAlign = 'center'; ctx.font = '13px sans-serif';
@@ -401,10 +402,10 @@ const audio = {
     }
     const m = this.music;
     if (!m) return;
-    const target = this.muted || !on ? 0 : MUSIC.volume * (quiet ? 0.35 : 1);
+    const target = this.muted || !on || OPTS.musicOff ? 0 : MUSIC.volume * (quiet ? 0.35 : 1);
     m.volume = clamp(m.volume + Math.sign(target - m.volume) * 0.02, 0, 1); // fondu
     if (Math.abs(m.volume - target) < 0.02) m.volume = target;
-    if (on && m.paused && !this.muted) m.play().catch(() => {});
+    if (on && m.paused && !this.muted && !OPTS.musicOff) m.play().catch(() => {});
     if (!on && m.volume === 0 && !m.paused) { m.pause(); m.currentTime = 0; }
   },
   toggleMute() {
@@ -525,6 +526,8 @@ const N_MOVES = {
   rasengan: { dur: 0.95, cost: 35, on: 0.34, off: 0.72, reach: [0, 140], y: [-170, -60], dmg: 5, kb: 650, ki: 0, launch: -650, push: 1300, pushAt: 0.28, pushDur: 0.32,
               orb: [0, 0.75], spiral: true, stopOnHit: true, call: 'RASENGAN !', p: ['special', [0, 1, 2, 3], [0.3, 0.55, 0.82]] },
 };
+// Rasengan en fin de série de poings (sans ki) : il reste le coup signature de Naruto à côté du multi-clonage
+N_MOVES.rasenfin = { ...N_MOVES.rasengan, cost: 0, dmg: 3.5, kb: 520 };
 // Zoro : style à trois sabres
 const Z_MOVES = {
   punch:    { dur: 0.32, on: 0.06, off: 0.18, cancel: 0.18, reach: [20, 150], y: [-160, -60], dmg: 1.3, kb: 180, ki: 6, p: ['combo', [0, 1], [0.04]], trail: { a0: -0.9, a1: 0.7, r: 120 } },
@@ -692,7 +695,7 @@ const CHARS = {
     labels: { blast: 'MULTI-CLONAGE', ultra: 'KURAMA' },
     // La rage : le manteau de chakra rouge du démon renard, avec ses queues
     forms: [{ ki: 50, name: 'CHAKRA DU RENARD', filter: 'sepia(0.3) saturate(1.5) hue-rotate(-20deg) brightness(1.04) drop-shadow(0 0 5px rgba(255,20,0,0.95)) drop-shadow(0 0 12px rgba(230,0,0,0.7))', speed: 1.3, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(255,40,20,0.55)', '#ff3a1a'], foxCloak: 3, bar: ['#c01010', '#ff8a50'], color: '#ff3a1a', hit: '#ffb090' }],
-    moves: N_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'sidekick', 'axekick'] },
+    moves: N_MOVES, chain: { punch: ['punch', 'cross', 'rasenfin'], kick: ['kick', 'sidekick', 'axekick'] },
     special: 'bunshin', speed: 280, pose: stdPose, ultra: [startKyubi, updateKyubi],
     ultraPose: h => ['special', h.t < 0.6 ? 4 : h.t < KYU.charge ? 5 : h.t < KYU.charge + 0.3 ? 6 : 7],
   },
@@ -2549,7 +2552,12 @@ function slashFX(x, y, dir, o) {
   }
 }
 // Impact façon manga : éclair blanc, rayons et anneau de couleur
-function impactFX(x, y, c, big) { fxs.push({ type: 'impact', x, y, c, t: 0, life: big ? 0.32 : 0.2, r: big ? 95 : 58, n: big ? 14 : 9, rot: rand(0, 1) }); }
+function impactFX(x, y, c, big) {
+  fxs.push({ type: 'impact', x, y, c, t: 0, life: big ? 0.32 : 0.2, r: big ? 95 : 58, n: big ? 14 : 9, rot: rand(0, 1) });
+  // gros coup : explosion filmée (tools/video2fx.py) par-dessus, façon FighterZ
+  const boom = Math.random() < 0.5 ? 'hitboom_a' : 'hitboom_b';
+  if (big && FX[boom]) animFX(boom, x, y, 230 * WORLD, 0.5);
+}
 // Spirale du Rasengan qui s'ouvre sur l'ennemi
 function spiralFX(x, y, c) { fxs.push({ type: 'spiral', x, y, c, t: 0, life: 0.45 }); }
 // Image rémanente (téléportation) : la pose du moment, qui s'efface sur place
@@ -3622,8 +3630,11 @@ function drawPlayer(h) {
   if (m?.beam && h.t < m.beam.at) energyBall(sx - h.dir * 18, h.y - 102 * WORLD, 6 + 26 * Math.min(1, h.t / m.beam.at), false);
   if (m?.orb && h.t >= m.orb[0] && h.t <= m.orb[1]) {
     const r = 12 + 18 * Math.min(1, h.t / 0.3), low = m.orbFx === 'chidori' && h.t < m.p[2][1];
-    const hx = sx + h.dir * (low ? (h.t < m.p[2][0] ? 30 : -35) : 82), hy = h.y - (low ? 72 : 120);
-    if (!fxImg(m.orbFx || 'rasengan', Math.floor(h.t * 20), hx, hy, r * 3.2, null, { filter: h.boost && h.char === 'naruto' ? 'hue-rotate(170deg) saturate(1.6)' : '' })) drawRasengan(hx, hy, r, h.t);
+    const hp = !low && handPoint(h);
+    const hx = hp ? sx + h.dir * (hp[0] + 6) : sx + h.dir * (low ? (h.t < m.p[2][0] ? 30 : -35) : 82), hy = hp ? h.y + hp[1] : h.y - (low ? 72 : 120);
+    const orb = !m.orbFx && FX.rasen_v ? 'rasen_v' : m.orbFx || 'rasengan', fox = h.boost && h.char === 'naruto';
+    const orbFilter = orb === 'rasen_v' ? (fox ? 'hue-rotate(170deg) saturate(1.4)' : '') : fox ? 'hue-rotate(170deg) saturate(1.6)' : '';
+    if (!fxImg(orb, Math.floor(h.t * 16), hx, hy, r * (orb === 'rasen_v' ? 3.8 : 3.2), null, { filter: orbFilter })) drawRasengan(hx, hy, r, h.t);
   }
   if (h.char === 'vegeta' && h.state === 'ultra' && h.t < 0.95) {
     const close = h.t > 0.75; // mains ramenées devant la poitrine
