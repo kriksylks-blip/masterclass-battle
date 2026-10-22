@@ -830,6 +830,9 @@ const OTHER = (walk, other, anims = ['jump', 'fall', 'combo', 'lowair', 'dashcha
 const ANIM_SIZE = { kenshin: OTHER(1.11, 0.79), zenitsu: OTHER(1.07, 0.76), ichigo: OTHER(1, 1.08), naruto: OTHER(1, 0.88), killua: OTHER(1, 0.9) };
 for (const [sh, anims] of Object.entries(ANIM_SIZE))
   for (const [an, k] of Object.entries(anims)) { const A = SPRITES[sh]?.[an]; if (A) { A.scale *= k; if (A.rate) A.rate /= k; } }
+// Échelle du monde : tout le monde un peu plus petit pour qu'on tienne à 4 sur l'écran
+const WORLD = 0.9;
+for (const who of Object.values(SPRITES)) for (const A of Object.values(who)) { A.scale *= WORLD; if (A.rate) A.rate /= WORLD; }
 for (const [id, k] of Object.entries(CHAR_SIZE))
   for (const sh of charSheets(id)) for (const A of Object.values(SPRITES[sh] || {})) { A.scale *= k; if (A.rate) A.rate /= k; }
 // Un personnage n'apparaît qu'une fois ses planches découpées (src/sprites.js)
@@ -1941,6 +1944,11 @@ const STAND_IN = {
   db2_jr: 'hue-rotate(180deg)', db2_android: 'hue-rotate(80deg)', db2_boss: 'hue-rotate(70deg) saturate(1.4)',
 };
 for (const [k, f] of Object.entries(STAND_IN)) Object.assign(ETYPES[k], { alt: ETYPES[k].isBoss ? 'boss' : ETYPES[k].lunge ? 'samurai' : 'biker', altTint: f });
+// Ennemis à la taille des héros (un sbire = un héros moyen, les boss restent plus grands)
+const ENEMY_SIZE = 0.92, heroSheets = new Set(Object.keys(CHARS).flatMap(charSheets));
+for (const sh of new Set(Object.values(ETYPES).map(T => T.sheet).filter(sh => sh && !heroSheets.has(sh))))
+  for (const A of Object.values(SPRITES[sh] || {})) { A.scale *= ENEMY_SIZE; if (A.rate) A.rate /= ENEMY_SIZE; }
+for (const T of Object.values(ETYPES)) if (T.h) T.h = Math.round(T.h * WORLD * ENEMY_SIZE);
 
 // Avance vers le joueur jusqu'à la distance voulue, en se calant sur sa ligne de profondeur
 function approach(e, dt, h, want) {
@@ -2651,7 +2659,7 @@ function updateProjs(dt) {
     const h = p.owner;
     if (p.kind === 'beam') {
       // Le Kamehameha part des mains et s'allonge ; il touche en continu ce qui est sur sa ligne
-      p.x = h.x + h.dir * 78; p.y = h.y - (p.high || 118); p.dir = h.dir; p.gz = h.gz;
+      p.x = h.x + h.dir * 78; p.y = h.y - (p.high || 118) * WORLD; p.dir = h.dir; p.gz = h.gz;
       p.len = Math.min(p.reach ??= p.len, p.t * 2800); // le rayon s'allonge jusqu'à sa portée
       if (h.state !== p.move || h.t > p.end) { p.done = true; continue; }
       if (p.t - p.multiT >= 0.08) { p.multiT = p.t; p.hit.clear(); }
@@ -2697,10 +2705,40 @@ function updateProjs(dt) {
 
 const projColor = p => ({ airblade: '#e9fff2', wave: '#5ad1ff', firewave: '#ff8a2a', shuriken: '#bff3ff', rocks: '#d8c09a', getsuga: '#bfe8ff', airshot: '#d8ffe0', red: '#ff5060', kiball: '#bff3ff' })[p.kind] || '#ffffff';
 
+// « Super flash » façon FighterZ : le décor s'assombrit le temps d'un coup spécial ou d'un ultime
+let dimK = 0;
+function superDim() {
+  const on = players.some(h => h.state === 'ultra' || (h.move && h.move.cost));
+  dimK += ((on ? 1 : 0) - dimK) * 0.12;
+  if (dimK < 0.02) return;
+  ctx.fillStyle = `rgba(4,2,16,${0.5 * dimK})`; ctx.fillRect(-20, -20, W + 40, H + 40);
+}
+
+// Kamehameha tiré d'une vidéo (tools/video2fx.py) : gerbe d'énergie aux mains, rayon en tronçons animés mis bout à
+// bout à l'échelle (chacun décalé dans l'animation pour ne pas se répéter), boule au bout. Fond assombri autour.
+const KAME = { th: 100, src: 165, fps: 14 };
+function drawKameBeam(p, sx) {
+  const body = FX.kame_body, n = body.length, k = Math.floor(p.t * KAME.fps), th = KAME.th * (p.thick || 1) * WORLD;
+  const s = th / body[0].h, tw = body[0].w * s, x2 = sx + p.dir * p.len;
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
+  for (let x = 30, j = 0; x < p.len; x += tw * 0.92, j++) {
+    const f = body[(k + j * 7) % n], img = IMG[f.src];
+    if (!img) continue;
+    const w = Math.min(tw, p.len - x + 10);
+    ctx.drawImage(img, 0, 0, f.w * (w / tw), f.h, x, -th / 2, w, th);
+  }
+  const fs = FX.kame_src[k % FX.kame_src.length], simg = IMG[fs.src];
+  if (simg) { const ss = KAME.src * WORLD * (p.thick || 1) / fs.h; ctx.drawImage(simg, -150 * ss, -300 * ss, fs.w * ss, fs.h * ss); }
+  ctx.restore();
+  energyBall(x2, p.y, (40 + Math.sin(p.t * 40) * 4) * (p.thick || 1) * WORLD, false);
+}
+
 function drawProjs() {
   for (const p of projs) {
     const sx = p.x - camX;
     ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    if (p.kind === 'beam' && FX.kame_body && p.owner?.char === 'goku') { ctx.restore(); drawKameBeam(p, sx); continue; }
     if (p.kind === 'beam' && FX.beam) {
       // Rayon en images : éclat dans les mains, tronçon étiré, tête qui explose ; la couleur vient d'un filtre
       ctx.restore();
@@ -3581,7 +3619,7 @@ function drawPlayer(h) {
     const p = handPos(h);
     energyBall(p.x - camX, p.y, 6 + 22 * Math.min(1, h.t / MOVES.blast.fire), !!F);
   }
-  if (m?.beam && h.t < m.beam.at) energyBall(sx - h.dir * 18, h.y - 102, 6 + 26 * Math.min(1, h.t / m.beam.at), false);
+  if (m?.beam && h.t < m.beam.at) energyBall(sx - h.dir * 18, h.y - 102 * WORLD, 6 + 26 * Math.min(1, h.t / m.beam.at), false);
   if (m?.orb && h.t >= m.orb[0] && h.t <= m.orb[1]) {
     const r = 12 + 18 * Math.min(1, h.t / 0.3), low = m.orbFx === 'chidori' && h.t < m.p[2][1];
     const hx = sx + h.dir * (low ? (h.t < m.p[2][0] ? 30 : -35) : 82), hy = h.y - (low ? 72 : 120);
@@ -4011,6 +4049,7 @@ function draw() {
   const s = shake > 0.5 ? shake : 0;
   ctx.setTransform(RES, 0, 0, RES, rand(-s, s) * RES, rand(-s, s) * RES);
   drawBackground();
+  superDim();
   drawFX(true);
   // Du plus au fond au plus en avant ; un corps au sol passe derrière ceux qui sont debout sur la même ligne
   const all = [
