@@ -3015,73 +3015,140 @@ function warmLevelLayers() {
   const step = () => { const j = todo.shift(); if (!j) return; levelLayers(...j); setTimeout(step, 30); };
   setTimeout(step, 300);
 }
-function drawLevels() {
-  const n = LEVELS.length, L = LEVELS[levelPick], t = sceneT;
-  // Fond : le niveau choisi en plein écran, qui défile, assombri
-  drawLevelThumb(L, 0, 0, W, H, t * 60);
-  const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, 'rgba(5,0,15,0.55)'); g.addColorStop(0.5, 'rgba(5,0,15,0.15)'); g.addColorStop(1, 'rgba(5,0,15,0.9)');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  if (lvSel.flash > 0) { ctx.fillStyle = `rgba(255,255,255,${lvSel.flash * 0.25})`; ctx.fillRect(0, 0, W, H); }
-  // Lignes de vitesse
-  ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 2;
-  for (let q = 0; q < 16; q++) { const x = W + 200 - ((q * 191 + t * 700) % (W + 400)), y = 120 + (q * 61) % 220; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 60 + (q % 3) * 40, y); ctx.stroke(); }
+// Écran des univers, façon cinématique : les zones du monde défilent en fond (fondu + lent zoom), un grand bandeau
+// incliné à gauche (numéro, univers, lieu, zones), le boss en grand à droite, un carrousel de vignettes en
+// perspective en bas, et un coup de lame lumineux à chaque changement de monde.
+const LV_COLOR = { tokyo: '#ff2d8a', op: '#ff5a2a', ds: '#ff3340', bl: '#e8e8ff', hx: '#3ad17a', nr: '#ff8a00', db: '#3ad1a0',
+  mh: '#2ab0ff', rk: '#c03aff', op2: '#ffb020', nr2: '#7a9cff', ds2: '#ff4fd8', db2: '#ffd040' };
+// Calques d'une zone pour le fond (aperçus réduits chargés à la demande) ; null tant qu'ils ne sont pas arrivés
+function zoneLayers(L, zi) {
+  const key = L.id + '|z' + zi;
+  if (layerCache[key]) return layerCache[key];
+  const Z = L.zones[zi], keys = [Z.sky || L.sky, Z.mid, Z.ground].filter(Boolean);
+  const miss = keys.filter(k => !IMG[k] && !IMG['pv_' + k]);
+  if (miss.length) { miss.forEach(k => want('pv_' + k, `assets/web/preview/${k}.webp`)); return null; }
+  const pv = k => IMG[k] || IMG['pv_' + k], k = 1, bake = (img, w, h) => {
+    const c = document.createElement('canvas'); c.width = Math.ceil(w); c.height = Math.ceil(h);
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c;
+  };
+  const C = { k };
+  if (pv(Z.sky || L.sky)) C.sky = bake(pv(Z.sky || L.sky), W * 1.2, H);
+  if (L.far && pv('far')) C.far = bake(pv('far'), pv('far').width * LAYERS.far.h / pv('far').height, LAYERS.far.h);
+  if (pv(Z.mid)) C.mid = bake(pv(Z.mid), pv(Z.mid).width * LAYERS.mid.h / pv(Z.mid).height, LAYERS.mid.h);
+  if (pv(Z.ground)) C.gr = bake(pv(Z.ground), LAYERS.street.w, LAYERS.street.h);
+  return (layerCache[key] = C);
+}
+function drawZoneBg(L, zi, scroll, zoom, alpha) {
+  const C = zoneLayers(L, zi) || (zi ? zoneLayers(L, 0) : null);
+  if (!C) { drawLevelThumb(L, 0, 0, W, H, scroll); return; }
+  ctx.save(); ctx.globalAlpha = alpha;
+  ctx.translate(W / 2, H / 2); ctx.scale(zoom, zoom); ctx.translate(-W / 2, -H / 2);
+  if (C.sky) ctx.drawImage(C.sky, -(scroll * 0.05 % (W * 0.2)), 0);
+  if (C.far) ctx.drawImage(C.far, 0, LAYERS.far.y);
+  for (const [img, f, ly] of [[C.mid, 0.55, LAYERS.mid.y], [C.gr, 1, LAYERS.street.y]]) {
+    if (!img) continue;
+    for (let px = -(scroll * f % img.width); px < W; px += img.width) ctx.drawImage(img, px, ly, img.width + 1, img.height);
+  }
   ctx.restore();
-  // Titre
-  ctx.save(); ctx.fillStyle = 'rgba(10,0,25,0.75)'; ctx.beginPath(); ctx.moveTo(0, 18); ctx.lineTo(430, 18); ctx.lineTo(400, 64); ctx.lineTo(0, 64); ctx.fill();
-  ctx.fillStyle = '#ffe14d'; ctx.fillRect(0, 64, 400, 3); ctx.restore();
-  outlined('CHOISIS TA SCÈNE', 24, 54, 34, '#ffe14d', 'left');
-  outlined(`${levelPick + 1} / ${n}`, W - 24, 54, 24, '#fff', 'right');
-  // Nom du niveau, sous-titre, zones
+}
+function drawLevels() {
+  const n = LEVELS.length, L = LEVELS[levelPick], t = sceneT, col = LV_COLOR[L.id] || '#ffe14d';
+  const nz = L.zones.length, per = 3.2, zt = t / per, zi = Math.floor(zt) % nz, zf = zt - Math.floor(zt);
+  // Fond : les zones l'une après l'autre, fondu enchaîné sur la dernière demi-seconde, lent zoom
+  drawZoneBg(L, zi, t * 50, 1.04 + zf * 0.06, 1);
+  if (zf > 0.85) drawZoneBg(L, (zi + 1) % nz, t * 50, 1.04 + (zf - 0.85) * 0.06, (zf - 0.85) / 0.15);
+  // Assombrissement : fort à gauche (texte) et en bas (carrousel), teinte du monde
+  let g = ctx.createLinearGradient(0, 0, W, 0);
+  g.addColorStop(0, 'rgba(5,0,15,0.88)'); g.addColorStop(0.5, 'rgba(5,0,15,0.35)'); g.addColorStop(1, 'rgba(5,0,15,0.25)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  g = ctx.createLinearGradient(0, H * 0.55, 0, H);
+  g.addColorStop(0, 'rgba(5,0,15,0)'); g.addColorStop(1, 'rgba(5,0,15,0.95)');
+  ctx.fillStyle = g; ctx.fillRect(0, H * 0.55, W, H * 0.45);
+  // Bandeau incliné à gauche, liseré à la couleur du monde
+  const slide = lvSel.flash * 120;
+  ctx.save(); ctx.translate(-slide, 0);
+  ctx.fillStyle = 'rgba(8,2,22,0.72)'; ctx.beginPath(); ctx.moveTo(0, 70); ctx.lineTo(520, 70); ctx.lineTo(450, 300); ctx.lineTo(0, 300); ctx.fill();
+  ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(520, 70); ctx.lineTo(530, 70); ctx.lineTo(460, 300); ctx.lineTo(450, 300); ctx.fill();
+  ctx.restore();
+  // Numéro du monde en très grand, en filigrane
+  ctx.save(); ctx.globalAlpha = 0.18; ctx.font = 'italic 900 210px Impact, sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = col;
+  ctx.fillText(String(levelPick + 1).padStart(2, '0'), 20 - slide, 270); ctx.restore();
+  outlined('CHOISIS TON UNIVERS', 24, 44, 26, '#ffe14d', 'left');
+  outlined(`${levelPick + 1} / ${n}`, W - 24, 44, 22, '#fff', 'right');
   const [univ, place] = L.name.split(' — ');
-  const slide = (1 - Math.min(1, (1 - lvSel.flash) * 1.4)) * 60;
-  outlined(univ, 40 + slide, 132, 26, '#ff8ae6', 'left');
-  outlined(place || L.sub, 40 + slide, 176, 46, '#fff', 'left');
-  ctx.font = 'italic bold 16px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#ffd6e8';
-  ctx.fillText(L.sub, 44 + slide, 204);
+  ctx.save(); ctx.shadowColor = col; ctx.shadowBlur = 18;
+  outlined(univ, 40 - slide, 128, 30, col, 'left'); ctx.restore();
+  outlined(place || L.sub, 40 - slide, 180, 48, '#fff', 'left');
+  ctx.font = 'italic bold 16px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#ffd6e8'; ctx.fillText(L.sub, 44 - slide, 208);
+  // Zones : celle qu'on voit en fond s'allume
   L.zones.forEach((Z, k) => {
-    const x = 44 + k * 196 + slide, y = 222;
-    ctx.fillStyle = 'rgba(10,0,25,0.7)'; ctx.fillRect(x, y, 186, 26);
-    ctx.fillStyle = '#ffe14d'; ctx.fillRect(x, y, 4, 26);
-    ctx.font = 'bold 11px sans-serif'; ctx.fillStyle = '#fff'; ctx.fillText(`${k + 1}. ${Z.name}`, x + 10, y + 17);
+    const y = 226 + k * 22, on = k === zi;
+    ctx.fillStyle = on ? col : 'rgba(255,255,255,0.25)'; ctx.fillRect(44 - slide, y, on ? 6 : 3, 16);
+    ctx.font = `${on ? 'bold ' : ''}13px sans-serif`; ctx.fillStyle = on ? '#fff' : 'rgba(255,255,255,0.6)';
+    ctx.fillText(`ZONE ${k + 1}  ·  ${Z.name}`, 58 - slide, y + 13);
   });
-  // Carte du boss (image de sa présentation), à droite
+  // Boss en grand à droite, incliné, qui flotte
   const card = IMG['intro_' + L.boss];
   if (!card && ASSETS.ui['intro_' + L.boss]) want('intro_' + L.boss, ASSETS.ui['intro_' + L.boss]);
   if (card) {
-    const bw = 300, bh = 160, bx = W - bw - 30 + slide * 0.5, by = 92;
-    ctx.save(); ctx.translate(bx + bw / 2, by + bh / 2); ctx.rotate(-0.04);
-    ctx.beginPath(); ctx.rect(-bw / 2, -bh / 2, bw, bh); ctx.save(); ctx.clip();
-    const s = Math.max(bw / card.width, bh / card.height); ctx.drawImage(card, -card.width * s * 0.62, -card.height * s / 2, card.width * s, card.height * s);
-    ctx.restore(); ctx.strokeStyle = '#ff3040'; ctx.lineWidth = 4; ctx.strokeRect(-bw / 2, -bh / 2, bw, bh);
+    const bw = 330, bh = 200, bx = W - bw / 2 - 40 + slide * 0.6, by = 190 + Math.sin(t * 1.6) * 5;
+    ctx.save(); ctx.translate(bx, by); ctx.rotate(-0.06);
+    ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 24; ctx.fillStyle = '#000'; ctx.fillRect(-bw / 2, -bh / 2, bw, bh); ctx.shadowBlur = 0;
+    ctx.save(); ctx.beginPath(); ctx.rect(-bw / 2, -bh / 2, bw, bh); ctx.clip();
+    const fy = INTRO_FACE[L.boss] ?? 0.2, s = bh / (0.7 * card.height);
+    ctx.drawImage(card, bw / 2 - card.width * s + 30, -bh / 2 - fy * card.height * s + bh * 0.3, card.width * s, card.height * s);
+    const vg = ctx.createLinearGradient(-bw / 2, 0, bw / 2, 0); vg.addColorStop(0, 'rgba(0,0,0,0.75)'); vg.addColorStop(0.45, 'rgba(0,0,0,0)');
+    ctx.fillStyle = vg; ctx.fillRect(-bw / 2, -bh / 2, bw, bh);
     ctx.restore();
-    outlined('⚠ BOSS', bx + 10, by + bh + 22, 18, '#ff3040', 'left');
-    outlined(ENEMY_INFO[L.boss]?.[0] || '', bx + 90, by + bh + 22, 18, '#fff', 'left');
+    ctx.strokeStyle = '#ff3040'; ctx.lineWidth = 4; ctx.strokeRect(-bw / 2, -bh / 2, bw, bh);
+    // tampon BOSS
+    ctx.save(); ctx.translate(-bw / 2 + 52, -bh / 2 + 4); ctx.rotate(-0.18);
+    ctx.fillStyle = '#ff3040'; ctx.fillRect(-46, -16, 92, 30); outlined('BOSS', 0, 9, 22, '#fff');
+    ctx.restore();
+    outlined(ENEMY_INFO[L.boss]?.[0] || '', -bw / 2 + 16, bh / 2 - 14, 20, '#fff', 'left');
+    ctx.restore();
   }
-  // Bande de vignettes inclinées, centrée sur le niveau choisi
-  const cw = 176, ch = 99, gap = 22, cy = 388;
+  // Carrousel de vignettes en perspective (les côtés tournent vers le fond), avec reflet
+  const cw = 168, ch = 95, cy = 420;
+  const items = [];
   for (let k = 0; k < n; k++) {
     let d = k - lvSel.cur; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
-    if (Math.abs(d) > 3.2) continue;
-    const on = k === levelPick, sc = on ? 1.12 : 0.86 - Math.min(0.2, Math.abs(d) * 0.05);
-    const x = W / 2 + d * (cw * 0.86 + gap), w = cw * sc, h = ch * sc;
-    ctx.save(); ctx.translate(x, cy + (on ? -6 + Math.sin(t * 4) * 3 : 8)); ctx.transform(1, 0, -0.14, 1, 0, 0);
-    ctx.globalAlpha = on ? 1 : 0.75 - Math.min(0.4, Math.abs(d) * 0.12);
+    if (Math.abs(d) <= 3.6) items.push([k, d]);
+  }
+  items.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+  for (const [k, d] of items) {
+    const on = k === levelPick, ad = Math.abs(d), turn = Math.max(0.35, 1 - ad * 0.22) * (on ? 1.15 : 1);
+    const x = W / 2 + Math.sign(d) * (ad < 1 ? ad * 190 : 190 + (ad - 1) * 130), w = cw * turn, h = ch * (on ? 1.15 : Math.max(0.7, 1 - ad * 0.08));
+    ctx.save(); ctx.globalAlpha = on ? 1 : Math.max(0.3, 0.85 - ad * 0.18);
+    ctx.translate(x, cy + (on ? Math.sin(t * 4) * 3 : 10));
     drawLevelThumb(LEVELS[k], -w / 2, -h / 2, w, h, on ? t * 40 : 0);
     if (!on) { ctx.fillStyle = 'rgba(5,0,15,0.35)'; ctx.fillRect(-w / 2, -h / 2, w, h); }
-    ctx.strokeStyle = on ? '#ffe14d' : 'rgba(255,255,255,0.4)'; ctx.lineWidth = on ? 4 : 2; ctx.strokeRect(-w / 2, -h / 2, w, h);
-    if (on) { ctx.shadowColor = '#ffe14d'; ctx.shadowBlur = 18; ctx.strokeRect(-w / 2, -h / 2, w, h); ctx.shadowBlur = 0; }
-    ctx.font = `bold ${on ? 13 : 11}px sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = on ? '#ffe14d' : '#d8d0ec';
+    const c2 = LV_COLOR[LEVELS[k].id] || '#ffe14d';
+    ctx.strokeStyle = on ? c2 : 'rgba(255,255,255,0.35)'; ctx.lineWidth = on ? 4 : 2;
+    if (on) { ctx.shadowColor = c2; ctx.shadowBlur = 20; }
+    ctx.strokeRect(-w / 2, -h / 2, w, h); ctx.shadowBlur = 0;
+    // reflet
+    ctx.save(); ctx.globalAlpha *= 0.18; ctx.translate(0, h); ctx.scale(1, -1);
+    drawLevelThumb(LEVELS[k], -w / 2, -h / 2 + 4, w, h * 0.5, 0); ctx.restore();
+    ctx.font = `bold ${on ? 13 : 10}px sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = on ? c2 : '#d8d0ec';
     ctx.fillText(LEVELS[k].name.split(' — ')[0], 0, h / 2 + 16);
     ctx.restore();
   }
-  // Flèches et aide
+  // Coup de lame lumineux en diagonale au changement de monde
+  if (lvSel.flash > 0) {
+    const k = 1 - lvSel.flash, x = -200 + k * (W + 400);
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = lvSel.flash;
+    const sg = ctx.createLinearGradient(x - 80, 0, x + 80, 0);
+    sg.addColorStop(0, 'rgba(255,255,255,0)'); sg.addColorStop(0.5, col); sg.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = sg; ctx.beginPath(); ctx.moveTo(x - 60, 0); ctx.lineTo(x + 100, 0); ctx.lineTo(x - 20, H); ctx.lineTo(x - 180, H); ctx.fill();
+    ctx.restore();
+  }
   const pulse = 1 + Math.sin(t * 6) * 0.12;
-  outlined('◀', 30 - pulse * 4, cy + 10, 34 * pulse, '#ffe14d');
-  outlined('▶', W - 30 + pulse * 4, cy + 10, 34 * pulse, '#ffe14d');
-  ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 34, W, 34);
-  ctx.font = '14px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = COLORS_P[0];
-  ctx.fillText(`${K('left')} ${K('right')} choisir     ${K('punch')} ou Entrée : COMBATTRE     ${K('kick')} retour`, W / 2, H - 12);
+  outlined('◀', 24 - pulse * 4, cy + 10, 34 * pulse, col);
+  outlined('▶', W - 24 + pulse * 4, cy + 10, 34 * pulse, col);
+  ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 30, W, 30);
+  ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
+  ctx.fillText(`${K('left')} ${K('right')} choisir     ${K('punch')} ou Entrée : COMBATTRE     ${K('kick')} retour`, W / 2, H - 10);
 }
 
 // ---------- Boucle principale ----------
