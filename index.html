@@ -15,20 +15,22 @@
   html, body { margin: 0; height: 100%; background: #05030c; overflow: hidden; touch-action: none; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; }
   body { display: flex; align-items: center; justify-content: center; }
   canvas { width: 100vw; height: 56.25vw; max-height: 100vh; max-width: 177.78vh; image-rendering: auto; }
+  /* hauteur réellement visible sur téléphone (sans la zone cachée sous les barres du navigateur) */
+  @supports (height: 100dvh) { html, body { height: 100dvh; } canvas { max-height: 100dvh; max-width: 177.78dvh; } }
 </style>
 </head>
 <body>
 <canvas id="game" width="960" height="540"></canvas>
-<script src="src/config.js?v=1024h"></script>
-<script src="src/sprites.js?v=1024h"></script>
-<script src="src/sounds.js?v=1024h"></script>
-<script src="src/fx.js?v=1024h"></script>
-<script src="src/fxvideo.js?v=1024h"></script>
-<script src="src/level.js?v=1024h"></script>
+<script src="src/config.js?v=1024i"></script>
+<script src="src/sprites.js?v=1024i"></script>
+<script src="src/sounds.js?v=1024i"></script>
+<script src="src/fx.js?v=1024i"></script>
+<script src="src/fxvideo.js?v=1024i"></script>
+<script src="src/level.js?v=1024i"></script>
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-<script src="src/modes.js?v=1024h"></script>
-<script src="src/net.js?v=1024h"></script>
-<script src="src/game.js?v=1024h"></script>
-<script src="src/touch.js?v=1024h"></script>
+<script src="src/modes.js?v=1024i"></script>
+<script src="src/net.js?v=1024i"></script>
+<script src="src/game.js?v=1024i"></script>
+<script src="src/touch.js?v=1024i"></script>
 </body>
 </html>

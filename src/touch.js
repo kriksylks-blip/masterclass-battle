@@ -59,6 +59,17 @@
   // Plein écran et paysage au premier contact (refusé sur certains téléphones : on garde le message « Tourne »)
   // Plein écran à chaque contact tant qu'on n'y est pas (le navigateur l'exige pendant un geste, et on peut en sortir
   // d'un balayage). iPhone : Safari ne le permet pas ; « Ajouter à l'écran d'accueil » lance le jeu en plein écran.
+  // iPhone / iPad dans Safari : pas de plein écran possible pour une page ; on explique comment l'avoir
+  const iOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const standalone = matchMedia('(display-mode: standalone), (display-mode: fullscreen)').matches || navigator.standalone;
+  if (iOS && !standalone) {
+    const tip = document.createElement('div');
+    tip.style.cssText = 'position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:9;background:rgba(10,0,25,.9);color:#ffe14d;' +
+      'font:bold 13px sans-serif;padding:8px 14px;border-radius:10px;border:1px solid #ffe14d;text-align:center;pointer-events:auto';
+    tip.innerHTML = "Plein écran sur iPhone : bouton Partager <b>⎙</b> → « Sur l'écran d'accueil », puis lance le jeu depuis l'icône. (toucher pour fermer)";
+    tip.addEventListener('pointerup', () => tip.remove());
+    document.body.appendChild(tip); setTimeout(() => tip.remove(), 12000);
+  }
   const goFull = e => {
     if (e?.target?.closest?.('#tcCode')) return; // pas pendant la saisie du code (le clavier se fermerait)
     if (document.fullscreenElement || document.webkitFullscreenElement) return;

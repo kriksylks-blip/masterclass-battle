@@ -158,7 +158,7 @@ function netShowVideo(stream) {
   if (!stream) { net.video?.remove(); net.video = null; canvas.style.visibility = ''; return; }
   const v = net.video || document.createElement('video');
   v.autoplay = true; v.playsInline = true; v.srcObject = stream;
-  v.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;object-fit:contain;background:#000;z-index:5';
+  v.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;object-fit:contain;background:#000;z-index:2'; // sous les boutons tactiles
   if (!net.video) document.body.appendChild(v);
   net.video = v; v.play().catch(() => {});
   canvas.style.visibility = 'hidden';
