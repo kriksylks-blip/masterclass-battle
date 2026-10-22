@@ -1,0 +1,17 @@
+{
+ "name": "Masterclass Battle",
+ "short_name": "Masterclass",
+ "start_url": "index.html",
+ "display": "fullscreen",
+ "orientation": "landscape",
+ "background_color": "#05030c",
+ "theme_color": "#05030c",
+ "icons": [
+  {
+   "src": "icon.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  }
+ ]
+}
