@@ -4149,25 +4149,36 @@ function drawSelect() {
     ctx.fillText(`SPÉCIAL : ${C.labels.blast}`, x + 4, 318); ctx.fillText(`ULTIME : ${C.labels.ultra}`, x + 4, 342);
     if (C.forms?.[0]) ctx.fillText(`TRANSFORMATION : ${C.forms[0].name}`, x + 4, 366);
   }
-  // Carrousel de médaillons (arc de cercle, le perso choisi agrandi au centre)
-  const cy = 452, R = 30, items = [];
+  // Bandeau de vignettes inclinées (façon jeu de combat), qui glisse : la carte choisie est plus grande et lumineuse
+  const cy = 452, tw = 66, th = 86, gap = 8, SK = -0.22, items = [];
   for (let k = 0; k < n; k++) {
     let d = k - sel.cur; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
-    if (Math.abs(d) <= 7.5) items.push([k, d]);
+    if (Math.abs(d) <= 7) items.push([k, d]);
   }
   items.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+  // rail sombre derrière les vignettes
+  ctx.save(); ctx.fillStyle = 'rgba(5,0,15,0.6)'; ctx.fillRect(0, cy - 42, W, 84); ctx.fillStyle = C.colors[1]; ctx.fillRect(0, cy - 43, W, 2); ctx.fillRect(0, cy + 41, W, 2); ctx.restore();
   for (const [k, d] of items) {
-    const P = CHARS[CHAR_IDS[k]], img = IMG[P.card], on = Math.abs(d) < 0.5;
-    const sc = Math.max(0.55, 1.35 - Math.abs(d) * 0.13), x = W / 2 + Math.sin(d * 0.2) * 560, y = cy + (1 - Math.cos(d * 0.2)) * 60, r = R * sc;
-    ctx.save(); ctx.globalAlpha = Math.max(0.25, 1 - Math.abs(d) * 0.11);
-    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fillStyle = P.colors[0]; ctx.fill(); ctx.clip();
-    if (img) { const [fx, fy, fk] = FACES[P.card] || [0.5, 0.2, 4], s = r * fk / img.height; ctx.drawImage(img, x - img.width * s * fx, y - img.height * s * fy, img.width * s, img.height * s); }
+    const P = CHARS[CHAR_IDS[k]], img = IMG[P.card], on = Math.abs(d) < 0.5, ad = Math.abs(d);
+    const sc = on ? 1.3 : 1 - Math.min(0.25, ad * 0.03), w = tw * sc, h = th * sc;
+    const x = W / 2 + d * (tw + gap) + Math.sign(d) * (ad > 0.5 ? 14 : 0), y = cy - (on ? 8 + Math.sin(sceneT * 4) * 2 : 0);
+    ctx.save(); ctx.translate(x, y); ctx.transform(1, 0, SK, 1, 0, 0);
+    ctx.beginPath(); ctx.rect(-w / 2, -h / 2, w, h); ctx.save(); ctx.clip();
+    const g2 = ctx.createLinearGradient(0, -h / 2, 0, h / 2); g2.addColorStop(0, P.colors[0]); g2.addColorStop(1, '#12031f');
+    ctx.fillStyle = g2; ctx.fillRect(-w / 2, -h / 2, w, h);
+    if (img) {
+      ctx.transform(1, 0, -SK, 1, 0, 0); // portrait redressé dans le cadre incliné
+      const [fx, fy, fk] = FACES[P.card] || [0.5, 0.2, 4], s2 = h * 0.55 * fk / img.height;
+      ctx.drawImage(img, -img.width * s2 * fx, -h * 0.05 - img.height * s2 * fy, img.width * s2, img.height * s2);
+    }
     ctx.restore();
+    if (!on) { ctx.fillStyle = `rgba(5,0,15,${Math.min(0.65, 0.25 + ad * 0.07)})`; ctx.fillRect(-w / 2, -h / 2, w, h); }
     const who = ps.filter(p => sel.pick[p] === k);
-    ctx.lineWidth = on ? 4 : 2; ctx.strokeStyle = who.length ? COLORS_P[who[0]] : on ? '#ffe14d' : 'rgba(255,255,255,0.45)';
-    if (on) { ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 16; }
-    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke(); ctx.shadowBlur = 0;
-    who.forEach((p, q) => outlined(`J${p + 1}`, x + (q - (who.length - 1) / 2) * 26, y - r - 6, 13, COLORS_P[p]));
+    ctx.lineWidth = on ? 4 : 2; ctx.strokeStyle = who.length ? COLORS_P[who[0]] : on ? '#ffe14d' : 'rgba(255,255,255,0.35)';
+    if (on || who.length) { ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = on ? 18 : 8; }
+    ctx.strokeRect(-w / 2, -h / 2, w, h); ctx.shadowBlur = 0;
+    ctx.restore();
+    who.forEach((p, q) => outlined(`J${p + 1}`, x + (q - (who.length - 1) / 2) * 26, y - h / 2 - 6, 13, COLORS_P[p]));
   }
   const pulse = 1 + Math.sin(sceneT * 6) * 0.12;
   outlined('◀', 18 - pulse * 3, cy + 28, 30 * pulse, '#ffe14d');
