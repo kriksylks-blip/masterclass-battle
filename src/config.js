@@ -26,6 +26,7 @@ const ASSETS = {
     // Edward : pics de pierre (spécial) et bras-poing de pierre (ultime)
     fx_ed_spike: 'assets/fx/ed_spike.png', fx_ed_fist: 'assets/fx/ed_fist.png',
     fx_katon: 'assets/fx/katon.png', fx_susanoo: 'assets/fx/susanoo.jpg',
+    fx_rsh: 'assets/fx/rsh.png', fx_rsh_boom: 'assets/fx/rsh_boom.png',
     fx_titan_rise: 'assets/fx/titan_rise.png', fx_titan_punch: 'assets/fx/titan_punch.png', fx_shoto_ice: 'assets/fx/shoto_ice.png', fx_shoto_fire: 'assets/fx/shoto_fire.png',
     // Cartes de présentation des ennemis
     intro_thug: 'assets/ui/intro/thug.jpg', intro_brute: 'assets/ui/intro/brute.jpg', intro_ninja: 'assets/ui/intro/ninja.jpg',

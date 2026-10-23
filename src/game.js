@@ -1134,8 +1134,10 @@ const CHARS = {
     name: 'NARUTO', title: 'Le ninja de Konoha, trois ans plus tard', sheet: 'naruto_s', card: 'card_ns',
     colors: ['#1a1a1a', '#ff9a1a'], kiColor: '#8fd0ff', hit: '#cfeaff', trail: '#bfe8ff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
     labels: { blast: 'RASENGAN', ultra: 'RASEN-SHURIKEN GÉANT' },
-    // Mode Ermite : pigment orange autour des yeux, aura dorée ; le spécial devient le Rasen-shuriken
-    forms: [{ ki: 50, name: 'MODE ERMITE', filter: 'saturate(1.15) contrast(1.08)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,170,40,0.5)', '#ffb030'], glow: '#ffb030', eyes: true, eyeCol: 'rgba(255,140,30,0.95)', bar: ['#a04a00', '#ffd060'], color: '#ffb040', hit: '#ffe0a0' }],
+    // Mode Kyûbi (24/10, demandé à la place du Mode Ermite) : tout le corps passe au chakra doré, les vêtements sombres
+    // restent sombres et font les marques noires ; liseré lumineux, aura et flammèches dorées ; le spécial devient le Rasen-shuriken
+    forms: [{ ki: 50, name: 'MODE KYÛBI', filter: 'sepia(1) saturate(3.4) hue-rotate(-6deg) brightness(1.22) contrast(1.18) drop-shadow(0 0 3px rgba(255,236,120,0.95)) drop-shadow(0 0 10px rgba(255,180,30,0.75))',
+             speed: 1.3, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,210,60,0.55)', '#ffd84a'], goldCloak: true, eyes: true, eyeCol: 'rgba(255,120,20,0.95)', bar: ['#a06a00', '#fff07a'], color: '#ffd84a', trail: '#fff2a0', hit: '#fff0a0' }],
     moves: NS_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'rasengan', special2: 'rshuriken', speed: 285, pose: stdPose, ultra: [startShuriken, updateShuriken],
     ultraPose: h => h.t < RSH.throwAt - 0.35 ? ['special', 4] : h.t < RSH.throwAt ? ['special', 5] : h.t < RSH.end - 0.25 ? ['special', 6] : ['special', 7],
@@ -1646,6 +1648,7 @@ function formParticles(h) {
   // Chidori qui crépite dans la main
   if (F.handArcs && Math.random() < 0.4) animFX('green_arc', h.x + h.dir * rand(30, 70), h.y - rand(90, 130), rand(25, 45), 0.12, { rot: rand(-1.5, 1.5), filter: F.arcs });
   // Manteau du renard : bulles de chakra rouge qui montent
+  if (F.goldCloak && Math.random() < 0.8) particles.push({ x: h.x + rand(-45, 45), y: h.y - rand(10, 200), vx: rand(-25, 25), vy: rand(-200, -90), t: 0, life: 0.45, c: Math.random() < 0.6 ? 'rgba(255,220,70,0.85)' : 'rgba(255,250,190,0.85)', r: rand(2.5, 6) });
   if (F.foxCloak && Math.random() < 0.7) particles.push({ x: h.x + rand(-40, 40), y: h.y - rand(10, 190), vx: rand(-25, 25), vy: rand(-170, -80), t: 0, life: 0.5, c: Math.random() < 0.6 ? 'rgba(255,50,20,0.8)' : 'rgba(255,150,60,0.8)', r: rand(3, 7) });
   if (F.flames && Math.random() < 0.7) particles.push({ x: h.x + rand(-40, 40), y: h.y - rand(0, 150), vx: rand(-20, 20), vy: rand(-200, -100), t: 0, life: 0.45, c: Math.random() < 0.5 ? '#ff8a2a' : '#ffd060', r: rand(3, 6) });
   // Mangekyô : des corbeaux s'envolent autour d'Itachi
@@ -2146,7 +2149,7 @@ function updateShuriken(h) {
     // géant, lancé depuis la main tendue ; il file à hauteur de poitrine, se plante dans le premier ennemi,
     // le broie un instant (sans le projeter) puis éclate en dôme : l'explosion porte l'essentiel des dégâts
     const hp = handPoint(h);
-    projs.push({ kind: 'shuriken', owner: h, ult: true, x: h.x + h.dir * ((hp ? hp[0] : 40) + 60), y: hp ? h.y + hp[1] : h.y - 160, gz: h.gz, dir: h.dir, t: 0, speed: 620, life: 1.4,
+    projs.push({ kind: 'shuriken', owner: h, ult: true, x: h.x + h.dir * ((hp ? hp[0] : 40) + 110), y: hp ? h.y + hp[1] : h.y - 160, gz: h.gz, dir: h.dir, t: 0, speed: 620, life: 1.4,
       hit: new Set(), multiT: 0, dmg: 0.25, kb: 1, scale: 1.9, blast: 280, final: ULT_SOLO * (3 + h.power / 10) });
     say(h, 'RASENSHURIKEN !');
     audio.play('ultraThrow', 1, 1.2, 0); shake = 12;
@@ -4163,7 +4166,8 @@ function updateProjs(dt) {
         flash = p.burst ? 0.4 : 0.8; shake = p.burst ? 14 : 26; hitstop = 0.1; audio.play('ultraBoom', p.burst ? 0.8 : 1.2, 1.1, 0);
         impactFX(p.x, p.y, '#bff3ff', true); spiralFX(p.x, p.y, '#e8fbff');
         if (p.burst) shockFX(p.x, p.y, p.dir);
-        else bombs.push({ owner: h, x: p.x, y: p.gz, gz: p.gz, r: 0, state: 'boom', t: 0, hit: new Set(), dir: p.dir });
+        // dôme de lames de vent (assets/fx/rsh_boom.png) : petit pour le spécial, géant pour l'ultime
+        bombs.push({ owner: h, x: p.x, y: p.burst ? p.y : p.gz, gz: p.gz, r: 0, state: 'boom', t: 0, hit: new Set(), dir: p.dir, rsh: p.burst ? 0.45 : 1 });
         for (const e of enemies) if (e.alive && e.state !== 'down' && Math.abs(e.x - p.x) < (p.blast || 260)) damageEnemy(e, p.final, 600 * (Math.sign(e.x - p.x) || 1), -800, e.x, e.y - 110, '#bff3ff');
         if (!p.burst) score += 2000;
       }
@@ -4279,7 +4283,7 @@ function drawProjs() {
       continue;
     }
     ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
-    if (p.kind === 'shuriken') { ctx.restore(); drawShuriken(sx, p.y, p.scale || 1, p.t); continue; }
+    if (p.kind === 'shuriken') { ctx.restore(); drawShuriken(sx, p.y, (p.scale || 1) * (p.ult ? Math.min(1, 0.55 + p.t * 1.8) : 1), p.t); continue; } // l'ultime grossit en s'éloignant
     // Croissants en images : lame d'air, Getsuga Tensho, vague d'eau ou de feu
     const sprite = { airblade: ['crescent', 'hue-rotate(-60deg) saturate(0.5) brightness(1.3)'], getsuga: ['crescent', p.filter || ''], wave: ['water_arc', ''], firewave: ['fire_arc', ''] }[p.kind];
     if (p.kind === 'getsuga' && FX.getsuga_v) {
@@ -4547,6 +4551,20 @@ function drawProjs() {
 
 // Rasenshuriken : quatre pales de vent blanches autour d'une sphère bleue
 function drawShuriken(x, y, s, t) {
+  // Rasen-shuriken dessiné (assets/fx/rsh.png, fond noir détouré) : il tourne très vite, une 2e couche en sens inverse
+  // donne le flou des pales ; halo de vent autour
+  const img = IMG.fx_rsh;
+  if (img) {
+    const w = 240 * s, hh = w * img.height / img.width;
+    ctx.save(); ctx.translate(x, y); ctx.globalCompositeOperation = 'lighter';
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, w * 0.55);
+    g.addColorStop(0, 'rgba(200,245,255,0.5)'); g.addColorStop(1, 'rgba(80,170,255,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, w * 0.55, 0, 7); ctx.fill();
+    ctx.save(); ctx.rotate(-t * 24); ctx.drawImage(img, -w / 2, -hh / 2, w, hh); ctx.restore();
+    ctx.rotate(t * 11); ctx.globalAlpha = 0.35; ctx.drawImage(img, -w * 0.46, -hh * 0.46, w * 0.92, hh * 0.92);
+    ctx.restore();
+    return;
+  }
   ctx.save(); ctx.translate(x, y); ctx.globalCompositeOperation = 'lighter';
   ctx.rotate(t * 25);
   ctx.fillStyle = 'rgba(230,248,255,0.75)';
@@ -5535,7 +5553,7 @@ function drawPlayer(h) {
     energyBall(bx, by, 6 + 26 * Math.min(1, h.t / m.beam.at), m.beam.ball || false);
   }
   if (m?.heldShuriken && h.t < m.proj.at) drawShuriken(sx + h.dir * 18 * WORLD, h.y - 225 * WORLD, 0.25 + 0.3 * Math.min(1, h.t / m.proj.at), h.t);
-  if (h.state === 'ultra' && h.C.ultra[0] === startShuriken && !h.thrown) drawShuriken(sx + h.dir * 30, h.y - 250, 0.3 + 1.6 * Math.min(1, h.t / RSH.throwAt), h.t);
+  if (h.state === 'ultra' && h.C.ultra[0] === startShuriken && !h.thrown) drawShuriken(sx + h.dir * 30, h.y - 255 - 70 * Math.min(1, h.t / RSH.throwAt), 0.3 + 1.15 * Math.min(1, h.t / RSH.throwAt), h.t); // au-dessus de la main levée, sans cacher la tête
   if (m?.orb && h.t >= m.orb[0] && h.t <= m.orb[1]) {
     const r = 12 + 18 * Math.min(1, h.t / 0.3), low = m.orbFx === 'chidori' && h.t < m.p[2][1];
     const hp = !low && handPoint(h);
@@ -5614,10 +5632,23 @@ function drawWaves() {
   }
 }
 
+// Explosion du Rasen-shuriken : la sphère de lames de vent jaillit, palpite en tournoyant puis se dissipe
+function drawRshBoom(b) {
+  const img = IMG.fx_rsh_boom, k = b.t / 1.1, sx = b.x - camX;
+  const grow = Math.min(1, b.t / 0.22), sc = b.rsh * (0.35 + 0.65 * (1 - Math.pow(1 - grow, 3))) * (1 + Math.sin(b.t * 40) * 0.03);
+  const w = 820 * sc, hh = w * img.height / img.width, cy = b.y - (b.rsh < 1 ? 0 : hh * 0.32);
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = k < 0.6 ? 1 : Math.max(0, (1 - k) / 0.4);
+  ctx.translate(sx, cy);
+  ctx.drawImage(img, -w / 2, -hh / 2, w, hh);
+  ctx.globalAlpha *= 0.4; ctx.rotate(b.t * 3); ctx.drawImage(img, -w * 0.4, -hh * 0.4, w * 0.8, hh * 0.8);
+  ctx.restore();
+}
+
 // Entei d'Ace : un soleil de flammes filmé (entei_v, fond noir posé en mode lumineux) dans un halo de chaleur ;
 // à l'impact, un dôme de feu. Sans la vidéo : l'ancienne sphère passée au rouge-orangé.
 const ENTEI_S = 2.25; // largeur de l'image / rayon du soleil
 function drawBomb(b) {
+  if (b.rsh && IMG.fx_rsh_boom) return drawRshBoom(b);
   if (!b.fire) return drawBombBody(b);
   const sx = b.x - camX;
   if (!FX.entei_v) { ctx.save(); ctx.filter = 'hue-rotate(170deg) saturate(2.2) brightness(1.05)'; drawBombBody(b); ctx.restore(); return; }
