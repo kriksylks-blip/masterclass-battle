@@ -30388,63 +30388,120 @@ const SPRITES = {
  },
  "ace": {
   "walk": {
-   "scale": 0.5167,
+   "scale": 0.352,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/ace/walk_0.png",
-     "w": 256,
-     "h": 357,
-     "ax": 130.0,
-     "ay": 357
+     "src": "assets/sprites/ace/walkv_0.png",
+     "w": 142,
+     "h": 534,
+     "ax": 59.5,
+     "ay": 534
     },
     {
-     "src": "assets/sprites/ace/walk_1.png",
-     "w": 218,
-     "h": 357,
-     "ax": 115.7,
-     "ay": 357
+     "src": "assets/sprites/ace/walkv_1.png",
+     "w": 160,
+     "h": 534,
+     "ax": 68.5,
+     "ay": 534
     },
     {
-     "src": "assets/sprites/ace/walk_2.png",
-     "w": 211,
-     "h": 357,
-     "ax": 112.4,
-     "ay": 357
+     "src": "assets/sprites/ace/walkv_2.png",
+     "w": 244,
+     "h": 530,
+     "ax": 96.5,
+     "ay": 530
     },
     {
-     "src": "assets/sprites/ace/walk_3.png",
-     "w": 236,
-     "h": 357,
-     "ax": 134.4,
-     "ay": 357
+     "src": "assets/sprites/ace/walkv_3.png",
+     "w": 274,
+     "h": 528,
+     "ax": 111.0,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/ace/walk_4.png",
-     "w": 256,
-     "h": 356,
-     "ax": 135.0,
-     "ay": 356
+     "src": "assets/sprites/ace/walkv_4.png",
+     "w": 290,
+     "h": 522,
+     "ax": 139.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/ace/walk_5.png",
-     "w": 218,
-     "h": 358,
-     "ax": 118.1,
-     "ay": 358
+     "src": "assets/sprites/ace/walkv_5.png",
+     "w": 276,
+     "h": 516,
+     "ax": 154.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/ace/walk_6.png",
-     "w": 210,
-     "h": 357,
-     "ax": 109.8,
-     "ay": 357
+     "src": "assets/sprites/ace/walkv_6.png",
+     "w": 221,
+     "h": 518,
+     "ax": 131.5,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/ace/walk_7.png",
-     "w": 222,
-     "h": 360,
-     "ax": 123.6,
-     "ay": 360
+     "src": "assets/sprites/ace/walkv_7.png",
+     "w": 170,
+     "h": 524,
+     "ax": 89.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/ace/walkv_8.png",
+     "w": 152,
+     "h": 526,
+     "ax": 66.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/ace/walkv_9.png",
+     "w": 198,
+     "h": 525,
+     "ax": 92.5,
+     "ay": 525
+    },
+    {
+     "src": "assets/sprites/ace/walkv_10.png",
+     "w": 242,
+     "h": 522,
+     "ax": 122.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/ace/walkv_11.png",
+     "w": 272,
+     "h": 518,
+     "ax": 136.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/ace/walkv_12.png",
+     "w": 276,
+     "h": 522,
+     "ax": 151.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/ace/walkv_13.png",
+     "w": 252,
+     "h": 524,
+     "ax": 137.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/ace/walkv_14.png",
+     "w": 230,
+     "h": 524,
+     "ax": 124.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/ace/walkv_15.png",
+     "w": 166,
+     "h": 530,
+     "ax": 86.5,
+     "ay": 530
     }
    ]
   },
@@ -31303,63 +31360,120 @@ const SPRITES = {
  },
  "sanji": {
   "walk": {
-   "scale": 0.5371,
+   "scale": 0.3624,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/sanji/walk_0.png",
-     "w": 210,
-     "h": 348,
-     "ax": 88.4,
-     "ay": 348
+     "src": "assets/sprites/sanji/walkv_0.png",
+     "w": 160,
+     "h": 524,
+     "ax": 66.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/sanji/walk_1.png",
-     "w": 159,
-     "h": 349,
-     "ax": 73.1,
-     "ay": 349
+     "src": "assets/sprites/sanji/walkv_1.png",
+     "w": 172,
+     "h": 526,
+     "ax": 65.5,
+     "ay": 526
     },
     {
-     "src": "assets/sprites/sanji/walk_2.png",
-     "w": 116,
-     "h": 350,
-     "ax": 60.0,
-     "ay": 350
+     "src": "assets/sprites/sanji/walkv_2.png",
+     "w": 216,
+     "h": 522,
+     "ax": 64.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/sanji/walk_3.png",
-     "w": 117,
-     "h": 350,
-     "ax": 51.9,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/sanji/walk_4.png",
-     "w": 190,
-     "h": 348,
-     "ax": 80.2,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/sanji/walk_5.png",
-     "w": 146,
-     "h": 350,
-     "ax": 72.4,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/sanji/walk_6.png",
-     "w": 153,
-     "h": 350,
+     "src": "assets/sprites/sanji/walkv_3.png",
+     "w": 250,
+     "h": 518,
      "ax": 77.5,
-     "ay": 350
+     "ay": 518
     },
     {
-     "src": "assets/sprites/sanji/walk_7.png",
-     "w": 142,
-     "h": 348,
-     "ax": 77.2,
-     "ay": 348
+     "src": "assets/sprites/sanji/walkv_4.png",
+     "w": 275,
+     "h": 514,
+     "ax": 106.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_5.png",
+     "w": 270,
+     "h": 512,
+     "ax": 123.5,
+     "ay": 512
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_6.png",
+     "w": 225,
+     "h": 514,
+     "ax": 107.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_7.png",
+     "w": 162,
+     "h": 519,
+     "ax": 71.5,
+     "ay": 519
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_8.png",
+     "w": 146,
+     "h": 521,
+     "ax": 65.5,
+     "ay": 521
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_9.png",
+     "w": 166,
+     "h": 523,
+     "ax": 67.5,
+     "ay": 523
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_10.png",
+     "w": 196,
+     "h": 518,
+     "ax": 67.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_11.png",
+     "w": 254,
+     "h": 514,
+     "ax": 77.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_12.png",
+     "w": 272,
+     "h": 510,
+     "ax": 102.5,
+     "ay": 510
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_13.png",
+     "w": 251,
+     "h": 516,
+     "ax": 109.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_14.png",
+     "w": 226,
+     "h": 517,
+     "ax": 98.5,
+     "ay": 517
+    },
+    {
+     "src": "assets/sprites/sanji/walkv_15.png",
+     "w": 167,
+     "h": 523,
+     "ax": 68.5,
+     "ay": 523
     }
    ]
   },
@@ -32218,63 +32332,120 @@ const SPRITES = {
  },
  "saber": {
   "walk": {
-   "scale": 0.5159,
+   "scale": 0.3347,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/saber/walk_0.png",
-     "w": 323,
-     "h": 340,
-     "ax": 151.1,
-     "ay": 340
+     "src": "assets/sprites/saber/walkv_0.png",
+     "w": 440,
+     "h": 516,
+     "ax": 156.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/saber/walk_1.png",
-     "w": 325,
-     "h": 340,
-     "ax": 149.8,
-     "ay": 340
+     "src": "assets/sprites/saber/walkv_1.png",
+     "w": 414,
+     "h": 520,
+     "ax": 138.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/saber/walk_2.png",
-     "w": 302,
-     "h": 338,
-     "ax": 132.5,
-     "ay": 338
+     "src": "assets/sprites/saber/walkv_2.png",
+     "w": 374,
+     "h": 524,
+     "ax": 110.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/saber/walk_3.png",
-     "w": 272,
-     "h": 344,
-     "ax": 109.4,
-     "ay": 344
+     "src": "assets/sprites/saber/walkv_3.png",
+     "w": 358,
+     "h": 526,
+     "ax": 101.5,
+     "ay": 526
     },
     {
-     "src": "assets/sprites/saber/walk_4.png",
-     "w": 286,
-     "h": 339,
+     "src": "assets/sprites/saber/walkv_4.png",
+     "w": 326,
+     "h": 526,
+     "ax": 89.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/saber/walkv_5.png",
+     "w": 314,
+     "h": 524,
+     "ax": 102.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saber/walkv_6.png",
+     "w": 314,
+     "h": 520,
+     "ax": 112.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/saber/walkv_7.png",
+     "w": 328,
+     "h": 514,
+     "ax": 143.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/saber/walkv_8.png",
+     "w": 338,
+     "h": 516,
+     "ax": 156.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/saber/walkv_9.png",
+     "w": 330,
+     "h": 522,
+     "ax": 136.9,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/saber/walkv_10.png",
+     "w": 326,
+     "h": 528,
      "ax": 114.1,
-     "ay": 339
+     "ay": 528
     },
     {
-     "src": "assets/sprites/saber/walk_5.png",
-     "w": 307,
-     "h": 340,
-     "ax": 134.6,
-     "ay": 340
+     "src": "assets/sprites/saber/walkv_11.png",
+     "w": 328,
+     "h": 530,
+     "ax": 109.5,
+     "ay": 530
     },
     {
-     "src": "assets/sprites/saber/walk_6.png",
-     "w": 291,
-     "h": 337,
-     "ax": 121.6,
-     "ay": 337
+     "src": "assets/sprites/saber/walkv_12.png",
+     "w": 328,
+     "h": 530,
+     "ax": 83.5,
+     "ay": 530
     },
     {
-     "src": "assets/sprites/saber/walk_7.png",
-     "w": 277,
-     "h": 345,
-     "ax": 111.6,
-     "ay": 345
+     "src": "assets/sprites/saber/walkv_13.png",
+     "w": 362,
+     "h": 526,
+     "ax": 102.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/saber/walkv_14.png",
+     "w": 378,
+     "h": 524,
+     "ax": 112.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saber/walkv_15.png",
+     "w": 420,
+     "h": 518,
+     "ax": 142.5,
+     "ay": 518
     }
    ]
   },
@@ -32647,63 +32818,120 @@ const SPRITES = {
  },
  "mikasa": {
   "walk": {
-   "scale": 0.4972,
+   "scale": 0.3383,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/mikasa/walk_0.png",
-     "w": 281,
-     "h": 355,
-     "ax": 135.0,
-     "ay": 355
+     "src": "assets/sprites/mikasa/walkv_0.png",
+     "w": 380,
+     "h": 514,
+     "ax": 157.5,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/mikasa/walk_1.png",
-     "w": 262,
-     "h": 355,
-     "ax": 137.5,
-     "ay": 355
+     "src": "assets/sprites/mikasa/walkv_1.png",
+     "w": 346,
+     "h": 514,
+     "ax": 146.7,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/mikasa/walk_2.png",
-     "w": 206,
-     "h": 354,
-     "ax": 102.0,
-     "ay": 354
+     "src": "assets/sprites/mikasa/walkv_2.png",
+     "w": 326,
+     "h": 518,
+     "ax": 141.0,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/mikasa/walk_3.png",
-     "w": 232,
-     "h": 349,
-     "ax": 114.2,
-     "ay": 349
+     "src": "assets/sprites/mikasa/walkv_3.png",
+     "w": 286,
+     "h": 524,
+     "ax": 140.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/mikasa/walk_4.png",
-     "w": 270,
-     "h": 353,
-     "ax": 126.0,
-     "ay": 353
+     "src": "assets/sprites/mikasa/walkv_4.png",
+     "w": 318,
+     "h": 522,
+     "ax": 130.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/mikasa/walk_5.png",
-     "w": 232,
-     "h": 354,
-     "ax": 114.8,
-     "ay": 354
+     "src": "assets/sprites/mikasa/walkv_5.png",
+     "w": 336,
+     "h": 516,
+     "ax": 125.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/mikasa/walk_6.png",
-     "w": 225,
-     "h": 358,
-     "ax": 106.0,
-     "ay": 358
+     "src": "assets/sprites/mikasa/walkv_6.png",
+     "w": 360,
+     "h": 514,
+     "ax": 120.5,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/mikasa/walk_7.png",
-     "w": 247,
-     "h": 357,
-     "ax": 129.3,
-     "ay": 357
+     "src": "assets/sprites/mikasa/walkv_7.png",
+     "w": 376,
+     "h": 520,
+     "ax": 131.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_8.png",
+     "w": 354,
+     "h": 524,
+     "ax": 121.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_9.png",
+     "w": 346,
+     "h": 528,
+     "ax": 129.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_10.png",
+     "w": 318,
+     "h": 534,
+     "ax": 140.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_11.png",
+     "w": 312,
+     "h": 534,
+     "ax": 148.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_12.png",
+     "w": 338,
+     "h": 534,
+     "ax": 149.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_13.png",
+     "w": 376,
+     "h": 528,
+     "ax": 150.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_14.png",
+     "w": 394,
+     "h": 520,
+     "ax": 152.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/mikasa/walkv_15.png",
+     "w": 396,
+     "h": 516,
+     "ax": 152.0,
+     "ay": 516
     }
    ]
   },
