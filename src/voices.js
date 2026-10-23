@@ -108,6 +108,16 @@ const CV = {
   "transform": "gohan_transform",
   "ultra": "goku_special"
  },
+ "inosuke": {
+  "special": "brutal",
+  "transform": "aura",
+  "ultra": "tanjiro_ultra"
+ },
+ "trunks": {
+  "special": "vegeta_special",
+  "transform": "aura",
+  "ultra": "boom"
+ },
  "hero": {
   "transform": "aura"
  }

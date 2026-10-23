@@ -56,10 +56,11 @@ const charSheets = id => { const C = CHARS[id]; return C ? [C.sheet, ...(C.forms
 function levelNeeds(L) {
   const types = new Set(['thug', 'ninja', 'brute', L.extra, L.boss, ...(ETYPES[L.boss]?.adds || [])]);
   for (const w of L.waves || []) for (const t of w.foes) types.add(t);
-  const known = [...types].filter(t => t && ETYPES[t]), sheets = known.map(t => ETYPES[t].sheet || t);
+  // sans planche à lui, un ennemi emprunte celle de sa doublure (alt)
+  const known = [...types].filter(t => t && ETYPES[t]), sheets = known.map(t => SPRITES[ETYPES[t].sheet || t] || !ETYPES[t].alt ? ETYPES[t].sheet || t : ETYPES[t].alt);
   const bgs = new Set([L.sky, ...(L.far ? ['far'] : [])]);
   for (const Z of L.zones) for (const k of [Z.sky, Z.mid, Z.mid2, Z.ground, STRIPS[Z.id]?.img]) if (k) bgs.add(k);
-  for (const k of GATES[L.id] || []) bgs.add(k);
+  for (const k of [...GATES[L.id] || [], ...levelExtras(L)]) bgs.add(k);
   return { sheets, bgs: [...bgs].filter(k => ASSETS.backgrounds[k]), intros: known.map(t => 'intro_' + t).filter(k => ASSETS.ui[k]) };
 }
 let gameLoading = null; // { done, total } pendant le chargement d'une partie
@@ -607,6 +608,19 @@ const GH_MOVES = { ...FIST,
   dash:    { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 130], y: [-140, -50], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1100, pushAt: 0.06, pushDur: 0.3, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
   masenko: { dur: 1.25, cost: 35, beam: { at: 0.5, end: 1.12, len: 900, dmg: 0.6, color: '#ffe066', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.15)' }, call: 'MASENKO !', p: ['special', [0, 1, 2, 3], [0.2, 0.5, 1.14]] },
 };
+// Inosuke : deux sabres dentelés, souffle de la bête (coups de tête, ruées de sanglier)
+const IN_MOVES = { ...SWORD,
+  spin:  { ...SWORD.spin, trail: undefined, call: 'HÉ HÉ !' },
+  dash:  { dur: 0.6, on: 0.1, off: 0.45, reach: [0, 150], y: [-170, -30], dmg: 3, kb: 420, ki: 8, launch: -500, push: 1350, pushAt: 0.06, pushDur: 0.36, ghost: true, call: 'TOUT DROIT !', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.3, 0.48]] },
+  // Crocs de la bête : il bondit et coupe en ciseaux avec ses deux lames
+  fang:  { dur: 0.8, cost: 35, on: 0.2, off: 0.5, reach: [-60, 150], y: [-170, -30], dmg: 5, kb: 440, ki: 0, launch: -620, push: 1800, pushAt: 0.16, pushDur: 0.3, xcut: true,
+           call: 'CROCS DE LA BÊTE !', p: ['special', [0, 1, 2, 3], [0.16, 0.3, 0.55]], trail: { x: true, r: 130, at: 0.22, w: 30 } },
+};
+// Trunks du futur : poings et pieds de saiyan, dégainage de l'épée, Burning Attack
+const TR_MOVES = { ...NEWKICK(FIST),
+  dash:    { dur: 0.55, on: 0.12, off: 0.42, reach: [-40, 160], y: [-170, -50], dmg: 3.2, kb: 400, ki: 8, launch: -480, push: 1250, pushAt: 0.08, pushDur: 0.3, ghost: true, xcut: true, p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.26, 0.46]] },
+  burning: { dur: 0.8, cost: 35, proj: { at: 0.4, kind: 'burning', speed: 900, dmg: 4.5, kb: 620, launch: -560, life: 1.0, scale: 1.3 }, call: 'BURNING ATTACK !', p: ['special', [0, 1, 2, 3], [0.18, 0.38, 0.62]] },
+};
 // Ichigo : grand sabre, Getsuga Tensho
 const IC_MOVES = { ...SWORD,
   punch: { ...SWORD.punch, reach: [20, 175], dmg: 1.6 }, cross: { ...SWORD.cross, reach: [20, 175], dmg: 1.8 }, rising: { ...SWORD.rising, reach: [10, 175] },
@@ -765,6 +779,24 @@ const CHARS = {
     moves: SK_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'chidori', speed: 270, pose: stdPose, ultra: [startKirin, updateKirin], chargeFrame: 5,
     ultraPose: h => ['special', h.t < 0.45 ? 4 : h.t < KIRIN.strike ? 5 : h.t < KIRIN.strike + 0.4 ? 6 : 7],
+  },
+  inosuke: {
+    name: 'INOSUKE', title: 'Le roi de la montagne', sheet: 'inosuke', card: 'card_in',
+    colors: ['#3a4a6a', '#9fc8ff'], kiColor: '#bfe0ff', hit: '#e0f0ff', trail: '#a8d0ff', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
+    labels: { blast: 'CROCS DE LA BÊTE', ultra: 'RUÉE DU SANGLIER' },
+    forms: [{ ki: 50, name: 'SOUFFLE DE LA BÊTE', filter: 'contrast(1.15) saturate(1.2)', speed: 1.35, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(120,170,255,0.45)', '#8fc0ff'], ghosts: true, bar: ['#2a4a8a', '#bfe0ff'], color: '#8fc0ff', trail: '#cfe6ff' }],
+    moves: IN_MOVES, chain: { punch: ['punch', 'cross', 'rising'], kick: ['kick', 'spin', 'leap'] },
+    special: 'fang', speed: 280, pose: stdPose, ultra: [startSanzen, updateSanzen], chargeFrame: 5,
+    ultraPose: h => h.t < SANZEN.spin ? (Math.floor(h.t * 12) % 2 ? ['combo', 6] : ['special', 5]) : h.t < SANZEN.dash ? ['special', 6] : ['special', 7],
+  },
+  trunks: {
+    name: 'TRUNKS', title: 'Le guerrier venu du futur', sheet: 'trunks', card: 'card_tr',
+    colors: ['#24408a', '#c9a8ff'], kiColor: '#fff07a', hit: '#fff3b0', trail: '#ffffff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
+    labels: { blast: 'BURNING ATTACK', ultra: 'SHINING SWORD ATTACK' },
+    forms: [{ ki: 50, name: 'SUPER SAIYAN', filter: 'saturate(1.2) brightness(1.08)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
+    moves: TR_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'burning', speed: 265, pose: stdPose, ultra: [startShining, updateShining],
+    ultraPose: h => ['special', h.t < SHINE.leap ? 4 : h.t < SHINE.cut ? 5 : h.t < SHINE.blast ? 6 : h.t < SHINE.blast + 0.3 ? 2 : 7],
   },
   kakashi: {
     name: 'KAKASHI', title: 'Le ninja copieur', sheet: 'kakashi', card: 'card_ka',
@@ -969,6 +1001,7 @@ function updatePlayer(h, dt) {
   if (level.trans) { transitionWalk(h, dt); return; }
   if (h.aegis > 0) h.aegis -= dt;
   if (h.respawn) { updateRespawn(h, dt); return; }
+  if (h.pit) { updatePitFall(h, dt); return; } // il tombe dans un trou
   if (h.move && !h.out) {
     const key = h.C.pose(h).join(':');
     if (h._lastPose && key !== h._lastPose && h._ghostPose) fxs.push({ ...h._ghostPose, t: 0, life: 0.14, alpha: 0.35, col: hitOf(h) });
@@ -1706,7 +1739,7 @@ function updateShuriken(h) {
 const SANZEN = { spin: 0.9, dash: 1.25, end: 1.75, speed: 1500 };
 function startSanzen(h) {
   h.hitSet = new Set();
-  say(h, 'SANZEN SEKAI !');
+  say(h, h.char === 'inosuke' ? 'SOUFFLE DE LA BÊTE… CROCS FOUS !' : 'SANZEN SEKAI !');
   audio.play('ultraCharge', 0.7, 1.5, 0);
 }
 
@@ -1730,7 +1763,7 @@ function updateSanzen(h, dt) {
     for (const e of enemies) if (e.sanzen) {
       e.sanzen = false;
       damageEnemy(e, ULT_SOLO * (4 + h.power / 10), 500 * h.dir, -800, e.x, e.y - 110, hitOf(h));
-      if (FX.zoro_x) animFX('zoro_x', e.x, e.y - 110 * WORLD, 300 * WORLD, 0.5);
+      if (FX.zoro_x && h.char === 'zoro') animFX('zoro_x', e.x, e.y - 110 * WORLD, 300 * WORLD, 0.5);
       slashFX(e.x, e.y - 110, h.dir, { x: true, r: 120, c: trailOf(h), life: 0.45, w: 18 });
     }
     score += 2000;
@@ -1957,6 +1990,28 @@ function updateSmash(h) {
   if (h.t > SMASH.end) h.state = 'idle';
 }
 
+// ---------- Ultime de Trunks : Shining Sword Attack, un grand coup d'épée vertical puis une décharge de ki ----------
+const SHINE = { leap: 0.35, cut: 0.8, blast: 1.2, end: 1.9, reach: 340 };
+function startShining(h) { h.cut = false; h.thrown = false; say(h, 'SHINING…'); audio.play('ultraCharge', 0.8, 1.2, 0); }
+function updateShining(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  if (!h.cut && h.t >= SHINE.cut) {
+    // la lame tombe du ciel : tout ce qui est devant est fendu
+    h.cut = true; flash = 0.5; shake = 22; hitstop = 0.1; audio.slash(1.8);
+    slashFX(h.x + h.dir * 120, h.y - 150, h.dir, { a0: -1.55, a1: 1.45, r: 220, w: 46, c: '#ffffff', life: 0.45 });
+    ultraHit(h, SHINE.reach, dmg * 0.55, 80);
+    say(h, 'SWORD !!');
+  }
+  if (!h.thrown && h.t >= SHINE.blast) {
+    h.thrown = true; flash = 0.6; shake = 24; audio.play('ultraBoom', 1.1, 1.2, 0);
+    projs.push({ kind: 'burning', owner: h, x: h.x + h.dir * 70, y: h.y - 120, gz: h.gz, dir: h.dir, t: 0, speed: 1000, life: 1.1, hit: new Set(), dmg: dmg * 0.45, kb: 700, launch: -800, scale: 2.2 });
+    popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'SHINING SWORD ATTACK !!' });
+    score += 2000;
+  }
+  if (h.t > SHINE.end) h.state = 'idle';
+}
+
 // ---------- Ultime de Vegeta : Final Flash, un rayon jaune immense ----------
 function startFinalFlash(h) { h.beamed = false; say(h, h.char === 'gojo' ? 'TECHNIQUE IMAGINAIRE…' : 'FINAL…'); audio.play('ultraCharge', 0.9, 1.1, 0); }
 function updateFinalFlash(h) {
@@ -2082,6 +2137,18 @@ Object.assign(ETYPES, {
   bl2_fraccion: MINION('bl2_fraccion', { hp: 10, armor: true, dmg: 15, h: 250, speed: [80, 100] }),
   bl2_boss: BOSS('bl2_boss', { proj: 'beam', projColor: '#6aff9a', adds: ['bl2_arrancar', 'bl2_fraccion'], roar: 'CERO OSCURAS.' }),
 });
+// Mini-boss, à mi-parcours de chaque monde : gabarit des boss (planches marche / attaque / spécial / chute), 70 % de
+// leur vie, une taille en dessous, sans super-armure ni renforts ; il tire comme le boss de son monde
+const MINI_ROAR = {
+  tokyo: 'ÉCRASÉS !!', op: 'WHITE BLOW !!', ds: 'DORS…', bl: 'HIHIO ZABIMARU !!', hx: 'DOUBLE !', nr: 'SABAKU SÔSÔ !!',
+  db: 'BODY CHANGE !!', mh: 'DÉSINTÉGRATION…', rk: 'SHUKUCHI !', op2: 'RANKYAKU !!', nr2: 'SHIKIGAMI NO MAI.', ds2: 'CHI GAMA !!',
+  db2: 'ÉNERGIE ABSORBÉE.', jk: 'MUTATION OISIVE !', sl: 'FURTIVITÉ…', opm: 'SOUMETS-TOI !', bl2: 'GRAN REY CERO !!',
+};
+for (const L of LEVELS) {
+  const B = ETYPES[L.boss];
+  ETYPES[`${L.id}_mini`] = BOSS(`${L.id}_mini`, { proj: B.proj, projColor: B.projColor, hp: Math.round(B.hp * 0.7), h: 250, score: 12000,
+    superArmor: false, adds: [], roar: MINI_ROAR[L.id], mini: true });
+}
 // Tant que leurs planches manquent, ces ennemis empruntent les animations d'un ennemi existant (samouraï pour
 // ceux qui se ruent, motard pour les autres, Kuro-Oni pour les boss), recolorées
 const STAND_IN = {
@@ -2101,6 +2168,13 @@ const STAND_IN = {
   sl_goblin: 'hue-rotate(90deg)', sl_knight: 'grayscale(1)', sl_boss: 'hue-rotate(340deg) saturate(1.5)',
   opm_monster: 'hue-rotate(340deg) saturate(1.5)', opm_alien: 'hue-rotate(260deg)', opm_boss: 'hue-rotate(200deg)',
   bl2_arrancar: 'grayscale(1) brightness(1.5)', bl2_fraccion: 'grayscale(0.8) brightness(1.3)', bl2_boss: 'grayscale(1) brightness(1.4)',
+  // mini-boss : le Kuro-Oni recoloré, en attendant leurs planches
+  tokyo_mini: 'hue-rotate(340deg) saturate(1.6)', op_mini: 'grayscale(0.9) brightness(1.5)', ds_mini: 'hue-rotate(240deg) brightness(0.8)',
+  bl_mini: 'hue-rotate(330deg) saturate(1.8)', hx_mini: 'grayscale(0.6) brightness(1.4)', nr_mini: 'sepia(0.8) hue-rotate(-20deg) saturate(1.4)',
+  db_mini: 'hue-rotate(260deg) saturate(1.5)', mh_mini: 'grayscale(0.7) hue-rotate(180deg) brightness(1.2)', rk_mini: 'hue-rotate(180deg) brightness(1.2)',
+  op2_mini: 'grayscale(1) brightness(0.7)', nr2_mini: 'hue-rotate(200deg) saturate(1.3)', ds2_mini: 'hue-rotate(90deg) saturate(1.2)',
+  db2_mini: 'grayscale(0.8) brightness(1.6)', jk_mini: 'hue-rotate(200deg) brightness(1.1)', sl_mini: 'grayscale(1) brightness(0.55)',
+  opm_mini: 'hue-rotate(60deg) saturate(1.5)', bl2_mini: 'hue-rotate(170deg) saturate(1.6)',
 };
 for (const [k, f] of Object.entries(STAND_IN)) Object.assign(ETYPES[k], { alt: ETYPES[k].isBoss ? 'boss' : ETYPES[k].lunge ? 'samurai' : 'biker', altTint: f });
 // Ennemis à la taille des héros (un sbire = un héros moyen, les boss restent plus grands)
@@ -2867,7 +2941,7 @@ function updateProjs(dt) {
   projs = projs.filter(p => !p.done);
 }
 
-const projColor = p => ({ airblade: '#e9fff2', wave: '#5ad1ff', firewave: '#ff8a2a', shuriken: '#bff3ff', rocks: '#d8c09a', getsuga: '#bfe8ff', airshot: '#d8ffe0', red: '#ff5060', kiball: '#bff3ff' })[p.kind] || '#ffffff';
+const projColor = p => ({ airblade: '#e9fff2', wave: '#5ad1ff', firewave: '#ff8a2a', shuriken: '#bff3ff', rocks: '#d8c09a', getsuga: '#bfe8ff', airshot: '#d8ffe0', red: '#ff5060', kiball: '#bff3ff', burning: '#ffe066' })[p.kind] || '#ffffff';
 
 // « Super flash » façon FighterZ : le décor s'assombrit le temps d'un coup spécial ou d'un ultime
 let dimK = 0;
@@ -2974,6 +3048,16 @@ function drawProjs() {
         const g = ctx.createRadialGradient(-j * 22, 0, 1, -j * 22, 0, r * (1 - j * 0.18));
         g.addColorStop(0, j ? 'rgba(255,120,120,0.5)' : '#ffffff'); g.addColorStop(0.35, j ? 'rgba(255,40,60,0.35)' : '#ff6070'); g.addColorStop(1, 'rgba(160,0,20,0)');
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(-j * 22, 0, r * (1 - j * 0.18), 0, 7); ctx.fill();
+      }
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'burning') {
+      // Burning Attack de Trunks : une grosse boule jaune qui palpite, traînée de flammes dorées
+      const r = (34 + Math.sin(p.t * 36) * 5) * (p.scale || 1);
+      for (let j = 3; j >= 0; j--) {
+        const g = ctx.createRadialGradient(-j * r * 0.4, 0, 1, -j * r * 0.4, 0, r * (1 - j * 0.2));
+        g.addColorStop(0, j ? 'rgba(255,230,120,0.45)' : '#ffffff'); g.addColorStop(0.4, j ? 'rgba(255,190,40,0.35)' : '#ffe066'); g.addColorStop(1, 'rgba(255,140,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(-j * r * 0.4, 0, r * (1 - j * 0.2), 0, 7); ctx.fill();
       }
       ctx.restore(); continue;
     }
@@ -3404,15 +3488,33 @@ function makeShops() {
 // mirror : une copie sur deux est retournée, pour que les raccords ne se voient pas
 // src : [haut, hauteur] d'une bande de l'image source, posée en reflet (bas d'un calque prolongé), sinon l'image entière
 // alt : 2e image du même lieu ; les copies s'enchaînent alors A, B, A retournée, B retournée
+// Raccords entre deux images différentes (A puis B) : elles se chevauchent sur SEAM de leur largeur et la suivante
+// apparaît en fondu par-dessus, au lieu d'une coupure nette. Bords fondus calculés une fois par image.
+const SEAM = 0.07, seamCache = new WeakMap();
+function feathered(im, side) {
+  let c = seamCache.get(im);
+  if (!c) seamCache.set(im, c = {});
+  if (c[side]) return c[side];
+  const cv = document.createElement('canvas'); cv.width = im.width; cv.height = im.height;
+  const g = cv.getContext('2d'), f = im.width * SEAM;
+  g.drawImage(im, 0, 0);
+  const gr = side === 'L' ? g.createLinearGradient(0, 0, f, 0) : g.createLinearGradient(im.width, 0, im.width - f, 0);
+  gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,1)');
+  g.globalCompositeOperation = 'destination-in'; g.fillStyle = gr; g.fillRect(0, 0, im.width, im.height);
+  return c[side] = cv;
+}
 function drawTiled(img, factor, y, h, w = img.width * (h / img.height), mirror = false, src = null, alt = null) {
-  const period = alt ? 4 : mirror ? 2 : 1, off = -((camX * factor) % (period * w));
+  // avec deux images, chaque copie recouvre la fin de la précédente (pas = w - chevauchement)
+  const step = alt ? w * (1 - SEAM) : w, period = alt ? 4 : mirror ? 2 : 1, off = -((camX * factor) % (period * step));
   const put = (im, dx, dy) => {
     if (!src) return ctx.drawImage(im, dx, dy, w + 1, h);
     // bande retournée de haut en bas : son bord touche celui de l'image, sans raccord visible
     ctx.save(); ctx.translate(dx, dy + h); ctx.scale(1, -1); ctx.drawImage(im, 0, src[0], im.width, src[1], 0, 0, w + 1, h); ctx.restore();
   };
-  for (let x = off, k = 0; x < W; x += w, k++) {
-    const im = alt && k % 2 ? alt : img, flip = alt ? mirror && k % 4 >= 2 : mirror && k % 2;
+  for (let x = off - (alt ? step : 0), k = alt ? period - 1 : 0; x < W; x += step, k = (k + 1) % (period * 4)) {
+    const flip = alt ? mirror && k % 4 >= 2 : mirror && k % 2;
+    let im = alt && k % 2 ? alt : img;
+    if (alt && !src) im = feathered(im, flip ? 'R' : 'L'); // le bord gauche à l'écran est fondu
     if (flip) { ctx.save(); ctx.translate(x + w, y); ctx.scale(-1, 1); put(im, 0, 0); ctx.restore(); }
     else put(im, x, y);
   }
@@ -3762,7 +3864,7 @@ function energyBall(x, y, r, gold) {
 // Planche affichée : celle de la forme (dorée, Gear 5) si elle a cette animation, sinon la normale
 // Bout de la main sur l'étape affichée : point le plus en avant du haut du corps (60 % du haut), mesuré une fois
 // par image puis gardé. Renvoie [devant, hauteur] par rapport au point posé au sol, à l'échelle du jeu.
-const HAND_SHOTS = ['airshot', 'kiball', 'red'], handCache = {};
+const HAND_SHOTS = ['airshot', 'kiball', 'red', 'burning'], handCache = {};
 function handPoint(h) {
   const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
   const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];
@@ -4062,7 +4164,7 @@ const FACES = {
   card_ip: [0.57, 0.3, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
   card_ki: [0.53, 0.36, 4], card_luffy: [0.71, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
   card_ve: [0.52, 0.37, 4], card_ze: [0.2, 0.36, 4.2], card_zoro: [0.47, 0.27, 4.4],
-  card_jw: [0.765, 0.185, 6.5], card_sk: [0.66, 0.27, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.765, 0.185, 6.5], card_sk: [0.66, 0.27, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {

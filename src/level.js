@@ -20,11 +20,11 @@ const TOKYO = {
   // x : position de la caméra qui déclenche la vague ; elle se bloque là jusqu'à ce que tout soit battu
   waves: [
     { x: 450, foes: ['thug', 'thug'] },
-    { x: 1250, foes: ['thug', 'thug', 'thug'] },
+    { x: 1250, foes: ['thug', 'thug', 'thug'], vehicle: 'tokyo_veh' }, // le fourgon du gang débarque ses voyous
     { x: 1550, foes: ['thug', 'brute', 'thug'] },
     { x: 3000, foes: ['ninja', 'thug', 'ninja'] },
     { x: 3850, foes: ['ninja', 'thug', 'thug', 'ninja'] },
-    { x: 4300, foes: ['brute', 'ninja', 'thug', 'thug'] },
+    { x: 4300, foes: ['tokyo_mini', 'ninja', 'thug'], mini: true }, // l'Aka-Oni, lieutenant du Kuro-Oni
     { x: 5750, foes: ['biker', 'biker'] },
     { x: 6650, foes: ['biker', 'ninja', 'thug', 'biker'] },
     { x: 7100, foes: ['brute', 'biker', 'ninja', 'biker'] },
@@ -46,13 +46,16 @@ const TOKYO = {
 
 // Niveau au gabarit commun : a = sbire de corps à corps, b = sbire qui attaque de loin.
 // 4 zones : la 4e (fichiers <monde>_z4_*, ajoutée le 23/10) se place avant celle du boss -> ordre z1, z2, z4, z3.
+// zone où arrive le véhicule (par défaut la 1re) : le train de l'Infini débarque dans la clairière, pas dans le wagon
+const VEH_ZONE = { ds: 3 };
 function themedLevel(id, name, sub, zoneNames, a, b) {
   const n = zoneNames.length, files = n === 4 ? [1, 2, 4, 3] : [1, 2, 3], from = files.map((_, k) => k * 2900), end = from[n - 1] + 3000;
   const waves = [], props = [], items = ['onigiri', 'ramen', 'drink', 'chicken'];
   from.forEach((x0, k) => {
     const last = k === n - 1;
-    waves.push({ x: x0 + 450, foes: k ? [a, a, b] : [a, a] }, { x: x0 + 1250, foes: k ? [b, a, b, a] : [a, b, a] });
-    if (!last) waves.push({ x: x0 + 1900, foes: k ? [a, b, a, a, b] : [b, a, a, b] });
+    // 2e vague du monde : elle arrive en véhicule ; 3e vague de la zone 2 : le mini-boss du monde et deux sbires
+    waves.push({ x: x0 + 450, foes: k ? [a, a, b] : [a, a] }, { x: x0 + 1250, foes: k ? [b, a, b, a] : [a, b, a], ...(k === (VEH_ZONE[id] || 0) ? { vehicle: `${id}_veh` } : {}) });
+    if (!last) waves.push(k === 1 ? { x: x0 + 1900, foes: [`${id}_mini`, a, b], mini: true } : { x: x0 + 1900, foes: k ? [a, b, a, a, b] : [b, a, a, b] });
     props.push([x0 + 800, 'crate', null], [x0 + 1800, 'barrel', items[k % items.length]], [x0 + 2250, 'crate', last ? 'onigiri' : null]); // rien devant la porte (limite - 230) ; un soin de plus avant le boss
   });
   waves.push({ x: end - 960, foes: [`${id}_boss`], boss: true });
@@ -107,6 +110,45 @@ for (const L of LEVELS.slice(1)) {
     ASSETS.backgrounds[Z.ground] = `assets/backgrounds/levels/${Z.ground}.jpg`;
   }
 }
+const levelOf = id => LEVELS.find(L => L.id === id);
+const zoneOf = id => LEVELS.flatMap(L => L.zones).find(Z => Z.id === id);
+// intérieur du train de l'Infini : banquettes et fenêtres trop grandes pour les persos
+zoneOf('ds_z1').midScale = 0.74;
+
+// ---------- Véhicules ----------
+// Une vague par monde arrive en véhicule (fourgon, wagon, palanquin…) : il entre par la droite au fond de la rue,
+// freine, les ennemis en descendent, puis il repart. Image de profil tournée vers la gauche, détourée par
+// tools/process_vehicles.py dans assets/backgrounds/vehicles/<monde>_veh.png ; sans image, vague normale.
+const VEH = { w: 380, maxH: 240, inT: 1.3, brake: 0.35 };
+// trains et gros engins : à l'échelle des personnages (un wagon dépasse largement de l'écran)
+const VEH_SIZE = { ds_veh: { w: 1100, maxH: 330 }, rk_veh: { w: 900, maxH: 320 }, jk_veh: { w: 1000, maxH: 320 }, op2_veh: { w: 760, maxH: 320 }, db2_veh: { w: 560, maxH: 290 }, mh_veh: { w: 560, maxH: 290 }, nr2_veh: { w: 520, maxH: 290 } };
+for (const L of LEVELS) for (const wv of L.waves) if (wv.vehicle) ASSETS.backgrounds[wv.vehicle] = `assets/backgrounds/vehicles/${wv.vehicle}.png`;
+
+// ---------- Trous et pont qui s'effondre ----------
+// pits : gouffres sur toute la profondeur de la rue, [x, largeur] en coordonnées du niveau. Un saut simple porte à
+// ~200 px (vitesse 250 × 0,8 s en l'air) : 130 px se franchit en sautant près du bord, sans double saut obligatoire.
+const PIT = { w: 130, fallT: 0.7, cost: 0.08 };
+const PITS = { op2_z4: [[6380, PIT.w], [7350, PIT.w]], nr2_z2: [[3380, PIT.w], [4300, PIT.w]], sl_z4: [[7300, PIT.w]], jk_z4: [[6380, PIT.w], [7350, PIT.w]] };
+for (const [id, pits] of Object.entries(PITS)) zoneOf(id).pits = pits;
+// Le pont sur l'abîme (Solo Leveling) : entre deux vagues, la caméra avance seule et le pont s'écroule derrière
+// les joueurs ; celui que le bord gauche rattrape tombe
+zoneOf('sl_z4').collapse = { from: 6400, to: 7000, speed: 90 };
+
+// ---------- Route au choix ----------
+// Avant la 4e zone de certains mondes, une seconde porte (plus à gauche) mène à un autre lieu : entrer par elle
+// remplace le décor et le nom de la zone pour la partie. Images : <monde>_z5_mid / _mid2 / _ground et la porte <monde>_gb.
+const ROUTE = { dx: 620, slot: 2 };
+const ROUTES = { op: 'LES TOITS DE LOGUETOWN', nr: 'LA FORÊT DE BAMBOUS', jk: 'LE CENTRE COMMERCIAL ABANDONNÉ' };
+for (const [id, name] of Object.entries(ROUTES)) {
+  const L = levelOf(id), Z = L.zones[ROUTE.slot];
+  L.route = { id: `${id}_z5`, name, mid: `${id}_z5_mid`, mid2: `${id}_z5_mid2`, ground: `${id}_z5_ground`, gate: `${id}_gb` };
+  Z.orig = { id: Z.id, name: Z.name, mid: Z.mid, mid2: Z.mid2, ground: Z.ground, pits: Z.pits };
+  for (const k of ['mid', 'mid2']) ASSETS.backgrounds[L.route[k]] = `assets/backgrounds/levels/${L.route[k]}.png`;
+  ASSETS.backgrounds[L.route.ground] = `assets/backgrounds/levels/${L.route.ground}.jpg`;
+  ASSETS.backgrounds[L.route.gate] = `assets/backgrounds/gates/${L.route.gate}.png`;
+}
+// Images en plus du décor de base (véhicules, route B) : chargées avec le niveau (levelNeeds dans game.js)
+const levelExtras = L => [...L.waves.map(w => w.vehicle).filter(Boolean), ...(L.route ? ['mid', 'mid2', 'ground', 'gate'].map(k => L.route[k]) : [])];
 
 // Passage d'une zone à la suivante : la caméra s'arrête juste avant la limite (on ne voit jamais deux décors
 // côte à côte) ; quand la vague est finie, un élément de passage (porte, arche, sas…) attend au fond de la rue,
@@ -199,13 +241,32 @@ const ENEMY_INFO = {
   bl2_arrancar: ['ARRANCAR', 'Hollow devenu sabreur'],
   bl2_fraccion: ['FRACCIÓN', 'Colosse au service d\'une Espada'],
   bl2_boss: ['ULQUIORRA', 'Quatrième Espada'],
+  // mini-boss, à mi-parcours de chaque monde
+  tokyo_mini: ['AKA-ONI', 'Le lieutenant du Kuro-Oni et sa massue de fer'],
+  op_mini: ['SMOKER', 'Capitaine de la Marine — fumée et jitte'],
+  ds_mini: ['ENMU', 'Première Lune inférieure, maître des rêves'],
+  bl_mini: ['RENJI ABARAI', 'Lieutenant de la 6e division'],
+  hx_mini: ['KASTRO', 'Son double frappe quand on ne l\'attend pas'],
+  nr_mini: ['GAARA', 'Le démon du sable de Suna'],
+  db_mini: ['GINYU', 'Capitaine du commando Ginyu'],
+  mh_mini: ['TOMURA SHIGARAKI', 'Tout ce qu\'il touche tombe en poussière'],
+  rk_mini: ['SÔJIRÔ SETA', 'Le sabreur au sourire, plus rapide que l\'œil'],
+  op2_mini: ['KAKU', 'Agent du CP9 aux deux sabres'],
+  nr2_mini: ['KONAN', 'L\'ange de papier de l\'Akatsuki'],
+  ds2_mini: ['GYUTARO', 'Le frère de Daki et ses faucilles de sang'],
+  db2_mini: ['DOCTEUR GERO', 'L\'androïde 20 absorbe l\'énergie'],
+  jk_mini: ['MAHITO', 'Il remodèle les âmes d\'un toucher'],
+  sl_mini: ['KANG TAESHIK', 'Chasseur assassin — frappe dans le dos'],
+  opm_mini: ['GERYUGANSHOOP', 'Le télépathe des envahisseurs'],
+  bl2_mini: ['GRIMMJOW', 'Sixième Espada, la panthère'],
 };
 for (const k of Object.keys(ENEMY_INFO)) if (k.includes('_')) ASSETS.ui[`intro_${k}`] = `assets/ui/intro/${k}.jpg`;
 
-const level = { passed: 0, trans: null, wave: 0, lock: null, queue: [], spawnT: 0, cleared: true, goT: 0, card: null, banner: null, zone: -1, seen: new Set(), props: [], items: [], bossDead: false };
+const level = { passed: 0, trans: null, wave: 0, lock: null, queue: [], spawnT: 0, cleared: true, goT: 0, card: null, banner: null, zone: -1, seen: new Set(), props: [], items: [], bossDead: false, veh: null, collapse: null };
 
 function resetLevel() {
-  Object.assign(level, { passed: 0, trans: null, wave: 0, lock: null, queue: [], spawnT: 0, cleared: true, goT: 0, card: null, banner: null, zone: -1, seen: new Set(), items: [], bossDead: false });
+  Object.assign(level, { passed: 0, trans: null, wave: 0, lock: null, queue: [], spawnT: 0, cleared: true, goT: 0, card: null, banner: null, zone: -1, seen: new Set(), items: [], bossDead: false, veh: null, collapse: null });
+  for (const Z of ZONES) if (Z.orig) Object.assign(Z, Z.orig); // la route B ne vaut que pour la partie
   level.props = PROPS.map(([x, type, item], k) => ({ x, gz: k % 2 ? Z_TOP + 25 : Z_BOT - 30, type, item, hp: 2, broken: false, t: 0, shakeT: 0 }));
 }
 
@@ -219,21 +280,34 @@ function updateLevel(dt) {
   if (level.banner && (level.banner.t += dt) > 3) level.banner = null;
 
   if (updateTransition(dt)) return;
+  updateCollapse(dt);
+  updatePits(dt);
+  updateVehicle(dt);
   const wv = WAVES[level.wave];
   // Déclenchement de la vague suivante
-  if (wv && level.cleared && camX >= wv.x - 4) {
+  if (wv && level.cleared && !level.collapse?.on && camX >= wv.x - 4) {
     level.cleared = false; level.lock = wv.x;
     const extra = players.length > 1 && !wv.boss ? [LVL.extra] : [];
     level.queue = [...wv.foes, ...extra]; level.spawnT = 0.3;
     if (wv.boss) { audio.tone(80, 1.5, 'sawtooth', 0.12, -30); shake = 20; }
+    if (wv.mini) { level.banner = { text: '⚠ MINI-BOSS ⚠', t: 0 }; audio.tone(110, 1, 'sawtooth', 0.1, -20); shake = 12; }
+    // le véhicule entre par la droite, au fond de la rue ; les ennemis attendent qu'il soit arrêté
+    if (wv.vehicle && IMG[wv.vehicle]) {
+      const img = IMG[wv.vehicle], V0 = VEH_SIZE[wv.vehicle] || VEH, s = Math.min(V0.w / img.width, V0.maxH / img.height);
+      level.veh = { img, w: img.width * s, h: img.height * s, x0: camX + W + 260, x: camX + W + 260, tx: camX + W - 250, t: 0, state: 'in' };
+      audio.whoosh(1.4); audio.tone(70, 1.2, 'sawtooth', 0.06, 30);
+    }
   }
   // Apparition échelonnée des ennemis de la vague
-  if (!level.cleared && level.queue.length) {
+  const V = level.veh;
+  if (!level.cleared && level.queue.length && (!V || V.state === 'open')) {
     level.spawnT -= dt;
     const living = enemies.filter(e => e.alive).length;
     if (level.spawnT <= 0 && living < 3 + players.length) {
       const type = level.queue.shift();
       spawnEnemy(type);
+      // ils descendent du véhicule au lieu d'entrer par les bords
+      if (V) { const e = enemies[enemies.length - 1]; e.x = V.x + rand(-V.w * 0.25, V.w * 0.2); e.gz = e.y = Z_TOP + rand(8, 40); e.dir = -1; burst(e.x, e.gz - 10, '#c9c2b0', 6); }
       if (!level.seen.has(type)) { level.seen.add(type); level.card = { type, t: 0 }; }
       level.spawnT = rand(0.6, 1.4);
     }
@@ -259,8 +333,11 @@ const camLimit = () => Math.min(level.lock ?? Infinity, LEVEL_END - W, nextZone(
 function updateTransition(dt) {
   const Z = nextZone();
   if (!level.trans) {
-    if (!Z || !level.cleared || camX < Z.from - W - 4 || !players.some(h => !h.out && h.x > Z.from - (gateImg(Z) ? GATE.dx + 70 : 120))) return false;
-    level.trans = { t: 0, Z, jumped: false, vt: 0 };
+    if (!Z || !level.cleared || camX < Z.from - W - 4) return false;
+    // route B : remonter jusqu'à la seconde porte, au fond de la rue
+    const byB = !!routeGate(Z) && players.some(h => !h.out && Math.abs(h.x - (Z.from - ROUTE.dx)) < 60 && h.gz < Z_TOP + 30 && h.vz < 0); // il faut monter vers elle
+    if (!byB && !players.some(h => !h.out && h.x > Z.from - (gateImg(Z) ? GATE.dx + 70 : 120))) return false;
+    level.trans = { t: 0, Z, jumped: false, vt: 0, route: byB };
     level.goT = 0; audio.whoosh(0.8);
     if (TRANS_VIDEO[Z.id]) {
       const v = document.createElement('video');
@@ -279,6 +356,7 @@ function updateTransition(dt) {
   if (!T.jumped && T.t >= TRANS.walk + TRANS.black / 2) {
     // dans le noir : on reprend juste après le passage, dans la nouvelle zone
     T.jumped = true; level.passed++;
+    if (T.route) { const R = LVL.route; Object.assign(T.Z, { id: R.id, name: R.name, mid: R.mid, mid2: R.mid2, ground: R.ground, pits: null }); }
     camX = T.Z.from + 40;
     players.forEach((h, i) => { h.x = camX + 150 + i * 70; h.y = h.gz; h.vx = h.vy = 0; h.onGround = true; });
     projs = []; stars = []; level.items = [];
@@ -294,9 +372,9 @@ function transitionWalk(h, dt) {
   if (!T.jumped && CLIMB.has(T.Z.gate) && h.x > T.Z.from - LADDER) {
     // il grimpe à l'échelle : il monte, collé au wagon, en enchaînant les poses de saut
     h.x = T.Z.from - LADDER; h.gz += (Z_TOP + 16 - h.gz) * Math.min(1, dt * 10); h.y = Math.min(h.y, h.gz) - 420 * dt; h.state = 'jump'; h.vy = -1; h.onGround = false; h.dir = 1;
-  } else if (!T.jumped && gateImg(T.Z)) {
-    // il remonte vers la porte au fond de la rue et y entre
-    const gx = T.Z.from - GATE.dx;
+  } else if (!T.jumped && (gateImg(T.Z) || T.route)) {
+    // il remonte vers la porte au fond de la rue (celle de la route choisie) et y entre
+    const gx = T.Z.from - (T.route ? ROUTE.dx : GATE.dx);
     h.state = 'walk'; h.walkT += dt; h.dir = gx >= h.x ? 1 : -1;
     h.x += clamp(gx - h.x, -230 * dt, 230 * dt); h.gz += clamp(Z_TOP - h.gz, -200 * dt, 200 * dt); h.y = h.gz;
   } else if (!T.jumped) { h.state = 'walk'; h.dir = 1; h.x += 230 * dt; h.walkT += dt; }
@@ -316,17 +394,34 @@ function transitionFade() {
 // Éléments de passage (devant le décor, derrière les personnages) : l'échelle de fer posée contre le flanc du
 // wagon, vue de profil comme le décor (une image de face jurait avec la vue de côté)
 const gateImg = Z => Z.gate && !CLIMB.has(Z.gate) && IMG[Z.gate];
+// Seconde porte (route B) : seulement devant la zone qui a une variante, tant qu'on ne l'a pas passée
+const routeGate = Z => LVL.route && ZONES.indexOf(Z) === ROUTE.slot && level.passed < ROUTE.slot && IMG[LVL.route.gate];
+// Porte de face, à sa proportion, pied posé au fond de la rue ; renvoie sa hauteur à l'écran (0 si hors champ)
+function drawGateAt(img, cx) {
+  const s = Math.min(GATE.h / img.height, GATE.maxW / img.width), w = img.width * s, h = img.height * s;
+  if (cx + w / 2 < -20 || cx - w / 2 > W + 20) return 0;
+  const g = ctx.createRadialGradient(cx, GATE.base, 10, cx, GATE.base, w * 0.6);
+  g.addColorStop(0, 'rgba(0,0,0,0.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.fillRect(cx - w * 0.6, GATE.base - 20, w * 1.2, 40);
+  ctx.drawImage(img, cx - w / 2, GATE.base - h, w, h);
+  return h;
+}
 function drawGates() {
+  drawPits();
   for (const Z of ZONES) {
     const img = gateImg(Z);
     if (img) {
-      // de face, à sa proportion, pied posé au fond de la rue ; les joueurs passent devant puis y entrent
-      const s = Math.min(GATE.h / img.height, GATE.maxW / img.width), w = img.width * s, h = img.height * s, cx = Z.from - GATE.dx - camX;
-      if (cx + w / 2 < -20 || cx - w / 2 > W + 20) continue;
-      const g = ctx.createRadialGradient(cx, GATE.base, 10, cx, GATE.base, w * 0.6);
-      g.addColorStop(0, 'rgba(0,0,0,0.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = g; ctx.fillRect(cx - w * 0.6, GATE.base - 20, w * 1.2, 40);
-      ctx.drawImage(img, cx - w / 2, GATE.base - h, w, h);
+      // les joueurs passent devant puis y entrent
+      const cx = Z.from - GATE.dx - camX, h = drawGateAt(img, cx), B = routeGate(Z);
+      if (!B) continue;
+      const bx = Z.from - ROUTE.dx - camX, hb = drawGateAt(B, bx);
+      // deux routes : l'étiquette de chaque porte, une fois la voie libre
+      if (level.cleared && nextZone() === Z && camX > Z.from - W - 300) {
+        const bob = Math.sin(performance.now() / 180) * 4;
+        // jamais sous la barre de vie et le score (haut de l'écran)
+        if (h) outlined(`▼ ${Z.name}`, cx, Math.max(GATE.base - h - 14, 128) + bob, 15, '#ffe14d');
+        if (hb) outlined(`▼ ${LVL.route.name}`, bx, Math.max(GATE.base - hb - 14, 128) + bob, 15, '#7dd8ff');
+      }
       continue;
     }
     if (!CLIMB.has(Z.gate)) continue;
@@ -335,6 +430,7 @@ function drawGates() {
     drawHatch(sx + 4, 0);
     drawLadder(sx, Z_TOP + 14, -10);
   }
+  drawVehicle();
 }
 // Trappe ouverte au plafond du wagon : la nuit et la lune passent par l'ouverture
 function drawHatch(x, y) {
@@ -370,6 +466,150 @@ function drawLadder(x, bot, top) {
   // pattes de fixation au wagon
   for (const y of [top + 40, (top + bot) / 2, bot - 60]) { ctx.fillStyle = '#2a2628'; ctx.fillRect(x + 27, y - 4, 14, 8); ctx.strokeRect(x + 27, y - 4, 14, 8); }
   ctx.restore();
+}
+
+// Véhicule : il entre en ralentissant, freine (il pique du nez, poussière), s'ouvre le temps que la file se vide,
+// puis repart en accélérant vers la droite
+function updateVehicle(dt) {
+  const V = level.veh;
+  if (!V) return;
+  V.t += dt;
+  if (V.state === 'in') {
+    const k = Math.min(1, V.t / VEH.inT);
+    V.x = V.x0 + (V.tx - V.x0) * (1 - (1 - k) ** 3);
+    if (k >= 1) { V.state = 'brake'; V.t = 0; shake = Math.max(shake, 8); audio.play('body', 0.9, 0.6); for (const d of [-0.32, 0.3]) burst(V.x + V.w * d, Z_TOP, '#c9c2b0', 12); }
+  } else if (V.state === 'brake' && V.t > VEH.brake) { V.state = 'open'; V.t = 0; }
+  else if (V.state === 'open' && !level.queue.length && V.t > 1) { V.state = 'out'; V.t = 0; V.v = 0; audio.whoosh(1.2); }
+  else if (V.state === 'out') {
+    V.v += 900 * dt; V.x += V.v * dt;
+    if (Math.random() < 0.4) particles.push({ x: V.x - V.w * 0.45, y: Z_TOP - rand(0, 20), vx: rand(-60, 0), vy: rand(-60, -20), t: 0, life: 0.5, c: '#8a8478', r: rand(3, 6) });
+    if (V.x - V.w / 2 > camX + W + 40) level.veh = null;
+  }
+}
+function drawVehicle() {
+  const V = level.veh;
+  if (!V) return;
+  const sx = V.x - camX, bob = V.state === 'brake' ? Math.sin(V.t / VEH.brake * Math.PI) * 6 : V.state === 'in' || V.state === 'out' ? Math.sin(V.t * 40) * 1.2 : 0;
+  const g = ctx.createRadialGradient(sx, Z_TOP + 2, 10, sx, Z_TOP + 2, V.w * 0.55);
+  g.addColorStop(0, 'rgba(0,0,0,0.5)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.fillRect(sx - V.w * 0.6, Z_TOP - 18, V.w * 1.2, 36);
+  ctx.save(); ctx.translate(sx, Z_TOP + 4);
+  if (V.state === 'brake') ctx.rotate(-0.025 * Math.sin(V.t / VEH.brake * Math.PI)); // il pique du nez en freinant
+  if (V.state === 'out') ctx.scale(-1, 1); // il fait demi-tour et repart vers la droite
+  ctx.drawImage(V.img, -V.w / 2, -V.h + bob, V.w, V.h);
+  ctx.restore();
+}
+
+// Trous : la zone en cours et le pont effondré
+// gz : profondeur du perso ; le trou est dessiné incliné (PIT_SLANT par pixel de profondeur), la détection suit
+const PIT_SLANT = 0.22;
+function pitAt(x, gz = H) {
+  const off = (H - gz) * PIT_SLANT; // bords renvoyés à la profondeur du perso
+  x -= off;
+  const Z = ZONES[zoneAt(x)], C = level.collapse;
+  if (C && x > C.from - W && x < C.front) return { x: C.from - W + off, w: C.front - (C.from - W), collapse: true };
+  for (const [px, pw] of Z.pits || []) if (x > px + 8 && x < px + pw - 8) return { x: px + off, w: pw };
+  return null;
+}
+// Un joueur au sol au-dessus d'un trou tombe ; un ennemi y est repoussé au bord, sauf s'il y est projeté (il y reste)
+function updatePits(dt) {
+  if (!ZONES.some(Z => Z.pits) && !level.collapse) return;
+  for (const h of players) {
+    if (h.out || h.pit || h.respawn || h.assist || h.y < h.gz - 0.5) continue;
+    const P = pitAt(h.x, h.gz);
+    if (P) { h.pit = { t: 0, P }; h.move = null; h.state = 'knock'; h.vx = 0; h.vy = 200; audio.whoosh(0.6); audio.tone(300, 0.7, 'triangle', 0.1, -250); }
+  }
+  for (const e of enemies) {
+    if (e.pit) { e.y += 900 * dt; continue; }
+    if (!e.alive) { if (e.state === 'down' && !ETYPES[e.type].isBoss && pitAt(e.x, e.gz)) e.pit = true; continue; } // vaincu au-dessus du vide
+    if (e.state === 'knock' || e.y < e.gz - 0.5) continue;
+    const P = pitAt(e.x, e.gz);
+    if (!P) continue;
+    if (['hurt', 'down'].includes(e.state) && !ETYPES[e.type].isBoss) {
+      e.pit = true; e.alive = false; e.state = 'down'; e.t = 0; e.hp = 0; kills++; score += ETYPES[e.type].score; audio.tone(260, 0.6, 'triangle', 0.08, -200);
+    } else e.x = e.x - P.x < P.w / 2 && !P.collapse ? P.x - 4 : P.x + P.w + 4;
+  }
+}
+// Chute d'un joueur (appelée à la place de sa mise à jour) : il tombe, perd un peu de vie et revient au bord
+function updatePitFall(h, dt) {
+  const F = h.pit;
+  F.t += dt; h.vy += 1900 * dt; h.y += h.vy * dt;
+  if (F.t < PIT.fallT) return;
+  h.pit = null;
+  h.hp = Math.max(1, h.hp - h.maxHp * PIT.cost);
+  const P = F.P, before = P.x - 50;
+  h.x = P.collapse || before < camX + 50 ? P.x + P.w + 60 : before;
+  h.y = h.gz; h.vy = h.vx = 0; h.onGround = true; h.state = 'idle'; h.t = 0; h.inv = 1.6;
+  popups.push({ x: h.x, y: h.y - 230, t: 0, text: `-${Math.round(h.maxHp * PIT.cost)}`, small: true, c: '#ff4d6d' });
+}
+// Pont qui s'effondre : la caméra avance seule, le bord gauche s'écroule derrière les joueurs
+function updateCollapse(dt) {
+  const Z = ZONES[zoneAt(camX + W / 2)], D = Z.collapse;
+  if (!level.collapse && D && level.cleared && camX >= D.from - 4) {
+    level.collapse = { ...D, on: true, front: camX - 40 };
+    level.banner = { text: 'LE PONT S\'EFFONDRE !', t: 0 }; shake = 18; audio.play('ultraBoom', 0.8, 0.6, 0);
+  }
+  const C = level.collapse;
+  if (!C || !C.on) return;
+  camX = Math.max(camX, Math.min(camX + C.speed * dt, C.to));
+  C.front = Math.min(camX + 70, C.front + 160 * dt);
+  shake = Math.max(shake, 3);
+  for (let k = 0; k < 2; k++) particles.push({ x: C.front + rand(-30, 10), y: rand(LAYERS.street.y, H), vx: rand(-40, 20), vy: rand(100, 300), t: 0, life: 0.7, c: Math.random() < 0.5 ? '#6b6058' : '#3a332e', r: rand(3, 7) });
+  for (const p of level.props) if (p.x < C.front && !p.broken) { p.broken = true; p.t = 5; } // emportés avec le pont
+  if (camX >= C.to) { C.on = false; level.goT = 3; }
+}
+function drawPits() {
+  const L = LAYERS.street, top = L.y + 6, C = level.collapse;
+  const holes = [];
+  for (const Z of ZONES) for (const [px, pw] of Z.pits || []) holes.push([px, pw]);
+  if (C) holes.push([C.from - W - 200, C.front - (C.from - W - 200)]);
+  for (const [px, pw] of holes) {
+    const x0 = px - camX, x1 = px + pw - camX;
+    if (x1 < -40 || x0 > W + 40) continue;
+    // bords dentelés (toujours les mêmes : calculés à partir de la position)
+    // bords inclinés comme les lignes de fuite du sol (le haut est plus loin), dentelés
+    const edge = (x, side) => { const pts = []; for (let y = top, i = 0; y <= H + 10; y += 22, i++) pts.push([x + (H - y) * PIT_SLANT + side * (6 + 7 * Math.abs(Math.sin(px * 0.37 + i * 2.3 + side))), y]); return pts; };
+    const left = edge(x0, 1), right = edge(x1, -1).reverse();
+    // bord lointain dentelé (roche cassée), pas une arête droite
+    const lip = []; for (let k = 1; k < 8; k++) { const t = k / 8; lip.push([left[0][0] + (right[right.length - 1][0] - left[0][0]) * t, top + 7 * Math.abs(Math.sin(px * 0.21 + k * 1.7))]); }
+    right.push(...lip.reverse());
+    ctx.save();
+    ctx.beginPath(); [...left, ...right].forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath();
+    // le vide : noir au centre, une lueur froide tout au fond pour lire la profondeur
+    const g = ctx.createLinearGradient(0, top, 0, H); g.addColorStop(0, '#3a2f33'); g.addColorStop(0.35, '#17121a'); g.addColorStop(0.75, '#141a2c'); g.addColorStop(1, '#26365a');
+    ctx.fillStyle = g; ctx.fill();
+    ctx.clip();
+    // paroi rocheuse du bord d'en face (tournée vers nous), qui plonge dans l'ombre
+    const wall = ctx.createLinearGradient(x1 - 26, 0, x1, 0); wall.addColorStop(0, 'rgba(0,0,0,0)'); wall.addColorStop(1, 'rgba(120,102,104,0.9)');
+    ctx.save(); ctx.transform(1, 0, -PIT_SLANT, 1, PIT_SLANT * H, 0); ctx.fillStyle = wall; ctx.fillRect(x1 - 30, top, 34, H - top); ctx.restore();
+    const fade = ctx.createLinearGradient(0, top, 0, H); fade.addColorStop(0, 'rgba(0,0,0,0)'); fade.addColorStop(0.5, 'rgba(3,2,6,0.35)'); fade.addColorStop(1, 'rgba(3,2,6,0)');
+    ctx.fillStyle = fade; ctx.fillRect(x0 - 20, top, x1 - x0 + 40, H - top);
+    // épaisseur du sol tranché sous le bord lointain (strates), puis la paroi qui s'enfonce dans le noir :
+    // c'est elle qui fait lire un trou et non un bloc dressé
+    ctx.save(); ctx.transform(1, 0, -PIT_SLANT, 1, PIT_SLANT * H, 0);
+    const soil = ctx.createLinearGradient(0, top, 0, top + 34); soil.addColorStop(0, '#9a8576'); soil.addColorStop(0.45, '#6a574c'); soil.addColorStop(1, '#2e2428');
+    ctx.fillStyle = soil; ctx.fillRect(x0 - 10, top, x1 - x0 + 20, 34);
+    ctx.strokeStyle = 'rgba(0,0,0,0.35)'; ctx.lineWidth = 1.5;
+    for (const dy of [9, 18, 27]) { ctx.beginPath(); ctx.moveTo(x0 - 10, top + dy + 2 * Math.sin(px + dy)); ctx.lineTo(x1 + 10, top + dy - 2 * Math.sin(px * 1.3 + dy)); ctx.stroke(); }
+    const deep = ctx.createLinearGradient(0, top + 34, 0, top + 140); deep.addColorStop(0, 'rgba(40,32,38,0.9)'); deep.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = deep; ctx.fillRect(x0 - 10, top + 34, x1 - x0 + 20, 106);
+    ctx.restore();
+    // brume qui remonte du gouffre
+    const tt = performance.now() / 1000;
+    for (let k = 0; k < 4; k++) {
+      const mx = x0 + ((k * 0.29 + tt * 0.05) % 1) * (x1 - x0), my = H - 30 - ((tt * 18 + k * 37) % 120);
+      ctx.fillStyle = 'rgba(140,165,215,0.14)'; ctx.beginPath(); ctx.ellipse(mx, my, pw * 0.4, 18, 0, 0, 7); ctx.fill();
+    }
+    ctx.restore(); ctx.save();
+    // lèvres de roche : arête claire du côté d'où l'on vient, ombre portée de l'autre
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = 'rgba(0,0,0,0.85)'; ctx.lineWidth = 4;
+    ctx.beginPath(); [...left, ...right].forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(225,205,185,0.35)'; ctx.lineWidth = 2;
+    ctx.beginPath(); left.forEach(([x, y], i) => i ? ctx.lineTo(x - 2, y) : ctx.moveTo(x - 2, y)); ctx.stroke();
+    ctx.beginPath(); right.forEach(([x, y], i) => i ? ctx.lineTo(x + 2, y) : ctx.moveTo(x + 2, y)); ctx.stroke();
+    ctx.restore();
+  }
 }
 
 // Les coups des joueurs cassent les objets
@@ -429,13 +669,15 @@ function levelDrawables() {
   return out;
 }
 
+// hauteur à l'écran : une caisse arrive à la taille d'un perso (~185 px), plus à son épaule
+const PROP_H = { crate: 84, barrel: 92, can: 80 };
 function drawProp(p) {
   if (p.broken && p.t > 3 && Math.floor(p.t * 10) % 2) return;
   if (p.broken && p.t > 4) return;
   const img = IMG[`prop_${p.type}${p.broken ? '_broken' : ''}`];
   const sx = p.x - camX + (p.shakeT > 0 ? Math.sin(p.shakeT * 90) * 4 : 0);
   if (!img || sx < -200 || sx > W + 200) return;
-  const hgt = p.type === 'can' ? 100 : 105, s = (p.broken ? hgt * 0.7 : hgt) / img.height * (p.broken ? 1.2 : 1);
+  const hgt = PROP_H[p.type] || 90, s = (p.broken ? hgt * 0.7 : hgt) / img.height * (p.broken ? 1.2 : 1);
   ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.beginPath(); ctx.ellipse(sx, p.gz + 3, img.width * s * 0.42, 10, 0, 0, 7); ctx.fill();
   ctx.drawImage(img, sx - img.width * s / 2, p.gz - img.height * s + 6, img.width * s, img.height * s);
 }
@@ -469,8 +711,12 @@ function drawZoneLayer(kind) {
     ctx.beginPath(); ctx.rect(Math.max(-10, sx0), -20, Math.min(W + 20, sx1) - Math.max(-10, sx0), H + 40); ctx.clip();
     if (kind === 'mid') {
       // deux versions du plan moyen en alternance (la 2e prolonge le même lieu) : le décor ne se répète plus toutes les largeurs d'écran
-      const alt = Z.mid2 && IMG[Z.mid2] ? harmonizedMid(Z.mid2, IMG[Z.mid2], Z.ground) : null;
-      drawTiled(harmonizedMid(key, img, Z.ground), f, L.y, L.h, L.w, mirror, null, alt);
+      const alt = Z.mid2 && IMG[Z.mid2] ? harmonizedMid(Z.mid2, IMG[Z.mid2], Z.ground) : null, main = harmonizedMid(key, img, Z.ground);
+      // midScale : décor rapetissé (pied inchangé) quand il écrase les personnages ; le haut est complété par
+      // le reflet de sa propre bande supérieure (plafond, ciel), sans toucher à la taille des persos
+      const s = Z.midScale || 1, h = L.h * s, y = L.y + L.h - h, w = img.width * h / img.height;
+      drawTiled(main, f, y, h, w, mirror, null, alt);
+      if (s < 1 && y > 0) drawTiled(main, f, -2, y + 3, w, mirror, [0, (y + 3) * img.height / h], alt);
     }
     else if (kind === 'ground') {
       drawTiled(img, f, L.y, L.h, L.w, mirror);
@@ -517,6 +763,8 @@ const STRIPS = {
   nr_z4: STRIP('rocks_grass', 60, 26), db_z4: STRIP('rocks_namek', 80, 30), mh_z4: STRIP('rubble', 70, 30), rk_z4: STRIP('rail_wood', 70, 26),
   op2_z4: STRIP('balustrade', 56, 22), nr2_z4: STRIP('rail_metal', 64, 24), ds2_z4: STRIP('rail_wood', 70, 26), db2_z4: STRIP('rubble', 70, 30),
   jk_z4: STRIP('rubble', 70, 30), sl_z4: STRIP('rubble', 70, 30), opm_z4: STRIP('rubble', 70, 30), bl2_z4: STRIP('balustrade', 56, 22),
+  // routes B (le centre commercial est un intérieur : pas de bordure)
+  op_z5: STRIP('curb_city', 46, 22), nr_z5: STRIP('rocks_grass', 60, 26),
 };
 for (const S of new Set(Object.values(STRIPS).map(S => S.img))) ASSETS.backgrounds[S] = `assets/backgrounds/strips/${S.slice(6)}.png`;
 // Éclairage de la zone (luminosité moyenne du plan moyen : jour ou nuit) : la bordure prend la même lumière que le décor
@@ -596,7 +844,7 @@ function drawLevelOverlay() {
   // Carte de présentation d'un nouvel ennemi : le jeu se fige le temps de la lire
   if (level.card) {
     const c = level.card, t = c.t, info = ENEMY_INFO[c.type] || [c.type.toUpperCase(), ''], img = IMG['intro_' + c.type];
-    const k = t < 0.25 ? t / 0.25 : t > CARD_T - 0.3 ? (CARD_T - t) / 0.3 : 1, boss = !!ETYPES[c.type]?.isBoss;
+    const k = t < 0.25 ? t / 0.25 : t > CARD_T - 0.3 ? (CARD_T - t) / 0.3 : 1, boss = !!ETYPES[c.type]?.isBoss, mini = !!ETYPES[c.type]?.mini;
     ctx.save();
     ctx.fillStyle = `rgba(0,0,0,${0.55 * k})`; ctx.fillRect(0, 0, W, H);
     const bw = W, bh = boss ? 300 : 230, y = H / 2 - bh / 2, x = (1 - k) * (c.type.length % 2 ? -W : W);
@@ -617,7 +865,7 @@ function drawLevelOverlay() {
     ctx.fillStyle = g; ctx.fillRect(x, y, bw, bh);
     ctx.restore();
     ctx.strokeStyle = boss ? '#ff2030' : '#ff4fd8'; ctx.lineWidth = 4; ctx.stroke();
-    outlined(boss ? '⚠ BOSS ⚠' : 'NOUVEL ENNEMI', x + 60, y + 70, 24, boss ? '#ff3040' : '#ff8ae6', 'left');
+    outlined(mini ? '⚠ MINI-BOSS ⚠' : boss ? '⚠ BOSS ⚠' : 'NOUVEL ENNEMI', x + 60, y + 70, 24, boss ? '#ff3040' : '#ff8ae6', 'left');
     outlined(info[0], x + 60, y + 70 + (boss ? 80 : 60), boss ? 72 : 52, '#fff', 'left');
     ctx.font = 'italic bold 18px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#ffd6e8';
     ctx.fillText(info[1], x + 64, y + bh - 40);
@@ -637,6 +885,7 @@ const INTRO_FACE = {
   jk_curse: 0.15, jk_user: 0.12, jk_boss: 0.12, sl_goblin: 0.2, sl_knight: 0.12, sl_boss: 0.12,
   opm_monster: 0.15, opm_alien: 0.12, opm_boss: 0.12, bl2_arrancar: 0.12, bl2_fraccion: 0.15, bl2_boss: 0.12,
 };
+for (const L of LEVELS) INTRO_FACE[`${L.id}_mini`] ??= 0.14; // mini-boss : à relever à l'œil une fois les cartes faites
 
 // Jauge du boss en bas de l'écran
 function drawBossBar() {

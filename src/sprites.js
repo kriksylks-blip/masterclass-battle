@@ -2248,96 +2248,6 @@ const SPRITES = {
      "ay": 353
     }
    ]
-  },
-  "idle": {
-   "scale": 0.3463,
-   "rate": 7.02,
-   "frames": [
-    {
-     "src": "assets/sprites/luffy/idlev_0.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_1.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_2.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_3.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_4.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_5.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_6.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_7.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_8.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_9.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_10.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/luffy/idlev_11.png",
-     "w": 384,
-     "h": 538,
-     "ax": 198.8,
-     "ay": 538
-    }
-   ]
   }
  },
  "kenshin": {
@@ -6714,6 +6624,492 @@ const SPRITES = {
    ]
   }
  },
+ "ippo": {
+  "walk": {
+   "scale": 0.3158,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/walkv_0.png",
+     "w": 210,
+     "h": 540,
+     "ax": 105.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_1.png",
+     "w": 226,
+     "h": 540,
+     "ax": 121.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_2.png",
+     "w": 254,
+     "h": 536,
+     "ax": 148.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_3.png",
+     "w": 282,
+     "h": 530,
+     "ax": 174.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_4.png",
+     "w": 300,
+     "h": 532,
+     "ax": 196.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_5.png",
+     "w": 302,
+     "h": 532,
+     "ax": 196.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_6.png",
+     "w": 274,
+     "h": 538,
+     "ax": 170.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_7.png",
+     "w": 236,
+     "h": 544,
+     "ax": 133.5,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_8.png",
+     "w": 202,
+     "h": 548,
+     "ax": 101.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_9.png",
+     "w": 222,
+     "h": 548,
+     "ax": 123.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_10.png",
+     "w": 258,
+     "h": 544,
+     "ax": 148.5,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_11.png",
+     "w": 298,
+     "h": 536,
+     "ax": 173.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_12.png",
+     "w": 302,
+     "h": 530,
+     "ax": 196.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_13.png",
+     "w": 286,
+     "h": 530,
+     "ax": 187.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_14.png",
+     "w": 262,
+     "h": 532,
+     "ax": 161.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/ippo/walkv_15.png",
+     "w": 230,
+     "h": 536,
+     "ax": 126.5,
+     "ay": 536
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4789,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/jump_0.png",
+     "w": 201,
+     "h": 287,
+     "ax": 116.0,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/ippo/jump_1.png",
+     "w": 223,
+     "h": 319,
+     "ax": 140.0,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/ippo/jump_2.png",
+     "w": 162,
+     "h": 366,
+     "ax": 79.0,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/ippo/jump_3.png",
+     "w": 151,
+     "h": 287,
+     "ax": 77.0,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/ippo/jump_4.png",
+     "w": 146,
+     "h": 262,
+     "ax": 76.0,
+     "ay": 262
+    },
+    {
+     "src": "assets/sprites/ippo/jump_5.png",
+     "w": 166,
+     "h": 322,
+     "ax": 67.0,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/ippo/jump_6.png",
+     "w": 180,
+     "h": 338,
+     "ax": 82.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/ippo/jump_7.png",
+     "w": 189,
+     "h": 284,
+     "ax": 107.5,
+     "ay": 284
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4789,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/fall_0.png",
+     "w": 204,
+     "h": 347,
+     "ax": 116.8,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/ippo/fall_1.png",
+     "w": 174,
+     "h": 307,
+     "ax": 74.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/ippo/fall_2.png",
+     "w": 306,
+     "h": 256,
+     "ax": 110.6,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/ippo/fall_3.png",
+     "w": 325,
+     "h": 189,
+     "ax": 125.7,
+     "ay": 189
+    },
+    {
+     "src": "assets/sprites/ippo/fall_4.png",
+     "w": 406,
+     "h": 112,
+     "ax": 171.5,
+     "ay": 112
+    },
+    {
+     "src": "assets/sprites/ippo/fall_5.png",
+     "w": 260,
+     "h": 224,
+     "ax": 52.5,
+     "ay": 224
+    },
+    {
+     "src": "assets/sprites/ippo/fall_6.png",
+     "w": 225,
+     "h": 264,
+     "ax": 133.3,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/ippo/fall_7.png",
+     "w": 217,
+     "h": 328,
+     "ax": 113.5,
+     "ay": 328
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4316,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/combo_0.png",
+     "w": 214,
+     "h": 354,
+     "ax": 122.0,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/ippo/combo_1.png",
+     "w": 310,
+     "h": 354,
+     "ax": 133.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/ippo/combo_2.png",
+     "w": 320,
+     "h": 353,
+     "ax": 151.0,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/ippo/combo_3.png",
+     "w": 238,
+     "h": 356,
+     "ax": 139.0,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/ippo/combo_4.png",
+     "w": 283,
+     "h": 347,
+     "ax": 127.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/ippo/combo_5.png",
+     "w": 284,
+     "h": 324,
+     "ax": 136.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/ippo/combo_6.png",
+     "w": 192,
+     "h": 280,
+     "ax": 112.5,
+     "ay": 280
+    },
+    {
+     "src": "assets/sprites/ippo/combo_7.png",
+     "w": 217,
+     "h": 371,
+     "ax": 110.5,
+     "ay": 371
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4316,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/lowair_0.png",
+     "w": 259,
+     "h": 312,
+     "ax": 154.6,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/ippo/lowair_1.png",
+     "w": 254,
+     "h": 334,
+     "ax": 151.7,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/ippo/lowair_2.png",
+     "w": 340,
+     "h": 329,
+     "ax": 190.4,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/ippo/lowair_3.png",
+     "w": 255,
+     "h": 338,
+     "ax": 150.7,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/ippo/lowair_4.png",
+     "w": 184,
+     "h": 366,
+     "ax": 95.0,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/ippo/lowair_5.png",
+     "w": 216,
+     "h": 361,
+     "ax": 102.5,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/ippo/lowair_6.png",
+     "w": 350,
+     "h": 360,
+     "ax": 166.5,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/ippo/lowair_7.png",
+     "w": 232,
+     "h": 365,
+     "ax": 125.0,
+     "ay": 365
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4316,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/dashcharge_0.png",
+     "w": 224,
+     "h": 352,
+     "ax": 128.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/ippo/dashcharge_1.png",
+     "w": 255,
+     "h": 313,
+     "ax": 154.7,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/ippo/dashcharge_2.png",
+     "w": 375,
+     "h": 338,
+     "ax": 178.0,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/ippo/dashcharge_3.png",
+     "w": 220,
+     "h": 355,
+     "ax": 124.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/ippo/dashcharge_4.png",
+     "w": 222,
+     "h": 363,
+     "ax": 118.5,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/ippo/dashcharge_5.png",
+     "w": 238,
+     "h": 330,
+     "ax": 137.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/ippo/dashcharge_6.png",
+     "w": 248,
+     "h": 362,
+     "ax": 113.5,
+     "ay": 362
+    },
+    {
+     "src": "assets/sprites/ippo/dashcharge_7.png",
+     "w": 217,
+     "h": 357,
+     "ax": 122.5,
+     "ay": 357
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4316,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/special_0.png",
+     "w": 223,
+     "h": 347,
+     "ax": 126.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/ippo/special_1.png",
+     "w": 266,
+     "h": 291,
+     "ax": 153.0,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/ippo/special_2.png",
+     "w": 327,
+     "h": 347,
+     "ax": 158.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/ippo/special_3.png",
+     "w": 253,
+     "h": 294,
+     "ax": 157.5,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/ippo/special_4.png",
+     "w": 313,
+     "h": 359,
+     "ax": 147.0,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/ippo/special_5.png",
+     "w": 251,
+     "h": 303,
+     "ax": 151.5,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/ippo/special_6.png",
+     "w": 309,
+     "h": 351,
+     "ax": 147.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/ippo/special_7.png",
+     "w": 221,
+     "h": 434,
+     "ax": 133.0,
+     "ay": 434
+    }
+   ]
+  }
+ },
  "vegeta_ssj": {
   "walk": {
    "scale": 0.361,
@@ -7682,6 +8078,191 @@ const SPRITES = {
      "h": 323,
      "ax": 195.5,
      "ay": 323
+    }
+   ]
+  }
+ },
+ "biker": {
+  "walk": {
+   "scale": 0.5602,
+   "frames": [
+    {
+     "src": "assets/sprites/biker/walk_0.png",
+     "w": 205,
+     "h": 353,
+     "ax": 101.5,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/biker/walk_1.png",
+     "w": 165,
+     "h": 352,
+     "ax": 98.5,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/biker/walk_2.png",
+     "w": 125,
+     "h": 356,
+     "ax": 57.5,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/biker/walk_3.png",
+     "w": 214,
+     "h": 353,
+     "ax": 103.5,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/biker/walk_4.png",
+     "w": 204,
+     "h": 354,
+     "ax": 102.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/biker/walk_5.png",
+     "w": 180,
+     "h": 357,
+     "ax": 106.5,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/biker/walk_6.png",
+     "w": 126,
+     "h": 357,
+     "ax": 59.0,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/biker/walk_7.png",
+     "w": 224,
+     "h": 354,
+     "ax": 111.0,
+     "ay": 354
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5602,
+   "frames": [
+    {
+     "src": "assets/sprites/biker/attack_0.png",
+     "w": 330,
+     "h": 402,
+     "ax": 115.6,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/biker/attack_1.png",
+     "w": 283,
+     "h": 349,
+     "ax": 174.3,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/biker/attack_2.png",
+     "w": 417,
+     "h": 308,
+     "ax": 156.5,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/biker/attack_3.png",
+     "w": 271,
+     "h": 316,
+     "ax": 159.0,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/biker/attack_4.png",
+     "w": 286,
+     "h": 365,
+     "ax": 146.3,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/biker/attack_5.png",
+     "w": 395,
+     "h": 289,
+     "ax": 229.0,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/biker/attack_6.png",
+     "w": 345,
+     "h": 333,
+     "ax": 153.5,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/biker/attack_7.png",
+     "w": 236,
+     "h": 354,
+     "ax": 135.4,
+     "ay": 354
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5602,
+   "frames": [
+    {
+     "src": "assets/sprites/biker/fall_0.png",
+     "w": 239,
+     "h": 354,
+     "ax": 104.8,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/biker/fall_1.png",
+     "w": 228,
+     "h": 337,
+     "ax": 113.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/biker/fall_2.png",
+     "w": 305,
+     "h": 286,
+     "ax": 110.1,
+     "ay": 286
+    },
+    {
+     "src": "assets/sprites/biker/fall_3.png",
+     "w": 294,
+     "h": 231,
+     "ax": 88.2,
+     "ay": 227
+    },
+    {
+     "src": "assets/sprites/biker/fall_4.png",
+     "w": 380,
+     "h": 138,
+     "ax": 171.0,
+     "ay": 137
+    },
+    {
+     "src": "assets/sprites/biker/fall_5.png",
+     "w": 279,
+     "h": 228,
+     "ax": 149.5,
+     "ay": 223
+    },
+    {
+     "src": "assets/sprites/biker/fall_6.png",
+     "w": 231,
+     "h": 275,
+     "ax": 137.6,
+     "ay": 274
+    },
+    {
+     "src": "assets/sprites/biker/fall_7.png",
+     "w": 283,
+     "h": 310,
+     "ax": 159.9,
+     "ay": 310
     }
    ]
   }
@@ -8703,6 +9284,2861 @@ const SPRITES = {
    ]
   }
  },
+ "jinwoo": {
+  "walk": {
+   "scale": 0.3211,
+   "rate": 25.38,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/walkv_0.png",
+     "w": 416,
+     "h": 584,
+     "ax": 193.5,
+     "ay": 584
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_1.png",
+     "w": 410,
+     "h": 584,
+     "ax": 199.5,
+     "ay": 584
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_2.png",
+     "w": 393,
+     "h": 584,
+     "ax": 196.0,
+     "ay": 584
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_3.png",
+     "w": 370,
+     "h": 590,
+     "ax": 184.5,
+     "ay": 590
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_4.png",
+     "w": 338,
+     "h": 598,
+     "ax": 173.7,
+     "ay": 598
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_5.png",
+     "w": 322,
+     "h": 600,
+     "ax": 159.5,
+     "ay": 600
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_6.png",
+     "w": 318,
+     "h": 602,
+     "ax": 172.4,
+     "ay": 602
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_7.png",
+     "w": 360,
+     "h": 600,
+     "ax": 179.5,
+     "ay": 600
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_8.png",
+     "w": 408,
+     "h": 590,
+     "ax": 173.5,
+     "ay": 590
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_9.png",
+     "w": 410,
+     "h": 582,
+     "ax": 195.5,
+     "ay": 582
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_10.png",
+     "w": 385,
+     "h": 579,
+     "ax": 208.5,
+     "ay": 579
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_11.png",
+     "w": 348,
+     "h": 584,
+     "ax": 208.5,
+     "ay": 584
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_12.png",
+     "w": 336,
+     "h": 588,
+     "ax": 212.5,
+     "ay": 588
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_13.png",
+     "w": 324,
+     "h": 592,
+     "ax": 210.6,
+     "ay": 592
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_14.png",
+     "w": 334,
+     "h": 596,
+     "ax": 170.9,
+     "ay": 596
+    },
+    {
+     "src": "assets/sprites/jinwoo/walkv_15.png",
+     "w": 358,
+     "h": 590,
+     "ax": 172.8,
+     "ay": 590
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.574,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/jump_0.png",
+     "w": 250,
+     "h": 263,
+     "ax": 160.3,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/jinwoo/jump_1.png",
+     "w": 230,
+     "h": 312,
+     "ax": 115.0,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/jinwoo/jump_2.png",
+     "w": 224,
+     "h": 276,
+     "ax": 138.4,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/jinwoo/jump_3.png",
+     "w": 200,
+     "h": 261,
+     "ax": 115.5,
+     "ay": 261
+    },
+    {
+     "src": "assets/sprites/jinwoo/jump_4.png",
+     "w": 229,
+     "h": 234,
+     "ax": 130.0,
+     "ay": 234
+    },
+    {
+     "src": "assets/sprites/jinwoo/jump_5.png",
+     "w": 259,
+     "h": 296,
+     "ax": 140.5,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/jinwoo/jump_6.png",
+     "w": 244,
+     "h": 315,
+     "ax": 160.5,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/jinwoo/jump_7.png",
+     "w": 316,
+     "h": 272,
+     "ax": 170.5,
+     "ay": 272
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.574,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/fall_0.png",
+     "w": 289,
+     "h": 325,
+     "ax": 138.6,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/jinwoo/fall_1.png",
+     "w": 323,
+     "h": 310,
+     "ax": 137.5,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/jinwoo/fall_2.png",
+     "w": 357,
+     "h": 264,
+     "ax": 163.3,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/jinwoo/fall_3.png",
+     "w": 265,
+     "h": 238,
+     "ax": 139.0,
+     "ay": 238
+    },
+    {
+     "src": "assets/sprites/jinwoo/fall_4.png",
+     "w": 369,
+     "h": 141,
+     "ax": 199.8,
+     "ay": 141
+    },
+    {
+     "src": "assets/sprites/jinwoo/fall_5.png",
+     "w": 286,
+     "h": 189,
+     "ax": 162.0,
+     "ay": 189
+    },
+    {
+     "src": "assets/sprites/jinwoo/fall_6.png",
+     "w": 248,
+     "h": 233,
+     "ax": 147.0,
+     "ay": 233
+    },
+    {
+     "src": "assets/sprites/jinwoo/fall_7.png",
+     "w": 319,
+     "h": 282,
+     "ax": 170.7,
+     "ay": 282
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.574,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/combo_0.png",
+     "w": 340,
+     "h": 291,
+     "ax": 183.1,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/jinwoo/combo_1.png",
+     "w": 276,
+     "h": 302,
+     "ax": 143.9,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/jinwoo/combo_2.png",
+     "w": 305,
+     "h": 300,
+     "ax": 163.0,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/jinwoo/combo_3.png",
+     "w": 259,
+     "h": 339,
+     "ax": 175.5,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/jinwoo/combo_4.png",
+     "w": 301,
+     "h": 318,
+     "ax": 99.4,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/jinwoo/combo_5.png",
+     "w": 307,
+     "h": 321,
+     "ax": 86.8,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/jinwoo/combo_6.png",
+     "w": 359,
+     "h": 287,
+     "ax": 155.1,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/jinwoo/combo_7.png",
+     "w": 233,
+     "h": 272,
+     "ax": 142.2,
+     "ay": 272
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.574,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/lowair_0.png",
+     "w": 204,
+     "h": 259,
+     "ax": 122.5,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/jinwoo/lowair_1.png",
+     "w": 313,
+     "h": 270,
+     "ax": 168.3,
+     "ay": 270
+    },
+    {
+     "src": "assets/sprites/jinwoo/lowair_2.png",
+     "w": 357,
+     "h": 223,
+     "ax": 151.6,
+     "ay": 223
+    },
+    {
+     "src": "assets/sprites/jinwoo/lowair_3.png",
+     "w": 218,
+     "h": 263,
+     "ax": 142.0,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/jinwoo/lowair_4.png",
+     "w": 219,
+     "h": 246,
+     "ax": 134.9,
+     "ay": 246
+    },
+    {
+     "src": "assets/sprites/jinwoo/lowair_5.png",
+     "w": 207,
+     "h": 365,
+     "ax": 117.1,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/jinwoo/lowair_6.png",
+     "w": 314,
+     "h": 263,
+     "ax": 133.1,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/jinwoo/lowair_7.png",
+     "w": 267,
+     "h": 272,
+     "ax": 138.5,
+     "ay": 272
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.574,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_0.png",
+     "w": 249,
+     "h": 277,
+     "ax": 165.5,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_1.png",
+     "w": 292,
+     "h": 264,
+     "ax": 134.6,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_2.png",
+     "w": 304,
+     "h": 277,
+     "ax": 168.0,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_3.png",
+     "w": 317,
+     "h": 283,
+     "ax": 170.7,
+     "ay": 283
+    },
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_4.png",
+     "w": 255,
+     "h": 229,
+     "ax": 172.0,
+     "ay": 229
+    },
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_5.png",
+     "w": 247,
+     "h": 317,
+     "ax": 140.0,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_6.png",
+     "w": 264,
+     "h": 333,
+     "ax": 126.9,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/jinwoo/dashcharge_7.png",
+     "w": 329,
+     "h": 288,
+     "ax": 176.1,
+     "ay": 288
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.574,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/special_0.png",
+     "w": 228,
+     "h": 332,
+     "ax": 126.5,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/jinwoo/special_1.png",
+     "w": 267,
+     "h": 294,
+     "ax": 159.4,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/jinwoo/special_2.png",
+     "w": 286,
+     "h": 342,
+     "ax": 115.5,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/jinwoo/special_3.png",
+     "w": 315,
+     "h": 276,
+     "ax": 168.5,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/jinwoo/special_4.png",
+     "w": 197,
+     "h": 343,
+     "ax": 94.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/jinwoo/special_5.png",
+     "w": 246,
+     "h": 366,
+     "ax": 121.5,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/jinwoo/special_6.png",
+     "w": 325,
+     "h": 346,
+     "ax": 167.8,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/jinwoo/special_7.png",
+     "w": 194,
+     "h": 345,
+     "ax": 104.0,
+     "ay": 345
+    }
+   ]
+  }
+ },
+ "saitama": {
+  "walk": {
+   "scale": 0.3397,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/walkv_0.png",
+     "w": 312,
+     "h": 517,
+     "ax": 198.5,
+     "ay": 517
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_1.png",
+     "w": 321,
+     "h": 514,
+     "ax": 197.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_2.png",
+     "w": 328,
+     "h": 512,
+     "ax": 195.5,
+     "ay": 512
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_3.png",
+     "w": 320,
+     "h": 514,
+     "ax": 184.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_4.png",
+     "w": 292,
+     "h": 516,
+     "ax": 160.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_5.png",
+     "w": 280,
+     "h": 518,
+     "ax": 147.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_6.png",
+     "w": 256,
+     "h": 521,
+     "ax": 126.5,
+     "ay": 521
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_7.png",
+     "w": 245,
+     "h": 527,
+     "ax": 114.5,
+     "ay": 527
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_8.png",
+     "w": 276,
+     "h": 528,
+     "ax": 122.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_9.png",
+     "w": 302,
+     "h": 526,
+     "ax": 132.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_10.png",
+     "w": 380,
+     "h": 522,
+     "ax": 172.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_11.png",
+     "w": 398,
+     "h": 514,
+     "ax": 192.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_12.png",
+     "w": 389,
+     "h": 510,
+     "ax": 192.5,
+     "ay": 510
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_13.png",
+     "w": 358,
+     "h": 510,
+     "ax": 176.5,
+     "ay": 510
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_14.png",
+     "w": 317,
+     "h": 514,
+     "ax": 185.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/saitama/walkv_15.png",
+     "w": 312,
+     "h": 516,
+     "ax": 191.5,
+     "ay": 516
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.5217,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/jump_0.png",
+     "w": 204,
+     "h": 252,
+     "ax": 132.0,
+     "ay": 252
+    },
+    {
+     "src": "assets/sprites/saitama/jump_1.png",
+     "w": 265,
+     "h": 309,
+     "ax": 118.5,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/saitama/jump_2.png",
+     "w": 207,
+     "h": 307,
+     "ax": 117.5,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/saitama/jump_3.png",
+     "w": 189,
+     "h": 237,
+     "ax": 126.3,
+     "ay": 237
+    },
+    {
+     "src": "assets/sprites/saitama/jump_4.png",
+     "w": 206,
+     "h": 179,
+     "ax": 132.0,
+     "ay": 179
+    },
+    {
+     "src": "assets/sprites/saitama/jump_5.png",
+     "w": 237,
+     "h": 301,
+     "ax": 137.5,
+     "ay": 301
+    },
+    {
+     "src": "assets/sprites/saitama/jump_6.png",
+     "w": 280,
+     "h": 334,
+     "ax": 173.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/saitama/jump_7.png",
+     "w": 178,
+     "h": 241,
+     "ax": 102.5,
+     "ay": 241
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5217,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/fall_0.png",
+     "w": 205,
+     "h": 309,
+     "ax": 80.6,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/saitama/fall_1.png",
+     "w": 224,
+     "h": 291,
+     "ax": 62.0,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/saitama/fall_2.png",
+     "w": 353,
+     "h": 231,
+     "ax": 188.1,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/saitama/fall_3.png",
+     "w": 271,
+     "h": 245,
+     "ax": 109.5,
+     "ay": 245
+    },
+    {
+     "src": "assets/sprites/saitama/fall_4.png",
+     "w": 342,
+     "h": 102,
+     "ax": 182.4,
+     "ay": 102
+    },
+    {
+     "src": "assets/sprites/saitama/fall_5.png",
+     "w": 282,
+     "h": 189,
+     "ax": 176.0,
+     "ay": 189
+    },
+    {
+     "src": "assets/sprites/saitama/fall_6.png",
+     "w": 221,
+     "h": 233,
+     "ax": 147.0,
+     "ay": 233
+    },
+    {
+     "src": "assets/sprites/saitama/fall_7.png",
+     "w": 211,
+     "h": 301,
+     "ax": 98.5,
+     "ay": 301
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5217,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/combo_0.png",
+     "w": 188,
+     "h": 329,
+     "ax": 85.5,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/saitama/combo_1.png",
+     "w": 228,
+     "h": 308,
+     "ax": 93.9,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/saitama/combo_2.png",
+     "w": 327,
+     "h": 288,
+     "ax": 170.3,
+     "ay": 288
+    },
+    {
+     "src": "assets/sprites/saitama/combo_3.png",
+     "w": 218,
+     "h": 339,
+     "ax": 145.5,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/saitama/combo_4.png",
+     "w": 268,
+     "h": 317,
+     "ax": 65.2,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/saitama/combo_5.png",
+     "w": 255,
+     "h": 300,
+     "ax": 62.5,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/saitama/combo_6.png",
+     "w": 252,
+     "h": 311,
+     "ax": 74.0,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/saitama/combo_7.png",
+     "w": 220,
+     "h": 329,
+     "ax": 145.0,
+     "ay": 329
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.5217,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/lowair_0.png",
+     "w": 202,
+     "h": 300,
+     "ax": 113.0,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/saitama/lowair_1.png",
+     "w": 234,
+     "h": 306,
+     "ax": 114.5,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/saitama/lowair_2.png",
+     "w": 366,
+     "h": 226,
+     "ax": 155.0,
+     "ay": 226
+    },
+    {
+     "src": "assets/sprites/saitama/lowair_3.png",
+     "w": 219,
+     "h": 302,
+     "ax": 113.5,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/saitama/lowair_4.png",
+     "w": 219,
+     "h": 267,
+     "ax": 133.0,
+     "ay": 267
+    },
+    {
+     "src": "assets/sprites/saitama/lowair_5.png",
+     "w": 238,
+     "h": 364,
+     "ax": 117.0,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/saitama/lowair_6.png",
+     "w": 333,
+     "h": 256,
+     "ax": 153.4,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/saitama/lowair_7.png",
+     "w": 285,
+     "h": 281,
+     "ax": 162.7,
+     "ay": 281
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.5217,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/dashcharge_0.png",
+     "w": 198,
+     "h": 264,
+     "ax": 109.8,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/saitama/dashcharge_1.png",
+     "w": 392,
+     "h": 258,
+     "ax": 173.0,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/saitama/dashcharge_2.png",
+     "w": 278,
+     "h": 280,
+     "ax": 144.5,
+     "ay": 280
+    },
+    {
+     "src": "assets/sprites/saitama/dashcharge_3.png",
+     "w": 161,
+     "h": 349,
+     "ax": 88.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/saitama/dashcharge_4.png",
+     "w": 190,
+     "h": 345,
+     "ax": 89.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/saitama/dashcharge_5.png",
+     "w": 181,
+     "h": 351,
+     "ax": 92.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/saitama/dashcharge_6.png",
+     "w": 278,
+     "h": 368,
+     "ax": 198.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/saitama/dashcharge_7.png",
+     "w": 239,
+     "h": 311,
+     "ax": 111.5,
+     "ay": 311
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5217,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/special_0.png",
+     "w": 241,
+     "h": 303,
+     "ax": 111.0,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/saitama/special_1.png",
+     "w": 311,
+     "h": 304,
+     "ax": 136.0,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/saitama/special_2.png",
+     "w": 391,
+     "h": 295,
+     "ax": 173.5,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/saitama/special_3.png",
+     "w": 277,
+     "h": 299,
+     "ax": 139.3,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/saitama/special_4.png",
+     "w": 190,
+     "h": 244,
+     "ax": 104.0,
+     "ay": 244
+    },
+    {
+     "src": "assets/sprites/saitama/special_5.png",
+     "w": 218,
+     "h": 318,
+     "ax": 118.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/saitama/special_6.png",
+     "w": 238,
+     "h": 347,
+     "ax": 136.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/saitama/special_7.png",
+     "w": 134,
+     "h": 332,
+     "ax": 74.0,
+     "ay": 332
+    }
+   ]
+  }
+ },
+ "gojo": {
+  "walk": {
+   "scale": 0.3682,
+   "rate": 24.35,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/walkv_0.png",
+     "w": 271,
+     "h": 550,
+     "ax": 161.5,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_1.png",
+     "w": 232,
+     "h": 557,
+     "ax": 135.5,
+     "ay": 557
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_2.png",
+     "w": 176,
+     "h": 564,
+     "ax": 92.5,
+     "ay": 564
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_3.png",
+     "w": 158,
+     "h": 568,
+     "ax": 80.0,
+     "ay": 568
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_4.png",
+     "w": 201,
+     "h": 564,
+     "ax": 108.5,
+     "ay": 564
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_5.png",
+     "w": 296,
+     "h": 556,
+     "ax": 138.0,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_6.png",
+     "w": 325,
+     "h": 548,
+     "ax": 172.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_7.png",
+     "w": 318,
+     "h": 542,
+     "ax": 190.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_8.png",
+     "w": 293,
+     "h": 546,
+     "ax": 183.5,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_9.png",
+     "w": 226,
+     "h": 548,
+     "ax": 154.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_10.png",
+     "w": 194,
+     "h": 556,
+     "ax": 112.5,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_11.png",
+     "w": 186,
+     "h": 558,
+     "ax": 92.5,
+     "ay": 558
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_12.png",
+     "w": 224,
+     "h": 554,
+     "ax": 112.0,
+     "ay": 554
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_13.png",
+     "w": 307,
+     "h": 549,
+     "ax": 141.0,
+     "ay": 549
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_14.png",
+     "w": 321,
+     "h": 546,
+     "ax": 154.0,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/gojo/walkv_15.png",
+     "w": 322,
+     "h": 546,
+     "ax": 176.5,
+     "ay": 546
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.584,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/jump_0.png",
+     "w": 160,
+     "h": 255,
+     "ax": 84.5,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/gojo/jump_1.png",
+     "w": 194,
+     "h": 313,
+     "ax": 117.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/gojo/jump_2.png",
+     "w": 164,
+     "h": 324,
+     "ax": 92.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/gojo/jump_3.png",
+     "w": 127,
+     "h": 238,
+     "ax": 69.0,
+     "ay": 238
+    },
+    {
+     "src": "assets/sprites/gojo/jump_4.png",
+     "w": 137,
+     "h": 198,
+     "ax": 69.0,
+     "ay": 198
+    },
+    {
+     "src": "assets/sprites/gojo/jump_5.png",
+     "w": 258,
+     "h": 276,
+     "ax": 132.0,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/gojo/jump_6.png",
+     "w": 152,
+     "h": 350,
+     "ax": 77.0,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/gojo/jump_7.png",
+     "w": 165,
+     "h": 237,
+     "ax": 95.0,
+     "ay": 237
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.584,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/fall_0.png",
+     "w": 203,
+     "h": 320,
+     "ax": 93.2,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/gojo/fall_1.png",
+     "w": 179,
+     "h": 308,
+     "ax": 86.0,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/gojo/fall_2.png",
+     "w": 287,
+     "h": 244,
+     "ax": 108.6,
+     "ay": 244
+    },
+    {
+     "src": "assets/sprites/gojo/fall_3.png",
+     "w": 279,
+     "h": 184,
+     "ax": 42.0,
+     "ay": 184
+    },
+    {
+     "src": "assets/sprites/gojo/fall_4.png",
+     "w": 365,
+     "h": 127,
+     "ax": 178.5,
+     "ay": 127
+    },
+    {
+     "src": "assets/sprites/gojo/fall_5.png",
+     "w": 293,
+     "h": 179,
+     "ax": 179.5,
+     "ay": 179
+    },
+    {
+     "src": "assets/sprites/gojo/fall_6.png",
+     "w": 193,
+     "h": 236,
+     "ax": 115.2,
+     "ay": 236
+    },
+    {
+     "src": "assets/sprites/gojo/fall_7.png",
+     "w": 185,
+     "h": 298,
+     "ax": 105.5,
+     "ay": 298
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.584,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/combo_0.png",
+     "w": 234,
+     "h": 333,
+     "ax": 117.8,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/gojo/combo_1.png",
+     "w": 282,
+     "h": 326,
+     "ax": 141.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/gojo/combo_2.png",
+     "w": 308,
+     "h": 324,
+     "ax": 153.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/gojo/combo_3.png",
+     "w": 214,
+     "h": 340,
+     "ax": 131.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/gojo/combo_4.png",
+     "w": 286,
+     "h": 346,
+     "ax": 78.5,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/gojo/combo_5.png",
+     "w": 291,
+     "h": 344,
+     "ax": 109.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/gojo/combo_6.png",
+     "w": 303,
+     "h": 346,
+     "ax": 87.2,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/gojo/combo_7.png",
+     "w": 168,
+     "h": 360,
+     "ax": 64.5,
+     "ay": 360
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.584,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/lowair_0.png",
+     "w": 163,
+     "h": 279,
+     "ax": 82.0,
+     "ay": 279
+    },
+    {
+     "src": "assets/sprites/gojo/lowair_1.png",
+     "w": 209,
+     "h": 286,
+     "ax": 109.5,
+     "ay": 286
+    },
+    {
+     "src": "assets/sprites/gojo/lowair_2.png",
+     "w": 331,
+     "h": 243,
+     "ax": 103.0,
+     "ay": 243
+    },
+    {
+     "src": "assets/sprites/gojo/lowair_3.png",
+     "w": 161,
+     "h": 276,
+     "ax": 80.0,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/gojo/lowair_4.png",
+     "w": 147,
+     "h": 266,
+     "ax": 76.0,
+     "ay": 266
+    },
+    {
+     "src": "assets/sprites/gojo/lowair_5.png",
+     "w": 165,
+     "h": 347,
+     "ax": 74.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/gojo/lowair_6.png",
+     "w": 320,
+     "h": 281,
+     "ax": 133.5,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/gojo/lowair_7.png",
+     "w": 188,
+     "h": 259,
+     "ax": 103.5,
+     "ay": 259
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.584,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/dashcharge_0.png",
+     "w": 124,
+     "h": 355,
+     "ax": 56.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/gojo/dashcharge_1.png",
+     "w": 207,
+     "h": 307,
+     "ax": 124.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/gojo/dashcharge_2.png",
+     "w": 297,
+     "h": 307,
+     "ax": 157.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/gojo/dashcharge_3.png",
+     "w": 130,
+     "h": 358,
+     "ax": 63.5,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gojo/dashcharge_4.png",
+     "w": 131,
+     "h": 364,
+     "ax": 57.0,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/gojo/dashcharge_5.png",
+     "w": 137,
+     "h": 363,
+     "ax": 59.0,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/gojo/dashcharge_6.png",
+     "w": 289,
+     "h": 367,
+     "ax": 150.0,
+     "ay": 367
+    },
+    {
+     "src": "assets/sprites/gojo/dashcharge_7.png",
+     "w": 128,
+     "h": 364,
+     "ax": 60.0,
+     "ay": 364
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.584,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/special_0.png",
+     "w": 134,
+     "h": 353,
+     "ax": 57.5,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/gojo/special_1.png",
+     "w": 219,
+     "h": 339,
+     "ax": 106.0,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/gojo/special_2.png",
+     "w": 307,
+     "h": 330,
+     "ax": 132.2,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/gojo/special_3.png",
+     "w": 132,
+     "h": 358,
+     "ax": 60.0,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gojo/special_4.png",
+     "w": 161,
+     "h": 350,
+     "ax": 78.7,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/gojo/special_5.png",
+     "w": 298,
+     "h": 336,
+     "ax": 149.8,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/gojo/special_6.png",
+     "w": 310,
+     "h": 329,
+     "ax": 142.5,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/gojo/special_7.png",
+     "w": 131,
+     "h": 366,
+     "ax": 59.0,
+     "ay": 366
+    }
+   ]
+  }
+ },
+ "sasuke": {
+  "walk": {
+   "scale": 0.3349,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/walkv_0.png",
+     "w": 328,
+     "h": 552,
+     "ax": 215.5,
+     "ay": 552
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_1.png",
+     "w": 326,
+     "h": 556,
+     "ax": 222.5,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_2.png",
+     "w": 326,
+     "h": 556,
+     "ax": 228.5,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_3.png",
+     "w": 324,
+     "h": 554,
+     "ax": 226.5,
+     "ay": 554
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_4.png",
+     "w": 350,
+     "h": 548,
+     "ax": 223.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_5.png",
+     "w": 348,
+     "h": 538,
+     "ax": 219.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_6.png",
+     "w": 320,
+     "h": 534,
+     "ax": 220.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_7.png",
+     "w": 320,
+     "h": 536,
+     "ax": 222.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_8.png",
+     "w": 320,
+     "h": 540,
+     "ax": 222.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_9.png",
+     "w": 320,
+     "h": 548,
+     "ax": 219.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_10.png",
+     "w": 322,
+     "h": 548,
+     "ax": 213.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_11.png",
+     "w": 320,
+     "h": 544,
+     "ax": 205.5,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_12.png",
+     "w": 346,
+     "h": 536,
+     "ax": 201.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_13.png",
+     "w": 340,
+     "h": 536,
+     "ax": 201.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_14.png",
+     "w": 328,
+     "h": 538,
+     "ax": 202.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/sasuke/walkv_15.png",
+     "w": 326,
+     "h": 544,
+     "ax": 207.5,
+     "ay": 544
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.5198,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/jump_0.png",
+     "w": 215,
+     "h": 285,
+     "ax": 128.0,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/sasuke/jump_1.png",
+     "w": 191,
+     "h": 329,
+     "ax": 123.9,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/sasuke/jump_2.png",
+     "w": 220,
+     "h": 346,
+     "ax": 113.5,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/sasuke/jump_3.png",
+     "w": 200,
+     "h": 266,
+     "ax": 119.0,
+     "ay": 266
+    },
+    {
+     "src": "assets/sprites/sasuke/jump_4.png",
+     "w": 182,
+     "h": 234,
+     "ax": 114.5,
+     "ay": 234
+    },
+    {
+     "src": "assets/sprites/sasuke/jump_5.png",
+     "w": 205,
+     "h": 329,
+     "ax": 122.0,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/sasuke/jump_6.png",
+     "w": 196,
+     "h": 354,
+     "ax": 138.0,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/sasuke/jump_7.png",
+     "w": 243,
+     "h": 321,
+     "ax": 127.5,
+     "ay": 321
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5198,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/fall_0.png",
+     "w": 258,
+     "h": 350,
+     "ax": 137.2,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/sasuke/fall_1.png",
+     "w": 293,
+     "h": 336,
+     "ax": 98.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/sasuke/fall_2.png",
+     "w": 342,
+     "h": 258,
+     "ax": 138.2,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/sasuke/fall_3.png",
+     "w": 307,
+     "h": 220,
+     "ax": 113.5,
+     "ay": 220
+    },
+    {
+     "src": "assets/sprites/sasuke/fall_4.png",
+     "w": 377,
+     "h": 97,
+     "ax": 168.1,
+     "ay": 97
+    },
+    {
+     "src": "assets/sprites/sasuke/fall_5.png",
+     "w": 297,
+     "h": 230,
+     "ax": 181.0,
+     "ay": 230
+    },
+    {
+     "src": "assets/sprites/sasuke/fall_6.png",
+     "w": 239,
+     "h": 265,
+     "ax": 147.7,
+     "ay": 265
+    },
+    {
+     "src": "assets/sprites/sasuke/fall_7.png",
+     "w": 256,
+     "h": 337,
+     "ax": 135.5,
+     "ay": 337
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5198,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/combo_0.png",
+     "w": 264,
+     "h": 345,
+     "ax": 139.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/sasuke/combo_1.png",
+     "w": 303,
+     "h": 344,
+     "ax": 147.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/sasuke/combo_2.png",
+     "w": 255,
+     "h": 337,
+     "ax": 147.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/sasuke/combo_3.png",
+     "w": 216,
+     "h": 369,
+     "ax": 126.8,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/sasuke/combo_4.png",
+     "w": 289,
+     "h": 360,
+     "ax": 89.5,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/sasuke/combo_5.png",
+     "w": 280,
+     "h": 354,
+     "ax": 93.7,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/sasuke/combo_6.png",
+     "w": 191,
+     "h": 363,
+     "ax": 74.5,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/sasuke/combo_7.png",
+     "w": 284,
+     "h": 346,
+     "ax": 72.0,
+     "ay": 346
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.5198,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/lowair_0.png",
+     "w": 242,
+     "h": 266,
+     "ax": 149.0,
+     "ay": 266
+    },
+    {
+     "src": "assets/sprites/sasuke/lowair_1.png",
+     "w": 251,
+     "h": 263,
+     "ax": 155.0,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/sasuke/lowair_2.png",
+     "w": 365,
+     "h": 222,
+     "ax": 171.0,
+     "ay": 222
+    },
+    {
+     "src": "assets/sprites/sasuke/lowair_3.png",
+     "w": 231,
+     "h": 263,
+     "ax": 135.5,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/sasuke/lowair_4.png",
+     "w": 222,
+     "h": 279,
+     "ax": 134.0,
+     "ay": 279
+    },
+    {
+     "src": "assets/sprites/sasuke/lowair_5.png",
+     "w": 215,
+     "h": 298,
+     "ax": 127.5,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/sasuke/lowair_6.png",
+     "w": 357,
+     "h": 316,
+     "ax": 133.5,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/sasuke/lowair_7.png",
+     "w": 224,
+     "h": 354,
+     "ax": 119.5,
+     "ay": 354
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.5198,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/dashcharge_0.png",
+     "w": 261,
+     "h": 343,
+     "ax": 138.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/sasuke/dashcharge_1.png",
+     "w": 289,
+     "h": 279,
+     "ax": 172.0,
+     "ay": 279
+    },
+    {
+     "src": "assets/sprites/sasuke/dashcharge_2.png",
+     "w": 396,
+     "h": 305,
+     "ax": 199.0,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/sasuke/dashcharge_3.png",
+     "w": 190,
+     "h": 364,
+     "ax": 89.5,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/sasuke/dashcharge_4.png",
+     "w": 240,
+     "h": 353,
+     "ax": 145.0,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/sasuke/dashcharge_5.png",
+     "w": 250,
+     "h": 304,
+     "ax": 165.0,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/sasuke/dashcharge_6.png",
+     "w": 230,
+     "h": 359,
+     "ax": 112.2,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/sasuke/dashcharge_7.png",
+     "w": 165,
+     "h": 362,
+     "ax": 90.0,
+     "ay": 362
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5198,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/special_0.png",
+     "w": 244,
+     "h": 322,
+     "ax": 136.0,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/sasuke/special_1.png",
+     "w": 299,
+     "h": 272,
+     "ax": 166.0,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/sasuke/special_2.png",
+     "w": 395,
+     "h": 305,
+     "ax": 207.5,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/sasuke/special_3.png",
+     "w": 254,
+     "h": 333,
+     "ax": 134.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/sasuke/special_4.png",
+     "w": 154,
+     "h": 394,
+     "ax": 86.0,
+     "ay": 394
+    },
+    {
+     "src": "assets/sprites/sasuke/special_5.png",
+     "w": 187,
+     "h": 379,
+     "ax": 87.5,
+     "ay": 379
+    },
+    {
+     "src": "assets/sprites/sasuke/special_6.png",
+     "w": 301,
+     "h": 340,
+     "ax": 147.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/sasuke/special_7.png",
+     "w": 154,
+     "h": 365,
+     "ax": 84.5,
+     "ay": 365
+    }
+   ]
+  }
+ },
+ "gohan": {
+  "walk": {
+   "scale": 0.2804,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/walkv_0.png",
+     "w": 244,
+     "h": 538,
+     "ax": 121.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_1.png",
+     "w": 244,
+     "h": 538,
+     "ax": 126.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_2.png",
+     "w": 256,
+     "h": 538,
+     "ax": 140.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_3.png",
+     "w": 308,
+     "h": 532,
+     "ax": 169.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_4.png",
+     "w": 320,
+     "h": 523,
+     "ax": 193.5,
+     "ay": 523
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_5.png",
+     "w": 312,
+     "h": 518,
+     "ax": 200.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_6.png",
+     "w": 300,
+     "h": 518,
+     "ax": 184.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_7.png",
+     "w": 270,
+     "h": 524,
+     "ax": 149.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_8.png",
+     "w": 248,
+     "h": 529,
+     "ax": 123.5,
+     "ay": 529
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_9.png",
+     "w": 252,
+     "h": 529,
+     "ax": 125.5,
+     "ay": 529
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_10.png",
+     "w": 260,
+     "h": 525,
+     "ax": 129.5,
+     "ay": 525
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_11.png",
+     "w": 272,
+     "h": 524,
+     "ax": 139.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_12.png",
+     "w": 286,
+     "h": 524,
+     "ax": 153.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_13.png",
+     "w": 290,
+     "h": 526,
+     "ax": 157.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_14.png",
+     "w": 260,
+     "h": 530,
+     "ax": 130.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan/walkv_15.png",
+     "w": 254,
+     "h": 532,
+     "ax": 126.5,
+     "ay": 532
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/jump_0.png",
+     "w": 180,
+     "h": 250,
+     "ax": 83.5,
+     "ay": 250
+    },
+    {
+     "src": "assets/sprites/gohan/jump_1.png",
+     "w": 167,
+     "h": 320,
+     "ax": 90.5,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/gohan/jump_2.png",
+     "w": 157,
+     "h": 331,
+     "ax": 82.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/gohan/jump_3.png",
+     "w": 144,
+     "h": 261,
+     "ax": 73.5,
+     "ay": 261
+    },
+    {
+     "src": "assets/sprites/gohan/jump_4.png",
+     "w": 125,
+     "h": 230,
+     "ax": 58.0,
+     "ay": 230
+    },
+    {
+     "src": "assets/sprites/gohan/jump_5.png",
+     "w": 178,
+     "h": 312,
+     "ax": 98.5,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/gohan/jump_6.png",
+     "w": 178,
+     "h": 319,
+     "ax": 99.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/gohan/jump_7.png",
+     "w": 192,
+     "h": 252,
+     "ax": 108.5,
+     "ay": 252
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/fall_0.png",
+     "w": 210,
+     "h": 327,
+     "ax": 87.4,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/gohan/fall_1.png",
+     "w": 277,
+     "h": 320,
+     "ax": 95.5,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/gohan/fall_2.png",
+     "w": 300,
+     "h": 253,
+     "ax": 126.9,
+     "ay": 253
+    },
+    {
+     "src": "assets/sprites/gohan/fall_3.png",
+     "w": 271,
+     "h": 199,
+     "ax": 119.3,
+     "ay": 199
+    },
+    {
+     "src": "assets/sprites/gohan/fall_4.png",
+     "w": 324,
+     "h": 180,
+     "ax": 154.9,
+     "ay": 180
+    },
+    {
+     "src": "assets/sprites/gohan/fall_5.png",
+     "w": 268,
+     "h": 243,
+     "ax": 163.0,
+     "ay": 243
+    },
+    {
+     "src": "assets/sprites/gohan/fall_6.png",
+     "w": 222,
+     "h": 253,
+     "ax": 142.3,
+     "ay": 253
+    },
+    {
+     "src": "assets/sprites/gohan/fall_7.png",
+     "w": 208,
+     "h": 301,
+     "ax": 116.5,
+     "ay": 301
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/combo_0.png",
+     "w": 189,
+     "h": 290,
+     "ax": 96.5,
+     "ay": 290
+    },
+    {
+     "src": "assets/sprites/gohan/combo_1.png",
+     "w": 238,
+     "h": 295,
+     "ax": 110.5,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/gohan/combo_2.png",
+     "w": 263,
+     "h": 299,
+     "ax": 137.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/gohan/combo_3.png",
+     "w": 157,
+     "h": 358,
+     "ax": 70.5,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gohan/combo_4.png",
+     "w": 158,
+     "h": 320,
+     "ax": 67.0,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/gohan/combo_5.png",
+     "w": 251,
+     "h": 317,
+     "ax": 82.0,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/gohan/combo_6.png",
+     "w": 249,
+     "h": 325,
+     "ax": 90.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/gohan/combo_7.png",
+     "w": 261,
+     "h": 257,
+     "ax": 89.5,
+     "ay": 257
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/lowair_0.png",
+     "w": 182,
+     "h": 272,
+     "ax": 85.6,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/gohan/lowair_1.png",
+     "w": 195,
+     "h": 238,
+     "ax": 108.7,
+     "ay": 238
+    },
+    {
+     "src": "assets/sprites/gohan/lowair_2.png",
+     "w": 265,
+     "h": 239,
+     "ax": 84.4,
+     "ay": 239
+    },
+    {
+     "src": "assets/sprites/gohan/lowair_3.png",
+     "w": 212,
+     "h": 263,
+     "ax": 135.5,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/gohan/lowair_4.png",
+     "w": 138,
+     "h": 255,
+     "ax": 69.0,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/gohan/lowair_5.png",
+     "w": 159,
+     "h": 316,
+     "ax": 78.8,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/gohan/lowair_6.png",
+     "w": 255,
+     "h": 263,
+     "ax": 89.0,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/gohan/lowair_7.png",
+     "w": 168,
+     "h": 308,
+     "ax": 97.5,
+     "ay": 308
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/dashcharge_0.png",
+     "w": 228,
+     "h": 310,
+     "ax": 147.6,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/gohan/dashcharge_1.png",
+     "w": 293,
+     "h": 285,
+     "ax": 173.5,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/gohan/dashcharge_2.png",
+     "w": 387,
+     "h": 219,
+     "ax": 238.5,
+     "ay": 219
+    },
+    {
+     "src": "assets/sprites/gohan/dashcharge_3.png",
+     "w": 252,
+     "h": 296,
+     "ax": 152.5,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/gohan/dashcharge_4.png",
+     "w": 202,
+     "h": 322,
+     "ax": 102.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/gohan/dashcharge_5.png",
+     "w": 196,
+     "h": 343,
+     "ax": 100.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/gohan/dashcharge_6.png",
+     "w": 262,
+     "h": 378,
+     "ax": 124.9,
+     "ay": 378
+    },
+    {
+     "src": "assets/sprites/gohan/dashcharge_7.png",
+     "w": 149,
+     "h": 384,
+     "ax": 68.5,
+     "ay": 384
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/special_0.png",
+     "w": 201,
+     "h": 309,
+     "ax": 113.5,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/gohan/special_1.png",
+     "w": 204,
+     "h": 315,
+     "ax": 96.1,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/gohan/special_2.png",
+     "w": 225,
+     "h": 309,
+     "ax": 126.0,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/gohan/special_3.png",
+     "w": 194,
+     "h": 303,
+     "ax": 109.5,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/gohan/special_4.png",
+     "w": 198,
+     "h": 307,
+     "ax": 95.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/gohan/special_5.png",
+     "w": 200,
+     "h": 285,
+     "ax": 100.5,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/gohan/special_6.png",
+     "w": 246,
+     "h": 306,
+     "ax": 150.5,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/gohan/special_7.png",
+     "w": 231,
+     "h": 313,
+     "ax": 92.1,
+     "ay": 313
+    }
+   ]
+  }
+ },
+ "gohan_ssj": {
+  "walk": {
+   "scale": 0.3156,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_0.png",
+     "w": 192,
+     "h": 528,
+     "ax": 99.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_1.png",
+     "w": 194,
+     "h": 528,
+     "ax": 103.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_2.png",
+     "w": 198,
+     "h": 526,
+     "ax": 108.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_3.png",
+     "w": 270,
+     "h": 514,
+     "ax": 140.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_4.png",
+     "w": 288,
+     "h": 508,
+     "ax": 157.5,
+     "ay": 508
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_5.png",
+     "w": 292,
+     "h": 502,
+     "ax": 181.5,
+     "ay": 502
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_6.png",
+     "w": 260,
+     "h": 508,
+     "ax": 166.5,
+     "ay": 508
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_7.png",
+     "w": 246,
+     "h": 510,
+     "ax": 152.5,
+     "ay": 510
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_8.png",
+     "w": 212,
+     "h": 520,
+     "ax": 115.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_9.png",
+     "w": 204,
+     "h": 522,
+     "ax": 106.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_10.png",
+     "w": 206,
+     "h": 518,
+     "ax": 107.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_11.png",
+     "w": 246,
+     "h": 506,
+     "ax": 134.5,
+     "ay": 506
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_12.png",
+     "w": 276,
+     "h": 504,
+     "ax": 160.5,
+     "ay": 504
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_13.png",
+     "w": 270,
+     "h": 506,
+     "ax": 167.5,
+     "ay": 506
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_14.png",
+     "w": 248,
+     "h": 514,
+     "ax": 149.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/walkv_15.png",
+     "w": 232,
+     "h": 518,
+     "ax": 134.5,
+     "ay": 518
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/jump_0.png",
+     "w": 187,
+     "h": 264,
+     "ax": 84.5,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/jump_1.png",
+     "w": 165,
+     "h": 336,
+     "ax": 91.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/jump_2.png",
+     "w": 157,
+     "h": 343,
+     "ax": 83.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/jump_3.png",
+     "w": 136,
+     "h": 278,
+     "ax": 75.5,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/jump_4.png",
+     "w": 113,
+     "h": 252,
+     "ax": 56.0,
+     "ay": 252
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/jump_5.png",
+     "w": 166,
+     "h": 335,
+     "ax": 97.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/jump_6.png",
+     "w": 165,
+     "h": 342,
+     "ax": 98.5,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/jump_7.png",
+     "w": 183,
+     "h": 275,
+     "ax": 109.0,
+     "ay": 275
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/combo_0.png",
+     "w": 188,
+     "h": 319,
+     "ax": 102.0,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/combo_1.png",
+     "w": 238,
+     "h": 321,
+     "ax": 109.5,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/combo_2.png",
+     "w": 263,
+     "h": 324,
+     "ax": 140.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/combo_3.png",
+     "w": 165,
+     "h": 359,
+     "ax": 75.0,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/combo_4.png",
+     "w": 158,
+     "h": 345,
+     "ax": 65.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/combo_5.png",
+     "w": 251,
+     "h": 340,
+     "ax": 81.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/combo_6.png",
+     "w": 253,
+     "h": 342,
+     "ax": 90.6,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/combo_7.png",
+     "w": 260,
+     "h": 281,
+     "ax": 86.5,
+     "ay": 281
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_0.png",
+     "w": 182,
+     "h": 305,
+     "ax": 89.0,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_1.png",
+     "w": 190,
+     "h": 270,
+     "ax": 122.0,
+     "ay": 270
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_2.png",
+     "w": 265,
+     "h": 273,
+     "ax": 95.0,
+     "ay": 273
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_3.png",
+     "w": 212,
+     "h": 298,
+     "ax": 138.5,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_4.png",
+     "w": 131,
+     "h": 285,
+     "ax": 69.0,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_5.png",
+     "w": 158,
+     "h": 344,
+     "ax": 79.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_6.png",
+     "w": 255,
+     "h": 293,
+     "ax": 87.5,
+     "ay": 293
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/lowair_7.png",
+     "w": 167,
+     "h": 339,
+     "ax": 97.0,
+     "ay": 339
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_0.png",
+     "w": 216,
+     "h": 344,
+     "ax": 145.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_1.png",
+     "w": 294,
+     "h": 308,
+     "ax": 173.0,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_2.png",
+     "w": 386,
+     "h": 238,
+     "ax": 235.7,
+     "ay": 238
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_3.png",
+     "w": 253,
+     "h": 329,
+     "ax": 157.0,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_4.png",
+     "w": 191,
+     "h": 355,
+     "ax": 104.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_5.png",
+     "w": 196,
+     "h": 366,
+     "ax": 103.5,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_6.png",
+     "w": 261,
+     "h": 392,
+     "ax": 103.5,
+     "ay": 392
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/dashcharge_7.png",
+     "w": 149,
+     "h": 412,
+     "ax": 68.5,
+     "ay": 412
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4615,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/special_0.png",
+     "w": 201,
+     "h": 337,
+     "ax": 112.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/special_1.png",
+     "w": 203,
+     "h": 337,
+     "ax": 93.2,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/special_2.png",
+     "w": 225,
+     "h": 338,
+     "ax": 124.0,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/special_3.png",
+     "w": 194,
+     "h": 334,
+     "ax": 112.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/special_4.png",
+     "w": 199,
+     "h": 337,
+     "ax": 98.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/special_5.png",
+     "w": 200,
+     "h": 318,
+     "ax": 104.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/special_6.png",
+     "w": 246,
+     "h": 335,
+     "ax": 147.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/special_7.png",
+     "w": 231,
+     "h": 344,
+     "ax": 96.7,
+     "ay": 344
+    }
+   ]
+  }
+ },
  "goku": {
   "walk": {
    "scale": 0.3551,
@@ -9187,96 +12623,6 @@ const SPRITES = {
      "ay": 297
     }
    ]
-  },
-  "idle": {
-   "scale": 0.3146,
-   "rate": 9.0,
-   "frames": [
-    {
-     "src": "assets/sprites/goku/idlev_0.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_1.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_2.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_3.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_4.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_5.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_6.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_7.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_8.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_9.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_10.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/goku/idlev_11.png",
-     "w": 384,
-     "h": 586,
-     "ax": 186.3,
-     "ay": 586
-    }
-   ]
   }
  },
  "zoro": {
@@ -9349,112 +12695,112 @@ const SPRITES = {
      "src": "assets/sprites/zoro/walkv_0.png",
      "w": 465,
      "h": 582,
-     "ax": 172.0,
+     "ax": 293.0,
      "ay": 582
     },
     {
      "src": "assets/sprites/zoro/walkv_1.png",
      "w": 465,
      "h": 578,
-     "ax": 172.0,
+     "ax": 293.0,
      "ay": 578
     },
     {
      "src": "assets/sprites/zoro/walkv_2.png",
      "w": 465,
      "h": 569,
-     "ax": 172.0,
+     "ax": 293.0,
      "ay": 569
     },
     {
      "src": "assets/sprites/zoro/walkv_3.png",
      "w": 464,
      "h": 570,
-     "ax": 171.5,
+     "ax": 292.5,
      "ay": 570
     },
     {
      "src": "assets/sprites/zoro/walkv_4.png",
      "w": 466,
      "h": 575,
-     "ax": 172.5,
+     "ax": 293.5,
      "ay": 575
     },
     {
      "src": "assets/sprites/zoro/walkv_5.png",
      "w": 465,
      "h": 581,
-     "ax": 172.0,
+     "ax": 293.0,
      "ay": 581
     },
     {
      "src": "assets/sprites/zoro/walkv_6.png",
      "w": 466,
      "h": 584,
-     "ax": 172.5,
+     "ax": 293.5,
      "ay": 584
     },
     {
      "src": "assets/sprites/zoro/walkv_7.png",
      "w": 466,
      "h": 588,
-     "ax": 172.5,
+     "ax": 293.5,
      "ay": 588
     },
     {
      "src": "assets/sprites/zoro/walkv_8.png",
      "w": 466,
      "h": 590,
-     "ax": 172.5,
+     "ax": 293.5,
      "ay": 590
     },
     {
      "src": "assets/sprites/zoro/walkv_9.png",
      "w": 467,
      "h": 585,
-     "ax": 173.0,
+     "ax": 294.0,
      "ay": 585
     },
     {
      "src": "assets/sprites/zoro/walkv_10.png",
      "w": 468,
      "h": 574,
-     "ax": 173.5,
+     "ax": 294.5,
      "ay": 574
     },
     {
      "src": "assets/sprites/zoro/walkv_11.png",
      "w": 469,
      "h": 569,
-     "ax": 174.0,
+     "ax": 295.0,
      "ay": 569
     },
     {
      "src": "assets/sprites/zoro/walkv_12.png",
      "w": 469,
      "h": 565,
-     "ax": 174.0,
+     "ax": 295.0,
      "ay": 565
     },
     {
      "src": "assets/sprites/zoro/walkv_13.png",
      "w": 469,
      "h": 569,
-     "ax": 174.0,
+     "ax": 295.0,
      "ay": 569
     },
     {
      "src": "assets/sprites/zoro/walkv_14.png",
      "w": 467,
      "h": 573,
-     "ax": 173.0,
+     "ax": 294.0,
      "ay": 573
     },
     {
      "src": "assets/sprites/zoro/walkv_15.png",
      "w": 466,
      "h": 580,
-     "ax": 172.5,
+     "ax": 293.5,
      "ay": 580
     }
    ]
@@ -10247,96 +13593,6 @@ const SPRITES = {
      "h": 288,
      "ax": 185.0,
      "ay": 288
-    }
-   ]
-  },
-  "idle": {
-   "scale": 0.32,
-   "rate": 5.65,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/idlev_0.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_1.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_2.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_3.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_4.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_5.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_6.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_7.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_8.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_9.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_10.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_11.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
     }
    ]
   }
@@ -17645,59 +20901,52 @@ const SPRITES = {
    "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/nr2_rain/walkv_0.png",
+     "src": "assets/sprites/nr2_rain/walkv_15.png",
      "w": 482,
+     "h": 554,
+     "ax": 419.9,
+     "ay": 554
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_14.png",
+     "w": 486,
+     "h": 556,
+     "ax": 421.9,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_13.png",
+     "w": 490,
+     "h": 552,
+     "ax": 423.9,
+     "ay": 552
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_12.png",
+     "w": 516,
      "h": 548,
-     "ax": 418.9,
+     "ax": 424.9,
      "ay": 548
     },
     {
-     "src": "assets/sprites/nr2_rain/walkv_1.png",
-     "w": 500,
+     "src": "assets/sprites/nr2_rain/walkv_11.png",
+     "w": 548,
      "h": 546,
-     "ax": 417.9,
+     "ax": 427.9,
      "ay": 546
     },
     {
-     "src": "assets/sprites/nr2_rain/walkv_2.png",
+     "src": "assets/sprites/nr2_rain/walkv_10.png",
+     "w": 558,
+     "h": 542,
+     "ax": 430.9,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_9.png",
      "w": 530,
-     "h": 542,
-     "ax": 416.9,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_3.png",
-     "w": 528,
-     "h": 542,
-     "ax": 417.9,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_4.png",
-     "w": 508,
      "h": 540,
-     "ax": 418.9,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_5.png",
-     "w": 482,
-     "h": 542,
-     "ax": 418.9,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_6.png",
-     "w": 484,
-     "h": 544,
-     "ax": 420.9,
-     "ay": 544
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_7.png",
-     "w": 488,
-     "h": 540,
-     "ax": 422.9,
+     "ax": 427.9,
      "ay": 540
     },
     {
@@ -17708,53 +20957,60 @@ const SPRITES = {
      "ay": 538
     },
     {
-     "src": "assets/sprites/nr2_rain/walkv_9.png",
-     "w": 530,
+     "src": "assets/sprites/nr2_rain/walkv_7.png",
+     "w": 488,
      "h": 540,
-     "ax": 427.9,
+     "ax": 422.9,
      "ay": 540
     },
     {
-     "src": "assets/sprites/nr2_rain/walkv_10.png",
-     "w": 558,
+     "src": "assets/sprites/nr2_rain/walkv_6.png",
+     "w": 484,
+     "h": 544,
+     "ax": 420.9,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_5.png",
+     "w": 482,
      "h": 542,
-     "ax": 430.9,
+     "ax": 418.9,
      "ay": 542
     },
     {
-     "src": "assets/sprites/nr2_rain/walkv_11.png",
-     "w": 548,
+     "src": "assets/sprites/nr2_rain/walkv_4.png",
+     "w": 508,
+     "h": 540,
+     "ax": 418.9,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_3.png",
+     "w": 528,
+     "h": 542,
+     "ax": 417.9,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_2.png",
+     "w": 530,
+     "h": 542,
+     "ax": 416.9,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/nr2_rain/walkv_1.png",
+     "w": 500,
      "h": 546,
-     "ax": 427.9,
+     "ax": 417.9,
      "ay": 546
     },
     {
-     "src": "assets/sprites/nr2_rain/walkv_12.png",
-     "w": 516,
-     "h": 548,
-     "ax": 424.9,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_13.png",
-     "w": 490,
-     "h": 552,
-     "ax": 423.9,
-     "ay": 552
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_14.png",
-     "w": 486,
-     "h": 556,
-     "ax": 421.9,
-     "ay": 556
-    },
-    {
-     "src": "assets/sprites/nr2_rain/walkv_15.png",
+     "src": "assets/sprites/nr2_rain/walkv_0.png",
      "w": 482,
-     "h": 554,
-     "ax": 419.9,
-     "ay": 554
+     "h": 548,
+     "ax": 418.9,
+     "ay": 548
     }
    ]
   },
@@ -18190,59 +21446,52 @@ const SPRITES = {
    "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/ds2_demon/walkv_0.png",
-     "w": 374,
-     "h": 572,
-     "ax": 178.0,
-     "ay": 572
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_1.png",
-     "w": 368,
-     "h": 564,
-     "ax": 144.7,
-     "ay": 564
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_2.png",
-     "w": 394,
-     "h": 562,
-     "ax": 142.5,
-     "ay": 562
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_3.png",
-     "w": 392,
-     "h": 568,
-     "ax": 147.5,
-     "ay": 568
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_4.png",
-     "w": 372,
+     "src": "assets/sprites/ds2_demon/walkv_15.png",
+     "w": 350,
      "h": 576,
-     "ax": 147.5,
+     "ax": 166.6,
      "ay": 576
     },
     {
-     "src": "assets/sprites/ds2_demon/walkv_5.png",
-     "w": 352,
-     "h": 580,
-     "ax": 155.4,
-     "ay": 580
+     "src": "assets/sprites/ds2_demon/walkv_14.png",
+     "w": 314,
+     "h": 587,
+     "ax": 147.1,
+     "ay": 587
     },
     {
-     "src": "assets/sprites/ds2_demon/walkv_6.png",
-     "w": 345,
-     "h": 576,
-     "ax": 167.5,
-     "ay": 576
+     "src": "assets/sprites/ds2_demon/walkv_13.png",
+     "w": 324,
+     "h": 591,
+     "ax": 146.4,
+     "ay": 591
     },
     {
-     "src": "assets/sprites/ds2_demon/walkv_7.png",
-     "w": 398,
+     "src": "assets/sprites/ds2_demon/walkv_12.png",
+     "w": 354,
+     "h": 586,
+     "ax": 145.5,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_11.png",
+     "w": 390,
+     "h": 578,
+     "ax": 163.5,
+     "ay": 578
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_10.png",
+     "w": 430,
+     "h": 566,
+     "ax": 192.0,
+     "ay": 566
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_9.png",
+     "w": 442,
      "h": 564,
-     "ax": 191.5,
+     "ax": 207.5,
      "ay": 564
     },
     {
@@ -18253,53 +21502,60 @@ const SPRITES = {
      "ay": 562
     },
     {
-     "src": "assets/sprites/ds2_demon/walkv_9.png",
-     "w": 442,
+     "src": "assets/sprites/ds2_demon/walkv_7.png",
+     "w": 398,
      "h": 564,
-     "ax": 207.5,
+     "ax": 191.5,
      "ay": 564
     },
     {
-     "src": "assets/sprites/ds2_demon/walkv_10.png",
-     "w": 430,
-     "h": 566,
-     "ax": 192.0,
-     "ay": 566
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_11.png",
-     "w": 390,
-     "h": 578,
-     "ax": 163.5,
-     "ay": 578
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_12.png",
-     "w": 354,
-     "h": 586,
-     "ax": 145.5,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_13.png",
-     "w": 324,
-     "h": 591,
-     "ax": 146.4,
-     "ay": 591
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_14.png",
-     "w": 314,
-     "h": 587,
-     "ax": 147.1,
-     "ay": 587
-    },
-    {
-     "src": "assets/sprites/ds2_demon/walkv_15.png",
-     "w": 350,
+     "src": "assets/sprites/ds2_demon/walkv_6.png",
+     "w": 345,
      "h": 576,
-     "ax": 166.6,
+     "ax": 167.5,
      "ay": 576
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_5.png",
+     "w": 352,
+     "h": 580,
+     "ax": 155.4,
+     "ay": 580
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_4.png",
+     "w": 372,
+     "h": 576,
+     "ax": 147.5,
+     "ay": 576
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_3.png",
+     "w": 392,
+     "h": 568,
+     "ax": 147.5,
+     "ay": 568
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_2.png",
+     "w": 394,
+     "h": 562,
+     "ax": 142.5,
+     "ay": 562
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_1.png",
+     "w": 368,
+     "h": 564,
+     "ax": 144.7,
+     "ay": 564
+    },
+    {
+     "src": "assets/sprites/ds2_demon/walkv_0.png",
+     "w": 374,
+     "h": 572,
+     "ax": 178.0,
+     "ay": 572
     }
    ]
   },
@@ -18422,6 +21678,248 @@ const SPRITES = {
      "h": 344,
      "ax": 166.5,
      "ay": 344
+    }
+   ]
+  }
+ },
+ "ds2_obi": {
+  "walk": {
+   "scale": 0.3729,
+   "rate": 17.78,
+   "frames": [
+    {
+     "src": "assets/sprites/ds2_obi/walkv_0.png",
+     "w": 500,
+     "h": 522,
+     "ax": 218.2,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_1.png",
+     "w": 508,
+     "h": 518,
+     "ax": 228.2,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_2.png",
+     "w": 494,
+     "h": 524,
+     "ax": 213.2,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_3.png",
+     "w": 476,
+     "h": 526,
+     "ax": 195.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_4.png",
+     "w": 456,
+     "h": 530,
+     "ax": 180.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_5.png",
+     "w": 444,
+     "h": 531,
+     "ax": 169.2,
+     "ay": 531
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_6.png",
+     "w": 448,
+     "h": 526,
+     "ax": 167.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_7.png",
+     "w": 452,
+     "h": 524,
+     "ax": 165.2,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_8.png",
+     "w": 466,
+     "h": 518,
+     "ax": 175.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_9.png",
+     "w": 472,
+     "h": 518,
+     "ax": 172.2,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_10.png",
+     "w": 476,
+     "h": 522,
+     "ax": 172.2,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_11.png",
+     "w": 470,
+     "h": 530,
+     "ax": 185.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_12.png",
+     "w": 462,
+     "h": 540,
+     "ax": 180.2,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_13.png",
+     "w": 466,
+     "h": 540,
+     "ax": 183.2,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_14.png",
+     "w": 476,
+     "h": 534,
+     "ax": 195.2,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/ds2_obi/walkv_15.png",
+     "w": 488,
+     "h": 524,
+     "ax": 207.2,
+     "ay": 524
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6592,
+   "frames": [
+    {
+     "src": "assets/sprites/ds2_obi/attack_0.png",
+     "w": 275,
+     "h": 325,
+     "ax": 96.0,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/ds2_obi/attack_1.png",
+     "w": 271,
+     "h": 313,
+     "ax": 188.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/ds2_obi/attack_2.png",
+     "w": 402,
+     "h": 307,
+     "ax": 139.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/ds2_obi/attack_3.png",
+     "w": 253,
+     "h": 312,
+     "ax": 123.0,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/ds2_obi/attack_4.png",
+     "w": 215,
+     "h": 343,
+     "ax": 119.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/ds2_obi/attack_5.png",
+     "w": 342,
+     "h": 301,
+     "ax": 102.5,
+     "ay": 301
+    },
+    {
+     "src": "assets/sprites/ds2_obi/attack_6.png",
+     "w": 438,
+     "h": 235,
+     "ax": 165.3,
+     "ay": 235
+    },
+    {
+     "src": "assets/sprites/ds2_obi/attack_7.png",
+     "w": 260,
+     "h": 316,
+     "ax": 91.0,
+     "ay": 316
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6592,
+   "frames": [
+    {
+     "src": "assets/sprites/ds2_obi/fall_0.png",
+     "w": 270,
+     "h": 317,
+     "ax": 96.0,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/ds2_obi/fall_1.png",
+     "w": 269,
+     "h": 318,
+     "ax": 96.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/ds2_obi/fall_2.png",
+     "w": 304,
+     "h": 324,
+     "ax": 146.8,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/ds2_obi/fall_3.png",
+     "w": 246,
+     "h": 259,
+     "ax": 112.2,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/ds2_obi/fall_4.png",
+     "w": 361,
+     "h": 93,
+     "ax": 166.5,
+     "ay": 93
+    },
+    {
+     "src": "assets/sprites/ds2_obi/fall_5.png",
+     "w": 334,
+     "h": 191,
+     "ax": 191.0,
+     "ay": 191
+    },
+    {
+     "src": "assets/sprites/ds2_obi/fall_6.png",
+     "w": 310,
+     "h": 265,
+     "ax": 166.5,
+     "ay": 265
+    },
+    {
+     "src": "assets/sprites/ds2_obi/fall_7.png",
+     "w": 284,
+     "h": 340,
+     "ax": 183.0,
+     "ay": 340
     }
    ]
   }
@@ -18971,1464 +22469,6 @@ const SPRITES = {
    ]
   }
  },
- "jinwoo": {
-  "walk": {
-   "scale": 0.3211,
-   "rate": 25.38,
-   "frames": [
-    {
-     "src": "assets/sprites/jinwoo/walkv_0.png",
-     "w": 416,
-     "h": 584,
-     "ax": 193.5,
-     "ay": 584
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_1.png",
-     "w": 410,
-     "h": 584,
-     "ax": 199.5,
-     "ay": 584
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_2.png",
-     "w": 393,
-     "h": 584,
-     "ax": 196.0,
-     "ay": 584
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_3.png",
-     "w": 370,
-     "h": 590,
-     "ax": 184.5,
-     "ay": 590
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_4.png",
-     "w": 338,
-     "h": 598,
-     "ax": 173.7,
-     "ay": 598
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_5.png",
-     "w": 322,
-     "h": 600,
-     "ax": 159.5,
-     "ay": 600
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_6.png",
-     "w": 318,
-     "h": 602,
-     "ax": 172.4,
-     "ay": 602
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_7.png",
-     "w": 360,
-     "h": 600,
-     "ax": 179.5,
-     "ay": 600
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_8.png",
-     "w": 408,
-     "h": 590,
-     "ax": 173.5,
-     "ay": 590
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_9.png",
-     "w": 410,
-     "h": 582,
-     "ax": 195.5,
-     "ay": 582
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_10.png",
-     "w": 385,
-     "h": 579,
-     "ax": 208.5,
-     "ay": 579
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_11.png",
-     "w": 348,
-     "h": 584,
-     "ax": 208.5,
-     "ay": 584
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_12.png",
-     "w": 336,
-     "h": 588,
-     "ax": 212.5,
-     "ay": 588
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_13.png",
-     "w": 324,
-     "h": 592,
-     "ax": 210.6,
-     "ay": 592
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_14.png",
-     "w": 334,
-     "h": 596,
-     "ax": 170.9,
-     "ay": 596
-    },
-    {
-     "src": "assets/sprites/jinwoo/walkv_15.png",
-     "w": 358,
-     "h": 590,
-     "ax": 172.8,
-     "ay": 590
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.574,
-   "frames": [
-    {
-     "src": "assets/sprites/jinwoo/jump_0.png",
-     "w": 250,
-     "h": 263,
-     "ax": 160.3,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/jinwoo/jump_1.png",
-     "w": 230,
-     "h": 312,
-     "ax": 115.0,
-     "ay": 312
-    },
-    {
-     "src": "assets/sprites/jinwoo/jump_2.png",
-     "w": 224,
-     "h": 276,
-     "ax": 138.4,
-     "ay": 276
-    },
-    {
-     "src": "assets/sprites/jinwoo/jump_3.png",
-     "w": 200,
-     "h": 261,
-     "ax": 115.5,
-     "ay": 261
-    },
-    {
-     "src": "assets/sprites/jinwoo/jump_4.png",
-     "w": 229,
-     "h": 234,
-     "ax": 130.0,
-     "ay": 234
-    },
-    {
-     "src": "assets/sprites/jinwoo/jump_5.png",
-     "w": 259,
-     "h": 296,
-     "ax": 140.5,
-     "ay": 296
-    },
-    {
-     "src": "assets/sprites/jinwoo/jump_6.png",
-     "w": 244,
-     "h": 315,
-     "ax": 160.5,
-     "ay": 315
-    },
-    {
-     "src": "assets/sprites/jinwoo/jump_7.png",
-     "w": 316,
-     "h": 272,
-     "ax": 170.5,
-     "ay": 272
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.574,
-   "frames": [
-    {
-     "src": "assets/sprites/jinwoo/fall_0.png",
-     "w": 289,
-     "h": 325,
-     "ax": 138.6,
-     "ay": 325
-    },
-    {
-     "src": "assets/sprites/jinwoo/fall_1.png",
-     "w": 323,
-     "h": 310,
-     "ax": 137.5,
-     "ay": 310
-    },
-    {
-     "src": "assets/sprites/jinwoo/fall_2.png",
-     "w": 357,
-     "h": 264,
-     "ax": 163.3,
-     "ay": 264
-    },
-    {
-     "src": "assets/sprites/jinwoo/fall_3.png",
-     "w": 265,
-     "h": 238,
-     "ax": 139.0,
-     "ay": 238
-    },
-    {
-     "src": "assets/sprites/jinwoo/fall_4.png",
-     "w": 369,
-     "h": 141,
-     "ax": 199.8,
-     "ay": 141
-    },
-    {
-     "src": "assets/sprites/jinwoo/fall_5.png",
-     "w": 286,
-     "h": 189,
-     "ax": 162.0,
-     "ay": 189
-    },
-    {
-     "src": "assets/sprites/jinwoo/fall_6.png",
-     "w": 248,
-     "h": 233,
-     "ax": 147.0,
-     "ay": 233
-    },
-    {
-     "src": "assets/sprites/jinwoo/fall_7.png",
-     "w": 319,
-     "h": 282,
-     "ax": 170.7,
-     "ay": 282
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.574,
-   "frames": [
-    {
-     "src": "assets/sprites/jinwoo/combo_0.png",
-     "w": 340,
-     "h": 291,
-     "ax": 183.1,
-     "ay": 291
-    },
-    {
-     "src": "assets/sprites/jinwoo/combo_1.png",
-     "w": 276,
-     "h": 302,
-     "ax": 143.9,
-     "ay": 302
-    },
-    {
-     "src": "assets/sprites/jinwoo/combo_2.png",
-     "w": 305,
-     "h": 300,
-     "ax": 163.0,
-     "ay": 300
-    },
-    {
-     "src": "assets/sprites/jinwoo/combo_3.png",
-     "w": 259,
-     "h": 339,
-     "ax": 175.5,
-     "ay": 339
-    },
-    {
-     "src": "assets/sprites/jinwoo/combo_4.png",
-     "w": 301,
-     "h": 318,
-     "ax": 99.4,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/jinwoo/combo_5.png",
-     "w": 307,
-     "h": 321,
-     "ax": 86.8,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/jinwoo/combo_6.png",
-     "w": 359,
-     "h": 287,
-     "ax": 155.1,
-     "ay": 287
-    },
-    {
-     "src": "assets/sprites/jinwoo/combo_7.png",
-     "w": 233,
-     "h": 272,
-     "ax": 142.2,
-     "ay": 272
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.574,
-   "frames": [
-    {
-     "src": "assets/sprites/jinwoo/lowair_0.png",
-     "w": 204,
-     "h": 259,
-     "ax": 122.5,
-     "ay": 259
-    },
-    {
-     "src": "assets/sprites/jinwoo/lowair_1.png",
-     "w": 313,
-     "h": 270,
-     "ax": 168.3,
-     "ay": 270
-    },
-    {
-     "src": "assets/sprites/jinwoo/lowair_2.png",
-     "w": 357,
-     "h": 223,
-     "ax": 151.6,
-     "ay": 223
-    },
-    {
-     "src": "assets/sprites/jinwoo/lowair_3.png",
-     "w": 218,
-     "h": 263,
-     "ax": 142.0,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/jinwoo/lowair_4.png",
-     "w": 219,
-     "h": 246,
-     "ax": 134.9,
-     "ay": 246
-    },
-    {
-     "src": "assets/sprites/jinwoo/lowair_5.png",
-     "w": 207,
-     "h": 365,
-     "ax": 117.1,
-     "ay": 365
-    },
-    {
-     "src": "assets/sprites/jinwoo/lowair_6.png",
-     "w": 314,
-     "h": 263,
-     "ax": 133.1,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/jinwoo/lowair_7.png",
-     "w": 267,
-     "h": 272,
-     "ax": 138.5,
-     "ay": 272
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.574,
-   "frames": [
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_0.png",
-     "w": 249,
-     "h": 277,
-     "ax": 165.5,
-     "ay": 277
-    },
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_1.png",
-     "w": 292,
-     "h": 264,
-     "ax": 134.6,
-     "ay": 264
-    },
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_2.png",
-     "w": 304,
-     "h": 277,
-     "ax": 168.0,
-     "ay": 277
-    },
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_3.png",
-     "w": 317,
-     "h": 283,
-     "ax": 170.7,
-     "ay": 283
-    },
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_4.png",
-     "w": 255,
-     "h": 229,
-     "ax": 172.0,
-     "ay": 229
-    },
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_5.png",
-     "w": 247,
-     "h": 317,
-     "ax": 140.0,
-     "ay": 317
-    },
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_6.png",
-     "w": 264,
-     "h": 333,
-     "ax": 126.9,
-     "ay": 333
-    },
-    {
-     "src": "assets/sprites/jinwoo/dashcharge_7.png",
-     "w": 329,
-     "h": 288,
-     "ax": 176.1,
-     "ay": 288
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.574,
-   "frames": [
-    {
-     "src": "assets/sprites/jinwoo/special_0.png",
-     "w": 228,
-     "h": 332,
-     "ax": 126.5,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/jinwoo/special_1.png",
-     "w": 267,
-     "h": 294,
-     "ax": 159.4,
-     "ay": 294
-    },
-    {
-     "src": "assets/sprites/jinwoo/special_2.png",
-     "w": 286,
-     "h": 342,
-     "ax": 115.5,
-     "ay": 342
-    },
-    {
-     "src": "assets/sprites/jinwoo/special_3.png",
-     "w": 315,
-     "h": 276,
-     "ax": 168.5,
-     "ay": 276
-    },
-    {
-     "src": "assets/sprites/jinwoo/special_4.png",
-     "w": 197,
-     "h": 343,
-     "ax": 94.5,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/jinwoo/special_5.png",
-     "w": 246,
-     "h": 366,
-     "ax": 121.5,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/jinwoo/special_6.png",
-     "w": 325,
-     "h": 346,
-     "ax": 167.8,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/jinwoo/special_7.png",
-     "w": 194,
-     "h": 345,
-     "ax": 104.0,
-     "ay": 345
-    }
-   ]
-  }
- },
- "saitama": {
-  "walk": {
-   "scale": 0.3397,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/saitama/walkv_0.png",
-     "w": 312,
-     "h": 517,
-     "ax": 198.5,
-     "ay": 517
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_1.png",
-     "w": 321,
-     "h": 514,
-     "ax": 197.5,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_2.png",
-     "w": 328,
-     "h": 512,
-     "ax": 195.5,
-     "ay": 512
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_3.png",
-     "w": 320,
-     "h": 514,
-     "ax": 184.5,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_4.png",
-     "w": 292,
-     "h": 516,
-     "ax": 160.5,
-     "ay": 516
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_5.png",
-     "w": 280,
-     "h": 518,
-     "ax": 147.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_6.png",
-     "w": 256,
-     "h": 521,
-     "ax": 126.5,
-     "ay": 521
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_7.png",
-     "w": 245,
-     "h": 527,
-     "ax": 114.5,
-     "ay": 527
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_8.png",
-     "w": 276,
-     "h": 528,
-     "ax": 122.5,
-     "ay": 528
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_9.png",
-     "w": 302,
-     "h": 526,
-     "ax": 132.5,
-     "ay": 526
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_10.png",
-     "w": 380,
-     "h": 522,
-     "ax": 172.5,
-     "ay": 522
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_11.png",
-     "w": 398,
-     "h": 514,
-     "ax": 192.5,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_12.png",
-     "w": 389,
-     "h": 510,
-     "ax": 192.5,
-     "ay": 510
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_13.png",
-     "w": 358,
-     "h": 510,
-     "ax": 176.5,
-     "ay": 510
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_14.png",
-     "w": 317,
-     "h": 514,
-     "ax": 185.5,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/saitama/walkv_15.png",
-     "w": 312,
-     "h": 516,
-     "ax": 191.5,
-     "ay": 516
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.5217,
-   "frames": [
-    {
-     "src": "assets/sprites/saitama/jump_0.png",
-     "w": 204,
-     "h": 252,
-     "ax": 132.0,
-     "ay": 252
-    },
-    {
-     "src": "assets/sprites/saitama/jump_1.png",
-     "w": 265,
-     "h": 309,
-     "ax": 118.5,
-     "ay": 309
-    },
-    {
-     "src": "assets/sprites/saitama/jump_2.png",
-     "w": 207,
-     "h": 307,
-     "ax": 117.5,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/saitama/jump_3.png",
-     "w": 189,
-     "h": 237,
-     "ax": 126.3,
-     "ay": 237
-    },
-    {
-     "src": "assets/sprites/saitama/jump_4.png",
-     "w": 206,
-     "h": 179,
-     "ax": 132.0,
-     "ay": 179
-    },
-    {
-     "src": "assets/sprites/saitama/jump_5.png",
-     "w": 237,
-     "h": 301,
-     "ax": 137.5,
-     "ay": 301
-    },
-    {
-     "src": "assets/sprites/saitama/jump_6.png",
-     "w": 280,
-     "h": 334,
-     "ax": 173.0,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/saitama/jump_7.png",
-     "w": 178,
-     "h": 241,
-     "ax": 102.5,
-     "ay": 241
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.5217,
-   "frames": [
-    {
-     "src": "assets/sprites/saitama/fall_0.png",
-     "w": 205,
-     "h": 309,
-     "ax": 80.6,
-     "ay": 309
-    },
-    {
-     "src": "assets/sprites/saitama/fall_1.png",
-     "w": 224,
-     "h": 291,
-     "ax": 62.0,
-     "ay": 291
-    },
-    {
-     "src": "assets/sprites/saitama/fall_2.png",
-     "w": 353,
-     "h": 231,
-     "ax": 188.1,
-     "ay": 231
-    },
-    {
-     "src": "assets/sprites/saitama/fall_3.png",
-     "w": 271,
-     "h": 245,
-     "ax": 109.5,
-     "ay": 245
-    },
-    {
-     "src": "assets/sprites/saitama/fall_4.png",
-     "w": 342,
-     "h": 102,
-     "ax": 182.4,
-     "ay": 102
-    },
-    {
-     "src": "assets/sprites/saitama/fall_5.png",
-     "w": 282,
-     "h": 189,
-     "ax": 176.0,
-     "ay": 189
-    },
-    {
-     "src": "assets/sprites/saitama/fall_6.png",
-     "w": 221,
-     "h": 233,
-     "ax": 147.0,
-     "ay": 233
-    },
-    {
-     "src": "assets/sprites/saitama/fall_7.png",
-     "w": 211,
-     "h": 301,
-     "ax": 98.5,
-     "ay": 301
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.5217,
-   "frames": [
-    {
-     "src": "assets/sprites/saitama/combo_0.png",
-     "w": 188,
-     "h": 329,
-     "ax": 85.5,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/saitama/combo_1.png",
-     "w": 228,
-     "h": 308,
-     "ax": 93.9,
-     "ay": 308
-    },
-    {
-     "src": "assets/sprites/saitama/combo_2.png",
-     "w": 327,
-     "h": 288,
-     "ax": 170.3,
-     "ay": 288
-    },
-    {
-     "src": "assets/sprites/saitama/combo_3.png",
-     "w": 218,
-     "h": 339,
-     "ax": 145.5,
-     "ay": 339
-    },
-    {
-     "src": "assets/sprites/saitama/combo_4.png",
-     "w": 268,
-     "h": 317,
-     "ax": 65.2,
-     "ay": 317
-    },
-    {
-     "src": "assets/sprites/saitama/combo_5.png",
-     "w": 255,
-     "h": 300,
-     "ax": 62.5,
-     "ay": 300
-    },
-    {
-     "src": "assets/sprites/saitama/combo_6.png",
-     "w": 252,
-     "h": 311,
-     "ax": 74.0,
-     "ay": 311
-    },
-    {
-     "src": "assets/sprites/saitama/combo_7.png",
-     "w": 220,
-     "h": 329,
-     "ax": 145.0,
-     "ay": 329
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.5217,
-   "frames": [
-    {
-     "src": "assets/sprites/saitama/lowair_0.png",
-     "w": 202,
-     "h": 300,
-     "ax": 113.0,
-     "ay": 300
-    },
-    {
-     "src": "assets/sprites/saitama/lowair_1.png",
-     "w": 234,
-     "h": 306,
-     "ax": 114.5,
-     "ay": 306
-    },
-    {
-     "src": "assets/sprites/saitama/lowair_2.png",
-     "w": 366,
-     "h": 226,
-     "ax": 155.0,
-     "ay": 226
-    },
-    {
-     "src": "assets/sprites/saitama/lowair_3.png",
-     "w": 219,
-     "h": 302,
-     "ax": 113.5,
-     "ay": 302
-    },
-    {
-     "src": "assets/sprites/saitama/lowair_4.png",
-     "w": 219,
-     "h": 267,
-     "ax": 133.0,
-     "ay": 267
-    },
-    {
-     "src": "assets/sprites/saitama/lowair_5.png",
-     "w": 238,
-     "h": 364,
-     "ax": 117.0,
-     "ay": 364
-    },
-    {
-     "src": "assets/sprites/saitama/lowair_6.png",
-     "w": 333,
-     "h": 256,
-     "ax": 153.4,
-     "ay": 256
-    },
-    {
-     "src": "assets/sprites/saitama/lowair_7.png",
-     "w": 285,
-     "h": 281,
-     "ax": 162.7,
-     "ay": 281
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.5217,
-   "frames": [
-    {
-     "src": "assets/sprites/saitama/dashcharge_0.png",
-     "w": 198,
-     "h": 264,
-     "ax": 109.8,
-     "ay": 264
-    },
-    {
-     "src": "assets/sprites/saitama/dashcharge_1.png",
-     "w": 392,
-     "h": 258,
-     "ax": 173.0,
-     "ay": 258
-    },
-    {
-     "src": "assets/sprites/saitama/dashcharge_2.png",
-     "w": 278,
-     "h": 280,
-     "ax": 144.5,
-     "ay": 280
-    },
-    {
-     "src": "assets/sprites/saitama/dashcharge_3.png",
-     "w": 161,
-     "h": 349,
-     "ax": 88.0,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/saitama/dashcharge_4.png",
-     "w": 190,
-     "h": 345,
-     "ax": 89.5,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/saitama/dashcharge_5.png",
-     "w": 181,
-     "h": 351,
-     "ax": 92.5,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/saitama/dashcharge_6.png",
-     "w": 278,
-     "h": 368,
-     "ax": 198.5,
-     "ay": 368
-    },
-    {
-     "src": "assets/sprites/saitama/dashcharge_7.png",
-     "w": 239,
-     "h": 311,
-     "ax": 111.5,
-     "ay": 311
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.5217,
-   "frames": [
-    {
-     "src": "assets/sprites/saitama/special_0.png",
-     "w": 241,
-     "h": 303,
-     "ax": 111.0,
-     "ay": 303
-    },
-    {
-     "src": "assets/sprites/saitama/special_1.png",
-     "w": 311,
-     "h": 304,
-     "ax": 136.0,
-     "ay": 304
-    },
-    {
-     "src": "assets/sprites/saitama/special_2.png",
-     "w": 391,
-     "h": 295,
-     "ax": 173.5,
-     "ay": 295
-    },
-    {
-     "src": "assets/sprites/saitama/special_3.png",
-     "w": 277,
-     "h": 299,
-     "ax": 139.3,
-     "ay": 299
-    },
-    {
-     "src": "assets/sprites/saitama/special_4.png",
-     "w": 190,
-     "h": 244,
-     "ax": 104.0,
-     "ay": 244
-    },
-    {
-     "src": "assets/sprites/saitama/special_5.png",
-     "w": 218,
-     "h": 318,
-     "ax": 118.5,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/saitama/special_6.png",
-     "w": 238,
-     "h": 347,
-     "ax": 136.5,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/saitama/special_7.png",
-     "w": 134,
-     "h": 332,
-     "ax": 74.0,
-     "ay": 332
-    }
-   ]
-  }
- },
- "gojo": {
-  "walk": {
-   "scale": 0.3682,
-   "rate": 24.35,
-   "frames": [
-    {
-     "src": "assets/sprites/gojo/walkv_0.png",
-     "w": 271,
-     "h": 550,
-     "ax": 161.5,
-     "ay": 550
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_1.png",
-     "w": 232,
-     "h": 557,
-     "ax": 135.5,
-     "ay": 557
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_2.png",
-     "w": 176,
-     "h": 564,
-     "ax": 92.5,
-     "ay": 564
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_3.png",
-     "w": 158,
-     "h": 568,
-     "ax": 80.0,
-     "ay": 568
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_4.png",
-     "w": 201,
-     "h": 564,
-     "ax": 108.5,
-     "ay": 564
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_5.png",
-     "w": 296,
-     "h": 556,
-     "ax": 138.0,
-     "ay": 556
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_6.png",
-     "w": 325,
-     "h": 548,
-     "ax": 172.5,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_7.png",
-     "w": 318,
-     "h": 542,
-     "ax": 190.5,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_8.png",
-     "w": 293,
-     "h": 546,
-     "ax": 183.5,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_9.png",
-     "w": 226,
-     "h": 548,
-     "ax": 154.5,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_10.png",
-     "w": 194,
-     "h": 556,
-     "ax": 112.5,
-     "ay": 556
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_11.png",
-     "w": 186,
-     "h": 558,
-     "ax": 92.5,
-     "ay": 558
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_12.png",
-     "w": 224,
-     "h": 554,
-     "ax": 112.0,
-     "ay": 554
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_13.png",
-     "w": 307,
-     "h": 549,
-     "ax": 141.0,
-     "ay": 549
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_14.png",
-     "w": 321,
-     "h": 546,
-     "ax": 154.0,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/gojo/walkv_15.png",
-     "w": 322,
-     "h": 546,
-     "ax": 176.5,
-     "ay": 546
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.584,
-   "frames": [
-    {
-     "src": "assets/sprites/gojo/jump_0.png",
-     "w": 160,
-     "h": 255,
-     "ax": 84.5,
-     "ay": 255
-    },
-    {
-     "src": "assets/sprites/gojo/jump_1.png",
-     "w": 194,
-     "h": 313,
-     "ax": 117.0,
-     "ay": 313
-    },
-    {
-     "src": "assets/sprites/gojo/jump_2.png",
-     "w": 164,
-     "h": 324,
-     "ax": 92.0,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/gojo/jump_3.png",
-     "w": 127,
-     "h": 238,
-     "ax": 69.0,
-     "ay": 238
-    },
-    {
-     "src": "assets/sprites/gojo/jump_4.png",
-     "w": 137,
-     "h": 198,
-     "ax": 69.0,
-     "ay": 198
-    },
-    {
-     "src": "assets/sprites/gojo/jump_5.png",
-     "w": 258,
-     "h": 276,
-     "ax": 132.0,
-     "ay": 276
-    },
-    {
-     "src": "assets/sprites/gojo/jump_6.png",
-     "w": 152,
-     "h": 350,
-     "ax": 77.0,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/gojo/jump_7.png",
-     "w": 165,
-     "h": 237,
-     "ax": 95.0,
-     "ay": 237
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.584,
-   "frames": [
-    {
-     "src": "assets/sprites/gojo/fall_0.png",
-     "w": 203,
-     "h": 320,
-     "ax": 93.2,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/gojo/fall_1.png",
-     "w": 179,
-     "h": 308,
-     "ax": 86.0,
-     "ay": 308
-    },
-    {
-     "src": "assets/sprites/gojo/fall_2.png",
-     "w": 287,
-     "h": 244,
-     "ax": 108.6,
-     "ay": 244
-    },
-    {
-     "src": "assets/sprites/gojo/fall_3.png",
-     "w": 279,
-     "h": 184,
-     "ax": 42.0,
-     "ay": 184
-    },
-    {
-     "src": "assets/sprites/gojo/fall_4.png",
-     "w": 365,
-     "h": 127,
-     "ax": 178.5,
-     "ay": 127
-    },
-    {
-     "src": "assets/sprites/gojo/fall_5.png",
-     "w": 293,
-     "h": 179,
-     "ax": 179.5,
-     "ay": 179
-    },
-    {
-     "src": "assets/sprites/gojo/fall_6.png",
-     "w": 193,
-     "h": 236,
-     "ax": 115.2,
-     "ay": 236
-    },
-    {
-     "src": "assets/sprites/gojo/fall_7.png",
-     "w": 185,
-     "h": 298,
-     "ax": 105.5,
-     "ay": 298
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.584,
-   "frames": [
-    {
-     "src": "assets/sprites/gojo/combo_0.png",
-     "w": 234,
-     "h": 333,
-     "ax": 117.8,
-     "ay": 333
-    },
-    {
-     "src": "assets/sprites/gojo/combo_1.png",
-     "w": 282,
-     "h": 326,
-     "ax": 141.0,
-     "ay": 326
-    },
-    {
-     "src": "assets/sprites/gojo/combo_2.png",
-     "w": 308,
-     "h": 324,
-     "ax": 153.0,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/gojo/combo_3.png",
-     "w": 214,
-     "h": 340,
-     "ax": 131.0,
-     "ay": 340
-    },
-    {
-     "src": "assets/sprites/gojo/combo_4.png",
-     "w": 286,
-     "h": 346,
-     "ax": 78.5,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/gojo/combo_5.png",
-     "w": 291,
-     "h": 344,
-     "ax": 109.0,
-     "ay": 344
-    },
-    {
-     "src": "assets/sprites/gojo/combo_6.png",
-     "w": 303,
-     "h": 346,
-     "ax": 87.2,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/gojo/combo_7.png",
-     "w": 168,
-     "h": 360,
-     "ax": 64.5,
-     "ay": 360
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.584,
-   "frames": [
-    {
-     "src": "assets/sprites/gojo/lowair_0.png",
-     "w": 163,
-     "h": 279,
-     "ax": 82.0,
-     "ay": 279
-    },
-    {
-     "src": "assets/sprites/gojo/lowair_1.png",
-     "w": 209,
-     "h": 286,
-     "ax": 109.5,
-     "ay": 286
-    },
-    {
-     "src": "assets/sprites/gojo/lowair_2.png",
-     "w": 331,
-     "h": 243,
-     "ax": 103.0,
-     "ay": 243
-    },
-    {
-     "src": "assets/sprites/gojo/lowair_3.png",
-     "w": 161,
-     "h": 276,
-     "ax": 80.0,
-     "ay": 276
-    },
-    {
-     "src": "assets/sprites/gojo/lowair_4.png",
-     "w": 147,
-     "h": 266,
-     "ax": 76.0,
-     "ay": 266
-    },
-    {
-     "src": "assets/sprites/gojo/lowair_5.png",
-     "w": 165,
-     "h": 347,
-     "ax": 74.0,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/gojo/lowair_6.png",
-     "w": 320,
-     "h": 281,
-     "ax": 133.5,
-     "ay": 281
-    },
-    {
-     "src": "assets/sprites/gojo/lowair_7.png",
-     "w": 188,
-     "h": 259,
-     "ax": 103.5,
-     "ay": 259
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.584,
-   "frames": [
-    {
-     "src": "assets/sprites/gojo/dashcharge_0.png",
-     "w": 124,
-     "h": 355,
-     "ax": 56.5,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/gojo/dashcharge_1.png",
-     "w": 207,
-     "h": 307,
-     "ax": 124.0,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/gojo/dashcharge_2.png",
-     "w": 297,
-     "h": 307,
-     "ax": 157.0,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/gojo/dashcharge_3.png",
-     "w": 130,
-     "h": 358,
-     "ax": 63.5,
-     "ay": 358
-    },
-    {
-     "src": "assets/sprites/gojo/dashcharge_4.png",
-     "w": 131,
-     "h": 364,
-     "ax": 57.0,
-     "ay": 364
-    },
-    {
-     "src": "assets/sprites/gojo/dashcharge_5.png",
-     "w": 137,
-     "h": 363,
-     "ax": 59.0,
-     "ay": 363
-    },
-    {
-     "src": "assets/sprites/gojo/dashcharge_6.png",
-     "w": 289,
-     "h": 367,
-     "ax": 150.0,
-     "ay": 367
-    },
-    {
-     "src": "assets/sprites/gojo/dashcharge_7.png",
-     "w": 128,
-     "h": 364,
-     "ax": 60.0,
-     "ay": 364
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.584,
-   "frames": [
-    {
-     "src": "assets/sprites/gojo/special_0.png",
-     "w": 134,
-     "h": 353,
-     "ax": 57.5,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/gojo/special_1.png",
-     "w": 219,
-     "h": 339,
-     "ax": 106.0,
-     "ay": 339
-    },
-    {
-     "src": "assets/sprites/gojo/special_2.png",
-     "w": 307,
-     "h": 330,
-     "ax": 132.2,
-     "ay": 330
-    },
-    {
-     "src": "assets/sprites/gojo/special_3.png",
-     "w": 132,
-     "h": 358,
-     "ax": 60.0,
-     "ay": 358
-    },
-    {
-     "src": "assets/sprites/gojo/special_4.png",
-     "w": 161,
-     "h": 350,
-     "ax": 78.7,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/gojo/special_5.png",
-     "w": 298,
-     "h": 336,
-     "ax": 149.8,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/gojo/special_6.png",
-     "w": 310,
-     "h": 329,
-     "ax": 142.5,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/gojo/special_7.png",
-     "w": 131,
-     "h": 366,
-     "ax": 59.0,
-     "ay": 366
-    }
-   ]
-  }
- },
  "db2_android": {
   "walk": {
    "scale": 0.6716,
@@ -20913,2010 +22953,6 @@ const SPRITES = {
      "h": 341,
      "ax": 114.0,
      "ay": 341
-    }
-   ]
-  }
- },
- "ds2_obi": {
-  "walk": {
-   "scale": 0.3729,
-   "rate": 17.78,
-   "frames": [
-    {
-     "src": "assets/sprites/ds2_obi/walkv_0.png",
-     "w": 500,
-     "h": 522,
-     "ax": 218.2,
-     "ay": 522
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_1.png",
-     "w": 508,
-     "h": 518,
-     "ax": 228.2,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_2.png",
-     "w": 494,
-     "h": 524,
-     "ax": 213.2,
-     "ay": 524
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_3.png",
-     "w": 476,
-     "h": 526,
-     "ax": 195.2,
-     "ay": 526
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_4.png",
-     "w": 456,
-     "h": 530,
-     "ax": 180.2,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_5.png",
-     "w": 444,
-     "h": 531,
-     "ax": 169.2,
-     "ay": 531
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_6.png",
-     "w": 448,
-     "h": 526,
-     "ax": 167.2,
-     "ay": 526
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_7.png",
-     "w": 452,
-     "h": 524,
-     "ax": 165.2,
-     "ay": 524
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_8.png",
-     "w": 466,
-     "h": 518,
-     "ax": 175.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_9.png",
-     "w": 472,
-     "h": 518,
-     "ax": 172.2,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_10.png",
-     "w": 476,
-     "h": 522,
-     "ax": 172.2,
-     "ay": 522
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_11.png",
-     "w": 470,
-     "h": 530,
-     "ax": 185.2,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_12.png",
-     "w": 462,
-     "h": 540,
-     "ax": 180.2,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_13.png",
-     "w": 466,
-     "h": 540,
-     "ax": 183.2,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_14.png",
-     "w": 476,
-     "h": 534,
-     "ax": 195.2,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/ds2_obi/walkv_15.png",
-     "w": 488,
-     "h": 524,
-     "ax": 207.2,
-     "ay": 524
-    }
-   ]
-  },
-  "attack": {
-   "scale": 0.6592,
-   "frames": [
-    {
-     "src": "assets/sprites/ds2_obi/attack_0.png",
-     "w": 275,
-     "h": 325,
-     "ax": 96.0,
-     "ay": 325
-    },
-    {
-     "src": "assets/sprites/ds2_obi/attack_1.png",
-     "w": 271,
-     "h": 313,
-     "ax": 188.0,
-     "ay": 313
-    },
-    {
-     "src": "assets/sprites/ds2_obi/attack_2.png",
-     "w": 402,
-     "h": 307,
-     "ax": 139.0,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/ds2_obi/attack_3.png",
-     "w": 253,
-     "h": 312,
-     "ax": 123.0,
-     "ay": 312
-    },
-    {
-     "src": "assets/sprites/ds2_obi/attack_4.png",
-     "w": 215,
-     "h": 343,
-     "ax": 119.0,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/ds2_obi/attack_5.png",
-     "w": 342,
-     "h": 301,
-     "ax": 102.5,
-     "ay": 301
-    },
-    {
-     "src": "assets/sprites/ds2_obi/attack_6.png",
-     "w": 438,
-     "h": 235,
-     "ax": 165.3,
-     "ay": 235
-    },
-    {
-     "src": "assets/sprites/ds2_obi/attack_7.png",
-     "w": 260,
-     "h": 316,
-     "ax": 91.0,
-     "ay": 316
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.6592,
-   "frames": [
-    {
-     "src": "assets/sprites/ds2_obi/fall_0.png",
-     "w": 270,
-     "h": 317,
-     "ax": 96.0,
-     "ay": 317
-    },
-    {
-     "src": "assets/sprites/ds2_obi/fall_1.png",
-     "w": 269,
-     "h": 318,
-     "ax": 96.5,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/ds2_obi/fall_2.png",
-     "w": 304,
-     "h": 324,
-     "ax": 146.8,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/ds2_obi/fall_3.png",
-     "w": 246,
-     "h": 259,
-     "ax": 112.2,
-     "ay": 259
-    },
-    {
-     "src": "assets/sprites/ds2_obi/fall_4.png",
-     "w": 361,
-     "h": 93,
-     "ax": 166.5,
-     "ay": 93
-    },
-    {
-     "src": "assets/sprites/ds2_obi/fall_5.png",
-     "w": 334,
-     "h": 191,
-     "ax": 191.0,
-     "ay": 191
-    },
-    {
-     "src": "assets/sprites/ds2_obi/fall_6.png",
-     "w": 310,
-     "h": 265,
-     "ax": 166.5,
-     "ay": 265
-    },
-    {
-     "src": "assets/sprites/ds2_obi/fall_7.png",
-     "w": 284,
-     "h": 340,
-     "ax": 183.0,
-     "ay": 340
-    }
-   ]
-  }
- },
- "biker": {
-  "walk": {
-   "scale": 0.5602,
-   "frames": [
-    {
-     "src": "assets/sprites/biker/walk_0.png",
-     "w": 205,
-     "h": 353,
-     "ax": 101.5,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/biker/walk_1.png",
-     "w": 165,
-     "h": 352,
-     "ax": 98.5,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/biker/walk_2.png",
-     "w": 125,
-     "h": 356,
-     "ax": 57.5,
-     "ay": 356
-    },
-    {
-     "src": "assets/sprites/biker/walk_3.png",
-     "w": 214,
-     "h": 353,
-     "ax": 103.5,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/biker/walk_4.png",
-     "w": 204,
-     "h": 354,
-     "ax": 102.5,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/biker/walk_5.png",
-     "w": 180,
-     "h": 357,
-     "ax": 106.5,
-     "ay": 357
-    },
-    {
-     "src": "assets/sprites/biker/walk_6.png",
-     "w": 126,
-     "h": 357,
-     "ax": 59.0,
-     "ay": 357
-    },
-    {
-     "src": "assets/sprites/biker/walk_7.png",
-     "w": 224,
-     "h": 354,
-     "ax": 111.0,
-     "ay": 354
-    }
-   ]
-  },
-  "attack": {
-   "scale": 0.5602,
-   "frames": [
-    {
-     "src": "assets/sprites/biker/attack_0.png",
-     "w": 330,
-     "h": 402,
-     "ax": 115.6,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/biker/attack_1.png",
-     "w": 283,
-     "h": 349,
-     "ax": 174.3,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/biker/attack_2.png",
-     "w": 417,
-     "h": 308,
-     "ax": 156.5,
-     "ay": 308
-    },
-    {
-     "src": "assets/sprites/biker/attack_3.png",
-     "w": 271,
-     "h": 316,
-     "ax": 159.0,
-     "ay": 316
-    },
-    {
-     "src": "assets/sprites/biker/attack_4.png",
-     "w": 286,
-     "h": 365,
-     "ax": 146.3,
-     "ay": 364
-    },
-    {
-     "src": "assets/sprites/biker/attack_5.png",
-     "w": 395,
-     "h": 289,
-     "ax": 229.0,
-     "ay": 289
-    },
-    {
-     "src": "assets/sprites/biker/attack_6.png",
-     "w": 345,
-     "h": 333,
-     "ax": 153.5,
-     "ay": 333
-    },
-    {
-     "src": "assets/sprites/biker/attack_7.png",
-     "w": 236,
-     "h": 354,
-     "ax": 135.4,
-     "ay": 354
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.5602,
-   "frames": [
-    {
-     "src": "assets/sprites/biker/fall_0.png",
-     "w": 239,
-     "h": 354,
-     "ax": 104.8,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/biker/fall_1.png",
-     "w": 228,
-     "h": 337,
-     "ax": 113.0,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/biker/fall_2.png",
-     "w": 305,
-     "h": 286,
-     "ax": 110.1,
-     "ay": 286
-    },
-    {
-     "src": "assets/sprites/biker/fall_3.png",
-     "w": 294,
-     "h": 231,
-     "ax": 88.2,
-     "ay": 227
-    },
-    {
-     "src": "assets/sprites/biker/fall_4.png",
-     "w": 380,
-     "h": 138,
-     "ax": 171.0,
-     "ay": 137
-    },
-    {
-     "src": "assets/sprites/biker/fall_5.png",
-     "w": 279,
-     "h": 228,
-     "ax": 149.5,
-     "ay": 223
-    },
-    {
-     "src": "assets/sprites/biker/fall_6.png",
-     "w": 231,
-     "h": 275,
-     "ax": 137.6,
-     "ay": 274
-    },
-    {
-     "src": "assets/sprites/biker/fall_7.png",
-     "w": 283,
-     "h": 310,
-     "ax": 159.9,
-     "ay": 310
-    }
-   ]
-  }
- },
- "sasuke": {
-  "walk": {
-   "scale": 0.3349,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/walkv_0.png",
-     "w": 328,
-     "h": 552,
-     "ax": 215.5,
-     "ay": 552
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_1.png",
-     "w": 326,
-     "h": 556,
-     "ax": 222.5,
-     "ay": 556
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_2.png",
-     "w": 326,
-     "h": 556,
-     "ax": 228.5,
-     "ay": 556
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_3.png",
-     "w": 324,
-     "h": 554,
-     "ax": 226.5,
-     "ay": 554
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_4.png",
-     "w": 350,
-     "h": 548,
-     "ax": 223.5,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_5.png",
-     "w": 348,
-     "h": 538,
-     "ax": 219.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_6.png",
-     "w": 320,
-     "h": 534,
-     "ax": 220.5,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_7.png",
-     "w": 320,
-     "h": 536,
-     "ax": 222.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_8.png",
-     "w": 320,
-     "h": 540,
-     "ax": 222.5,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_9.png",
-     "w": 320,
-     "h": 548,
-     "ax": 219.5,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_10.png",
-     "w": 322,
-     "h": 548,
-     "ax": 213.5,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_11.png",
-     "w": 320,
-     "h": 544,
-     "ax": 205.5,
-     "ay": 544
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_12.png",
-     "w": 346,
-     "h": 536,
-     "ax": 201.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_13.png",
-     "w": 340,
-     "h": 536,
-     "ax": 201.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_14.png",
-     "w": 328,
-     "h": 538,
-     "ax": 202.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/sasuke/walkv_15.png",
-     "w": 326,
-     "h": 544,
-     "ax": 207.5,
-     "ay": 544
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.5198,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/jump_0.png",
-     "w": 215,
-     "h": 285,
-     "ax": 128.0,
-     "ay": 285
-    },
-    {
-     "src": "assets/sprites/sasuke/jump_1.png",
-     "w": 191,
-     "h": 329,
-     "ax": 123.9,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/sasuke/jump_2.png",
-     "w": 220,
-     "h": 346,
-     "ax": 113.5,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/sasuke/jump_3.png",
-     "w": 200,
-     "h": 266,
-     "ax": 119.0,
-     "ay": 266
-    },
-    {
-     "src": "assets/sprites/sasuke/jump_4.png",
-     "w": 182,
-     "h": 234,
-     "ax": 114.5,
-     "ay": 234
-    },
-    {
-     "src": "assets/sprites/sasuke/jump_5.png",
-     "w": 205,
-     "h": 329,
-     "ax": 122.0,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/sasuke/jump_6.png",
-     "w": 196,
-     "h": 354,
-     "ax": 138.0,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/sasuke/jump_7.png",
-     "w": 243,
-     "h": 321,
-     "ax": 127.5,
-     "ay": 321
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.5198,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/fall_0.png",
-     "w": 258,
-     "h": 350,
-     "ax": 137.2,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/sasuke/fall_1.png",
-     "w": 293,
-     "h": 336,
-     "ax": 98.0,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/sasuke/fall_2.png",
-     "w": 342,
-     "h": 258,
-     "ax": 138.2,
-     "ay": 258
-    },
-    {
-     "src": "assets/sprites/sasuke/fall_3.png",
-     "w": 307,
-     "h": 220,
-     "ax": 113.5,
-     "ay": 220
-    },
-    {
-     "src": "assets/sprites/sasuke/fall_4.png",
-     "w": 377,
-     "h": 97,
-     "ax": 168.1,
-     "ay": 97
-    },
-    {
-     "src": "assets/sprites/sasuke/fall_5.png",
-     "w": 297,
-     "h": 230,
-     "ax": 181.0,
-     "ay": 230
-    },
-    {
-     "src": "assets/sprites/sasuke/fall_6.png",
-     "w": 239,
-     "h": 265,
-     "ax": 147.7,
-     "ay": 265
-    },
-    {
-     "src": "assets/sprites/sasuke/fall_7.png",
-     "w": 256,
-     "h": 337,
-     "ax": 135.5,
-     "ay": 337
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.5198,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/combo_0.png",
-     "w": 264,
-     "h": 345,
-     "ax": 139.5,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/sasuke/combo_1.png",
-     "w": 303,
-     "h": 344,
-     "ax": 147.0,
-     "ay": 344
-    },
-    {
-     "src": "assets/sprites/sasuke/combo_2.png",
-     "w": 255,
-     "h": 337,
-     "ax": 147.0,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/sasuke/combo_3.png",
-     "w": 216,
-     "h": 369,
-     "ax": 126.8,
-     "ay": 369
-    },
-    {
-     "src": "assets/sprites/sasuke/combo_4.png",
-     "w": 289,
-     "h": 360,
-     "ax": 89.5,
-     "ay": 360
-    },
-    {
-     "src": "assets/sprites/sasuke/combo_5.png",
-     "w": 280,
-     "h": 354,
-     "ax": 93.7,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/sasuke/combo_6.png",
-     "w": 191,
-     "h": 363,
-     "ax": 74.5,
-     "ay": 363
-    },
-    {
-     "src": "assets/sprites/sasuke/combo_7.png",
-     "w": 284,
-     "h": 346,
-     "ax": 72.0,
-     "ay": 346
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.5198,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/lowair_0.png",
-     "w": 242,
-     "h": 266,
-     "ax": 149.0,
-     "ay": 266
-    },
-    {
-     "src": "assets/sprites/sasuke/lowair_1.png",
-     "w": 251,
-     "h": 263,
-     "ax": 155.0,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/sasuke/lowair_2.png",
-     "w": 365,
-     "h": 222,
-     "ax": 171.0,
-     "ay": 222
-    },
-    {
-     "src": "assets/sprites/sasuke/lowair_3.png",
-     "w": 231,
-     "h": 263,
-     "ax": 135.5,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/sasuke/lowair_4.png",
-     "w": 222,
-     "h": 279,
-     "ax": 134.0,
-     "ay": 279
-    },
-    {
-     "src": "assets/sprites/sasuke/lowair_5.png",
-     "w": 215,
-     "h": 298,
-     "ax": 127.5,
-     "ay": 298
-    },
-    {
-     "src": "assets/sprites/sasuke/lowair_6.png",
-     "w": 357,
-     "h": 316,
-     "ax": 133.5,
-     "ay": 316
-    },
-    {
-     "src": "assets/sprites/sasuke/lowair_7.png",
-     "w": 224,
-     "h": 354,
-     "ax": 119.5,
-     "ay": 354
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.5198,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/dashcharge_0.png",
-     "w": 261,
-     "h": 343,
-     "ax": 138.5,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/sasuke/dashcharge_1.png",
-     "w": 289,
-     "h": 279,
-     "ax": 172.0,
-     "ay": 279
-    },
-    {
-     "src": "assets/sprites/sasuke/dashcharge_2.png",
-     "w": 396,
-     "h": 305,
-     "ax": 199.0,
-     "ay": 305
-    },
-    {
-     "src": "assets/sprites/sasuke/dashcharge_3.png",
-     "w": 190,
-     "h": 364,
-     "ax": 89.5,
-     "ay": 364
-    },
-    {
-     "src": "assets/sprites/sasuke/dashcharge_4.png",
-     "w": 240,
-     "h": 353,
-     "ax": 145.0,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/sasuke/dashcharge_5.png",
-     "w": 250,
-     "h": 304,
-     "ax": 165.0,
-     "ay": 304
-    },
-    {
-     "src": "assets/sprites/sasuke/dashcharge_6.png",
-     "w": 230,
-     "h": 359,
-     "ax": 112.2,
-     "ay": 359
-    },
-    {
-     "src": "assets/sprites/sasuke/dashcharge_7.png",
-     "w": 165,
-     "h": 362,
-     "ax": 90.0,
-     "ay": 362
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.5198,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/special_0.png",
-     "w": 244,
-     "h": 322,
-     "ax": 136.0,
-     "ay": 322
-    },
-    {
-     "src": "assets/sprites/sasuke/special_1.png",
-     "w": 299,
-     "h": 272,
-     "ax": 166.0,
-     "ay": 272
-    },
-    {
-     "src": "assets/sprites/sasuke/special_2.png",
-     "w": 395,
-     "h": 305,
-     "ax": 207.5,
-     "ay": 305
-    },
-    {
-     "src": "assets/sprites/sasuke/special_3.png",
-     "w": 254,
-     "h": 333,
-     "ax": 134.0,
-     "ay": 333
-    },
-    {
-     "src": "assets/sprites/sasuke/special_4.png",
-     "w": 154,
-     "h": 394,
-     "ax": 86.0,
-     "ay": 394
-    },
-    {
-     "src": "assets/sprites/sasuke/special_5.png",
-     "w": 187,
-     "h": 379,
-     "ax": 87.5,
-     "ay": 379
-    },
-    {
-     "src": "assets/sprites/sasuke/special_6.png",
-     "w": 301,
-     "h": 340,
-     "ax": 147.5,
-     "ay": 340
-    },
-    {
-     "src": "assets/sprites/sasuke/special_7.png",
-     "w": 154,
-     "h": 365,
-     "ax": 84.5,
-     "ay": 365
-    }
-   ]
-  },
-  "idle": {
-   "scale": 0.3396,
-   "rate": 6.7,
-   "frames": [
-    {
-     "src": "assets/sprites/sasuke/idlev_0.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_1.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_2.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_3.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_4.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_5.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_6.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_7.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_8.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_9.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_10.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/sasuke/idlev_11.png",
-     "w": 382,
-     "h": 534,
-     "ax": 203.7,
-     "ay": 534
-    }
-   ]
-  }
- },
- "gohan": {
-  "walk": {
-   "scale": 0.2804,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/walkv_0.png",
-     "w": 244,
-     "h": 538,
-     "ax": 121.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_1.png",
-     "w": 244,
-     "h": 538,
-     "ax": 126.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_2.png",
-     "w": 256,
-     "h": 538,
-     "ax": 140.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_3.png",
-     "w": 308,
-     "h": 532,
-     "ax": 169.5,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_4.png",
-     "w": 320,
-     "h": 523,
-     "ax": 193.5,
-     "ay": 523
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_5.png",
-     "w": 312,
-     "h": 518,
-     "ax": 200.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_6.png",
-     "w": 300,
-     "h": 518,
-     "ax": 184.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_7.png",
-     "w": 270,
-     "h": 524,
-     "ax": 149.5,
-     "ay": 524
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_8.png",
-     "w": 248,
-     "h": 529,
-     "ax": 123.5,
-     "ay": 529
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_9.png",
-     "w": 252,
-     "h": 529,
-     "ax": 125.5,
-     "ay": 529
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_10.png",
-     "w": 260,
-     "h": 525,
-     "ax": 129.5,
-     "ay": 525
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_11.png",
-     "w": 272,
-     "h": 524,
-     "ax": 139.5,
-     "ay": 524
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_12.png",
-     "w": 286,
-     "h": 524,
-     "ax": 153.5,
-     "ay": 524
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_13.png",
-     "w": 290,
-     "h": 526,
-     "ax": 157.5,
-     "ay": 526
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_14.png",
-     "w": 260,
-     "h": 530,
-     "ax": 130.5,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/gohan/walkv_15.png",
-     "w": 254,
-     "h": 532,
-     "ax": 126.5,
-     "ay": 532
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/jump_0.png",
-     "w": 180,
-     "h": 250,
-     "ax": 83.5,
-     "ay": 250
-    },
-    {
-     "src": "assets/sprites/gohan/jump_1.png",
-     "w": 167,
-     "h": 320,
-     "ax": 90.5,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/gohan/jump_2.png",
-     "w": 157,
-     "h": 331,
-     "ax": 82.0,
-     "ay": 331
-    },
-    {
-     "src": "assets/sprites/gohan/jump_3.png",
-     "w": 144,
-     "h": 261,
-     "ax": 73.5,
-     "ay": 261
-    },
-    {
-     "src": "assets/sprites/gohan/jump_4.png",
-     "w": 125,
-     "h": 230,
-     "ax": 58.0,
-     "ay": 230
-    },
-    {
-     "src": "assets/sprites/gohan/jump_5.png",
-     "w": 178,
-     "h": 312,
-     "ax": 98.5,
-     "ay": 312
-    },
-    {
-     "src": "assets/sprites/gohan/jump_6.png",
-     "w": 178,
-     "h": 319,
-     "ax": 99.5,
-     "ay": 319
-    },
-    {
-     "src": "assets/sprites/gohan/jump_7.png",
-     "w": 192,
-     "h": 252,
-     "ax": 108.5,
-     "ay": 252
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/fall_0.png",
-     "w": 210,
-     "h": 327,
-     "ax": 87.4,
-     "ay": 327
-    },
-    {
-     "src": "assets/sprites/gohan/fall_1.png",
-     "w": 277,
-     "h": 320,
-     "ax": 95.5,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/gohan/fall_2.png",
-     "w": 300,
-     "h": 253,
-     "ax": 126.9,
-     "ay": 253
-    },
-    {
-     "src": "assets/sprites/gohan/fall_3.png",
-     "w": 271,
-     "h": 199,
-     "ax": 119.3,
-     "ay": 199
-    },
-    {
-     "src": "assets/sprites/gohan/fall_4.png",
-     "w": 324,
-     "h": 180,
-     "ax": 154.9,
-     "ay": 180
-    },
-    {
-     "src": "assets/sprites/gohan/fall_5.png",
-     "w": 268,
-     "h": 243,
-     "ax": 163.0,
-     "ay": 243
-    },
-    {
-     "src": "assets/sprites/gohan/fall_6.png",
-     "w": 222,
-     "h": 253,
-     "ax": 142.3,
-     "ay": 253
-    },
-    {
-     "src": "assets/sprites/gohan/fall_7.png",
-     "w": 208,
-     "h": 301,
-     "ax": 116.5,
-     "ay": 301
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/combo_0.png",
-     "w": 189,
-     "h": 290,
-     "ax": 96.5,
-     "ay": 290
-    },
-    {
-     "src": "assets/sprites/gohan/combo_1.png",
-     "w": 238,
-     "h": 295,
-     "ax": 110.5,
-     "ay": 295
-    },
-    {
-     "src": "assets/sprites/gohan/combo_2.png",
-     "w": 263,
-     "h": 299,
-     "ax": 137.0,
-     "ay": 299
-    },
-    {
-     "src": "assets/sprites/gohan/combo_3.png",
-     "w": 157,
-     "h": 358,
-     "ax": 70.5,
-     "ay": 358
-    },
-    {
-     "src": "assets/sprites/gohan/combo_4.png",
-     "w": 158,
-     "h": 320,
-     "ax": 67.0,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/gohan/combo_5.png",
-     "w": 251,
-     "h": 317,
-     "ax": 82.0,
-     "ay": 317
-    },
-    {
-     "src": "assets/sprites/gohan/combo_6.png",
-     "w": 249,
-     "h": 325,
-     "ax": 90.5,
-     "ay": 325
-    },
-    {
-     "src": "assets/sprites/gohan/combo_7.png",
-     "w": 261,
-     "h": 257,
-     "ax": 89.5,
-     "ay": 257
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/lowair_0.png",
-     "w": 182,
-     "h": 272,
-     "ax": 85.6,
-     "ay": 272
-    },
-    {
-     "src": "assets/sprites/gohan/lowair_1.png",
-     "w": 195,
-     "h": 238,
-     "ax": 108.7,
-     "ay": 238
-    },
-    {
-     "src": "assets/sprites/gohan/lowair_2.png",
-     "w": 265,
-     "h": 239,
-     "ax": 84.4,
-     "ay": 239
-    },
-    {
-     "src": "assets/sprites/gohan/lowair_3.png",
-     "w": 212,
-     "h": 263,
-     "ax": 135.5,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/gohan/lowair_4.png",
-     "w": 138,
-     "h": 255,
-     "ax": 69.0,
-     "ay": 255
-    },
-    {
-     "src": "assets/sprites/gohan/lowair_5.png",
-     "w": 159,
-     "h": 316,
-     "ax": 78.8,
-     "ay": 316
-    },
-    {
-     "src": "assets/sprites/gohan/lowair_6.png",
-     "w": 255,
-     "h": 263,
-     "ax": 89.0,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/gohan/lowair_7.png",
-     "w": 168,
-     "h": 308,
-     "ax": 97.5,
-     "ay": 308
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/dashcharge_0.png",
-     "w": 228,
-     "h": 310,
-     "ax": 147.6,
-     "ay": 310
-    },
-    {
-     "src": "assets/sprites/gohan/dashcharge_1.png",
-     "w": 293,
-     "h": 285,
-     "ax": 173.5,
-     "ay": 285
-    },
-    {
-     "src": "assets/sprites/gohan/dashcharge_2.png",
-     "w": 387,
-     "h": 219,
-     "ax": 238.5,
-     "ay": 219
-    },
-    {
-     "src": "assets/sprites/gohan/dashcharge_3.png",
-     "w": 252,
-     "h": 296,
-     "ax": 152.5,
-     "ay": 296
-    },
-    {
-     "src": "assets/sprites/gohan/dashcharge_4.png",
-     "w": 202,
-     "h": 322,
-     "ax": 102.5,
-     "ay": 322
-    },
-    {
-     "src": "assets/sprites/gohan/dashcharge_5.png",
-     "w": 196,
-     "h": 343,
-     "ax": 100.5,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/gohan/dashcharge_6.png",
-     "w": 262,
-     "h": 378,
-     "ax": 124.9,
-     "ay": 378
-    },
-    {
-     "src": "assets/sprites/gohan/dashcharge_7.png",
-     "w": 149,
-     "h": 384,
-     "ax": 68.5,
-     "ay": 384
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/special_0.png",
-     "w": 201,
-     "h": 309,
-     "ax": 113.5,
-     "ay": 309
-    },
-    {
-     "src": "assets/sprites/gohan/special_1.png",
-     "w": 204,
-     "h": 315,
-     "ax": 96.1,
-     "ay": 315
-    },
-    {
-     "src": "assets/sprites/gohan/special_2.png",
-     "w": 225,
-     "h": 309,
-     "ax": 126.0,
-     "ay": 309
-    },
-    {
-     "src": "assets/sprites/gohan/special_3.png",
-     "w": 194,
-     "h": 303,
-     "ax": 109.5,
-     "ay": 303
-    },
-    {
-     "src": "assets/sprites/gohan/special_4.png",
-     "w": 198,
-     "h": 307,
-     "ax": 95.0,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/gohan/special_5.png",
-     "w": 200,
-     "h": 285,
-     "ax": 100.5,
-     "ay": 285
-    },
-    {
-     "src": "assets/sprites/gohan/special_6.png",
-     "w": 246,
-     "h": 306,
-     "ax": 150.5,
-     "ay": 306
-    },
-    {
-     "src": "assets/sprites/gohan/special_7.png",
-     "w": 231,
-     "h": 313,
-     "ax": 92.1,
-     "ay": 313
-    }
-   ]
-  },
-  "idle": {
-   "scale": 0.2544,
-   "rate": 9.0,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan/idlev_0.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_1.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_2.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_3.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_4.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_5.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_6.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_7.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_8.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_9.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_10.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/gohan/idlev_11.png",
-     "w": 336,
-     "h": 542,
-     "ax": 167.1,
-     "ay": 542
-    }
-   ]
-  }
- },
- "gohan_ssj": {
-  "walk": {
-   "scale": 0.3156,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_0.png",
-     "w": 192,
-     "h": 528,
-     "ax": 99.5,
-     "ay": 528
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_1.png",
-     "w": 194,
-     "h": 528,
-     "ax": 103.5,
-     "ay": 528
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_2.png",
-     "w": 198,
-     "h": 526,
-     "ax": 108.5,
-     "ay": 526
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_3.png",
-     "w": 270,
-     "h": 514,
-     "ax": 140.5,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_4.png",
-     "w": 288,
-     "h": 508,
-     "ax": 157.5,
-     "ay": 508
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_5.png",
-     "w": 292,
-     "h": 502,
-     "ax": 181.5,
-     "ay": 502
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_6.png",
-     "w": 260,
-     "h": 508,
-     "ax": 166.5,
-     "ay": 508
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_7.png",
-     "w": 246,
-     "h": 510,
-     "ax": 152.5,
-     "ay": 510
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_8.png",
-     "w": 212,
-     "h": 520,
-     "ax": 115.5,
-     "ay": 520
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_9.png",
-     "w": 204,
-     "h": 522,
-     "ax": 106.5,
-     "ay": 522
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_10.png",
-     "w": 206,
-     "h": 518,
-     "ax": 107.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_11.png",
-     "w": 246,
-     "h": 506,
-     "ax": 134.5,
-     "ay": 506
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_12.png",
-     "w": 276,
-     "h": 504,
-     "ax": 160.5,
-     "ay": 504
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_13.png",
-     "w": 270,
-     "h": 506,
-     "ax": 167.5,
-     "ay": 506
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_14.png",
-     "w": 248,
-     "h": 514,
-     "ax": 149.5,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/walkv_15.png",
-     "w": 232,
-     "h": 518,
-     "ax": 134.5,
-     "ay": 518
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_ssj/jump_0.png",
-     "w": 187,
-     "h": 264,
-     "ax": 84.5,
-     "ay": 264
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/jump_1.png",
-     "w": 165,
-     "h": 336,
-     "ax": 91.0,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/jump_2.png",
-     "w": 157,
-     "h": 343,
-     "ax": 83.5,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/jump_3.png",
-     "w": 136,
-     "h": 278,
-     "ax": 75.5,
-     "ay": 278
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/jump_4.png",
-     "w": 113,
-     "h": 252,
-     "ax": 56.0,
-     "ay": 252
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/jump_5.png",
-     "w": 166,
-     "h": 335,
-     "ax": 97.5,
-     "ay": 335
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/jump_6.png",
-     "w": 165,
-     "h": 342,
-     "ax": 98.5,
-     "ay": 342
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/jump_7.png",
-     "w": 183,
-     "h": 275,
-     "ax": 109.0,
-     "ay": 275
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_ssj/combo_0.png",
-     "w": 188,
-     "h": 319,
-     "ax": 102.0,
-     "ay": 319
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/combo_1.png",
-     "w": 238,
-     "h": 321,
-     "ax": 109.5,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/combo_2.png",
-     "w": 263,
-     "h": 324,
-     "ax": 140.0,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/combo_3.png",
-     "w": 165,
-     "h": 359,
-     "ax": 75.0,
-     "ay": 359
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/combo_4.png",
-     "w": 158,
-     "h": 345,
-     "ax": 65.5,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/combo_5.png",
-     "w": 251,
-     "h": 340,
-     "ax": 81.5,
-     "ay": 340
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/combo_6.png",
-     "w": 253,
-     "h": 342,
-     "ax": 90.6,
-     "ay": 342
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/combo_7.png",
-     "w": 260,
-     "h": 281,
-     "ax": 86.5,
-     "ay": 281
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_0.png",
-     "w": 182,
-     "h": 305,
-     "ax": 89.0,
-     "ay": 305
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_1.png",
-     "w": 190,
-     "h": 270,
-     "ax": 122.0,
-     "ay": 270
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_2.png",
-     "w": 265,
-     "h": 273,
-     "ax": 95.0,
-     "ay": 273
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_3.png",
-     "w": 212,
-     "h": 298,
-     "ax": 138.5,
-     "ay": 298
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_4.png",
-     "w": 131,
-     "h": 285,
-     "ax": 69.0,
-     "ay": 285
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_5.png",
-     "w": 158,
-     "h": 344,
-     "ax": 79.5,
-     "ay": 344
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_6.png",
-     "w": 255,
-     "h": 293,
-     "ax": 87.5,
-     "ay": 293
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/lowair_7.png",
-     "w": 167,
-     "h": 339,
-     "ax": 97.0,
-     "ay": 339
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_0.png",
-     "w": 216,
-     "h": 344,
-     "ax": 145.5,
-     "ay": 344
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_1.png",
-     "w": 294,
-     "h": 308,
-     "ax": 173.0,
-     "ay": 308
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_2.png",
-     "w": 386,
-     "h": 238,
-     "ax": 235.7,
-     "ay": 238
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_3.png",
-     "w": 253,
-     "h": 329,
-     "ax": 157.0,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_4.png",
-     "w": 191,
-     "h": 355,
-     "ax": 104.5,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_5.png",
-     "w": 196,
-     "h": 366,
-     "ax": 103.5,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_6.png",
-     "w": 261,
-     "h": 392,
-     "ax": 103.5,
-     "ay": 392
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/dashcharge_7.png",
-     "w": 149,
-     "h": 412,
-     "ax": 68.5,
-     "ay": 412
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.4615,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_ssj/special_0.png",
-     "w": 201,
-     "h": 337,
-     "ax": 112.0,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/special_1.png",
-     "w": 203,
-     "h": 337,
-     "ax": 93.2,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/special_2.png",
-     "w": 225,
-     "h": 338,
-     "ax": 124.0,
-     "ay": 338
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/special_3.png",
-     "w": 194,
-     "h": 334,
-     "ax": 112.0,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/special_4.png",
-     "w": 199,
-     "h": 337,
-     "ax": 98.5,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/special_5.png",
-     "w": 200,
-     "h": 318,
-     "ax": 104.5,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/special_6.png",
-     "w": 246,
-     "h": 335,
-     "ax": 147.5,
-     "ay": 335
-    },
-    {
-     "src": "assets/sprites/gohan_ssj/special_7.png",
-     "w": 231,
-     "h": 344,
-     "ax": 96.7,
-     "ay": 344
     }
    ]
   }
@@ -23411,94 +23447,17 @@ const SPRITES = {
    "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/jk_boss/walkv_0.png",
-     "w": 374,
-     "h": 520,
-     "ax": 188.5,
-     "ay": 520
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_1.png",
-     "w": 360,
-     "h": 516,
-     "ax": 180.5,
-     "ay": 516
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_2.png",
-     "w": 356,
-     "h": 514,
-     "ax": 177.5,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_3.png",
-     "w": 360,
-     "h": 512,
-     "ax": 169.5,
-     "ay": 512
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_4.png",
+     "src": "assets/sprites/jk_boss/walkv_15.png",
      "w": 362,
-     "h": 516,
-     "ax": 178.5,
-     "ay": 516
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_5.png",
-     "w": 362,
-     "h": 518,
-     "ax": 177.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_6.png",
-     "w": 360,
-     "h": 522,
+     "h": 524,
      "ax": 181.5,
-     "ay": 522
+     "ay": 524
     },
     {
-     "src": "assets/sprites/jk_boss/walkv_7.png",
+     "src": "assets/sprites/jk_boss/walkv_14.png",
      "w": 360,
-     "h": 516,
-     "ax": 181.5,
-     "ay": 516
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_8.png",
-     "w": 356,
-     "h": 516,
-     "ax": 180.5,
-     "ay": 516
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_9.png",
-     "w": 364,
-     "h": 518,
-     "ax": 180.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_10.png",
-     "w": 362,
-     "h": 522,
-     "ax": 175.5,
-     "ay": 522
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_11.png",
-     "w": 356,
-     "h": 526,
-     "ax": 167.5,
-     "ay": 526
-    },
-    {
-     "src": "assets/sprites/jk_boss/walkv_12.png",
-     "w": 358,
      "h": 528,
-     "ax": 168.5,
+     "ax": 179.5,
      "ay": 528
     },
     {
@@ -23509,18 +23468,95 @@ const SPRITES = {
      "ay": 530
     },
     {
-     "src": "assets/sprites/jk_boss/walkv_14.png",
-     "w": 360,
+     "src": "assets/sprites/jk_boss/walkv_12.png",
+     "w": 358,
      "h": 528,
-     "ax": 179.5,
+     "ax": 168.5,
      "ay": 528
     },
     {
-     "src": "assets/sprites/jk_boss/walkv_15.png",
+     "src": "assets/sprites/jk_boss/walkv_11.png",
+     "w": 356,
+     "h": 526,
+     "ax": 167.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_10.png",
      "w": 362,
-     "h": 524,
+     "h": 522,
+     "ax": 175.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_9.png",
+     "w": 364,
+     "h": 518,
+     "ax": 180.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_8.png",
+     "w": 356,
+     "h": 516,
+     "ax": 180.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_7.png",
+     "w": 360,
+     "h": 516,
      "ax": 181.5,
-     "ay": 524
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_6.png",
+     "w": 360,
+     "h": 522,
+     "ax": 181.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_5.png",
+     "w": 362,
+     "h": 518,
+     "ax": 177.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_4.png",
+     "w": 362,
+     "h": 516,
+     "ax": 178.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_3.png",
+     "w": 360,
+     "h": 512,
+     "ax": 169.5,
+     "ay": 512
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_2.png",
+     "w": 356,
+     "h": 514,
+     "ax": 177.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_1.png",
+     "w": 360,
+     "h": 516,
+     "ax": 180.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/jk_boss/walkv_0.png",
+     "w": 374,
+     "h": 520,
+     "ax": 188.5,
+     "ay": 520
     }
    ]
   },
@@ -23889,6 +23925,191 @@ const SPRITES = {
      "h": 304,
      "ax": 198.0,
      "ay": 304
+    }
+   ]
+  }
+ },
+ "sl_knight": {
+  "walk": {
+   "scale": 0.6601,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_knight/walk_0.png",
+     "w": 255,
+     "h": 345,
+     "ax": 135.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_1.png",
+     "w": 223,
+     "h": 342,
+     "ax": 134.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_2.png",
+     "w": 148,
+     "h": 345,
+     "ax": 75.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_3.png",
+     "w": 225,
+     "h": 345,
+     "ax": 127.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_4.png",
+     "w": 259,
+     "h": 355,
+     "ax": 131.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_5.png",
+     "w": 210,
+     "h": 354,
+     "ax": 125.0,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_6.png",
+     "w": 184,
+     "h": 355,
+     "ax": 113.0,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_7.png",
+     "w": 194,
+     "h": 356,
+     "ax": 115.1,
+     "ay": 356
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6601,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_knight/attack_0.png",
+     "w": 249,
+     "h": 364,
+     "ax": 130.5,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_1.png",
+     "w": 253,
+     "h": 376,
+     "ax": 149.0,
+     "ay": 376
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_2.png",
+     "w": 355,
+     "h": 272,
+     "ax": 151.5,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_3.png",
+     "w": 319,
+     "h": 263,
+     "ax": 136.0,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_4.png",
+     "w": 364,
+     "h": 307,
+     "ax": 122.5,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_5.png",
+     "w": 480,
+     "h": 305,
+     "ax": 163.0,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_6.png",
+     "w": 325,
+     "h": 341,
+     "ax": 205.5,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_7.png",
+     "w": 250,
+     "h": 359,
+     "ax": 117.0,
+     "ay": 359
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6601,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_knight/fall_0.png",
+     "w": 242,
+     "h": 352,
+     "ax": 127.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_1.png",
+     "w": 346,
+     "h": 320,
+     "ax": 217.6,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_2.png",
+     "w": 358,
+     "h": 333,
+     "ax": 164.5,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_3.png",
+     "w": 298,
+     "h": 282,
+     "ax": 115.5,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_4.png",
+     "w": 416,
+     "h": 157,
+     "ax": 212.0,
+     "ay": 157
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_5.png",
+     "w": 265,
+     "h": 283,
+     "ax": 136.5,
+     "ay": 283
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_6.png",
+     "w": 305,
+     "h": 319,
+     "ax": 197.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_7.png",
+     "w": 275,
+     "h": 400,
+     "ax": 142.1,
+     "ay": 400
     }
    ]
   }
@@ -25542,673 +25763,5042 @@ const SPRITES = {
    ]
   }
  },
- "ippo": {
+ "op_mini": {
   "walk": {
-   "scale": 0.3158,
-   "rate": 29.09,
+   "scale": 0.6825,
    "frames": [
     {
-     "src": "assets/sprites/ippo/walkv_0.png",
-     "w": 210,
-     "h": 540,
-     "ax": 105.5,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_1.png",
-     "w": 226,
-     "h": 540,
-     "ax": 121.5,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_2.png",
-     "w": 254,
-     "h": 536,
-     "ax": 148.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_3.png",
-     "w": 282,
-     "h": 530,
-     "ax": 174.5,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_4.png",
-     "w": 300,
-     "h": 532,
-     "ax": 196.5,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_5.png",
-     "w": 302,
-     "h": 532,
-     "ax": 196.5,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_6.png",
-     "w": 274,
-     "h": 538,
-     "ax": 170.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_7.png",
-     "w": 236,
-     "h": 544,
-     "ax": 133.5,
-     "ay": 544
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_8.png",
-     "w": 202,
-     "h": 548,
-     "ax": 101.5,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_9.png",
-     "w": 222,
-     "h": 548,
-     "ax": 123.5,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_10.png",
-     "w": 258,
-     "h": 544,
-     "ax": 148.5,
-     "ay": 544
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_11.png",
-     "w": 298,
-     "h": 536,
-     "ax": 173.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_12.png",
-     "w": 302,
-     "h": 530,
-     "ax": 196.5,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_13.png",
-     "w": 286,
-     "h": 530,
-     "ax": 187.5,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_14.png",
-     "w": 262,
-     "h": 532,
-     "ax": 161.5,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/ippo/walkv_15.png",
-     "w": 230,
-     "h": 536,
-     "ax": 126.5,
-     "ay": 536
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.4789,
-   "frames": [
-    {
-     "src": "assets/sprites/ippo/jump_0.png",
-     "w": 201,
-     "h": 287,
-     "ax": 116.0,
-     "ay": 287
-    },
-    {
-     "src": "assets/sprites/ippo/jump_1.png",
-     "w": 223,
-     "h": 319,
-     "ax": 140.0,
-     "ay": 319
-    },
-    {
-     "src": "assets/sprites/ippo/jump_2.png",
-     "w": 162,
-     "h": 366,
-     "ax": 79.0,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/ippo/jump_3.png",
-     "w": 151,
-     "h": 287,
-     "ax": 77.0,
-     "ay": 287
-    },
-    {
-     "src": "assets/sprites/ippo/jump_4.png",
-     "w": 146,
-     "h": 262,
-     "ax": 76.0,
-     "ay": 262
-    },
-    {
-     "src": "assets/sprites/ippo/jump_5.png",
-     "w": 166,
-     "h": 322,
-     "ax": 67.0,
-     "ay": 322
-    },
-    {
-     "src": "assets/sprites/ippo/jump_6.png",
-     "w": 180,
-     "h": 338,
-     "ax": 82.5,
-     "ay": 338
-    },
-    {
-     "src": "assets/sprites/ippo/jump_7.png",
-     "w": 189,
-     "h": 284,
-     "ax": 107.5,
-     "ay": 284
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.4789,
-   "frames": [
-    {
-     "src": "assets/sprites/ippo/fall_0.png",
-     "w": 204,
-     "h": 347,
-     "ax": 116.8,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/ippo/fall_1.png",
-     "w": 174,
-     "h": 307,
-     "ax": 74.0,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/ippo/fall_2.png",
-     "w": 306,
-     "h": 256,
-     "ax": 110.6,
-     "ay": 256
-    },
-    {
-     "src": "assets/sprites/ippo/fall_3.png",
-     "w": 325,
-     "h": 189,
-     "ax": 125.7,
-     "ay": 189
-    },
-    {
-     "src": "assets/sprites/ippo/fall_4.png",
-     "w": 406,
-     "h": 112,
-     "ax": 171.5,
-     "ay": 112
-    },
-    {
-     "src": "assets/sprites/ippo/fall_5.png",
-     "w": 260,
-     "h": 224,
-     "ax": 52.5,
-     "ay": 224
-    },
-    {
-     "src": "assets/sprites/ippo/fall_6.png",
-     "w": 225,
-     "h": 264,
-     "ax": 133.3,
-     "ay": 264
-    },
-    {
-     "src": "assets/sprites/ippo/fall_7.png",
-     "w": 217,
-     "h": 328,
-     "ax": 113.5,
-     "ay": 328
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.4316,
-   "frames": [
-    {
-     "src": "assets/sprites/ippo/combo_0.png",
-     "w": 214,
-     "h": 354,
-     "ax": 122.0,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/ippo/combo_1.png",
-     "w": 310,
-     "h": 354,
-     "ax": 133.5,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/ippo/combo_2.png",
-     "w": 320,
-     "h": 353,
-     "ax": 151.0,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/ippo/combo_3.png",
-     "w": 238,
-     "h": 356,
-     "ax": 139.0,
-     "ay": 356
-    },
-    {
-     "src": "assets/sprites/ippo/combo_4.png",
-     "w": 283,
-     "h": 347,
-     "ax": 127.5,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/ippo/combo_5.png",
-     "w": 284,
-     "h": 324,
-     "ax": 136.0,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/ippo/combo_6.png",
-     "w": 192,
-     "h": 280,
-     "ax": 112.5,
-     "ay": 280
-    },
-    {
-     "src": "assets/sprites/ippo/combo_7.png",
-     "w": 217,
-     "h": 371,
-     "ax": 110.5,
-     "ay": 371
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.4316,
-   "frames": [
-    {
-     "src": "assets/sprites/ippo/lowair_0.png",
-     "w": 259,
-     "h": 312,
-     "ax": 154.6,
-     "ay": 312
-    },
-    {
-     "src": "assets/sprites/ippo/lowair_1.png",
-     "w": 254,
-     "h": 334,
-     "ax": 151.7,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/ippo/lowair_2.png",
-     "w": 340,
-     "h": 329,
-     "ax": 190.4,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/ippo/lowair_3.png",
-     "w": 255,
-     "h": 338,
-     "ax": 150.7,
-     "ay": 338
-    },
-    {
-     "src": "assets/sprites/ippo/lowair_4.png",
-     "w": 184,
-     "h": 366,
-     "ax": 95.0,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/ippo/lowair_5.png",
-     "w": 216,
-     "h": 361,
-     "ax": 102.5,
-     "ay": 361
-    },
-    {
-     "src": "assets/sprites/ippo/lowair_6.png",
-     "w": 350,
-     "h": 360,
-     "ax": 166.5,
-     "ay": 360
-    },
-    {
-     "src": "assets/sprites/ippo/lowair_7.png",
-     "w": 232,
-     "h": 365,
-     "ax": 125.0,
-     "ay": 365
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.4316,
-   "frames": [
-    {
-     "src": "assets/sprites/ippo/dashcharge_0.png",
-     "w": 224,
-     "h": 352,
-     "ax": 128.0,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/ippo/dashcharge_1.png",
-     "w": 255,
-     "h": 313,
-     "ax": 154.7,
-     "ay": 313
-    },
-    {
-     "src": "assets/sprites/ippo/dashcharge_2.png",
-     "w": 375,
-     "h": 338,
-     "ax": 178.0,
-     "ay": 338
-    },
-    {
-     "src": "assets/sprites/ippo/dashcharge_3.png",
-     "w": 220,
-     "h": 355,
-     "ax": 124.5,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/ippo/dashcharge_4.png",
-     "w": 222,
-     "h": 363,
-     "ax": 118.5,
-     "ay": 363
-    },
-    {
-     "src": "assets/sprites/ippo/dashcharge_5.png",
-     "w": 238,
+     "src": "assets/sprites/op_mini/walk_0.png",
+     "w": 347,
      "h": 330,
-     "ax": 137.5,
+     "ax": 136.1,
      "ay": 330
     },
     {
-     "src": "assets/sprites/ippo/dashcharge_6.png",
-     "w": 248,
-     "h": 362,
-     "ax": 113.5,
-     "ay": 362
+     "src": "assets/sprites/op_mini/walk_1.png",
+     "w": 308,
+     "h": 314,
+     "ax": 166.0,
+     "ay": 314
     },
     {
-     "src": "assets/sprites/ippo/dashcharge_7.png",
-     "w": 217,
-     "h": 357,
-     "ax": 122.5,
-     "ay": 357
+     "src": "assets/sprites/op_mini/walk_2.png",
+     "w": 321,
+     "h": 326,
+     "ax": 158.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/op_mini/walk_3.png",
+     "w": 334,
+     "h": 335,
+     "ax": 146.9,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/op_mini/walk_4.png",
+     "w": 323,
+     "h": 336,
+     "ax": 133.9,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/op_mini/walk_5.png",
+     "w": 318,
+     "h": 330,
+     "ax": 170.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/op_mini/walk_6.png",
+     "w": 304,
+     "h": 337,
+     "ax": 160.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/op_mini/walk_7.png",
+     "w": 310,
+     "h": 333,
+     "ax": 155.5,
+     "ay": 333
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6825,
+   "frames": [
+    {
+     "src": "assets/sprites/op_mini/attack_0.png",
+     "w": 338,
+     "h": 301,
+     "ax": 201.0,
+     "ay": 301
+    },
+    {
+     "src": "assets/sprites/op_mini/attack_1.png",
+     "w": 311,
+     "h": 358,
+     "ax": 199.3,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/op_mini/attack_2.png",
+     "w": 403,
+     "h": 368,
+     "ax": 172.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/op_mini/attack_3.png",
+     "w": 315,
+     "h": 242,
+     "ax": 157.0,
+     "ay": 242
+    },
+    {
+     "src": "assets/sprites/op_mini/attack_4.png",
+     "w": 330,
+     "h": 344,
+     "ax": 135.6,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/op_mini/attack_5.png",
+     "w": 454,
+     "h": 313,
+     "ax": 145.5,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/op_mini/attack_6.png",
+     "w": 310,
+     "h": 255,
+     "ax": 149.8,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/op_mini/attack_7.png",
+     "w": 346,
+     "h": 346,
+     "ax": 192.0,
+     "ay": 346
     }
    ]
   },
   "special": {
-   "scale": 0.4316,
+   "scale": 0.6825,
    "frames": [
     {
-     "src": "assets/sprites/ippo/special_0.png",
-     "w": 223,
-     "h": 347,
-     "ax": 126.0,
-     "ay": 347
+     "src": "assets/sprites/op_mini/special_0.png",
+     "w": 322,
+     "h": 305,
+     "ax": 157.0,
+     "ay": 305
     },
     {
-     "src": "assets/sprites/ippo/special_1.png",
-     "w": 266,
-     "h": 291,
-     "ax": 153.0,
-     "ay": 291
+     "src": "assets/sprites/op_mini/special_1.png",
+     "w": 330,
+     "h": 319,
+     "ax": 160.0,
+     "ay": 319
     },
     {
-     "src": "assets/sprites/ippo/special_2.png",
-     "w": 327,
-     "h": 347,
-     "ax": 158.0,
-     "ay": 347
+     "src": "assets/sprites/op_mini/special_2.png",
+     "w": 358,
+     "h": 301,
+     "ax": 172.5,
+     "ay": 301
     },
     {
-     "src": "assets/sprites/ippo/special_3.png",
-     "w": 253,
-     "h": 294,
-     "ax": 157.5,
-     "ay": 294
+     "src": "assets/sprites/op_mini/special_3.png",
+     "w": 318,
+     "h": 306,
+     "ax": 176.5,
+     "ay": 306
     },
     {
-     "src": "assets/sprites/ippo/special_4.png",
+     "src": "assets/sprites/op_mini/special_4.png",
+     "w": 326,
+     "h": 249,
+     "ax": 166.0,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/op_mini/special_5.png",
+     "w": 282,
+     "h": 336,
+     "ax": 139.7,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/op_mini/special_6.png",
      "w": 313,
-     "h": 359,
-     "ax": 147.0,
-     "ay": 359
+     "h": 249,
+     "ax": 167.5,
+     "ay": 249
     },
     {
-     "src": "assets/sprites/ippo/special_5.png",
-     "w": 251,
-     "h": 303,
-     "ax": 151.5,
-     "ay": 303
+     "src": "assets/sprites/op_mini/special_7.png",
+     "w": 361,
+     "h": 332,
+     "ax": 186.5,
+     "ay": 332
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6825,
+   "frames": [
+    {
+     "src": "assets/sprites/op_mini/fall_0.png",
+     "w": 262,
+     "h": 336,
+     "ax": 134.1,
+     "ay": 336
     },
     {
-     "src": "assets/sprites/ippo/special_6.png",
-     "w": 309,
-     "h": 351,
-     "ax": 147.5,
-     "ay": 351
+     "src": "assets/sprites/op_mini/fall_1.png",
+     "w": 288,
+     "h": 328,
+     "ax": 145.1,
+     "ay": 328
     },
     {
-     "src": "assets/sprites/ippo/special_7.png",
-     "w": 221,
-     "h": 434,
+     "src": "assets/sprites/op_mini/fall_2.png",
+     "w": 321,
+     "h": 275,
      "ax": 133.0,
-     "ay": 434
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/op_mini/fall_3.png",
+     "w": 311,
+     "h": 218,
+     "ax": 125.5,
+     "ay": 218
+    },
+    {
+     "src": "assets/sprites/op_mini/fall_4.png",
+     "w": 386,
+     "h": 167,
+     "ax": 177.5,
+     "ay": 167
+    },
+    {
+     "src": "assets/sprites/op_mini/fall_5.png",
+     "w": 282,
+     "h": 220,
+     "ax": 175.5,
+     "ay": 220
+    },
+    {
+     "src": "assets/sprites/op_mini/fall_6.png",
+     "w": 327,
+     "h": 271,
+     "ax": 159.5,
+     "ay": 271
+    },
+    {
+     "src": "assets/sprites/op_mini/fall_7.png",
+     "w": 286,
+     "h": 334,
+     "ax": 155.0,
+     "ay": 334
     }
    ]
   }
  },
- "sl_knight": {
+ "ds_mini": {
   "walk": {
-   "scale": 0.6601,
+   "scale": 0.6425,
    "frames": [
     {
-     "src": "assets/sprites/sl_knight/walk_0.png",
-     "w": 255,
-     "h": 345,
-     "ax": 135.0,
-     "ay": 345
+     "src": "assets/sprites/ds_mini/walk_0.png",
+     "w": 309,
+     "h": 351,
+     "ax": 151.7,
+     "ay": 351
     },
     {
-     "src": "assets/sprites/sl_knight/walk_1.png",
-     "w": 223,
-     "h": 342,
-     "ax": 134.0,
-     "ay": 342
+     "src": "assets/sprites/ds_mini/walk_1.png",
+     "w": 275,
+     "h": 329,
+     "ax": 149.9,
+     "ay": 329
     },
     {
-     "src": "assets/sprites/sl_knight/walk_2.png",
-     "w": 148,
-     "h": 345,
-     "ax": 75.0,
-     "ay": 345
+     "src": "assets/sprites/ds_mini/walk_2.png",
+     "w": 273,
+     "h": 334,
+     "ax": 161.5,
+     "ay": 334
     },
     {
-     "src": "assets/sprites/sl_knight/walk_3.png",
-     "w": 225,
-     "h": 345,
-     "ax": 127.0,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_4.png",
-     "w": 259,
-     "h": 355,
-     "ax": 131.5,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_5.png",
-     "w": 210,
+     "src": "assets/sprites/ds_mini/walk_3.png",
+     "w": 285,
      "h": 354,
-     "ax": 125.0,
+     "ax": 150.0,
      "ay": 354
     },
     {
-     "src": "assets/sprites/sl_knight/walk_6.png",
-     "w": 184,
+     "src": "assets/sprites/ds_mini/walk_4.png",
+     "w": 284,
+     "h": 351,
+     "ax": 152.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/ds_mini/walk_5.png",
+     "w": 278,
+     "h": 340,
+     "ax": 149.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/ds_mini/walk_6.png",
+     "w": 276,
+     "h": 340,
+     "ax": 168.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/ds_mini/walk_7.png",
+     "w": 281,
+     "h": 358,
+     "ax": 150.0,
+     "ay": 358
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6425,
+   "frames": [
+    {
+     "src": "assets/sprites/ds_mini/attack_0.png",
+     "w": 272,
+     "h": 343,
+     "ax": 145.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/ds_mini/attack_1.png",
+     "w": 243,
+     "h": 364,
+     "ax": 134.0,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/ds_mini/attack_2.png",
+     "w": 317,
+     "h": 346,
+     "ax": 160.9,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/ds_mini/attack_3.png",
+     "w": 235,
+     "h": 271,
+     "ax": 129.2,
+     "ay": 271
+    },
+    {
+     "src": "assets/sprites/ds_mini/attack_4.png",
+     "w": 256,
+     "h": 341,
+     "ax": 142.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/ds_mini/attack_5.png",
+     "w": 378,
+     "h": 325,
+     "ax": 166.0,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/ds_mini/attack_6.png",
+     "w": 345,
+     "h": 253,
+     "ax": 169.7,
+     "ay": 253
+    },
+    {
+     "src": "assets/sprites/ds_mini/attack_7.png",
+     "w": 273,
+     "h": 356,
+     "ax": 128.4,
+     "ay": 356
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6425,
+   "frames": [
+    {
+     "src": "assets/sprites/ds_mini/special_0.png",
+     "w": 270,
+     "h": 345,
+     "ax": 144.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/ds_mini/special_1.png",
+     "w": 268,
+     "h": 357,
+     "ax": 109.0,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/ds_mini/special_2.png",
+     "w": 385,
+     "h": 337,
+     "ax": 224.2,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/ds_mini/special_3.png",
+     "w": 259,
+     "h": 342,
+     "ax": 139.5,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/ds_mini/special_4.png",
+     "w": 300,
+     "h": 249,
+     "ax": 193.7,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/ds_mini/special_5.png",
+     "w": 306,
+     "h": 363,
+     "ax": 170.9,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/ds_mini/special_6.png",
+     "w": 277,
+     "h": 252,
+     "ax": 186.5,
+     "ay": 252
+    },
+    {
+     "src": "assets/sprites/ds_mini/special_7.png",
+     "w": 267,
      "h": 355,
-     "ax": 113.0,
+     "ax": 148.5,
+     "ay": 355
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6425,
+   "frames": [
+    {
+     "src": "assets/sprites/ds_mini/fall_0.png",
+     "w": 264,
+     "h": 334,
+     "ax": 110.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/ds_mini/fall_1.png",
+     "w": 262,
+     "h": 321,
+     "ax": 80.0,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/ds_mini/fall_2.png",
+     "w": 383,
+     "h": 243,
+     "ax": 138.5,
+     "ay": 243
+    },
+    {
+     "src": "assets/sprites/ds_mini/fall_3.png",
+     "w": 282,
+     "h": 237,
+     "ax": 151.6,
+     "ay": 237
+    },
+    {
+     "src": "assets/sprites/ds_mini/fall_4.png",
+     "w": 372,
+     "h": 141,
+     "ax": 205.9,
+     "ay": 141
+    },
+    {
+     "src": "assets/sprites/ds_mini/fall_5.png",
+     "w": 305,
+     "h": 228,
+     "ax": 179.2,
+     "ay": 228
+    },
+    {
+     "src": "assets/sprites/ds_mini/fall_6.png",
+     "w": 246,
+     "h": 264,
+     "ax": 162.5,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/ds_mini/fall_7.png",
+     "w": 283,
+     "h": 355,
+     "ax": 153.0,
+     "ay": 355
+    }
+   ]
+  }
+ },
+ "bl_mini": {
+  "walk": {
+   "scale": 0.6389,
+   "frames": [
+    {
+     "src": "assets/sprites/bl_mini/walk_0.png",
+     "w": 308,
+     "h": 343,
+     "ax": 189.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/bl_mini/walk_1.png",
+     "w": 291,
+     "h": 327,
+     "ax": 184.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/bl_mini/walk_2.png",
+     "w": 271,
+     "h": 355,
+     "ax": 172.5,
      "ay": 355
     },
     {
-     "src": "assets/sprites/sl_knight/walk_7.png",
-     "w": 194,
+     "src": "assets/sprites/bl_mini/walk_3.png",
+     "w": 315,
+     "h": 349,
+     "ax": 176.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/bl_mini/walk_4.png",
+     "w": 301,
+     "h": 347,
+     "ax": 189.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/bl_mini/walk_5.png",
+     "w": 359,
+     "h": 327,
+     "ax": 183.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/bl_mini/walk_6.png",
+     "w": 262,
+     "h": 360,
+     "ax": 168.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/bl_mini/walk_7.png",
+     "w": 317,
+     "h": 352,
+     "ax": 178.0,
+     "ay": 352
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6389,
+   "frames": [
+    {
+     "src": "assets/sprites/bl_mini/attack_0.png",
+     "w": 319,
+     "h": 367,
+     "ax": 120.5,
+     "ay": 367
+    },
+    {
+     "src": "assets/sprites/bl_mini/attack_1.png",
+     "w": 250,
+     "h": 379,
+     "ax": 145.0,
+     "ay": 379
+    },
+    {
+     "src": "assets/sprites/bl_mini/attack_2.png",
+     "w": 349,
+     "h": 364,
+     "ax": 175.5,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/bl_mini/attack_3.png",
+     "w": 241,
+     "h": 299,
+     "ax": 144.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/bl_mini/attack_4.png",
+     "w": 271,
      "h": 356,
-     "ax": 115.1,
+     "ax": 152.0,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/bl_mini/attack_5.png",
+     "w": 487,
+     "h": 357,
+     "ax": 173.0,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/bl_mini/attack_6.png",
+     "w": 316,
+     "h": 313,
+     "ax": 210.5,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/bl_mini/attack_7.png",
+     "w": 282,
+     "h": 375,
+     "ax": 120.8,
+     "ay": 375
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6389,
+   "frames": [
+    {
+     "src": "assets/sprites/bl_mini/special_0.png",
+     "w": 245,
+     "h": 349,
+     "ax": 134.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/bl_mini/special_1.png",
+     "w": 265,
+     "h": 351,
+     "ax": 150.1,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/bl_mini/special_2.png",
+     "w": 373,
+     "h": 350,
+     "ax": 178.0,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/bl_mini/special_3.png",
+     "w": 286,
+     "h": 355,
+     "ax": 171.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/bl_mini/special_4.png",
+     "w": 248,
+     "h": 278,
+     "ax": 170.0,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/bl_mini/special_5.png",
+     "w": 306,
+     "h": 361,
+     "ax": 171.0,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/bl_mini/special_6.png",
+     "w": 233,
+     "h": 288,
+     "ax": 145.0,
+     "ay": 288
+    },
+    {
+     "src": "assets/sprites/bl_mini/special_7.png",
+     "w": 246,
+     "h": 368,
+     "ax": 152.0,
+     "ay": 368
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6389,
+   "frames": [
+    {
+     "src": "assets/sprites/bl_mini/fall_0.png",
+     "w": 261,
+     "h": 317,
+     "ax": 109.1,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/bl_mini/fall_1.png",
+     "w": 309,
+     "h": 328,
+     "ax": 110.2,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/bl_mini/fall_2.png",
+     "w": 389,
+     "h": 267,
+     "ax": 218.3,
+     "ay": 267
+    },
+    {
+     "src": "assets/sprites/bl_mini/fall_3.png",
+     "w": 320,
+     "h": 259,
+     "ax": 115.4,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/bl_mini/fall_4.png",
+     "w": 385,
+     "h": 132,
+     "ax": 185.4,
+     "ay": 132
+    },
+    {
+     "src": "assets/sprites/bl_mini/fall_5.png",
+     "w": 290,
+     "h": 258,
+     "ax": 170.5,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/bl_mini/fall_6.png",
+     "w": 248,
+     "h": 276,
+     "ax": 135.0,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/bl_mini/fall_7.png",
+     "w": 222,
+     "h": 332,
+     "ax": 123.0,
+     "ay": 332
+    }
+   ]
+  }
+ },
+ "hx_mini": {
+  "walk": {
+   "scale": 0.6389,
+   "frames": [
+    {
+     "src": "assets/sprites/hx_mini/walk_0.png",
+     "w": 287,
+     "h": 337,
+     "ax": 169.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/hx_mini/walk_1.png",
+     "w": 261,
+     "h": 330,
+     "ax": 149.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/hx_mini/walk_2.png",
+     "w": 185,
+     "h": 356,
+     "ax": 78.0,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/hx_mini/walk_3.png",
+     "w": 214,
+     "h": 360,
+     "ax": 96.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/hx_mini/walk_4.png",
+     "w": 285,
+     "h": 352,
+     "ax": 155.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/hx_mini/walk_5.png",
+     "w": 250,
+     "h": 345,
+     "ax": 159.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/hx_mini/walk_6.png",
+     "w": 207,
+     "h": 348,
+     "ax": 108.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/hx_mini/walk_7.png",
+     "w": 228,
+     "h": 356,
+     "ax": 132.2,
      "ay": 356
     }
    ]
   },
   "attack": {
-   "scale": 0.6601,
+   "scale": 0.6389,
    "frames": [
     {
-     "src": "assets/sprites/sl_knight/attack_0.png",
-     "w": 249,
+     "src": "assets/sprites/hx_mini/attack_0.png",
+     "w": 259,
+     "h": 332,
+     "ax": 127.2,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/hx_mini/attack_1.png",
+     "w": 255,
      "h": 364,
-     "ax": 130.5,
+     "ax": 147.0,
      "ay": 364
     },
     {
-     "src": "assets/sprites/sl_knight/attack_1.png",
-     "w": 253,
-     "h": 376,
-     "ax": 149.0,
-     "ay": 376
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_2.png",
-     "w": 355,
-     "h": 272,
-     "ax": 151.5,
-     "ay": 272
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_3.png",
-     "w": 319,
-     "h": 263,
-     "ax": 136.0,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_4.png",
-     "w": 364,
-     "h": 307,
-     "ax": 122.5,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_5.png",
-     "w": 480,
-     "h": 305,
-     "ax": 163.0,
-     "ay": 305
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_6.png",
-     "w": 325,
+     "src": "assets/sprites/hx_mini/attack_2.png",
+     "w": 284,
      "h": 341,
-     "ax": 205.5,
+     "ax": 187.0,
      "ay": 341
     },
     {
-     "src": "assets/sprites/sl_knight/attack_7.png",
-     "w": 250,
-     "h": 359,
-     "ax": 117.0,
-     "ay": 359
+     "src": "assets/sprites/hx_mini/attack_3.png",
+     "w": 245,
+     "h": 291,
+     "ax": 138.0,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/hx_mini/attack_4.png",
+     "w": 266,
+     "h": 340,
+     "ax": 139.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/hx_mini/attack_5.png",
+     "w": 342,
+     "h": 341,
+     "ax": 171.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/hx_mini/attack_6.png",
+     "w": 295,
+     "h": 281,
+     "ax": 188.0,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/hx_mini/attack_7.png",
+     "w": 278,
+     "h": 366,
+     "ax": 152.2,
+     "ay": 366
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6389,
+   "frames": [
+    {
+     "src": "assets/sprites/hx_mini/special_0.png",
+     "w": 269,
+     "h": 342,
+     "ax": 120.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/hx_mini/special_1.png",
+     "w": 284,
+     "h": 358,
+     "ax": 130.1,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/hx_mini/special_2.png",
+     "w": 348,
+     "h": 345,
+     "ax": 176.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/hx_mini/special_3.png",
+     "w": 267,
+     "h": 357,
+     "ax": 151.0,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/hx_mini/special_4.png",
+     "w": 259,
+     "h": 248,
+     "ax": 174.3,
+     "ay": 248
+    },
+    {
+     "src": "assets/sprites/hx_mini/special_5.png",
+     "w": 234,
+     "h": 366,
+     "ax": 112.0,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/hx_mini/special_6.png",
+     "w": 218,
+     "h": 277,
+     "ax": 122.5,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/hx_mini/special_7.png",
+     "w": 227,
+     "h": 362,
+     "ax": 119.8,
+     "ay": 362
     }
    ]
   },
   "fall": {
-   "scale": 0.6601,
+   "scale": 0.6389,
    "frames": [
     {
-     "src": "assets/sprites/sl_knight/fall_0.png",
-     "w": 242,
-     "h": 352,
-     "ax": 127.0,
-     "ay": 352
+     "src": "assets/sprites/hx_mini/fall_0.png",
+     "w": 207,
+     "h": 340,
+     "ax": 104.4,
+     "ay": 340
     },
     {
-     "src": "assets/sprites/sl_knight/fall_1.png",
-     "w": 346,
+     "src": "assets/sprites/hx_mini/fall_1.png",
+     "w": 206,
+     "h": 335,
+     "ax": 95.8,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/hx_mini/fall_2.png",
+     "w": 293,
+     "h": 265,
+     "ax": 104.4,
+     "ay": 265
+    },
+    {
+     "src": "assets/sprites/hx_mini/fall_3.png",
+     "w": 299,
+     "h": 213,
+     "ax": 97.5,
+     "ay": 213
+    },
+    {
+     "src": "assets/sprites/hx_mini/fall_4.png",
+     "w": 389,
+     "h": 131,
+     "ax": 205.5,
+     "ay": 131
+    },
+    {
+     "src": "assets/sprites/hx_mini/fall_5.png",
+     "w": 298,
+     "h": 217,
+     "ax": 178.2,
+     "ay": 217
+    },
+    {
+     "src": "assets/sprites/hx_mini/fall_6.png",
+     "w": 229,
+     "h": 245,
+     "ax": 137.5,
+     "ay": 245
+    },
+    {
+     "src": "assets/sprites/hx_mini/fall_7.png",
+     "w": 207,
+     "h": 330,
+     "ax": 118.4,
+     "ay": 330
+    }
+   ]
+  }
+ },
+ "nr_mini": {
+  "walk": {
+   "scale": 0.6949,
+   "frames": [
+    {
+     "src": "assets/sprites/nr_mini/walk_0.png",
+     "w": 284,
+     "h": 331,
+     "ax": 141.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/nr_mini/walk_1.png",
+     "w": 264,
+     "h": 322,
+     "ax": 133.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/nr_mini/walk_2.png",
+     "w": 268,
+     "h": 329,
+     "ax": 137.3,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/nr_mini/walk_3.png",
+     "w": 268,
+     "h": 331,
+     "ax": 141.2,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/nr_mini/walk_4.png",
+     "w": 286,
+     "h": 327,
+     "ax": 136.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/nr_mini/walk_5.png",
+     "w": 257,
+     "h": 317,
+     "ax": 124.8,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/nr_mini/walk_6.png",
+     "w": 257,
+     "h": 326,
+     "ax": 124.1,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/nr_mini/walk_7.png",
+     "w": 272,
+     "h": 327,
+     "ax": 140.5,
+     "ay": 327
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6949,
+   "frames": [
+    {
+     "src": "assets/sprites/nr_mini/attack_0.png",
+     "w": 324,
+     "h": 313,
+     "ax": 154.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/nr_mini/attack_1.png",
+     "w": 283,
+     "h": 348,
+     "ax": 118.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/nr_mini/attack_2.png",
+     "w": 289,
+     "h": 301,
+     "ax": 128.5,
+     "ay": 301
+    },
+    {
+     "src": "assets/sprites/nr_mini/attack_3.png",
+     "w": 297,
+     "h": 278,
+     "ax": 145.5,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/nr_mini/attack_4.png",
+     "w": 300,
+     "h": 317,
+     "ax": 151.0,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/nr_mini/attack_5.png",
+     "w": 352,
+     "h": 315,
+     "ax": 131.0,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/nr_mini/attack_6.png",
+     "w": 275,
+     "h": 285,
+     "ax": 139.0,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/nr_mini/attack_7.png",
+     "w": 258,
+     "h": 336,
+     "ax": 103.6,
+     "ay": 336
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6949,
+   "frames": [
+    {
+     "src": "assets/sprites/nr_mini/special_0.png",
+     "w": 235,
+     "h": 330,
+     "ax": 109.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/nr_mini/special_1.png",
+     "w": 255,
+     "h": 348,
+     "ax": 74.0,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/nr_mini/special_2.png",
+     "w": 344,
+     "h": 316,
+     "ax": 150.5,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/nr_mini/special_3.png",
+     "w": 250,
+     "h": 317,
+     "ax": 126.3,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/nr_mini/special_4.png",
+     "w": 240,
+     "h": 294,
+     "ax": 119.8,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/nr_mini/special_5.png",
+     "w": 257,
+     "h": 360,
+     "ax": 98.7,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/nr_mini/special_6.png",
+     "w": 238,
+     "h": 281,
+     "ax": 116.9,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/nr_mini/special_7.png",
+     "w": 235,
+     "h": 351,
+     "ax": 124.3,
+     "ay": 351
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6949,
+   "frames": [
+    {
+     "src": "assets/sprites/nr_mini/fall_0.png",
+     "w": 209,
+     "h": 316,
+     "ax": 67.6,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/nr_mini/fall_1.png",
+     "w": 255,
+     "h": 313,
+     "ax": 86.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/nr_mini/fall_2.png",
+     "w": 297,
+     "h": 249,
+     "ax": 83.2,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/nr_mini/fall_3.png",
+     "w": 316,
+     "h": 219,
+     "ax": 102.0,
+     "ay": 219
+    },
+    {
+     "src": "assets/sprites/nr_mini/fall_4.png",
+     "w": 365,
+     "h": 111,
+     "ax": 151.4,
+     "ay": 111
+    },
+    {
+     "src": "assets/sprites/nr_mini/fall_5.png",
+     "w": 265,
+     "h": 221,
+     "ax": 110.5,
+     "ay": 221
+    },
+    {
+     "src": "assets/sprites/nr_mini/fall_6.png",
+     "w": 212,
+     "h": 241,
+     "ax": 110.0,
+     "ay": 241
+    },
+    {
+     "src": "assets/sprites/nr_mini/fall_7.png",
+     "w": 207,
+     "h": 280,
+     "ax": 111.0,
+     "ay": 280
+    }
+   ]
+  }
+ },
+ "db_mini": {
+  "walk": {
+   "scale": 0.6497,
+   "frames": [
+    {
+     "src": "assets/sprites/db_mini/walk_0.png",
+     "w": 282,
+     "h": 343,
+     "ax": 151.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/db_mini/walk_1.png",
+     "w": 263,
+     "h": 331,
+     "ax": 131.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/db_mini/walk_2.png",
+     "w": 256,
+     "h": 336,
+     "ax": 129.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/db_mini/walk_3.png",
+     "w": 270,
+     "h": 348,
+     "ax": 136.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/db_mini/walk_4.png",
+     "w": 279,
+     "h": 349,
+     "ax": 152.5,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/db_mini/walk_5.png",
+     "w": 255,
+     "h": 337,
+     "ax": 126.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/db_mini/walk_6.png",
+     "w": 260,
+     "h": 343,
+     "ax": 132.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/db_mini/walk_7.png",
+     "w": 262,
+     "h": 354,
+     "ax": 134.0,
+     "ay": 354
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6497,
+   "frames": [
+    {
+     "src": "assets/sprites/db_mini/attack_0.png",
+     "w": 299,
+     "h": 345,
+     "ax": 158.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/db_mini/attack_1.png",
+     "w": 254,
+     "h": 378,
+     "ax": 130.4,
+     "ay": 378
+    },
+    {
+     "src": "assets/sprites/db_mini/attack_2.png",
+     "w": 322,
+     "h": 323,
+     "ax": 204.5,
+     "ay": 323
+    },
+    {
+     "src": "assets/sprites/db_mini/attack_3.png",
+     "w": 231,
+     "h": 299,
+     "ax": 115.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/db_mini/attack_4.png",
+     "w": 258,
+     "h": 367,
+     "ax": 126.5,
+     "ay": 367
+    },
+    {
+     "src": "assets/sprites/db_mini/attack_5.png",
+     "w": 372,
+     "h": 361,
+     "ax": 163.5,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/db_mini/attack_6.png",
+     "w": 284,
+     "h": 309,
+     "ax": 174.3,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/db_mini/attack_7.png",
+     "w": 330,
+     "h": 368,
+     "ax": 169.0,
+     "ay": 368
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6497,
+   "frames": [
+    {
+     "src": "assets/sprites/db_mini/special_0.png",
+     "w": 275,
+     "h": 349,
+     "ax": 161.5,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/db_mini/special_1.png",
+     "w": 315,
+     "h": 350,
+     "ax": 167.0,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/db_mini/special_2.png",
+     "w": 365,
+     "h": 344,
+     "ax": 175.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/db_mini/special_3.png",
+     "w": 259,
+     "h": 345,
+     "ax": 122.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/db_mini/special_4.png",
+     "w": 333,
+     "h": 281,
+     "ax": 194.2,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/db_mini/special_5.png",
+     "w": 316,
+     "h": 359,
+     "ax": 172.0,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/db_mini/special_6.png",
+     "w": 262,
+     "h": 278,
+     "ax": 155.0,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/db_mini/special_7.png",
+     "w": 249,
+     "h": 353,
+     "ax": 133.4,
+     "ay": 353
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6497,
+   "frames": [
+    {
+     "src": "assets/sprites/db_mini/fall_0.png",
+     "w": 246,
+     "h": 335,
+     "ax": 106.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/db_mini/fall_1.png",
+     "w": 304,
+     "h": 324,
+     "ax": 119.7,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/db_mini/fall_2.png",
+     "w": 325,
+     "h": 271,
+     "ax": 126.6,
+     "ay": 271
+    },
+    {
+     "src": "assets/sprites/db_mini/fall_3.png",
+     "w": 290,
+     "h": 240,
+     "ax": 110.4,
+     "ay": 240
+    },
+    {
+     "src": "assets/sprites/db_mini/fall_4.png",
+     "w": 369,
+     "h": 117,
+     "ax": 197.8,
+     "ay": 117
+    },
+    {
+     "src": "assets/sprites/db_mini/fall_5.png",
+     "w": 327,
+     "h": 185,
+     "ax": 106.1,
+     "ay": 185
+    },
+    {
+     "src": "assets/sprites/db_mini/fall_6.png",
+     "w": 243,
+     "h": 251,
+     "ax": 140.5,
+     "ay": 251
+    },
+    {
+     "src": "assets/sprites/db_mini/fall_7.png",
+     "w": 255,
+     "h": 310,
+     "ax": 124.5,
+     "ay": 310
+    }
+   ]
+  }
+ },
+ "mh_mini": {
+  "walk": {
+   "scale": 0.7077,
+   "frames": [
+    {
+     "src": "assets/sprites/mh_mini/walk_0.png",
+     "w": 357,
+     "h": 298,
+     "ax": 151.0,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/mh_mini/walk_1.png",
+     "w": 341,
+     "h": 290,
+     "ax": 158.5,
+     "ay": 290
+    },
+    {
+     "src": "assets/sprites/mh_mini/walk_2.png",
+     "w": 313,
+     "h": 300,
+     "ax": 153.2,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/mh_mini/walk_3.png",
+     "w": 319,
+     "h": 322,
+     "ax": 155.4,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/mh_mini/walk_4.png",
+     "w": 377,
+     "h": 308,
+     "ax": 158.9,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/mh_mini/walk_5.png",
+     "w": 335,
+     "h": 295,
+     "ax": 165.5,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/mh_mini/walk_6.png",
+     "w": 330,
+     "h": 308,
+     "ax": 150.8,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/mh_mini/walk_7.png",
+     "w": 337,
+     "h": 325,
+     "ax": 171.1,
+     "ay": 325
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.7077,
+   "frames": [
+    {
+     "src": "assets/sprites/mh_mini/attack_0.png",
+     "w": 289,
+     "h": 310,
+     "ax": 163.5,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/mh_mini/attack_1.png",
+     "w": 295,
+     "h": 363,
+     "ax": 173.0,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/mh_mini/attack_2.png",
+     "w": 336,
+     "h": 285,
+     "ax": 224.4,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/mh_mini/attack_3.png",
+     "w": 225,
+     "h": 227,
+     "ax": 130.0,
+     "ay": 227
+    },
+    {
+     "src": "assets/sprites/mh_mini/attack_4.png",
+     "w": 251,
      "h": 320,
-     "ax": 217.6,
+     "ax": 153.5,
      "ay": 320
     },
     {
-     "src": "assets/sprites/sl_knight/fall_2.png",
+     "src": "assets/sprites/mh_mini/attack_5.png",
+     "w": 382,
+     "h": 318,
+     "ax": 179.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/mh_mini/attack_6.png",
+     "w": 336,
+     "h": 249,
+     "ax": 192.0,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/mh_mini/attack_7.png",
+     "w": 275,
+     "h": 362,
+     "ax": 149.2,
+     "ay": 362
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.7077,
+   "frames": [
+    {
+     "src": "assets/sprites/mh_mini/special_0.png",
+     "w": 251,
+     "h": 332,
+     "ax": 126.1,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/mh_mini/special_1.png",
+     "w": 253,
+     "h": 360,
+     "ax": 105.5,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/mh_mini/special_2.png",
+     "w": 384,
+     "h": 329,
+     "ax": 187.0,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/mh_mini/special_3.png",
+     "w": 255,
+     "h": 337,
+     "ax": 131.3,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/mh_mini/special_4.png",
+     "w": 287,
+     "h": 255,
+     "ax": 170.7,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/mh_mini/special_5.png",
+     "w": 247,
+     "h": 353,
+     "ax": 123.5,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/mh_mini/special_6.png",
+     "w": 252,
+     "h": 260,
+     "ax": 155.1,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/mh_mini/special_7.png",
+     "w": 202,
+     "h": 345,
+     "ax": 109.8,
+     "ay": 345
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.7077,
+   "frames": [
+    {
+     "src": "assets/sprites/mh_mini/fall_0.png",
+     "w": 194,
+     "h": 340,
+     "ax": 84.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/mh_mini/fall_1.png",
+     "w": 278,
+     "h": 335,
+     "ax": 96.2,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/mh_mini/fall_2.png",
+     "w": 327,
+     "h": 268,
+     "ax": 138.6,
+     "ay": 268
+    },
+    {
+     "src": "assets/sprites/mh_mini/fall_3.png",
+     "w": 275,
+     "h": 229,
+     "ax": 146.5,
+     "ay": 229
+    },
+    {
+     "src": "assets/sprites/mh_mini/fall_4.png",
      "w": 358,
-     "h": 333,
+     "h": 140,
+     "ax": 207.6,
+     "ay": 140
+    },
+    {
+     "src": "assets/sprites/mh_mini/fall_5.png",
+     "w": 349,
+     "h": 190,
+     "ax": 216.9,
+     "ay": 190
+    },
+    {
+     "src": "assets/sprites/mh_mini/fall_6.png",
+     "w": 222,
+     "h": 255,
+     "ax": 134.5,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/mh_mini/fall_7.png",
+     "w": 286,
+     "h": 297,
+     "ax": 123.2,
+     "ay": 297
+    }
+   ]
+  }
+ },
+ "rk_mini": {
+  "walk": {
+   "scale": 0.7143,
+   "frames": [
+    {
+     "src": "assets/sprites/rk_mini/walk_0.png",
+     "w": 232,
+     "h": 322,
+     "ax": 125.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/rk_mini/walk_1.png",
+     "w": 236,
+     "h": 299,
+     "ax": 138.5,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/rk_mini/walk_2.png",
+     "w": 207,
+     "h": 313,
+     "ax": 117.5,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/rk_mini/walk_3.png",
+     "w": 247,
+     "h": 318,
+     "ax": 137.1,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/rk_mini/walk_4.png",
+     "w": 214,
+     "h": 314,
+     "ax": 120.0,
+     "ay": 314
+    },
+    {
+     "src": "assets/sprites/rk_mini/walk_5.png",
+     "w": 235,
+     "h": 296,
+     "ax": 142.5,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/rk_mini/walk_6.png",
+     "w": 207,
+     "h": 309,
+     "ax": 115.0,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/rk_mini/walk_7.png",
+     "w": 242,
+     "h": 313,
+     "ax": 132.5,
+     "ay": 313
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.7143,
+   "frames": [
+    {
+     "src": "assets/sprites/rk_mini/attack_0.png",
+     "w": 224,
+     "h": 320,
+     "ax": 103.0,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/rk_mini/attack_1.png",
+     "w": 218,
+     "h": 372,
+     "ax": 96.5,
+     "ay": 372
+    },
+    {
+     "src": "assets/sprites/rk_mini/attack_2.png",
+     "w": 338,
+     "h": 307,
+     "ax": 141.5,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/rk_mini/attack_3.png",
+     "w": 229,
+     "h": 248,
+     "ax": 143.0,
+     "ay": 248
+    },
+    {
+     "src": "assets/sprites/rk_mini/attack_4.png",
+     "w": 203,
+     "h": 327,
+     "ax": 81.3,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/rk_mini/attack_5.png",
+     "w": 427,
+     "h": 298,
+     "ax": 149.5,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/rk_mini/attack_6.png",
+     "w": 280,
+     "h": 265,
+     "ax": 166.5,
+     "ay": 265
+    },
+    {
+     "src": "assets/sprites/rk_mini/attack_7.png",
+     "w": 260,
+     "h": 338,
+     "ax": 135.0,
+     "ay": 338
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.7143,
+   "frames": [
+    {
+     "src": "assets/sprites/rk_mini/special_0.png",
+     "w": 242,
+     "h": 327,
+     "ax": 109.5,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/rk_mini/special_1.png",
+     "w": 236,
+     "h": 327,
+     "ax": 100.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/rk_mini/special_2.png",
+     "w": 340,
+     "h": 316,
+     "ax": 172.0,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/rk_mini/special_3.png",
+     "w": 228,
+     "h": 349,
+     "ax": 108.1,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/rk_mini/special_4.png",
+     "w": 268,
+     "h": 229,
+     "ax": 152.0,
+     "ay": 229
+    },
+    {
+     "src": "assets/sprites/rk_mini/special_5.png",
+     "w": 219,
+     "h": 344,
+     "ax": 114.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/rk_mini/special_6.png",
+     "w": 230,
+     "h": 226,
+     "ax": 139.5,
+     "ay": 226
+    },
+    {
+     "src": "assets/sprites/rk_mini/special_7.png",
+     "w": 226,
+     "h": 330,
+     "ax": 129.0,
+     "ay": 330
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.7143,
+   "frames": [
+    {
+     "src": "assets/sprites/rk_mini/fall_0.png",
+     "w": 235,
+     "h": 321,
+     "ax": 108.0,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/rk_mini/fall_1.png",
+     "w": 257,
+     "h": 318,
+     "ax": 113.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/rk_mini/fall_2.png",
+     "w": 303,
+     "h": 272,
+     "ax": 183.5,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/rk_mini/fall_3.png",
+     "w": 321,
+     "h": 236,
+     "ax": 146.2,
+     "ay": 236
+    },
+    {
+     "src": "assets/sprites/rk_mini/fall_4.png",
+     "w": 380,
+     "h": 126,
+     "ax": 175.0,
+     "ay": 126
+    },
+    {
+     "src": "assets/sprites/rk_mini/fall_5.png",
+     "w": 320,
+     "h": 202,
+     "ax": 192.0,
+     "ay": 202
+    },
+    {
+     "src": "assets/sprites/rk_mini/fall_6.png",
+     "w": 230,
+     "h": 244,
+     "ax": 143.5,
+     "ay": 244
+    },
+    {
+     "src": "assets/sprites/rk_mini/fall_7.png",
+     "w": 211,
+     "h": 277,
+     "ax": 134.5,
+     "ay": 277
+    }
+   ]
+  }
+ },
+ "op2_mini": {
+  "walk": {
+   "scale": 0.659,
+   "frames": [
+    {
+     "src": "assets/sprites/op2_mini/walk_0.png",
+     "w": 288,
+     "h": 345,
+     "ax": 118.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/op2_mini/walk_1.png",
+     "w": 283,
+     "h": 335,
+     "ax": 122.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/op2_mini/walk_2.png",
+     "w": 268,
+     "h": 348,
+     "ax": 99.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/op2_mini/walk_3.png",
+     "w": 268,
+     "h": 348,
+     "ax": 109.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/op2_mini/walk_4.png",
+     "w": 292,
+     "h": 345,
+     "ax": 127.9,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/op2_mini/walk_5.png",
+     "w": 281,
+     "h": 340,
+     "ax": 118.7,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/op2_mini/walk_6.png",
+     "w": 267,
+     "h": 349,
+     "ax": 105.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/op2_mini/walk_7.png",
+     "w": 269,
+     "h": 348,
+     "ax": 106.0,
+     "ay": 348
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.659,
+   "frames": [
+    {
+     "src": "assets/sprites/op2_mini/attack_0.png",
+     "w": 277,
+     "h": 326,
+     "ax": 97.4,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/op2_mini/attack_1.png",
+     "w": 344,
+     "h": 341,
+     "ax": 174.2,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/op2_mini/attack_2.png",
+     "w": 364,
+     "h": 304,
+     "ax": 143.0,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/op2_mini/attack_3.png",
+     "w": 220,
+     "h": 263,
+     "ax": 120.5,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/op2_mini/attack_4.png",
+     "w": 311,
+     "h": 326,
+     "ax": 130.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/op2_mini/attack_5.png",
+     "w": 398,
+     "h": 309,
+     "ax": 152.5,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/op2_mini/attack_6.png",
+     "w": 280,
+     "h": 264,
      "ax": 164.5,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/op2_mini/attack_7.png",
+     "w": 355,
+     "h": 346,
+     "ax": 184.4,
+     "ay": 346
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.659,
+   "frames": [
+    {
+     "src": "assets/sprites/op2_mini/special_0.png",
+     "w": 250,
+     "h": 318,
+     "ax": 147.0,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/op2_mini/special_1.png",
+     "w": 297,
+     "h": 339,
+     "ax": 189.5,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/op2_mini/special_2.png",
+     "w": 435,
+     "h": 318,
+     "ax": 184.6,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/op2_mini/special_3.png",
+     "w": 285,
+     "h": 336,
+     "ax": 162.2,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/op2_mini/special_4.png",
+     "w": 320,
+     "h": 214,
+     "ax": 159.5,
+     "ay": 214
+    },
+    {
+     "src": "assets/sprites/op2_mini/special_5.png",
+     "w": 340,
+     "h": 351,
+     "ax": 182.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/op2_mini/special_6.png",
+     "w": 279,
+     "h": 241,
+     "ax": 141.7,
+     "ay": 241
+    },
+    {
+     "src": "assets/sprites/op2_mini/special_7.png",
+     "w": 229,
+     "h": 346,
+     "ax": 131.0,
+     "ay": 346
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.659,
+   "frames": [
+    {
+     "src": "assets/sprites/op2_mini/fall_0.png",
+     "w": 288,
+     "h": 333,
+     "ax": 162.6,
      "ay": 333
     },
     {
-     "src": "assets/sprites/sl_knight/fall_3.png",
-     "w": 298,
-     "h": 282,
-     "ax": 115.5,
-     "ay": 282
+     "src": "assets/sprites/op2_mini/fall_1.png",
+     "w": 232,
+     "h": 324,
+     "ax": 71.4,
+     "ay": 324
     },
     {
-     "src": "assets/sprites/sl_knight/fall_4.png",
-     "w": 416,
-     "h": 157,
-     "ax": 212.0,
-     "ay": 157
+     "src": "assets/sprites/op2_mini/fall_2.png",
+     "w": 297,
+     "h": 274,
+     "ax": 168.0,
+     "ay": 274
     },
     {
-     "src": "assets/sprites/sl_knight/fall_5.png",
-     "w": 265,
-     "h": 283,
-     "ax": 136.5,
-     "ay": 283
+     "src": "assets/sprites/op2_mini/fall_3.png",
+     "w": 330,
+     "h": 226,
+     "ax": 193.8,
+     "ay": 226
     },
     {
-     "src": "assets/sprites/sl_knight/fall_6.png",
-     "w": 305,
+     "src": "assets/sprites/op2_mini/fall_4.png",
+     "w": 380,
+     "h": 129,
+     "ax": 201.1,
+     "ay": 129
+    },
+    {
+     "src": "assets/sprites/op2_mini/fall_5.png",
+     "w": 310,
+     "h": 312,
+     "ax": 139.6,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/op2_mini/fall_6.png",
+     "w": 228,
+     "h": 250,
+     "ax": 126.5,
+     "ay": 250
+    },
+    {
+     "src": "assets/sprites/op2_mini/fall_7.png",
+     "w": 290,
+     "h": 330,
+     "ax": 185.2,
+     "ay": 330
+    }
+   ]
+  }
+ },
+ "nr2_mini": {
+  "walk": {
+   "scale": 0.6479,
+   "frames": [
+    {
+     "src": "assets/sprites/nr2_mini/walk_0.png",
+     "w": 359,
+     "h": 329,
+     "ax": 177.5,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/nr2_mini/walk_1.png",
+     "w": 339,
+     "h": 333,
+     "ax": 160.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/nr2_mini/walk_2.png",
+     "w": 349,
+     "h": 337,
+     "ax": 195.2,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/nr2_mini/walk_3.png",
+     "w": 332,
+     "h": 339,
+     "ax": 167.1,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/nr2_mini/walk_4.png",
+     "w": 337,
+     "h": 335,
+     "ax": 163.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/nr2_mini/walk_5.png",
+     "w": 330,
+     "h": 333,
+     "ax": 168.3,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/nr2_mini/walk_6.png",
+     "w": 355,
+     "h": 338,
+     "ax": 217.2,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/nr2_mini/walk_7.png",
+     "w": 377,
+     "h": 355,
+     "ax": 235.0,
+     "ay": 355
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6479,
+   "frames": [
+    {
+     "src": "assets/sprites/nr2_mini/attack_0.png",
+     "w": 213,
+     "h": 330,
+     "ax": 113.7,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/nr2_mini/attack_1.png",
+     "w": 206,
+     "h": 350,
+     "ax": 109.2,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/nr2_mini/attack_2.png",
+     "w": 287,
+     "h": 312,
+     "ax": 157.0,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/nr2_mini/attack_3.png",
+     "w": 214,
+     "h": 268,
+     "ax": 137.0,
+     "ay": 268
+    },
+    {
+     "src": "assets/sprites/nr2_mini/attack_4.png",
+     "w": 215,
+     "h": 337,
+     "ax": 105.7,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/nr2_mini/attack_5.png",
+     "w": 334,
+     "h": 325,
+     "ax": 156.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/nr2_mini/attack_6.png",
+     "w": 274,
+     "h": 285,
+     "ax": 128.2,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/nr2_mini/attack_7.png",
+     "w": 259,
+     "h": 351,
+     "ax": 127.5,
+     "ay": 351
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6479,
+   "frames": [
+    {
+     "src": "assets/sprites/nr2_mini/special_0.png",
+     "w": 346,
+     "h": 299,
+     "ax": 208.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/nr2_mini/special_1.png",
+     "w": 309,
+     "h": 321,
+     "ax": 147.1,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/nr2_mini/special_2.png",
+     "w": 321,
+     "h": 310,
+     "ax": 151.0,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/nr2_mini/special_3.png",
+     "w": 213,
+     "h": 326,
+     "ax": 101.5,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/nr2_mini/special_4.png",
+     "w": 256,
+     "h": 259,
+     "ax": 126.5,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/nr2_mini/special_5.png",
+     "w": 255,
      "h": 319,
-     "ax": 197.5,
+     "ax": 117.1,
      "ay": 319
     },
     {
-     "src": "assets/sprites/sl_knight/fall_7.png",
-     "w": 275,
-     "h": 400,
+     "src": "assets/sprites/nr2_mini/special_6.png",
+     "w": 205,
+     "h": 244,
+     "ax": 124.5,
+     "ay": 244
+    },
+    {
+     "src": "assets/sprites/nr2_mini/special_7.png",
+     "w": 226,
+     "h": 332,
+     "ax": 127.3,
+     "ay": 332
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6479,
+   "frames": [
+    {
+     "src": "assets/sprites/nr2_mini/fall_0.png",
+     "w": 379,
+     "h": 321,
+     "ax": 221.1,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/nr2_mini/fall_1.png",
+     "w": 256,
+     "h": 322,
+     "ax": 96.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/nr2_mini/fall_2.png",
+     "w": 308,
+     "h": 291,
+     "ax": 115.5,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/nr2_mini/fall_3.png",
+     "w": 270,
+     "h": 214,
+     "ax": 127.0,
+     "ay": 214
+    },
+    {
+     "src": "assets/sprites/nr2_mini/fall_4.png",
+     "w": 381,
+     "h": 120,
+     "ax": 205.0,
+     "ay": 120
+    },
+    {
+     "src": "assets/sprites/nr2_mini/fall_5.png",
+     "w": 301,
+     "h": 219,
+     "ax": 190.0,
+     "ay": 219
+    },
+    {
+     "src": "assets/sprites/nr2_mini/fall_6.png",
+     "w": 213,
+     "h": 260,
+     "ax": 139.0,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/nr2_mini/fall_7.png",
+     "w": 341,
+     "h": 312,
+     "ax": 186.5,
+     "ay": 312
+    }
+   ]
+  }
+ },
+ "ds2_mini": {
+  "walk": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/ds2_mini/walk_0.png",
+     "w": 293,
+     "h": 299,
+     "ax": 153.8,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/ds2_mini/walk_1.png",
+     "w": 272,
+     "h": 295,
+     "ax": 132.7,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/ds2_mini/walk_2.png",
+     "w": 254,
+     "h": 330,
+     "ax": 115.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/ds2_mini/walk_3.png",
+     "w": 273,
+     "h": 340,
+     "ax": 137.6,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/ds2_mini/walk_4.png",
+     "w": 278,
+     "h": 311,
+     "ax": 154.4,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/ds2_mini/walk_5.png",
+     "w": 264,
+     "h": 298,
+     "ax": 123.3,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/ds2_mini/walk_6.png",
+     "w": 257,
+     "h": 324,
+     "ax": 121.1,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/ds2_mini/walk_7.png",
+     "w": 269,
+     "h": 339,
+     "ax": 136.9,
+     "ay": 339
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/ds2_mini/attack_0.png",
+     "w": 342,
+     "h": 260,
+     "ax": 206.1,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/ds2_mini/attack_1.png",
+     "w": 297,
+     "h": 355,
+     "ax": 124.1,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/ds2_mini/attack_2.png",
+     "w": 316,
+     "h": 356,
      "ax": 142.1,
-     "ay": 400
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/ds2_mini/attack_3.png",
+     "w": 222,
+     "h": 232,
+     "ax": 85.5,
+     "ay": 232
+    },
+    {
+     "src": "assets/sprites/ds2_mini/attack_4.png",
+     "w": 238,
+     "h": 295,
+     "ax": 148.5,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/ds2_mini/attack_5.png",
+     "w": 398,
+     "h": 298,
+     "ax": 151.5,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/ds2_mini/attack_6.png",
+     "w": 272,
+     "h": 248,
+     "ax": 157.0,
+     "ay": 248
+    },
+    {
+     "src": "assets/sprites/ds2_mini/attack_7.png",
+     "w": 364,
+     "h": 322,
+     "ax": 176.4,
+     "ay": 322
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/ds2_mini/special_0.png",
+     "w": 281,
+     "h": 310,
+     "ax": 132.6,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/ds2_mini/special_1.png",
+     "w": 244,
+     "h": 328,
+     "ax": 118.8,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/ds2_mini/special_2.png",
+     "w": 388,
+     "h": 299,
+     "ax": 171.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/ds2_mini/special_3.png",
+     "w": 253,
+     "h": 310,
+     "ax": 124.6,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/ds2_mini/special_4.png",
+     "w": 338,
+     "h": 260,
+     "ax": 143.2,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/ds2_mini/special_5.png",
+     "w": 313,
+     "h": 346,
+     "ax": 155.5,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/ds2_mini/special_6.png",
+     "w": 312,
+     "h": 245,
+     "ax": 152.0,
+     "ay": 245
+    },
+    {
+     "src": "assets/sprites/ds2_mini/special_7.png",
+     "w": 321,
+     "h": 315,
+     "ax": 151.9,
+     "ay": 315
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/ds2_mini/fall_0.png",
+     "w": 361,
+     "h": 331,
+     "ax": 207.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/ds2_mini/fall_1.png",
+     "w": 333,
+     "h": 336,
+     "ax": 122.1,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/ds2_mini/fall_2.png",
+     "w": 311,
+     "h": 303,
+     "ax": 90.3,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/ds2_mini/fall_3.png",
+     "w": 286,
+     "h": 239,
+     "ax": 169.2,
+     "ay": 239
+    },
+    {
+     "src": "assets/sprites/ds2_mini/fall_4.png",
+     "w": 426,
+     "h": 175,
+     "ax": 166.0,
+     "ay": 175
+    },
+    {
+     "src": "assets/sprites/ds2_mini/fall_5.png",
+     "w": 230,
+     "h": 258,
+     "ax": 88.0,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/ds2_mini/fall_6.png",
+     "w": 258,
+     "h": 282,
+     "ax": 158.5,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/ds2_mini/fall_7.png",
+     "w": 341,
+     "h": 299,
+     "ax": 190.4,
+     "ay": 299
+    }
+   ]
+  }
+ },
+ "db2_mini": {
+  "walk": {
+   "scale": 0.616,
+   "frames": [
+    {
+     "src": "assets/sprites/db2_mini/walk_0.png",
+     "w": 314,
+     "h": 331,
+     "ax": 167.8,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/db2_mini/walk_1.png",
+     "w": 276,
+     "h": 329,
+     "ax": 155.0,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/db2_mini/walk_2.png",
+     "w": 269,
+     "h": 327,
+     "ax": 146.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/db2_mini/walk_3.png",
+     "w": 270,
+     "h": 340,
+     "ax": 145.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/db2_mini/walk_4.png",
+     "w": 318,
+     "h": 338,
+     "ax": 170.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/db2_mini/walk_5.png",
+     "w": 276,
+     "h": 333,
+     "ax": 150.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/db2_mini/walk_6.png",
+     "w": 261,
+     "h": 333,
+     "ax": 137.5,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/db2_mini/walk_7.png",
+     "w": 239,
+     "h": 349,
+     "ax": 110.0,
+     "ay": 349
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.616,
+   "frames": [
+    {
+     "src": "assets/sprites/db2_mini/attack_0.png",
+     "w": 228,
+     "h": 333,
+     "ax": 103.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/db2_mini/attack_1.png",
+     "w": 254,
+     "h": 356,
+     "ax": 133.5,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/db2_mini/attack_2.png",
+     "w": 289,
+     "h": 303,
+     "ax": 189.0,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/db2_mini/attack_3.png",
+     "w": 216,
+     "h": 279,
+     "ax": 121.0,
+     "ay": 279
+    },
+    {
+     "src": "assets/sprites/db2_mini/attack_4.png",
+     "w": 240,
+     "h": 346,
+     "ax": 107.0,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/db2_mini/attack_5.png",
+     "w": 353,
+     "h": 340,
+     "ax": 161.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/db2_mini/attack_6.png",
+     "w": 292,
+     "h": 300,
+     "ax": 174.0,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/db2_mini/attack_7.png",
+     "w": 320,
+     "h": 360,
+     "ax": 152.0,
+     "ay": 360
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.616,
+   "frames": [
+    {
+     "src": "assets/sprites/db2_mini/special_0.png",
+     "w": 259,
+     "h": 335,
+     "ax": 107.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/db2_mini/special_1.png",
+     "w": 253,
+     "h": 333,
+     "ax": 152.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/db2_mini/special_2.png",
+     "w": 341,
+     "h": 332,
+     "ax": 159.5,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/db2_mini/special_3.png",
+     "w": 225,
+     "h": 345,
+     "ax": 104.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/db2_mini/special_4.png",
+     "w": 280,
+     "h": 243,
+     "ax": 169.5,
+     "ay": 243
+    },
+    {
+     "src": "assets/sprites/db2_mini/special_5.png",
+     "w": 255,
+     "h": 351,
+     "ax": 139.1,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/db2_mini/special_6.png",
+     "w": 234,
+     "h": 271,
+     "ax": 143.5,
+     "ay": 271
+    },
+    {
+     "src": "assets/sprites/db2_mini/special_7.png",
+     "w": 225,
+     "h": 341,
+     "ax": 107.0,
+     "ay": 341
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.616,
+   "frames": [
+    {
+     "src": "assets/sprites/db2_mini/fall_0.png",
+     "w": 235,
+     "h": 364,
+     "ax": 97.5,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/db2_mini/fall_1.png",
+     "w": 268,
+     "h": 341,
+     "ax": 92.5,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/db2_mini/fall_2.png",
+     "w": 335,
+     "h": 259,
+     "ax": 139.8,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/db2_mini/fall_3.png",
+     "w": 240,
+     "h": 277,
+     "ax": 120.5,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/db2_mini/fall_4.png",
+     "w": 397,
+     "h": 107,
+     "ax": 189.3,
+     "ay": 107
+    },
+    {
+     "src": "assets/sprites/db2_mini/fall_5.png",
+     "w": 267,
+     "h": 246,
+     "ax": 150.0,
+     "ay": 246
+    },
+    {
+     "src": "assets/sprites/db2_mini/fall_6.png",
+     "w": 215,
+     "h": 261,
+     "ax": 131.0,
+     "ay": 261
+    },
+    {
+     "src": "assets/sprites/db2_mini/fall_7.png",
+     "w": 239,
+     "h": 342,
+     "ax": 111.0,
+     "ay": 342
+    }
+   ]
+  }
+ },
+ "jk_mini": {
+  "walk": {
+   "scale": 0.6571,
+   "frames": [
+    {
+     "src": "assets/sprites/jk_mini/walk_0.png",
+     "w": 269,
+     "h": 341,
+     "ax": 141.5,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/jk_mini/walk_1.png",
+     "w": 268,
+     "h": 320,
+     "ax": 139.5,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/jk_mini/walk_2.png",
+     "w": 242,
+     "h": 329,
+     "ax": 116.0,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/jk_mini/walk_3.png",
+     "w": 271,
+     "h": 341,
+     "ax": 140.5,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/jk_mini/walk_4.png",
+     "w": 282,
+     "h": 343,
+     "ax": 150.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/jk_mini/walk_5.png",
+     "w": 273,
+     "h": 328,
+     "ax": 143.0,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/jk_mini/walk_6.png",
+     "w": 248,
+     "h": 342,
+     "ax": 113.5,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/jk_mini/walk_7.png",
+     "w": 279,
+     "h": 350,
+     "ax": 143.0,
+     "ay": 350
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6571,
+   "frames": [
+    {
+     "src": "assets/sprites/jk_mini/attack_0.png",
+     "w": 276,
+     "h": 346,
+     "ax": 145.0,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/jk_mini/attack_1.png",
+     "w": 271,
+     "h": 368,
+     "ax": 146.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/jk_mini/attack_2.png",
+     "w": 300,
+     "h": 366,
+     "ax": 165.0,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/jk_mini/attack_3.png",
+     "w": 267,
+     "h": 282,
+     "ax": 167.5,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/jk_mini/attack_4.png",
+     "w": 258,
+     "h": 346,
+     "ax": 148.5,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/jk_mini/attack_5.png",
+     "w": 373,
+     "h": 341,
+     "ax": 183.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/jk_mini/attack_6.png",
+     "w": 321,
+     "h": 293,
+     "ax": 193.0,
+     "ay": 293
+    },
+    {
+     "src": "assets/sprites/jk_mini/attack_7.png",
+     "w": 297,
+     "h": 358,
+     "ax": 152.5,
+     "ay": 358
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6571,
+   "frames": [
+    {
+     "src": "assets/sprites/jk_mini/special_0.png",
+     "w": 272,
+     "h": 339,
+     "ax": 142.0,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/jk_mini/special_1.png",
+     "w": 245,
+     "h": 355,
+     "ax": 113.8,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/jk_mini/special_2.png",
+     "w": 344,
+     "h": 331,
+     "ax": 173.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/jk_mini/special_3.png",
+     "w": 267,
+     "h": 334,
+     "ax": 153.5,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/jk_mini/special_4.png",
+     "w": 273,
+     "h": 277,
+     "ax": 183.9,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/jk_mini/special_5.png",
+     "w": 253,
+     "h": 354,
+     "ax": 127.7,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/jk_mini/special_6.png",
+     "w": 247,
+     "h": 274,
+     "ax": 150.5,
+     "ay": 274
+    },
+    {
+     "src": "assets/sprites/jk_mini/special_7.png",
+     "w": 279,
+     "h": 350,
+     "ax": 146.0,
+     "ay": 350
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6571,
+   "frames": [
+    {
+     "src": "assets/sprites/jk_mini/fall_0.png",
+     "w": 232,
+     "h": 348,
+     "ax": 99.1,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/jk_mini/fall_1.png",
+     "w": 306,
+     "h": 330,
+     "ax": 105.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/jk_mini/fall_2.png",
+     "w": 355,
+     "h": 267,
+     "ax": 157.0,
+     "ay": 267
+    },
+    {
+     "src": "assets/sprites/jk_mini/fall_3.png",
+     "w": 311,
+     "h": 235,
+     "ax": 155.1,
+     "ay": 235
+    },
+    {
+     "src": "assets/sprites/jk_mini/fall_4.png",
+     "w": 416,
+     "h": 151,
+     "ax": 183.5,
+     "ay": 151
+    },
+    {
+     "src": "assets/sprites/jk_mini/fall_5.png",
+     "w": 259,
+     "h": 239,
+     "ax": 132.8,
+     "ay": 239
+    },
+    {
+     "src": "assets/sprites/jk_mini/fall_6.png",
+     "w": 229,
+     "h": 277,
+     "ax": 137.0,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/jk_mini/fall_7.png",
+     "w": 269,
+     "h": 332,
+     "ax": 141.0,
+     "ay": 332
+    }
+   ]
+  }
+ },
+ "sl_mini": {
+  "walk": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_mini/walk_0.png",
+     "w": 300,
+     "h": 334,
+     "ax": 169.5,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/sl_mini/walk_1.png",
+     "w": 294,
+     "h": 326,
+     "ax": 171.9,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/sl_mini/walk_2.png",
+     "w": 269,
+     "h": 332,
+     "ax": 145.4,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/sl_mini/walk_3.png",
+     "w": 296,
+     "h": 334,
+     "ax": 149.6,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/sl_mini/walk_4.png",
+     "w": 309,
+     "h": 335,
+     "ax": 159.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/sl_mini/walk_5.png",
+     "w": 294,
+     "h": 327,
+     "ax": 176.3,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/sl_mini/walk_6.png",
+     "w": 271,
+     "h": 335,
+     "ax": 152.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/sl_mini/walk_7.png",
+     "w": 306,
+     "h": 340,
+     "ax": 151.0,
+     "ay": 340
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_mini/attack_0.png",
+     "w": 343,
+     "h": 317,
+     "ax": 176.0,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/sl_mini/attack_1.png",
+     "w": 272,
+     "h": 349,
+     "ax": 137.5,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/sl_mini/attack_2.png",
+     "w": 305,
+     "h": 296,
+     "ax": 171.0,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/sl_mini/attack_3.png",
+     "w": 222,
+     "h": 276,
+     "ax": 131.5,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/sl_mini/attack_4.png",
+     "w": 251,
+     "h": 344,
+     "ax": 133.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/sl_mini/attack_5.png",
+     "w": 338,
+     "h": 331,
+     "ax": 144.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/sl_mini/attack_6.png",
+     "w": 299,
+     "h": 304,
+     "ax": 158.5,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/sl_mini/attack_7.png",
+     "w": 282,
+     "h": 357,
+     "ax": 143.0,
+     "ay": 357
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_mini/special_0.png",
+     "w": 260,
+     "h": 309,
+     "ax": 152.0,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/sl_mini/special_1.png",
+     "w": 281,
+     "h": 331,
+     "ax": 152.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/sl_mini/special_2.png",
+     "w": 372,
+     "h": 320,
+     "ax": 174.5,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/sl_mini/special_3.png",
+     "w": 294,
+     "h": 327,
+     "ax": 150.5,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/sl_mini/special_4.png",
+     "w": 288,
+     "h": 241,
+     "ax": 158.4,
+     "ay": 241
+    },
+    {
+     "src": "assets/sprites/sl_mini/special_5.png",
+     "w": 302,
+     "h": 344,
+     "ax": 128.6,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/sl_mini/special_6.png",
+     "w": 230,
+     "h": 276,
+     "ax": 132.0,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/sl_mini/special_7.png",
+     "w": 264,
+     "h": 344,
+     "ax": 144.5,
+     "ay": 344
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6765,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_mini/fall_0.png",
+     "w": 284,
+     "h": 333,
+     "ax": 150.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/sl_mini/fall_1.png",
+     "w": 336,
+     "h": 325,
+     "ax": 141.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/sl_mini/fall_2.png",
+     "w": 336,
+     "h": 304,
+     "ax": 135.0,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/sl_mini/fall_3.png",
+     "w": 296,
+     "h": 208,
+     "ax": 88.0,
+     "ay": 208
+    },
+    {
+     "src": "assets/sprites/sl_mini/fall_4.png",
+     "w": 389,
+     "h": 150,
+     "ax": 180.1,
+     "ay": 150
+    },
+    {
+     "src": "assets/sprites/sl_mini/fall_5.png",
+     "w": 332,
+     "h": 214,
+     "ax": 170.5,
+     "ay": 214
+    },
+    {
+     "src": "assets/sprites/sl_mini/fall_6.png",
+     "w": 266,
+     "h": 249,
+     "ax": 153.0,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/sl_mini/fall_7.png",
+     "w": 260,
+     "h": 292,
+     "ax": 139.0,
+     "ay": 292
+    }
+   ]
+  }
+ },
+ "opm_mini": {
+  "walk": {
+   "scale": 0.5956,
+   "frames": [
+    {
+     "src": "assets/sprites/opm_mini/walk_0.png",
+     "w": 306,
+     "h": 348,
+     "ax": 149.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/opm_mini/walk_1.png",
+     "w": 223,
+     "h": 336,
+     "ax": 114.5,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/opm_mini/walk_2.png",
+     "w": 218,
+     "h": 348,
+     "ax": 112.9,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/opm_mini/walk_3.png",
+     "w": 208,
+     "h": 361,
+     "ax": 98.5,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/opm_mini/walk_4.png",
+     "w": 294,
+     "h": 342,
+     "ax": 142.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/opm_mini/walk_5.png",
+     "w": 219,
+     "h": 335,
+     "ax": 118.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/opm_mini/walk_6.png",
+     "w": 224,
+     "h": 346,
+     "ax": 115.5,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/opm_mini/walk_7.png",
+     "w": 214,
+     "h": 356,
+     "ax": 100.0,
+     "ay": 356
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5956,
+   "frames": [
+    {
+     "src": "assets/sprites/opm_mini/attack_0.png",
+     "w": 265,
+     "h": 341,
+     "ax": 102.2,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/opm_mini/attack_1.png",
+     "w": 249,
+     "h": 355,
+     "ax": 101.6,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/opm_mini/attack_2.png",
+     "w": 302,
+     "h": 326,
+     "ax": 150.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/opm_mini/attack_3.png",
+     "w": 212,
+     "h": 298,
+     "ax": 129.0,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/opm_mini/attack_4.png",
+     "w": 251,
+     "h": 338,
+     "ax": 113.6,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/opm_mini/attack_5.png",
+     "w": 336,
+     "h": 337,
+     "ax": 133.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/opm_mini/attack_6.png",
+     "w": 252,
+     "h": 311,
+     "ax": 139.5,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/opm_mini/attack_7.png",
+     "w": 299,
+     "h": 349,
+     "ax": 140.5,
+     "ay": 349
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5956,
+   "frames": [
+    {
+     "src": "assets/sprites/opm_mini/special_0.png",
+     "w": 213,
+     "h": 338,
+     "ax": 97.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/opm_mini/special_1.png",
+     "w": 232,
+     "h": 345,
+     "ax": 104.1,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/opm_mini/special_2.png",
+     "w": 331,
+     "h": 338,
+     "ax": 149.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/opm_mini/special_3.png",
+     "w": 236,
+     "h": 340,
+     "ax": 107.4,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/opm_mini/special_4.png",
+     "w": 251,
+     "h": 292,
+     "ax": 141.5,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/opm_mini/special_5.png",
+     "w": 275,
+     "h": 336,
+     "ax": 121.5,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/opm_mini/special_6.png",
+     "w": 231,
+     "h": 293,
+     "ax": 144.5,
+     "ay": 293
+    },
+    {
+     "src": "assets/sprites/opm_mini/special_7.png",
+     "w": 238,
+     "h": 350,
+     "ax": 138.8,
+     "ay": 350
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5956,
+   "frames": [
+    {
+     "src": "assets/sprites/opm_mini/fall_0.png",
+     "w": 239,
+     "h": 337,
+     "ax": 73.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/opm_mini/fall_1.png",
+     "w": 292,
+     "h": 322,
+     "ax": 115.0,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/opm_mini/fall_2.png",
+     "w": 337,
+     "h": 282,
+     "ax": 140.2,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/opm_mini/fall_3.png",
+     "w": 307,
+     "h": 238,
+     "ax": 125.5,
+     "ay": 238
+    },
+    {
+     "src": "assets/sprites/opm_mini/fall_4.png",
+     "w": 392,
+     "h": 149,
+     "ax": 169.9,
+     "ay": 149
+    },
+    {
+     "src": "assets/sprites/opm_mini/fall_5.png",
+     "w": 281,
+     "h": 264,
+     "ax": 170.5,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/opm_mini/fall_6.png",
+     "w": 229,
+     "h": 287,
+     "ax": 149.5,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/opm_mini/fall_7.png",
+     "w": 277,
+     "h": 352,
+     "ax": 176.7,
+     "ay": 352
+    }
+   ]
+  }
+ },
+ "bl2_mini": {
+  "walk": {
+   "scale": 0.6284,
+   "frames": [
+    {
+     "src": "assets/sprites/bl2_mini/walk_0.png",
+     "w": 263,
+     "h": 340,
+     "ax": 156.4,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/bl2_mini/walk_1.png",
+     "w": 233,
+     "h": 341,
+     "ax": 128.1,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/bl2_mini/walk_2.png",
+     "w": 236,
+     "h": 340,
+     "ax": 125.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/bl2_mini/walk_3.png",
+     "w": 225,
+     "h": 340,
+     "ax": 127.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/bl2_mini/walk_4.png",
+     "w": 235,
+     "h": 365,
+     "ax": 124.4,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/bl2_mini/walk_5.png",
+     "w": 235,
+     "h": 353,
+     "ax": 134.0,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/bl2_mini/walk_6.png",
+     "w": 239,
+     "h": 356,
+     "ax": 132.5,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/bl2_mini/walk_7.png",
+     "w": 226,
+     "h": 366,
+     "ax": 120.2,
+     "ay": 366
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6284,
+   "frames": [
+    {
+     "src": "assets/sprites/bl2_mini/attack_0.png",
+     "w": 216,
+     "h": 330,
+     "ax": 116.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/bl2_mini/attack_1.png",
+     "w": 218,
+     "h": 369,
+     "ax": 117.5,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/bl2_mini/attack_2.png",
+     "w": 248,
+     "h": 297,
+     "ax": 155.0,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/bl2_mini/attack_3.png",
+     "w": 230,
+     "h": 237,
+     "ax": 136.5,
+     "ay": 237
+    },
+    {
+     "src": "assets/sprites/bl2_mini/attack_4.png",
+     "w": 225,
+     "h": 340,
+     "ax": 118.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/bl2_mini/attack_5.png",
+     "w": 337,
+     "h": 326,
+     "ax": 152.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/bl2_mini/attack_6.png",
+     "w": 296,
+     "h": 269,
+     "ax": 176.9,
+     "ay": 269
+    },
+    {
+     "src": "assets/sprites/bl2_mini/attack_7.png",
+     "w": 274,
+     "h": 361,
+     "ax": 143.5,
+     "ay": 361
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6284,
+   "frames": [
+    {
+     "src": "assets/sprites/bl2_mini/special_0.png",
+     "w": 225,
+     "h": 336,
+     "ax": 119.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/bl2_mini/special_1.png",
+     "w": 280,
+     "h": 332,
+     "ax": 182.0,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/bl2_mini/special_2.png",
+     "w": 363,
+     "h": 327,
+     "ax": 196.5,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/bl2_mini/special_3.png",
+     "w": 220,
+     "h": 342,
+     "ax": 116.5,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/bl2_mini/special_4.png",
+     "w": 243,
+     "h": 247,
+     "ax": 172.5,
+     "ay": 247
+    },
+    {
+     "src": "assets/sprites/bl2_mini/special_5.png",
+     "w": 231,
+     "h": 356,
+     "ax": 129.5,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/bl2_mini/special_6.png",
+     "w": 234,
+     "h": 260,
+     "ax": 149.5,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/bl2_mini/special_7.png",
+     "w": 224,
+     "h": 353,
+     "ax": 123.5,
+     "ay": 353
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6284,
+   "frames": [
+    {
+     "src": "assets/sprites/bl2_mini/fall_0.png",
+     "w": 210,
+     "h": 337,
+     "ax": 110.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/bl2_mini/fall_1.png",
+     "w": 231,
+     "h": 317,
+     "ax": 91.5,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/bl2_mini/fall_2.png",
+     "w": 293,
+     "h": 269,
+     "ax": 121.4,
+     "ay": 269
+    },
+    {
+     "src": "assets/sprites/bl2_mini/fall_3.png",
+     "w": 309,
+     "h": 179,
+     "ax": 144.5,
+     "ay": 179
+    },
+    {
+     "src": "assets/sprites/bl2_mini/fall_4.png",
+     "w": 401,
+     "h": 136,
+     "ax": 200.0,
+     "ay": 136
+    },
+    {
+     "src": "assets/sprites/bl2_mini/fall_5.png",
+     "w": 303,
+     "h": 226,
+     "ax": 81.2,
+     "ay": 226
+    },
+    {
+     "src": "assets/sprites/bl2_mini/fall_6.png",
+     "w": 238,
+     "h": 250,
+     "ax": 153.5,
+     "ay": 250
+    },
+    {
+     "src": "assets/sprites/bl2_mini/fall_7.png",
+     "w": 213,
+     "h": 331,
+     "ax": 112.0,
+     "ay": 331
+    }
+   ]
+  }
+ },
+ "tokyo_mini": {
+  "walk": {
+   "scale": 0.7345,
+   "frames": [
+    {
+     "src": "assets/sprites/tokyo_mini/walk_0.png",
+     "w": 336,
+     "h": 346,
+     "ax": 146.0,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/walk_1.png",
+     "w": 305,
+     "h": 340,
+     "ax": 135.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/walk_2.png",
+     "w": 313,
+     "h": 342,
+     "ax": 136.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/walk_3.png",
+     "w": 298,
+     "h": 341,
+     "ax": 132.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/walk_4.png",
+     "w": 323,
+     "h": 351,
+     "ax": 143.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/walk_5.png",
+     "w": 283,
+     "h": 354,
+     "ax": 129.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/walk_6.png",
+     "w": 282,
+     "h": 349,
+     "ax": 128.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/walk_7.png",
+     "w": 291,
+     "h": 350,
+     "ax": 149.0,
+     "ay": 350
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.7345,
+   "frames": [
+    {
+     "src": "assets/sprites/tokyo_mini/attack_0.png",
+     "w": 396,
+     "h": 331,
+     "ax": 136.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/attack_1.png",
+     "w": 284,
+     "h": 368,
+     "ax": 166.0,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/attack_2.png",
+     "w": 353,
+     "h": 333,
+     "ax": 161.5,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/attack_3.png",
+     "w": 325,
+     "h": 292,
+     "ax": 149.0,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/attack_4.png",
+     "w": 267,
+     "h": 364,
+     "ax": 129.5,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/attack_5.png",
+     "w": 450,
+     "h": 331,
+     "ax": 162.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/attack_6.png",
+     "w": 358,
+     "h": 308,
+     "ax": 176.0,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/attack_7.png",
+     "w": 333,
+     "h": 371,
+     "ax": 194.2,
+     "ay": 371
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.7345,
+   "frames": [
+    {
+     "src": "assets/sprites/tokyo_mini/special_0.png",
+     "w": 283,
+     "h": 357,
+     "ax": 149.0,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/special_1.png",
+     "w": 354,
+     "h": 357,
+     "ax": 223.5,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/special_2.png",
+     "w": 388,
+     "h": 347,
+     "ax": 181.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/special_3.png",
+     "w": 287,
+     "h": 356,
+     "ax": 155.5,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/special_4.png",
+     "w": 377,
+     "h": 306,
+     "ax": 182.5,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/special_5.png",
+     "w": 293,
+     "h": 375,
+     "ax": 143.9,
+     "ay": 375
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/special_6.png",
+     "w": 329,
+     "h": 307,
+     "ax": 158.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/special_7.png",
+     "w": 279,
+     "h": 372,
+     "ax": 152.0,
+     "ay": 372
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.7345,
+   "frames": [
+    {
+     "src": "assets/sprites/tokyo_mini/fall_0.png",
+     "w": 260,
+     "h": 364,
+     "ax": 121.1,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/fall_1.png",
+     "w": 389,
+     "h": 349,
+     "ax": 172.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/fall_2.png",
+     "w": 347,
+     "h": 322,
+     "ax": 145.0,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/fall_3.png",
+     "w": 318,
+     "h": 335,
+     "ax": 107.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/fall_4.png",
+     "w": 387,
+     "h": 135,
+     "ax": 197.0,
+     "ay": 135
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/fall_5.png",
+     "w": 317,
+     "h": 261,
+     "ax": 163.0,
+     "ay": 261
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/fall_6.png",
+     "w": 329,
+     "h": 305,
+     "ax": 147.5,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/tokyo_mini/fall_7.png",
+     "w": 317,
+     "h": 359,
+     "ax": 143.5,
+     "ay": 359
+    }
+   ]
+  }
+ },
+ "inosuke": {
+  "walk": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/walk_0.png",
+     "w": 312,
+     "h": 352,
+     "ax": 177.2,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/inosuke/walk_1.png",
+     "w": 329,
+     "h": 340,
+     "ax": 188.6,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/inosuke/walk_2.png",
+     "w": 298,
+     "h": 352,
+     "ax": 155.5,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/inosuke/walk_3.png",
+     "w": 275,
+     "h": 352,
+     "ax": 134.5,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/inosuke/walk_4.png",
+     "w": 315,
+     "h": 354,
+     "ax": 169.4,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/inosuke/walk_5.png",
+     "w": 329,
+     "h": 352,
+     "ax": 183.3,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/inosuke/walk_6.png",
+     "w": 267,
+     "h": 353,
+     "ax": 126.2,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/inosuke/walk_7.png",
+     "w": 284,
+     "h": 352,
+     "ax": 145.6,
+     "ay": 352
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/jump_0.png",
+     "w": 307,
+     "h": 300,
+     "ax": 149.3,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_1.png",
+     "w": 362,
+     "h": 335,
+     "ax": 206.9,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_2.png",
+     "w": 302,
+     "h": 356,
+     "ax": 108.7,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_3.png",
+     "w": 288,
+     "h": 290,
+     "ax": 108.0,
+     "ay": 290
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_4.png",
+     "w": 266,
+     "h": 263,
+     "ax": 168.2,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_5.png",
+     "w": 285,
+     "h": 342,
+     "ax": 105.7,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_6.png",
+     "w": 255,
+     "h": 314,
+     "ax": 105.5,
+     "ay": 314
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_7.png",
+     "w": 339,
+     "h": 294,
+     "ax": 137.5,
+     "ay": 294
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/fall_0.png",
+     "w": 262,
+     "h": 342,
+     "ax": 123.4,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_1.png",
+     "w": 261,
+     "h": 328,
+     "ax": 133.1,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_2.png",
+     "w": 311,
+     "h": 292,
+     "ax": 125.4,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_3.png",
+     "w": 318,
+     "h": 256,
+     "ax": 150.7,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_4.png",
+     "w": 409,
+     "h": 146,
+     "ax": 204.5,
+     "ay": 146
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_5.png",
+     "w": 293,
+     "h": 229,
+     "ax": 140.0,
+     "ay": 229
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_6.png",
+     "w": 237,
+     "h": 282,
+     "ax": 145.2,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_7.png",
+     "w": 339,
+     "h": 311,
+     "ax": 142.7,
+     "ay": 311
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/combo_0.png",
+     "w": 306,
+     "h": 309,
+     "ax": 149.4,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_1.png",
+     "w": 479,
+     "h": 324,
+     "ax": 219.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_2.png",
+     "w": 409,
+     "h": 321,
+     "ax": 170.6,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_3.png",
+     "w": 297,
+     "h": 320,
+     "ax": 172.9,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_4.png",
+     "w": 277,
+     "h": 332,
+     "ax": 158.2,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_5.png",
+     "w": 361,
+     "h": 345,
+     "ax": 189.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_6.png",
+     "w": 316,
+     "h": 345,
+     "ax": 159.6,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_7.png",
+     "w": 368,
+     "h": 322,
+     "ax": 190.5,
+     "ay": 322
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/lowair_0.png",
+     "w": 262,
+     "h": 255,
+     "ax": 130.4,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_1.png",
+     "w": 383,
+     "h": 214,
+     "ax": 191.5,
+     "ay": 214
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_2.png",
+     "w": 344,
+     "h": 234,
+     "ax": 197.4,
+     "ay": 234
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_3.png",
+     "w": 347,
+     "h": 256,
+     "ax": 178.7,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_4.png",
+     "w": 273,
+     "h": 410,
+     "ax": 170.3,
+     "ay": 410
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_5.png",
+     "w": 250,
+     "h": 351,
+     "ax": 157.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_6.png",
+     "w": 313,
+     "h": 302,
+     "ax": 201.2,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_7.png",
+     "w": 277,
+     "h": 320,
+     "ax": 112.0,
+     "ay": 320
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/dashcharge_0.png",
+     "w": 350,
+     "h": 263,
+     "ax": 180.1,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_1.png",
+     "w": 326,
+     "h": 231,
+     "ax": 182.6,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_2.png",
+     "w": 494,
+     "h": 299,
+     "ax": 247.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_3.png",
+     "w": 306,
+     "h": 290,
+     "ax": 155.3,
+     "ay": 290
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_4.png",
+     "w": 252,
+     "h": 525,
+     "ax": 136.4,
+     "ay": 525
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_5.png",
+     "w": 292,
+     "h": 325,
+     "ax": 146.7,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_6.png",
+     "w": 461,
+     "h": 351,
+     "ax": 231.1,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_7.png",
+     "w": 273,
+     "h": 368,
+     "ax": 154.2,
+     "ay": 368
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/special_0.png",
+     "w": 300,
+     "h": 324,
+     "ax": 168.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/inosuke/special_1.png",
+     "w": 344,
+     "h": 270,
+     "ax": 202.4,
+     "ay": 270
+    },
+    {
+     "src": "assets/sprites/inosuke/special_2.png",
+     "w": 465,
+     "h": 332,
+     "ax": 211.6,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/inosuke/special_3.png",
+     "w": 301,
+     "h": 313,
+     "ax": 134.2,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/inosuke/special_4.png",
+     "w": 318,
+     "h": 336,
+     "ax": 156.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/inosuke/special_5.png",
+     "w": 281,
+     "h": 231,
+     "ax": 137.3,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/inosuke/special_6.png",
+     "w": 526,
+     "h": 287,
+     "ax": 263.0,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/inosuke/special_7.png",
+     "w": 345,
+     "h": 261,
+     "ax": 163.0,
+     "ay": 261
+    }
+   ]
+  }
+ },
+ "trunks": {
+  "walk": {
+   "scale": 0.5341,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/walk_0.png",
+     "w": 201,
+     "h": 343,
+     "ax": 101.3,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/trunks/walk_1.png",
+     "w": 226,
+     "h": 348,
+     "ax": 122.1,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/trunks/walk_2.png",
+     "w": 192,
+     "h": 341,
+     "ax": 92.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/trunks/walk_3.png",
+     "w": 199,
+     "h": 347,
+     "ax": 100.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/trunks/walk_4.png",
+     "w": 206,
+     "h": 352,
+     "ax": 103.9,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/trunks/walk_5.png",
+     "w": 239,
+     "h": 348,
+     "ax": 133.3,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/trunks/walk_6.png",
+     "w": 200,
+     "h": 344,
+     "ax": 99.9,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/trunks/walk_7.png",
+     "w": 206,
+     "h": 350,
+     "ax": 104.6,
+     "ay": 350
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.5341,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/jump_0.png",
+     "w": 173,
+     "h": 272,
+     "ax": 88.1,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/trunks/jump_1.png",
+     "w": 199,
+     "h": 324,
+     "ax": 122.4,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/trunks/jump_2.png",
+     "w": 179,
+     "h": 344,
+     "ax": 82.7,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/trunks/jump_3.png",
+     "w": 156,
+     "h": 263,
+     "ax": 72.9,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/trunks/jump_4.png",
+     "w": 153,
+     "h": 241,
+     "ax": 83.3,
+     "ay": 241
+    },
+    {
+     "src": "assets/sprites/trunks/jump_5.png",
+     "w": 148,
+     "h": 322,
+     "ax": 71.8,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/trunks/jump_6.png",
+     "w": 184,
+     "h": 319,
+     "ax": 83.2,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/trunks/jump_7.png",
+     "w": 159,
+     "h": 260,
+     "ax": 74.2,
+     "ay": 260
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5341,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/fall_0.png",
+     "w": 235,
+     "h": 349,
+     "ax": 123.1,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/trunks/fall_1.png",
+     "w": 313,
+     "h": 332,
+     "ax": 127.2,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/trunks/fall_2.png",
+     "w": 340,
+     "h": 280,
+     "ax": 136.7,
+     "ay": 280
+    },
+    {
+     "src": "assets/sprites/trunks/fall_3.png",
+     "w": 325,
+     "h": 182,
+     "ax": 162.5,
+     "ay": 182
+    },
+    {
+     "src": "assets/sprites/trunks/fall_4.png",
+     "w": 393,
+     "h": 142,
+     "ax": 196.5,
+     "ay": 142
+    },
+    {
+     "src": "assets/sprites/trunks/fall_5.png",
+     "w": 307,
+     "h": 238,
+     "ax": 195.0,
+     "ay": 238
+    },
+    {
+     "src": "assets/sprites/trunks/fall_6.png",
+     "w": 228,
+     "h": 279,
+     "ax": 129.2,
+     "ay": 279
+    },
+    {
+     "src": "assets/sprites/trunks/fall_7.png",
+     "w": 196,
+     "h": 348,
+     "ax": 90.7,
+     "ay": 348
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5341,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/combo_0.png",
+     "w": 195,
+     "h": 333,
+     "ax": 98.2,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/trunks/combo_1.png",
+     "w": 274,
+     "h": 336,
+     "ax": 130.2,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/trunks/combo_2.png",
+     "w": 281,
+     "h": 327,
+     "ax": 132.2,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/trunks/combo_3.png",
+     "w": 200,
+     "h": 373,
+     "ax": 120.3,
+     "ay": 373
+    },
+    {
+     "src": "assets/sprites/trunks/combo_4.png",
+     "w": 189,
+     "h": 345,
+     "ax": 105.2,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/trunks/combo_5.png",
+     "w": 319,
+     "h": 331,
+     "ax": 156.3,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/trunks/combo_6.png",
+     "w": 296,
+     "h": 339,
+     "ax": 126.4,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/trunks/combo_7.png",
+     "w": 321,
+     "h": 242,
+     "ax": 121.5,
+     "ay": 242
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.5341,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/lowair_0.png",
+     "w": 203,
+     "h": 297,
+     "ax": 98.6,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/trunks/lowair_1.png",
+     "w": 229,
+     "h": 291,
+     "ax": 121.8,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/trunks/lowair_2.png",
+     "w": 349,
+     "h": 246,
+     "ax": 126.9,
+     "ay": 246
+    },
+    {
+     "src": "assets/sprites/trunks/lowair_3.png",
+     "w": 239,
+     "h": 288,
+     "ax": 131.1,
+     "ay": 288
+    },
+    {
+     "src": "assets/sprites/trunks/lowair_4.png",
+     "w": 200,
+     "h": 331,
+     "ax": 94.4,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/trunks/lowair_5.png",
+     "w": 198,
+     "h": 383,
+     "ax": 104.2,
+     "ay": 383
+    },
+    {
+     "src": "assets/sprites/trunks/lowair_6.png",
+     "w": 340,
+     "h": 289,
+     "ax": 153.1,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/trunks/lowair_7.png",
+     "w": 250,
+     "h": 361,
+     "ax": 127.0,
+     "ay": 361
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.5341,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/dashcharge_0.png",
+     "w": 207,
+     "h": 336,
+     "ax": 110.4,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/trunks/dashcharge_1.png",
+     "w": 290,
+     "h": 360,
+     "ax": 144.3,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/trunks/dashcharge_2.png",
+     "w": 414,
+     "h": 295,
+     "ax": 195.9,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/trunks/dashcharge_3.png",
+     "w": 192,
+     "h": 337,
+     "ax": 87.2,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/trunks/dashcharge_4.png",
+     "w": 201,
+     "h": 316,
+     "ax": 107.9,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/trunks/dashcharge_5.png",
+     "w": 204,
+     "h": 342,
+     "ax": 97.7,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/trunks/dashcharge_6.png",
+     "w": 240,
+     "h": 352,
+     "ax": 121.8,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/trunks/dashcharge_7.png",
+     "w": 205,
+     "h": 346,
+     "ax": 104.1,
+     "ay": 346
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5341,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/special_0.png",
+     "w": 191,
+     "h": 335,
+     "ax": 99.8,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/trunks/special_1.png",
+     "w": 207,
+     "h": 325,
+     "ax": 102.9,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/trunks/special_2.png",
+     "w": 238,
+     "h": 329,
+     "ax": 109.8,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/trunks/special_3.png",
+     "w": 192,
+     "h": 327,
+     "ax": 90.1,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/trunks/special_4.png",
+     "w": 224,
+     "h": 357,
+     "ax": 125.6,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/trunks/special_5.png",
+     "w": 224,
+     "h": 340,
+     "ax": 133.8,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/trunks/special_6.png",
+     "w": 258,
+     "h": 319,
+     "ax": 116.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/trunks/special_7.png",
+     "w": 263,
+     "h": 288,
+     "ax": 128.8,
+     "ay": 288
     }
    ]
   }

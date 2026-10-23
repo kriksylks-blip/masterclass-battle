@@ -241,8 +241,8 @@ const MAP_NODES = [
 // Les maîtres recrutés dans chaque monde : la Masterclass (affichée en bas du plateau)
 const RECRUITS = {
   tokyo: ['ippo'], op: ['luffy'], ds: ['tanjiro'], hx: ['gon', 'killua'], nr: ['naruto', 'kakashi'], bl: ['ichigo'], mh: ['izuku'],
-  rk: ['kenshin'], sl: ['jinwoo'], op2: ['zoro'], ds2: ['zenitsu'], jk: ['gojo'], nr2: ['sasuke'], opm: ['saitama'], bl2: [],
-  db: ['goku', 'vegeta'], db2: ['gohan'],
+  rk: ['kenshin'], sl: ['jinwoo'], op2: ['zoro'], ds2: ['zenitsu', 'inosuke'], jk: ['gojo'], nr2: ['sasuke'], opm: ['saitama'], bl2: [],
+  db: ['goku', 'vegeta'], db2: ['gohan', 'trunks'],
 };
 const story = { unlocked: 1, node: 0, done: [] };
 try { Object.assign(story, JSON.parse(localStorage.getItem('kfm_story') || '{}')); } catch (e) { }
@@ -330,7 +330,8 @@ const STORY = {
     intro: [['N', 'Yoshiwara, la nuit. Une Lune supérieure cache un éclat dans ses ceintures de soie.'],
       ['B', 'Tu es laid. Les laids n\'ont pas le droit de toucher à ma beauté !']],
     outro: [['B', 'Grand frère !! Il m\'a frappée !!'],
-      ['N', 'Zenitsu jure qu\'il ne viendra pas. Il s\'endort sur le seuil. Au réveil, il est déjà de l\'autre côté de la faille.']],
+      ['N', 'Zenitsu jure qu\'il ne viendra pas. Il s\'endort sur le seuil. Au réveil, il est déjà de l\'autre côté de la faille.'],
+      ['N', 'Inosuke, lui, fonce dans la faille tête la première en hurlant qu\'il est le roi de la montagne. Personne n\'a eu besoin de l\'inviter.']],
   },
   jk: {
     title: 'CHAPITRE 11 — LA NUIT DE SHIBUYA',
@@ -373,7 +374,8 @@ const STORY = {
     intro: [['B', 'Bienvenue. C\'est moi qui ai poussé Kuro-Oni à briser le Sceau. Chaque éclat m\'a appris vos techniques.'],
       ['B', 'Tous les guerriers de tous les mondes en un seul être. Moi. La forme vraiment parfaite.'],
       ['H', 'Tu as copié nos techniques. Tu n\'as pas copié la classe.']],
-    outro: [['N', 'Un enfant s\'avance devant les autres. Gohan, onze ans, les cheveux dorés dressés, des éclairs autour des poings.'],
+    outro: [['N', 'Une capsule tombe du ciel en sifflant. Un garçon aux cheveux mauves en sort, l\'épée dans le dos : Trunks, venu d\'un futur où Cell a déjà gagné.'],
+      ['N', 'Un enfant s\'avance devant les autres. Gohan, onze ans, les cheveux dorés dressés, des éclairs autour des poings.'],
       ['B', 'Impossible… Je suis… PARFAIT…'],
       ['N', 'Le dernier éclat rejoint les quinze autres. Le Sceau se referme, et les failles avec lui.'],
       ['N', 'Chacun rentre chez soi. À Tokyo, sur la porte de la salle d\'Ippo, quelqu\'un a écrit à la craie : « MASTERCLASS — on recrute. » FIN.']],
