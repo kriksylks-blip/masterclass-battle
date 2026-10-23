@@ -33304,63 +33304,120 @@ const SPRITES = {
  },
  "revy": {
   "walk": {
-   "scale": 0.4904,
+   "scale": 0.3428,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/revy/walk_0.png",
-     "w": 255,
-     "h": 360,
+     "src": "assets/sprites/revy/walkv_0.png",
+     "w": 296,
+     "h": 508,
+     "ax": 127.1,
+     "ay": 508
+    },
+    {
+     "src": "assets/sprites/revy/walkv_1.png",
+     "w": 254,
+     "h": 502,
+     "ax": 109.7,
+     "ay": 502
+    },
+    {
+     "src": "assets/sprites/revy/walkv_2.png",
+     "w": 212,
+     "h": 508,
+     "ax": 96.5,
+     "ay": 508
+    },
+    {
+     "src": "assets/sprites/revy/walkv_3.png",
+     "w": 194,
+     "h": 512,
+     "ax": 92.0,
+     "ay": 512
+    },
+    {
+     "src": "assets/sprites/revy/walkv_4.png",
+     "w": 194,
+     "h": 516,
+     "ax": 87.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/revy/walkv_5.png",
+     "w": 240,
+     "h": 516,
+     "ax": 101.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/revy/walkv_6.png",
+     "w": 264,
+     "h": 514,
+     "ax": 106.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/revy/walkv_7.png",
+     "w": 282,
+     "h": 512,
+     "ax": 123.2,
+     "ay": 512
+    },
+    {
+     "src": "assets/sprites/revy/walkv_8.png",
+     "w": 298,
+     "h": 510,
      "ax": 143.8,
-     "ay": 360
+     "ay": 510
     },
     {
-     "src": "assets/sprites/revy/walk_1.png",
-     "w": 248,
-     "h": 360,
-     "ax": 130.5,
-     "ay": 360
+     "src": "assets/sprites/revy/walkv_9.png",
+     "w": 268,
+     "h": 508,
+     "ax": 116.9,
+     "ay": 508
     },
     {
-     "src": "assets/sprites/revy/walk_2.png",
-     "w": 206,
-     "h": 361,
-     "ax": 104.2,
-     "ay": 361
+     "src": "assets/sprites/revy/walkv_10.png",
+     "w": 226,
+     "h": 516,
+     "ax": 93.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/revy/walk_3.png",
-     "w": 280,
-     "h": 360,
-     "ax": 159.8,
-     "ay": 360
-    },
-    {
-     "src": "assets/sprites/revy/walk_4.png",
-     "w": 242,
-     "h": 360,
-     "ax": 120.4,
-     "ay": 360
-    },
-    {
-     "src": "assets/sprites/revy/walk_5.png",
-     "w": 210,
-     "h": 355,
-     "ax": 91.9,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/revy/walk_6.png",
+     "src": "assets/sprites/revy/walkv_11.png",
      "w": 200,
-     "h": 363,
-     "ax": 85.0,
-     "ay": 363
+     "h": 520,
+     "ax": 90.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/revy/walk_7.png",
-     "w": 244,
-     "h": 360,
-     "ax": 121.5,
-     "ay": 360
+     "src": "assets/sprites/revy/walkv_12.png",
+     "w": 190,
+     "h": 522,
+     "ax": 82.9,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/revy/walkv_13.png",
+     "w": 232,
+     "h": 526,
+     "ax": 96.9,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/revy/walkv_14.png",
+     "w": 268,
+     "h": 526,
+     "ax": 98.7,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/revy/walkv_15.png",
+     "w": 293,
+     "h": 516,
+     "ax": 105.5,
+     "ay": 516
     }
    ]
   },
@@ -33733,63 +33790,120 @@ const SPRITES = {
  },
  "gally": {
   "walk": {
-   "scale": 0.4986,
+   "scale": 0.3227,
+   "rate": 29.08,
    "frames": [
     {
-     "src": "assets/sprites/gally/walk_0.png",
-     "w": 248,
-     "h": 342,
-     "ax": 113.4,
-     "ay": 342
+     "src": "assets/sprites/gally/walkv_0.png",
+     "w": 226,
+     "h": 536,
+     "ax": 113.5,
+     "ay": 536
     },
     {
-     "src": "assets/sprites/gally/walk_1.png",
-     "w": 263,
-     "h": 342,
-     "ax": 125.4,
-     "ay": 342
+     "src": "assets/sprites/gally/walkv_1.png",
+     "w": 226,
+     "h": 538,
+     "ax": 117.5,
+     "ay": 538
     },
     {
-     "src": "assets/sprites/gally/walk_2.png",
-     "w": 233,
-     "h": 342,
-     "ax": 101.0,
-     "ay": 342
+     "src": "assets/sprites/gally/walkv_2.png",
+     "w": 242,
+     "h": 538,
+     "ax": 135.5,
+     "ay": 538
     },
     {
-     "src": "assets/sprites/gally/walk_3.png",
-     "w": 255,
-     "h": 340,
-     "ax": 126.1,
-     "ay": 340
+     "src": "assets/sprites/gally/walkv_3.png",
+     "w": 312,
+     "h": 530,
+     "ax": 170.0,
+     "ay": 530
     },
     {
-     "src": "assets/sprites/gally/walk_4.png",
-     "w": 278,
-     "h": 336,
-     "ax": 142.7,
-     "ay": 336
+     "src": "assets/sprites/gally/walkv_4.png",
+     "w": 348,
+     "h": 520,
+     "ax": 209.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/gally/walk_5.png",
-     "w": 259,
-     "h": 342,
-     "ax": 124.2,
-     "ay": 342
+     "src": "assets/sprites/gally/walkv_5.png",
+     "w": 352,
+     "h": 518,
+     "ax": 227.5,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/gally/walk_6.png",
-     "w": 234,
-     "h": 345,
-     "ax": 102.3,
-     "ay": 345
+     "src": "assets/sprites/gally/walkv_6.png",
+     "w": 330,
+     "h": 520,
+     "ax": 224.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/gally/walk_7.png",
-     "w": 253,
-     "h": 339,
-     "ax": 127.6,
-     "ay": 339
+     "src": "assets/sprites/gally/walkv_7.png",
+     "w": 290,
+     "h": 528,
+     "ax": 183.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/walkv_8.png",
+     "w": 230,
+     "h": 532,
+     "ax": 121.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/gally/walkv_9.png",
+     "w": 227,
+     "h": 532,
+     "ax": 113.0,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/gally/walkv_10.png",
+     "w": 254,
+     "h": 530,
+     "ax": 132.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gally/walkv_11.png",
+     "w": 304,
+     "h": 520,
+     "ax": 164.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/gally/walkv_12.png",
+     "w": 322,
+     "h": 518,
+     "ax": 184.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gally/walkv_13.png",
+     "w": 337,
+     "h": 518,
+     "ax": 207.0,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gally/walkv_14.png",
+     "w": 309,
+     "h": 525,
+     "ax": 182.5,
+     "ay": 525
+    },
+    {
+     "src": "assets/sprites/gally/walkv_15.png",
+     "w": 284,
+     "h": 529,
+     "ax": 161.5,
+     "ay": 529
     }
    ]
   },
@@ -34162,63 +34276,120 @@ const SPRITES = {
  },
  "levi": {
   "walk": {
-   "scale": 0.4789,
+   "scale": 0.3217,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/levi/walk_0.png",
-     "w": 214,
-     "h": 355,
-     "ax": 89.5,
-     "ay": 355
+     "src": "assets/sprites/levi/walkv_0.png",
+     "w": 352,
+     "h": 520,
+     "ax": 102.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/levi/walk_1.png",
-     "w": 217,
-     "h": 347,
-     "ax": 92.2,
-     "ay": 347
+     "src": "assets/sprites/levi/walkv_1.png",
+     "w": 372,
+     "h": 514,
+     "ax": 103.5,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/levi/walk_2.png",
-     "w": 216,
-     "h": 348,
-     "ax": 93.1,
-     "ay": 348
+     "src": "assets/sprites/levi/walkv_2.png",
+     "w": 384,
+     "h": 516,
+     "ax": 113.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/levi/walk_3.png",
-     "w": 218,
-     "h": 350,
-     "ax": 94.1,
-     "ay": 350
+     "src": "assets/sprites/levi/walkv_3.png",
+     "w": 384,
+     "h": 520,
+     "ax": 119.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/levi/walk_4.png",
-     "w": 215,
-     "h": 350,
-     "ax": 89.3,
-     "ay": 350
+     "src": "assets/sprites/levi/walkv_4.png",
+     "w": 356,
+     "h": 524,
+     "ax": 109.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/levi/walk_5.png",
-     "w": 219,
-     "h": 351,
-     "ax": 90.5,
-     "ay": 351
+     "src": "assets/sprites/levi/walkv_5.png",
+     "w": 256,
+     "h": 530,
+     "ax": 128.5,
+     "ay": 530
     },
     {
-     "src": "assets/sprites/levi/walk_6.png",
-     "w": 211,
-     "h": 347,
-     "ax": 90.5,
-     "ay": 347
+     "src": "assets/sprites/levi/walkv_6.png",
+     "w": 322,
+     "h": 532,
+     "ax": 138.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/levi/walk_7.png",
-     "w": 222,
-     "h": 350,
-     "ax": 93.5,
-     "ay": 350
+     "src": "assets/sprites/levi/walkv_7.png",
+     "w": 324,
+     "h": 534,
+     "ax": 145.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/levi/walkv_8.png",
+     "w": 358,
+     "h": 530,
+     "ax": 148.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/levi/walkv_9.png",
+     "w": 378,
+     "h": 522,
+     "ax": 149.5,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/levi/walkv_10.png",
+     "w": 380,
+     "h": 514,
+     "ax": 152.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/levi/walkv_11.png",
+     "w": 378,
+     "h": 510,
+     "ax": 156.5,
+     "ay": 510
+    },
+    {
+     "src": "assets/sprites/levi/walkv_12.png",
+     "w": 346,
+     "h": 516,
+     "ax": 150.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/levi/walkv_13.png",
+     "w": 312,
+     "h": 520,
+     "ax": 139.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/levi/walkv_14.png",
+     "w": 296,
+     "h": 524,
+     "ax": 133.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/levi/walkv_15.png",
+     "w": 324,
+     "h": 526,
+     "ax": 111.3,
+     "ay": 526
     }
    ]
   },
@@ -35077,63 +35248,120 @@ const SPRITES = {
  },
  "eren": {
   "walk": {
-   "scale": 0.5428,
+   "scale": 0.3424,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/eren/walk_0.png",
-     "w": 250,
-     "h": 334,
-     "ax": 109.6,
-     "ay": 334
+     "src": "assets/sprites/eren/walkv_0.png",
+     "w": 438,
+     "h": 522,
+     "ax": 156.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/eren/walk_1.png",
-     "w": 237,
-     "h": 334,
-     "ax": 105.4,
-     "ay": 334
+     "src": "assets/sprites/eren/walkv_1.png",
+     "w": 446,
+     "h": 524,
+     "ax": 150.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/eren/walk_2.png",
-     "w": 226,
-     "h": 334,
-     "ax": 102.5,
-     "ay": 334
+     "src": "assets/sprites/eren/walkv_2.png",
+     "w": 442,
+     "h": 528,
+     "ax": 152.5,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/eren/walk_3.png",
-     "w": 209,
-     "h": 330,
-     "ax": 98.1,
-     "ay": 330
+     "src": "assets/sprites/eren/walkv_3.png",
+     "w": 428,
+     "h": 536,
+     "ax": 154.5,
+     "ay": 536
     },
     {
-     "src": "assets/sprites/eren/walk_4.png",
-     "w": 223,
-     "h": 334,
-     "ax": 102.0,
-     "ay": 334
+     "src": "assets/sprites/eren/walkv_4.png",
+     "w": 408,
+     "h": 541,
+     "ax": 159.5,
+     "ay": 541
     },
     {
-     "src": "assets/sprites/eren/walk_5.png",
-     "w": 213,
-     "h": 330,
-     "ax": 96.3,
-     "ay": 330
+     "src": "assets/sprites/eren/walkv_5.png",
+     "w": 396,
+     "h": 543,
+     "ax": 158.5,
+     "ay": 543
     },
     {
-     "src": "assets/sprites/eren/walk_6.png",
-     "w": 218,
-     "h": 335,
-     "ax": 102.2,
-     "ay": 335
+     "src": "assets/sprites/eren/walkv_6.png",
+     "w": 370,
+     "h": 542,
+     "ax": 158.5,
+     "ay": 542
     },
     {
-     "src": "assets/sprites/eren/walk_7.png",
-     "w": 219,
-     "h": 339,
-     "ax": 97.0,
-     "ay": 339
+     "src": "assets/sprites/eren/walkv_7.png",
+     "w": 346,
+     "h": 536,
+     "ax": 162.8,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/eren/walkv_8.png",
+     "w": 362,
+     "h": 528,
+     "ax": 158.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/eren/walkv_9.png",
+     "w": 370,
+     "h": 522,
+     "ax": 166.0,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/eren/walkv_10.png",
+     "w": 362,
+     "h": 522,
+     "ax": 165.8,
+     "ay": 522
+    },
+    {
+     "src": "assets/sprites/eren/walkv_11.png",
+     "w": 342,
+     "h": 528,
+     "ax": 161.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/eren/walkv_12.png",
+     "w": 340,
+     "h": 531,
+     "ax": 157.5,
+     "ay": 531
+    },
+    {
+     "src": "assets/sprites/eren/walkv_13.png",
+     "w": 366,
+     "h": 534,
+     "ax": 154.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/eren/walkv_14.png",
+     "w": 394,
+     "h": 534,
+     "ax": 158.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/eren/walkv_15.png",
+     "w": 420,
+     "h": 526,
+     "ax": 157.5,
+     "ay": 526
     }
    ]
   },
@@ -35506,63 +35734,120 @@ const SPRITES = {
  },
  "edward": {
   "walk": {
-   "scale": 0.5333,
+   "scale": 0.3148,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/edward/walk_0.png",
-     "w": 310,
-     "h": 314,
-     "ax": 162.1,
-     "ay": 314
+     "src": "assets/sprites/edward/walkv_0.png",
+     "w": 354,
+     "h": 532,
+     "ax": 165.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/edward/walk_1.png",
-     "w": 297,
-     "h": 314,
-     "ax": 184.2,
-     "ay": 314
+     "src": "assets/sprites/edward/walkv_1.png",
+     "w": 316,
+     "h": 528,
+     "ax": 154.5,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/edward/walk_2.png",
+     "src": "assets/sprites/edward/walkv_2.png",
+     "w": 270,
+     "h": 528,
+     "ax": 149.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/edward/walkv_3.png",
+     "w": 260,
+     "h": 528,
+     "ax": 144.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/edward/walkv_4.png",
      "w": 246,
-     "h": 309,
-     "ax": 150.4,
-     "ay": 309
+     "h": 530,
+     "ax": 138.5,
+     "ay": 530
     },
     {
-     "src": "assets/sprites/edward/walk_3.png",
-     "w": 275,
-     "h": 315,
-     "ax": 153.1,
-     "ay": 315
+     "src": "assets/sprites/edward/walkv_5.png",
+     "w": 244,
+     "h": 532,
+     "ax": 144.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/edward/walk_4.png",
-     "w": 295,
-     "h": 313,
-     "ax": 157.1,
-     "ay": 313
+     "src": "assets/sprites/edward/walkv_6.png",
+     "w": 314,
+     "h": 532,
+     "ax": 158.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/edward/walk_5.png",
-     "w": 288,
-     "h": 314,
-     "ax": 181.5,
-     "ay": 314
+     "src": "assets/sprites/edward/walkv_7.png",
+     "w": 348,
+     "h": 531,
+     "ax": 173.5,
+     "ay": 531
     },
     {
-     "src": "assets/sprites/edward/walk_6.png",
-     "w": 251,
-     "h": 310,
-     "ax": 150.3,
-     "ay": 310
+     "src": "assets/sprites/edward/walkv_8.png",
+     "w": 348,
+     "h": 534,
+     "ax": 179.5,
+     "ay": 534
     },
     {
-     "src": "assets/sprites/edward/walk_7.png",
-     "w": 283,
-     "h": 315,
-     "ax": 153.7,
-     "ay": 315
+     "src": "assets/sprites/edward/walkv_9.png",
+     "w": 316,
+     "h": 530,
+     "ax": 177.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/edward/walkv_10.png",
+     "w": 282,
+     "h": 532,
+     "ax": 163.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/edward/walkv_11.png",
+     "w": 254,
+     "h": 534,
+     "ax": 142.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/edward/walkv_12.png",
+     "w": 244,
+     "h": 538,
+     "ax": 135.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/edward/walkv_13.png",
+     "w": 260,
+     "h": 542,
+     "ax": 135.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/edward/walkv_14.png",
+     "w": 302,
+     "h": 542,
+     "ax": 141.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/edward/walkv_15.png",
+     "w": 358,
+     "h": 536,
+     "ax": 155.5,
+     "ay": 536
     }
    ]
   },
@@ -38509,63 +38794,120 @@ const SPRITES = {
  },
  "baki": {
   "walk": {
-   "scale": 0.5124,
+   "scale": 0.3448,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/baki/walk_0.png",
-     "w": 231,
-     "h": 357,
-     "ax": 108.3,
-     "ay": 357
+     "src": "assets/sprites/baki/walkv_0.png",
+     "w": 142,
+     "h": 546,
+     "ax": 57.5,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/baki/walk_1.png",
-     "w": 253,
-     "h": 360,
-     "ax": 126.3,
-     "ay": 360
+     "src": "assets/sprites/baki/walkv_1.png",
+     "w": 175,
+     "h": 546,
+     "ax": 77.5,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/baki/walk_2.png",
-     "w": 222,
-     "h": 360,
-     "ax": 108.6,
-     "ay": 360
+     "src": "assets/sprites/baki/walkv_2.png",
+     "w": 257,
+     "h": 542,
+     "ax": 112.5,
+     "ay": 542
     },
     {
-     "src": "assets/sprites/baki/walk_3.png",
-     "w": 231,
-     "h": 359,
-     "ax": 115.9,
-     "ay": 359
+     "src": "assets/sprites/baki/walkv_3.png",
+     "w": 288,
+     "h": 540,
+     "ax": 127.5,
+     "ay": 540
     },
     {
-     "src": "assets/sprites/baki/walk_4.png",
-     "w": 228,
-     "h": 361,
-     "ax": 100.7,
-     "ay": 361
+     "src": "assets/sprites/baki/walkv_4.png",
+     "w": 310,
+     "h": 534,
+     "ax": 160.5,
+     "ay": 534
     },
     {
-     "src": "assets/sprites/baki/walk_5.png",
-     "w": 256,
-     "h": 360,
-     "ax": 125.5,
-     "ay": 360
+     "src": "assets/sprites/baki/walkv_5.png",
+     "w": 290,
+     "h": 532,
+     "ax": 168.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/baki/walk_6.png",
-     "w": 221,
-     "h": 357,
-     "ax": 114.8,
-     "ay": 357
+     "src": "assets/sprites/baki/walkv_6.png",
+     "w": 264,
+     "h": 536,
+     "ax": 154.5,
+     "ay": 536
     },
     {
-     "src": "assets/sprites/baki/walk_7.png",
-     "w": 221,
-     "h": 363,
-     "ax": 100.7,
-     "ay": 363
+     "src": "assets/sprites/baki/walkv_7.png",
+     "w": 198,
+     "h": 530,
+     "ax": 112.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/baki/walkv_8.png",
+     "w": 146,
+     "h": 534,
+     "ax": 68.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/walkv_9.png",
+     "w": 160,
+     "h": 536,
+     "ax": 76.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/baki/walkv_10.png",
+     "w": 248,
+     "h": 532,
+     "ax": 108.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/baki/walkv_11.png",
+     "w": 282,
+     "h": 529,
+     "ax": 128.5,
+     "ay": 529
+    },
+    {
+     "src": "assets/sprites/baki/walkv_12.png",
+     "w": 300,
+     "h": 530,
+     "ax": 157.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/baki/walkv_13.png",
+     "w": 280,
+     "h": 534,
+     "ax": 160.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/walkv_14.png",
+     "w": 252,
+     "h": 536,
+     "ax": 144.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/baki/walkv_15.png",
+     "w": 188,
+     "h": 544,
+     "ax": 103.5,
+     "ay": 544
     }
    ]
   },
@@ -38938,63 +39280,120 @@ const SPRITES = {
  },
  "boruto": {
   "walk": {
-   "scale": 0.49,
+   "scale": 0.3056,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/boruto/walk_0.png",
-     "w": 310,
-     "h": 349,
-     "ax": 166.3,
-     "ay": 349
+     "src": "assets/sprites/boruto/walkv_0.png",
+     "w": 145,
+     "h": 563,
+     "ax": 70.0,
+     "ay": 563
     },
     {
-     "src": "assets/sprites/boruto/walk_1.png",
-     "w": 277,
-     "h": 349,
-     "ax": 131.8,
-     "ay": 349
+     "src": "assets/sprites/boruto/walkv_1.png",
+     "w": 160,
+     "h": 566,
+     "ax": 62.5,
+     "ay": 566
     },
     {
-     "src": "assets/sprites/boruto/walk_2.png",
-     "w": 226,
-     "h": 349,
-     "ax": 96.8,
-     "ay": 349
+     "src": "assets/sprites/boruto/walkv_2.png",
+     "w": 202,
+     "h": 564,
+     "ax": 78.5,
+     "ay": 564
     },
     {
-     "src": "assets/sprites/boruto/walk_3.png",
-     "w": 261,
-     "h": 349,
-     "ax": 143.3,
-     "ay": 349
+     "src": "assets/sprites/boruto/walkv_3.png",
+     "w": 292,
+     "h": 556,
+     "ax": 119.5,
+     "ay": 556
     },
     {
-     "src": "assets/sprites/boruto/walk_4.png",
-     "w": 309,
-     "h": 344,
-     "ax": 165.8,
-     "ay": 344
+     "src": "assets/sprites/boruto/walkv_4.png",
+     "w": 316,
+     "h": 554,
+     "ax": 153.5,
+     "ay": 554
     },
     {
-     "src": "assets/sprites/boruto/walk_5.png",
-     "w": 209,
-     "h": 350,
-     "ax": 89.8,
-     "ay": 350
+     "src": "assets/sprites/boruto/walkv_5.png",
+     "w": 308,
+     "h": 552,
+     "ax": 158.5,
+     "ay": 552
     },
     {
-     "src": "assets/sprites/boruto/walk_6.png",
-     "w": 222,
-     "h": 351,
-     "ax": 97.3,
-     "ay": 351
+     "src": "assets/sprites/boruto/walkv_6.png",
+     "w": 243,
+     "h": 556,
+     "ax": 127.5,
+     "ay": 556
     },
     {
-     "src": "assets/sprites/boruto/walk_7.png",
-     "w": 310,
-     "h": 346,
-     "ax": 165.8,
-     "ay": 346
+     "src": "assets/sprites/boruto/walkv_7.png",
+     "w": 168,
+     "h": 564,
+     "ax": 86.5,
+     "ay": 564
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_8.png",
+     "w": 150,
+     "h": 572,
+     "ax": 64.0,
+     "ay": 572
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_9.png",
+     "w": 156,
+     "h": 574,
+     "ax": 64.0,
+     "ay": 574
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_10.png",
+     "w": 234,
+     "h": 572,
+     "ax": 92.5,
+     "ay": 572
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_11.png",
+     "w": 308,
+     "h": 562,
+     "ax": 128.5,
+     "ay": 562
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_12.png",
+     "w": 319,
+     "h": 557,
+     "ax": 145.5,
+     "ay": 557
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_13.png",
+     "w": 300,
+     "h": 549,
+     "ax": 152.5,
+     "ay": 549
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_14.png",
+     "w": 238,
+     "h": 552,
+     "ax": 125.0,
+     "ay": 552
+    },
+    {
+     "src": "assets/sprites/boruto/walkv_15.png",
+     "w": 200,
+     "h": 555,
+     "ax": 113.0,
+     "ay": 555
     }
    ]
   },
