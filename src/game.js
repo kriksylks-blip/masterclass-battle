@@ -1229,7 +1229,7 @@ function moveEffects(h, speed) {
     const P = m.proj, kind = P.kind === 'wave' && elementOf(h) === 'fire' ? 'firewave' : P.kind;
     // les tirs lancés de la main (Rouge de Gojo, Delaware, rafale de ki) partent du bout de la main dessinée
     const hand = HAND_SHOTS.includes(kind) && handPoint(h);
-    const px = hand ? h.x + h.dir * (hand[0] + 10) : h.x + h.dir * 80, py = hand ? h.y + hand[1] : h.y - (P.low ? 40 : 110);
+    const px = hand ? h.x + h.dir * (hand[0] + 10 + (PROJ_R[kind] || 0) * (P.scale || 1)) : h.x + h.dir * 80, py = hand ? h.y + hand[1] : h.y - (P.low ? 40 : 110);
     projs.push({ ...P, kind, filter: h.boost?.proj || '', owner: h, x: px, y: py, gz: h.gz, dir: h.dir, t: 0, hit: new Set(), dmg: P.dmg * (h.boost ? h.boost.dmg : 1) });
     if (hand) burst(px, py, projColor({ kind }), 10);
     shake = Math.max(shake, 8); audio.slash(1.4);
@@ -2005,7 +2005,8 @@ function updateShining(h) {
   }
   if (!h.thrown && h.t >= SHINE.blast) {
     h.thrown = true; flash = 0.6; shake = 24; audio.play('ultraBoom', 1.1, 1.2, 0);
-    projs.push({ kind: 'burning', owner: h, x: h.x + h.dir * 70, y: h.y - 120, gz: h.gz, dir: h.dir, t: 0, speed: 1000, life: 1.1, hit: new Set(), dmg: dmg * 0.45, kb: 700, launch: -800, scale: 2.2 });
+    const hp = handPoint(h); // la boule naît devant les paumes, pas centrée sur Trunks
+    projs.push({ kind: 'burning', owner: h, x: h.x + h.dir * ((hp ? hp[0] : 60) + PROJ_R.burning * 2.2), y: hp ? h.y + hp[1] : h.y - 120, gz: h.gz, dir: h.dir, t: 0, speed: 1000, life: 1.1, hit: new Set(), dmg: dmg * 0.45, kb: 700, launch: -800, scale: 2.2 });
     popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'SHINING SWORD ATTACK !!' });
     score += 2000;
   }
@@ -3865,6 +3866,8 @@ function energyBall(x, y, r, gold) {
 // Bout de la main sur l'étape affichée : point le plus en avant du haut du corps (60 % du haut), mesuré une fois
 // par image puis gardé. Renvoie [devant, hauteur] par rapport au point posé au sol, à l'échelle du jeu.
 const HAND_SHOTS = ['airshot', 'kiball', 'red', 'burning'], handCache = {};
+// rayon des grosses boules : leur centre est avancé d'autant pour qu'elles partent DEVANT la main
+const PROJ_R = { burning: 34, kiball: 26 };
 function handPoint(h) {
   const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
   const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];
