@@ -1334,6 +1334,58 @@ function startMove(h, name, chain = 0) {
   else if (name !== 'blast') audio.whoosh(/kick|round|whip|axe|bazooka|spin|leap/.test(name) ? 1.4 : 1);
 }
 
+// ---------- Jonglage aérien (24/10, esprit DBZ FighterZ) ----------
+// Le dernier coup du combo de pieds envoie l'ennemi en l'air ; poing, pied ou saut pendant qu'il monte : le héros
+// fond sur lui, enchaîne trois coups en l'air puis l'écrase au sol d'un coup plongeant (il rebondit une fois).
+const JUG = { top: 215, window: 0.75, rise: 0.18, hits: [0.24, 0.36, 0.48], smash: 0.64, end: 0.8, dmg: 1.1, smashDmg: 2.6 };
+// hauteur du lancement : le plus haut possible, les pieds pas au-dessus de JUG.top (le corps reste entier à l'écran)
+const jugRise = e => clamp(e.gz - JUG.top - 40, 150, 330);
+const C_chainLast = h => { const k = h.C.chain?.kick; return k && k[k.length - 1]; };
+function jugglePose(h) {
+  const t = h.t, hero = h.C.pose === heroPose;
+  const seq = hero ? [['jump', 4], ['pcombo', 1], ['pcombo', 4], ['kcombo', 3], ['jumpkick', 3]] : [['jump', 4], ['combo', 1], ['combo', 2], ['combo', 6], ['lowair', 6]];
+  const [a, i] = seq[t < JUG.hits[0] ? 0 : t < JUG.hits[1] ? 1 : t < JUG.hits[2] ? 2 : t < JUG.smash - 0.04 ? 3 : 4];
+  return SPRITES[sheetFor(h, a)]?.[a] ? [a, i] : ['jump', 4];
+}
+function startJuggle(h) {
+  const e = h.juggle.e;
+  h.juggle = { e, t: 0, x0: h.x, y0: h.y, hit: 0, yT: Math.max(JUG.top, e.gz - jugRise(e)) }; // yT : hauteur où il monte le prendre
+  h.state = 'juggle'; h.t = 0; h.move = null; h.onGround = false; h.vx = h.vy = 0;
+  h.dir = Math.sign(e.x - h.x) || h.dir; e.juggled = true; e.vx = e.vy = 0;
+  ring(h.x, h.gz - 10); burst(h.x, h.gz - 10, '#bfefff', 10); audio.zip(); audio.whoosh(1.5);
+}
+function updateJuggle(h, dt) {
+  const J = h.juggle, e = J?.e, t = h.t;
+  if (!e || e.state !== 'knock') { endJuggle(h); return; }
+  h.inv = Math.max(h.inv, 0.1);
+  // il fond sur l'ennemi (images rémanentes) puis reste collé à lui ; l'ennemi flotte en montant un peu
+  const u = 1 - Math.pow(1 - Math.min(1, t / JUG.rise), 3);
+  h.x = clamp(J.x0 + (e.x - h.dir * 85 - J.x0) * u, camX + 40, camX + W - 40); h.y = J.y0 + (e.y + 25 - J.y0) * u;
+  if (t < JUG.rise && Math.random() < 0.8) afterImage(h, 0.25, 0.35, hitOf(h));
+  if (e.juggled) { J.yT = Math.max(JUG.top, J.yT - 50 * dt); e.y += (J.yT - e.y) * Math.min(1, dt * 12); } // il monte tout en haut, puis encore un peu sous les coups
+  const mult = h.boost ? h.boost.dmg : 1;
+  while (J.hit < JUG.hits.length && t >= JUG.hits[J.hit]) {
+    J.hit++; e.x += h.dir * 8;
+    damageEnemy(e, JUG.dmg * mult, 60 * h.dir, null, e.x - h.dir * 30, e.y - 110, hitOf(h)); // sans envol : petit impact
+    e.state = 'knock'; e.vx = e.vy = 0;
+    hitstop = Math.max(hitstop, 0.04); h.ki = Math.min(100, h.ki + 4);
+    if (h.C.trail) slashFX(e.x, e.y - 110, h.dir, { a0: -0.8, a1: 0.8, r: 60, c: trailOf(h), life: 0.12, w: 8 });
+  }
+  if (J.hit === JUG.hits.length && t >= JUG.smash) {
+    // coup plongeant : l'ennemi part vers le sol à toute vitesse
+    J.hit++; e.juggled = false;
+    damageEnemy(e, JUG.smashDmg * mult, 160 * h.dir, null, e.x - h.dir * 20, e.y - 100, hitOf(h));
+    e.state = 'knock'; e.vx = h.dir * 160; e.vy = 1800; e.slam = true;
+    shake = Math.max(shake, 14); hitstop = Math.max(hitstop, 0.1); // le gros choc est pour l'arrivée au sol
+    audio.play('ultraBoom', 0.6, 1.5, 0);
+  }
+  if (t >= JUG.end) endJuggle(h);
+}
+function endJuggle(h) {
+  if (h.juggle?.e) h.juggle.e.juggled = false;
+  h.juggle = null; h.state = 'jump'; h.t = 0; h.vy = -260; h.vx = 0; h.onGround = false;
+}
+
 function powerDown(h) {
   if (!h.boost) return;
   burst(h.x, h.y - 110, h.boost.color, 16);
@@ -1422,6 +1474,17 @@ function updatePlayer(h, dt) {
     if (h.t > F.end) h.state = 'idle';
   }
   if (h.state === 'ultra') C.ultra[1](h, dt);
+
+  // Jonglage aérien : l'ennemi vient d'être envoyé en l'air par le dernier coup du combo de pieds
+  // l'appui est mémorisé (même un peu avant que le coup touche) : marteler le pied suffit
+  if (['punch', 'kick', 'jump'].some(a => pressed.has(a))) h.atkPressT = sceneT;
+  if (h.juggle && h.state !== 'juggle') {
+    const J = h.juggle; J.t += dt;
+    if ((h.atkPressT ?? -9) > J.from) J.want = true; // un nouvel appui depuis le début du coup lanceur
+    if (J.t > JUG.window || J.e.state !== 'knock' || (J.e.vy > 0 && J.e.y > J.e.gz - 50)) h.juggle = null; // trop tard : il retombe au sol
+    else if (J.want && J.t > 0.1) startJuggle(h);
+  }
+  if (h.state === 'juggle') { updateJuggle(h, dt); return; }
 
   // Combos : un coup demandé pendant le coup en cours s'enchaîne dès la fin de sa fenêtre active
   const m0 = h.move;
@@ -1527,6 +1590,12 @@ function updatePlayer(h, dt) {
         if (m.stopOnHit) h.stopped = true;
         if (m.spiral) { spiralFX(e.x, e.y - 110, '#9fe8ff'); shake = Math.max(shake, 16); }
         if (m.shock) { shockFX(e.x - h.dir * 20, e.y - 110, h.dir); shake = Math.max(shake, 18); flash = 0.25; hitstop = Math.max(hitstop, 0.08); audio.play('ultraBoom', 0.7, 1.5, 0); }
+        // dernier coup du combo de pieds : l'ennemi part haut, on peut le poursuivre (jonglage aérien)
+        const kc = C_chainLast(h);
+        if (kc && h.state === kc && e.state === 'knock' && !ETYPES[e.type].isBoss && !e.juggled) {
+          e.vy = -Math.sqrt(2 * 1700 * jugRise(e)); e.vx = h.dir * 70; h.juggle = { e, t: 0, from: sceneT - h.t + 0.02 }; // très haut : le jonglage se lit au-dessus de la mêlée
+          popups.push({ x: e.x, y: e.y - 250, t: 0, text: "EN L'AIR !", small: true, c: '#9fe8ff' });
+        }
         if (m.smash) { hitstop = Math.max(hitstop, 0.15); flash = 0.35; e.smashT = 0.9; fxs.push({ type: 'speed', x: e.x, y: e.y - 110, t: 0, life: 0.3, c: hitOf(h) }); }
         if (m.boom) { animFX('nen', e.x, e.y - 110, 300, 0.5); shake = Math.max(shake, 20); flash = 0.3; audio.play('ultraBoom', 0.8, 1.3, 0); }
         if (m.bolts || m.orbFx === 'chidori') animFX('bolt', e.x, e.y - 150, 110, 0.25, { h: 260 });
@@ -3659,6 +3728,7 @@ function updateEnemy(e, dt) {
       if (e.t > 0.35) { e.state = 'walk'; e.cool = rand(0.3, 0.9); }
       break;
     case 'knock':
+      if (e.juggled) break; // tenu en l'air par le jonglage (updateJuggle)
       e.vy += 1700 * dt; e.x += e.vx * dt; e.y += e.vy * dt;
       if (e.smashT > 0) {
         // projeté par le coup final : traînée de poussière, et rebond s'il heurte le bord de l'écran (on peut le reprendre)
@@ -3671,6 +3741,14 @@ function updateEnemy(e, dt) {
           impactFX(wx, e.y - 110, '#ffffff', true); shockFX(wx, e.y - 110, e.vx > 0 ? 1 : -1);
           popups.push({ x: e.x, y: e.y - 230, t: 0, text: 'REBOND !', small: true, c: '#ffe14d' });
         }
+      }
+      if (e.y >= e.gz && e.slam) {
+        // écrasé par le coup plongeant : choc au sol, poussière, il rebondit une fois
+        e.slam = false; e.y = e.gz - 1; e.vy = -420; e.vx *= 0.5;
+        shake = Math.max(shake, 24); hitstop = Math.max(hitstop, 0.08); audio.play('ultraBoom', 0.8, 1.3, 0); audio.play('body', 1);
+        shockFX(e.x, e.gz - 20, 1); impactFX(e.x, e.gz - 20, '#ffffff', true);
+        for (let k = 0; k < 24; k++) particles.push({ x: e.x + rand(-60, 60), y: e.gz - rand(0, 10), vx: rand(-420, 420), vy: rand(-260, -60), t: 0, life: 0.6, c: 'rgba(210,200,185,0.75)', r: rand(5, 12), soft: true });
+        break;
       }
       if (e.y >= e.gz) {
         e.y = e.gz; shake = Math.max(shake, e.type === 'brute' ? 10 : 4); burst(e.x, e.gz - 5, '#9ad1ff', 6); audio.play('body', 0.7);
@@ -5084,6 +5162,7 @@ const jumpFrame = h => flipping(h) ? 4 : h.vy < -550 ? 2 : h.vy < -220 ? 3 : h.v
 
 function heroPose(h) {
   const t = h.t;
+  if (h.state === 'juggle') return jugglePose(h);
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h); return [h.back ? 'back' : 'walk', Math.floor(h.walkT * fps) % n]; }
     case 'crouch': return ['crouch', t < 0.06 ? 0 : 1];
@@ -5117,6 +5196,7 @@ function heroPose(h) {
 // lowair (accroupi, balayage | piétinement en l'air), rocket (fusée | charge), gigant.
 function luffyPose(h) {
   const t = h.t;
+  if (h.state === 'juggle') return jugglePose(h);
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h), i = Math.floor(h.walkT * fps) % n; return ['walk', h.back ? n - 1 - i : i]; }
     case 'crouch': return ['lowair', t < 0.06 ? 0 : 1];
@@ -5426,6 +5506,7 @@ const sheetFor = (h, anim) => formSheet(h) && SPRITES[formSheet(h)]?.[anim] ? fo
 // Les coups donnent leur propre pose (champ p).
 function stdPose(h) {
   const t = h.t, m = h.move;
+  if (h.state === 'juggle') return jugglePose(h);
   if (m && m.cyc && t >= m.cyc.from) return [m.cyc.anim, t < m.cyc.to ? m.cyc.frames[Math.floor((t - m.cyc.from) * m.cyc.fps) % m.cyc.frames.length] : m.cyc.last];
   if (m && m.p) { const [a, f, marks] = m.p, v = f[Math.min(step(t, marks || []), f.length - 1)]; return Array.isArray(v) ? v : [a, v]; }
   switch (h.state) {
