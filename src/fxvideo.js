@@ -1107,6 +1107,252 @@ const FXV = {
    "w": 460,
    "h": 640
   }
+ ],
+ "chidori_v": [
+  {
+   "src": "assets/fx/chidori_v_0.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_1.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_2.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_3.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_4.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_5.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_6.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_7.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_8.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_9.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_10.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_11.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_12.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_13.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_14.png",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "src": "assets/fx/chidori_v_15.png",
+   "w": 540,
+   "h": 540
+  }
+ ],
+ "hinokami_v": [
+  {
+   "src": "assets/fx/hinokami_v_0.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_1.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_2.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_3.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_4.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_5.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_6.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_7.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_8.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_9.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_10.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_11.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_12.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_13.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_14.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_15.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_16.png",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/hinokami_v_17.png",
+   "w": 640,
+   "h": 640
+  }
+ ],
+ "hekireki_v": [
+  {
+   "src": "assets/fx/hekireki_v_0.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_1.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_2.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_3.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_4.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_5.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_6.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_7.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_8.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_9.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_10.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_11.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_12.png",
+   "w": 1280,
+   "h": 420
+  },
+  {
+   "src": "assets/fx/hekireki_v_13.png",
+   "w": 1280,
+   "h": 420
+  }
  ]
 };
 Object.assign(FX, FXV);

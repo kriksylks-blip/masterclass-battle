@@ -125,7 +125,7 @@ for (const list of Object.values(GATES)) for (const g of list) ASSETS.background
 const GATE_H = 470;          // hauteur affichée de l'élément de passage (son pied est au bas de l'écran)
 const TRANS = { walk: 0.75, black: 0.25, back: 0.6 };
 // Passages filmés (vidéo Flow) : au noir, la vidéo montre le décor qui change (ex. Kyoto qui s'embrase)
-const TRANS_VIDEO = { rk_z2: 'assets/web/trans/trans_rk.mp4' };
+const TRANS_VIDEO = { rk_z2: 'assets/web/trans/trans_rk.mp4', mh_z2: 'assets/web/trans/trans_mh.mp4' };
 
 // Niveau en cours (choisi sur l'écran des niveaux)
 let LVL = TOKYO, ZONES = TOKYO.zones, WAVES = TOKYO.waves, PROPS = TOKYO.props, LEVEL_END = TOKYO.end;

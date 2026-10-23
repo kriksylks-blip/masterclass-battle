@@ -1129,7 +1129,17 @@ function moveEffects(h, speed) {
     if (Math.random() < 0.7) particles.push({ x: h.x - h.dir * 40, y: h.y - rand(10, 150), vx: -h.dir * rand(200, 400), vy: 0, t: 0, life: 0.25, c: h.boost ? h.boost.color : '#bfefff', r: rand(1.5, 3) });
     // Vitesse divine : des images rémanentes restent derrière lui
     if (m.ghost && h.t > at && h.t < at + len && Math.random() < 0.45) afterImage(h);
+    // Hekireki Issen : l'éclair filmé reste sur toute la trajectoire
+    if (h.state === 'hekireki' && FX.hekireki_v) {
+      if (h.t > at && h.hekiX == null) h.hekiX = h.x;
+      if (h.hekiX != null && h.t >= at + len * 0.6) {
+        const d = Math.abs(h.x - h.hekiX);
+        animFX('hekireki_v', (h.x + h.hekiX) / 2, h.y - 100 * WORLD, Math.max(520, d + 380), 0.6, { h: 190 * WORLD });
+        h.hekiX = undefined; h.hekiDone = true;
+      }
+    }
   }
+  if (h.state !== 'hekireki') h.hekiDone = false;
   if (m.trail && !h.trailed && h.t >= (m.trail.at ?? m.on)) {
     h.trailed = true;
     slashFX(h.x + h.dir * 55, h.y + (m.trail.y ?? -110), h.dir, { ...m.trail, c: trailOf(h), element: elementOf(h) });
@@ -1707,6 +1717,7 @@ function updateHinokami(h) {
   if (Math.random() < 0.8) particles.push({ x: h.x + rand(-60, 60), y: h.y - rand(0, 180), vx: rand(-30, 30), vy: rand(-240, -100), t: 0, life: 0.5, c: Math.random() < 0.5 ? '#ff7a1a' : '#ffd060', r: rand(3, 7) });
   if (h.cutN < HINOKAMI.cuts.length && h.t >= HINOKAMI.cuts[h.cutN]) {
     const last = ++h.cutN === HINOKAMI.cuts.length;
+    if (FX.hinokami_v) animFX('hinokami_v', h.x + h.dir * 90, h.y - 120 * WORLD, (last ? 560 : 420) * WORLD, last ? 0.8 : 0.55, { rot: h.cutN * 1.3 });
     slashFX(h.x + h.dir * 90, h.y - 120, h.dir, { a0: [-1.6, 1.4, -3.1][h.cutN - 1], a1: [1.4, -1.6, 3.1][h.cutN - 1], r: last ? 210 : 170, w: last ? 46 : 34, c: '#ff8a2a', element: 'fire', life: 0.45 });
     shake = last ? 26 : 12; flash = last ? 0.6 : 0.2; audio.slash(1.5);
     if (last) audio.play('ultraBoom', 1, 1.2, 0);
@@ -3152,7 +3163,7 @@ function drawLevels() {
   ctx.save(); ctx.shadowColor = col; ctx.shadowBlur = 18;
   outlined(univ, 40 - slide, 128, 30, col, 'left'); ctx.restore();
   outlined(place || L.sub, 40 - slide, 180, 48, '#fff', 'left');
-  ctx.font = 'italic bold 16px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#ffd6e8'; ctx.fillText(L.sub, 44 - slide, 208);
+  ctx.font = 'italic bold 16px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#ffd6e8'; if (place) ctx.fillText(L.sub, 44 - slide, 208); // sans lieu, le sous-titre est déjà le grand titre
   // Zones : celle qu'on voit en fond s'allume
   L.zones.forEach((Z, k) => {
     const y = 226 + k * 22, on = k === zi;
@@ -3797,9 +3808,9 @@ function drawPlayer(h) {
     const r = 12 + 18 * Math.min(1, h.t / 0.3), low = m.orbFx === 'chidori' && h.t < m.p[2][1];
     const hp = !low && handPoint(h);
     const hx = hp ? sx + h.dir * (hp[0] + 6) : sx + h.dir * (low ? (h.t < m.p[2][0] ? 30 : -35) : 82), hy = hp ? h.y + hp[1] : h.y - (low ? 72 : 120);
-    const orb = !m.orbFx && FX.rasen_v ? 'rasen_v' : m.orbFx || 'rasengan', fox = h.boost && h.char === 'naruto';
+    const orb = m.orbFx === 'chidori' && FX.chidori_v ? 'chidori_v' : !m.orbFx && FX.rasen_v ? 'rasen_v' : m.orbFx || 'rasengan', fox = h.boost && h.char === 'naruto';
     const orbFilter = orb === 'rasen_v' ? (fox ? 'hue-rotate(170deg) saturate(1.4)' : '') : fox ? 'hue-rotate(170deg) saturate(1.6)' : '';
-    if (!fxImg(orb, Math.floor(h.t * 16), hx, hy, r * (orb === 'rasen_v' ? 3.8 : 3.2), null, { filter: orbFilter })) drawRasengan(hx, hy, r, h.t);
+    if (!fxImg(orb, Math.floor(h.t * 16), hx, hy, r * (orb === 'rasen_v' ? 3.8 : orb === 'chidori_v' ? 4.2 : 3.2), null, { filter: orbFilter })) drawRasengan(hx, hy, r, h.t);
   }
   if (h.char === 'gojo' && h.state === 'ultra' && h.t < 0.95 && FX.violet_orb) {
     const L = FX.violet_orb, i = Math.min(L.length - 1, Math.floor(h.t / 0.95 * L.length));
@@ -4142,7 +4153,7 @@ function drawSelect() {
   ctx.save(); ctx.fillStyle = 'rgba(10,0,25,0.75)'; ctx.beginPath(); ctx.moveTo(0, 14); ctx.lineTo(470, 14); ctx.lineTo(440, 56); ctx.lineTo(0, 56); ctx.fill();
   ctx.fillStyle = '#ffe14d'; ctx.fillRect(0, 56, 440, 3); ctx.restore();
   outlined('CHOISIS TON COMBATTANT', 22, 46, 30, '#ffe14d', 'left');
-  if (OPTS.tag) outlined(ps.some(p => !sel.ready[p] && sel.first[p] !== null) ? 'CHOISIS TON PARTENAIRE DE RELAIS' : 'ÉQUIPE DE DEUX : choisis 2 combattants', W - 20, 44, 16, '#ff8ae6', 'right');
+  if (OPTS.tag) outlined(ps.some(p => !sel.ready[p] && sel.first[p] !== null) ? 'CHOISIS TON PARTENAIRE DE RELAIS' : 'ÉQUIPE DE DEUX : choisis 2 combattants', W - 20, 44, 16, '#ffe14d', 'right');
   // Vitrine : un emplacement par joueur
   const slotW = Math.min(W * 0.62, W / ps.length), y0 = 400;
   ps.forEach((p, q) => {
