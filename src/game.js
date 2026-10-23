@@ -52,7 +52,7 @@ const showcaseFrames = () => Object.values(CHARS).flatMap(C => {
 });
 const levelPreviewKeys = L => [L.zones[0].sky || L.sky, L.zones[0].mid, L.zones[0].ground, ...(L.far ? ['far'] : [])].filter(Boolean);
 // Planches de sprites d'un personnage (avec ses formes) et d'un niveau (ennemis, boss et renforts)
-const charSheets = id => { const C = CHARS[id]; return C ? [C.sheet, ...(C.forms || []).map(F => F.sheet).filter(Boolean)] : []; };
+const charSheets = id => { const C = CHARS[id]; return C ? [C.sheet, ...(C.forms || []).map(F => F.sheet).filter(Boolean), ...(C.extraSheets || [])] : []; };
 function levelNeeds(L) {
   const types = new Set(['thug', 'ninja', 'brute', L.extra, L.boss, ...(ETYPES[L.boss]?.adds || [])]);
   for (const w of L.waves || []) for (const t of w.foes) types.add(t);
@@ -597,6 +597,16 @@ const KA_MOVES = { ...FIST,
   chidori: { dur: 0.95, cost: 35, on: 0.38, off: 0.75, reach: [0, 140], y: [-170, -60], dmg: 5, kb: 650, ki: 0, launch: -650, push: 1450, pushAt: 0.36, pushDur: 0.32,
              orbFx: 'chidori', orb: [0, 0.78], bolts: true, stopOnHit: true, call: 'CHIDORI !', p: ['special', [0, 1, 2, 3], [0.36, 0.55, 0.82]] },
 };
+// Sasuke : taijutsu, dégainage éclair au sabre, Chidori
+const SK_MOVES = { ...FIST,
+  dash:    { dur: 0.55, on: 0.12, off: 0.42, reach: [-40, 160], y: [-170, -50], dmg: 3.2, kb: 400, ki: 8, launch: -480, push: 1300, pushAt: 0.08, pushDur: 0.3, ghost: true, xcut: true, call: 'CHIDORI GATANA !', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.26, 0.46]] },
+  chidori: { ...KA_MOVES.chidori, dmg: 5.5 },
+};
+// Gohan enfant : poings et pieds de Sangoku, Masenko
+const GH_MOVES = { ...FIST,
+  dash:    { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 130], y: [-140, -50], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1100, pushAt: 0.06, pushDur: 0.3, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
+  masenko: { dur: 1.25, cost: 35, beam: { at: 0.5, end: 1.12, len: 900, dmg: 0.6, color: '#ffe066', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.15)' }, call: 'MASENKO !', p: ['special', [0, 1, 2, 3], [0.2, 0.5, 1.14]] },
+};
 // Ichigo : grand sabre, Getsuga Tensho
 const IC_MOVES = { ...SWORD,
   punch: { ...SWORD.punch, reach: [20, 175], dmg: 1.6 }, cross: { ...SWORD.cross, reach: [20, 175], dmg: 1.8 }, rising: { ...SWORD.rising, reach: [10, 175] },
@@ -638,13 +648,14 @@ const IP_MOVES = {
   punch:    { ...FIST.punch, p: ['combo', [0, 1], [0.04]] },
   cross:    { ...FIST.cross, p: ['combo', [2]] },
   uppercut: { ...FIST.uppercut, p: ['combo', [3]], dmg: 2.5 },
-  kick:     { ...FIST.kick, p: ['combo', [4]], y: [-140, -80] },
-  roundhouse: { ...FIST.roundhouse, p: ['combo', [5]], y: [-140, -80] },
+  // boxeur : pas de coups de pied. Crochet, coup au foie, puis Gazelle Punch (accroupi, il jaillit en uppercut)
+  kick:     { ...FIST.cross, p: ['combo', [4]], reach: [0, 135], y: [-175, -110], dmg: 1.9, kb: 260 },
+  roundhouse: { ...FIST.cross, p: ['combo', [5]], reach: [0, 130], y: [-130, -60], dmg: 2.2, kb: 200, call: 'LIVER BLOW !' },
   spinback: { ...FIST.spinback, p: ['combo', [6, 7], [0.14]], launch: -820, call: 'GAZELLE PUNCH !' },
   ckick:    { ...FIST.ckick, y: [-90, -20] }, airkick: FIST.airkick,
   dash:     { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 120], y: [-150, -60], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1000, pushAt: 0.05, pushDur: 0.3, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
   dempsey:  { dur: 1.7, cost: 35, on: 0.25, off: 1.55, multi: 0.13, reach: [0, 150], y: [-160, -60], dmg: 0.75, kb: 60, ki: 0, push: 220, pushAt: 0.2, pushDur: 1.4, keepPush: true,
-              cyc: { anim: 'special', frames: [1, 2, 3, 4, 5], fps: 9, from: 0.2, to: 1.45, last: 7 }, call: 'DEMPSEY ROLL !', p: ['special', [0]] },
+              cyc: { anim: 'special', frames: [1, 2, 3, 4, 5, 6], fps: 9, from: 0.2, to: 1.45, last: 7 }, call: 'DEMPSEY ROLL !', p: ['special', [0]] },
 };
 // Sung Jin-Woo : dagues jumelles, pas de l'ombre
 const JW_MOVES = { ...SWORD,
@@ -698,6 +709,16 @@ const CHARS = {
     moves: GK_MOVES, chain: { punch: ['punch', 'cross', 'kiburst', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'] },
     special: 'kamehameha', speed: 260, pose: stdPose, ultra: [startGenki, updateGenki], ultraPose: genkiPose,
   },
+  gohan: {
+    name: 'GOHAN', title: 'Le fils de la colère', sheet: 'gohan', card: 'card_gh',
+    colors: ['#5a2a8a', '#ffd84a'], kiColor: '#fff07a', hit: '#fff3b0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
+    labels: { blast: 'MASENKO', ultra: 'KAMEHAMEHA PÈRE-FILS' },
+    // Super Saiyan 2 : cheveux dorés dressés (planches à part), éclairs bleus autour du corps
+    forms: [{ ki: 50, name: 'SUPER SAIYAN 2', sheet: 'gohan_ssj', speed: 1.35, dmg: 1.9, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
+    moves: GH_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'masenko', speed: 265, pose: stdPose, ultra: [startFatherSon, updateFatherSon], extraSheets: ['goku'], // l'esprit de Sangoku
+    ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < FSK.fire ? 5 : h.t < FSK.fire + 0.5 ? 6 : 7],
+  },
   zoro: {
     name: 'ZORO', title: 'Le sabreur aux trois lames', sheet: 'zoro', card: 'card_zoro',
     colors: ['#1f8a3a', '#e8f5d0'], kiColor: '#b8ffcf', hit: '#e8fff0', trail: '#e9fff2', stats: [['PUISSANCE', 5], ['VITESSE', 3], ['PORTÉE', 4]],
@@ -734,6 +755,16 @@ const CHARS = {
     moves: KS_MOVES, chain: { punch: ['punch', 'cross', 'ryusho'], kick: ['kick', 'ryukan', 'ryutsui'] },
     special: 'doryu', speed: 275, pose: stdPose, ultra: [startAmakakeru, updateAmakakeru],
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < AMA.dash ? 5 : h.t < AMA.dashEnd ? 6 : 7],
+  },
+  sasuke: {
+    name: 'SASUKE', title: 'Le vengeur au Sharingan', sheet: 'sasuke', card: 'card_sk',
+    colors: ['#2a2a5a', '#b9a0ff'], kiColor: '#b9d8ff', hit: '#dfe8ff', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 3]],
+    labels: { blast: 'CHIDORI', ultra: 'KIRIN' },
+    forms: [{ ki: 50, name: 'SHARINGAN', filter: 'contrast(1.12) saturate(1.15)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(120,60,200,0.45)', '#9a6aff'], bar: ['#3a1a8a', '#b9a0ff'], color: '#b9a0ff',
+             glow: '#7a4aff', arcs: 'hue-rotate(40deg) saturate(1.2) brightness(1.2)', handArcs: true }],
+    moves: SK_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'chidori', speed: 270, pose: stdPose, ultra: [startKirin, updateKirin], chargeFrame: 5,
+    ultraPose: h => ['special', h.t < 0.45 ? 4 : h.t < KIRIN.strike ? 5 : h.t < KIRIN.strike + 0.4 ? 6 : 7],
   },
   kakashi: {
     name: 'KAKASHI', title: 'Le ninja copieur', sheet: 'kakashi', card: 'card_ka',
@@ -1802,6 +1833,39 @@ function updateKamui(h, dt) {
   if (h.t > 2.3) { h.state = 'idle'; h.cut = false; }
 }
 
+// ---------- Ultime de Sasuke : Kirin, un dragon de foudre tombé du ciel sur tous les ennemis ----------
+const KIRIN = { strike: 1.35, end: 2.4 };
+function startKirin(h) { h.cut = false; say(h, 'KIRIN…'); audio.play('ultraCharge', 0.8, 1.2, 0); }
+function updateKirin(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  // le ciel s'assombrit, des éclairs zèbrent les nuages
+  if (h.t < KIRIN.strike && Math.random() < 0.12) animFX('bolt', camX + rand(60, W - 60), rand(80, 200), rand(60, 110), 0.2, { h: rand(160, 260) });
+  if (!h.cut && h.t >= KIRIN.strike) {
+    h.cut = true; flash = 0.9; shake = 30; audio.play('ultraBoom', 1, 0.9, 0);
+    for (const e of enemies) {
+      if (!e.alive || e.state === 'down' || e.x < camX - 40 || e.x > camX + W + 40) continue;
+      animFX('bolt', e.x, e.y - 260, 220, 0.5, { h: 620 });
+      if (FX.hekireki_v) animFX('hekireki_v', e.x, e.y - 120, 520, 0.5, { h: 200, rot: Math.PI / 2 });
+      damageEnemy(e, 4 + h.power / 9, 300 * (Math.sign(e.x - h.x) || h.dir), -900, e.x, e.y - 110, '#cfe0ff');
+    }
+    say(h, 'KIRIN !!'); score += 2000;
+  }
+  if (h.t > KIRIN.end) h.state = 'idle';
+}
+
+// ---------- Ultime de Gohan : le Kamehameha père-fils (l'esprit de Sangoku derrière lui) ----------
+const FSK = { fire: 1.1, end: 2.6 };
+function startFatherSon(h) { h.beamed = false; say(h, 'PAPA…'); audio.play('ultraCharge', 0.9, 1, 0); }
+function updateFatherSon(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  if (!h.beamed && h.t >= FSK.fire) {
+    h.beamed = true; flash = 0.8; shake = 26; audio.voice(h, 'ultra');
+    projs.push({ kind: 'beam', owner: h, move: 'ultra', at: FSK.fire, end: FSK.end - 0.15, len: 1300, thick: 2, dmg: (4 + h.power / 10) / 8, color: '#7fd8ff', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    say(h, 'KAMEHAMEHA !!'); score += 2000;
+  }
+  if (h.t > FSK.end) h.state = 'idle';
+}
+
 // ---------- Ultime d'Ichigo : un Getsuga Tensho géant ----------
 function startMugetsu(h) { h.thrown = false; say(h, 'MUGETSU…'); audio.play('ultraCharge', 0.8, 0.9, 0); }
 function updateMugetsu(h) {
@@ -2801,7 +2865,7 @@ const KAME = { th: 100, src: 165, fps: 14 };
 // Rayons filmés par perso : corps du rayon, gerbe aux mains (src, ancrée à gauche) ou sphère (orb, centrée)
 function beamFxOf(p) {
   const c = p.owner?.char;
-  if (c === 'goku' && FX.kame_body) return { body: 'kame_body', src: 'kame_src' };
+  if ((c === 'goku' || (c === 'gohan' && p.move === 'ultra')) && FX.kame_body) return { body: 'kame_body', src: 'kame_src' };
   if (c === 'vegeta' && p.move === 'galick' && FX.galick_body) return { body: 'galick_body', src: 'galick_src' };
   if (c === 'gojo' && p.move === 'ultra' && FX.violet_body) return { body: 'violet_body', orb: 'violet_orb' };
   return null;
@@ -3787,6 +3851,13 @@ function drawPlayer(h) {
     const fi = h.t < 0.6 ? 0 : h.t < KYU.charge - 0.2 ? 1 : h.t < KYU.charge ? 2 : 3, breathe = 1 + Math.sin(h.t * 9) * 0.04;
     fxImg(FX.kyubi_run ? 'kyubi_run' : 'kyubi', fi, sx + h.dir * (lunge - 30), h.y - 180 - (fi === 3 ? 40 : 0), 520 * breathe, null, { alpha: Math.max(0, a), flip: h.dir < 0 });
   }
+  // Kamehameha père-fils : l'esprit de Sangoku apparaît derrière Gohan, les mains jointes comme lui
+  if (h.char === 'gohan' && h.state === 'ultra' && SPRITES.goku?.special) {
+    const a = Math.min(1, h.t / 0.5) * (h.t > FSK.end - 0.4 ? Math.max(0, (FSK.end - h.t) / 0.4) : 1);
+    ctx.globalAlpha = 0.42 * a;
+    drawAnim('goku', 'special', h.t < FSK.fire ? 1 : 2, sx - h.dir * 70, h.y - 10, h.dir, 'brightness(1.4) saturate(0.4) hue-rotate(160deg)');
+    ctx.globalAlpha = 1;
+  }
   if (h.out) ctx.globalAlpha = 0.55;
   // Gon adulte : il grandit pendant son ultime
   drawAnim.grow = h.char === 'gon' && h.state === 'ultra' && h.t > 0.45 ? 1 + 0.55 * Math.min(1, (h.t - 0.45) / 0.3) : 0;
@@ -3966,10 +4037,10 @@ function outlined(text, x, y, size, fill = '#fff', align = 'center') {
 // Position du visage dans chaque image de carte (fraction de la largeur, de la hauteur) et taille d'affichage
 const FACES = {
   card_go: [0.6, 0.37, 4], card_goku: [0.62, 0.34, 4], card_hero: [0.66, 0.36, 4], card_ic: [0.38, 0.31, 5.5],
-  card_ip: [0.47, 0.33, 4], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
+  card_ip: [0.57, 0.3, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
   card_ki: [0.53, 0.36, 4], card_luffy: [0.71, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
   card_ve: [0.52, 0.37, 4], card_ze: [0.2, 0.36, 4.2], card_zoro: [0.47, 0.27, 4.4],
-  card_jw: [0.72, 0.18, 8.5], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.765, 0.185, 6.5], card_sk: [0.66, 0.27, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -4125,6 +4196,8 @@ function drawTitle() {
 // Écran de sélection façon jeu de combat : le portrait du perso en fond, le perso en grand dans sa garde avec son
 // aura, son nom et ses coups, et en bas un carrousel de médaillons qui glisse vers le perso choisi.
 // À plusieurs, chaque joueur a son perso en vitrine (côte à côte) et sa marque de couleur sur le carrousel.
+// Vitrine de la sélection : persos dont la garde paraît trop grande à côté des autres
+const SEL_SIZE = { jinwoo: 0.86, gohan: 0.84 };
 function drawSelect() {
   const n = CHAR_IDS.length, ps = [0, 1, 2, 3].filter(p => sel.joined[p]), focus = sel.focus || 0;
   const pickOf = p => sel.first[p] !== null && sel.ready[p] ? sel.first[p] : sel.pick[p];
@@ -4162,7 +4235,7 @@ function drawSelect() {
     if (A) {
       const i = S.idle ? Math.floor(sceneT * A.rate) % A.frames.length : 0, f = A.frames[i], img = IMG[f.src];
       const an = S.idle ? 'idle' : S.combo ? 'combo' : 'punch'; // même correction de taille qu'en jeu (ANIM_SIZE)
-      const h = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) * (CHAR_SIZE[id] || 1) * (ANIM_SIZE[id]?.[an] || 1), k = h / f.h;
+      const h = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) * (CHAR_SIZE[id] || 1) * (ANIM_SIZE[id]?.[an] || 1) * (SEL_SIZE[id] || 1), k = h / f.h;
       if (img) {
         const pulse = 1 + Math.sin(sceneT * 3 + q) * 0.03, bob = sel.ready[p] ? 0 : Math.sin(sceneT * 2.5 + q) * 2;
         // aura derrière le perso

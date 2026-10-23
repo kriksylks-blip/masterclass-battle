@@ -31,7 +31,12 @@ const VOICES = {
  "gojo_special": "assets/sounds/v/gojo_special.mp3",
  "gojo_ultra": "assets/sounds/v/gojo_ultra.mp3",
  "ippo_ultra": "assets/sounds/v/ippo_ultra.mp3",
- "killua_ultra": "assets/sounds/v/killua_ultra.mp3"
+ "killua_ultra": "assets/sounds/v/killua_ultra.mp3",
+ "sasuke_special": "assets/sounds/v/sasuke_special.mp3",
+ "sasuke_transform": "assets/sounds/v/sasuke_transform.mp3",
+ "gohan_special": "assets/sounds/v/gohan_special.mp3",
+ "gohan_transform": "assets/sounds/v/gohan_transform.mp3",
+ "ippo_special": "assets/sounds/v/ippo_special.mp3"
 };
 const CV = {
  "goku": {
@@ -87,10 +92,21 @@ const CV = {
   "ultra": "gojo_ultra"
  },
  "ippo": {
-  "ultra": "ippo_ultra"
+  "ultra": "ippo_ultra",
+  "special": "ippo_special"
  },
  "killua": {
   "ultra": "killua_ultra"
+ },
+ "sasuke": {
+  "special": "sasuke_special",
+  "transform": "sasuke_transform",
+  "ultra": "boom"
+ },
+ "gohan": {
+  "special": "gohan_special",
+  "transform": "gohan_transform",
+  "ultra": "goku_special"
  },
  "hero": {
   "transform": "aura"
