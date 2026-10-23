@@ -10,6 +10,9 @@ const ASSETS = {
     bridge_mid: 'assets/backgrounds/bridge_mid.png', bridge_ground: 'assets/backgrounds/bridge_ground.jpg',
     dock_mid: 'assets/backgrounds/dock_mid.png', dock_ground: 'assets/backgrounds/dock_ground.jpg',
     shrine_mid: 'assets/backgrounds/shrine_mid.png', shrine_ground: 'assets/backgrounds/shrine_ground.jpg',
+    // 2es versions des plans moyens (en alternance avec les premières)
+    street_mid2: 'assets/backgrounds/street_mid2.png', neon_mid2: 'assets/backgrounds/neon_mid2.png', bridge_mid2: 'assets/backgrounds/bridge_mid2.png',
+    dock_mid2: 'assets/backgrounds/dock_mid2.png', shrine_mid2: 'assets/backgrounds/shrine_mid2.png',
   },
   ui: {
     title: 'assets/ui/title.png',

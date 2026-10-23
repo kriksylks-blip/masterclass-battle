@@ -10,11 +10,11 @@
 const TOKYO = {
   id: 'tokyo', name: 'NÉO-TOKYO', sub: 'La traversée de la ville', sky: 'sky', far: 'far', boss: 'boss', extra: 'thug',
   zones: [
-    { id: 'street', name: 'RUELLES DE SHINJUKU', from: 0, mid: 'mid', ground: 'street' },
-    { id: 'neon', name: 'QUARTIER NÉON', from: 2600, mid: 'neon_mid', ground: 'neon_ground' },
-    { id: 'bridge', name: 'LE GRAND PONT', from: 5400, mid: 'bridge_mid', ground: 'bridge_ground' },
-    { id: 'dock', name: 'LE PORT', from: 8200, mid: 'dock_mid', ground: 'dock_ground' },
-    { id: 'shrine', name: 'LE SANCTUAIRE DU ONI', from: 10800, mid: 'shrine_mid', ground: 'shrine_ground' },
+    { id: 'street', name: 'RUELLES DE SHINJUKU', from: 0, mid: 'mid', mid2: 'street_mid2', ground: 'street' },
+    { id: 'neon', name: 'QUARTIER NÉON', from: 2600, mid: 'neon_mid', mid2: 'neon_mid2', ground: 'neon_ground' },
+    { id: 'bridge', name: 'LE GRAND PONT', from: 5400, mid: 'bridge_mid', mid2: 'bridge_mid2', ground: 'bridge_ground' },
+    { id: 'dock', name: 'LE PORT', from: 8200, mid: 'dock_mid', mid2: 'dock_mid2', ground: 'dock_ground' },
+    { id: 'shrine', name: 'LE SANCTUAIRE DU ONI', from: 10800, mid: 'shrine_mid', mid2: 'shrine_mid2', ground: 'shrine_ground' },
   ],
   end: 13400, // bord droit du niveau (l'arène du boss)
   // x : position de la caméra qui déclenche la vague ; elle se bloque là jusqu'à ce que tout soit battu
