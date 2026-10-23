@@ -481,9 +481,14 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 // p : [planche, étapes, seuils de temps] pour les personnages à poses décrites par leurs coups.
 // trail : traînée de lame (voir slashFX). proj : projectile lancé à proj.at. beam : rayon d'énergie.
 // teleport : se téléporte derrière l'ennemi le plus proche. orb : sphère d'énergie dans la main.
+// Coup final du combo de poings (24/10, à la place de l'uppercut) : il arme, fonce penché en avant en laissant des images
+// rémanentes et frappe d'un direct explosif ; l'ennemi part à l'horizontale et rebondit sur le bord de l'écran (smash)
+const FINISHER = { dur: 0.6, on: 0.16, off: 0.34, reach: [10, 160], y: [-175, -80], dmg: 3.2, kb: 720, ki: 10, launch: -300, push: 1150, pushAt: 0.1, pushDur: 0.2,
+  lean: 14, shock: true, smash: true, p: ['combo', [0, 2], [0.1]] };
 const MOVES = {
   punch:      { dur: 0.30, on: 0.06, off: 0.17, cancel: 0.17, reach: [20, 105], y: [-150, -95], dmg: 1, kb: 160, ki: 6 },
   cross:      { dur: 0.32, on: 0.05, off: 0.16, cancel: 0.17, reach: [20, 115], y: [-150, -95], dmg: 1, kb: 190, ki: 6 },
+  finisher:   { ...FINISHER, p: undefined }, // poses : heroPose
   uppercut:   { dur: 0.50, on: 0.10, off: 0.26, reach: [10, 100], y: [-190, -90], dmg: 3, kb: 220, ki: 10, launch: -760 },
   kick:       { dur: 0.45, on: 0.09, off: 0.26, cancel: 0.27, reach: [20, 130], y: [-130, -60], dmg: 2, kb: 260, ki: 8 },
   spinkick:   { dur: 0.48, on: 0.13, off: 0.30, cancel: 0.31, reach: [20, 135], y: [-140, -70], dmg: 2, kb: 300, ki: 8 },
@@ -511,6 +516,7 @@ const K_MOVES = {
   punch:    { dur: 0.28, on: 0.05, off: 0.15, cancel: 0.15, reach: [20, 110], y: [-150, -95], dmg: 1, kb: 160, ki: 6, p: ['combo', [0, 1], [0.04]] },
   cross:    { dur: 0.32, on: 0.06, off: 0.17, cancel: 0.17, reach: [20, 125], y: [-150, -95], dmg: 1.2, kb: 200, ki: 6, p: ['combo', [2]] },
   uppercut: { dur: 0.48, on: 0.08, off: 0.24, reach: [10, 105], y: [-190, -90], dmg: 3, kb: 220, ki: 10, launch: -760, p: ['combo', [3]] },
+  finisher: FINISHER,
   kick:     { dur: 0.40, on: 0.08, off: 0.24, cancel: 0.24, reach: [20, 135], y: [-130, -60], dmg: 1.5, kb: 240, ki: 6, p: ['combo', [4]] },
   roundhouse: { dur: 0.45, on: 0.10, off: 0.28, cancel: 0.28, reach: [20, 145], y: [-160, -80], dmg: 2, kb: 300, ki: 8, p: ['combo', [5]] },
   spinback: { dur: 0.55, on: 0.12, off: 0.32, reach: [10, 145], y: [-160, -80], dmg: 3, kb: 420, ki: 10, launch: -520, p: ['combo', [6]] },
@@ -531,6 +537,7 @@ const GK_MOVES = { ...K_MOVES,
 };
 // Naruto : taijutsu, Rasengan, mode Kyubi, Rasenshuriken
 const N_MOVES = {
+  finisher: FINISHER,
   punch:    { dur: 0.28, on: 0.05, off: 0.15, cancel: 0.15, reach: [20, 105], y: [-140, -85], dmg: 1, kb: 160, ki: 6, p: ['combo', [0, 1], [0.04]] },
   cross:    { dur: 0.30, on: 0.06, off: 0.16, cancel: 0.16, reach: [20, 115], y: [-140, -85], dmg: 1.2, kb: 190, ki: 6, p: ['combo', [2]] },
   uppercut: { dur: 0.46, on: 0.08, off: 0.24, reach: [10, 100], y: [-180, -80], dmg: 3, kb: 220, ki: 10, launch: -760, p: ['combo', [3]] },
@@ -823,6 +830,7 @@ const KI_MOVES = { ...FIST,
 };
 // Ippo : boxe, Dempsey Roll
 const IP_MOVES = {
+  finisher: FINISHER,
   punch:    { ...FIST.punch, p: ['combo', [0, 1], [0.04]] },
   cross:    { ...FIST.cross, p: ['combo', [2]] },
   uppercut: { ...FIST.uppercut, p: ['combo', [3]], dmg: 2.5 },
@@ -863,7 +871,7 @@ const CHARS = {
     colors: ['#ff2d55', '#ffb13b'], kiColor: '#7fdcff', hit: '#ffe066', stats: [['PUISSANCE', 4], ['VITESSE', 3], ['PORTÉE', 2]],
     labels: { blast: "VAGUE D'ÉNERGIE", ultra: 'SPHÈRE ULTIME' },
     forms: [{ ki: 50, name: 'FORME DORÉE', sheet: 'gold', speed: 1.2, dmg: 1.6, at: 0.95, end: 1.35, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066' }],
-    moves: MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'spinkick', 'roundhouse'] },
+    moves: MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'spinkick', 'roundhouse'] },
     special: 'blast', speed: 250, pose: heroPose, ultra: [startUltra, updateUltraPose],
   },
   luffy: {
@@ -893,7 +901,7 @@ const CHARS = {
       { ki: 100, name: 'ULTRA INSTINCT', sheet: 'goku_ui', fallback: ['goku_ssj', 'grayscale(1) brightness(1.3) contrast(1.05)'], speed: 1.55, dmg: 2.2, at: 0.6, end: 1.1,
         aura: ['rgba(200,220,255,0.55)', '#dfeaff'], sparks: '#eef6ff', glow: '#a9c4ff', dodge: 0.45, bar: ['#5a6aa8', '#ffffff'], color: '#e8f0ff', hit: '#ffffff' },
     ],
-    moves: GK_MOVES, chain: { punch: ['punch', 'cross', 'kiburst', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'] },
+    moves: GK_MOVES, chain: { punch: ['punch', 'cross', 'kiburst', 'finisher'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'] },
     special: 'kamehameha', speed: 260, pose: stdPose, ultra: [startGenki, updateGenki], ultraPose: genkiPose,
   },
   gohan: {
@@ -902,7 +910,7 @@ const CHARS = {
     labels: { blast: 'MASENKO', ultra: 'KAMEHAMEHA PÈRE-FILS' },
     // Super Saiyan 2 : cheveux dorés dressés (planches à part), éclairs bleus autour du corps
     forms: [{ ki: 50, name: 'SUPER SAIYAN 2', sheet: 'gohan_ssj', speed: 1.35, dmg: 1.9, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
-    moves: GH_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: GH_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'masenko', speed: 265, pose: stdPose, ultra: [startFatherSon, updateFatherSon], extraSheets: ['goku'], // l'esprit de Sangoku
     ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < FSK.fire ? 5 : h.t < FSK.fire + 0.5 ? 6 : 7],
   },
@@ -921,7 +929,7 @@ const CHARS = {
     labels: { blast: 'RASENGAN', ultra: 'MULTI-CLONAGE' },
     // La rage : le manteau de chakra rouge du démon renard, avec ses queues
     forms: [{ ki: 50, name: 'CHAKRA DU RENARD', filter: 'sepia(0.3) saturate(1.5) hue-rotate(-20deg) brightness(1.04) drop-shadow(0 0 5px rgba(255,20,0,0.95)) drop-shadow(0 0 12px rgba(230,0,0,0.7))', speed: 1.3, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(255,40,20,0.55)', '#ff3a1a'], foxCloak: 3, bar: ['#c01010', '#ff8a50'], color: '#ff3a1a', hit: '#ffb090' }],
-    moves: N_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'sidekick', 'axekick'] },
+    moves: N_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'sidekick', 'axekick'] },
     special: 'rasengan', speed: 280, pose: stdPose, ultra: [startBunshin, updateBunshin],
     ultraPose: h => h.t < BUNSHIN.finale ? ['dashcharge', 4 + Math.floor(h.t * 6) % 2] : ['special', h.t < BUNSHIN.finale + 0.25 ? 2 : 3],
   },
@@ -949,7 +957,7 @@ const CHARS = {
     labels: { blast: 'CHIDORI', ultra: 'KIRIN' },
     forms: [{ ki: 50, name: 'SHARINGAN', filter: 'contrast(1.12) saturate(1.15)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(120,60,200,0.45)', '#9a6aff'], bar: ['#3a1a8a', '#b9a0ff'], color: '#b9a0ff',
              glow: '#7a4aff', arcs: 'hue-rotate(40deg) saturate(1.2) brightness(1.2)', handArcs: true }],
-    moves: SK_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: SK_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'chidori', speed: 270, pose: stdPose, ultra: [startKirin, updateKirin], chargeFrame: 5,
     ultraPose: h => ['special', h.t < 0.45 ? 4 : h.t < KIRIN.strike ? 5 : h.t < KIRIN.strike + 0.4 ? 6 : 7],
   },
@@ -968,7 +976,7 @@ const CHARS = {
     labels: { blast: 'BURNING ATTACK', ultra: 'SHINING SWORD ATTACK' },
     // Super Saiyan : planches aux cheveux dorés (trunks_ssj) ; tant qu'elles manquent, la planche normale dorée et un halo
     forms: [{ ki: 50, name: 'SUPER SAIYAN', sheet: 'trunks_ssj', fallback: ['trunks', 'sepia(0.55) saturate(2.2) hue-rotate(-8deg) brightness(1.15)'], speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
-    moves: TR_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: TR_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'burning', speed: 265, pose: stdPose, ultra: [startShining, updateShining],
     ultraPose: h => ['special', h.t < SHINE.leap ? 4 : h.t < SHINE.cut ? 5 : h.t < SHINE.blast ? 6 : h.t < SHINE.blast + 0.3 ? 2 : 7],
   },
@@ -978,7 +986,7 @@ const CHARS = {
     labels: { blast: 'HIKEN', ultra: 'ENTEI' },
     // Logia du feu : le corps devient flammes
     forms: [{ ki: 50, name: 'CORPS DE FLAMMES', filter: 'sepia(0.3) saturate(1.6) hue-rotate(-15deg) brightness(1.08)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,110,20,0.55)', '#ff8a2a'], flames: true, bar: ['#ff5a00', '#ffd060'], color: '#ff8a2a', hit: '#ffd0a0' }],
-    moves: AC_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: AC_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'hiken', speed: 265, pose: stdPose, ultra: [startUltra, updateUltraPose],
     ultraPose: h => ['special', h.t < 0.35 ? 4 : h.t < ULTRA.throwAt ? 6 : 2],
   },
@@ -998,7 +1006,7 @@ const CHARS = {
     labels: { blast: 'DIABLE JAMBE', ultra: 'HELL MEMORIES' },
     // Diable Jambe : la jambe reste en feu, chaque coup de pied brûle
     forms: [{ ki: 50, name: 'DIABLE JAMBE', filter: 'saturate(1.25) contrast(1.08)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,90,20,0.45)', '#ff6a1a'], legFire: true, bar: ['#c02000', '#ffb040'], color: '#ff6a1a', trail: '#ffb040', hit: '#ffd0a0', element: 'fire' }],
-    moves: SJ_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: SJ_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'diable', speed: 285, pose: stdPose, ultra: [startHellMemories, updateHellMemories],
     ultraPose: h => ['special', h.t < HELL.leap ? 0 : h.t < HELL.rise ? 4 : h.t < HELL.slam ? 5 : h.t < HELL.slam + 0.35 ? 6 : 7],
   },
@@ -1008,7 +1016,7 @@ const CHARS = {
     labels: { blast: 'MUR DE GLACE', ultra: 'GLACIER ET BRASIER' },
     // les deux moitiés réveillées : givre d'un côté, flammes de l'autre
     forms: [{ ki: 50, name: 'GLACE ET FEU', filter: 'contrast(1.1) saturate(1.2)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(150,210,255,0.45)', '#ff7a3a'], fireIce: true, bar: ['#2a7ad0', '#ff8a3a'], color: '#9fe0ff', trail: '#ffb070', hit: '#dff6ff' }],
-    moves: ST_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: ST_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'icewall', speed: 265, pose: stdPose, ultra: [startGlacier, updateGlacier],
     ultraPose: h => ['special', h.t < 0.3 ? 0 : h.t < GLACIER.ice ? 1 : h.t < GLACIER.ice + 0.3 ? 2 : h.t < GLACIER.fire - 0.2 ? 4 : h.t < GLACIER.fire ? 5 : h.t < GLACIER.end - 0.2 ? 6 : 7],
   },
@@ -1038,7 +1046,7 @@ const CHARS = {
     labels: { blast: 'TWO HANDS', ultra: 'PLUIE DE BALLES' },
     // Two Hands : la cadence double, une balle de chaque pistolet à chaque tir
     forms: [{ ki: 50, name: 'TWO HANDS', filter: 'contrast(1.12) saturate(1.15)', speed: 1.25, dmg: 1.5, at: 0.6, end: 1.0, aura: ['rgba(220,40,40,0.45)', '#ff4040'], rapid: true, bar: ['#901010', '#ff6060'], color: '#ff5050', trail: '#ffd0a0', hit: '#ffe0b0' }],
-    moves: RV_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: RV_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'twohands', speed: 275, pose: stdPose, ultra: [startBulletRain, updateBulletRain],
     ultraPose: h => h.t < RAIN.leap ? ['special', 4] : h.t < RAIN.end - RAIN.land ? ['special', Math.floor(h.t * 9) % 2 ? 6 : 5] : h.t < RAIN.end - 0.2 ? ['special', 2] : ['special', 7],
   },
@@ -1048,7 +1056,7 @@ const CHARS = {
     labels: { blast: 'FRAPPE DE PAUME', ultra: 'PANZER KUNST' },
     // corps du Berserker : les jointures du corps cybernétique s'allument en bleu, elle va plus vite
     forms: [{ ki: 50, name: 'BERSERKER BODY', filter: 'contrast(1.1) saturate(1.2)', speed: 1.4, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(80,160,255,0.45)', '#5ab0ff'], glow: '#7ac8ff', ghosts: true, bar: ['#1050a0', '#7ac8ff'], color: '#7ac8ff', trail: '#bfe4ff', hit: '#d8f0ff' }],
-    moves: GA_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: GA_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'palm', speed: 285, pose: stdPose, ultra: [startPanzer, updatePanzer],
     ultraPose: h => h.t < PANZER.rush ? ['special', 0] : h.t < PANZER.leap ? ['combo', [1, 2, 5, 6][Math.floor(h.t / 0.1) % 4]] : h.t < PANZER.kick ? ['special', 5] : h.t < PANZER.palm ? ['special', 6] : h.t < PANZER.end - 0.2 ? ['special', 2] : ['special', 3],
   },
@@ -1068,7 +1076,7 @@ const CHARS = {
     labels: { blast: 'FRAPPE FOUET', ultra: 'ASSAUT DU GRAPPLER' },
     // les muscles du dos dessinent un visage de démon ; le spécial devient le direct dévastateur
     forms: [{ ki: 50, name: 'DOS DU DÉMON', filter: 'contrast(1.15) saturate(1.2) brightness(0.96)', speed: 1.2, dmg: 1.9, at: 0.6, end: 1.0, aura: ['rgba(150,10,20,0.5)', '#b01020'], glow: '#a0101a', demon: true, bar: ['#600008', '#ff4030'], color: '#ff4030', hit: '#ffc0b0' }],
-    moves: BK_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: BK_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'whip', special2: 'demonfist', speed: 255, pose: stdPose, ultra: [startGrappler, updateGrappler],
     ultraPose: h => h.t < GRAPPLER.rush ? ['special', 4] : h.t < GRAPPLER.whip ? ['combo', Math.floor(h.t / GRAPPLER.every) % 2 ? 2 : 1] : h.t < GRAPPLER.fist - 0.15 ? ['special', 2] : h.t < GRAPPLER.fist ? ['special', 5] : h.t < GRAPPLER.end - 0.2 ? ['special', 6] : ['special', 7],
   },
@@ -1078,7 +1086,7 @@ const CHARS = {
     labels: { blast: 'KATON', ultra: 'SUSANOO' },
     // Mangekyô Sharingan : les yeux s'allument en rouge, des corbeaux s'envolent ; le spécial devient Amaterasu
     forms: [{ ki: 50, name: 'MANGEKYÔ SHARINGAN', filter: 'contrast(1.12) saturate(1.1)', speed: 1.25, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(200,20,40,0.45)', '#ff2a3a'], glow: '#c0101e', eyes: true, crows: true, bar: ['#80000c', '#ff5060'], color: '#ff3a4a', hit: '#ffc8c8' }],
-    moves: IT_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: IT_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'katon', special2: 'amaterasu', speed: 260, pose: stdPose, ultra: [startSusanoo, updateSusanoo],
     ultraPose: h => h.t < SUSANOO.rise ? ['dashcharge', 5] : h.t < SUSANOO.slash ? ['special', 6] : ['special', 7],
   },
@@ -1098,7 +1106,7 @@ const CHARS = {
     labels: { blast: 'RASENGAN ÉVANESCENT', ultra: 'RASENGAN DES TROIS' },
     // Jôgan : l'œil droit s'allume en bleu, aura bleutée
     forms: [{ ki: 50, name: 'JÔGAN', filter: 'contrast(1.1) saturate(1.1)', speed: 1.3, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(120,200,255,0.4)', '#8fd8ff'], glow: '#60b8ff', eyes: true, eyeCol: 'rgba(120,215,255,0.95)', oneEye: true, bar: ['#103a6a', '#bfe8ff'], color: '#9fdcff', hit: '#e0f4ff' }],
-    moves: BO_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: BO_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'vrasen', speed: 280, pose: stdPose, ultra: [startBoru, updateBoru],
     ultraPose: h => h.t < BORU.clones ? ['special', 4] : h.t < BORU.throw - 0.25 ? ['special', 0] : h.t < BORU.throw - 0.08 ? ['special', 1] : h.t < BORU.end - 0.3 ? ['special', 2] : ['special', 7],
   },
@@ -1109,7 +1117,7 @@ const CHARS = {
     // bras-lame : l'automail devient une lame, des éclairs bleus d'alchimie courent sur le bras ; le spécial devient l'entaille
     forms: [{ ki: 50, name: 'BRAS-LAME', filter: 'contrast(1.1) saturate(1.1)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(120,200,255,0.4)', '#8fd8ff'], glow: '#5ab8ff',
              arcs: 'hue-rotate(95deg) saturate(1.3) brightness(1.3)', handArcs: true, bar: ['#103a6a', '#bfe8ff'], color: '#9fdcff', hit: '#e0f4ff' }],
-    moves: ED_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: ED_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'transmute', special2: 'armblade', speed: 270, pose: stdPose, ultra: [startAlchemy, updateAlchemy],
     ultraPose: h => h.t < ALCH.clap ? ['special', 0] : h.t < ALCH.clap + 0.15 ? ['special', 1] : h.t < ALCH.end - 0.3 ? ['special', 2] : ['special', 3],
   },
@@ -1128,7 +1136,7 @@ const CHARS = {
     labels: { blast: 'RASENGAN', ultra: 'RASEN-SHURIKEN GÉANT' },
     // Mode Ermite : pigment orange autour des yeux, aura dorée ; le spécial devient le Rasen-shuriken
     forms: [{ ki: 50, name: 'MODE ERMITE', filter: 'saturate(1.15) contrast(1.08)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,170,40,0.5)', '#ffb030'], glow: '#ffb030', eyes: true, eyeCol: 'rgba(255,140,30,0.95)', bar: ['#a04a00', '#ffd060'], color: '#ffb040', hit: '#ffe0a0' }],
-    moves: NS_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: NS_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'rasengan', special2: 'rshuriken', speed: 285, pose: stdPose, ultra: [startShuriken, updateShuriken],
     ultraPose: h => h.t < RSH.throwAt - 0.35 ? ['special', 4] : h.t < RSH.throwAt ? ['special', 5] : h.t < RSH.end - 0.25 ? ['special', 6] : ['special', 7],
   },
@@ -1140,7 +1148,7 @@ const CHARS = {
     labels: { blast: 'CHIDORI', ultra: 'KAMUI' },
     forms: [{ ki: 50, name: 'SHARINGAN', filter: 'contrast(1.12) saturate(1.2)', speed: 1.25, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(200,20,40,0.45)', '#ff3a4a'], bar: ['#a0001a', '#ff6070'], color: '#ff3a4a',
              glow: '#ff2a3a', arcs: 'hue-rotate(95deg) saturate(1.2) brightness(1.2)', handArcs: true }],
-    moves: KA_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: KA_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'chidori', speed: 265, pose: stdPose, ultra: [startKamui, updateKamui], chargeFrame: 5,
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < 0.8 ? 5 : h.t < 1.8 ? 6 : 7],
   },
@@ -1167,7 +1175,7 @@ const CHARS = {
     colors: ['#1d6b45', '#7dff9a'], kiColor: '#9dffb0', hit: '#d8ffe0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
     labels: { blast: 'BLACK WHIP', ultra: 'UNITED STATES OF SMASH' },
     forms: [{ ki: 50, name: 'DARK DEKU', sheet: 'izuku_dark', speed: 1.45, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(20,120,60,0.55)', '#3dff7a'], arcs: true, arcRate: 0.1, bar: ['#0a4a24', '#5dff8a'], color: '#3dff7a' }],
-    moves: IZ_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: IZ_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'blackwhip', speed: 265, pose: stdPose, ultra: [startSmash, updateSmash],
     ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < SMASH.hit - 0.1 ? 5 : h.t < SMASH.hit + 0.4 ? 6 : 7],
   },
@@ -1176,7 +1184,7 @@ const CHARS = {
     colors: ['#2a2f8a', '#ffd23b'], kiColor: '#c9a0ff', hit: '#e8d0ff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
     labels: { blast: 'GALICK GUN', ultra: 'FINAL FLASH' },
     forms: [{ ki: 50, name: 'SUPER SAIYAN', sheet: 'vegeta_ssj', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
-    moves: VE_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: VE_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'galick', speed: 255, pose: stdPose, ultra: [startFinalFlash, updateFinalFlash],
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < 0.75 ? 5 : h.t < 0.95 ? 6 : 7],
   },
@@ -1185,7 +1193,7 @@ const CHARS = {
     colors: ['#2e8b3e', '#ffe14d'], kiColor: '#ffe680', hit: '#fff3b0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
     labels: { blast: 'JAJANKEN', ultra: 'GON ADULTE' },
     forms: [{ ki: 50, name: 'COLÈRE', filter: 'contrast(1.2) brightness(0.9)', speed: 1.3, dmg: 1.9, at: 0.6, end: 1.0, aura: ['rgba(255,200,40,0.45)', '#ffd23b'], bar: ['#8a6a00', '#ffe14d'], color: '#ffd23b' }],
-    moves: GO_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: GO_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'jajanken', speed: 270, pose: stdPose, ultra: [startSmash, updateSmash],
     ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < SMASH.hit - 0.1 ? 5 : h.t < SMASH.hit + 0.4 ? 6 : 7],
   },
@@ -1194,7 +1202,7 @@ const CHARS = {
     colors: ['#3a4a9a', '#bfe6ff'], kiColor: '#bfe6ff', hit: '#e0f4ff', trail: '#bfe6ff', element: 'thunder', stats: [['PUISSANCE', 3], ['VITESSE', 5], ['PORTÉE', 3]],
     labels: { blast: 'NARUKAMI', ultra: 'GODSPEED' },
     forms: [{ ki: 50, name: 'GODSPEED', filter: 'brightness(1.1) saturate(1.2)', speed: 1.6, dmg: 1.5, at: 0.6, end: 1.0, aura: ['rgba(120,180,255,0.45)', '#9fd0ff'], sparks: '#dff2ff', bar: ['#2a5cff', '#bfe6ff'], color: '#9fd0ff' }],
-    moves: KI_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: KI_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'narukami', speed: 285, pose: stdPose, ultra: [startZigzag, updateZigzag],
     ultraPose: h => h.zz && h.t > ZIG.start ? ['special', 6 + Math.floor(h.t * 10) % 2] : ['special', 4 + step(h.t, [0.3])],
   },
@@ -1203,7 +1211,7 @@ const CHARS = {
     colors: ['#c81e2a', '#ffffff'], kiColor: '#ffb0a0', hit: '#ffe0d0', stats: [['PUISSANCE', 5], ['VITESSE', 3], ['PORTÉE', 2]],
     labels: { blast: 'DEMPSEY ROLL', ultra: 'DEMPSEY ROLL MAX' },
     forms: [{ ki: 50, name: 'ESPRIT DE COMBAT', filter: 'contrast(1.12) saturate(1.2)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,60,40,0.45)', '#ff6a4a'], bar: ['#a01010', '#ff9a8a'], color: '#ff6a4a' }],
-    moves: IP_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: IP_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'dempsey', speed: 240, pose: stdPose, ultra: [startDempseyMax, updateDempseyMax],
     ultraPose: h => h.t < DMAX.end - 0.5 ? ['special', 1 + Math.floor(h.t * 10) % 6] : ['special', 7],
   },
@@ -1222,7 +1230,7 @@ const CHARS = {
     colors: ['#f2c400', '#ffffff'], kiColor: '#fff3a0', hit: '#ffffff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 2]],
     labels: { blast: 'COUP DE POING NORMAL', ultra: 'COUP DE POING SÉRIEUX' },
     forms: [{ ki: 50, name: 'MODE SÉRIEUX', filter: 'contrast(1.2) saturate(1.1)', speed: 1.35, dmg: 2.0, at: 0.6, end: 1.0, aura: ['rgba(255,240,180,0.5)', '#fff3a0'], bar: ['#a08000', '#fff07a'], color: '#fff3a0' }],
-    moves: SA_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: SA_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'serious', speed: 255, pose: stdPose, ultra: [startSmash, updateSmash],
     ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < SMASH.hit - 0.1 ? 1 : h.t < SMASH.hit + 0.4 ? 2 : 3],
   },
@@ -1232,7 +1240,7 @@ const CHARS = {
     labels: { blast: 'ROUGE', ultra: 'VIOLET' },
     forms: [{ ki: 50, name: 'SIX YEUX', filter: 'contrast(1.12) saturate(1.2)', speed: 1.35, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(80,180,255,0.5)', '#7fd8ff'], bar: ['#0a3060', '#9fe0ff'], color: '#7fd8ff',
              glow: '#4ab0ff', proj: 'hue-rotate(200deg) saturate(1.6)' }],
-    moves: GJ_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    moves: GJ_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'red', speed: 260, pose: stdPose, ultra: [startFinalFlash, updateFinalFlash],
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < 0.95 ? 5 : 6],
   },
@@ -1517,6 +1525,7 @@ function updatePlayer(h, dt) {
         if (m.stopOnHit) h.stopped = true;
         if (m.spiral) { spiralFX(e.x, e.y - 110, '#9fe8ff'); shake = Math.max(shake, 16); }
         if (m.shock) { shockFX(e.x - h.dir * 20, e.y - 110, h.dir); shake = Math.max(shake, 18); flash = 0.25; hitstop = Math.max(hitstop, 0.08); audio.play('ultraBoom', 0.7, 1.5, 0); }
+        if (m.smash) { hitstop = Math.max(hitstop, 0.15); flash = 0.35; e.smashT = 0.9; fxs.push({ type: 'speed', x: e.x, y: e.y - 110, t: 0, life: 0.3, c: hitOf(h) }); }
         if (m.boom) { animFX('nen', e.x, e.y - 110, 300, 0.5); shake = Math.max(shake, 20); flash = 0.3; audio.play('ultraBoom', 0.8, 1.3, 0); }
         if (m.bolts || m.orbFx === 'chidori') animFX('bolt', e.x, e.y - 150, 110, 0.25, { h: 260 });
         if (elementOf(h) === 'fire' && m.trail) for (let k = 0; k < 8; k++) particles.push({ x: e.x + rand(-30, 30), y: e.y - rand(60, 160), vx: rand(-60, 60), vy: rand(-220, -80), t: 0, life: 0.45, c: '#ff8a2a', r: rand(3, 6) });
@@ -3648,6 +3657,18 @@ function updateEnemy(e, dt) {
       break;
     case 'knock':
       e.vy += 1700 * dt; e.x += e.vx * dt; e.y += e.vy * dt;
+      if (e.smashT > 0) {
+        // projeté par le coup final : traînée de poussière, et rebond s'il heurte le bord de l'écran (on peut le reprendre)
+        e.smashT -= dt;
+        if (Math.random() < 0.8) particles.push({ x: e.x - Math.sign(e.vx) * rand(20, 60), y: e.y - rand(40, 170), vx: -e.vx * 0.3, vy: rand(-40, 40), t: 0, life: 0.3, c: 'rgba(255,255,255,0.8)', r: rand(1.5, 3), streak: true });
+        if ((e.vx < 0 && e.x < camX + 60) || (e.vx > 0 && e.x > camX + W - 60)) {
+          const wx = e.vx < 0 ? camX + 30 : camX + W - 30;
+          e.x = e.vx < 0 ? camX + 60 : camX + W - 60; e.vx = -e.vx * 0.3; e.vy = Math.min(e.vy, -560); e.smashT = 0;
+          shake = Math.max(shake, 16); hitstop = Math.max(hitstop, 0.06); audio.play('body', 1); audio.play('ultraBoom', 0.5, 1.6, 0);
+          impactFX(wx, e.y - 110, '#ffffff', true); shockFX(wx, e.y - 110, e.vx > 0 ? 1 : -1);
+          popups.push({ x: e.x, y: e.y - 230, t: 0, text: 'REBOND !', small: true, c: '#ffe14d' });
+        }
+      }
       if (e.y >= e.gz) {
         e.y = e.gz; shake = Math.max(shake, e.type === 'brute' ? 10 : 4); burst(e.x, e.gz - 5, '#9ad1ff', 6); audio.play('body', 0.7);
         if (e.hp <= 0) {
@@ -4027,6 +4048,16 @@ function drawFX(ghosts = false) {
         ctx.beginPath(); ctx.moveTo(Math.cos(a) * r0, Math.sin(a) * r0); ctx.lineTo(Math.cos(a) * r1, Math.sin(a) * r1); ctx.stroke();
       }
       ctx.lineWidth = 4 * (1 - k); ctx.beginPath(); ctx.arc(0, 0, f.r * (0.4 + k * 0.9), 0, 7); ctx.stroke();
+    } else if (f.type === 'speed') {
+      // lignes de vitesse autour de l'impact du coup final : elles convergent puis s'effacent
+      ctx.globalAlpha = 0.85 * (1 - k); ctx.strokeStyle = '#ffffff'; ctx.lineCap = 'round';
+      for (let j = 0; j < 28; j++) {
+        const a = j * 2.399 + (j % 3) * 0.2, r0 = 90 + 60 * k + (j % 4) * 14, r1 = r0 + 260 + (j % 5) * 70;
+        ctx.lineWidth = j % 3 ? 2 : 5;
+        ctx.beginPath(); ctx.moveTo(Math.cos(a) * r0, Math.sin(a) * r0 * 0.7); ctx.lineTo(Math.cos(a) * r1, Math.sin(a) * r1 * 0.7); ctx.stroke();
+      }
+      ctx.globalAlpha = 0.5 * (1 - k); ctx.strokeStyle = f.c; ctx.lineWidth = 10 * (1 - k);
+      ctx.beginPath(); ctx.ellipse(0, 0, 70 + 180 * k, (70 + 180 * k) * 0.7, 0, 0, 7); ctx.stroke();
     } else if (f.type === 'spiral') {
       ctx.globalAlpha = 1 - k; ctx.strokeStyle = f.c; ctx.lineWidth = 5 * (1 - k);
       for (let j = 0; j < 3; j++) {
@@ -5042,6 +5073,7 @@ function heroPose(h) {
     case 'punch': return ['punch', 1 + step(t, [0.06, 0.18])];
     case 'cross': return ['pcombo', t < 0.2 ? 1 : 4];
     case 'uppercut': return ['pcombo', 2 + step(t, [0.1, 0.36])];
+    case 'finisher': return ['pcombo', t < 0.1 ? 1 : 4];
     case 'kick': return ['kick', 1 + step(t, [0.08, 0.26, 0.36])];
     case 'spinkick': return ['kcombo', t < 0.12 ? 1 : t < 0.34 ? 2 : 4];
     case 'roundhouse': return ['kcombo', t < 0.1 ? 1 : t < 0.42 ? 3 : 4];

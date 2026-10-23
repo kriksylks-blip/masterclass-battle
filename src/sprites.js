@@ -38536,8 +38536,8 @@ const SPRITES = {
  },
  "naruto_s": {
   "walk": {
-   "scale": 0.3451,
-   "rate": 29.09,
+   "scale": 0.3457,
+   "rate": 60.0,
    "frames": [
     {
      "src": "assets/sprites/naruto_s/walkv_0.png",
@@ -38548,108 +38548,227 @@ const SPRITES = {
     },
     {
      "src": "assets/sprites/naruto_s/walkv_1.png",
+     "w": 298,
+     "h": 536,
+     "ax": 178.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_2.png",
      "w": 284,
      "h": 532,
      "ax": 175.5,
      "ay": 532
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_2.png",
+     "src": "assets/sprites/naruto_s/walkv_3.png",
+     "w": 256,
+     "h": 530,
+     "ax": 157.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_4.png",
      "w": 228,
      "h": 532,
      "ax": 139.5,
      "ay": 532
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_3.png",
+     "src": "assets/sprites/naruto_s/walkv_5.png",
+     "w": 198,
+     "h": 534,
+     "ax": 119.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_6.png",
      "w": 174,
      "h": 540,
      "ax": 100.0,
      "ay": 540
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_4.png",
+     "src": "assets/sprites/naruto_s/walkv_7.png",
+     "w": 154,
+     "h": 542,
+     "ax": 81.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_8.png",
      "w": 136,
      "h": 546,
      "ax": 60.5,
      "ay": 546
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_5.png",
+     "src": "assets/sprites/naruto_s/walkv_9.png",
+     "w": 136,
+     "h": 548,
+     "ax": 57.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_10.png",
      "w": 156,
      "h": 548,
      "ax": 71.5,
      "ay": 548
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_6.png",
+     "src": "assets/sprites/naruto_s/walkv_11.png",
+     "w": 186,
+     "h": 546,
+     "ax": 88.5,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_12.png",
      "w": 230,
      "h": 544,
      "ax": 108.5,
      "ay": 544
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_7.png",
+     "src": "assets/sprites/naruto_s/walkv_13.png",
+     "w": 266,
+     "h": 544,
+     "ax": 124.5,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_14.png",
      "w": 294,
      "h": 540,
      "ax": 141.5,
      "ay": 540
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_8.png",
+     "src": "assets/sprites/naruto_s/walkv_15.png",
+     "w": 300,
+     "h": 540,
+     "ax": 150.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_16.png",
      "w": 306,
      "h": 540,
      "ax": 163.5,
      "ay": 540
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_9.png",
+     "src": "assets/sprites/naruto_s/walkv_17.png",
+     "w": 306,
+     "h": 540,
+     "ax": 169.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_18.png",
+     "w": 296,
+     "h": 540,
+     "ax": 171.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_19.png",
      "w": 272,
      "h": 540,
      "ax": 160.5,
      "ay": 540
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_10.png",
+     "src": "assets/sprites/naruto_s/walkv_20.png",
+     "w": 246,
+     "h": 542,
+     "ax": 144.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_21.png",
      "w": 218,
      "h": 546,
      "ax": 128.5,
      "ay": 546
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_11.png",
+     "src": "assets/sprites/naruto_s/walkv_22.png",
+     "w": 186,
+     "h": 550,
+     "ax": 111.5,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_23.png",
      "w": 160,
      "h": 552,
      "ax": 88.5,
      "ay": 552
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_12.png",
+     "src": "assets/sprites/naruto_s/walkv_24.png",
+     "w": 140,
+     "h": 556,
+     "ax": 70.5,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_25.png",
      "w": 130,
      "h": 556,
      "ax": 50.5,
      "ay": 556
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_13.png",
+     "src": "assets/sprites/naruto_s/walkv_26.png",
+     "w": 144,
+     "h": 556,
+     "ax": 56.5,
+     "ay": 556
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_27.png",
      "w": 160,
      "h": 556,
      "ax": 77.5,
      "ay": 556
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_14.png",
+     "src": "assets/sprites/naruto_s/walkv_28.png",
+     "w": 190,
+     "h": 554,
+     "ax": 96.5,
+     "ay": 554
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_29.png",
      "w": 236,
      "h": 552,
      "ax": 116.5,
      "ay": 552
     },
     {
-     "src": "assets/sprites/naruto_s/walkv_15.png",
+     "src": "assets/sprites/naruto_s/walkv_30.png",
+     "w": 271,
+     "h": 550,
+     "ax": 132.5,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_31.png",
      "w": 292,
      "h": 546,
      "ax": 148.5,
      "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto_s/walkv_32.png",
+     "w": 302,
+     "h": 544,
+     "ax": 162.5,
+     "ay": 544
     }
    ]
   },
