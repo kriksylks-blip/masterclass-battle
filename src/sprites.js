@@ -2248,6 +2248,96 @@ const SPRITES = {
      "ay": 353
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3463,
+   "rate": 7.02,
+   "frames": [
+    {
+     "src": "assets/sprites/luffy/idlev_0.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_1.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_2.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_3.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_4.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_5.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_6.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_7.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_8.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_9.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_10.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_11.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    }
+   ]
   }
  },
  "kenshin": {
@@ -10157,6 +10247,96 @@ const SPRITES = {
      "h": 288,
      "ax": 185.0,
      "ay": 288
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.32,
+   "rate": 5.65,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/idlev_0.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_1.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_2.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_3.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_4.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_5.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_6.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_7.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_8.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_9.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_10.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_11.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     }
    ]
   }
@@ -21648,6 +21828,96 @@ const SPRITES = {
      "ay": 365
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3396,
+   "rate": 6.7,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/idlev_0.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_1.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_2.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_3.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_4.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_5.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_6.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_7.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_8.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_9.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_10.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_11.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    }
+   ]
   }
  },
  "gohan": {
@@ -22132,6 +22402,96 @@ const SPRITES = {
      "h": 313,
      "ax": 92.1,
      "ay": 313
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.2544,
+   "rate": 9.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/idlev_0.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_1.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_2.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_3.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_4.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_5.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_6.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_7.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_8.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_9.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_10.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_11.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
     }
    ]
   }
