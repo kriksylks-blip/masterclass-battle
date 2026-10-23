@@ -3220,6 +3220,18 @@ const SPRITES = {
      "ay": 331
     }
    ]
+  },
+  "push": {
+   "scale": 0.5565,
+   "frames": [
+    {
+     "src": "assets/sprites/goku_ssj/push_0.png",
+     "w": 301,
+     "h": 315,
+     "ax": 120.0,
+     "ay": 315
+    }
+   ]
   }
  },
  "kakashi": {
@@ -35093,435 +35105,6 @@ const SPRITES = {
    ]
   }
  },
- "boruto": {
-  "walk": {
-   "scale": 0.4804,
-   "frames": [
-    {
-     "src": "assets/sprites/boruto/walk_0.png",
-     "w": 266,
-     "h": 349,
-     "ax": 161.1,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/boruto/walk_1.png",
-     "w": 285,
-     "h": 349,
-     "ax": 171.4,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/boruto/walk_2.png",
-     "w": 174,
-     "h": 348,
-     "ax": 72.1,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/boruto/walk_3.png",
-     "w": 234,
-     "h": 345,
-     "ax": 139.7,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/boruto/walk_4.png",
-     "w": 278,
-     "h": 346,
-     "ax": 148.1,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/boruto/walk_5.png",
-     "w": 224,
-     "h": 343,
-     "ax": 120.6,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/boruto/walk_6.png",
-     "w": 195,
-     "h": 349,
-     "ax": 95.0,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/boruto/walk_7.png",
-     "w": 282,
-     "h": 352,
-     "ax": 132.6,
-     "ay": 352
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.4804,
-   "frames": [
-    {
-     "src": "assets/sprites/boruto/jump_0.png",
-     "w": 208,
-     "h": 279,
-     "ax": 93.7,
-     "ay": 279
-    },
-    {
-     "src": "assets/sprites/boruto/jump_1.png",
-     "w": 239,
-     "h": 316,
-     "ax": 122.9,
-     "ay": 316
-    },
-    {
-     "src": "assets/sprites/boruto/jump_2.png",
-     "w": 211,
-     "h": 350,
-     "ax": 103.4,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/boruto/jump_3.png",
-     "w": 196,
-     "h": 285,
-     "ax": 90.5,
-     "ay": 285
-    },
-    {
-     "src": "assets/sprites/boruto/jump_4.png",
-     "w": 155,
-     "h": 239,
-     "ax": 70.5,
-     "ay": 239
-    },
-    {
-     "src": "assets/sprites/boruto/jump_5.png",
-     "w": 188,
-     "h": 351,
-     "ax": 87.0,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/boruto/jump_6.png",
-     "w": 167,
-     "h": 351,
-     "ax": 80.5,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/boruto/jump_7.png",
-     "w": 202,
-     "h": 315,
-     "ax": 94.4,
-     "ay": 315
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.4804,
-   "frames": [
-    {
-     "src": "assets/sprites/boruto/fall_0.png",
-     "w": 204,
-     "h": 348,
-     "ax": 86.4,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/boruto/fall_1.png",
-     "w": 311,
-     "h": 318,
-     "ax": 106.1,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/boruto/fall_2.png",
-     "w": 306,
-     "h": 269,
-     "ax": 121.8,
-     "ay": 269
-    },
-    {
-     "src": "assets/sprites/boruto/fall_3.png",
-     "w": 288,
-     "h": 180,
-     "ax": 124.7,
-     "ay": 180
-    },
-    {
-     "src": "assets/sprites/boruto/fall_4.png",
-     "w": 370,
-     "h": 146,
-     "ax": 185.0,
-     "ay": 146
-    },
-    {
-     "src": "assets/sprites/boruto/fall_5.png",
-     "w": 304,
-     "h": 218,
-     "ax": 185.5,
-     "ay": 218
-    },
-    {
-     "src": "assets/sprites/boruto/fall_6.png",
-     "w": 209,
-     "h": 279,
-     "ax": 125.7,
-     "ay": 279
-    },
-    {
-     "src": "assets/sprites/boruto/fall_7.png",
-     "w": 196,
-     "h": 341,
-     "ax": 96.3,
-     "ay": 341
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.4804,
-   "frames": [
-    {
-     "src": "assets/sprites/boruto/combo_0.png",
-     "w": 194,
-     "h": 358,
-     "ax": 93.6,
-     "ay": 358
-    },
-    {
-     "src": "assets/sprites/boruto/combo_1.png",
-     "w": 280,
-     "h": 349,
-     "ax": 125.4,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/boruto/combo_2.png",
-     "w": 299,
-     "h": 348,
-     "ax": 151.6,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/boruto/combo_3.png",
-     "w": 225,
-     "h": 357,
-     "ax": 123.9,
-     "ay": 357
-    },
-    {
-     "src": "assets/sprites/boruto/combo_4.png",
-     "w": 152,
-     "h": 366,
-     "ax": 71.0,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/boruto/combo_5.png",
-     "w": 297,
-     "h": 363,
-     "ax": 117.2,
-     "ay": 363
-    },
-    {
-     "src": "assets/sprites/boruto/combo_6.png",
-     "w": 283,
-     "h": 366,
-     "ax": 101.0,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/boruto/combo_7.png",
-     "w": 316,
-     "h": 296,
-     "ax": 139.6,
-     "ay": 296
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.4804,
-   "frames": [
-    {
-     "src": "assets/sprites/boruto/lowair_0.png",
-     "w": 200,
-     "h": 307,
-     "ax": 90.9,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/boruto/lowair_1.png",
-     "w": 251,
-     "h": 300,
-     "ax": 125.9,
-     "ay": 300
-    },
-    {
-     "src": "assets/sprites/boruto/lowair_2.png",
-     "w": 351,
-     "h": 271,
-     "ax": 111.9,
-     "ay": 271
-    },
-    {
-     "src": "assets/sprites/boruto/lowair_3.png",
-     "w": 212,
-     "h": 295,
-     "ax": 101.1,
-     "ay": 295
-    },
-    {
-     "src": "assets/sprites/boruto/lowair_4.png",
-     "w": 163,
-     "h": 290,
-     "ax": 75.8,
-     "ay": 290
-    },
-    {
-     "src": "assets/sprites/boruto/lowair_5.png",
-     "w": 191,
-     "h": 329,
-     "ax": 94.2,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/boruto/lowair_6.png",
-     "w": 301,
-     "h": 297,
-     "ax": 131.9,
-     "ay": 297
-    },
-    {
-     "src": "assets/sprites/boruto/lowair_7.png",
-     "w": 212,
-     "h": 377,
-     "ax": 101.6,
-     "ay": 377
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.4804,
-   "frames": [
-    {
-     "src": "assets/sprites/boruto/dashcharge_0.png",
-     "w": 239,
-     "h": 341,
-     "ax": 131.1,
-     "ay": 341
-    },
-    {
-     "src": "assets/sprites/boruto/dashcharge_1.png",
-     "w": 312,
-     "h": 300,
-     "ax": 178.6,
-     "ay": 300
-    },
-    {
-     "src": "assets/sprites/boruto/dashcharge_2.png",
-     "w": 398,
-     "h": 279,
-     "ax": 232.0,
-     "ay": 279
-    },
-    {
-     "src": "assets/sprites/boruto/dashcharge_3.png",
-     "w": 233,
-     "h": 330,
-     "ax": 127.0,
-     "ay": 330
-    },
-    {
-     "src": "assets/sprites/boruto/dashcharge_4.png",
-     "w": 213,
-     "h": 349,
-     "ax": 105.7,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/boruto/dashcharge_5.png",
-     "w": 218,
-     "h": 350,
-     "ax": 122.3,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/boruto/dashcharge_6.png",
-     "w": 285,
-     "h": 368,
-     "ax": 145.2,
-     "ay": 368
-    },
-    {
-     "src": "assets/sprites/boruto/dashcharge_7.png",
-     "w": 203,
-     "h": 358,
-     "ax": 98.4,
-     "ay": 358
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.4804,
-   "frames": [
-    {
-     "src": "assets/sprites/boruto/special_0.png",
-     "w": 199,
-     "h": 357,
-     "ax": 96.8,
-     "ay": 357
-    },
-    {
-     "src": "assets/sprites/boruto/special_1.png",
-     "w": 243,
-     "h": 345,
-     "ax": 120.8,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/boruto/special_2.png",
-     "w": 310,
-     "h": 343,
-     "ax": 162.0,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/boruto/special_3.png",
-     "w": 196,
-     "h": 354,
-     "ax": 92.0,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/boruto/special_4.png",
-     "w": 189,
-     "h": 355,
-     "ax": 98.4,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/boruto/special_5.png",
-     "w": 214,
-     "h": 288,
-     "ax": 127.7,
-     "ay": 288
-    },
-    {
-     "src": "assets/sprites/boruto/special_6.png",
-     "w": 312,
-     "h": 341,
-     "ax": 162.4,
-     "ay": 341
-    },
-    {
-     "src": "assets/sprites/boruto/special_7.png",
-     "w": 136,
-     "h": 365,
-     "ax": 67.9,
-     "ay": 365
-    }
-   ]
-  }
- },
  "edward": {
   "walk": {
    "scale": 0.5333,
@@ -38950,6 +38533,435 @@ const SPRITES = {
      "h": 368,
      "ax": 101.5,
      "ay": 368
+    }
+   ]
+  }
+ },
+ "boruto": {
+  "walk": {
+   "scale": 0.49,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/walk_0.png",
+     "w": 310,
+     "h": 349,
+     "ax": 166.3,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/boruto/walk_1.png",
+     "w": 277,
+     "h": 349,
+     "ax": 131.8,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/boruto/walk_2.png",
+     "w": 226,
+     "h": 349,
+     "ax": 96.8,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/boruto/walk_3.png",
+     "w": 261,
+     "h": 349,
+     "ax": 143.3,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/boruto/walk_4.png",
+     "w": 309,
+     "h": 344,
+     "ax": 165.8,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/boruto/walk_5.png",
+     "w": 209,
+     "h": 350,
+     "ax": 89.8,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/boruto/walk_6.png",
+     "w": 222,
+     "h": 351,
+     "ax": 97.3,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/boruto/walk_7.png",
+     "w": 310,
+     "h": 346,
+     "ax": 165.8,
+     "ay": 346
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.49,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/jump_0.png",
+     "w": 206,
+     "h": 276,
+     "ax": 98.6,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/boruto/jump_1.png",
+     "w": 233,
+     "h": 315,
+     "ax": 128.6,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/boruto/jump_2.png",
+     "w": 232,
+     "h": 345,
+     "ax": 128.8,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/boruto/jump_3.png",
+     "w": 150,
+     "h": 269,
+     "ax": 71.1,
+     "ay": 269
+    },
+    {
+     "src": "assets/sprites/boruto/jump_4.png",
+     "w": 145,
+     "h": 231,
+     "ax": 71.2,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/boruto/jump_5.png",
+     "w": 184,
+     "h": 326,
+     "ax": 91.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/boruto/jump_6.png",
+     "w": 211,
+     "h": 311,
+     "ax": 101.4,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/boruto/jump_7.png",
+     "w": 197,
+     "h": 267,
+     "ax": 106.6,
+     "ay": 267
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.49,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/fall_0.png",
+     "w": 209,
+     "h": 347,
+     "ax": 107.2,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/boruto/fall_1.png",
+     "w": 273,
+     "h": 327,
+     "ax": 91.4,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/boruto/fall_2.png",
+     "w": 285,
+     "h": 268,
+     "ax": 101.0,
+     "ay": 268
+    },
+    {
+     "src": "assets/sprites/boruto/fall_3.png",
+     "w": 325,
+     "h": 218,
+     "ax": 142.4,
+     "ay": 218
+    },
+    {
+     "src": "assets/sprites/boruto/fall_4.png",
+     "w": 375,
+     "h": 118,
+     "ax": 187.5,
+     "ay": 118
+    },
+    {
+     "src": "assets/sprites/boruto/fall_5.png",
+     "w": 263,
+     "h": 246,
+     "ax": 146.3,
+     "ay": 246
+    },
+    {
+     "src": "assets/sprites/boruto/fall_6.png",
+     "w": 232,
+     "h": 274,
+     "ax": 145.4,
+     "ay": 274
+    },
+    {
+     "src": "assets/sprites/boruto/fall_7.png",
+     "w": 287,
+     "h": 330,
+     "ax": 147.4,
+     "ay": 330
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.49,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/combo_0.png",
+     "w": 234,
+     "h": 310,
+     "ax": 133.5,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/boruto/combo_1.png",
+     "w": 282,
+     "h": 316,
+     "ax": 145.3,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/boruto/combo_2.png",
+     "w": 315,
+     "h": 305,
+     "ax": 178.6,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/boruto/combo_3.png",
+     "w": 231,
+     "h": 335,
+     "ax": 143.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/boruto/combo_4.png",
+     "w": 163,
+     "h": 349,
+     "ax": 78.3,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/boruto/combo_5.png",
+     "w": 253,
+     "h": 343,
+     "ax": 99.3,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/boruto/combo_6.png",
+     "w": 269,
+     "h": 337,
+     "ax": 97.3,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/boruto/combo_7.png",
+     "w": 270,
+     "h": 273,
+     "ax": 86.8,
+     "ay": 273
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.49,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/lowair_0.png",
+     "w": 264,
+     "h": 298,
+     "ax": 135.5,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/boruto/lowair_1.png",
+     "w": 249,
+     "h": 258,
+     "ax": 154.8,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/boruto/lowair_2.png",
+     "w": 304,
+     "h": 245,
+     "ax": 120.3,
+     "ay": 245
+    },
+    {
+     "src": "assets/sprites/boruto/lowair_3.png",
+     "w": 250,
+     "h": 267,
+     "ax": 156.7,
+     "ay": 267
+    },
+    {
+     "src": "assets/sprites/boruto/lowair_4.png",
+     "w": 158,
+     "h": 281,
+     "ax": 74.9,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/boruto/lowair_5.png",
+     "w": 191,
+     "h": 339,
+     "ax": 101.5,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/boruto/lowair_6.png",
+     "w": 334,
+     "h": 281,
+     "ax": 171.9,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/boruto/lowair_7.png",
+     "w": 223,
+     "h": 327,
+     "ax": 110.3,
+     "ay": 327
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.49,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/dashcharge_0.png",
+     "w": 222,
+     "h": 320,
+     "ax": 119.6,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/boruto/dashcharge_1.png",
+     "w": 292,
+     "h": 280,
+     "ax": 169.6,
+     "ay": 280
+    },
+    {
+     "src": "assets/sprites/boruto/dashcharge_2.png",
+     "w": 375,
+     "h": 313,
+     "ax": 208.2,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/boruto/dashcharge_3.png",
+     "w": 278,
+     "h": 316,
+     "ax": 141.4,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/boruto/dashcharge_4.png",
+     "w": 212,
+     "h": 317,
+     "ax": 107.4,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/boruto/dashcharge_5.png",
+     "w": 225,
+     "h": 327,
+     "ax": 119.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/boruto/dashcharge_6.png",
+     "w": 293,
+     "h": 346,
+     "ax": 145.9,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/boruto/dashcharge_7.png",
+     "w": 289,
+     "h": 336,
+     "ax": 146.4,
+     "ay": 336
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.49,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/special_0.png",
+     "w": 288,
+     "h": 335,
+     "ax": 147.1,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/boruto/special_1.png",
+     "w": 253,
+     "h": 332,
+     "ax": 155.7,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/boruto/special_2.png",
+     "w": 326,
+     "h": 333,
+     "ax": 187.4,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/boruto/special_3.png",
+     "w": 234,
+     "h": 338,
+     "ax": 122.9,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/boruto/special_4.png",
+     "w": 228,
+     "h": 337,
+     "ax": 131.1,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/boruto/special_5.png",
+     "w": 228,
+     "h": 304,
+     "ax": 141.2,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/boruto/special_6.png",
+     "w": 310,
+     "h": 336,
+     "ax": 184.4,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/boruto/special_7.png",
+     "w": 143,
+     "h": 352,
+     "ax": 70.9,
+     "ay": 352
     }
    ]
   }

@@ -1979,7 +1979,8 @@ function genkiPose(h) {
   if (G.phase === 'rise') return ['jump', t < 0.25 ? 2 : 3];
   if (G.phase === 'hold') return ['special', t < GENKI.rise + 0.5 ? 4 : t < GENKI.throwAt - 0.25 ? 5 : 6];
   if (G.phase === 'throw') return ['special', 7];
-  if (G.phase === 'clash') return ['special', 7]; // une seule main tendue qui pousse la sphère
+  // Super Saiyan : un seul bras tendu qui accompagne la sphère, l'autre poing à la hanche (comme contre Buu)
+  if (G.phase === 'clash') return G.ssj && SPRITES[formSheet(h)]?.push ? ['push', 0] : ['special', 7];
   return ['jump', 6];
 }
 function updateGenkiBomb(b, dt) {
@@ -2258,23 +2259,139 @@ function updateKamui(h, dt) {
 }
 
 // ---------- Ultime de Sasuke : Kirin, un dragon de foudre tombé du ciel sur tous les ennemis ----------
-const KIRIN = { strike: 1.35, end: 2.4 };
-function startKirin(h) { h.cut = false; say(h, 'KIRIN…'); audio.play('ultraCharge', 0.8, 1.2, 0); }
+// Le ciel s'assombrit et l'orage tourne au-dessus de la rue pendant qu'il lève le bras ; puis le dragon de foudre
+// tombe et frappe le SOL au pied de chaque ennemi (bas de l'éclair = profondeur gz de la cible), éclairs secondaires
+// eux aussi jusqu'au sol, cratère lumineux, débris, et des arcs qui crépitent encore au sol un instant.
+const KIRIN = { strike: 1.35, fall: 0.12, hold: 0.35, arcs: 0.5, end: 2.4 };
+let kirin = null; // { t, h, hits: [{ x, gz, e }], hit }
+function startKirin(h) {
+  h.cut = false; kirin = { t: 0, h, hits: [], hit: false };
+  say(h, 'KIRIN…'); audio.play('ultraCharge', 0.8, 1.2, 0);
+}
 function updateKirin(h) {
   h.inv = Math.max(h.inv, 0.1);
-  // le ciel s'assombrit, des éclairs zèbrent les nuages
-  if (h.t < KIRIN.strike && Math.random() < 0.12) animFX('bolt', camX + rand(60, W - 60), rand(80, 200), rand(60, 110), 0.2, { h: rand(160, 260) });
+  const K = kirin && kirin.h === h ? kirin : (kirin = { t: h.t, h, hits: [], hit: false });
+  K.t = h.t;
+  // éclairs dans les nuages pendant la charge
+  if (h.t < KIRIN.strike && Math.random() < 0.12) animFX('bolt', camX + rand(60, W - 60), rand(30, 110), rand(60, 110), 0.2, { h: rand(120, 200) });
   if (!h.cut && h.t >= KIRIN.strike) {
-    h.cut = true; flash = 0.9; shake = 30; audio.play('ultraBoom', 1, 0.9, 0);
+    // cibles : chaque ennemi à l'écran ; sans ennemi, le dragon frappe le sol devant Sasuke
+    h.cut = true; audio.play('ultraThrow', 1, 0.7, 0);
     for (const e of enemies) {
       if (!e.alive || e.state === 'down' || e.x < camX - 40 || e.x > camX + W + 40) continue;
-      animFX('bolt', e.x, e.y - 260, 220, 0.5, { h: 620 });
-      if (FX.hekireki_v) animFX('hekireki_v', e.x, e.y - 120, 520, 0.5, { h: 200, rot: Math.PI / 2 });
-      damageEnemy(e, ULT_SOLO * (4 + h.power / 9), 300 * (Math.sign(e.x - h.x) || h.dir), -900, e.x, e.y - 110, '#cfe0ff');
+      K.hits.push({ x: e.x, gz: e.gz, e });
+    }
+    if (!K.hits.length) K.hits.push({ x: h.x + h.dir * 260, gz: h.gz, e: null });
+  }
+  if (h.cut && !K.hit && h.t >= KIRIN.strike + KIRIN.fall) {
+    K.hit = true; flash = 1; shake = 34; hitstop = 0.16; audio.play('ultraBoom', 1.1, 0.8, 0);
+    for (const T of K.hits) {
+      const e = T.e;
+      if (e && e.alive) { T.x = e.x; T.gz = e.gz; damageEnemy(e, ULT_SOLO * (4 + h.power / 9), 300 * (Math.sign(e.x - h.x) || h.dir), -900, e.x, e.y - 110, '#cfe0ff'); }
+      for (let k = 0; k < 26; k++) particles.push({ x: T.x + rand(-30, 30), y: T.gz - rand(0, 20), vx: rand(-420, 420), vy: rand(-700, -200), t: 0, life: rand(0.4, 0.8), c: Math.random() < 0.6 ? '#dff2ff' : '#7fc4ff', r: rand(2, 5) });
+      for (let k = 0; k < 14; k++) particles.push({ x: T.x + rand(-40, 40), y: T.gz - rand(0, 10), vx: rand(-300, 300), vy: rand(-520, -180), t: 0, life: rand(0.5, 0.9), c: Math.random() < 0.5 ? '#5a4a3c' : '#2e2622', r: rand(4, 9) });
     }
     say(h, 'KIRIN !!'); score += 2000;
   }
-  if (h.t > KIRIN.end) h.state = 'idle';
+  if (h.t > KIRIN.end) { h.state = 'idle'; kirin = null; }
+}
+// un éclair dentelé de (x0, y0) jusqu'au point d'arrivée (x1, y1), recalculé à chaque image (scintillement)
+function boltPath(x0, y0, x1, y1, jag, n = 14) {
+  const pts = [[x0, y0]];
+  for (let k = 1; k < n; k++) { const u = k / n; pts.push([x0 + (x1 - x0) * u + rand(-jag, jag) * (1 - u * 0.6), y0 + (y1 - y0) * u + rand(-8, 8)]); }
+  pts.push([x1, y1]); return pts;
+}
+function strokeBolt(pts, layers) {
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  for (const [w, c] of layers) { ctx.strokeStyle = c; ctx.lineWidth = w; ctx.beginPath(); pts.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); }
+}
+// derrière les personnages : ciel d'orage et cratère lumineux au sol
+function drawKirinBack() {
+  const K = kirin; if (!K) return;
+  if (K.h.state !== 'ultra') { kirin = null; return; }
+  const t = K.t, dark = t < KIRIN.strike ? Math.min(1, t / 0.6) : Math.max(0, Math.min(1, 1 - (t - (KIRIN.end - 0.4)) / 0.4));
+  ctx.save();
+  ctx.fillStyle = `rgba(8,12,40,${0.55 * dark})`; ctx.fillRect(-20, -20, W + 40, H + 40);
+  // nuages d'orage qui tournent au-dessus de la rue
+  const cx = W / 2, rot = t * 0.8;
+  for (let k = 0; k < 14; k++) {
+    const a = rot + k * 0.45, r = 120 + (k % 4) * 90, x = cx + Math.cos(a) * r * 1.6, y = 20 + Math.sin(a) * 26 + (k % 3) * 10;
+    const g = ctx.createRadialGradient(x, y, 4, x, y, 110);
+    g.addColorStop(0, `rgba(30,34,60,${0.85 * dark})`); g.addColorStop(1, 'rgba(30,34,60,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(x, y, 150, 60, 0, 0, 7); ctx.fill();
+  }
+  // œil de l'orage, qui s'éclaire juste avant la chute
+  if (t < KIRIN.strike + KIRIN.fall) {
+    const glow = Math.max(0, (t - (KIRIN.strike - 0.4)) / 0.4) * dark;
+    const g = ctx.createRadialGradient(cx, 10, 0, cx, 10, 180);
+    g.addColorStop(0, `rgba(180,220,255,${0.6 * glow})`); g.addColorStop(1, 'rgba(120,170,255,0)');
+    ctx.fillStyle = g; ctx.fillRect(cx - 200, -20, 400, 220);
+  }
+  // cratère : ellipse brûlante au sol, à la profondeur de l'impact, puis onde de choc
+  if (K.hit) {
+    const u = (t - KIRIN.strike - KIRIN.fall) / (KIRIN.hold + KIRIN.arcs);
+    for (const T of K.hits) {
+      const sx = T.x - camX, a = Math.max(0, 1 - u);
+      ctx.globalCompositeOperation = 'lighter';
+      const g = ctx.createRadialGradient(sx, T.gz, 0, sx, T.gz, 130);
+      g.addColorStop(0, `rgba(230,245,255,${0.9 * a})`); g.addColorStop(0.4, `rgba(110,180,255,${0.55 * a})`); g.addColorStop(1, 'rgba(60,120,255,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(sx, T.gz, 130, 30, 0, 0, 7); ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = `rgba(20,16,24,${0.6 * Math.min(1, a * 2)})`; ctx.beginPath(); ctx.ellipse(sx, T.gz + 2, 70, 14, 0, 0, 7); ctx.fill();
+      const rr = 60 + Math.min(1, u * 3) * 260;
+      ctx.strokeStyle = `rgba(200,230,255,${0.8 * Math.max(0, 1 - u * 3)})`; ctx.lineWidth = 6;
+      ctx.beginPath(); ctx.ellipse(sx, T.gz, rr, rr * 0.22, 0, 0, 7); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+// devant les personnages : le dragon de foudre, les éclairs secondaires et les arcs résiduels au sol
+function drawKirinFront() {
+  const K = kirin; if (!K || !K.hits.length) return;
+  const t = K.t - KIRIN.strike, fallT = KIRIN.fall, holdEnd = fallT + KIRIN.hold, arcEnd = holdEnd + KIRIN.arcs;
+  if (t < 0 || t > arcEnd) return;
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  const MAIN = [[70, 'rgba(70,140,255,0.22)'], [38, 'rgba(120,190,255,0.45)'], [18, 'rgba(200,235,255,0.9)'], [7, '#ffffff']];
+  const SIDE = [[16, 'rgba(90,160,255,0.35)'], [6, 'rgba(210,240,255,0.9)'], [2, '#ffffff']];
+  for (const T of K.hits) {
+    const sx = T.x - camX, gy = T.gz, top = -30, x0 = sx - 90;
+    if (t < holdEnd) {
+      // le dragon descend du ciel : sa tête atteint le sol en `fall` secondes, puis l'éclair reste planté au sol
+      const p = Math.min(1, t / fallT), fy = top + (gy - top) * p, fx = x0 + (sx - x0) * p;
+      ctx.globalAlpha = t > fallT && Math.random() < 0.15 ? 0.5 : 1;
+      strokeBolt(boltPath(x0, top, fx, fy, 34), MAIN);
+      // éclairs secondaires, ramifiés depuis le tronc, qui tombent eux aussi jusqu'au sol de part et d'autre
+      if (p >= 1) for (let k = 0; k < 4; k++) {
+        const u = 0.25 + k * 0.16, bx = x0 + (sx - x0) * u, by = top + (gy - top) * u, ex = sx + (k % 2 ? 1 : -1) * rand(60, 150);
+        strokeBolt(boltPath(bx, by, ex, gy + rand(-6, 6), 22, 8), SIDE);
+      }
+      // tête du dragon : gueule ouverte et cornes, au front de l'éclair (elle se pose au sol)
+      const hy = Math.min(fy, gy - 24), ang = Math.atan2(gy - top, sx - x0);
+      ctx.save(); ctx.translate(fx, hy); ctx.rotate(ang - Math.PI / 2);
+      ctx.fillStyle = 'rgba(210,240,255,0.95)'; ctx.shadowColor = '#7fc4ff'; ctx.shadowBlur = 30;
+      ctx.beginPath(); ctx.moveTo(-34, -40); ctx.lineTo(34, -40); ctx.lineTo(18, 10); ctx.lineTo(4, -4); ctx.lineTo(0, 30); ctx.lineTo(-4, -4); ctx.lineTo(-18, 10); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(-26, -40); ctx.lineTo(-52, -86); ctx.lineTo(-14, -48); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(26, -40); ctx.lineTo(52, -86); ctx.lineTo(14, -48); ctx.closePath(); ctx.fill();
+      ctx.restore(); ctx.globalAlpha = 1;
+      // éclat à l'impact, posé sur le sol
+      if (p >= 1) {
+        const g = ctx.createRadialGradient(sx, gy, 0, sx, gy, 110);
+        g.addColorStop(0, 'rgba(255,255,255,0.95)'); g.addColorStop(0.5, 'rgba(150,200,255,0.5)'); g.addColorStop(1, 'rgba(80,140,255,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(sx, gy - 20, 110, 70, 0, 0, 7); ctx.fill();
+      }
+    } else {
+      // arcs résiduels : petits éclairs qui sautent d'un point du sol à l'autre autour du cratère
+      ctx.globalAlpha = Math.max(0, 1 - (t - holdEnd) / KIRIN.arcs);
+      for (let k = 0; k < 4; k++) {
+        if (Math.random() < 0.35) continue;
+        const ax = sx + rand(-120, 120), bx = ax + rand(-70, 70), pts = boltPath(ax, gy + rand(-6, 6), bx, gy + rand(-6, 6), 14, 5);
+        for (let i = 1; i < pts.length - 1; i++) pts[i][1] = gy - rand(0, 22); // l'arc se soulève un peu entre deux points du sol
+        strokeBolt(pts, SIDE);
+      }
+      ctx.globalAlpha = 1;
+    }
+  }
+  ctx.restore();
 }
 
 // ---------- Ultime de Gohan : le Kamehameha père-fils (l'esprit de Sangoku derrière lui) ----------
@@ -2767,7 +2884,7 @@ function updateBoru(h) {
     // la dernière et éjecte (sinon la 1re envoyait la cible au loin et les deux autres la manquaient)
     const from = [[-110, 0, 1.7, true], ...BORU.at.map(([dx, dz]) => [dx, dz, 1.1, false])];
     for (const [dx, dz, sc, main] of from)
-      projs.push({ kind: 'vrasen', owner: h, x: h.x + h.dir * (dx + hp[0] + PROJ_R.vrasen * sc), y: h.y + dz + hp[1], gz: h.gz, dir: h.dir, t: 0, speed: 820, life: 1.1, scale: sc, hit: new Set(), dmg, kb: main ? 700 : 40, launch: main ? -700 : 0 });
+      projs.push({ kind: 'vrasen', owner: h, x: h.x + h.dir * (dx + hp[0] + PROJ_R.vrasen * sc), y: h.y + dz + hp[1], gz: h.gz, dir: h.dir, t: 0, speed: 820, life: 1.1, scale: sc * 0.8, steady: true, hit: new Set(), dmg, kb: main ? 700 : 40, launch: main ? -700 : 0 });
     popups.push({ x: h.x + h.dir * 240, y: h.y - 280, t: 0, text: 'RASENGAN DES TROIS !!' });
     score += 2000;
   }
@@ -4123,14 +4240,33 @@ function drawProjs() {
       ctx.restore(); continue;
     }
     if (p.kind === 'vrasen') {
-      // Rasengan évanescent de Boruto : visible au départ, il s'efface à mi-chemin et réapparaît juste avant l'impact
-      const u = p.t / (p.life || 1), sc = p.scale || 1, vis = u < 0.25 ? 1 : u < 0.4 ? 1 - (u - 0.25) / 0.15 : u < 0.6 ? 0.08 : Math.min(1, (u - 0.6) / 0.1);
-      ctx.globalAlpha *= vis; const r = (22 + Math.sin(p.t * 45) * 2) * sc;
-      const g = ctx.createRadialGradient(0, 0, 2, 0, 0, r); g.addColorStop(0, '#ffffff'); g.addColorStop(0.4, '#9fe0ff'); g.addColorStop(1, 'rgba(60,150,255,0)');
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill();
-      ctx.strokeStyle = 'rgba(220,245,255,0.8)'; ctx.lineWidth = 2;
-      for (let k = 0; k < 3; k++) { const a0 = p.t * 18 + k * 2.1; ctx.beginPath(); ctx.arc(0, 0, r * 0.62, a0, a0 + 1.6); ctx.stroke(); }
-      ctx.restore(); continue;
+      // Rasengan évanescent de Boruto : le Rasengan filmé de Naruto, en plus petit ; il s'efface en douceur à
+      // mi-course et réapparaît juste avant l'impact (les sphères de l'ultime restent visibles : p.steady)
+      const u = p.t / (p.life || 1), sc = p.scale || 1, ease = k => k * k * (3 - 2 * k);
+      const vis = p.steady ? 1 : u < 0.22 ? 1 : u < 0.42 ? 1 - 0.88 * ease((u - 0.22) / 0.2) : u < 0.56 ? 0.12 : 0.12 + 0.88 * ease(Math.min(1, (u - 0.56) / 0.12));
+      const r = (48 + Math.sin(p.t * 38) * 3) * sc;
+      // légère traînée bleue derrière la boule
+      for (let j = 1; j <= 4; j++) {
+        ctx.globalAlpha = vis * (0.32 - j * 0.06);
+        const g = ctx.createRadialGradient(-j * 22 * sc, 0, 0, -j * 22 * sc, 0, r * (1 - j * 0.14));
+        g.addColorStop(0, 'rgba(170,225,255,0.9)'); g.addColorStop(1, 'rgba(60,140,255,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(-j * 22 * sc, 0, r * (1 - j * 0.14), 0, 7); ctx.fill();
+      }
+      ctx.restore();
+      if (!fxImg('rasen_v', Math.floor(p.t * 16), sx, p.y, r * 3.8, null, { alpha: vis, rot: p.dir * p.t * 6, flip: p.dir < 0 })) {
+        // repli dessiné : cœur blanc, dégradé bleu, anneaux de vent qui tournent
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = vis; ctx.translate(sx, p.y);
+        const g = ctx.createRadialGradient(0, 0, 2, 0, 0, r); g.addColorStop(0, '#ffffff'); g.addColorStop(0.35, '#c8efff'); g.addColorStop(0.75, 'rgba(90,180,255,0.7)'); g.addColorStop(1, 'rgba(40,120,255,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill();
+        ctx.lineCap = 'round';
+        for (let k = 0; k < 4; k++) {
+          const a0 = p.t * 16 + k * Math.PI / 2, rr = r * (0.55 + 0.12 * (k % 2));
+          ctx.strokeStyle = `rgba(230,250,255,${0.85 - k * 0.12})`; ctx.lineWidth = 3 * sc;
+          ctx.beginPath(); ctx.ellipse(0, 0, rr, rr * 0.55, a0 * 0.3, a0, a0 + 2.2); ctx.stroke();
+        }
+        ctx.restore();
+      }
+      continue;
     }
     if (p.kind === 'kiball') {
       // Rafale de ki de Sangoku : une boule bleue qui palpite
@@ -4945,7 +5081,7 @@ function energyBall(x, y, r, gold) {
 // par image puis gardé. Renvoie [devant, hauteur] par rapport au point posé au sol, à l'échelle du jeu.
 const HAND_SHOTS = ['shuriken', 'airshot', 'kiball', 'red', 'burning', 'hiken', 'shell', 'icewall', 'strikeair', 'vrasen', 'stonewall'], handCache = {};
 // rayon des grosses boules : leur centre est avancé d'autant pour qu'elles partent DEVANT la main
-const PROJ_R = { shuriken: 52, vrasen: 22, katon: 32, burning: 34, kiball: 26, hiken: 34, shell: 12, icewall: 18, strikeair: 30, bullet: 12, stonewall: 18 };
+const PROJ_R = { shuriken: 52, vrasen: 40, katon: 32, burning: 34, kiball: 26, hiken: 34, shell: 12, icewall: 18, strikeair: 30, bullet: 12, stonewall: 18 };
 function handPoint(h) {
   const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
   const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];
@@ -5233,23 +5369,14 @@ function drawBomb(b) {
 }
 function drawBombBody(b) {
   const sx = b.x - camX;
-  // Faisceau du Super Saiyan qui repousse la sphère
+  // Le Super Saiyan accompagne la sphère d'un bras tendu, sans faisceau (comme contre Buu) : juste une lueur dans la paume
   if (b.genki && b.state === 'clash' && b.owner.genki?.ssj) {
-    // part de la paume (fin à la main, large contre la sphère)
-    const h = b.owner, [px, py] = GENKI.palm[h.boost?.sheet || h.C.sheet] || [54, -120];
-    const hx = h.x + h.dir * (px + 6) - camX, hy = h.y + py, flick = 1 + Math.sin(sceneT * 50) * 0.12;
-    const ang = Math.atan2(b.y - hy, sx - hx), nx = -Math.sin(ang), ny = Math.cos(ang);
+    const h = b.owner, hp = handPoint(h), flick = 1 + Math.sin(sceneT * 30) * 0.1;
+    const hx = h.x + h.dir * ((hp ? hp[0] : 54) + 4) - camX, hy = h.y + (hp ? hp[1] : -113);
     ctx.save(); ctx.globalCompositeOperation = 'lighter';
-    for (const [w0, w1, c] of [[22, b.r * 1.1, 'rgba(255,190,50,0.35)'], [11, b.r * 0.6, 'rgba(255,240,160,0.75)'], [4, b.r * 0.22, '#ffffff']]) {
-      const a0 = w0 * flick / 2, a1 = w1 * flick / 2;
-      ctx.fillStyle = c; ctx.beginPath();
-      ctx.moveTo(hx + nx * a0, hy + ny * a0); ctx.lineTo(sx + nx * a1, b.y + ny * a1);
-      ctx.lineTo(sx - nx * a1, b.y - ny * a1); ctx.lineTo(hx - nx * a0, hy - ny * a0); ctx.closePath(); ctx.fill();
-    }
-    // éclat dans la paume
-    const g = ctx.createRadialGradient(hx, hy, 0, hx, hy, 30 * flick);
-    g.addColorStop(0, '#ffffff'); g.addColorStop(0.5, 'rgba(255,230,120,0.7)'); g.addColorStop(1, 'rgba(255,190,50,0)');
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(hx, hy, 30 * flick, 0, 7); ctx.fill();
+    const g = ctx.createRadialGradient(hx, hy, 0, hx, hy, 22 * flick);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.5, 'rgba(255,230,120,0.45)'); g.addColorStop(1, 'rgba(255,190,50,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(hx, hy, 22 * flick, 0, 7); ctx.fill();
     ctx.restore();
   }
   if (b.state !== 'boom') {
@@ -5318,7 +5445,7 @@ const FACES = {
   card_ip: [0.55, 0.22, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
   card_ki: [0.53, 0.36, 4], card_luffy: [0.725, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
   card_ve: [0.52, 0.37, 4], card_ze: [0.2, 0.36, 4.2], card_zoro: [0.47, 0.27, 4.4],
-  card_jw: [0.765, 0.185, 6.5], card_sk: [0.6, 0.22, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.36, 0.33, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.52, 0.15, 4.4], card_st: [0.57, 0.19, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.55, 0.21, 4.0], card_rv: [0.56, 0.3, 4.0], card_ga: [0.62, 0.18, 4.0], card_lv: [0.57, 0.19, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.38, 0.34, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.38, 0.16, 4.0], card_bo: [0.33, 0.33, 4.0], card_ns: [0.51, 0.4, 3.2], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.765, 0.185, 6.5], card_sk: [0.6, 0.22, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.36, 0.33, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.52, 0.15, 4.4], card_st: [0.57, 0.19, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.55, 0.21, 4.0], card_rv: [0.56, 0.3, 4.0], card_ga: [0.62, 0.18, 4.0], card_lv: [0.57, 0.19, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.38, 0.34, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.38, 0.16, 4.0], card_bo: [0.6, 0.33, 4.0], card_ns: [0.51, 0.4, 3.2], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -5859,6 +5986,7 @@ function draw() {
   ctx.setTransform(RES, 0, 0, RES, rand(-s, s) * RES, rand(-s, s) * RES);
   drawBackground();
   superDim();
+  drawKirinBack();
   drawFX(true);
   // Du plus au fond au plus en avant ; un corps au sol passe derrière ceux qui sont debout sur la même ligne
   const all = [
@@ -5876,6 +6004,7 @@ function draw() {
   drawWhips();
   drawZaps(1 / 60);
   drawFX();
+  drawKirinFront();
   drawParticles();
   if (flash > 0) { ctx.fillStyle = `rgba(255,255,255,${Math.min(1, flash)})`; ctx.fillRect(-20, -20, W + 40, H + 40); }
   ctx.setTransform(RES, 0, 0, RES, 0, 0);
