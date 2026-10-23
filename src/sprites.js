@@ -12481,112 +12481,112 @@ const SPRITES = {
      "src": "assets/sprites/bl_hollow/walkv_0.png",
      "w": 484,
      "h": 519,
-     "ax": 310.0,
+     "ax": 300.1,
      "ay": 519
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_1.png",
      "w": 396,
      "h": 530,
-     "ax": 243.7,
+     "ax": 228.8,
      "ay": 530
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_2.png",
      "w": 320,
      "h": 540,
-     "ax": 166.4,
+     "ax": 142.4,
      "ay": 540
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_3.png",
      "w": 364,
      "h": 543,
-     "ax": 197.4,
+     "ax": 193.9,
      "ay": 543
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_4.png",
      "w": 466,
      "h": 532,
-     "ax": 263.5,
+     "ax": 275.4,
      "ay": 532
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_5.png",
      "w": 542,
      "h": 520,
-     "ax": 330.8,
+     "ax": 343.6,
      "ay": 520
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_6.png",
      "w": 570,
      "h": 514,
-     "ax": 338.5,
+     "ax": 371.9,
      "ay": 514
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_7.png",
      "w": 545,
      "h": 518,
-     "ax": 309.5,
+     "ax": 312.9,
      "ay": 518
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_8.png",
      "w": 472,
      "h": 526,
-     "ax": 285.0,
+     "ax": 280.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_9.png",
      "w": 330,
      "h": 544,
-     "ax": 178.3,
+     "ax": 162.1,
      "ay": 544
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_10.png",
      "w": 332,
      "h": 550,
-     "ax": 166.8,
+     "ax": 150.4,
      "ay": 550
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_11.png",
      "w": 378,
      "h": 548,
-     "ax": 213.7,
+     "ax": 198.9,
      "ay": 548
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_12.png",
      "w": 478,
      "h": 540,
-     "ax": 268.7,
+     "ax": 265.4,
      "ay": 540
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_13.png",
      "w": 533,
      "h": 526,
-     "ax": 320.5,
+     "ax": 344.4,
      "ay": 526
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_14.png",
      "w": 564,
      "h": 514,
-     "ax": 378.5,
+     "ax": 391.4,
      "ay": 514
     },
     {
      "src": "assets/sprites/bl_hollow/walkv_15.png",
      "w": 552,
      "h": 518,
-     "ax": 338.5,
+     "ax": 347.5,
      "ay": 518
     }
    ]

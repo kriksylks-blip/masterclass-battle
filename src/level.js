@@ -37,9 +37,9 @@ const TOKYO = {
   // Objets cassables (deux coups) et ce qu'ils cachent : la plupart sont vides, la nourriture est rare
   // (un soin par zone environ, le plus gros juste avant le boss)
   props: [
-    [700, 'crate', null], [1700, 'barrel', null], [2500, 'can', 'onigiri'], [3400, 'crate', null],
-    [4300, 'can', null], [5100, 'barrel', 'ramen'], [6200, 'crate', null], [7100, 'barrel', 'drink'],
-    [8000, 'can', null], [8900, 'crate', null], [9900, 'barrel', 'ramen'], [10700, 'crate', null],
+    [700, 'crate', null], [1700, 'barrel', null], [2150, 'can', 'onigiri'], [3400, 'crate', null],
+    [4300, 'can', null], [4800, 'barrel', 'ramen'], [6200, 'crate', null], [7100, 'barrel', 'drink'],
+    [7650, 'can', null], [8900, 'crate', null], [9900, 'barrel', 'ramen'], [10300, 'crate', null],
     [11800, 'can', null], [12300, 'crate', 'chicken'], [12450, 'barrel', null],
   ],
 };
@@ -53,7 +53,7 @@ function themedLevel(id, name, sub, zoneNames, a, b) {
     const last = k === n - 1;
     waves.push({ x: x0 + 450, foes: k ? [a, a, b] : [a, a] }, { x: x0 + 1250, foes: k ? [b, a, b, a] : [a, b, a] });
     if (!last) waves.push({ x: x0 + 1900, foes: k ? [a, b, a, a, b] : [b, a, a, b] });
-    props.push([x0 + 800, 'crate', null], [x0 + 1800, 'barrel', items[k % items.length]], [x0 + 2600, 'crate', null]);
+    props.push([x0 + 800, 'crate', null], [x0 + 1800, 'barrel', items[k % items.length]], [x0 + 2250, 'crate', null]); // rien devant la porte (limite - 230)
   });
   waves.push({ x: end - 960, foes: [`${id}_boss`], boss: true });
   return {
@@ -109,16 +109,17 @@ for (const L of LEVELS.slice(1)) {
 }
 
 // Passage d'une zone à la suivante : la caméra s'arrête juste avant la limite (on ne voit jamais deux décors
-// côte à côte) ; quand la vague est finie et qu'un joueur arrive au bord, il avance seul, l'écran passe au noir
-// et on reprend dans le nouveau décor. Seul le train montre son échelle (on grimpe sur le toit) :
-// image assets/backgrounds/gates/<id>.png, dessinée un peu avant la limite.
-const GATES = {
-  tokyo: ['tokyo_g1', 'tokyo_g2', 'tokyo_g3', 'tokyo_g4'],
-  op: ['op_g1', 'op_g2'], ds: ['ds_g1', 'ds_g2'], bl: ['bl_g1', 'bl_g2'], hx: ['hx_g1', 'hx_g2'],
-  nr: ['nr_g1', 'nr_g2'], db: ['db_g1', 'db_g2'], mh: ['mh_g1', 'mh_g2'],
-  // les mondes suivants n'ont pas d'image de passage : simple fondu au noir
-};
-for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = (GATES[L.id] || [])[k - 1]; }); // nouveaux mondes : fondu au noir seul
+// côte à côte) ; quand la vague est finie, un élément de passage (porte, arche, sas…) attend au fond de la rue,
+// juste avant la limite : les joueurs y remontent et y entrent, l'écran passe au noir et on reprend dans le nouveau
+// décor. La porte est dessinée DE FACE, posée contre le fond (qui est lui aussi vu de face) et à sa vraie
+// proportion : en travers de la chaussée ou étirée, elle paraissait déformée. Le train garde son échelle de profil.
+// Image assets/backgrounds/gates/<id>.png ; mondes à 4 zones : g1 (z1→z2), g3 (z2→z4), g2 (z4→z3, l'antre du boss).
+const GATES = { tokyo: ['tokyo_g1', 'tokyo_g2', 'tokyo_g3', 'tokyo_g4'] };
+for (const id of ['op', 'ds', 'bl', 'hx', 'nr', 'db', 'mh', 'rk', 'op2', 'nr2', 'ds2', 'db2', 'jk', 'sl', 'opm', 'bl2'])
+  GATES[id] = [`${id}_g1`, `${id}_g3`, `${id}_g2`];
+for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = (GATES[L.id] || [])[k - 1]; });
+// Porte au fond de la rue : centre à GATE.dx avant la limite de zone, pied sur la bordure du fond, hauteur fixe
+const GATE = { dx: 230, base: 372, h: 300, maxW: 420 }; // base : juste derrière Z_TOP (378), défini plus tard dans game.js
 // La forêt de la mort a son lointain (sinon le ciel du village et ses visages sculptés apparaissent entre les arbres)
 LEVELS.find(L => L.id === 'nr').zones.find(Z => Z.id === 'nr_z3').sky = 'nr_z3_sky';
 ASSETS.backgrounds.nr_z3_sky = 'assets/backgrounds/levels/nr_z3_sky.jpg';
@@ -258,7 +259,7 @@ const camLimit = () => Math.min(level.lock ?? Infinity, LEVEL_END - W, nextZone(
 function updateTransition(dt) {
   const Z = nextZone();
   if (!level.trans) {
-    if (!Z || !level.cleared || camX < Z.from - W - 4 || !players.some(h => !h.out && h.x > Z.from - 120)) return false;
+    if (!Z || !level.cleared || camX < Z.from - W - 4 || !players.some(h => !h.out && h.x > Z.from - (gateImg(Z) ? GATE.dx + 70 : 120))) return false;
     level.trans = { t: 0, Z, jumped: false, vt: 0 };
     level.goT = 0; audio.whoosh(0.8);
     if (TRANS_VIDEO[Z.id]) {
@@ -293,6 +294,11 @@ function transitionWalk(h, dt) {
   if (!T.jumped && CLIMB.has(T.Z.gate) && h.x > T.Z.from - LADDER) {
     // il grimpe à l'échelle : il monte, collé au wagon, en enchaînant les poses de saut
     h.x = T.Z.from - LADDER; h.gz += (Z_TOP + 16 - h.gz) * Math.min(1, dt * 10); h.y = Math.min(h.y, h.gz) - 420 * dt; h.state = 'jump'; h.vy = -1; h.onGround = false; h.dir = 1;
+  } else if (!T.jumped && gateImg(T.Z)) {
+    // il remonte vers la porte au fond de la rue et y entre
+    const gx = T.Z.from - GATE.dx;
+    h.state = 'walk'; h.walkT += dt; h.dir = gx >= h.x ? 1 : -1;
+    h.x += clamp(gx - h.x, -230 * dt, 230 * dt); h.gz += clamp(Z_TOP - h.gz, -200 * dt, 200 * dt); h.y = h.gz;
   } else if (!T.jumped) { h.state = 'walk'; h.dir = 1; h.x += 230 * dt; h.walkT += dt; }
   else if (T.t > TRANS.walk + TRANS.black + 0.15) { h.state = 'idle'; }
   else { h.state = 'walk'; h.dir = 1; h.x += 120 * dt; h.walkT += dt; }
@@ -309,8 +315,20 @@ function transitionFade() {
 }
 // Éléments de passage (devant le décor, derrière les personnages) : l'échelle de fer posée contre le flanc du
 // wagon, vue de profil comme le décor (une image de face jurait avec la vue de côté)
+const gateImg = Z => Z.gate && !CLIMB.has(Z.gate) && IMG[Z.gate];
 function drawGates() {
   for (const Z of ZONES) {
+    const img = gateImg(Z);
+    if (img) {
+      // de face, à sa proportion, pied posé au fond de la rue ; les joueurs passent devant puis y entrent
+      const s = Math.min(GATE.h / img.height, GATE.maxW / img.width), w = img.width * s, h = img.height * s, cx = Z.from - GATE.dx - camX;
+      if (cx + w / 2 < -20 || cx - w / 2 > W + 20) continue;
+      const g = ctx.createRadialGradient(cx, GATE.base, 10, cx, GATE.base, w * 0.6);
+      g.addColorStop(0, 'rgba(0,0,0,0.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(cx - w * 0.6, GATE.base - 20, w * 1.2, 40);
+      ctx.drawImage(img, cx - w / 2, GATE.base - h, w, h);
+      continue;
+    }
     if (!CLIMB.has(Z.gate)) continue;
     const sx = Z.from - LADDER - camX;
     if (sx < -80 || sx > W + 80) continue;
