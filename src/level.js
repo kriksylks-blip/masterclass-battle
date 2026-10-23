@@ -44,65 +44,59 @@ const TOKYO = {
   ],
 };
 
-// Niveau au gabarit commun : a = sbire de corps à corps, b = sbire qui attaque de loin
+// Niveau au gabarit commun : a = sbire de corps à corps, b = sbire qui attaque de loin.
+// 4 zones : la 4e (fichiers <monde>_z4_*, ajoutée le 23/10) se place avant celle du boss -> ordre z1, z2, z4, z3.
 function themedLevel(id, name, sub, zoneNames, a, b) {
-  const end = 8800, from = [0, 2900, 5800];
+  const n = zoneNames.length, files = n === 4 ? [1, 2, 4, 3] : [1, 2, 3], from = files.map((_, k) => k * 2900), end = from[n - 1] + 3000;
+  const waves = [], props = [], items = ['onigiri', 'ramen', 'drink', 'chicken'];
+  from.forEach((x0, k) => {
+    const last = k === n - 1;
+    waves.push({ x: x0 + 450, foes: k ? [a, a, b] : [a, a] }, { x: x0 + 1250, foes: k ? [b, a, b, a] : [a, b, a] });
+    if (!last) waves.push({ x: x0 + 1900, foes: k ? [a, b, a, a, b] : [b, a, a, b] });
+    props.push([x0 + 800, 'crate', null], [x0 + 1800, 'barrel', items[k % items.length]], [x0 + 2600, 'crate', null]);
+  });
+  waves.push({ x: end - 960, foes: [`${id}_boss`], boss: true });
   return {
-    id, name, sub, sky: `${id}_sky`, boss: `${id}_boss`, extra: a,
-    zones: zoneNames.map((n, k) => ({ id: `${id}_z${k + 1}`, name: n, from: from[k], mid: `${id}_z${k + 1}_mid`, ground: `${id}_z${k + 1}_ground` })),
-    end,
-    waves: [
-      { x: 450, foes: [a, a] },
-      { x: 1250, foes: [a, b, a] },
-      { x: 1800, foes: [b, a, a, b] },
-      { x: 3200, foes: [a, a, b] },
-      { x: 4050, foes: [b, a, b, a] },
-      { x: 4700, foes: [a, b, a, a, b] },
-      { x: 6100, foes: [b, a, b, a] },
-      { x: 6950, foes: [a, b, a, b, a] },
-      { x: end - 960, foes: [`${id}_boss`], boss: true },
-    ],
-    props: [
-      [800, 'crate', null], [1800, 'barrel', 'onigiri'], [2700, 'crate', null], [3700, 'barrel', 'ramen'],
-      [4600, 'crate', null], [5500, 'barrel', 'drink'], [6600, 'crate', null], [7500, 'barrel', 'chicken'], [7650, 'crate', null],
-    ],
+    id, name, sub, sky: `${id}_sky`, boss: `${id}_boss`, extra: a, end, waves, props,
+    zones: zoneNames.map((nm, k) => ({ id: `${id}_z${files[k]}`, name: nm, from: from[k], mid: `${id}_z${files[k]}_mid`, ground: `${id}_z${files[k]}_ground` })),
   };
 }
+
 
 const LEVELS = [
   TOKYO,
   themedLevel('op', 'ONE PIECE — LOGUETOWN', 'Du Vogue Merry à la place de l\'exécution',
-    ['LE VOGUE MERRY', 'LE PORT DE LOGUETOWN', 'LA PLACE DE L\'EXÉCUTION'], 'op_pirate', 'op_marine'),
+    ['LE VOGUE MERRY', 'LE PORT DE LOGUETOWN', 'LA GRAND-RUE DE LOGUETOWN', 'LA PLACE DE L\'EXÉCUTION'], 'op_pirate', 'op_marine'),
   themedLevel('ds', 'DEMON SLAYER — LE TRAIN DE L\'INFINI', 'Une nuit à bord du train des démons',
-    ['LE TRAIN DE L\'INFINI', 'SUR LE TOIT DU TRAIN', 'LA CLAIRIÈRE À L\'AUBE'], 'ds_demon', 'ds_spider'),
+    ['LE TRAIN DE L\'INFINI', 'SUR LE TOIT DU TRAIN', 'LA LOCOMOTIVE', 'LA CLAIRIÈRE À L\'AUBE'], 'ds_demon', 'ds_spider'),
   themedLevel('bl', 'BLEACH — SOUL SOCIETY', 'Jusqu\'à la colline du Sôkyoku',
-    ['LE RUKONGAI', 'LE SEIREITEI', 'LA COLLINE DU SÔKYOKU'], 'bl_shinigami', 'bl_hollow'),
+    ['LE RUKONGAI', 'LE SEIREITEI', 'LA TOUR DU REPENTIR', 'LA COLLINE DU SÔKYOKU'], 'bl_shinigami', 'bl_hollow'),
   themedLevel('hx', 'HUNTER × HUNTER — LA TOUR CÉLESTE', 'Grimper jusqu\'au 200e étage',
-    ['AU PIED DE LA TOUR', 'LE HALL DES COMBATTANTS', 'L\'ARÈNE DU 200E ÉTAGE'], 'hx_fighter', 'hx_nen'),
+    ['AU PIED DE LA TOUR', 'LE HALL DES COMBATTANTS', 'LES ARÈNES DU 100E ÉTAGE', 'L\'ARÈNE DU 200E ÉTAGE'], 'hx_fighter', 'hx_nen'),
   themedLevel('nr', 'NARUTO — KONOHA', 'Du village caché à la forêt de la mort',
-    ['LES RUES DE KONOHA', 'LES PORTES DU VILLAGE', 'LA FORÊT DE LA MORT'], 'nr_sound', 'nr_rogue'),
+    ['LES RUES DE KONOHA', 'LES PORTES DU VILLAGE', 'LE TERRAIN D\'ENTRAÎNEMENT', 'LA FORÊT DE LA MORT'], 'nr_sound', 'nr_rogue'),
   themedLevel('db', 'DRAGON BALL — NAMEK', 'L\'empereur de l\'univers vous attend',
-    ['LES PLAINES DE NAMEK', 'LE VILLAGE NAMEK', 'LE CHAMP DE BATAILLE'], 'db_elite', 'db_soldier'),
+    ['LES PLAINES DE NAMEK', 'LE VILLAGE NAMEK', 'LE VAISSEAU DE FREEZER', 'LE CHAMP DE BATAILLE'], 'db_elite', 'db_soldier'),
   themedLevel('mh', 'MY HERO ACADEMIA — L\'USJ', 'Les vilains ont envahi le centre d\'entraînement',
-    ['L\'ENTRÉE DE L\'USJ', 'LA ZONE INCENDIE', 'LA PLACE CENTRALE'], 'mh_villain', 'mh_blaster'),
+    ['L\'ENTRÉE DE L\'USJ', 'LA ZONE INCENDIE', 'LA ZONE DES ÉBOULEMENTS', 'LA PLACE CENTRALE'], 'mh_villain', 'mh_blaster'),
   themedLevel('rk', 'KENSHIN — KYOTO', 'De Tokyo jusqu\'au repaire de Shishio',
-    ['TOKYO, ÈRE MEIJI', 'KYOTO EN FLAMMES', 'LE REPAIRE DE SHISHIO'], 'rk_ronin', 'rk_ninja'),
+    ['TOKYO, ÈRE MEIJI', 'KYOTO EN FLAMMES', 'LE PORT D\'OSAKA', 'LE REPAIRE DE SHISHIO'], 'rk_ronin', 'rk_ninja'),
   themedLevel('op2', 'ONE PIECE — ENIES LOBBY', 'Sauver Robin à la tour de la Justice',
-    ['LA GRANDE PORTE', 'LA VILLE JUDICIAIRE', 'LA TOUR DE LA JUSTICE'], 'op2_guard', 'op2_agent'),
+    ['LA GRANDE PORTE', 'LA VILLE JUDICIAIRE', 'LE PONT DE L\'HÉSITATION', 'LA TOUR DE LA JUSTICE'], 'op2_guard', 'op2_agent'),
   themedLevel('nr2', 'NARUTO — AMEGAKURE', 'Le village caché de la Pluie',
-    ['LES TOURS DE LA PLUIE', 'LE PONT SUR LE LAC', 'LE SOMMET DE LA TOUR'], 'nr2_puppet', 'nr2_rain'),
+    ['LES TOURS DE LA PLUIE', 'LE PONT SUR LE LAC', 'L\'USINE SOUS LA PLUIE', 'LE SOMMET DE LA TOUR'], 'nr2_puppet', 'nr2_rain'),
   themedLevel('ds2', 'DEMON SLAYER — LE QUARTIER DES PLAISIRS', 'Yoshiwara, la nuit des démons',
-    ['LA RUE DES LANTERNES', 'SUR LES TOITS', 'LE QUARTIER DÉVASTÉ'], 'ds2_demon', 'ds2_obi'),
+    ['LA RUE DES LANTERNES', 'SUR LES TOITS', 'LA MAISON KYOGOKU', 'LE QUARTIER DÉVASTÉ'], 'ds2_demon', 'ds2_obi'),
   themedLevel('db2', 'DRAGON BALL Z — LE CELL GAME', 'Le tournoi de Cell',
-    ['LE DÉSERT ROCHEUX', 'LES ABORDS DU TOURNOI', 'L\'ARÈNE DE CELL'], 'db2_jr', 'db2_android'),
+    ['LE DÉSERT ROCHEUX', 'LES ABORDS DU TOURNOI', 'LA VILLE DÉVASTÉE', 'L\'ARÈNE DE CELL'], 'db2_jr', 'db2_android'),
   themedLevel('jk', 'JUJUTSU KAISEN — SHIBUYA', 'La nuit d\'Halloween où tout a basculé',
-    ['LE CARREFOUR DE SHIBUYA', 'LA STATION SOUS-TERRAINE', 'LE SANCTUAIRE DE SUKUNA'], 'jk_curse', 'jk_user'),
+    ['LE CARREFOUR DE SHIBUYA', 'LA STATION SOUS-TERRAINE', 'LES RUES EN RUINE', 'LE SANCTUAIRE DE SUKUNA'], 'jk_curse', 'jk_user'),
   themedLevel('sl', 'SOLO LEVELING — LE DOUBLE DONJON', 'Le donjon où tout a commencé',
-    ['LA PORTE BLEUE', 'LES PROFONDEURS DU DONJON', 'LE TEMPLE DES STATUES'], 'sl_goblin', 'sl_knight'),
+    ['LA PORTE BLEUE', 'LES PROFONDEURS DU DONJON', 'LE PONT SUR L\'ABÎME', 'LE TEMPLE DES STATUES'], 'sl_goblin', 'sl_knight'),
   themedLevel('opm', 'ONE PUNCH MAN — CITÉ Z', 'L\'invasion venue du ciel',
-    ['LA CITÉ Z ABANDONNÉE', 'LE QG DE L\'ASSOCIATION', 'LE VAISSEAU DES ENVAHISSEURS'], 'opm_monster', 'opm_alien'),
+    ['LA CITÉ Z ABANDONNÉE', 'LE QG DE L\'ASSOCIATION', 'LE CENTRE-VILLE EN RUINE', 'LE VAISSEAU DES ENVAHISSEURS'], 'opm_monster', 'opm_alien'),
   themedLevel('bl2', 'BLEACH — HUECO MUNDO', 'Jusqu\'au sommet de Las Noches',
-    ['LE DÉSERT DE LA NUIT ÉTERNELLE', 'LES COULOIRS DE LAS NOCHES', 'LE DÔME DE LAS NOCHES'], 'bl2_arrancar', 'bl2_fraccion'),
+    ['LE DÉSERT DE LA NUIT ÉTERNELLE', 'LES COULOIRS DE LAS NOCHES', 'LA SALLE DU TRÔNE', 'LE DÔME DE LAS NOCHES'], 'bl2_arrancar', 'bl2_fraccion'),
 ];
 // Images des niveaux : ciel, décor (plan moyen détouré, ou mur plein pour les intérieurs) et sol de chaque zone
 for (const L of LEVELS.slice(1)) {
@@ -125,7 +119,7 @@ const GATES = {
 };
 for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = (GATES[L.id] || [])[k - 1]; }); // nouveaux mondes : fondu au noir seul
 // La forêt de la mort a son lointain (sinon le ciel du village et ses visages sculptés apparaissent entre les arbres)
-LEVELS.find(L => L.id === 'nr').zones[2].sky = 'nr_z3_sky';
+LEVELS.find(L => L.id === 'nr').zones.find(Z => Z.id === 'nr_z3').sky = 'nr_z3_sky';
 ASSETS.backgrounds.nr_z3_sky = 'assets/backgrounds/levels/nr_z3_sky.jpg';
 // Passages où l'on grimpe (l'échelle au bout du wagon mène au toit du train)
 const CLIMB = new Set(['ds_g1']), LADDER = 190; // l'échelle se dresse 190 px avant la limite
@@ -495,6 +489,11 @@ const STRIPS = {
   sl_z1: STRIP('curb_city', 46, 22), sl_z2: STRIP('rubble', 70, 30), sl_z3: STRIP('rubble', 70, 30),
   opm_z1: STRIP('curb_city', 46, 22), opm_z2: STRIP('rail_metal', 64, 24), opm_z3: STRIP('rail_metal', 64, 24),
   bl2_z1: STRIP('rubble', 70, 30), bl2_z2: STRIP('balustrade', 56, 22), bl2_z3: STRIP('rubble', 70, 30),
+  // 4es zones
+  op_z4: STRIP('curb_city', 46, 22), ds_z4: STRIP('rail_metal', 64, 24), bl_z4: STRIP('balustrade', 56, 22), hx_z4: STRIP('rail_metal', 64, 24),
+  nr_z4: STRIP('rocks_grass', 60, 26), db_z4: STRIP('rocks_namek', 80, 30), mh_z4: STRIP('rubble', 70, 30), rk_z4: STRIP('rail_wood', 70, 26),
+  op2_z4: STRIP('balustrade', 56, 22), nr2_z4: STRIP('rail_metal', 64, 24), ds2_z4: STRIP('rail_wood', 70, 26), db2_z4: STRIP('rubble', 70, 30),
+  jk_z4: STRIP('rubble', 70, 30), sl_z4: STRIP('rubble', 70, 30), opm_z4: STRIP('rubble', 70, 30), bl2_z4: STRIP('balustrade', 56, 22),
 };
 for (const S of new Set(Object.values(STRIPS).map(S => S.img))) ASSETS.backgrounds[S] = `assets/backgrounds/strips/${S.slice(6)}.png`;
 // Éclairage de la zone (luminosité moyenne du plan moyen : jour ou nuit) : la bordure prend la même lumière que le décor
