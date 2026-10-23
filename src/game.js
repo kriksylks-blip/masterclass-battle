@@ -678,21 +678,23 @@ const MK_MOVES = { ...SWORD,
   toupie: { dur: 0.9, cost: 35, on: 0.14, off: 0.66, multi: 0.1, reach: [-120, 160], y: [-230, -10], dmg: 1.1, kb: 120, ki: 0, launch: -380, push: 650, pushAt: 0.12, pushDur: 0.5, ghost: true,
             call: 'TOUPIE !', p: ['special', [0, 1, 2, 3], [0.12, 0.36, 0.72]], trail: { a0: -3.1, a1: 3.1, r: 145, at: 0.14, w: 32 } },
 };
-// Revy : deux pistolets. Planche de combo : 0 garde, 1 coup de crosse, 2 tir gauche, 3 tir droit, 4 genou, 5 pied avant,
-// 6 les deux pistolets, 7 moulinet. Chaque tir (shots) part du bout du canon dessiné, avec un éclair de bouche.
-const RV_MOVES = { ...NEWKICK(FIST),
-  punch:      { dur: 0.30, on: 0.06, off: 0.16, cancel: 0.16, reach: [20, 120], y: [-170, -90], dmg: 1.2, kb: 180, ki: 6, p: ['combo', [0, 1], [0.05]] },
-  cross:      { dur: 0.30, cancel: 0.18, ki: 0, shots: { at: [0.07], dmg: 1.2, kb: 120 }, p: ['combo', [2]] },
-  uppercut:   { dur: 0.42, ki: 0, shots: { at: [0.07], dmg: 2.2, kb: 320, launch: -420 }, p: ['combo', [3]] },
-  kick:       { dur: 0.36, on: 0.08, off: 0.22, cancel: 0.22, reach: [20, 125], y: [-130, -50], dmg: 1.5, kb: 240, ki: 6, p: ['combo', [4]] },
-  roundhouse: { dur: 0.42, on: 0.10, off: 0.26, cancel: 0.26, reach: [20, 160], y: [-150, -60], dmg: 2, kb: 300, ki: 8, p: ['combo', [5]] },
-  spinback:   { dur: 0.50, ki: 0, shots: { at: [0.07, 0.15], dmg: 1.6, kb: 260, launch: -380 }, call: 'HA HA !', p: ['combo', [6, 7], [0.3]] },
-  ckick:      { dur: 0.46, ki: 0, shots: { at: [0.2], dmg: 2, kb: 220, launch: -380 }, p: ['lowair', [0, 1, 2, 3], [0.06, 0.16, 0.36]] },
-  airkick:    { dur: 0.55, ki: 0, shots: { at: [0.14, 0.24], dmg: 1.3, kb: 200 }, p: ['lowair', [5, 6, 7], [0.1, 0.4]] },
-  // glissade sur le flanc en tirant devant elle
-  dash:       { dur: 0.6, on: 0.1, off: 0.34, reach: [0, 140], y: [-90, 0], dmg: 2.4, kb: 360, ki: 8, launch: -420, push: 1300, pushAt: 0.06, pushDur: 0.34, shots: { at: [0.3, 0.38], dmg: 1.2, kb: 160 }, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.46]] },
-  // Two Hands : la rafale des deux pistolets, une main après l'autre
-  twohands:   { dur: 0.9, cost: 35, ki: 0, shots: { at: [0.14, 0.22, 0.3, 0.38, 0.46, 0.54], dmg: 0.85, kb: 70, last: { kb: 520, launch: -520 } }, call: 'TWO HANDS !',
+// Revy : poings et pieds au corps à corps (planche de combo : 0 garde, 1 coup de crosse, 2-3 bras tendu, 4 genou,
+// 5 pied avant) ; les pistolets sont réservés au spécial Two Hands (payé en ki) et à l'ultime, comme une énergie.
+// Chaque tir (shots) part du bout du canon dessiné, avec un éclair de bouche.
+const RV_F = NEWKICK(FIST);
+const RV_MOVES = { ...RV_F,
+  punch:      { ...RV_F.punch, p: ['combo', [0, 1], [0.05]] },                       // coup de crosse
+  cross:      { ...RV_F.cross, p: ['combo', [2]] },                                  // crosse en direct, bras tendu
+  uppercut:   { ...RV_F.uppercut, p: ['combo', [1, 3], [0.1]] },                     // crosse armée puis frappée
+  kick:       { ...RV_F.kick, p: ['combo', [4]] },                                   // genou
+  roundhouse: { ...RV_F.roundhouse, p: ['combo', [5]] },                             // pied avant
+  spinback:   { ...RV_F.spinback, call: 'HA HA !', p: ['combo', [4, 5], [0.12]] },   // genou armé puis pied
+  ckick:      { ...RV_F.ckick, p: ['lowair', [0, 1, 3], [0.08, 0.3]] },              // roulade au sol
+  airkick:    { ...RV_F.airkick, p: ['lowair', [5, 6, 5], [0.08, 0.4]] },
+  // glissade sur le flanc, sans tirer
+  dash:       { dur: 0.6, on: 0.1, off: 0.34, reach: [0, 140], y: [-90, 0], dmg: 2.4, kb: 360, ki: 8, launch: -420, push: 1300, pushAt: 0.06, pushDur: 0.34, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.46]] },
+  // Two Hands : la rafale des deux pistolets, une main après l'autre (coûte du ki, ne le recharge pas)
+  twohands:   { dur: 0.9, cost: 35, ki: 0, shots: { at: [0.14, 0.22, 0.3, 0.38, 0.46, 0.54], dmg: 0.85, kb: 70, noKi: true, last: { kb: 520, launch: -520 } }, call: 'TWO HANDS !',
                 p: ['special', [0, 1, 2, 1, 2, 1, 2, 3], [0.1, 0.18, 0.26, 0.34, 0.42, 0.5, 0.66]] },
 };
 // Gally : Panzer Kunst, coups secs et précis. Spécial : une frappe de paume qui libère une onde de choc à l'impact
@@ -1249,7 +1251,9 @@ for (const [k, src] of Object.entries(FRAME_HD)) { const [sh, an, i] = k.split('
 // Animation dessinée à une autre échelle que les autres poses du même perso (marche vidéo de Kenshin trop petite)
 // Mesuré avec tools/facesize.py (taille du visage d'une animation à l'autre) : même tête sur toutes les poses
 const OTHER = (walk, other, anims = ['jump', 'fall', 'combo', 'lowair', 'dashcharge', 'special']) => ({ walk, ...Object.fromEntries(anims.map(a => [a, other])) });
-const ANIM_SIZE = { kenshin: OTHER(1.11, 0.79), zenitsu: OTHER(1.07, 0.76), ichigo: OTHER(1, 1.08), naruto: OTHER(1, 0.88), killua: OTHER(1, 0.9) };
+const ANIM_SIZE = { kenshin: OTHER(1.11, 0.79), zenitsu: OTHER(1.07, 0.76), ichigo: OTHER(1, 1.08), naruto: OTHER(1, 0.88), killua: OTHER(1, 0.9),
+  // Edward : même tête en garde, en recharge et en spécial (facesize : combo 0,93, lowair 0,92, special 1,07 de la marche)
+  edward: { combo: 1.075, lowair: 1.085, special: 0.935, jump: 0.96 } };
 for (const [sh, anims] of Object.entries(ANIM_SIZE))
   for (const [an, k] of Object.entries(anims)) { const A = SPRITES[sh]?.[an]; if (A) { A.scale *= k; if (A.rate) A.rate /= k; } }
 // Échelle du monde : tout le monde un peu plus petit pour qu'on tienne à 4 sur l'écran
@@ -1587,9 +1591,10 @@ function moveEffects(h, speed) {
     // les tirs lancés de la main (Rouge de Gojo, Delaware, rafale de ki) partent du bout de la main dessinée
     // la boule de feu d'Itachi part de sa bouche (from: 'mouth')
     const hand = P.from === 'mouth' ? mouthPoint(h) : HAND_SHOTS.includes(kind) && handPoint(h);
-    const px = hand ? h.x + h.dir * (hand[0] + 10 + (PROJ_R[kind] || 0) * (P.scale || 1)) : h.x + h.dir * 80, py = P.ground ? h.y - 6 : hand ? h.y + hand[1] : h.y - (P.low ? 40 : 110);
+    const px = hand ? h.x + h.dir * (hand[0] + 10 + (PROJ_R[kind] || 0) * (P.scale || 1)) : h.x + h.dir * 80, py = P.ground ? h.y - 6 : hand ? clamp(h.y + hand[1] + (PROJ_DY[kind] || 0), h.y - 150, h.y - 30) : h.y - (P.low ? 40 : 110);
     projs.push({ ...P, kind, filter: h.boost?.proj || '', owner: h, x: px, y: py, gz: h.gz, dir: h.dir, t: 0, hit: new Set(), dmg: P.dmg * (h.boost ? h.boost.dmg : 1) });
-    if (hand) burst(px, py, projColor({ kind }), 10);
+    if (kind === 'shell') cannonFX(px - h.dir * PROJ_R.shell * (P.scale || 1), py, h.dir);
+    else if (hand) burst(px, py, projColor({ kind }), 10);
     shake = Math.max(shake, 8); audio.slash(1.4);
   }
   // tirs de pistolet (Revy) : chacun part du bout du canon dessiné à cet instant
@@ -2534,7 +2539,9 @@ function updateDragonslayer(h) {
   if (!h.thrown && h.t >= DRAGON.blast) {
     h.thrown = true; flash = 0.4; shake = 20; audio.play('ultraBoom', 1, 0.8, 0);
     const hp = handPoint(h); // l'obus sort du bras de fer tendu, devant la main
-    projs.push({ kind: 'shell', owner: h, x: h.x + h.dir * ((hp ? hp[0] : 70) + PROJ_R.shell * 1.6), y: hp ? h.y + hp[1] : h.y - 120, gz: h.gz, dir: h.dir, t: 0, speed: 1300, life: 1.0, hit: new Set(), dmg: dmg * 0.4, kb: 700, launch: -800, scale: 1.6 });
+    const sx0 = h.x + h.dir * ((hp ? hp[0] : 70) + PROJ_R.shell * 1.6), sy0 = hp ? h.y + hp[1] : h.y - 120;
+    projs.push({ kind: 'shell', owner: h, x: sx0, y: sy0, gz: h.gz, dir: h.dir, t: 0, speed: 1300, life: 1.0, hit: new Set(), dmg: dmg * 0.4, kb: 700, launch: -800, scale: 1.6 });
+    cannonFX(sx0 - h.dir * 18, sy0, h.dir, 1.5);
     popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'TUEUR DE DRAGONS !!' });
     score += 2000;
   }
@@ -2607,7 +2614,7 @@ function updateExcalibur(h) {
     // faisceau doré qui part de la pointe de la lame tendue (hand : suit le bout de l'épée dessinée)
     h.beamed = true; flash = 0.8; shake = 24; say(h, 'EXCALIBUR !!');
     audio.play('waveFire', 1.2, 0.7, 0); audio.play('ultraBoom', 0.9, 1.2, 0);
-    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: EXCAL.beam, end: EXCAL.end - 0.12, len: 1200, thick: 1.9, dmg: dmg * 0.75 / 13, color: '#fff2a0', filter: 'hue-rotate(205deg) saturate(1.3) brightness(1.35)', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    projs.push({ kind: 'beam', hand: true, dy: 20, owner: h, move: 'ultra', at: EXCAL.beam, end: EXCAL.end - 0.12, len: 1200, thick: 1.9, dmg: dmg * 0.75 / 13, color: '#fff2a0', filter: 'hue-rotate(205deg) saturate(1.3) brightness(1.35)', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
     popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'EXCALIBUR !!' });
     score += 2000;
   }
@@ -2792,20 +2799,28 @@ function drawDemonBack(h, sx) {
 }
 
 // ---------- Ultime d'Itachi : Susanoo. Le guerrier spectral rouge se dresse derrière lui et abat son épée ----------
-const SUSANOO = { rise: 0.9, slash: 1.5, end: 2.4 };
+const SUSANOO = { rise: 0.9, slash: 1.5, end: 2.4, h: 450 };
+// Katon : largeur de l'image à l'écran (×scale du tir) et centre de la boule dans l'image
+const KATON = { w: 150, fx: 0.72, fy: 0.5 };
 function startSusanoo(h) { h.cut = false; say(h, 'Susanoo.'); audio.play('ultraCharge', 0.9, 0.8, 0); }
 function updateSusanoo(h) {
   h.inv = Math.max(h.inv, 0.1); h.vx = 0;
   if (!h.cut && h.t >= SUSANOO.slash) {
     h.cut = true; flash = 0.55; shake = 26; hitstop = 0.12; audio.slash(0.8); audio.play('ultraBoom', 1, 0.9, 0);
     slashFX(h.x + h.dir * 200, h.y - 170, h.dir, { a0: -1.6, a1: 1.2, r: 300, w: 60, c: '#ff4050', life: 0.5 });
+    fxs.push({ type: 'shock', x: h.x + h.dir * 300, y: h.gz - 40, dir: h.dir, t: 0, life: 0.45 }); impactFX(h.x + h.dir * 300, h.y - 150, '#ff5060', true);
+    for (let k = 0; k < 30; k++) particles.push({ x: h.x + h.dir * rand(150, 420), y: h.gz - rand(0, 40), vx: rand(-240, 240), vy: rand(-440, -120), t: 0, life: 0.7, c: Math.random() < 0.5 ? '#ff4050' : '#ffb0a0', r: rand(3, 7) });
     ultraHit(h, 460, ULT_SOLO * (4 + h.power / 10), 110, -30); // un seul coup : ~19 à 100 de ki
     popups.push({ x: h.x + h.dir * 260, y: h.y - 290, t: 0, text: 'SUSANOO !!' });
     score += 2000;
   }
+  const fl = h.t < SUSANOO.rise ? 1.6 : h.t > SUSANOO.end - 0.45 ? 1.2 : 0.4;
+  if (Math.random() < fl) particles.push({ x: h.x - h.dir * rand(-140, 220), y: h.gz - rand(0, h.t < SUSANOO.rise ? 120 : 420), vx: rand(-30, 30), vy: rand(-260, -100), t: 0, life: rand(0.4, 0.8), c: Math.random() < 0.6 ? '#ff3040' : '#ff9a80', r: rand(3, 7), soft: true });
   if (h.t > SUSANOO.end) h.state = 'idle';
 }
 function drawSusanoo(h, sx) {
+  const img = IMG.fx_susanoo;
+  if (img) return drawSusanooImg(h, sx, img);
   const t = h.t, a = Math.min(1, t / SUSANOO.rise) * (t > SUSANOO.end - 0.4 ? Math.max(0, (SUSANOO.end - t) / 0.4) : 1);
   const s = 0.5 + 0.28 * Math.min(1, t / SUSANOO.rise), red = al => `rgba(255,60,70,${al})`;
   ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.6 * a;
@@ -2827,10 +2842,34 @@ function drawSusanoo(h, sx) {
   ctx.restore(); ctx.restore();
 }
 
+// Susanoo en image (assets/fx/susanoo.jpg, fond noir -> mode additif) : il se forme du bas vers le haut derrière
+// Itachi, respire, arme son épée puis l'abat (rotation autour de l'épaule), et se dissipe
+function drawSusanooImg(h, sx, img) {
+  const t = h.t, S = SUSANOO, sc = Math.min(S.h, h.y - 30) / img.height, w = img.width * sc, hh = img.height * sc;
+  const rev = clamp(t / S.rise, 0, 1), a = (0.35 + 0.65 * rev) * (t > S.end - 0.4 ? Math.max(0, (S.end - t) / 0.4) : 1);
+  // épaule du bras armé dans l'image (fraction) : pivot de l'abattage
+  const px = 0.42, py = 0.36;
+  const ang = t < S.slash - 0.45 ? 0 : t < S.slash - 0.2 ? -0.44 * (t - S.slash + 0.45) / 0.25 : t < S.slash ? -0.44 + 1.05 * (t - S.slash + 0.2) / 0.2 : 0.61 - 0.3 * Math.min(1, (t - S.slash) / 0.6);
+  const breathe = 1 + Math.sin(t * 4) * 0.012;
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a;
+  ctx.translate(sx - h.dir * 50, h.y + 8); ctx.scale(h.dir, 1);
+  // révélation du bas vers le haut
+  if (rev < 1) { ctx.beginPath(); ctx.rect(-w * 1.2, -hh * rev, w * 2.4, hh * rev + 40); ctx.clip(); }
+  // la cage thoracique s'allume : lueur rouge au torse
+  const cx = 0, cy = -hh * 0.55, glow = ctx.createRadialGradient(cx, cy, 5, cx, cy, w * 0.45);
+  glow.addColorStop(0, `rgba(255,70,80,${0.35 * rev})`); glow.addColorStop(1, 'rgba(255,30,40,0)');
+  ctx.fillStyle = glow; ctx.fillRect(-w, -hh, w * 2, hh);
+  ctx.translate(-w * 0.5 + px * w, -hh + py * hh); ctx.rotate(ang); ctx.scale(1, breathe);
+  ctx.drawImage(img, -px * w, -py * hh, w, hh);
+  ctx.restore();
+  // flash rouge au moment du coup
+  if (t > S.slash && t < S.slash + 0.25) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = `rgba(255,30,40,${0.35 * (1 - (t - S.slash) / 0.25)})`; ctx.fillRect(0, 0, W, H); ctx.restore(); }
+}
+
 // ---------- Ultime d'Eren : le Titan Assaillant. Il se mord la main, l'éclair jaune tombe, le titan se dresse
 // derrière lui dans la vapeur et écrase le sol d'un coup de poing devant lui ----------
-const TITAN = { rise: 0.75, punch: 1.5, end: 2.4 };
-function startTitan(h) { h.cut = h.lit = false; say(h, 'JE LES EXTERMINERAI TOUS !'); audio.play('ultraCharge', 0.9, 0.8, 0); }
+const TITAN = { appear: 0.5, rise: 0.75, punch: 1.5, end: 2.4, fist: 400 }; // fist : poing à 400 px devant Eren
+function startTitan(h) { h.cut = h.lit = h.risen = false; say(h, 'JE LES EXTERMINERAI TOUS !'); audio.play('ultraCharge', 0.9, 0.8, 0); }
 function updateTitan(h) {
   h.inv = Math.max(h.inv, 0.1); h.vx = 0;
   if (!h.lit && h.t >= 0.4) {
@@ -2838,38 +2877,55 @@ function updateTitan(h) {
     h.lit = true; flash = 0.7; shake = 18; audio.play('ultraBoom', 0.8, 1.3, 0);
     for (let k = 0; k < 6; k++) animFX('green_arc', h.x + rand(-40, 40), h.y - rand(40, 220), rand(60, 110), 0.3, { rot: rand(-1, 1), filter: 'hue-rotate(-70deg) saturate(1.6) brightness(1.3)' });
   }
-  if (h.t > 0.4 && h.t < TITAN.end - 0.3 && Math.random() < 0.6) particles.push({ x: h.x - h.dir * rand(0, 120), y: h.y - rand(40, 360), vx: rand(-30, 30), vy: rand(-120, -50), t: 0, life: 0.9, c: 'rgba(255,240,235,0.45)', r: rand(10, 22), soft: true });
+  if (!h.risen && h.t >= TITAN.appear) {
+    // le titan surgit : explosion de vapeur et second éclair
+    h.risen = true; flash = 0.5; shake = 22; audio.play('ultraBoom', 0.9, 0.7, 0);
+    for (let k = 0; k < 5; k++) animFX('green_arc', h.x - h.dir * rand(0, 120), h.y - rand(120, 420), rand(90, 150), 0.35, { rot: rand(-1, 1), filter: 'hue-rotate(-70deg) saturate(1.6) brightness(1.3)' });
+    for (let k = 0; k < 60; k++) particles.push({ x: h.x - h.dir * rand(-60, 200), y: h.gz - rand(0, 300), vx: rand(-160, 160), vy: rand(-260, -60), t: 0, life: rand(0.8, 1.3), c: 'rgba(255,250,245,0.16)', r: rand(26, 50), soft: true }); // vapeur légère : beaucoup de bouffées très transparentes plutôt que des disques
+  }
+  // vapeur qui monte du corps du titan tant qu'il est là
+  if (h.t > TITAN.appear && h.t < TITAN.end - 0.2 && Math.random() < 0.8) particles.push({ x: h.x - h.dir * rand(-80, 220), y: h.gz - rand(60, 420), vx: rand(-30, 30), vy: rand(-140, -60), t: 0, life: 1, c: 'rgba(255,245,240,0.13)', r: rand(20, 36), soft: true });
   if (!h.cut && h.t >= TITAN.punch) {
-    h.cut = true; flash = 0.6; shake = 30; hitstop = 0.14; audio.play('ultraBoom', 1, 0.8, 0);
-    shockFX(h.x + h.dir * 230, h.gz - 30, h.dir);
-    for (let k = 0; k < 18; k++) particles.push({ x: h.x + h.dir * rand(140, 340), y: h.gz - rand(0, 20), vx: rand(-160, 160), vy: rand(-380, -120), t: 0, life: 0.7, c: Math.random() < 0.5 ? '#8a7060' : '#5a4a40', r: rand(4, 9) });
-    ultraHit(h, 440, ULT_SOLO * (4 + h.power / 10), 120, -30); // un seul coup : ~19 à 100 de ki
-    popups.push({ x: h.x + h.dir * 260, y: h.y - 300, t: 0, text: 'TITAN ASSAILLANT !!' });
+    h.cut = true; flash = 0.7; shake = 32; hitstop = 0.16; audio.play('ultraBoom', 1, 0.8, 0);
+    const fx = h.x + h.dir * TITAN.fist;
+    shockFX(fx, h.gz - 40, h.dir); impactFX(fx, h.gz - 260, '#fff0c0', true);
+    for (let k = 0; k < 26; k++) particles.push({ x: fx + rand(-120, 80), y: h.gz - rand(0, 20), vx: rand(-200, 200), vy: rand(-420, -120), t: 0, life: 0.8, c: Math.random() < 0.5 ? '#8a7060' : '#5a4a40', r: rand(4, 10) });
+    ultraHit(h, TITAN.fist + 60, ULT_SOLO * (4 + h.power / 10), 130, -30); // un seul coup : ~19 à 100 de ki
+    popups.push({ x: fx, y: h.y - 320, t: 0, text: 'TITAN ASSAILLANT !!' });
     score += 2000;
   }
-  if (h.t > TITAN.end) h.state = 'idle';
+  // il se dissout en vapeur
+  if (h.t > TITAN.end - 0.55 && h.t < TITAN.end && Math.random() < 0.9)
+    for (let k = 0; k < 3; k++) particles.push({ x: h.x - h.dir * rand(-200, 240), y: h.gz - rand(40, 440), vx: rand(-60, 60), vy: rand(-180, -60), t: 0, life: 1.1, c: 'rgba(255,255,255,0.15)', r: rand(28, 50), soft: true });
+  if (h.t > TITAN.end) { h.state = 'idle'; h.risen = false; }
 }
+// Le titan (images assets/fx/titan_rise.png et titan_punch.png, de profil vers la droite) : il grandit dans la
+// vapeur derrière Eren, rugit, puis se fend d'un direct ; même échelle de corps pour les deux images, pieds au sol
 function drawTitan(h, sx) {
-  const t = h.t, a = Math.min(1, Math.max(0, (t - 0.4) / 0.4)) * (t > TITAN.end - 0.4 ? Math.max(0, (TITAN.end - t) / 0.4) : 1);
-  if (a <= 0) return;
-  const s = 0.55 + 0.25 * Math.min(1, Math.max(0, (t - 0.4) / 0.5)), skin = al => `rgba(150,70,50,${al})`;
-  ctx.save(); ctx.globalAlpha = 0.62 * a; ctx.translate(sx - h.dir * 40, h.y); ctx.scale(h.dir * s, s);
-  ctx.fillStyle = skin(0.55); ctx.strokeStyle = 'rgba(60,20,15,0.9)'; ctx.lineWidth = 6; ctx.lineJoin = 'round';
-  // torse décharné, côtes et muscles à vif
-  ctx.beginPath(); ctx.moveTo(-90, -120); ctx.quadraticCurveTo(-120, -300, -60, -400); ctx.lineTo(70, -400); ctx.quadraticCurveTo(125, -300, 90, -120); ctx.closePath(); ctx.fill(); ctx.stroke();
-  ctx.lineWidth = 4; for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.moveTo(-60, -330 + k * 40); ctx.quadraticCurveTo(0, -310 + k * 40, 60, -330 + k * 40); ctx.stroke(); }
-  // tête : longs cheveux noirs, yeux verts qui brillent, mâchoire aux dents nues
-  ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(10, -460, 55, 64, 0, 0, 7); ctx.fill(); ctx.stroke();
-  ctx.fillStyle = 'rgba(20,12,10,0.85)'; ctx.beginPath(); ctx.moveTo(-55, -470); ctx.quadraticCurveTo(-30, -560, 40, -540); ctx.quadraticCurveTo(80, -520, 66, -460); ctx.quadraticCurveTo(40, -500, -20, -495); ctx.quadraticCurveTo(-60, -420, -75, -380); ctx.closePath(); ctx.fill();
-  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = 'rgba(140,255,170,0.95)'; ctx.beginPath(); ctx.ellipse(-2, -470, 10, 5, 0, 0, 7); ctx.ellipse(36, -470, 10, 5, 0, 0, 7); ctx.fill(); ctx.restore();
-  ctx.strokeStyle = 'rgba(255,240,230,0.9)'; ctx.lineWidth = 3; ctx.beginPath(); for (let x = -18; x <= 40; x += 8) { ctx.moveTo(x, -432); ctx.lineTo(x, -418); } ctx.stroke();
-  // le bras : levé au-dessus de la tête, puis le poing s'abat devant lui
-  const u = clamp((t - TITAN.punch + 0.3) / 0.3, 0, 1);
-  ctx.save(); ctx.translate(80, -370); ctx.rotate(-2.3 + u * 3.0);
-  ctx.fillStyle = skin(0.6); ctx.strokeStyle = 'rgba(60,20,15,0.9)'; ctx.lineWidth = 6;
-  ctx.beginPath(); ctx.ellipse(125, 0, 130, 32, 0, 0, 7); ctx.fill(); ctx.stroke();
-  ctx.beginPath(); ctx.arc(270, 0, 52, 0, 7); ctx.fill(); ctx.stroke();
-  ctx.restore(); ctx.restore();
+  const t = h.t, rise = IMG.fx_titan_rise, punch = IMG.fx_titan_punch;
+  if (!rise || !punch || t < TITAN.appear) return;
+  const out = t > TITAN.end - 0.55 ? clamp((TITAN.end - t) / 0.55, 0, 1) : 1;
+  const H = Math.min(470, h.y - 24), s = H / rise.height; // jamais au-dessus du haut de l'écran
+  const g = clamp((t - TITAN.appear) / 0.28, 0, 1), grow = 0.55 + 0.45 * (1 - Math.pow(1 - g, 3)) + (g >= 1 && t < TITAN.punch - 0.2 ? 0.02 * Math.sin(t * 40) : 0);
+  ctx.save(); ctx.globalAlpha = g * out;
+  if (t < TITAN.punch - 0.18) {
+    // debout derrière Eren, il hurle (léger tremblement)
+    const w = rise.width * s * grow, hh = rise.height * s * grow, jit = g >= 1 ? rand(-2, 2) : 0;
+    ctx.translate(sx - h.dir * 110 + jit, h.y); ctx.scale(h.dir, 1);
+    ctx.drawImage(rise, -w / 2, -hh, w, hh);
+  } else {
+    // le direct : le corps se jette en avant, le poing (à droite de l'image) part vers h.dir
+    const u = clamp((t - (TITAN.punch - 0.18)) / 0.18, 0, 1), lunge = 90 * (1 - Math.pow(1 - u, 2));
+    const w = punch.width * s, hh = punch.height * s;
+    ctx.translate(sx + h.dir * (TITAN.fist - w * 0.94 + lunge - 90), h.y); ctx.scale(h.dir, 1);
+    ctx.drawImage(punch, 0, -hh, w, hh);
+  }
+  ctx.restore();
+  // brume blanche au pied du titan
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.5 * g * out;
+  const fg = ctx.createRadialGradient(sx - h.dir * 60, h.y - 30, 10, sx - h.dir * 60, h.y - 30, 260);
+  fg.addColorStop(0, 'rgba(255,250,240,0.6)'); fg.addColorStop(1, 'rgba(255,250,240,0)');
+  ctx.fillStyle = fg; ctx.fillRect(sx - h.dir * 60 - 260, h.y - 290, 520, 300); ctx.restore();
 }
 
 // ---------- Ultime de Boruto : deux clones surgissent à ses côtés et les trois lancent ensemble un Rasengan évanescent ----------
@@ -2909,6 +2965,8 @@ function updateAlchemy(h) {
     popups.push({ x: cx, y: h.y - 310, t: 0, text: 'GRANDE TRANSMUTATION !!' });
     score += 2000;
   }
+  if (h.t > ALCH.end - 0.6 && h.t < ALCH.end && Math.random() < 0.9)
+    particles.push({ x: cx + h.dir * rand(-60, 120), y: h.gz - rand(40, 170), vx: rand(-60, 60), vy: rand(60, 220), t: 0, life: 0.6, c: Math.random() < 0.5 ? '#7a7a80' : '#5a5048', r: rand(4, 9) });
   if (h.t > ALCH.end) h.state = 'idle';
 }
 // cercle de transmutation au sol (ellipse vue de biais) et poing de pierre qui sort de terre puis s'abat
@@ -2927,21 +2985,21 @@ function drawAlchemy(h, sx) {
     ctx.restore();
   }
   if (t > ALCH.rise) {
-    // le poing de pierre : il monte du cercle (rise → hit), puis bascule vers l'avant pour frapper
-    const up = Math.min(1, (t - ALCH.rise) / (ALCH.hit - ALCH.rise - 0.1)), fall = clamp((t - ALCH.hit + 0.12) / 0.2, 0, 1);
-    const a = t > ALCH.end - 0.4 ? Math.max(0, (ALCH.end - t) / 0.4) : 1, Hh = 300 * up;
-    ctx.save(); ctx.globalAlpha = a; ctx.translate(cx - h.dir * 40, gy + 6); ctx.scale(h.dir, 1); ctx.rotate(fall * 0.55);
-    const g = ctx.createLinearGradient(0, -Hh, 0, 0); g.addColorStop(0, '#b0a090'); g.addColorStop(1, '#5a5048');
-    ctx.fillStyle = g; ctx.strokeStyle = '#2a241f'; ctx.lineWidth = 5; ctx.lineJoin = 'round';
-    // avant-bras de roche, puis le poing fermé avec ses jointures
-    ctx.beginPath(); ctx.moveTo(-55, 0); ctx.lineTo(-48, -Hh + 90); ctx.lineTo(48, -Hh + 90); ctx.lineTo(60, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
-    if (Hh > 90) {
-      ctx.beginPath(); ctx.roundRect(-70, -Hh, 150, 105, 26); ctx.fill(); ctx.stroke();
-      ctx.lineWidth = 3; for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.moveTo(-35 + k * 38, -Hh + 6); ctx.lineTo(-35 + k * 38, -Hh + 48); ctx.stroke(); }
-      ctx.beginPath(); ctx.moveTo(60, -Hh + 40); ctx.quadraticCurveTo(95, -Hh + 55, 70, -Hh + 85); ctx.stroke(); // pouce
-    }
-    ctx.strokeStyle = 'rgba(30,25,20,0.6)'; ctx.lineWidth = 2;
-    for (let k = 1; k < 5; k++) { ctx.beginPath(); ctx.moveTo(-50, -k * Hh / 6); ctx.lineTo(-10, -k * Hh / 6 - 10); ctx.lineTo(30, -k * Hh / 6 + 4); ctx.stroke(); }
+    // le bras de pierre (assets/fx/ed_fist.png) surgit du cercle, frappe vers l'avant au moment du coup, puis s'effrite
+    const img = IMG.fx_ed_fist;
+    if (!img) return;
+    const W2 = 340, H2 = W2 * img.height / img.width;
+    const up = clamp((t - ALCH.rise) / 0.25, 0, 1), punch = clamp((t - (ALCH.hit - 0.15)) / 0.15, 0, 1);
+    const crumble = clamp((t - (ALCH.end - 0.6)) / 0.6, 0, 1), e = 1 - Math.pow(1 - up, 3);
+    const jitter = up < 1 ? (Math.random() - 0.5) * 6 : 0;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(cx - 600, gy - 700, 1200, 714); ctx.clip(); // rien sous le sol
+    ctx.translate(cx + jitter, gy + 14 + (1 - e) * H2 + crumble * 40);
+    ctx.scale(h.dir, 1);
+    // la frappe : il se jette en avant et pivote un peu
+    ctx.translate(-150 + punch * 110, 0); ctx.rotate(-0.12 + punch * 0.16);
+    ctx.globalAlpha = 1 - crumble;
+    ctx.drawImage(img, 0, -H2, W2, H2);
     ctx.restore();
   }
 }
@@ -3865,6 +3923,43 @@ function drawFX(ghosts = false) {
       ctx.globalAlpha = 1;
       continue;
     }
+    if (f.type === 'smoke') {
+      // bouffée de fumée (grise, noire pour une explosion) qui grossit, dérive et s'éteint
+      const x = sx + (f.vx || 0) * f.t, y = f.y + (f.vy || 0) * f.t, r = f.r * (1 + k * 1.6);
+      ctx.save(); ctx.globalAlpha = (1 - k) * (f.dark ? 0.7 : 0.45); ctx.fillStyle = f.dark ? '#1c1816' : '#8a8680';
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); ctx.restore(); continue;
+    }
+    if (f.type === 'cannon') {
+      // éclair de bouche du canon : grande étoile orange et jaune, cœur blanc
+      ctx.save(); ctx.translate(sx, f.y); ctx.scale((f.dir || 1) * f.big, f.big); ctx.rotate(f.rot); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k;
+      const g = ctx.createRadialGradient(18, 0, 2, 18, 0, 70); g.addColorStop(0, 'rgba(255,250,220,1)'); g.addColorStop(0.35, 'rgba(255,190,60,0.9)'); g.addColorStop(1, 'rgba(255,80,0,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(18, 0, 70, 0, 7); ctx.fill();
+      ctx.fillStyle = '#fff3b0';
+      ctx.beginPath(); ctx.moveTo(0, -12); ctx.lineTo(95, 0); ctx.lineTo(0, 12); ctx.closePath(); ctx.fill();
+      for (const a of [-0.9, -0.45, 0.45, 0.9]) { ctx.save(); ctx.rotate(a); ctx.beginPath(); ctx.moveTo(4, -6); ctx.lineTo(55, 0); ctx.lineTo(4, 6); ctx.closePath(); ctx.fill(); ctx.restore(); }
+      ctx.restore(); continue;
+    }
+    if (f.type === 'blast') {
+      // explosion de l'obus : boule de feu qui gonfle puis rougit, anneau de souffle
+      const r = (40 + 90 * Math.sqrt(k)) * f.big;
+      ctx.save(); ctx.translate(sx, f.y); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k * k;
+      const g = ctx.createRadialGradient(0, 0, 0, 0, 0, r);
+      g.addColorStop(0, k < 0.3 ? '#fffbe0' : '#ffd070'); g.addColorStop(0.35, 'rgba(255,150,40,0.95)'); g.addColorStop(0.7, 'rgba(220,50,10,0.7)'); g.addColorStop(1, 'rgba(120,20,0,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill();
+      ctx.strokeStyle = `rgba(255,220,150,${0.8 * (1 - k)})`; ctx.lineWidth = 5 * f.big; ctx.beginPath(); ctx.ellipse(0, 0, r * 1.5, r * 0.6, 0, 0, 7); ctx.stroke();
+      ctx.restore(); continue;
+    }
+    if (f.type === 'edspike') {
+      // pics de pierre d'Edward : ils jaillissent du sol (étirés du bas vers le haut, petit rebond), restent, puis rentrent sous terre
+      const img = IMG.fx_ed_spike; if (!img) continue;
+      const t = f.t, ob = u => 1 + 3.2 * Math.pow(u - 1, 3) + 2.2 * Math.pow(u - 1, 2);
+      const rise = t < 0.15 ? Math.max(0, ob(t / 0.15)) : 1, sink = clamp((t - 0.45) / 0.27, 0, 1);
+      const H = 135 * f.sc, w = H * (img.width / 2) / img.height;
+      ctx.save(); ctx.beginPath(); ctx.rect(sx - w, f.y - H * 1.4, w * 2, H * 1.4 + 6); ctx.clip();
+      ctx.translate(sx, f.y + 6 + sink * H); ctx.scale(f.dir, 1); ctx.globalAlpha = 1 - sink * 0.6;
+      ctx.drawImage(img, f.half ? img.width / 2 : 0, 0, img.width / 2, img.height, -w / 2, -H * rise, w, H * rise);
+      ctx.restore(); continue;
+    }
     if (f.type === 'muzzle' || f.type === 'shock') {
       ctx.save(); ctx.translate(sx, f.y); ctx.scale(f.dir || 1, 1); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k;
       if (f.type === 'muzzle') {
@@ -3944,7 +4039,7 @@ function updateProjs(dt) {
     if (p.kind === 'beam') {
       // Le Kamehameha part des mains et s'allonge ; il touche en continu ce qui est sur sa ligne
       const hp = p.hand && handPoint(h); // Excalibur : depuis la pointe de la lame dessinée
-      p.x = hp ? h.x + h.dir * (hp[0] + 6) : h.x + h.dir * 78; p.y = hp ? h.y + hp[1] : h.y - (p.high || 118) * WORLD; p.dir = h.dir; p.gz = h.gz;
+      p.x = hp ? h.x + h.dir * (hp[0] + 6) : h.x + h.dir * 78; p.y = hp ? clamp(h.y + hp[1] + (p.dy || 0), h.y - 150, h.y - 40) : h.y - (p.high || 118) * WORLD; p.dir = h.dir; p.gz = h.gz;
       p.len = Math.min(p.reach ??= p.len, p.t * 2800); // le rayon s'allonge jusqu'à sa portée
       if (h.state !== p.move || h.t > p.end) { p.done = true; continue; }
       if (p.t - p.multiT >= 0.08) { p.multiT = p.t; p.hit.clear(); }
@@ -3974,7 +4069,20 @@ function updateProjs(dt) {
     if (p.kind === 'glacier') { if (p.t > p.life) p.done = true; continue; } // décor : les coups sont portés par ultraHit
     if (p.kind === 'bullet' && p.fx) { p.x += p.dir * p.speed * dt; if (p.t > p.life) p.done = true; continue; } // balle de décor (pluie de balles)
     p.x += p.dir * p.speed * dt;
-    if (p.kind === 'stonewall') { p.x0 ??= p.x - p.dir * p.speed * dt; if (Math.random() < 0.7) particles.push({ x: p.x, y: p.gz - rand(0, 20), vx: rand(-80, 80), vy: rand(-240, -80), t: 0, life: 0.45, c: Math.random() < 0.5 ? '#9a8a78' : '#5a5048', r: rand(3, 6) }); }
+    if (p.kind === 'stonewall') {
+      p.x0 ??= p.x - p.dir * p.speed * dt;
+      // les pics jaillissent par vagues qui avancent avec le front du mur (image assets/fx/ed_spike.png)
+      if (IMG.fx_ed_spike && p.t >= (p.nextW ??= 0)) {
+        p.nextW += 0.2; p.wi = (p.wi || 0) + 1;
+        fxs.push({ type: 'edspike', x: p.x, y: p.gz, dir: p.dir, t: 0, life: 0.72, half: p.wi % 2, sc: p.scale || 1 });
+        shake = Math.max(shake, 6);
+        for (let k = 0; k < 10; k++) particles.push({ x: p.x + rand(-60, 60), y: p.gz - rand(0, 12), vx: rand(-160, 160), vy: rand(-380, -120), t: 0, life: 0.55, c: Math.random() < 0.5 ? '#8a7a68' : '#5a5048', r: rand(3, 7) });
+      }
+      if (Math.random() < 0.5) particles.push({ x: p.x, y: p.gz - rand(0, 20), vx: rand(-80, 80), vy: rand(-240, -80), t: 0, life: 0.45, c: Math.random() < 0.5 ? '#9a8a78' : '#5a5048', r: rand(3, 6) });
+    }
+    if (p.kind === 'katon' && Math.random() < 0.9) for (let k = 0; k < 2; k++) particles.push({ x: p.x - p.dir * rand(20, 90) * (p.scale || 1), y: p.y + rand(-30, 30), vx: -p.dir * rand(60, 200), vy: rand(-160, -20), t: 0, life: rand(0.3, 0.55), c: Math.random() < 0.5 ? '#ffb030' : '#ff5a10', r: rand(2, 5) });
+    if (p.kind === 'shell' && p.t - (p.smokeT || 0) > 0.025) { p.smokeT = p.t; fxs.push({ type: 'smoke', x: p.x - p.dir * 14, y: p.y + rand(-3, 3), r: rand(7, 11) * (p.scale || 1), t: 0, life: 0.5 }); }
+    if (p.kind === 'icewall' && p.t > p.life - 0.25 && Math.random() < 0.9) for (let k = 0; k < 3; k++) particles.push({ x: p.x - p.dir * rand(0, 300), y: p.gz - rand(10, 150), vx: rand(-120, 120), vy: rand(-260, -40), t: 0, life: 0.5, c: Math.random() < 0.5 ? '#e8fbff' : '#9fe0ff', r: rand(3, 7) });
     if (p.kind === 'icewall') { p.x0 ??= p.x - p.dir * p.speed * dt; if (Math.random() < 0.7) particles.push({ x: p.x, y: p.gz - rand(0, 20), vx: rand(-60, 60), vy: rand(-200, -60), t: 0, life: 0.4, c: Math.random() < 0.5 ? '#e8fbff' : '#9fe0ff', r: rand(2, 5) }); }
     if (p.kind === 'shuriken') {
       p.y += ((h.y - (p.ult ? 110 : 130)) - p.y) * Math.min(1, dt * 4);
@@ -3989,6 +4097,8 @@ function updateProjs(dt) {
       // une balle s'arrête dans le premier ennemi touché et recharge un peu de ki
       if (p.burst) { p.t = p.life + 1; break; } // Rasen-shuriken : il éclate sur le premier ennemi touché
       if (p.ult && p.stuckT == null) { p.stuckT = p.t; p.speed = 0; } // ultime : il s'arrête dans le premier ennemi
+      if (p.kind === 'shell') { blastFX(p.x + p.dir * 10, p.y, p.scale || 1); p.done = true; break; }
+      if (p.kind === 'katon') { blastFX(e.x - p.dir * 10, p.y, 0.8); animFX('explosion', e.x, p.y, 220, 0.45, { filter: 'hue-rotate(-15deg) saturate(1.6)' }); continue; }
       if (p.kind === 'bullet') { p.done = true; if (h) h.ki = Math.min(100, h.ki + p.ki); impactFX(e.x - p.dir * 20, p.y, '#ffe0a0', false); break; }
       if (p.kind === 'airshot' || p.kind === 'red') animFX('explosion', e.x, e.y - 110, 200, 0.4, p.kind === 'red' ? { filter: 'hue-rotate(-30deg) saturate(2)' } : {});
       else if (p.kind !== 'shuriken') slashFX(e.x, e.y - 110, p.dir, { a0: -1.2, a1: 1.2, r: 70, c: projColor(p), life: 0.2 });
@@ -3999,6 +4109,7 @@ function updateProjs(dt) {
       particles.push({ x: p.x - p.dir * rand(0, 60), y: p.y + rand(-70, 70), vx: -p.dir * rand(50, 150), vy: rand(-80, 40) - (p.kind === 'firewave' ? 100 : 0), t: 0, life: 0.4, c: p.kind === 'firewave' ? (Math.random() < 0.5 ? '#ff7a1a' : '#ffd060') : (Math.random() < 0.5 ? '#5ad1ff' : '#e8fbff'), r: rand(2, 5) });
     if (p.t > p.life || Math.abs(p.x - camX - W / 2) > W) {
       p.done = true;
+      if (p.kind === 'shell' && p.t > p.life) blastFX(p.x, p.y, (p.scale || 1) * 0.8);
       if (p.kind === 'shuriken') {
         // Explosion finale : une sphère de vent tranchant
         flash = p.burst ? 0.4 : 0.8; shake = p.burst ? 14 : 26; hitstop = 0.1; audio.play('ultraBoom', p.burst ? 0.8 : 1.2, 1.1, 0);
@@ -4021,11 +4132,24 @@ function fireBullet(h, S) {
   const hp = handPoint(h), dmg = S.dmg * (h.boost ? h.boost.dmg : 1), n = h.boost?.rapid ? 2 : 1;
   const px = h.x + h.dir * ((hp ? hp[0] : 70) + PROJ_R.bullet), py = hp ? h.y + hp[1] : h.y - 120;
   for (let k = 0; k < n; k++)
-    projs.push({ kind: 'bullet', owner: h, x: px - h.dir * k * 14, y: py + k * 10, gz: h.gz, dir: h.dir, t: 0, speed: S.speed || 1900, life: 0.55, hit: new Set(), dmg: dmg / n * (n > 1 ? 1.3 : 1), kb: S.kb || 100, launch: S.launch, ki: 3, fx: S.fx });
+    projs.push({ kind: 'bullet', owner: h, x: px - h.dir * k * 14, y: py + k * 10, gz: h.gz, dir: h.dir, t: 0, speed: S.speed || 1900, life: 0.55, hit: new Set(), dmg: dmg / n * (n > 1 ? 1.3 : 1), kb: S.kb || 100, launch: S.launch, ki: S.noKi ? 0 : 3, fx: S.fx });
   fxs.push({ type: 'muzzle', x: px - h.dir * PROJ_R.bullet * 0.6, y: py, dir: h.dir, t: 0, life: 0.07, rot: rand(-0.2, 0.2) });
   audio.play('waveHit', 0.25, 2.4, 0.05); shake = Math.max(shake, 3);
 }
 // Onde de choc de la paume de Gally : anneaux qui s'ouvrent devant le point d'impact
+// Canon de Guts : éclair de bouche en étoile orange devant le bras, fumée grise qui s'étire vers l'avant
+function cannonFX(x, y, dir, big = 1) {
+  fxs.push({ type: 'cannon', x, y, dir, t: 0, life: 0.16, big, rot: rand(-0.15, 0.15) });
+  for (let k = 0; k < 7; k++) fxs.push({ type: 'smoke', x: x + dir * rand(10, 70) * big, y: y + rand(-14, 10), r: rand(10, 18) * big, vx: dir * rand(60, 180), vy: rand(-50, -10), t: 0, life: rand(0.5, 0.8) });
+  for (let k = 0; k < 8; k++) particles.push({ x, y, vx: dir * rand(200, 600), vy: rand(-180, 120), t: 0, life: 0.25, c: Math.random() < 0.5 ? '#ffd060' : '#ff7a1a', r: rand(2, 4) });
+}
+// Explosion de l'obus : boule de feu, fumée noire qui monte, éclats, onde
+function blastFX(x, y, big = 1) {
+  fxs.push({ type: 'blast', x, y, t: 0, life: 0.55, big });
+  for (let k = 0; k < 9; k++) fxs.push({ type: 'smoke', x: x + rand(-40, 40) * big, y: y + rand(-30, 10) * big, r: rand(16, 30) * big, vx: rand(-40, 40), vy: rand(-140, -60), t: -rand(0.05, 0.15), life: rand(0.8, 1.2), dark: true });
+  for (let k = 0; k < 18; k++) particles.push({ x, y, vx: rand(-520, 520), vy: rand(-520, 120), t: 0, life: rand(0.3, 0.6), c: Math.random() < 0.4 ? '#ffe080' : Math.random() < 0.5 ? '#ff6a1a' : '#4a4038', r: rand(2, 5) });
+  shake = Math.max(shake, 14 * big); hitstop = Math.max(hitstop, 0.05); audio.play('ultraBoom', 0.6 * big, 1.4, 0);
+}
 function shockFX(x, y, dir) { fxs.push({ type: 'shock', x, y, dir, t: 0, life: 0.38 }); impactFX(x, y, '#9fd8ff', true); }
 
 // « Super flash » façon FighterZ : le décor s'assombrit le temps d'un coup spécial ou d'un ultime
@@ -4167,8 +4291,21 @@ function drawProjs() {
       ctx.restore(); continue;
     }
     if (p.kind === 'katon') {
-      // Katon d'Itachi : une grosse boule de feu ronde qui roule, flammes qui débordent derrière
-      const r = (40 + Math.sin(p.t * 24) * 4) * (p.scale || 1);
+      // Katon d'Itachi : la grande boule de feu (image assets/fx/katon.png, boule à droite, traînée de flammes à gauche)
+      const img = IMG.fx_katon, sc = p.scale || 1;
+      if (img) {
+        const w = KATON.w * sc, hgt = w * img.height / img.width, pul = 1 + Math.sin(p.t * 22) * 0.04;
+        // lueur orangée autour de la boule
+        const g = ctx.createRadialGradient(0, 0, 4, 0, 0, w * 0.42);
+        g.addColorStop(0, 'rgba(255,200,90,0.55)'); g.addColorStop(0.5, 'rgba(255,110,20,0.25)'); g.addColorStop(1, 'rgba(255,60,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, w * 0.42, 0, 7); ctx.fill();
+        // la boule elle-même, opaque, qui tourne doucement sur elle-même
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.save(); ctx.rotate(Math.sin(p.t * 9) * 0.06); ctx.scale(pul, pul * (1 + Math.sin(p.t * 17) * 0.03));
+        ctx.drawImage(img, -KATON.fx * w, -KATON.fy * hgt, w, hgt); ctx.restore();
+        ctx.restore(); continue;
+      }
+      const r = (40 + Math.sin(p.t * 24) * 4) * sc;
       for (let j = 4; j >= 0; j--) {
         const x = -j * r * 0.45, rr = r * (1 - j * 0.14);
         const g = ctx.createRadialGradient(x, 0, 1, x, 0, rr);
@@ -4191,13 +4328,36 @@ function drawProjs() {
       for (let k = -1; k <= 1; k++) { ctx.beginPath(); ctx.arc(r * 0.55, k * r * 0.32, r * 0.18, 0, 7); ctx.fill(); }
       ctx.restore(); continue;
     }
+    if ((p.kind === 'icewall' || p.kind === 'glacier') && IMG.fx_shoto_ice) {
+      // glace de Shoto (assets/fx/shoto_ice.png) : la vague de pics se révèle de gauche à droite derrière le front
+      // du tir et jaillit du sol avec un petit rebond ; elle se brise en fondu à la fin
+      ctx.restore(); ctx.save();
+      const img = IMG.fx_shoto_ice, big = p.kind === 'glacier', sc = p.scale || 1;
+      const H = big ? 300 : 160 * sc, Wf = H * img.width / img.height;
+      const ob = u => 1 + 3.2 * Math.pow(u - 1, 3) + 2.2 * Math.pow(u - 1, 2), up = Math.max(0, ob(Math.min(1, p.t / (big ? 0.25 : 0.15))));
+      const fade = Math.max(0, Math.min(1, (p.life - p.t) / (big ? 0.4 : 0.25)));
+      const span = big ? Wf * Math.min(1, p.t / 0.3) : Math.abs(p.x - (p.x0 ?? p.x));
+      const shown = Math.min(span, Wf), left = big ? p.x - camX : sx - p.dir * shown; // au-delà de sa longueur, la vague suit le front
+      if (shown > 2) {
+        ctx.save(); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = fade;
+        ctx.translate(left, p.gz + 6); ctx.scale(p.dir, 1);
+        // partie révélée : le début (bas) de la vague tant qu'elle grandit, puis toute l'image
+        ctx.drawImage(img, 0, 0, img.width * (shown / Wf), img.height, 0, -H * up, shown, H * up);
+        ctx.restore();
+        // brume froide au pied
+        ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.35 * fade;
+        const mg = ctx.createLinearGradient(0, p.gz - 40, 0, p.gz + 6); mg.addColorStop(0, 'rgba(200,240,255,0)'); mg.addColorStop(1, 'rgba(200,240,255,0.8)');
+        ctx.fillStyle = mg; ctx.fillRect(Math.min(left, left + p.dir * shown), p.gz - 40, shown, 46);
+      }
+      ctx.restore(); continue;
+    }
     if (p.kind === 'icewall' || p.kind === 'glacier' || p.kind === 'stonewall') {
       // pics de glace qui jaillissent du sol derrière la tête du mur (ou tout le glacier de l'ultime), puis s'effritent
       ctx.restore(); ctx.save();
       const big = p.kind === 'glacier', step = big ? 46 : 30, sc = (p.scale || 1);
       const span = big ? p.len : Math.min(Math.abs(p.x - (p.x0 ?? p.x)), 420), n = Math.max(1, Math.floor(span / step));
       const fade = big ? Math.min(1, (p.life - p.t) / 0.4) : Math.min(1, (p.life - p.t) / 0.25);
-      for (let k = n; k >= 0; k--) {
+      for (let k = n; k >= 0 && (p.kind !== 'stonewall' || !IMG.fx_ed_spike); k--) {
         const grow = Math.min(1, big ? p.t * 5 - k * 0.08 : (k * step / p.speed) * 6 + 0.2);
         if (grow <= 0) continue;
         const x = sx - p.dir * (big ? -k * step : k * step), hh = (big ? 150 + 60 * Math.sin(k * 1.7) : (70 - k * 3) * sc) * grow, w = big ? 34 : 18 * sc;
@@ -4218,6 +4378,15 @@ function drawProjs() {
       }
       ctx.restore(); continue;
     }
+    if (p.kind === 'flamejet' && IMG.fx_shoto_fire) {
+      // brasier de Shoto (assets/fx/shoto_fire.png) étiré depuis la main jusqu'au front, qui ondule ; lueur et braises
+      const img = IMG.fx_shoto_fire, L = Math.max(20, p.len), Hh = Math.min(230, L * 0.42) * (1 + 0.08 * Math.sin(p.t * 32)), st = 1 + 0.03 * Math.sin(p.t * 47);
+      const gl = ctx.createRadialGradient(L * 0.75, 0, 10, L * 0.75, 0, Hh); gl.addColorStop(0, 'rgba(255,170,60,0.45)'); gl.addColorStop(1, 'rgba(255,80,0,0)');
+      ctx.fillStyle = gl; ctx.beginPath(); ctx.ellipse(L * 0.7, 0, L * 0.5, Hh * 0.8, 0, 0, 7); ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(img, -8, -Hh / 2, L * st + 8, Hh);
+      ctx.restore(); continue;
+    }
     if (p.kind === 'flamejet') {
       // brasier : cône de flammes qui s'élargit en partant de la main, cœur jaune
       const L = p.len, fl = Math.sin(p.t * 50) * 4; // repère déjà posé sur la main, tourné dans le sens du tir
@@ -4228,15 +4397,17 @@ function drawProjs() {
       ctx.restore(); continue;
     }
     if (p.kind === 'shell') {
-      // obus du bras-canon de Guts : petite masse sombre, fumée derrière, lueur à l'arrière
+      // obus du bras-canon de Guts : ogive de fer sombre, ceinture de cuivre, culot chauffé et petite flamme ; la fumée est à part (fxs 'smoke')
       ctx.globalCompositeOperation = 'source-over';
-      const sc = p.scale || 1;
-      for (let j = 1; j <= 5; j++) { ctx.fillStyle = `rgba(90,85,80,${0.35 - j * 0.05})`; ctx.beginPath(); ctx.arc(-j * 16 * sc, Math.sin(p.t * 20 + j) * 3, (8 + j * 3) * sc, 0, 7); ctx.fill(); }
-      ctx.fillStyle = '#2a2a2e'; ctx.beginPath(); ctx.ellipse(0, 0, 14 * sc, 8 * sc, 0, 0, 7); ctx.fill();
-      ctx.fillStyle = '#6a6a72'; ctx.beginPath(); ctx.ellipse(3 * sc, -3 * sc, 6 * sc, 3 * sc, 0, 0, 7); ctx.fill();
+      const sc = (p.scale || 1) * 1.1;
+      ctx.scale(sc, sc);
+      ctx.fillStyle = '#26262b'; ctx.strokeStyle = '#0b0b0d'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(-16, -7); ctx.lineTo(6, -7); ctx.quadraticCurveTo(20, -6, 24, 0); ctx.quadraticCurveTo(20, 6, 6, 7); ctx.lineTo(-16, 7); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#7a7a84'; ctx.beginPath(); ctx.moveTo(-12, -4.5); ctx.lineTo(8, -4.5); ctx.quadraticCurveTo(16, -4, 18, -2); ctx.lineTo(-12, -2); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#b8742e'; ctx.fillRect(-4, -7, 3, 14);
       ctx.globalCompositeOperation = 'lighter';
-      const g = ctx.createRadialGradient(-10 * sc, 0, 0, -10 * sc, 0, 16 * sc); g.addColorStop(0, '#ffe0a0'); g.addColorStop(1, 'rgba(255,120,0,0)');
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(-10 * sc, 0, 16 * sc, 0, 7); ctx.fill();
+      const g = ctx.createRadialGradient(-18, 0, 0, -18, 0, 14); g.addColorStop(0, '#fff2b0'); g.addColorStop(0.4, 'rgba(255,140,30,0.85)'); g.addColorStop(1, 'rgba(255,60,0,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(-22, 0, 14 + Math.sin(p.t * 60) * 2, 7, 0, 0, 7); ctx.fill();
       ctx.restore(); continue;
     }
     if (p.kind === 'vrasen') {
@@ -5081,7 +5252,9 @@ function energyBall(x, y, r, gold) {
 // par image puis gardé. Renvoie [devant, hauteur] par rapport au point posé au sol, à l'échelle du jeu.
 const HAND_SHOTS = ['shuriken', 'airshot', 'kiball', 'red', 'burning', 'hiken', 'shell', 'icewall', 'strikeair', 'vrasen', 'stonewall'], handCache = {};
 // rayon des grosses boules : leur centre est avancé d'autant pour qu'elles partent DEVANT la main
-const PROJ_R = { shuriken: 52, vrasen: 40, katon: 32, burning: 34, kiball: 26, hiken: 34, shell: 12, icewall: 18, strikeair: 30, bullet: 12, stonewall: 18 };
+// décalage vertical du départ (vers le bas) : la pointe de l'épée levée de Saber partait trop haut
+const PROJ_DY = { strikeair: 38 };
+const PROJ_R = { shuriken: 52, vrasen: 40, katon: 52, burning: 34, kiball: 26, hiken: 34, shell: 12, icewall: 18, strikeair: 30, bullet: 12, stonewall: 18 };
 function handPoint(h) {
   const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
   const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];

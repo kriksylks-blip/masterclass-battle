@@ -558,58 +558,96 @@ function updateCollapse(dt) {
   for (const p of level.props) if (p.x < C.front && !p.broken) { p.broken = true; p.t = 5; } // emportés avec le pont
   if (camX >= C.to) { C.on = false; level.goT = 3; }
 }
+// Image de crevasse (vue plongeante) : le vide occupe la bande [VL, VR] de sa largeur et tombe pile sur le trou ;
+// les rebords rocheux de part et d'autre (rim × la largeur du trou) débordent sur le sol. Un trou plus large
+// (pont qui s'effondre) étire la bande du vide sans grossir les rebords.
+const PIT_IMG = { VL: 0.4, VR: 0.61, rim: 0.8, base: 130 };
 function drawPits() {
   const L = LAYERS.street, top = L.y + 6, C = level.collapse;
   const holes = [];
   for (const Z of ZONES) for (const [px, pw] of Z.pits || []) holes.push([px, pw]);
   if (C) holes.push([C.from - W - 200, C.front - (C.from - W - 200)]);
+  const img = IMG.fx_pit;
   for (const [px, pw] of holes) {
     const x0 = px - camX, x1 = px + pw - camX;
-    if (x1 < -40 || x0 > W + 40) continue;
-    // bords dentelés (toujours les mêmes : calculés à partir de la position)
-    // bords inclinés comme les lignes de fuite du sol (le haut est plus loin), dentelés
-    const edge = (x, side) => { const pts = []; for (let y = top, i = 0; y <= H + 10; y += 22, i++) pts.push([x + (H - y) * PIT_SLANT + side * (6 + 7 * Math.abs(Math.sin(px * 0.37 + i * 2.3 + side))), y]); return pts; };
-    const left = edge(x0, 1), right = edge(x1, -1).reverse();
-    // bord lointain dentelé (roche cassée), pas une arête droite
-    const lip = []; for (let k = 1; k < 8; k++) { const t = k / 8; lip.push([left[0][0] + (right[right.length - 1][0] - left[0][0]) * t, top + 7 * Math.abs(Math.sin(px * 0.21 + k * 1.7))]); }
-    right.push(...lip.reverse());
-    ctx.save();
-    ctx.beginPath(); [...left, ...right].forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath();
-    // le vide : noir au centre, une lueur froide tout au fond pour lire la profondeur
-    const g = ctx.createLinearGradient(0, top, 0, H); g.addColorStop(0, '#3a2f33'); g.addColorStop(0.35, '#17121a'); g.addColorStop(0.75, '#141a2c'); g.addColorStop(1, '#26365a');
-    ctx.fillStyle = g; ctx.fill();
-    ctx.clip();
-    // paroi rocheuse du bord d'en face (tournée vers nous), qui plonge dans l'ombre
-    const wall = ctx.createLinearGradient(x1 - 26, 0, x1, 0); wall.addColorStop(0, 'rgba(0,0,0,0)'); wall.addColorStop(1, 'rgba(120,102,104,0.9)');
-    ctx.save(); ctx.transform(1, 0, -PIT_SLANT, 1, PIT_SLANT * H, 0); ctx.fillStyle = wall; ctx.fillRect(x1 - 30, top, 34, H - top); ctx.restore();
-    const fade = ctx.createLinearGradient(0, top, 0, H); fade.addColorStop(0, 'rgba(0,0,0,0)'); fade.addColorStop(0.5, 'rgba(3,2,6,0.35)'); fade.addColorStop(1, 'rgba(3,2,6,0)');
-    ctx.fillStyle = fade; ctx.fillRect(x0 - 20, top, x1 - x0 + 40, H - top);
-    // épaisseur du sol tranché sous le bord lointain (strates), puis la paroi qui s'enfonce dans le noir :
-    // c'est elle qui fait lire un trou et non un bloc dressé
-    ctx.save(); ctx.transform(1, 0, -PIT_SLANT, 1, PIT_SLANT * H, 0);
-    const soil = ctx.createLinearGradient(0, top, 0, top + 34); soil.addColorStop(0, '#9a8576'); soil.addColorStop(0.45, '#6a574c'); soil.addColorStop(1, '#2e2428');
-    ctx.fillStyle = soil; ctx.fillRect(x0 - 10, top, x1 - x0 + 20, 34);
-    ctx.strokeStyle = 'rgba(0,0,0,0.35)'; ctx.lineWidth = 1.5;
-    for (const dy of [9, 18, 27]) { ctx.beginPath(); ctx.moveTo(x0 - 10, top + dy + 2 * Math.sin(px + dy)); ctx.lineTo(x1 + 10, top + dy - 2 * Math.sin(px * 1.3 + dy)); ctx.stroke(); }
-    const deep = ctx.createLinearGradient(0, top + 34, 0, top + 140); deep.addColorStop(0, 'rgba(40,32,38,0.9)'); deep.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = deep; ctx.fillRect(x0 - 10, top + 34, x1 - x0 + 20, 106);
-    ctx.restore();
-    // brume qui remonte du gouffre
-    const tt = performance.now() / 1000;
-    for (let k = 0; k < 4; k++) {
-      const mx = x0 + ((k * 0.29 + tt * 0.05) % 1) * (x1 - x0), my = H - 30 - ((tt * 18 + k * 37) % 120);
-      ctx.fillStyle = 'rgba(140,165,215,0.14)'; ctx.beginPath(); ctx.ellipse(mx, my, pw * 0.4, 18, 0, 0, 7); ctx.fill();
-    }
-    ctx.restore(); ctx.save();
-    // lèvres de roche : arête claire du côté d'où l'on vient, ombre portée de l'autre
-    ctx.lineJoin = 'round';
-    ctx.strokeStyle = 'rgba(0,0,0,0.85)'; ctx.lineWidth = 4;
-    ctx.beginPath(); [...left, ...right].forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath(); ctx.stroke();
-    ctx.strokeStyle = 'rgba(225,205,185,0.35)'; ctx.lineWidth = 2;
-    ctx.beginPath(); left.forEach(([x, y], i) => i ? ctx.lineTo(x - 2, y) : ctx.moveTo(x - 2, y)); ctx.stroke();
-    ctx.beginPath(); right.forEach(([x, y], i) => i ? ctx.lineTo(x + 2, y) : ctx.moveTo(x + 2, y)); ctx.stroke();
-    ctx.restore();
+    if (x1 < -260 || x0 > W + 260) continue;
+    if (img) drawPitImage(img, px, pw, x0, x1, top);
+    else drawPitCode(px, pw, x0, x1, top);
   }
+}
+function drawPitImage(img, px, pw, x0, x1, top) {
+  const { VL, VR, rim, base } = PIT_IMG, iw = img.width, ih = img.height, hh = H - top, rw = rim * Math.min(pw, base);
+  ctx.save();
+  // incliné comme les lignes de fuite du sol : le haut du trou est décalé (même règle que pitAt)
+  ctx.transform(1, 0, -PIT_SLANT, 1, PIT_SLANT * H, 0);
+  ctx.drawImage(img, 0, 0, VL * iw, ih, x0 - rw, top, rw + 1, hh);              // rebord de gauche
+  ctx.drawImage(img, VL * iw, 0, (VR - VL) * iw, ih, x0, top, x1 - x0 + 1, hh); // le vide
+  ctx.drawImage(img, VR * iw, 0, (1 - VR) * iw, ih, x1, top, rw, hh);           // rebord de droite
+  // brume froide qui remonte du fond, et un caillou qui tombe dans le vide de temps en temps
+  const tt = performance.now() / 1000;
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  for (let k = 0; k < 3; k++) {
+    const mx = x0 + (x1 - x0) * (0.3 + 0.2 * (Math.sin(tt * 0.4 + k * 2.1) + 1)), my = H - 20 - ((tt * 14 + k * 40) % 90), r = (x1 - x0) * 0.45;
+    const g = ctx.createRadialGradient(mx, my, 0, mx, my, r);
+    g.addColorStop(0, 'rgba(110,150,230,0.12)'); g.addColorStop(1, 'rgba(110,150,230,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(mx, my, r, 22, 0, 0, 7); ctx.fill();
+  }
+  ctx.restore();
+  ctx.fillStyle = '#6b5446'; ctx.strokeStyle = '#1a1210'; ctx.lineWidth = 1.5;
+  for (let k = 0; k < 3; k++) {
+    const ph = (tt * 0.55 + k * 0.53 + (px % 97) / 97) % 1.6;
+    if (ph > 1) continue;
+    const rx = x0 + (x1 - x0) * (0.25 + 0.5 * ((k * 0.41 + (px % 13) / 13) % 1)), ry = top + 10 + ph * ph * (hh - 20);
+    ctx.globalAlpha = 1 - ph;
+    ctx.beginPath(); ctx.arc(rx, ry, 4 - ph * 2, 0, 7); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Repli dessiné en code si l'image de crevasse n'est pas chargée
+function drawPitCode(px, pw, x0, x1, top) {
+  // bords dentelés (toujours les mêmes : calculés à partir de la position)
+  // bords inclinés comme les lignes de fuite du sol (le haut est plus loin), dentelés
+  const edge = (x, side) => { const pts = []; for (let y = top, i = 0; y <= H + 10; y += 22, i++) pts.push([x + (H - y) * PIT_SLANT + side * (6 + 7 * Math.abs(Math.sin(px * 0.37 + i * 2.3 + side))), y]); return pts; };
+  const left = edge(x0, 1), right = edge(x1, -1).reverse();
+  // bord lointain dentelé (roche cassée), pas une arête droite
+  const lip = []; for (let k = 1; k < 8; k++) { const t = k / 8; lip.push([left[0][0] + (right[right.length - 1][0] - left[0][0]) * t, top + 7 * Math.abs(Math.sin(px * 0.21 + k * 1.7))]); }
+  right.push(...lip.reverse());
+  ctx.save();
+  ctx.beginPath(); [...left, ...right].forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath();
+  // le vide : noir au centre, une lueur froide tout au fond pour lire la profondeur
+  const g = ctx.createLinearGradient(0, top, 0, H); g.addColorStop(0, '#3a2f33'); g.addColorStop(0.35, '#17121a'); g.addColorStop(0.75, '#141a2c'); g.addColorStop(1, '#26365a');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.clip();
+  // paroi rocheuse du bord d'en face (tournée vers nous), qui plonge dans l'ombre
+  const wall = ctx.createLinearGradient(x1 - 26, 0, x1, 0); wall.addColorStop(0, 'rgba(0,0,0,0)'); wall.addColorStop(1, 'rgba(120,102,104,0.9)');
+  ctx.save(); ctx.transform(1, 0, -PIT_SLANT, 1, PIT_SLANT * H, 0); ctx.fillStyle = wall; ctx.fillRect(x1 - 30, top, 34, H - top); ctx.restore();
+  const fade = ctx.createLinearGradient(0, top, 0, H); fade.addColorStop(0, 'rgba(0,0,0,0)'); fade.addColorStop(0.5, 'rgba(3,2,6,0.35)'); fade.addColorStop(1, 'rgba(3,2,6,0)');
+  ctx.fillStyle = fade; ctx.fillRect(x0 - 20, top, x1 - x0 + 40, H - top);
+  // épaisseur du sol tranché sous le bord lointain (strates), puis la paroi qui s'enfonce dans le noir :
+  // c'est elle qui fait lire un trou et non un bloc dressé
+  ctx.save(); ctx.transform(1, 0, -PIT_SLANT, 1, PIT_SLANT * H, 0);
+  const soil = ctx.createLinearGradient(0, top, 0, top + 34); soil.addColorStop(0, '#9a8576'); soil.addColorStop(0.45, '#6a574c'); soil.addColorStop(1, '#2e2428');
+  ctx.fillStyle = soil; ctx.fillRect(x0 - 10, top, x1 - x0 + 20, 34);
+  ctx.strokeStyle = 'rgba(0,0,0,0.35)'; ctx.lineWidth = 1.5;
+  for (const dy of [9, 18, 27]) { ctx.beginPath(); ctx.moveTo(x0 - 10, top + dy + 2 * Math.sin(px + dy)); ctx.lineTo(x1 + 10, top + dy - 2 * Math.sin(px * 1.3 + dy)); ctx.stroke(); }
+  const deep = ctx.createLinearGradient(0, top + 34, 0, top + 140); deep.addColorStop(0, 'rgba(40,32,38,0.9)'); deep.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = deep; ctx.fillRect(x0 - 10, top + 34, x1 - x0 + 20, 106);
+  ctx.restore();
+  // brume qui remonte du gouffre
+  const tt = performance.now() / 1000;
+  for (let k = 0; k < 4; k++) {
+    const mx = x0 + ((k * 0.29 + tt * 0.05) % 1) * (x1 - x0), my = H - 30 - ((tt * 18 + k * 37) % 120);
+    ctx.fillStyle = 'rgba(140,165,215,0.14)'; ctx.beginPath(); ctx.ellipse(mx, my, pw * 0.4, 18, 0, 0, 7); ctx.fill();
+  }
+  ctx.restore(); ctx.save();
+  // lèvres de roche : arête claire du côté d'où l'on vient, ombre portée de l'autre
+  ctx.lineJoin = 'round';
+  ctx.strokeStyle = 'rgba(0,0,0,0.85)'; ctx.lineWidth = 4;
+  ctx.beginPath(); [...left, ...right].forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(225,205,185,0.35)'; ctx.lineWidth = 2;
+  ctx.beginPath(); left.forEach(([x, y], i) => i ? ctx.lineTo(x - 2, y) : ctx.moveTo(x - 2, y)); ctx.stroke();
+  ctx.beginPath(); right.forEach(([x, y], i) => i ? ctx.lineTo(x + 2, y) : ctx.moveTo(x + 2, y)); ctx.stroke();
+  ctx.restore();
 }
 
 // Les coups des joueurs cassent les objets

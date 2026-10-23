@@ -21,6 +21,12 @@ const ASSETS = {
     prop_crate: 'assets/fx/prop_crate.png', prop_crate_broken: 'assets/fx/prop_crate_broken.png',
     prop_can: 'assets/fx/prop_can.png', prop_can_broken: 'assets/fx/prop_can_broken.png',
     prop_barrel: 'assets/fx/prop_barrel.png', prop_barrel_broken: 'assets/fx/prop_barrel_broken.png',
+    // Trous du décor : crevasse vue en plongée (drawPits)
+    fx_pit: 'assets/fx/pit.png',
+    // Edward : pics de pierre (spécial) et bras-poing de pierre (ultime)
+    fx_ed_spike: 'assets/fx/ed_spike.png', fx_ed_fist: 'assets/fx/ed_fist.png',
+    fx_katon: 'assets/fx/katon.png', fx_susanoo: 'assets/fx/susanoo.jpg',
+    fx_titan_rise: 'assets/fx/titan_rise.png', fx_titan_punch: 'assets/fx/titan_punch.png', fx_shoto_ice: 'assets/fx/shoto_ice.png', fx_shoto_fire: 'assets/fx/shoto_fire.png',
     // Cartes de présentation des ennemis
     intro_thug: 'assets/ui/intro/thug.jpg', intro_brute: 'assets/ui/intro/brute.jpg', intro_ninja: 'assets/ui/intro/ninja.jpg',
     intro_biker: 'assets/ui/intro/biker.jpg', intro_samurai: 'assets/ui/intro/samurai.jpg', intro_boss: 'assets/ui/intro/boss.jpg',
