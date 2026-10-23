@@ -95,6 +95,14 @@ const LEVELS = [
     ['LA RUE DES LANTERNES', 'SUR LES TOITS', 'LE QUARTIER DÉVASTÉ'], 'ds2_demon', 'ds2_obi'),
   themedLevel('db2', 'DRAGON BALL Z — LE CELL GAME', 'Le tournoi de Cell',
     ['LE DÉSERT ROCHEUX', 'LES ABORDS DU TOURNOI', 'L\'ARÈNE DE CELL'], 'db2_jr', 'db2_android'),
+  themedLevel('jk', 'JUJUTSU KAISEN — SHIBUYA', 'La nuit d\'Halloween où tout a basculé',
+    ['LE CARREFOUR DE SHIBUYA', 'LA STATION SOUS-TERRAINE', 'LE SANCTUAIRE DE SUKUNA'], 'jk_curse', 'jk_user'),
+  themedLevel('sl', 'SOLO LEVELING — LE DOUBLE DONJON', 'Le donjon où tout a commencé',
+    ['LA PORTE BLEUE', 'LES PROFONDEURS DU DONJON', 'LE TEMPLE DES STATUES'], 'sl_goblin', 'sl_knight'),
+  themedLevel('opm', 'ONE PUNCH MAN — CITÉ Z', 'L\'invasion venue du ciel',
+    ['LA CITÉ Z ABANDONNÉE', 'LE QG DE L\'ASSOCIATION', 'LE VAISSEAU DES ENVAHISSEURS'], 'opm_monster', 'opm_alien'),
+  themedLevel('bl2', 'BLEACH — HUECO MUNDO', 'Jusqu\'au sommet de Las Noches',
+    ['LE DÉSERT DE LA NUIT ÉTERNELLE', 'LES COULOIRS DE LAS NOCHES', 'LE DÔME DE LAS NOCHES'], 'bl2_arrancar', 'bl2_fraccion'),
 ];
 // Images des niveaux : ciel, décor (plan moyen détouré, ou mur plein pour les intérieurs) et sol de chaque zone
 for (const L of LEVELS.slice(1)) {
@@ -115,7 +123,7 @@ const GATES = {
   nr: ['nr_g1', 'nr_g2'], db: ['db_g1', 'db_g2'], mh: ['mh_g1', 'mh_g2'],
   rk: ['rk_g1', 'rk_g2'], op2: ['op2_g1', 'op2_g2'], nr2: ['nr2_g1', 'nr2_g2'], ds2: ['ds2_g1', 'ds2_g2'], db2: ['db2_g1', 'db2_g2'],
 };
-for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = GATES[L.id][k - 1]; });
+for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = (GATES[L.id] || [])[k - 1]; }); // nouveaux mondes : fondu au noir seul
 // La forêt de la mort a son lointain (sinon le ciel du village et ses visages sculptés apparaissent entre les arbres)
 LEVELS.find(L => L.id === 'nr').zones[2].sky = 'nr_z3_sky';
 ASSETS.backgrounds.nr_z3_sky = 'assets/backgrounds/levels/nr_z3_sky.jpg';
@@ -183,6 +191,18 @@ const ENEMY_INFO = {
   db2_jr: ['CELL JUNIOR', 'Petit, rapide et sans pitié'],
   db2_android: ['ANDROÏDE DU RUBAN ROUGE', 'Tire des rafales de ki'],
   db2_boss: ['CELL', 'La forme parfaite'],
+  jk_curse: ['FLÉAU', 'Malédiction née de la peur des hommes'],
+  jk_user: ['EXORCISTE MAUDIT', 'Lance des malédictions de loin'],
+  jk_boss: ['SUKUNA', 'Le roi des fléaux'],
+  sl_goblin: ['GOBELIN DU DONJON', 'Petit, vif — bondit avec son gourdin'],
+  sl_knight: ['STATUE GUERRIÈRE', 'Pierre vivante — encaisse les coups'],
+  sl_boss: ['IGRIS LE SANGLANT', 'Chevalier commandant du donjon'],
+  opm_monster: ['MONSTRE CRABE', 'Carapace dure — frappe fort'],
+  opm_alien: ['ENVAHISSEUR', 'Tire au laser depuis le vaisseau'],
+  opm_boss: ['BOROS', 'Seigneur conquérant de l\'univers'],
+  bl2_arrancar: ['ARRANCAR', 'Hollow devenu sabreur'],
+  bl2_fraccion: ['FRACCIÓN', 'Colosse au service d\'une Espada'],
+  bl2_boss: ['ULQUIORRA', 'Quatrième Espada'],
 };
 for (const k of Object.keys(ENEMY_INFO)) if (k.includes('_')) ASSETS.ui[`intro_${k}`] = `assets/ui/intro/${k}.jpg`;
 
@@ -471,6 +491,10 @@ const STRIPS = {
   db_z3: STRIP('rubble', 70, 30), mh_z2: STRIP('rubble', 70, 30), mh_z3: STRIP('rubble', 70, 30),
   rk_z2: STRIP('rubble', 70, 30), ds2_z3: STRIP('rubble', 70, 30),
   db2_z1: STRIP('rocks_desert', 70, 28), db2_z2: STRIP('rocks_desert', 70, 28),
+  jk_z1: STRIP('curb_city', 46, 22), jk_z2: STRIP('rail_metal', 64, 24), jk_z3: STRIP('rubble', 70, 30),
+  sl_z1: STRIP('curb_city', 46, 22), sl_z2: STRIP('rubble', 70, 30), sl_z3: STRIP('rubble', 70, 30),
+  opm_z1: STRIP('curb_city', 46, 22), opm_z2: STRIP('rail_metal', 64, 24), opm_z3: STRIP('rail_metal', 64, 24),
+  bl2_z1: STRIP('rubble', 70, 30), bl2_z2: STRIP('balustrade', 56, 22), bl2_z3: STRIP('rubble', 70, 30),
 };
 for (const S of new Set(Object.values(STRIPS).map(S => S.img))) ASSETS.backgrounds[S] = `assets/backgrounds/strips/${S.slice(6)}.png`;
 // Éclairage de la zone (luminosité moyenne du plan moyen : jour ou nuit) : la bordure prend la même lumière que le décor
@@ -588,6 +612,8 @@ const INTRO_FACE = {
   nr_sound: 0.12, nr_rogue: 0.1, nr_boss: 0.1, nr2_rain: 0.1, nr2_puppet: 0.15, nr2_boss: 0.12,
   db_soldier: 0.12, db_elite: 0.2, db_boss: 0.12, db2_jr: 0.15, db2_android: 0.12, db2_boss: 0.12,
   mh_villain: 0.15, mh_blaster: 0.1, mh_boss: 0.12, rk_ninja: 0.15, rk_ronin: 0.15, rk_boss: 0.1,
+  jk_curse: 0.15, jk_user: 0.12, jk_boss: 0.12, sl_goblin: 0.2, sl_knight: 0.12, sl_boss: 0.12,
+  opm_monster: 0.15, opm_alien: 0.12, opm_boss: 0.12, bl2_arrancar: 0.12, bl2_fraccion: 0.15, bl2_boss: 0.12,
 };
 
 // Jauge du boss en bas de l'écran

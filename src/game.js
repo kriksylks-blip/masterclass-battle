@@ -2066,6 +2066,18 @@ Object.assign(ETYPES, {
   db2_jr: MINION('db2_jr', { lunge: true, speed: [180, 210], hp: 4, h: 170 }),
   db2_android: MINION('db2_android', { ranged: 'ki', hp: 7 }),
   db2_boss: BOSS('db2_boss', { proj: 'beam', projColor: '#7fd8ff', adds: ['db2_jr', 'db2_android'], roar: 'KAMEHAMEHA !!' }),
+  jk_curse: MINION('jk_curse', { lunge: true, slash: '#b06aff', hp: 6 }),
+  jk_user: MINION('jk_user', { ranged: 'orb' }),
+  jk_boss: BOSS('jk_boss', { proj: 'slash', projColor: '#ff3040', adds: ['jk_curse', 'jk_user'], roar: 'DÉMANTÈLEMENT !!' }),
+  sl_goblin: MINION('sl_goblin', { lunge: true, speed: [170, 200], hp: 4, h: 170 }),
+  sl_knight: MINION('sl_knight', { hp: 10, armor: true, dmg: 15, h: 250, speed: [80, 100], slash: '#cfd8e0' }),
+  sl_boss: BOSS('sl_boss', { proj: 'slash', projColor: '#ff2030', adds: ['sl_goblin', 'sl_knight'], roar: '…' }),
+  opm_monster: MINION('opm_monster', { hp: 9, armor: true, dmg: 15, h: 240, speed: [90, 110] }),
+  opm_alien: MINION('opm_alien', { ranged: 'ki' }),
+  opm_boss: BOSS('opm_boss', { proj: 'beam', projColor: '#ff7a3a', adds: ['opm_monster', 'opm_alien'], roar: 'EFFONDREMENT STELLAIRE !!', h: 310 }),
+  bl2_arrancar: MINION('bl2_arrancar', { lunge: true, slash: '#d8ecff', hp: 6 }),
+  bl2_fraccion: MINION('bl2_fraccion', { hp: 10, armor: true, dmg: 15, h: 250, speed: [80, 100] }),
+  bl2_boss: BOSS('bl2_boss', { proj: 'beam', projColor: '#6aff9a', adds: ['bl2_arrancar', 'bl2_fraccion'], roar: 'CERO OSCURAS.' }),
 });
 // Tant que leurs planches manquent, ces ennemis empruntent les animations d'un ennemi existant (samouraï pour
 // ceux qui se ruent, motard pour les autres, Kuro-Oni pour les boss), recolorées
@@ -2082,6 +2094,10 @@ const STAND_IN = {
   nr2_puppet: 'hue-rotate(260deg)', nr2_rain: 'grayscale(0.8)', nr2_boss: 'hue-rotate(10deg) saturate(1.4)',
   ds2_demon: 'hue-rotate(300deg)', ds2_obi: 'hue-rotate(290deg) saturate(1.6)', ds2_boss: 'hue-rotate(300deg) saturate(1.4)',
   db2_jr: 'hue-rotate(180deg)', db2_android: 'hue-rotate(80deg)', db2_boss: 'hue-rotate(70deg) saturate(1.4)',
+  jk_curse: 'hue-rotate(260deg)', jk_user: 'grayscale(0.8)', jk_boss: 'hue-rotate(320deg) saturate(1.3)',
+  sl_goblin: 'hue-rotate(90deg)', sl_knight: 'grayscale(1)', sl_boss: 'hue-rotate(340deg) saturate(1.5)',
+  opm_monster: 'hue-rotate(340deg) saturate(1.5)', opm_alien: 'hue-rotate(260deg)', opm_boss: 'hue-rotate(200deg)',
+  bl2_arrancar: 'grayscale(1) brightness(1.5)', bl2_fraccion: 'grayscale(0.8) brightness(1.3)', bl2_boss: 'grayscale(1) brightness(1.4)',
 };
 for (const [k, f] of Object.entries(STAND_IN)) Object.assign(ETYPES[k], { alt: ETYPES[k].isBoss ? 'boss' : ETYPES[k].lunge ? 'samurai' : 'biker', altTint: f });
 // Ennemis à la taille des héros (un sbire = un héros moyen, les boss restent plus grands)
@@ -3167,7 +3183,8 @@ function warmLevelLayers() {
 // incliné à gauche (numéro, univers, lieu, zones), le boss en grand à droite, un carrousel de vignettes en
 // perspective en bas, et un coup de lame lumineux à chaque changement de monde.
 const LV_COLOR = { tokyo: '#ff2d8a', op: '#ff5a2a', ds: '#ff3340', bl: '#e8e8ff', hx: '#3ad17a', nr: '#ff8a00', db: '#3ad1a0',
-  mh: '#2ab0ff', rk: '#c03aff', op2: '#ffb020', nr2: '#7a9cff', ds2: '#ff4fd8', db2: '#ffd040' };
+  mh: '#2ab0ff', rk: '#c03aff', op2: '#ffb020', nr2: '#7a9cff', ds2: '#ff4fd8', db2: '#ffd040',
+  jk: '#9a4aff', sl: '#3a8aff', opm: '#ffcf3a', bl2: '#cfe8ff' };
 // Calques d'une zone pour le fond (aperçus réduits chargés à la demande) ; null tant qu'ils ne sont pas arrivés
 function zoneLayers(L, zi) {
   const key = L.id + '|z' + zi;
