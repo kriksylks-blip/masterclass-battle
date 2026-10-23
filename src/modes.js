@@ -232,110 +232,151 @@ function updateAssists() {
 
 // ---------- Mode histoire ----------
 // Ordre des mondes sur le plateau (identifiants de LEVELS) et position des cases (écran 960 × 540)
-const STORY_ORDER = ['tokyo', 'op', 'ds', 'hx', 'nr', 'bl', 'mh', 'rk', 'op2', 'ds2', 'nr2', 'db', 'db2'];
+const STORY_ORDER = ['tokyo', 'op', 'ds', 'hx', 'nr', 'bl', 'mh', 'rk', 'sl', 'op2', 'ds2', 'jk', 'nr2', 'opm', 'bl2', 'db', 'db2'];
 const MAP_NODES = [
-  [96, 448], [226, 400], [356, 444], [486, 396], [616, 440], [760, 404], [858, 300],
-  [736, 236], [596, 270], [452, 226], [306, 262], [170, 214], [262, 108],
+  [80, 418], [192, 396], [304, 424], [416, 396], [528, 424], [640, 396], [752, 424], [868, 396],
+  [826, 284], [706, 262], [586, 290], [466, 262], [346, 290], [226, 262],
+  [170, 150], [330, 128], [490, 150],
 ];
+// Les maîtres recrutés dans chaque monde : la Masterclass (affichée en bas du plateau)
+const RECRUITS = {
+  tokyo: ['ippo'], op: ['luffy'], ds: ['tanjiro'], hx: ['gon', 'killua'], nr: ['naruto', 'kakashi'], bl: ['ichigo'], mh: ['izuku'],
+  rk: ['kenshin'], sl: ['jinwoo'], op2: ['zoro'], ds2: ['zenitsu'], jk: ['gojo'], nr2: ['sasuke'], opm: ['saitama'], bl2: [],
+  db: ['goku', 'vegeta'], db2: ['gohan'],
+};
 const story = { unlocked: 1, node: 0, done: [] };
 try { Object.assign(story, JSON.parse(localStorage.getItem('kfm_story') || '{}')); } catch (e) { }
 const saveStory = () => { try { localStorage.setItem('kfm_story', JSON.stringify({ unlocked: story.unlocked, node: story.node, done: story.done })); } catch (e) { } };
 
 // Le texte : narrateur (N), héros du joueur 1 (H), boss du monde (B). {H} = nom du héros.
+// Le Sceau a volé en seize éclats ; un éclat ne se recolle que porté par un maître de son monde. D'un monde à
+// l'autre, le héros réunit ces maîtres : la Masterclass. Texte relu au Humanizer (passe légère, docs/histoire.md).
 const STORY = {
   tokyo: {
     title: 'PROLOGUE — LA FRACTURE',
-    intro: [['N', 'Tokyo, une nuit de pluie. Au sommet d\'un sanctuaire oublié, le seigneur de guerre Kuro-Oni brise le Sceau des Mille Mondes.'],
-      ['N', 'Le ciel se déchire. Des failles écarlates s\'ouvrent sur d\'autres univers… et leurs pires ennemis s\'y engouffrent.'],
-      ['H', 'Les rues sont envahies. Si personne ne remonte jusqu\'au sanctuaire, la ville tombera avant l\'aube.']],
-    outro: [['B', 'Imbéciles… Le Sceau est déjà en morceaux. Ses éclats ont choisi leurs nouveaux maîtres…'],
-      ['N', 'Kuro-Oni s\'effondre. Une faille l\'aspire — et entraîne {H} avec lui. Le voyage commence.']],
+    intro: [['N', 'Tokyo, une nuit de pluie. Au sommet d\'un sanctuaire oublié, Kuro-Oni brise le Sceau des Mille Mondes.'],
+      ['N', 'Le ciel se fend en failles rouges. Par chacune, un monde déborde sur un autre.'],
+      ['H', 'Les rues sont pleines de choses qui n\'ont rien à faire ici. Je monte au sanctuaire.']],
+    outro: [['B', 'Trop tard. Le Sceau a volé en seize éclats, et chacun s\'est trouvé un maître.'],
+      ['N', 'Un jeune boxeur a tout vu depuis le toit de sa salle. Ippo n\'a jamais quitté Tokyo. Il prend son sac quand même.'],
+      ['N', 'Une faille aspire Kuro-Oni, et {H} avec lui. Ippo saute derrière. La Masterclass compte deux élèves.']],
   },
   op: {
     title: 'CHAPITRE 1 — LA VILLE DU COMMENCEMENT',
-    intro: [['N', 'Loguetown, sur East Blue. Là où Gold D. Roger fut exécuté, une lueur rouge brille sur l\'échafaud.'],
-      ['H', 'Un éclat du Sceau… et ce clown à grand nez qui s\'en sert pour lever une armée de pirates.']],
+    intro: [['N', 'Loguetown. Sur l\'échafaud où Gold Roger a ri une dernière fois, un éclat brille.'],
+      ['H', 'Et un clown s\'en est fait une couronne.']],
     outro: [['B', 'Mon nez n\'est PAS rouge à cause de ce caillou !!'],
-      ['N', 'Premier éclat récupéré. Il pulse doucement… et pointe vers un train qui roule dans la nuit.']],
+      ['N', 'Dans la foule, un garçon au chapeau de paille rit à s\'en tenir le ventre. D\'autres mondes ? Luffy monte à bord avant qu\'on lui demande.']],
   },
   ds: {
     title: 'CHAPITRE 2 — LE TRAIN DE L\'INFINI',
-    intro: [['N', 'Un train fantôme file à travers les montagnes. Ses passagers dorment d\'un sommeil sans fin.'],
-      ['H', 'Les démons sortent des wagons. Le maître de l\'éclat attend sur le toit.']],
-    outro: [['B', 'Ta force est magnifique. Deviens un démon et combats-moi pour l\'éternité !'],
-      ['N', 'Akaza fuit le soleil levant. L\'éclat roule à vos pieds : deux sur treize.']],
+    intro: [['N', 'Un train file dans la nuit. Ses passagers dorment et ne se réveillent plus.'],
+      ['H', 'Les démons sortent des wagons. L\'éclat est sur le toit, avec celui qui le garde.']],
+    outro: [['B', 'Deviens un démon. Combats-moi pour l\'éternité !'],
+      ['N', 'Akaza fuit l\'aube. Tanjiro essuie sa lame. Là où il y a des démons, il y a du travail pour lui.']],
   },
   hx: {
     title: 'CHAPITRE 3 — LA TOUR CÉLESTE',
-    intro: [['N', 'Deux cent cinquante étages de combats. Au sommet, un magicien joue avec un éclat comme avec une carte.'],
-      ['B', 'Mmm… un fruit encore vert, venu d\'un autre monde. Montre-moi comme tu mûris ♠']],
-    outro: [['B', 'Pas encore mûr… mais délicieux. Garde l\'éclat, nous nous reverrons ♦'],
-      ['N', 'Hisoka disparaît dans un éclat de rire. La faille suivante sent les feuilles et la fumée.']],
+    intro: [['N', 'Deux cent cinquante étages de combats. Tout en haut, un magicien joue avec un éclat comme avec une carte.'],
+      ['B', 'Mmm… un fruit encore vert, venu d\'ailleurs. Montre-moi comment tu mûris ♠']],
+    outro: [['B', 'Pas encore mûr… mais délicieux. Garde l\'éclat, on se reverra ♦'],
+      ['N', 'Gon veut voir ce qu\'il y a au bout de la faille. Killua soupire. Il le suit, comme toujours.']],
   },
   nr: {
     title: 'CHAPITRE 4 — LE VILLAGE CACHÉ DE LA FEUILLE',
-    intro: [['N', 'Konoha est assiégé par les ninjas du Son. Leur maître cherche un corps éternel… et un éclat qui l\'y aiderait.'],
-      ['H', 'Il s\'est réfugié dans la forêt de la Mort. On le suit.']],
-    outro: [['B', 'Ce pouvoir venu d\'ailleurs… je le voulais tant. Un jour, il sera mien.'],
-      ['N', 'Orochimaru se dissout en serpents. Quatre éclats. La faille suivante a la couleur des âmes.']],
+    intro: [['N', 'Konoha est assiégé. Orochimaru veut un corps éternel, et l\'éclat pourrait le lui donner.'],
+      ['H', 'Il s\'est caché dans la forêt de la Mort. On y va.']],
+    outro: [['B', 'Ce pouvoir venu d\'ailleurs… Un jour, il sera à moi.'],
+      ['N', 'Naruto réclame sa place en criant plus fort que tout le monde. Kakashi lève les yeux de son livre : quelqu\'un doit surveiller ces élèves.']],
   },
   bl: {
     title: 'CHAPITRE 5 — LA SOUL SOCIETY',
     intro: [['N', 'Les portes du Seireitei sont tombées. Un capitaine affamé de combats a avalé un éclat.'],
-      ['B', 'Enfin quelqu\'un de solide ! Ne meurs pas trop vite, toi !']],
-    outro: [['B', 'Ha… HA HA ! C\'était amusant ! Reviens quand tu veux !'],
-      ['N', 'Kenpachi s\'endort au milieu des gravats. Cinq éclats. Une alarme retentit dans un autre monde.']],
+      ['B', 'Enfin quelqu\'un de solide ! Ne meurs pas trop vite !']],
+    outro: [['B', 'Ha… HA HA ! C\'était bien ! Reviens quand tu veux !'],
+      ['N', 'Kenpachi s\'endort dans les gravats. Ichigo était venu le calmer. Il repart avec vous à la place.']],
   },
   mh: {
     title: 'CHAPITRE 6 — L\'USJ',
-    intro: [['N', 'Le centre d\'entraînement de Yuei est envahi. Une créature sans esprit a reçu un éclat en guise de cœur.'],
-      ['H', 'Les élèves sont piégés à la zone incendie. Plus un instant à perdre.']],
-    outro: [['B', '…………GRAAAH…'],
-      ['N', 'Le Nomu s\'effondre, enfin immobile. Six éclats. La faille suivante s\'ouvre sur l\'ère Meiji.']],
+    intro: [['N', 'Le centre d\'entraînement de Yuei est envahi. Un Nomu a reçu un éclat en guise de cœur.'],
+      ['H', 'Les élèves sont coincés dans la zone incendie. Pas une seconde à perdre.']],
+    outro: [['B', '…GRAAAH…'],
+      ['N', 'Izuku a noté chaque coup dans son carnet. Une école de héros venus de tous les mondes ? Impossible de rater ça.']],
   },
   rk: {
     title: 'CHAPITRE 7 — KYOTO EN FLAMMES',
-    intro: [['N', 'Kyoto brûle. Un homme couvert de bandages veut renverser le gouvernement… avec la force de mille mondes.'],
+    intro: [['N', 'Kyoto brûle. Un homme couvert de bandages veut renverser le gouvernement avec la force de mille mondes.'],
       ['B', 'Ce monde appartient aux forts. L\'éclat me l\'a confirmé.']],
     outro: [['B', 'Mon corps… brûle… Ce n\'est pas fini…'],
-      ['N', 'Shishio s\'embrase et disparaît. Sept éclats. Le vent porte l\'odeur de la mer et d\'une île judiciaire.']],
+      ['N', 'Kenshin aide à éteindre le quartier avant de partir. Il a juré de ne plus tuer. Dans une classe pareille, il faudra quelqu\'un pour rappeler où s\'arrêter.']],
+  },
+  sl: {
+    title: 'CHAPITRE 8 — LE DOUBLE DONJON',
+    intro: [['N', 'Une porte bleue s\'est ouverte en plein Séoul. Au fond, un temple où les statues sourient.'],
+      ['N', 'Les règles sont gravées sur une tablette. La première dit : prosternez-vous.'],
+      ['H', 'Je ne me prosterne pas. Je traverse.']],
+    outro: [['B', '…'],
+      ['N', 'Igris met un genou à terre, mais pas devant {H}. Derrière, dans l\'ombre, Jin-Woo vient de se relever. Lui seul a entendu le mot : « Arise ».']],
   },
   op2: {
-    title: 'CHAPITRE 8 — ENIES LOBBY',
+    title: 'CHAPITRE 9 — ENIES LOBBY',
     intro: [['N', 'L\'île judiciaire du Gouvernement mondial. Le CP9 garde un éclat dans la tour de la Justice.'],
-      ['B', 'La justice des ténèbres n\'a que faire des mondes. Je vais t\'effacer.']],
+      ['B', 'La justice des ténèbres se moque des mondes. Je vais t\'effacer.']],
     outro: [['B', 'Impossible… Mon Rokuogan…'],
-      ['N', 'Rob Lucci tombe. Huit éclats. Le Sceau, presque refait, murmure un nom : le quartier des plaisirs.']],
+      ['N', 'Zoro s\'était perdu dans la tour en cherchant la sortie. Il a trouvé la Masterclass. D\'après lui, c\'était voulu.']],
   },
   ds2: {
-    title: 'CHAPITRE 9 — LE QUARTIER DES PLAISIRS',
+    title: 'CHAPITRE 10 — LE QUARTIER DES PLAISIRS',
     intro: [['N', 'Yoshiwara, la nuit. Une Lune supérieure cache un éclat dans ses ceintures de soie.'],
       ['B', 'Tu es laid. Les laids n\'ont pas le droit de toucher à ma beauté !']],
     outro: [['B', 'Grand frère !! Il m\'a frappée !!'],
-      ['N', 'Daki s\'enfuit en pleurant. Neuf éclats. La pluie commence à tomber… elle ne s\'arrêtera plus.']],
+      ['N', 'Zenitsu jure qu\'il ne viendra pas. Il s\'endort sur le seuil. Au réveil, il est déjà de l\'autre côté de la faille.']],
+  },
+  jk: {
+    title: 'CHAPITRE 11 — LA NUIT DE SHIBUYA',
+    intro: [['N', 'Shibuya, le soir d\'Halloween. Un voile noir couvre le quartier. Personne n\'en sort.'],
+      ['N', 'Au cœur du voile, le roi des fléaux a avalé un éclat comme un doigt de plus.'],
+      ['B', 'Un intrus venu d\'un autre monde ? Distrais-moi un peu avant que je te découpe.']],
+    outro: [['B', 'Tch. Ce corps ne me suffit pas. La prochaine fois, je prendrai le tien.'],
+      ['N', 'Le voile tombe. Gojo remonte son bandeau, regarde la classe et sourit : « Des élèves de partout ? Je prends. »']],
   },
   nr2: {
-    title: 'CHAPITRE 10 — AMEGAKURE',
+    title: 'CHAPITRE 12 — AMEGAKURE',
     intro: [['N', 'Le village de la Pluie. Celui qui se fait appeler Dieu a absorbé un éclat pour imposer sa paix.'],
       ['B', 'Ressens la douleur. Pense à la douleur. Accepte la douleur.']],
     outro: [['B', 'La douleur… n\'était donc pas la seule réponse…'],
-      ['N', 'Pain s\'agenouille. Dix éclats. Le Sceau tremble : quelqu\'un, très loin, le rappelle à lui.']],
+      ['N', 'Sous la pluie, quelqu\'un regardait depuis un toit. Sasuke ne dit pas qu\'il rejoint la classe. Il marche juste derrière.']],
+  },
+  opm: {
+    title: 'CHAPITRE 13 — L\'INVASION DE LA CITÉ Z',
+    intro: [['N', 'Un vaisseau grand comme une ville flotte au-dessus de la Cité Z. Son seigneur a traversé l\'univers pour trouver un adversaire à sa taille.'],
+      ['B', 'Cet éclat m\'a mené jusqu\'ici. Es-tu celui qui me donnera enfin un vrai combat ?']],
+    outro: [['B', 'Ce n\'était donc… pas toi… le plus fort…'],
+      ['N', 'Un homme chauve en cape traverse les ruines, un sac de courses à la main. Il demande si la Masterclass rapporte des points au classement. Personne ne sait. Saitama s\'inscrit quand même.']],
+  },
+  bl2: {
+    title: 'CHAPITRE 14 — HUECO MUNDO',
+    intro: [['N', 'Un désert blanc sous une lune qui ne se couche jamais. Au sommet de Las Noches, une Espada garde un éclat.'],
+      ['B', 'Vous parlez de liens, de cœur. Montrez-le-moi, ce cœur. Où est-il ?']],
+    outro: [['B', 'Je vois… C\'est donc là… qu\'il était…'],
+      ['N', 'Ulquiorra s\'effrite comme de la cendre. Quatorze éclats. Les deux derniers brillent dans le monde des Saiyans.']],
   },
   db: {
-    title: 'CHAPITRE 11 — NAMEK',
-    intro: [['N', 'La planète Namek se meurt. L\'empereur de l\'univers a pris un éclat pour un Dragon Ball.'],
+    title: 'CHAPITRE 15 — NAMEK',
+    intro: [['N', 'La planète Namek se meurt. L\'empereur de l\'univers a pris un éclat pour une Dragon Ball.'],
       ['B', 'Un singe venu d\'un autre monde ? Je vais te montrer ma véritable puissance… hohoho.']],
     outro: [['B', 'Moi… vaincu… par un étranger…'],
-      ['N', 'Freezer s\'éteint dans l\'explosion de Namek. Onze éclats… mais le douzième manque. Une voix s\'élève.']],
+      ['N', 'Sangoku arrive en retard et s\'excuse en riant. Vegeta prévient qu\'il ne vient que pour battre tout le monde, Masterclass comprise.']],
   },
   db2: {
     title: 'CHAPITRE FINAL — LE CELL GAME',
     intro: [['B', 'Bienvenue. C\'est moi qui ai poussé Kuro-Oni à briser le Sceau. Chaque éclat m\'a appris vos techniques.'],
-      ['B', 'Tous les guerriers de tous les mondes, réunis en un seul être : moi. La forme vraiment parfaite.'],
-      ['H', 'Alors c\'est ici que tout se termine. Pour tous les mondes.']],
-    outro: [['B', 'Impossible… Je suis… PARFAIT…'],
-      ['N', 'Le dernier éclat rejoint les autres. Le Sceau des Mille Mondes se referme, et les failles avec lui.'],
-      ['N', 'Chaque monde retrouve sa propre histoire. Mais quelque part, un sceau neuf attend d\'être brisé… FIN.']],
+      ['B', 'Tous les guerriers de tous les mondes en un seul être. Moi. La forme vraiment parfaite.'],
+      ['H', 'Tu as copié nos techniques. Tu n\'as pas copié la classe.']],
+    outro: [['N', 'Un enfant s\'avance devant les autres. Gohan, onze ans, les cheveux dorés dressés, des éclairs autour des poings.'],
+      ['B', 'Impossible… Je suis… PARFAIT…'],
+      ['N', 'Le dernier éclat rejoint les quinze autres. Le Sceau se referme, et les failles avec lui.'],
+      ['N', 'Chacun rentre chez soi. À Tokyo, sur la porte de la salle d\'Ippo, quelqu\'un a écrit à la craie : « MASTERCLASS — on recrute. » FIN.']],
   },
 };
 
@@ -485,8 +526,15 @@ function drawMap() {
   ctx.fillStyle = 'rgba(10,0,25,0.82)'; ctx.fillRect(0, 0, W, 64); ctx.fillStyle = '#ffe14d'; ctx.fillRect(0, 64, W, 3);
   outlined('LA FRACTURE DES MONDES', 24, 30, 22, '#ff8ae6', 'left');
   outlined(S.title, 24, 56, 18, '#fff', 'left');
-  outlined(`ÉCLATS : ${story.done.length} / ${STORY_ORDER.length}`, W - 24, 30, 20, '#7fff9a', 'right');
+  outlined(`ÉCLATS : ${story.done.filter(id => id !== 'tokyo').length} / ${STORY_ORDER.length - 1}`, W - 24, 30, 20, '#7fff9a', 'right');
   if (L) outlined(`BOSS : ${ENEMY_INFO[L.boss]?.[0] || ''}`, W - 24, 56, 16, '#ff6070', 'right');
+  // la Masterclass : les maîtres recrutés dans les mondes terminés
+  const crew = STORY_ORDER.filter(id => story.done.includes(id)).flatMap(id => RECRUITS[id] || []).filter(c => CHARS[c]);
+  if (crew.length) {
+    ctx.fillStyle = 'rgba(10,0,25,0.7)'; ctx.fillRect(0, H - 66, W, 36);
+    outlined('MASTERCLASS', 16, H - 42, 14, '#ffe14d', 'left');
+    crew.forEach((c, q) => medallion(CHARS[c], 136 + q * 34, H - 48, 14, '#ffe14d'));
+  }
   ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
   ctx.fillText(`${K('left')} ${K('right')} se déplacer sur le plateau     ${K('punch')} ou Entrée : entrer dans ce monde     ${K('kick')} retour     Difficulté : ${DIFF().name} — ${OPTS.lives} vies`, W / 2, H - 10);

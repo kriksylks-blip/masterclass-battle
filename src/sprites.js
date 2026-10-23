@@ -23191,191 +23191,6 @@ const SPRITES = {
    ]
   }
  },
- "sl_knight": {
-  "walk": {
-   "scale": 0.315,
-   "frames": [
-    {
-     "src": "assets/sprites/sl_knight/walk_0.png",
-     "w": 261,
-     "h": 353,
-     "ax": 140.0,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_1.png",
-     "w": 266,
-     "h": 350,
-     "ax": 145.1,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_2.png",
-     "w": 264,
-     "h": 353,
-     "ax": 134.5,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_3.png",
-     "w": 188,
-     "h": 709,
-     "ax": 63.5,
-     "ay": 709
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_4.png",
-     "w": 267,
-     "h": 367,
-     "ax": 142.5,
-     "ay": 367
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_5.png",
-     "w": 266,
-     "h": 355,
-     "ax": 148.5,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_6.png",
-     "w": 262,
-     "h": 363,
-     "ax": 134.5,
-     "ay": 363
-    },
-    {
-     "src": "assets/sprites/sl_knight/walk_7.png",
-     "w": 79,
-     "h": 746,
-     "ax": 59.5,
-     "ay": 746
-    }
-   ]
-  },
-  "attack": {
-   "scale": 0.315,
-   "frames": [
-    {
-     "src": "assets/sprites/sl_knight/attack_0.png",
-     "w": 249,
-     "h": 364,
-     "ax": 130.5,
-     "ay": 364
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_1.png",
-     "w": 253,
-     "h": 376,
-     "ax": 149.0,
-     "ay": 376
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_2.png",
-     "w": 355,
-     "h": 272,
-     "ax": 151.5,
-     "ay": 272
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_3.png",
-     "w": 319,
-     "h": 263,
-     "ax": 136.0,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_4.png",
-     "w": 364,
-     "h": 307,
-     "ax": 122.5,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_5.png",
-     "w": 480,
-     "h": 305,
-     "ax": 163.0,
-     "ay": 305
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_6.png",
-     "w": 325,
-     "h": 341,
-     "ax": 205.5,
-     "ay": 341
-    },
-    {
-     "src": "assets/sprites/sl_knight/attack_7.png",
-     "w": 250,
-     "h": 359,
-     "ax": 117.0,
-     "ay": 359
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.315,
-   "frames": [
-    {
-     "src": "assets/sprites/sl_knight/fall_0.png",
-     "w": 242,
-     "h": 352,
-     "ax": 127.0,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/sl_knight/fall_1.png",
-     "w": 346,
-     "h": 320,
-     "ax": 217.6,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/sl_knight/fall_2.png",
-     "w": 358,
-     "h": 333,
-     "ax": 164.5,
-     "ay": 333
-    },
-    {
-     "src": "assets/sprites/sl_knight/fall_3.png",
-     "w": 298,
-     "h": 282,
-     "ax": 115.5,
-     "ay": 282
-    },
-    {
-     "src": "assets/sprites/sl_knight/fall_4.png",
-     "w": 416,
-     "h": 157,
-     "ax": 212.0,
-     "ay": 157
-    },
-    {
-     "src": "assets/sprites/sl_knight/fall_5.png",
-     "w": 265,
-     "h": 283,
-     "ax": 136.5,
-     "ay": 283
-    },
-    {
-     "src": "assets/sprites/sl_knight/fall_6.png",
-     "w": 305,
-     "h": 319,
-     "ax": 197.5,
-     "ay": 319
-    },
-    {
-     "src": "assets/sprites/sl_knight/fall_7.png",
-     "w": 275,
-     "h": 400,
-     "ax": 142.1,
-     "ay": 400
-    }
-   ]
-  }
- },
  "sl_boss": {
   "walk": {
    "scale": 0.6694,
@@ -25336,6 +25151,191 @@ const SPRITES = {
      "h": 434,
      "ax": 133.0,
      "ay": 434
+    }
+   ]
+  }
+ },
+ "sl_knight": {
+  "walk": {
+   "scale": 0.6601,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_knight/walk_0.png",
+     "w": 255,
+     "h": 345,
+     "ax": 135.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_1.png",
+     "w": 223,
+     "h": 342,
+     "ax": 134.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_2.png",
+     "w": 148,
+     "h": 345,
+     "ax": 75.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_3.png",
+     "w": 225,
+     "h": 345,
+     "ax": 127.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_4.png",
+     "w": 259,
+     "h": 355,
+     "ax": 131.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_5.png",
+     "w": 210,
+     "h": 354,
+     "ax": 125.0,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_6.png",
+     "w": 184,
+     "h": 355,
+     "ax": 113.0,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/sl_knight/walk_7.png",
+     "w": 194,
+     "h": 356,
+     "ax": 115.1,
+     "ay": 356
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6601,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_knight/attack_0.png",
+     "w": 249,
+     "h": 364,
+     "ax": 130.5,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_1.png",
+     "w": 253,
+     "h": 376,
+     "ax": 149.0,
+     "ay": 376
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_2.png",
+     "w": 355,
+     "h": 272,
+     "ax": 151.5,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_3.png",
+     "w": 319,
+     "h": 263,
+     "ax": 136.0,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_4.png",
+     "w": 364,
+     "h": 307,
+     "ax": 122.5,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_5.png",
+     "w": 480,
+     "h": 305,
+     "ax": 163.0,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_6.png",
+     "w": 325,
+     "h": 341,
+     "ax": 205.5,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/sl_knight/attack_7.png",
+     "w": 250,
+     "h": 359,
+     "ax": 117.0,
+     "ay": 359
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6601,
+   "frames": [
+    {
+     "src": "assets/sprites/sl_knight/fall_0.png",
+     "w": 242,
+     "h": 352,
+     "ax": 127.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_1.png",
+     "w": 346,
+     "h": 320,
+     "ax": 217.6,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_2.png",
+     "w": 358,
+     "h": 333,
+     "ax": 164.5,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_3.png",
+     "w": 298,
+     "h": 282,
+     "ax": 115.5,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_4.png",
+     "w": 416,
+     "h": 157,
+     "ax": 212.0,
+     "ay": 157
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_5.png",
+     "w": 265,
+     "h": 283,
+     "ax": 136.5,
+     "ay": 283
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_6.png",
+     "w": 305,
+     "h": 319,
+     "ax": 197.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/sl_knight/fall_7.png",
+     "w": 275,
+     "h": 400,
+     "ax": 142.1,
+     "ay": 400
     }
    ]
   }
