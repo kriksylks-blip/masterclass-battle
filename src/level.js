@@ -853,9 +853,17 @@ function drawLevelOverlay() {
     ctx.fillStyle = boss ? '#2a0008' : '#140626'; ctx.fillRect(x, y, bw, bh);
     if (img) {
       // Cadrage sur le visage : l'image montre ~60 % de sa hauteur, visage au tiers haut du bandeau
-      const fy = INTRO_FACE[c.type] ?? 0.2, s = bh / (0.62 * img.height), iw = img.width * s, ih = img.height * s;
-      const ix = x + bw - iw + 40 - t * 30, iy = clamp(y + bh * 0.34 - fy * ih, y + bh - ih, y);
+      // le visage au même point du bandeau (74 % de la largeur, 34 % de la hauteur) ; l'image ne laisse pas de vide à droite
+      const [fx, fy] = introFace(c.type), s = bh / (0.62 * img.height), iw = img.width * s, ih = img.height * s;
+      const ix = clamp(x + bw * 0.74 - fx * iw, x + bw - iw - 200, x + bw - 200) - t * 30, iy = clamp(y + bh * 0.34 - fy * ih, y + bh - ih, y);
       ctx.drawImage(img, ix, iy, iw, ih);
+      // si l'image s'arrête avant le bord droit, son bord se fond dans le bandeau
+      if (ix + iw < x + bw) {
+        const gr = ctx.createLinearGradient(ix + iw - 120, 0, ix + iw, 0);
+        gr.addColorStop(0, boss ? 'rgba(42,0,8,0)' : 'rgba(20,6,38,0)'); gr.addColorStop(1, boss ? '#2a0008' : '#140626');
+        ctx.fillStyle = gr; ctx.fillRect(ix + iw - 120, y, 120, bh);
+        ctx.fillStyle = boss ? '#2a0008' : '#140626'; ctx.fillRect(ix + iw - 1, y, x + bw - ix - iw + 2, bh);
+      }
       // bord gauche de l'image fondu dans le bandeau
       const gl = ctx.createLinearGradient(ix, 0, ix + 160, 0);
       gl.addColorStop(0, boss ? '#2a0008' : '#140626'); gl.addColorStop(1, boss ? 'rgba(42,0,8,0)' : 'rgba(20,6,38,0)');
@@ -873,19 +881,27 @@ function drawLevelOverlay() {
   }
 }
 const CARD_T = 2.1;
-// Hauteur du visage dans chaque image de présentation (0 = haut de l'image, 1 = bas), relevée à l'œil
+// Position du visage dans chaque image de présentation : [x, y] en fraction de l'image (0,0 = coin haut gauche),
+// mesurée par la silhouette sur le fond (haut de la tête + 13 % de la hauteur du perso), puis vérifiée à l'œil.
+// Le bandeau place ce point au même endroit pour tous : les visages ne sont plus décalés d'un ennemi à l'autre.
 const INTRO_FACE = {
-  thug: 0.25, brute: 0.3, ninja: 0.35, biker: 0.2, samurai: 0.35, boss: 0.3,
-  op_pirate: 0.15, op_marine: 0.12, op_boss: 0.2, op2_agent: 0.08, op2_guard: 0.12, op2_boss: 0.12,
-  ds_demon: 0.2, ds_spider: 0.12, ds_boss: 0.15, ds2_demon: 0.2, ds2_obi: 0.25, ds2_boss: 0.25,
-  bl_shinigami: 0.2, bl_hollow: 0.15, bl_boss: 0.2, hx_fighter: 0.12, hx_nen: 0.12, hx_boss: 0.15,
-  nr_sound: 0.12, nr_rogue: 0.1, nr_boss: 0.1, nr2_rain: 0.1, nr2_puppet: 0.15, nr2_boss: 0.12,
-  db_soldier: 0.12, db_elite: 0.2, db_boss: 0.12, db2_jr: 0.15, db2_android: 0.12, db2_boss: 0.12,
-  mh_villain: 0.15, mh_blaster: 0.1, mh_boss: 0.12, rk_ninja: 0.15, rk_ronin: 0.15, rk_boss: 0.1,
-  jk_curse: 0.15, jk_user: 0.12, jk_boss: 0.12, sl_goblin: 0.2, sl_knight: 0.12, sl_boss: 0.12,
-  opm_monster: 0.15, opm_alien: 0.12, opm_boss: 0.12, bl2_arrancar: 0.12, bl2_fraccion: 0.15, bl2_boss: 0.12,
+  biker: [0.57, 0.13], bl2_arrancar: [0.773, 0.138], bl2_boss: [0.719, 0.142], bl2_fraccion: [0.678, 0.138], bl2_mini: [0.766, 0.138],
+  bl_boss: [0.768, 0.138], bl_hollow: [0.753, 0.138], bl_mini: [0.589, 0.138], bl_shinigami: [0.805, 0.138], boss: [0.505, 0.193],
+  brute: [0.536, 0.218], db2_android: [0.76, 0.138], db2_boss: [0.665, 0.138], db2_jr: [0.68, 0.138], db2_mini: [0.729, 0.138],
+  db_boss: [0.697, 0.138], db_elite: [0.745, 0.138], db_mini: [0.75, 0.138], db_soldier: [0.735, 0.138], ds2_boss: [0.52, 0.3],
+  ds2_demon: [0.675, 0.138], ds2_mini: [0.761, 0.138], ds2_obi: [0.637, 0.138], ds_boss: [0.741, 0.138], ds_demon: [0.771, 0.151],
+  ds_mini: [0.805, 0.138], ds_spider: [0.79, 0.17], hx_boss: [0.741, 0.138], hx_fighter: [0.761, 0.138], hx_mini: [0.709, 0.138],
+  hx_nen: [0.815, 0.138], jk_boss: [0.681, 0.138], jk_curse: [0.799, 0.138], jk_mini: [0.75, 0.138], jk_user: [0.746, 0.138],
+  mh_blaster: [0.668, 0.138], mh_boss: [0.717, 0.138], mh_mini: [0.565, 0.138], mh_villain: [0.623, 0.138], ninja: [0.526, 0.218],
+  nr2_boss: [0.761, 0.138], nr2_mini: [0.744, 0.138], nr2_puppet: [0.826, 0.138], nr2_rain: [0.845, 0.138], nr_boss: [0.722, 0.138],
+  nr_mini: [0.781, 0.138], nr_rogue: [0.722, 0.138], nr_sound: [0.779, 0.138], op2_agent: [0.717, 0.138], op2_boss: [0.739, 0.138],
+  op2_guard: [0.777, 0.138], op2_mini: [0.54, 0.14], op_boss: [0.763, 0.138], op_marine: [0.726, 0.138], op_mini: [0.793, 0.138],
+  op_pirate: [0.749, 0.138], opm_alien: [0.686, 0.138], opm_boss: [0.63, 0.138], opm_mini: [0.748, 0.138], opm_monster: [0.747, 0.138],
+  rk_boss: [0.783, 0.138], rk_mini: [0.678, 0.138], rk_ninja: [0.655, 0.138], rk_ronin: [0.749, 0.138], samurai: [0.346, 0.209],
+  sl_boss: [0.807, 0.138], sl_goblin: [0.715, 0.138], sl_knight: [0.701, 0.138], sl_mini: [0.766, 0.138], thug: [0.574, 0.187],
+  tokyo_mini: [0.7, 0.138],
 };
-for (const L of LEVELS) INTRO_FACE[`${L.id}_mini`] ??= 0.14; // mini-boss : à relever à l'œil une fois les cartes faites
+const introFace = t => INTRO_FACE[t] || [0.7, 0.2];
 
 // Jauge du boss en bas de l'écran
 function drawBossBar() {

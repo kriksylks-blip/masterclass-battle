@@ -4424,8 +4424,8 @@ function drawLevels() {
     ctx.save(); ctx.translate(bx, by); ctx.rotate(-0.06);
     ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 24; ctx.fillStyle = '#000'; ctx.fillRect(-bw / 2, -bh / 2, bw, bh); ctx.shadowBlur = 0;
     ctx.save(); ctx.beginPath(); ctx.rect(-bw / 2, -bh / 2, bw, bh); ctx.clip();
-    const fy = INTRO_FACE[L.boss] ?? 0.2, s = bh / (0.7 * card.height);
-    ctx.drawImage(card, bw / 2 - card.width * s + 30, -bh / 2 - fy * card.height * s + bh * 0.3, card.width * s, card.height * s);
+    const [fx, fy] = introFace(L.boss), s = bh / (0.7 * card.height), cw = card.width * s;
+    ctx.drawImage(card, clamp(bw * 0.2 - fx * cw, bw / 2 - cw + 30, -bw / 2), -bh / 2 - fy * card.height * s + bh * 0.3, cw, card.height * s);
     const vg = ctx.createLinearGradient(-bw / 2, 0, bw / 2, 0); vg.addColorStop(0, 'rgba(0,0,0,0.75)'); vg.addColorStop(0.45, 'rgba(0,0,0,0)');
     ctx.fillStyle = vg; ctx.fillRect(-bw / 2, -bh / 2, bw, bh);
     ctx.restore();
@@ -5315,10 +5315,10 @@ function outlined(text, x, y, size, fill = '#fff', align = 'center') {
 // Position du visage dans chaque image de carte (fraction de la largeur, de la hauteur) et taille d'affichage
 const FACES = {
   card_go: [0.6, 0.37, 4], card_goku: [0.62, 0.34, 4], card_hero: [0.66, 0.36, 4], card_ic: [0.38, 0.31, 5.5],
-  card_ip: [0.57, 0.3, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
-  card_ki: [0.53, 0.36, 4], card_luffy: [0.71, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
+  card_ip: [0.55, 0.22, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
+  card_ki: [0.53, 0.36, 4], card_luffy: [0.725, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
   card_ve: [0.52, 0.37, 4], card_ze: [0.2, 0.36, 4.2], card_zoro: [0.47, 0.27, 4.4],
-  card_jw: [0.765, 0.185, 6.5], card_sk: [0.66, 0.27, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.42, 0.29, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.55, 0.2, 4.4], card_st: [0.62, 0.23, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.57, 0.26, 4.0], card_rv: [0.58, 0.27, 4.0], card_ga: [0.58, 0.28, 4.0], card_lv: [0.54, 0.26, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.6, 0.24, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.36, 0.23, 4.0], card_bo: [0.58, 0.22, 4.0], card_ns: [0.51, 0.4, 3.2], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.765, 0.185, 6.5], card_sk: [0.6, 0.22, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.36, 0.33, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.52, 0.15, 4.4], card_st: [0.57, 0.19, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.55, 0.21, 4.0], card_rv: [0.56, 0.3, 4.0], card_ga: [0.62, 0.18, 4.0], card_lv: [0.57, 0.19, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.38, 0.34, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.38, 0.16, 4.0], card_bo: [0.33, 0.33, 4.0], card_ns: [0.51, 0.4, 3.2], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
