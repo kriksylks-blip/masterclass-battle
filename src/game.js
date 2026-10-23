@@ -606,7 +606,7 @@ const SK_MOVES = { ...FIST,
 // Gohan enfant : poings et pieds de Sangoku, Masenko
 const GH_MOVES = { ...FIST,
   dash:    { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 130], y: [-140, -50], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1100, pushAt: 0.06, pushDur: 0.3, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
-  masenko: { dur: 1.25, cost: 35, beam: { hand: true, at: 0.5, end: 1.12, len: 900, dmg: 0.6, color: '#ffe066', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.15)' }, call: 'MASENKO !', p: ['special', [0, 1, 2, 3], [0.2, 0.5, 1.14]] },
+  masenko: { dur: 1.25, cost: 35, beam: { hand: true, charge: [[28, -262], [24, -302]], ball: true, at: 0.5, end: 1.12, len: 900, dmg: 0.6, color: '#ffe066', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.15)' }, call: 'MASENKO !', p: ['special', [0, 1, 2, 3], [0.2, 0.5, 1.14]] },
 };
 // Inosuke : deux sabres dentelés, souffle de la bête (coups de tête, ruées de sanglier)
 const IN_MOVES = { ...SWORD,
@@ -807,7 +807,7 @@ const IZ_MOVES = { ...NEWKICK(FIST),
 // Vegeta : Galick Gun, Final Flash
 const VE_MOVES = { ...NEWKICK(FIST),
   dash:   { dur: 0.55, on: 0.12, off: 0.42, reach: [0, 125], y: [-150, -60], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1100, pushAt: 0.06, pushDur: 0.4, p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.2, 0.45]] },
-  galick: { dur: 1.3, cost: 35, beam: { at: 0.5, end: 1.15, len: 900, dmg: 0.55, color: '#c27bff', filter: 'hue-rotate(75deg) saturate(1.4)' }, call: 'GALICK GUN !', p: ['special', [0, 1, 2, 3], [0.22, 0.5, 1.18]] },
+  galick: { dur: 1.3, cost: 35, beam: { ball: 'violet', at: 0.5, end: 1.15, len: 900, dmg: 0.55, color: '#c27bff', filter: 'hue-rotate(75deg) saturate(1.4)' }, call: 'GALICK GUN !', p: ['special', [0, 1, 2, 3], [0.22, 0.5, 1.18]] },
 };
 // Gon : Jajanken
 const GO_MOVES = { ...FIST,
@@ -5492,7 +5492,14 @@ function drawPlayer(h) {
     const p = handPos(h);
     energyBall(p.x - camX, p.y, 6 + 22 * Math.min(1, h.t / MOVES.blast.fire), !!F);
   }
-  if (m?.beam && h.t < m.beam.at) energyBall(sx - h.dir * 18, h.y - 102 * WORLD, 6 + 26 * Math.min(1, h.t / m.beam.at), false);
+  if (m?.beam && h.t < m.beam.at) {
+    // la boule se forme entre les mains : à la hanche (Kamehameha, Galick) ou au-dessus de la tête (Masenko).
+    // charge : un point par étape de la pose, en pixels de la planche par rapport au pied d'appui
+    let bx = sx - h.dir * 18, by = h.y - 102 * WORLD;
+    const ch = m.beam.charge, [anim, i] = h.C.pose(h), A = ch && SPRITES[sheetFor(h, anim)]?.[anim];
+    if (A) { const c = ch[clamp(i, 0, ch.length - 1)]; bx = sx + h.dir * c[0] * A.scale; by = h.y + c[1] * A.scale; }
+    energyBall(bx, by, 6 + 26 * Math.min(1, h.t / m.beam.at), m.beam.ball || false);
+  }
   if (m?.heldShuriken && h.t < m.proj.at) drawShuriken(sx + h.dir * 18 * WORLD, h.y - 225 * WORLD, 0.25 + 0.3 * Math.min(1, h.t / m.proj.at), h.t);
   if (h.state === 'ultra' && h.C.ultra[0] === startShuriken && !h.thrown) drawShuriken(sx + h.dir * 30, h.y - 250, 0.3 + 1.6 * Math.min(1, h.t / RSH.throwAt), h.t);
   if (m?.orb && h.t >= m.orb[0] && h.t <= m.orb[1]) {
