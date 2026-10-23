@@ -121,7 +121,7 @@ const GATES = {
   tokyo: ['tokyo_g1', 'tokyo_g2', 'tokyo_g3', 'tokyo_g4'],
   op: ['op_g1', 'op_g2'], ds: ['ds_g1', 'ds_g2'], bl: ['bl_g1', 'bl_g2'], hx: ['hx_g1', 'hx_g2'],
   nr: ['nr_g1', 'nr_g2'], db: ['db_g1', 'db_g2'], mh: ['mh_g1', 'mh_g2'],
-  rk: ['rk_g1', 'rk_g2'], op2: ['op2_g1', 'op2_g2'], nr2: ['nr2_g1', 'nr2_g2'], ds2: ['ds2_g1', 'ds2_g2'], db2: ['db2_g1', 'db2_g2'],
+  // les mondes suivants n'ont pas d'image de passage : simple fondu au noir
 };
 for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = (GATES[L.id] || [])[k - 1]; }); // nouveaux mondes : fondu au noir seul
 // La forêt de la mort a son lointain (sinon le ciel du village et ses visages sculptés apparaissent entre les arbres)
