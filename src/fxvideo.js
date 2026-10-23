@@ -1353,6 +1353,88 @@ const FXV = {
    "w": 1280,
    "h": 420
   }
+ ],
+ "entei_v": [
+  {
+   "src": "assets/fx/entei_v_0.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_1.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_2.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_3.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_4.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_5.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_6.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_7.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_8.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_9.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_10.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_11.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_12.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_13.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_14.png",
+   "w": 720,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/entei_v_15.png",
+   "w": 720,
+   "h": 720
+  }
  ]
 };
 Object.assign(FX, FXV);

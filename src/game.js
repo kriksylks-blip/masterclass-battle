@@ -1922,10 +1922,10 @@ const ULT_SOLO = 1.35;
 // ---------- Ultime du héros et de Sangoku : une énorme sphère d'énergie levée au-dessus de la tête ----------
 const ULTRA = { raise: 1.5, throwAt: 1.75, end: 2.4, maxR: 115 };
 function startUltra(h) {
-  bombs.push({ owner: h, x: h.x, y: h.y - 300, r: 6, vx: 0, vy: 0, state: 'grow', t: 0, hit: new Set(), dir: h.dir, fire: h.char === 'ace' });
+  bombs.push({ owner: h, x: h.x, y: h.y - 300, r: 6, vx: 0, vy: 0, state: 'grow', t: 0, hit: new Set(), dir: h.dir, fire: h.char === 'ace', maxR: h.char === 'ace' ? 135 : ULTRA.maxR });
   h.ultraSnd = audio.play('ultraCharge', 0.9, 1, 0);
   if (h.char === 'goku') say(h, 'GENKIDAMA !');
-  if (h.char === 'ace') say(h, 'ENTEI !'); // un petit soleil de feu levé au-dessus de lui
+  if (h.char === 'ace') say(h, 'DAI ENKAI… ENTEI !'); // Dai Enkai : un soleil de flammes levé au-dessus de lui (vidéo entei_v)
 }
 
 function updateUltraPose(h) {
@@ -2043,10 +2043,15 @@ function updateBomb(b, dt) {
   const h = b.owner;
   if (b.genki) return updateGenkiBomb(b, dt);
   if (b.state === 'grow') {
-    b.r = 6 + (ULTRA.maxR - 6) * Math.min(1, b.t / ULTRA.raise);
+    b.r = 6 + (b.maxR - 6) * Math.min(1, b.t / ULTRA.raise);
     b.x = h.x - h.dir * 6; b.y = h.y - 250 - b.r * 0.85;
+    // Entei : des flammes montent de tout son corps et nourrissent le soleil
+    if (b.fire) for (let k = 0; k < 3; k++) {
+      const x = h.x + rand(-45, 45), y = h.y - rand(30, 200);
+      particles.push({ x, y, vx: (b.x - x) * rand(1.6, 2.2), vy: (b.y - y) * rand(1.6, 2.2), t: 0, life: 0.45, c: Math.random() < 0.5 ? 'rgba(255,120,30,0.8)' : 'rgba(255,200,80,0.8)', r: rand(2, 4.5) });
+    }
     // L'énergie de toute la ville converge vers la sphère
-    for (let k = 0; k < 3; k++) {
+    else for (let k = 0; k < 3; k++) {
       const a = rand(0, Math.PI * 2), d = rand(250, 520);
       particles.push({ x: b.x + Math.cos(a) * d, y: b.y + Math.sin(a) * d, vx: -Math.cos(a) * d * 2.2, vy: -Math.sin(a) * d * 2.2, t: 0, life: 0.42, c: b.fire ? '#ffb040' : '#9fe8ff', r: rand(2, 4) });
     }
@@ -2060,9 +2065,14 @@ function updateBomb(b, dt) {
   }
   if (b.state === 'fly') {
     b.x += b.vx * dt; b.y += b.vy * dt;
+    // traînée de flammes derrière le soleil d'Ace
+    if (b.fire) for (let k = 0; k < 5; k++) {
+      const a = rand(0, Math.PI * 2), d = b.r * rand(0.5, 0.95);
+      particles.push({ x: b.x + Math.cos(a) * d, y: b.y + Math.sin(a) * d, vx: -b.vx * rand(0.2, 0.5), vy: -b.vy * 0.3 - rand(40, 160), t: 0, life: rand(0.35, 0.6), c: ['#ff5a10', '#ff9a2a', '#ffd060'][k % 3], r: rand(10, 22) });
+    }
     for (const e of enemies) {
       if (!e.alive || b.hit.has(e) || e.state === 'down') continue;
-      if (Math.hypot(e.x - b.x, e.gz - 100 - b.y) < b.r + 60) { b.hit.add(e); damageEnemy(e, 6, 500 * b.dir, -700, e.x, e.y - 100, '#bff3ff'); }
+      if (Math.hypot(e.x - b.x, e.gz - 100 - b.y) < b.r + 60) { b.hit.add(e); damageEnemy(e, 6, 500 * b.dir, -700, e.x, e.y - 100, b.fire ? '#ffd0a0' : '#bff3ff'); }
     }
     if (b.y + b.r * 0.4 >= b.gz) {
       b.state = 'boom'; b.t = 0; b.y = b.gz;
@@ -2071,7 +2081,13 @@ function updateBomb(b, dt) {
       const dmg = ULT_SOLO * (4 + h.power / 10);
       for (const e of enemies) {
         if (!e.alive || e.state === 'down' || Math.abs(e.x - b.x) > 480) continue;
-        damageEnemy(e, dmg, 600 * (Math.sign(e.x - b.x) || 1), -800, e.x, e.y - 100, '#bff3ff');
+        damageEnemy(e, dmg, 600 * (Math.sign(e.x - b.x) || 1), -800, e.x, e.y - 100, b.fire ? '#ffd0a0' : '#bff3ff');
+      }
+      if (b.fire) {
+        // le soleil s'écrase : gerbes d'explosions de feu, colonne de flammes et braises
+        for (let k = 0; k < 5; k++) animFX('explosion', b.x + rand(-300, 300), b.gz - rand(40, 200), rand(260, 420), rand(0.6, 0.9));
+        animFX('explosion', b.x, b.gz - 160, 620, 1.0);
+        for (let k = 0; k < 70; k++) particles.push({ x: b.x + rand(-260, 260), y: b.gz - rand(0, 60), vx: rand(-420, 420), vy: rand(-900, -250), t: 0, life: rand(0.6, 1.2), c: ['#ff4a00', '#ff8a1a', '#ffc040', '#fff0a0'][k % 4], r: rand(6, 16), streak: k % 3 === 0 });
       }
       score += 2000;
       popups.push({ x: b.x, y: b.gz - 260, t: 0, text: 'ULTIME !!' });
@@ -5535,10 +5551,31 @@ function drawWaves() {
   }
 }
 
-// Entei d'Ace : la même sphère, passée au rouge-orangé
+// Entei d'Ace : un soleil de flammes filmé (entei_v, fond noir posé en mode lumineux) dans un halo de chaleur ;
+// à l'impact, un dôme de feu. Sans la vidéo : l'ancienne sphère passée au rouge-orangé.
+const ENTEI_S = 2.25; // largeur de l'image / rayon du soleil
 function drawBomb(b) {
   if (!b.fire) return drawBombBody(b);
-  ctx.save(); ctx.filter = 'hue-rotate(170deg) saturate(2.2) brightness(1.05)'; drawBombBody(b); ctx.restore();
+  const sx = b.x - camX;
+  if (!FX.entei_v) { ctx.save(); ctx.filter = 'hue-rotate(170deg) saturate(2.2) brightness(1.05)'; drawBombBody(b); ctx.restore(); return; }
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  if (b.state !== 'boom') {
+    const r = b.r * (1 + Math.sin(sceneT * 23) * 0.04);
+    const g = ctx.createRadialGradient(sx, b.y, r * 0.3, sx, b.y, r * 2.1);
+    g.addColorStop(0, 'rgba(255,170,60,0.55)'); g.addColorStop(0.5, 'rgba(255,90,20,0.22)'); g.addColorStop(1, 'rgba(255,60,0,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(sx, b.y, r * 2.1, 0, 7); ctx.fill();
+    ctx.restore();
+    fxImg('entei_v', Math.floor(sceneT * 14), sx, b.y, r * ENTEI_S, null, { rot: sceneT * 0.6 * b.dir });
+    return;
+  }
+  const k = b.t / 1.1, R = 120 + 560 * Math.sqrt(k);
+  ctx.globalAlpha = 1 - k;
+  const g = ctx.createRadialGradient(sx, b.y, 0, sx, b.y, R);
+  g.addColorStop(0, '#fff6d0'); g.addColorStop(0.35, '#ffb040'); g.addColorStop(0.7, 'rgba(255,80,10,0.6)'); g.addColorStop(1, 'rgba(200,30,0,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(sx, b.y, R, R * 0.8, 0, Math.PI, 0); ctx.fill();
+  ctx.strokeStyle = '#ffd080'; ctx.lineWidth = 8 * (1 - k);
+  ctx.beginPath(); ctx.ellipse(sx, b.y, R * 1.1, R * 0.2, 0, 0, 7); ctx.stroke();
+  ctx.restore();
 }
 function drawBombBody(b) {
   const sx = b.x - camX;
