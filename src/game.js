@@ -3204,7 +3204,7 @@ Object.assign(ETYPES, {
   op2_guard: MINION('op2_guard', { hp: 6, reach: 135, slash: '#dfe6ff' }),
   op2_agent: MINION('op2_agent', { lunge: true, speed: [160, 190] }),
   op2_boss: BOSS('op2_boss', { proj: 'slash', projColor: '#ffffff', adds: ['op2_guard', 'op2_agent'], roar: 'RANKYAKU !!' }),
-  nr2_puppet: MINION('nr2_puppet', { lunge: true, slash: '#c9a0ff', hp: 6 }),
+  nr2_puppet: MINION('nr2_puppet', { lunge: true, slash: '#c9a0ff', hp: 6, front: 85 }),
   nr2_rain: MINION('nr2_rain', { ranged: 'kunai' }),
   nr2_boss: BOSS('nr2_boss', { proj: 'shock', projColor: '#c9a0ff', adds: ['nr2_puppet', 'nr2_rain'], roar: 'SHINRA TENSEI !!' }),
   ds2_demon: MINION('ds2_demon', { lunge: true, slash: '#ff3040', speed: [160, 190] }),
@@ -3577,6 +3577,7 @@ function updateEnemy(e, dt) {
   if (e.cool > 0) e.cool -= dt * (DIFF().aggr - 1); // difficulté : attaques plus ou moins rapprochées
   const T = ETYPES[e.type], h = targetOf(e);
   e.t += dt; e.flash = Math.max(0, e.flash - dt);
+  if (e.hop) return; // en plein saut par-dessus un trou (updatePits)
   const dx = h.x - e.x, dist = Math.abs(dx), dz = h.gz - e.gz;
   const heroDown = h.out || ['knock', 'floor', 'getup'].includes(h.state);
   // Ennemis à comportement propre (motard, samouraï, boss) : marche et attaques gérées à part
@@ -5094,6 +5095,7 @@ function luffyPose(h) {
 
 function enemyPose(e) {
   const t = e.t;
+  if (e.hop && SPRITES[ETYPES[e.type].sheet || e.type]?.fall) return ['fall', 2]; // en l'air, au-dessus d'un trou
   if (ETYPES[e.type].pose) return ETYPES[e.type].pose(e);
   if (e.type === 'brute') switch (e.state) {
     case 'walk': return e.moving ? ['walk', Math.floor(e.walkT * 6) % 4] : ['attack', 0];

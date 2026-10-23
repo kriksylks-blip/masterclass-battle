@@ -521,13 +521,31 @@ function updatePits(dt) {
   }
   for (const e of enemies) {
     if (e.pit) { e.y += 900 * dt; continue; }
+    // saut par-dessus un trou (voir plus bas) : trajectoire en arc, l'ennemi ne fait rien d'autre
+    if (e.hop) {
+      const J = e.hop, k = Math.min(1, (J.t += dt) / J.d);
+      e.x = J.x0 + (J.x1 - J.x0) * k; e.y = e.gz - Math.sin(k * Math.PI) * J.hgt;
+      if (k >= 1) { e.hop = null; e.y = e.gz; }
+      continue;
+    }
     if (!e.alive) { if (e.state === 'down' && !ETYPES[e.type].isBoss && pitAt(e.x, e.gz)) e.pit = true; continue; } // vaincu au-dessus du vide
     if (e.state === 'knock' || e.y < e.gz - 0.5) continue;
-    const P = pitAt(e.x, e.gz);
+    // front : ce que l'ennemi porte devant lui (la marionnette du marionnettiste) ne doit pas pendre au-dessus du vide
+    const fr = ETYPES[e.type].front || 0, feet = pitAt(e.x, e.gz), P = feet || (fr && pitAt(e.x + e.dir * fr, e.gz));
     if (!P) continue;
-    if (['hurt', 'down'].includes(e.state) && !ETYPES[e.type].isBoss) {
+    if (feet && ['hurt', 'down'].includes(e.state) && !ETYPES[e.type].isBoss) {
       e.pit = true; e.alive = false; e.state = 'down'; e.t = 0; e.hp = 0; kills++; score += ETYPES[e.type].score; audio.tone(260, 0.6, 'triangle', 0.08, -200);
-    } else e.x = e.x - P.x < P.w / 2 && !P.collapse ? P.x - 4 : P.x + P.w + 4;
+      continue;
+    }
+    const c = P.x + P.w / 2, left = e.x < c;
+    // il va vers le trou (le joueur est de l'autre côté) : il le franchit d'un bond au lieu de buter contre le bord
+    if (!P.collapse && ['walk', 'atk'].includes(e.state) && Math.sign(c - e.x) === e.dir) {
+      e.hop = { x0: e.x, x1: e.dir > 0 ? P.x + P.w + 30 : P.x - 30, t: 0, d: 0.5, hgt: 120 };
+      e.state = 'walk'; e.atk = null; e.snd = false; e.cool = Math.max(e.cool || 0, 0.4); audio.whoosh(0.8);
+      continue;
+    }
+    // sinon il s'arrête au bord, avant que ce qu'il porte devant lui ne dépasse
+    e.x = left && !P.collapse ? P.x - 4 - (e.dir > 0 ? fr : 0) : P.x + P.w + 4 + (e.dir < 0 ? fr : 0);
   }
 }
 // Chute d'un joueur (appelée à la place de sa mise à jour) : il tombe, perd un peu de vie et revient au bord
