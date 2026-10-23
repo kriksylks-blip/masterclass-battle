@@ -53,7 +53,7 @@ function themedLevel(id, name, sub, zoneNames, a, b) {
     const last = k === n - 1;
     waves.push({ x: x0 + 450, foes: k ? [a, a, b] : [a, a] }, { x: x0 + 1250, foes: k ? [b, a, b, a] : [a, b, a] });
     if (!last) waves.push({ x: x0 + 1900, foes: k ? [a, b, a, a, b] : [b, a, a, b] });
-    props.push([x0 + 800, 'crate', null], [x0 + 1800, 'barrel', items[k % items.length]], [x0 + 2250, 'crate', null]); // rien devant la porte (limite - 230)
+    props.push([x0 + 800, 'crate', null], [x0 + 1800, 'barrel', items[k % items.length]], [x0 + 2250, 'crate', last ? 'onigiri' : null]); // rien devant la porte (limite - 230) ; un soin de plus avant le boss
   });
   waves.push({ x: end - 960, foes: [`${id}_boss`], boss: true });
   return {

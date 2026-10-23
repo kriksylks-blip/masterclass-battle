@@ -1268,7 +1268,7 @@ function updateBunshin(h, dt) {
   const B = h.bun;
   while (B.spawned < BUNSHIN.n && h.t > B.spawned * BUNSHIN.every) {
     const k = B.spawned++, x = camX + 60 + ((k * 0.618) % 1) * (W - 120), gz = Z_TOP + 10 + ((k * 0.37) % 1) * (Z_BOT - Z_TOP - 20);
-    const c = { owner: h, x, gz, y: gz, dir: x < h.x ? 1 : -1, t: -0.1, state: 'rush', run: 0, kick: k % 2 === 1, hits: 2, seek: true, rasen: k % 3 === 2, power: 0.6 }; // équilibré : ~27 de dégâts sur un seul ennemi, comme les autres ultimes
+    const c = { owner: h, x, gz, y: gz, dir: x < h.x ? 1 : -1, t: -0.1, state: 'rush', run: 0, kick: k % 2 === 1, hits: 2, seek: true, rasen: k % 3 === 2, power: 0.5 }; // équilibré : ~22 de dégâts sur un seul ennemi, comme les autres ultimes
     clones.push(c); puff(x, gz);
     if (k % 3 === 0) audio.zip();
   }
@@ -1280,7 +1280,7 @@ function updateBunshin(h, dt) {
     for (const c of clones) if (c.owner === h) { puff(c.x, c.y); c.done = true; }
     for (const e of enemies) {
       if (!e.alive || e.state === 'down' || Math.abs(e.x - (camX + W / 2)) > W / 2 + 40) continue;
-      damageEnemy(e, 3 + h.power / 20, 620 * (Math.sign(e.x - h.x) || 1), -820, e.x, e.y - 110, h.C.hit);
+      damageEnemy(e, 2 + h.power / 25, 620 * (Math.sign(e.x - h.x) || 1), -820, e.x, e.y - 110, h.C.hit);
       animFX(Math.random() < 0.5 ? 'hitboom_a' : 'hitboom_b', e.x, e.y - 110, 260 * WORLD, 0.5);
     }
     popups.push({ x: h.x, y: h.y - 260, t: 0, text: 'UZUMAKI NARUTO RENDAN !!' });
@@ -1495,6 +1495,9 @@ function ultraHit(h, reach, dmg, laneTol = 70, back = -40) {
   }
 }
 
+// Équilibrage (23/10) : les ultimes à un seul coup frappent plus fort, pour rester entre ~18 et ~24 sur un boss
+// comme les ultimes à plusieurs coups (mesuré à 100 de ki sur le Kuro-Oni)
+const ULT_SOLO = 1.35;
 // ---------- Ultime du héros et de Sangoku : une énorme sphère d'énergie levée au-dessus de la tête ----------
 const ULTRA = { raise: 1.5, throwAt: 1.75, end: 2.4, maxR: 115 };
 function startUltra(h) {
@@ -1642,7 +1645,7 @@ function updateBomb(b, dt) {
       b.state = 'boom'; b.t = 0; b.y = b.gz;
       flash = 1; shake = 28; hitstop = 0.12;
       audio.play('ultraBoom', 1.2, 1, 0);
-      const dmg = 4 + h.power / 10;
+      const dmg = ULT_SOLO * (4 + h.power / 10);
       for (const e of enemies) {
         if (!e.alive || e.state === 'down' || Math.abs(e.x - b.x) > 480) continue;
         damageEnemy(e, dmg, 600 * (Math.sign(e.x - b.x) || 1), -800, e.x, e.y - 100, '#bff3ff');
@@ -1671,7 +1674,7 @@ function updateGigant(h) {
     flash = 0.7; shake = 28; hitstop = 0.12;
     audio.stretch(); audio.play('ultraBoom', 1.2, 1.1, 0);
     popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'GIGANT PISTOL !!' });
-    ultraHit(h, GIGANT.reach, 4 + h.power / 10, 80);
+    ultraHit(h, GIGANT.reach, ULT_SOLO * (4 + h.power / 10), 80);
     impactFX(h.x + h.dir * 330, h.y - 130, '#fff3b0', true);
     for (let k = 0; k < 30; k++) particles.push({ x: h.x + h.dir * rand(150, 650), y: h.y - rand(60, 200), vx: h.dir * rand(300, 700), vy: rand(-150, 150), t: 0, life: 0.4, c: '#ffd27f', r: rand(2, 5) });
     score += 2000;
@@ -1726,7 +1729,7 @@ function updateSanzen(h, dt) {
     audio.play('ultraBoom', 1.1, 1.2, 0); audio.slash(1.6);
     for (const e of enemies) if (e.sanzen) {
       e.sanzen = false;
-      damageEnemy(e, 4 + h.power / 10, 500 * h.dir, -800, e.x, e.y - 110, hitOf(h));
+      damageEnemy(e, ULT_SOLO * (4 + h.power / 10), 500 * h.dir, -800, e.x, e.y - 110, hitOf(h));
       if (FX.zoro_x) animFX('zoro_x', e.x, e.y - 110 * WORLD, 300 * WORLD, 0.5);
       slashFX(e.x, e.y - 110, h.dir, { x: true, r: 120, c: trailOf(h), life: 0.45, w: 18 });
     }
@@ -1752,7 +1755,7 @@ function updateHinokami(h) {
     slashFX(h.x + h.dir * 90, h.y - 120, h.dir, { a0: [-1.6, 1.4, -3.1][h.cutN - 1], a1: [1.4, -1.6, 3.1][h.cutN - 1], r: last ? 210 : 170, w: last ? 46 : 34, c: '#ff8a2a', element: 'fire', life: 0.45 });
     shake = last ? 26 : 12; flash = last ? 0.6 : 0.2; audio.slash(1.5);
     if (last) audio.play('ultraBoom', 1, 1.2, 0);
-    ultraHit(h, HINOKAMI.reach, (4 + h.power / 10) / 3, 70, -80);
+    ultraHit(h, HINOKAMI.reach, ULT_SOLO * (4 + h.power / 10) / 3, 70, -80);
     if (last) score += 2000;
   }
   if (h.t > HINOKAMI.end) h.state = 'idle';
@@ -1767,7 +1770,7 @@ function startAmakakeru(h) {
 
 function updateAmakakeru(h, dt) {
   h.inv = Math.max(h.inv, 0.1);
-  const dmg = 4 + h.power / 10;
+  const dmg = ULT_SOLO * (4 + h.power / 10);
   if (!h.nined && h.t >= AMA.nine) {
     // Neuf coups simultanés, venus de toutes les directions
     h.nined = true; say(h, 'KUZU RYU SEN !'); shake = 14; audio.slash(1.5);
@@ -1846,7 +1849,7 @@ function updateKirin(h) {
       if (!e.alive || e.state === 'down' || e.x < camX - 40 || e.x > camX + W + 40) continue;
       animFX('bolt', e.x, e.y - 260, 220, 0.5, { h: 620 });
       if (FX.hekireki_v) animFX('hekireki_v', e.x, e.y - 120, 520, 0.5, { h: 200, rot: Math.PI / 2 });
-      damageEnemy(e, 4 + h.power / 9, 300 * (Math.sign(e.x - h.x) || h.dir), -900, e.x, e.y - 110, '#cfe0ff');
+      damageEnemy(e, ULT_SOLO * (4 + h.power / 9), 300 * (Math.sign(e.x - h.x) || h.dir), -900, e.x, e.y - 110, '#cfe0ff');
     }
     say(h, 'KIRIN !!'); score += 2000;
   }
@@ -1860,7 +1863,7 @@ function updateFatherSon(h) {
   h.inv = Math.max(h.inv, 0.1);
   if (!h.beamed && h.t >= FSK.fire) {
     h.beamed = true; flash = 0.8; shake = 26; audio.voice(h, 'ultra');
-    projs.push({ kind: 'beam', owner: h, move: 'ultra', at: FSK.fire, end: FSK.end - 0.15, len: 1300, thick: 2, dmg: (4 + h.power / 10) / 8, color: '#7fd8ff', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    projs.push({ kind: 'beam', owner: h, move: 'ultra', at: FSK.fire, end: FSK.end - 0.15, len: 1300, thick: 2, dmg: (4 + h.power / 10) / 9.5, color: '#7fd8ff', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
     say(h, 'KAMEHAMEHA !!'); score += 2000;
   }
   if (h.t > FSK.end) h.state = 'idle';
@@ -1873,7 +1876,7 @@ function updateMugetsu(h) {
   if (Math.random() < 0.7) particles.push({ x: h.x + rand(-60, 60), y: h.y - rand(0, 200), vx: 0, vy: rand(-200, -80), t: 0, life: 0.5, c: '#1a0008', r: rand(4, 8), soft: true });
   if (!h.thrown && h.t >= 1.4) {
     h.thrown = true; flash = 0.7; shake = 24; audio.play('ultraThrow', 1, 0.8, 0); audio.slash(1.4);
-    projs.push({ kind: 'getsuga', filter: 'hue-rotate(160deg) saturate(2) brightness(0.8)', scale: 2.6, owner: h, x: h.x + h.dir * 100, y: h.y - 130, gz: h.gz, dir: h.dir, t: 0, speed: 800, life: 1.4, hit: new Set(), dmg: 4 + h.power / 10, kb: 600, launch: -800 });
+    projs.push({ kind: 'getsuga', filter: 'hue-rotate(160deg) saturate(2) brightness(0.8)', scale: 2.6, owner: h, x: h.x + h.dir * 100, y: h.y - 130, gz: h.gz, dir: h.dir, t: 0, speed: 800, life: 1.4, hit: new Set(), dmg: ULT_SOLO * (4 + h.power / 10), kb: 600, launch: -800 });
     say(h, 'GETSUGA TENSHO !!'); score += 2000;
   }
   if (h.t > 2.0) h.state = 'idle';
@@ -1895,7 +1898,7 @@ function updateArise(h) {
   if (!h.punched && h.t >= 1.4) {
     h.punched = true; flash = 0.6; shake = 26; hitstop = 0.1; audio.play('ultraBoom', 1.1, 0.7, 0);
     popups.push({ x: h.x + h.dir * 300, y: h.y - 280, t: 0, text: 'ARMÉE DES OMBRES !!' });
-    ultraHit(h, 820, 4 + h.power / 10, 120);
+    ultraHit(h, 820, ULT_SOLO * (4 + h.power / 10), 120);
     for (let k = 0; k < 4; k++) animFX('nen', h.x + h.dir * (180 + k * 170), h.y - 120, 300, 0.5 + k * 0.08, { filter: 'hue-rotate(60deg) saturate(1.5)' });
     score += 2000;
   }
@@ -1919,7 +1922,7 @@ function updateZigzag(h) {
     const tint = h.char === 'zenitsu' ? 'hue-rotate(-150deg) saturate(2)' : '';
     animFX('bolt', h.x, h.y - 130, 120, 0.25, { h: 300, filter: tint });
     if (e) { h.dir = Math.sign(e.x - h.x) || h.dir; h.x = e.x + h.dir * 70; h.gz = e.gz; h.y = e.gz; h.dir = -h.dir;
-      damageEnemy(e, (4 + h.power / 10) / 3, 300 * -h.dir, h.zzN === ZIG.max ? -800 : null, e.x, e.y - 110, hitOf(h));
+      damageEnemy(e, (4 + h.power / 10) / 4.4, 300 * -h.dir, h.zzN === ZIG.max ? -800 : null, e.x, e.y - 110, hitOf(h));
       slashFX(e.x, e.y - 110, h.dir, { x: true, r: 100, c: trailOf(h), life: 0.3 }); }
     else h.x = clamp(h.x + h.dir * 200, camX + 40, camX + W - 40);
     h.x = clamp(h.x, camX + 40, camX + W - 40);
@@ -1947,7 +1950,7 @@ function updateSmash(h) {
     popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: { gon: 'GU !!!', saitama: 'COUP DE POING SÉRIEUX !!' }[h.char] || 'UNITED STATES OF SMASH !!' });
     audio.play('ultraBoom', 1.3, 0.9, 0);
     for (let k = 0; k < 4; k++) animFX(h.char === 'gon' ? 'nen' : 'explosion', h.x + h.dir * (160 + k * 160), h.y - 120 - rand(-30, 30), 360 - k * 30, 0.6 + k * 0.08);
-    ultraHit(h, 800, 4 + h.power / 10, 110);
+    ultraHit(h, 800, ULT_SOLO * (4 + h.power / 10), 110);
     for (let k = 0; k < 40; k++) particles.push({ x: h.x + h.dir * rand(100, 800), y: h.y - rand(20, 260), vx: h.dir * rand(500, 1100), vy: rand(-120, 120), t: 0, life: 0.45, c: '#ffffff', r: rand(2, 5) });
     score += 2000;
   }
@@ -1987,7 +1990,7 @@ function updateDempseyMax(h, dt) {
     h.punched = true; flash = 0.7; shake = 26; hitstop = 0.12; audio.play('ultraBoom', 1.2, 1.1, 0);
     animFX('explosion', h.x + h.dir * 140, h.y - 130, 340, 0.55);
     popups.push({ x: h.x + h.dir * 160, y: h.y - 260, t: 0, text: 'K.O. !!' });
-    ultraHit(h, 260, 3 + h.power / 15, 70);
+    ultraHit(h, 260, ULT_SOLO * (3 + h.power / 15), 70);
     score += 2000;
   }
   if (h.t > DMAX.end) h.state = 'idle';
@@ -2002,7 +2005,7 @@ function updateKyubi(h) {
   if (!h.punched && h.t >= KYU.charge + 0.2) {
     h.punched = true; flash = 0.8; shake = 30; hitstop = 0.12; audio.play('ultraBoom', 1.3, 0.8, 0);
     popups.push({ x: h.x + h.dir * 300, y: h.y - 300, t: 0, text: 'BIJUU DAMA !!' });
-    ultraHit(h, 820, 4 + h.power / 10, 130);
+    ultraHit(h, 820, ULT_SOLO * (4 + h.power / 10), 130);
     for (let k = 0; k < 3; k++) animFX('explosion', h.x + h.dir * (250 + k * 200), h.y - 140, 380, 0.6);
     score += 2000;
   }
