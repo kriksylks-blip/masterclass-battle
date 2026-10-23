@@ -4214,6 +4214,8 @@ function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
   energyBall(x2, p.y, (40 + Math.sin(p.t * 40) * 4) * (p.thick || 1) * WORLD, col);
 }
 
+const fadeCanvas = document.createElement('canvas');
+const FILMED_PROJ = { hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9] };
 function drawProjs() {
   for (const p of projs) {
     const sx = p.x - camX;
@@ -4259,6 +4261,26 @@ function drawProjs() {
         ctx.drawImage(img, -ww * 0.91, -hh / 2, ww, hh); ctx.restore();
       }
       continue;
+    }
+    // Tirs filmés (fond noir, mode lumineux) : [effet, hauteur affichée, position de la pointe dans l'image (0-1)]
+    const filmed = FILMED_PROJ[p.kind];
+    if (filmed && FX[filmed[0]]) {
+      const L = FX[filmed[0]], f = L[Math.floor(p.t * 16) % L.length], img = IMG[f.src];
+      if (img) {
+        const hh = filmed[1] * (p.scale || 1) * WORLD, ww = hh * f.w / f.h;
+        // la traînée ne dépasse jamais en arrière du point de départ (devant la main) : elle se déroule en vol
+        p.ox ??= p.x; const cut = -Math.abs(p.x - p.ox) - hh * 0.45; // la boule ou le poing restent entiers
+        if (cut > -ww * filmed[2]) {
+          // fondu : transparent au point de départ, opaque 70 px plus loin
+          const c = fadeCanvas, g = c.getContext('2d'), x0 = (cut + ww * filmed[2]) * img.width / ww;
+          c.width = img.width; c.height = img.height; g.drawImage(img, 0, 0);
+          const lg = g.createLinearGradient(x0, 0, x0 + 70 * img.width / ww, 0);
+          lg.addColorStop(0, 'rgba(0,0,0,0)'); lg.addColorStop(1, 'rgba(0,0,0,1)');
+          g.globalCompositeOperation = 'destination-in'; g.fillStyle = lg; g.fillRect(0, 0, c.width, c.height);
+          ctx.drawImage(c, -ww * filmed[2], -hh / 2, ww, hh);
+        } else ctx.drawImage(img, -ww * filmed[2], -hh / 2, ww, hh);
+        ctx.restore(); continue;
+      }
     }
     if (sprite && FX[sprite[0]]) {
       ctx.restore();

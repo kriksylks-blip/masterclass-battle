@@ -1435,6 +1435,232 @@ const FXV = {
    "w": 720,
    "h": 720
   }
+ ],
+ "hiken_v": [
+  {
+   "src": "assets/fx/hiken_v_0.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_1.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_2.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_3.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_4.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_5.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_6.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_7.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_8.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_9.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_10.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_11.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_12.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_13.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_14.png",
+   "w": 1180,
+   "h": 440
+  },
+  {
+   "src": "assets/fx/hiken_v_15.png",
+   "w": 1180,
+   "h": 440
+  }
+ ],
+ "burning_v": [
+  {
+   "src": "assets/fx/burning_v_0.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_1.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_2.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_3.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_4.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_5.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_6.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_7.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_8.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_9.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_10.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_11.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_12.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_13.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_14.png",
+   "w": 980,
+   "h": 640
+  },
+  {
+   "src": "assets/fx/burning_v_15.png",
+   "w": 980,
+   "h": 640
+  }
+ ],
+ "strikeair_v": [
+  {
+   "src": "assets/fx/strikeair_v_0.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_1.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_2.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_3.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_4.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_5.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_6.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_7.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_8.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_9.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_10.png",
+   "w": 1190,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/strikeair_v_11.png",
+   "w": 1190,
+   "h": 600
+  }
  ]
 };
 Object.assign(FX, FXV);
