@@ -58,7 +58,7 @@ function levelNeeds(L) {
   for (const w of L.waves || []) for (const t of w.foes) types.add(t);
   const known = [...types].filter(t => t && ETYPES[t]), sheets = known.map(t => ETYPES[t].sheet || t);
   const bgs = new Set([L.sky, ...(L.far ? ['far'] : [])]);
-  for (const Z of L.zones) for (const k of [Z.sky, Z.mid, Z.ground, STRIPS[Z.id]?.img]) if (k) bgs.add(k);
+  for (const Z of L.zones) for (const k of [Z.sky, Z.mid, Z.mid2, Z.ground, STRIPS[Z.id]?.img]) if (k) bgs.add(k);
   for (const k of GATES[L.id] || []) bgs.add(k);
   return { sheets, bgs: [...bgs].filter(k => ASSETS.backgrounds[k]), intros: known.map(t => 'intro_' + t).filter(k => ASSETS.ui[k]) };
 }
@@ -3400,16 +3400,18 @@ function makeShops() {
 
 // mirror : une copie sur deux est retournée, pour que les raccords ne se voient pas
 // src : [haut, hauteur] d'une bande de l'image source, posée en reflet (bas d'un calque prolongé), sinon l'image entière
-function drawTiled(img, factor, y, h, w = img.width * (h / img.height), mirror = false, src = null) {
-  const off = -((camX * factor) % (mirror ? 2 * w : w));
-  const put = (dx, dy) => {
-    if (!src) return ctx.drawImage(img, dx, dy, w + 1, h);
+// alt : 2e image du même lieu ; les copies s'enchaînent alors A, B, A retournée, B retournée
+function drawTiled(img, factor, y, h, w = img.width * (h / img.height), mirror = false, src = null, alt = null) {
+  const period = alt ? 4 : mirror ? 2 : 1, off = -((camX * factor) % (period * w));
+  const put = (im, dx, dy) => {
+    if (!src) return ctx.drawImage(im, dx, dy, w + 1, h);
     // bande retournée de haut en bas : son bord touche celui de l'image, sans raccord visible
-    ctx.save(); ctx.translate(dx, dy + h); ctx.scale(1, -1); ctx.drawImage(img, 0, src[0], img.width, src[1], 0, 0, w + 1, h); ctx.restore();
+    ctx.save(); ctx.translate(dx, dy + h); ctx.scale(1, -1); ctx.drawImage(im, 0, src[0], im.width, src[1], 0, 0, w + 1, h); ctx.restore();
   };
   for (let x = off, k = 0; x < W; x += w, k++) {
-    if (mirror && k % 2) { ctx.save(); ctx.translate(x + w, y); ctx.scale(-1, 1); put(0, 0); ctx.restore(); }
-    else put(x, y);
+    const im = alt && k % 2 ? alt : img, flip = alt ? mirror && k % 4 >= 2 : mirror && k % 2;
+    if (flip) { ctx.save(); ctx.translate(x + w, y); ctx.scale(-1, 1); put(im, 0, 0); ctx.restore(); }
+    else put(im, x, y);
   }
 }
 

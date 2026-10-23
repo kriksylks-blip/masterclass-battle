@@ -58,7 +58,7 @@ function themedLevel(id, name, sub, zoneNames, a, b) {
   waves.push({ x: end - 960, foes: [`${id}_boss`], boss: true });
   return {
     id, name, sub, sky: `${id}_sky`, boss: `${id}_boss`, extra: a, end, waves, props,
-    zones: zoneNames.map((nm, k) => ({ id: `${id}_z${files[k]}`, name: nm, from: from[k], mid: `${id}_z${files[k]}_mid`, ground: `${id}_z${files[k]}_ground` })),
+    zones: zoneNames.map((nm, k) => ({ id: `${id}_z${files[k]}`, name: nm, from: from[k], mid: `${id}_z${files[k]}_mid`, mid2: `${id}_z${files[k]}_mid2`, ground: `${id}_z${files[k]}_ground` })),
   };
 }
 
@@ -103,6 +103,7 @@ for (const L of LEVELS.slice(1)) {
   ASSETS.backgrounds[L.sky] = `assets/backgrounds/levels/${L.sky}.jpg`;
   for (const Z of L.zones) {
     ASSETS.backgrounds[Z.mid] = `assets/backgrounds/levels/${Z.mid}.png`;
+    if (Z.mid2) ASSETS.backgrounds[Z.mid2] = `assets/backgrounds/levels/${Z.mid2}.png`; // suite du même lieu, en alternance
     ASSETS.backgrounds[Z.ground] = `assets/backgrounds/levels/${Z.ground}.jpg`;
   }
 }
@@ -448,7 +449,11 @@ function drawZoneLayer(kind) {
     ctx.save();
     // découpe nette sur la limite : l'élément de passage (porte, ponton…) recouvre la jointure
     ctx.beginPath(); ctx.rect(Math.max(-10, sx0), -20, Math.min(W + 20, sx1) - Math.max(-10, sx0), H + 40); ctx.clip();
-    if (kind === 'mid') drawTiled(harmonizedMid(key, img, Z.ground), f, L.y, L.h, L.w, mirror);
+    if (kind === 'mid') {
+      // deux versions du plan moyen en alternance (la 2e prolonge le même lieu) : le décor ne se répète plus toutes les largeurs d'écran
+      const alt = Z.mid2 && IMG[Z.mid2] ? harmonizedMid(Z.mid2, IMG[Z.mid2], Z.ground) : null;
+      drawTiled(harmonizedMid(key, img, Z.ground), f, L.y, L.h, L.w, mirror, null, alt);
+    }
     else if (kind === 'ground') {
       drawTiled(img, f, L.y, L.h, L.w, mirror);
       // ombre portée au pied du plan moyen : la jointure se lit comme une marche, un rebord
