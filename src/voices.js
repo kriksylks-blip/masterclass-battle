@@ -36,7 +36,8 @@ const VOICES = {
  "sasuke_transform": "assets/sounds/v/sasuke_transform.mp3",
  "gohan_special": "assets/sounds/v/gohan_special.mp3",
  "gohan_transform": "assets/sounds/v/gohan_transform.mp3",
- "ippo_special": "assets/sounds/v/ippo_special.mp3"
+ "ippo_special": "assets/sounds/v/ippo_special.mp3",
+ "cri_m": "assets/sounds/v/cri_m.mp3"
 };
 const CV = {
  "goku": {
@@ -101,12 +102,15 @@ const CV = {
  "sasuke": {
   "special": "sasuke_special",
   "transform": "sasuke_transform",
-  "ultra": "boom"
+  "ultra": "cri_m"
  },
  "gohan": {
   "special": "gohan_special",
   "transform": "gohan_transform",
   "ultra": "goku_special"
+ },
+ "hero": {
+  "transform": "aura"
  },
  "inosuke": {
   "special": "brutal",
@@ -116,7 +120,7 @@ const CV = {
  "trunks": {
   "special": "vegeta_special",
   "transform": "aura",
-  "ultra": "boom"
+  "ultra": "cri_m"
  },
  "ace": {
   "special": "luffy_special",
@@ -124,14 +128,14 @@ const CV = {
   "ultra": "luffy_ultra"
  },
  "guts": {
-  "special": "boom",
+  "special": "cri_m",
   "transform": "brutal",
   "ultra": "brutal"
  },
  "sanji": {
   "special": "luffy_special",
   "transform": "tanjiro_special",
-  "ultra": "boom"
+  "ultra": "cri_m"
  },
  "shoto": {
   "special": "aura",
@@ -161,22 +165,22 @@ const CV = {
  "levi": {
   "special": "teleport",
   "transform": "aura",
-  "ultra": "boom"
+  "ultra": "cri_m"
  },
  "baki": {
   "special": "brutal",
   "transform": "brutal",
-  "ultra": "boom"
+  "ultra": "cri_m"
  },
  "itachi": {
   "special": "aura",
   "transform": "aura",
-  "ultra": "boom"
+  "ultra": "cri_m"
  },
  "eren": {
   "special": "brutal",
   "transform": "brutal",
-  "ultra": "boom"
+  "ultra": "cri_m"
  },
  "boruto": {
   "special": "naruto_special",
@@ -186,19 +190,11 @@ const CV = {
  "edward": {
   "special": "teleport2",
   "transform": "aura",
-  "ultra": "boom"
- },
- "naruto_s": {
-  "special": "naruto_special",
-  "transform": "aura",
-  "ultra": "naruto_ultra"
+  "ultra": "cri_m"
  },
  "gintoki": {
   "special": "tanjiro_special",
   "transform": "aura",
   "ultra": "brutal"
- },
- "hero": {
-  "transform": "aura"
  }
 };

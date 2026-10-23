@@ -31400,8 +31400,8 @@ const SPRITES = {
     },
     {
      "src": "assets/sprites/guts/special_6.png",
-     "w": 378,
-     "h": 278,
+     "w": 552,
+     "h": 330,
      "ax": 160.8,
      "ay": 278
     },
