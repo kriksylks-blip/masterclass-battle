@@ -37,7 +37,10 @@ const VOICES = {
  "gohan_special": "assets/sounds/v/gohan_special.mp3",
  "gohan_transform": "assets/sounds/v/gohan_transform.mp3",
  "ippo_special": "assets/sounds/v/ippo_special.mp3",
- "cri_m": "assets/sounds/v/cri_m.mp3"
+ "cri_m": "assets/sounds/v/cri_m.mp3",
+ "ace_special": "assets/sounds/v/ace_special.mp3",
+ "ace_ultra": "assets/sounds/v/ace_ultra.mp3",
+ "sanji_special": "assets/sounds/v/sanji_special.mp3"
 };
 const CV = {
  "goku": {
@@ -109,6 +112,16 @@ const CV = {
   "transform": "gohan_transform",
   "ultra": "goku_special"
  },
+ "ace": {
+  "special": "ace_special",
+  "ultra": "ace_ultra",
+  "transform": "tanjiro_special"
+ },
+ "sanji": {
+  "special": "sanji_special",
+  "transform": "tanjiro_special",
+  "ultra": "cri_m"
+ },
  "hero": {
   "transform": "aura"
  },
@@ -122,20 +135,10 @@ const CV = {
   "transform": "aura",
   "ultra": "cri_m"
  },
- "ace": {
-  "special": "luffy_special",
-  "transform": "tanjiro_special",
-  "ultra": "luffy_ultra"
- },
  "guts": {
   "special": "cri_m",
   "transform": "brutal",
   "ultra": "brutal"
- },
- "sanji": {
-  "special": "luffy_special",
-  "transform": "tanjiro_special",
-  "ultra": "cri_m"
  },
  "shoto": {
   "special": "aura",
