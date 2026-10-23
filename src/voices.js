@@ -118,6 +118,86 @@ const CV = {
   "transform": "aura",
   "ultra": "boom"
  },
+ "ace": {
+  "special": "luffy_special",
+  "transform": "tanjiro_special",
+  "ultra": "luffy_ultra"
+ },
+ "guts": {
+  "special": "boom",
+  "transform": "brutal",
+  "ultra": "brutal"
+ },
+ "sanji": {
+  "special": "luffy_special",
+  "transform": "tanjiro_special",
+  "ultra": "boom"
+ },
+ "shoto": {
+  "special": "aura",
+  "transform": "aura",
+  "ultra": "vegeta_special"
+ },
+ "saber": {
+  "special": "teleport2",
+  "transform": "aura",
+  "ultra": "boom"
+ },
+ "mikasa": {
+  "special": "teleport",
+  "transform": "aura",
+  "ultra": "brutal"
+ },
+ "revy": {
+  "special": "boom",
+  "transform": "aura",
+  "ultra": "boom"
+ },
+ "gally": {
+  "special": "brutal",
+  "transform": "aura",
+  "ultra": "brutal"
+ },
+ "levi": {
+  "special": "teleport",
+  "transform": "aura",
+  "ultra": "boom"
+ },
+ "baki": {
+  "special": "brutal",
+  "transform": "brutal",
+  "ultra": "boom"
+ },
+ "itachi": {
+  "special": "aura",
+  "transform": "aura",
+  "ultra": "boom"
+ },
+ "eren": {
+  "special": "brutal",
+  "transform": "brutal",
+  "ultra": "boom"
+ },
+ "boruto": {
+  "special": "naruto_special",
+  "transform": "aura",
+  "ultra": "naruto_ultra"
+ },
+ "edward": {
+  "special": "teleport2",
+  "transform": "aura",
+  "ultra": "boom"
+ },
+ "naruto_s": {
+  "special": "naruto_special",
+  "transform": "aura",
+  "ultra": "naruto_ultra"
+ },
+ "gintoki": {
+  "special": "tanjiro_special",
+  "transform": "aura",
+  "ultra": "brutal"
+ },
  "hero": {
   "transform": "aura"
  }

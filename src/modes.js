@@ -240,8 +240,8 @@ const MAP_NODES = [
 ];
 // Les maîtres recrutés dans chaque monde : la Masterclass (affichée en bas du plateau)
 const RECRUITS = {
-  tokyo: ['ippo'], op: ['luffy'], ds: ['tanjiro'], hx: ['gon', 'killua'], nr: ['naruto', 'kakashi'], bl: ['ichigo'], mh: ['izuku'],
-  rk: ['kenshin'], sl: ['jinwoo'], op2: ['zoro'], ds2: ['zenitsu', 'inosuke'], jk: ['gojo'], nr2: ['sasuke'], opm: ['saitama'], bl2: [],
+  tokyo: ['ippo', 'baki'], op: ['luffy', 'ace'], ds: ['tanjiro'], hx: ['gon', 'killua'], nr: ['naruto', 'kakashi', 'boruto'], bl: ['ichigo', 'eren'], mh: ['izuku', 'shoto'],
+  rk: ['kenshin', 'revy', 'gintoki'], sl: ['jinwoo', 'saber', 'edward'], op2: ['zoro', 'sanji'], ds2: ['zenitsu', 'inosuke'], jk: ['gojo', 'levi'], nr2: ['sasuke', 'itachi'], opm: ['saitama', 'mikasa'], bl2: ['guts', 'gally'],
   db: ['goku', 'vegeta'], db2: ['gohan', 'trunks'],
 };
 const story = { unlocked: 1, node: 0, done: [] };
@@ -259,14 +259,16 @@ const STORY = {
       ['H', 'Les rues sont pleines de choses qui n\'ont rien à faire ici. Je monte au sanctuaire.']],
     outro: [['B', 'Trop tard. Le Sceau a volé en seize éclats, et chacun s\'est trouvé un maître.'],
       ['N', 'Un jeune boxeur a tout vu depuis le toit de sa salle. Ippo n\'a jamais quitté Tokyo. Il prend son sac quand même.'],
-      ['N', 'Une faille aspire Kuro-Oni, et {H} avec lui. Ippo saute derrière. La Masterclass compte deux élèves.']],
+      ['N', 'Dans l\'arène clandestine sous le Dôme de Tokyo, un garçon aux cheveux rouges a senti le Sceau se briser. Baki referme le poing : enfin des adversaires qui ne viennent pas de ce monde.'],
+      ['N', 'Une faille aspire Kuro-Oni, et {H} avec lui. Ippo saute derrière, Baki aussi. La Masterclass compte trois élèves.']],
   },
   op: {
     title: 'CHAPITRE 1 — LA VILLE DU COMMENCEMENT',
     intro: [['N', 'Loguetown. Sur l\'échafaud où Gold Roger a ri une dernière fois, un éclat brille.'],
       ['H', 'Et un clown s\'en est fait une couronne.']],
     outro: [['B', 'Mon nez n\'est PAS rouge à cause de ce caillou !!'],
-      ['N', 'Dans la foule, un garçon au chapeau de paille rit à s\'en tenir le ventre. D\'autres mondes ? Luffy monte à bord avant qu\'on lui demande.']],
+      ['N', 'Dans la foule, un garçon au chapeau de paille rit à s\'en tenir le ventre. D\'autres mondes ? Luffy monte à bord avant qu\'on lui demande.'],
+      ['N', 'Sur le quai, son grand frère Ace allume une cigarette du bout du doigt. Il suit le mouvement, pour garder un œil sur son petit frère.']],
   },
   ds: {
     title: 'CHAPITRE 2 — LE TRAIN DE L\'INFINI',
@@ -287,28 +289,33 @@ const STORY = {
     intro: [['N', 'Konoha est assiégé. Orochimaru veut un corps éternel, et l\'éclat pourrait le lui donner.'],
       ['H', 'Il s\'est caché dans la forêt de la Mort. On y va.']],
     outro: [['B', 'Ce pouvoir venu d\'ailleurs… Un jour, il sera à moi.'],
-      ['N', 'Naruto réclame sa place en criant plus fort que tout le monde. Kakashi lève les yeux de son livre : quelqu\'un doit surveiller ces élèves.']],
+      ['N', 'Naruto réclame sa place en criant plus fort que tout le monde. Kakashi lève les yeux de son livre : quelqu\'un doit surveiller ces élèves.'],
+      ['N', 'Un garçon blond tombé d\'une faille du futur regarde Naruto sans y croire. Boruto ne dit pas qui il est. Il suit, c\'est tout.']],
   },
   bl: {
     title: 'CHAPITRE 5 — LA SOUL SOCIETY',
     intro: [['N', 'Les portes du Seireitei sont tombées. Un capitaine affamé de combats a avalé un éclat.'],
       ['B', 'Enfin quelqu\'un de solide ! Ne meurs pas trop vite !']],
     outro: [['B', 'Ha… HA HA ! C\'était bien ! Reviens quand tu veux !'],
-      ['N', 'Kenpachi s\'endort dans les gravats. Ichigo était venu le calmer. Il repart avec vous à la place.']],
+      ['N', 'Kenpachi s\'endort dans les gravats. Ichigo était venu le calmer. Il repart avec vous à la place.'],
+      ['N', 'Au pied des murailles blanches du Seireitei, un soldat à la cape verte serre ses lames. Des murs, Eren en a assez vu. Il veut savoir ce qu\'il y a derrière les failles.']],
   },
   mh: {
     title: 'CHAPITRE 6 — L\'USJ',
     intro: [['N', 'Le centre d\'entraînement de Yuei est envahi. Un Nomu a reçu un éclat en guise de cœur.'],
       ['H', 'Les élèves sont coincés dans la zone incendie. Pas une seconde à perdre.']],
     outro: [['B', '…GRAAAH…'],
-      ['N', 'Izuku a noté chaque coup dans son carnet. Une école de héros venus de tous les mondes ? Impossible de rater ça.']],
+      ['N', 'Izuku a noté chaque coup dans son carnet. Une école de héros venus de tous les mondes ? Impossible de rater ça.'],
+      ['N', 'Shoto éteint les dernières flammes d\'un geste de la main droite. Il vient aussi. Il ne dit pas pourquoi.']],
   },
   rk: {
     title: 'CHAPITRE 7 — KYOTO EN FLAMMES',
     intro: [['N', 'Kyoto brûle. Un homme couvert de bandages veut renverser le gouvernement avec la force de mille mondes.'],
       ['B', 'Ce monde appartient aux forts. L\'éclat me l\'a confirmé.']],
     outro: [['B', 'Mon corps… brûle… Ce n\'est pas fini…'],
-      ['N', 'Kenshin aide à éteindre le quartier avant de partir. Il a juré de ne plus tuer. Dans une classe pareille, il faudra quelqu\'un pour rappeler où s\'arrêter.']],
+      ['N', 'Kenshin aide à éteindre le quartier avant de partir. Il a juré de ne plus tuer. Dans une classe pareille, il faudra quelqu\'un pour rappeler où s\'arrêter.'],
+      ['N', 'Au port d\'Osaka, une femme tatouée descend d\'une vedette de contrebande, un pistolet dans chaque main. Revy était venue pour la paie. Elle reste pour la bagarre.'],
+      ['N', 'Sur un banc, un samouraï aux cheveux argentés finit un lait-fraise, un sabre de bois à la ceinture. Gintoki dit qu\'il passait par là. Il suit quand même, parce que quelqu\'un doit bien payer le loyer.']],
   },
   sl: {
     title: 'CHAPITRE 8 — LE DOUBLE DONJON',
@@ -316,14 +323,17 @@ const STORY = {
       ['N', 'Les règles sont gravées sur une tablette. La première dit : prosternez-vous.'],
       ['H', 'Je ne me prosterne pas. Je traverse.']],
     outro: [['B', '…'],
-      ['N', 'Igris met un genou à terre, mais pas devant {H}. Derrière, dans l\'ombre, Jin-Woo vient de se relever. Lui seul a entendu le mot : « Arise ».']],
+      ['N', 'Igris met un genou à terre, mais pas devant {H}. Derrière, dans l\'ombre, Jin-Woo vient de se relever. Lui seul a entendu le mot : « Arise ».'],
+      ['N', 'Au fond du temple, une jeune femme en armure range une épée qu\'on ne voit pas. Ces statues de chevaliers lui ont rappelé une table ronde. Saber suit la troupe, la main sur la garde.'],
+      ['N', 'Un garçon au manteau rouge relève les runes de la tablette : ce sont presque des cercles de transmutation. Edward veut savoir qui les a gravés. Il suit, et prie qu\'on ne le traite pas de petit.']],
   },
   op2: {
     title: 'CHAPITRE 9 — ENIES LOBBY',
     intro: [['N', 'L\'île judiciaire du Gouvernement mondial. Le CP9 garde un éclat dans la tour de la Justice.'],
       ['B', 'La justice des ténèbres se moque des mondes. Je vais t\'effacer.']],
     outro: [['B', 'Impossible… Mon Rokuogan…'],
-      ['N', 'Zoro s\'était perdu dans la tour en cherchant la sortie. Il a trouvé la Masterclass. D\'après lui, c\'était voulu.']],
+      ['N', 'Zoro s\'était perdu dans la tour en cherchant la sortie. Il a trouvé la Masterclass. D\'après lui, c\'était voulu.'],
+      ['N', 'Sanji suit, une cigarette aux lèvres. Quelqu\'un doit faire à manger à cette troupe, et ce ne sera pas l\'algue.']],
   },
   ds2: {
     title: 'CHAPITRE 10 — LE QUARTIER DES PLAISIRS',
@@ -339,28 +349,33 @@ const STORY = {
       ['N', 'Au cœur du voile, le roi des fléaux a avalé un éclat comme un doigt de plus.'],
       ['B', 'Un intrus venu d\'un autre monde ? Distrais-moi un peu avant que je te découpe.']],
     outro: [['B', 'Tch. Ce corps ne me suffit pas. La prochaine fois, je prendrai le tien.'],
-      ['N', 'Le voile tombe. Gojo remonte son bandeau, regarde la classe et sourit : « Des élèves de partout ? Je prends. »']],
+      ['N', 'Le voile tombe. Gojo remonte son bandeau, regarde la classe et sourit : « Des élèves de partout ? Je prends. »'],
+      ['N', 'Un petit homme au foulard blanc essuie ses lames, l\'air dégoûté. Des géants qui mangent les gens, il en a déjà tué. Livaï suit la troupe. Il exige seulement qu\'on nettoie après.']],
   },
   nr2: {
     title: 'CHAPITRE 12 — AMEGAKURE',
     intro: [['N', 'Le village de la Pluie. Celui qui se fait appeler Dieu a absorbé un éclat pour imposer sa paix.'],
       ['B', 'Ressens la douleur. Pense à la douleur. Accepte la douleur.']],
     outro: [['B', 'La douleur… n\'était donc pas la seule réponse…'],
-      ['N', 'Sous la pluie, quelqu\'un regardait depuis un toit. Sasuke ne dit pas qu\'il rejoint la classe. Il marche juste derrière.']],
+      ['N', 'Sous la pluie, quelqu\'un regardait depuis un toit. Sasuke ne dit pas qu\'il rejoint la classe. Il marche juste derrière.'],
+      ['N', 'Un homme au manteau à nuages rouges attendait sous la pluie, les yeux rouges. Itachi regarde son petit frère, puis la classe. Il ne dit rien et les suit.']],
   },
   opm: {
     title: 'CHAPITRE 13 — L\'INVASION DE LA CITÉ Z',
     intro: [['N', 'Un vaisseau grand comme une ville flotte au-dessus de la Cité Z. Son seigneur a traversé l\'univers pour trouver un adversaire à sa taille.'],
       ['B', 'Cet éclat m\'a mené jusqu\'ici. Es-tu celui qui me donnera enfin un vrai combat ?']],
     outro: [['B', 'Ce n\'était donc… pas toi… le plus fort…'],
-      ['N', 'Un homme chauve en cape traverse les ruines, un sac de courses à la main. Il demande si la Masterclass rapporte des points au classement. Personne ne sait. Saitama s\'inscrit quand même.']],
+      ['N', 'Un homme chauve en cape traverse les ruines, un sac de courses à la main. Il demande si la Masterclass rapporte des points au classement. Personne ne sait. Saitama s\'inscrit quand même.'],
+      ['N', 'Une soldate à l\'écharpe rouge redescend d\'un immeuble au grappin. Chez elle, les géants mangent les gens ; ici, un homme chauve les fait tomber d\'un coup. Mikasa veut apprendre à frapper aussi fort.']],
   },
   bl2: {
     title: 'CHAPITRE 14 — HUECO MUNDO',
     intro: [['N', 'Un désert blanc sous une lune qui ne se couche jamais. Au sommet de Las Noches, une Espada garde un éclat.'],
       ['B', 'Vous parlez de liens, de cœur. Montrez-le-moi, ce cœur. Où est-il ?']],
     outro: [['B', 'Je vois… C\'est donc là… qu\'il était…'],
-      ['N', 'Ulquiorra s\'effrite comme de la cendre. Quatorze éclats. Les deux derniers brillent dans le monde des Saiyans.']],
+      ['N', 'Ulquiorra s\'effrite comme de la cendre. Quatorze éclats. Les deux derniers brillent dans le monde des Saiyans.'],
+      ['N', 'Dans les dunes, un homme en noir traîne une épée plus grande que lui. Une faille l\'a jeté ici en pleine traque. Il vous suit sans un mot : plus loin, il y a des monstres.'],
+      ['N', 'Au pied d\'un tas d\'os blancs, une fille aux bras de métal se relève. Gally est tombée d\'une ville de ferraille par une faille. Ici aussi, tout n\'est que débris ; elle se sent presque chez elle.']],
   },
   db: {
     title: 'CHAPITRE 15 — NAMEK',
@@ -535,7 +550,9 @@ function drawMap() {
   if (crew.length) {
     ctx.fillStyle = 'rgba(10,0,25,0.7)'; ctx.fillRect(0, H - 66, W, 36);
     outlined('MASTERCLASS', 16, H - 42, 14, '#ffe14d', 'left');
-    crew.forEach((c, q) => medallion(CHARS[c], 136 + q * 34, H - 48, 14, '#ffe14d'));
+    // espacement resserré quand la troupe grandit, pour tenir sur la largeur de l'écran
+    const step = Math.min(34, (W - 150) / crew.length), r = Math.min(14, step * 0.45);
+    crew.forEach((c, q) => medallion(CHARS[c], 136 + q * step, H - 48, r, '#ffe14d'));
   }
   ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';

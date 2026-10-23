@@ -104,7 +104,7 @@ function netAccept(conn) {
 function netRejoin() { for (const s of Object.keys(net.guests)) netJoinSlot(+s); }
 function netJoinSlot(s) {
   sel.joined[s] = true; sel.ready[s] = false; sel.dev[s] = 'net'; sel.first[s] = null;
-  sel.pick[s] = s % CHAR_IDS.length;
+  sel.pick[s] = s % CHAR_IDS.length; sel.vari[s] = 0;
 }
 function netLeave(slot) {
   delete net.guests[slot];

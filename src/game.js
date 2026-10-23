@@ -611,15 +611,177 @@ const GH_MOVES = { ...FIST,
 // Inosuke : deux sabres dentelés, souffle de la bête (coups de tête, ruées de sanglier)
 const IN_MOVES = { ...SWORD,
   spin:  { ...SWORD.spin, trail: undefined, call: 'HÉ HÉ !' },
-  dash:  { dur: 0.6, on: 0.1, off: 0.45, reach: [0, 150], y: [-170, -30], dmg: 3, kb: 420, ki: 8, launch: -500, push: 1350, pushAt: 0.06, pushDur: 0.36, ghost: true, call: 'TOUT DROIT !', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.3, 0.48]] },
+  dash:  { dur: 0.6, on: 0.1, off: 0.45, reach: [0, 150], y: [-170, -30], dmg: 3, kb: 420, ki: 8, launch: -500, push: 1350, pushAt: 0.06, pushDur: 0.36, ghost: true, lean: 18, call: 'TOUT DROIT !', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.3, 0.48]] },
   // Crocs de la bête : il bondit et coupe en ciseaux avec ses deux lames
   fang:  { dur: 0.8, cost: 35, on: 0.2, off: 0.5, reach: [-60, 150], y: [-170, -30], dmg: 5, kb: 440, ki: 0, launch: -620, push: 1800, pushAt: 0.16, pushDur: 0.3, xcut: true,
            call: 'CROCS DE LA BÊTE !', p: ['special', [0, 1, 2, 3], [0.16, 0.3, 0.55]], trail: { x: true, r: 130, at: 0.22, w: 30 } },
 };
 // Trunks du futur : poings et pieds de saiyan, dégainage de l'épée, Burning Attack
 const TR_MOVES = { ...NEWKICK(FIST),
-  dash:    { dur: 0.55, on: 0.12, off: 0.42, reach: [-40, 160], y: [-170, -50], dmg: 3.2, kb: 400, ki: 8, launch: -480, push: 1250, pushAt: 0.08, pushDur: 0.3, ghost: true, xcut: true, p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.26, 0.46]] },
+  dash:    { dur: 0.55, on: 0.12, off: 0.42, reach: [-40, 160], y: [-170, -50], dmg: 3.2, kb: 400, ki: 8, launch: -480, push: 1450, pushAt: 0.08, pushDur: 0.3, ghost: true, xcut: true, lean: 20, p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.26, 0.46]] },
   burning: { dur: 0.8, cost: 35, proj: { at: 0.4, kind: 'burning', speed: 900, dmg: 4.5, kb: 620, launch: -560, life: 1.0, scale: 1.3 }, call: 'BURNING ATTACK !', p: ['special', [0, 1, 2, 3], [0.18, 0.38, 0.62]] },
+};
+// Ace : poings et pieds, Hiken (le poing de feu part du poing tendu)
+const AC_MOVES = { ...NEWKICK(FIST),
+  dash:  { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 140], y: [-150, -50], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1150, pushAt: 0.06, pushDur: 0.3, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
+  hiken: { dur: 0.8, cost: 35, proj: { at: 0.38, kind: 'hiken', speed: 950, dmg: 4.5, kb: 600, launch: -540, life: 1.0, scale: 1.2 }, call: 'HIKEN !', p: ['special', [0, 1, 2, 3], [0.18, 0.36, 0.62]] },
+};
+// Guts : l'épée gigantesque, lente mais longue et lourde, et le canon caché dans son bras de fer
+const GT_MOVES = { ...SWORD,
+  smash:  { dur: 0.62, on: 0.2, off: 0.36, cancel: 0.42, reach: [20, 225], y: [-230, 0], dmg: 2.8, kb: 320, ki: 8, p: ['combo', [1, 2, 3], [0.18, 0.4]], trail: { a0: -1.7, a1: 1.2, r: 200, at: 0.18, w: 46 } },
+  sweep:  { dur: 0.56, on: 0.16, off: 0.32, cancel: 0.4, reach: [0, 235], y: [-190, -20], dmg: 2.6, kb: 380, ki: 8, p: ['combo', [4, 5], [0.16]], trail: { a0: -0.5, a1: 0.6, r: 220, at: 0.16, w: 46 } },
+  thrust: { dur: 0.58, on: 0.18, off: 0.34, reach: [20, 260], y: [-170, -50], dmg: 3.4, kb: 460, ki: 10, launch: -520, p: ['combo', [6]] },
+  spin:   { dur: 0.6, on: 0.16, off: 0.4, cancel: 0.44, reach: [-150, 220], y: [-190, -20], dmg: 2.4, kb: 360, ki: 8, p: ['combo', [7]], trail: { a0: -3.1, a1: 3.1, r: 190, w: 40 } },
+  heavy:  { dur: 0.75, on: 0.3, off: 0.46, reach: [20, 230], y: [-240, 0], dmg: 3.8, kb: 420, ki: 10, launch: -620, p: ['combo', [1, 2, 3], [0.28, 0.5]], trail: { a0: -1.7, a1: 1.2, r: 210, at: 0.28, w: 50 }, call: 'HAAA !' },
+  ckick:  { ...SWORD.ckick, reach: [20, 220], dmg: 2.4, p: ['lowair', [1, 2, 3], [0.1, 0.3]] },
+  airkick: { ...SWORD.airkick, reach: [10, 210], dmg: 2.8, p: ['lowair', [5, 6, 7], [0.06, 0.42]] },
+  dash:   { dur: 0.62, on: 0.12, off: 0.46, reach: [0, 170], y: [-180, -20], dmg: 3.4, kb: 480, ki: 8, launch: -500, push: 1100, pushAt: 0.08, pushDur: 0.36, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.26, 0.46]] },
+  cannon: { dur: 0.85, cost: 35, proj: { at: 0.42, kind: 'shell', speed: 1150, dmg: 5, kb: 650, launch: -560, life: 0.9 }, call: 'CANON !', p: ['special', [0, 1, 2, 3], [0.2, 0.4, 0.66]] },
+};
+// Sanji : uniquement les pieds, mains dans les poches ; Diable Jambe = la jambe s'enflamme en tournant sur lui-même
+const SJ_MOVES = { ...FIST,
+  punch:    { dur: 0.30, on: 0.06, off: 0.17, cancel: 0.17, reach: [20, 150], y: [-150, -60], dmg: 1.2, kb: 180, ki: 6, p: ['combo', [0, 1], [0.05]] },
+  cross:    { dur: 0.34, on: 0.07, off: 0.19, cancel: 0.19, reach: [20, 155], y: [-190, -90], dmg: 1.5, kb: 220, ki: 6, p: ['combo', [2]] },
+  uppercut: { dur: 0.50, on: 0.14, off: 0.28, reach: [10, 140], y: [-190, -20], dmg: 3, kb: 320, ki: 10, launch: -420, p: ['combo', [2, 3], [0.12]], trail: { a0: -1.6, a1: 0.6, r: 120, at: 0.12 }, call: 'CONCASSÉ !' },
+  kick:     { dur: 0.42, on: 0.12, off: 0.26, cancel: 0.26, reach: [10, 160], y: [-130, -10], dmg: 1.6, kb: 260, ki: 6, p: ['combo', [4, 5], [0.1]] },
+  roundhouse: { dur: 0.48, on: 0.10, off: 0.30, cancel: 0.30, reach: [-110, 160], y: [-130, -10], dmg: 2.2, kb: 320, ki: 8, p: ['combo', [6]], trail: { a0: -3.1, a1: 3.1, r: 130, y: -60 } },
+  spinback: { dur: 0.58, on: 0.10, off: 0.32, reach: [-60, 165], y: [-140, -10], dmg: 3, kb: 420, ki: 10, launch: -520, p: ['combo', [5, 6, 7], [0.12, 0.34]], trail: { a0: -3.1, a1: 3.1, r: 135, y: -60 }, call: 'PARAGE SHOT !' },
+  dash:     { dur: 0.55, on: 0.12, off: 0.42, reach: [0, 160], y: [-160, -40], dmg: 3, kb: 430, ki: 8, launch: -480, push: 1250, pushAt: 0.06, pushDur: 0.32, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.18, 0.42]] },
+  diable:   { dur: 0.78, cost: 35, on: 0.28, off: 0.5, reach: [-40, 185], y: [-190, -30], dmg: 5, kb: 650, ki: 0, launch: -620, push: 700, pushAt: 0.24, pushDur: 0.2, legFire: [0.04, 0.62],
+              call: 'DIABLE JAMBE !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.56]], trail: { a0: -3.1, a1: 3.1, r: 150, at: 0.12, w: 34 } },
+};
+// Shoto : moitié glace, moitié feu. Spécial : un mur de pics de glace qui court au sol depuis sa main droite
+const ST_MOVES = { ...NEWKICK(FIST),
+  dash:    { dur: 0.55, on: 0.1, off: 0.42, reach: [0, 150], y: [-120, 0], dmg: 3, kb: 400, ki: 8, launch: -480, push: 1250, pushAt: 0.06, pushDur: 0.34, lean: 12, iceTrail: true, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.44]] },
+  icewall: { dur: 0.85, cost: 35, proj: { at: 0.36, kind: 'icewall', speed: 760, dmg: 4.5, kb: 420, launch: -700, life: 0.9, ground: true, scale: 1.2 }, call: 'MUR DE GLACE !', p: ['special', [0, 1, 2, 3], [0.14, 0.32, 0.66]] },
+};
+// Saber : l'épée dorée. Planche de combo : 0 garde, 1 levée, 2 taille verticale, 3 accroupie, 4 armée, 5 taille horizontale,
+// 6 estoc, 7 taille tournante. Strike Air = la rafale de vent qui cachait la lame, lâchée depuis la pointe.
+const SB_MOVES = { ...SWORD,
+  smash:  { dur: 0.42, on: 0.12, off: 0.26, cancel: 0.28, reach: [20, 175], y: [-210, 0], dmg: 1.6, kb: 220, ki: 6, p: ['combo', [1, 2, 3], [0.1, 0.26]], trail: { a0: -1.7, a1: 1.2, r: 150, at: 0.1, w: 36 } },
+  sweep:  { dur: 0.40, on: 0.10, off: 0.24, cancel: 0.26, reach: [0, 180], y: [-180, -20], dmg: 1.8, kb: 260, ki: 6, p: ['combo', [4, 5], [0.1]], trail: { a0: -0.5, a1: 0.6, r: 160, at: 0.1, w: 36 } },
+  thrust: { dur: 0.50, on: 0.14, off: 0.30, reach: [20, 200], y: [-170, -50], dmg: 3, kb: 380, ki: 10, launch: -520, p: ['combo', [6]] },
+  spin:   { dur: 0.48, on: 0.10, off: 0.32, cancel: 0.32, reach: [-110, 170], y: [-170, -20], dmg: 2, kb: 300, ki: 8, p: ['combo', [7]], trail: { a0: -3.1, a1: 3.1, r: 140, w: 34 } },
+  heavy:  { dur: 0.60, on: 0.24, off: 0.38, reach: [20, 185], y: [-230, 0], dmg: 3.2, kb: 380, ki: 10, launch: -600, p: ['combo', [1, 2, 3], [0.22, 0.4]], trail: { a0: -1.7, a1: 1.2, r: 165, at: 0.22, w: 42 }, call: 'HAAA !' },
+  dash:   { dur: 0.55, on: 0.12, off: 0.42, reach: [-30, 160], y: [-170, -40], dmg: 3.2, kb: 420, ki: 8, launch: -480, push: 1400, pushAt: 0.08, pushDur: 0.3, ghost: true, xcut: true, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.26, 0.46]] },
+  strikeair: { dur: 0.8, cost: 35, proj: { at: 0.36, kind: 'strikeair', speed: 980, dmg: 4.5, kb: 620, launch: -560, life: 1.0, scale: 1.2 }, call: 'STRIKE AIR !', p: ['special', [0, 1, 2, 3], [0.16, 0.34, 0.62]] },
+};
+// Mikasa : deux lames et l'équipement tridimensionnel. Même planche de combo que Saber, coups plus vifs et plus courts ;
+// le dash est un tir de grappin, très penché ; le spécial une toupie qui monte et coupe plusieurs fois.
+const MK_MOVES = { ...SWORD,
+  smash:  { dur: 0.36, on: 0.10, off: 0.22, cancel: 0.24, reach: [20, 160], y: [-200, 0], dmg: 1.4, kb: 200, ki: 6, p: ['combo', [1, 2, 3], [0.08, 0.22]], trail: { a0: -1.7, a1: 1.2, r: 140, at: 0.08 } },
+  sweep:  { dur: 0.34, on: 0.08, off: 0.20, cancel: 0.22, reach: [0, 165], y: [-180, -20], dmg: 1.6, kb: 240, ki: 6, p: ['combo', [4, 5], [0.08]], trail: { a0: -0.5, a1: 0.6, r: 150, at: 0.08 } },
+  thrust: { dur: 0.44, on: 0.12, off: 0.26, reach: [20, 180], y: [-170, -50], dmg: 2.8, kb: 360, ki: 10, launch: -520, p: ['combo', [6]] },
+  spin:   { dur: 0.42, on: 0.08, off: 0.28, cancel: 0.28, reach: [-110, 160], y: [-170, -20], dmg: 2, kb: 300, ki: 8, p: ['combo', [7]], trail: { a0: -3.1, a1: 3.1, r: 130, w: 30 } },
+  heavy:  { dur: 0.52, on: 0.2, off: 0.32, reach: [20, 170], y: [-220, 0], dmg: 3, kb: 360, ki: 10, launch: -580, p: ['combo', [1, 2, 3], [0.18, 0.34]], trail: { a0: -1.7, a1: 1.2, r: 150, at: 0.18 } },
+  dash:   { dur: 0.5, on: 0.08, off: 0.4, reach: [-20, 170], y: [-180, -40], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1900, pushAt: 0.05, pushDur: 0.3, ghost: true, xcut: true, lean: 22, call: 'GRAPPIN !', p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.22, 0.42]] },
+  toupie: { dur: 0.9, cost: 35, on: 0.14, off: 0.66, multi: 0.1, reach: [-120, 160], y: [-230, -10], dmg: 1.1, kb: 120, ki: 0, launch: -380, push: 650, pushAt: 0.12, pushDur: 0.5, ghost: true,
+            call: 'TOUPIE !', p: ['special', [0, 1, 2, 3], [0.12, 0.36, 0.72]], trail: { a0: -3.1, a1: 3.1, r: 145, at: 0.14, w: 32 } },
+};
+// Revy : deux pistolets. Planche de combo : 0 garde, 1 coup de crosse, 2 tir gauche, 3 tir droit, 4 genou, 5 pied avant,
+// 6 les deux pistolets, 7 moulinet. Chaque tir (shots) part du bout du canon dessiné, avec un éclair de bouche.
+const RV_MOVES = { ...NEWKICK(FIST),
+  punch:      { dur: 0.30, on: 0.06, off: 0.16, cancel: 0.16, reach: [20, 120], y: [-170, -90], dmg: 1.2, kb: 180, ki: 6, p: ['combo', [0, 1], [0.05]] },
+  cross:      { dur: 0.30, cancel: 0.18, ki: 0, shots: { at: [0.07], dmg: 1.2, kb: 120 }, p: ['combo', [2]] },
+  uppercut:   { dur: 0.42, ki: 0, shots: { at: [0.07], dmg: 2.2, kb: 320, launch: -420 }, p: ['combo', [3]] },
+  kick:       { dur: 0.36, on: 0.08, off: 0.22, cancel: 0.22, reach: [20, 125], y: [-130, -50], dmg: 1.5, kb: 240, ki: 6, p: ['combo', [4]] },
+  roundhouse: { dur: 0.42, on: 0.10, off: 0.26, cancel: 0.26, reach: [20, 160], y: [-150, -60], dmg: 2, kb: 300, ki: 8, p: ['combo', [5]] },
+  spinback:   { dur: 0.50, ki: 0, shots: { at: [0.07, 0.15], dmg: 1.6, kb: 260, launch: -380 }, call: 'HA HA !', p: ['combo', [6, 7], [0.3]] },
+  ckick:      { dur: 0.46, ki: 0, shots: { at: [0.2], dmg: 2, kb: 220, launch: -380 }, p: ['lowair', [0, 1, 2, 3], [0.06, 0.16, 0.36]] },
+  airkick:    { dur: 0.55, ki: 0, shots: { at: [0.14, 0.24], dmg: 1.3, kb: 200 }, p: ['lowair', [5, 6, 7], [0.1, 0.4]] },
+  // glissade sur le flanc en tirant devant elle
+  dash:       { dur: 0.6, on: 0.1, off: 0.34, reach: [0, 140], y: [-90, 0], dmg: 2.4, kb: 360, ki: 8, launch: -420, push: 1300, pushAt: 0.06, pushDur: 0.34, shots: { at: [0.3, 0.38], dmg: 1.2, kb: 160 }, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.46]] },
+  // Two Hands : la rafale des deux pistolets, une main après l'autre
+  twohands:   { dur: 0.9, cost: 35, ki: 0, shots: { at: [0.14, 0.22, 0.3, 0.38, 0.46, 0.54], dmg: 0.85, kb: 70, last: { kb: 520, launch: -520 } }, call: 'TWO HANDS !',
+                p: ['special', [0, 1, 2, 1, 2, 1, 2, 3], [0.1, 0.18, 0.26, 0.34, 0.42, 0.5, 0.66]] },
+};
+// Gally : Panzer Kunst, coups secs et précis. Spécial : une frappe de paume qui libère une onde de choc à l'impact
+const GA_MOVES = { ...NEWKICK(FIST),
+  punch:  { ...FIST.punch, dur: 0.26, cancel: 0.14 }, cross: { ...FIST.cross, dur: 0.28, cancel: 0.15 },
+  dash:   { dur: 0.5, on: 0.18, off: 0.36, reach: [0, 150], y: [-170, -60], dmg: 3.2, kb: 480, ki: 8, launch: -480, push: 1500, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 18, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  palm:   { dur: 0.85, cost: 35, on: 0.3, off: 0.44, reach: [0, 175], y: [-180, -60], dmg: 5.5, kb: 820, ki: 0, launch: -600, push: 500, pushAt: 0.26, pushDur: 0.12, shock: true,
+            call: 'PANZER KUNST !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.6]] },
+};
+// Livaï : deux lames en prise inversée, plus petit et plus vif que Mikasa ; le spécial est un cyclone aérien
+// (special 0 bond, 1-2 rotation lames écartées, 3 réception), qui coupe plusieurs fois et soulève.
+const LV_MOVES = { ...SWORD,
+  smash:  { dur: 0.34, on: 0.09, off: 0.21, cancel: 0.23, reach: [20, 155], y: [-200, 0], dmg: 1.4, kb: 200, ki: 6, p: ['combo', [1, 2, 3], [0.07, 0.2]], trail: { a0: -1.7, a1: 1.2, r: 135, at: 0.07 } },
+  sweep:  { dur: 0.32, on: 0.08, off: 0.19, cancel: 0.21, reach: [0, 160], y: [-180, -20], dmg: 1.6, kb: 240, ki: 6, p: ['combo', [4, 5], [0.07]], trail: { a0: -0.5, a1: 0.6, r: 145, at: 0.07 } },
+  thrust: { dur: 0.42, on: 0.11, off: 0.25, reach: [20, 175], y: [-170, -50], dmg: 2.8, kb: 360, ki: 10, launch: -520, p: ['combo', [6]] },
+  spin:   { dur: 0.40, on: 0.08, off: 0.27, cancel: 0.27, reach: [-110, 155], y: [-170, -20], dmg: 2, kb: 300, ki: 8, p: ['combo', [7]], trail: { a0: -3.1, a1: 3.1, r: 125, w: 28 } },
+  heavy:  { dur: 0.50, on: 0.19, off: 0.31, reach: [20, 165], y: [-220, 0], dmg: 3, kb: 360, ki: 10, launch: -580, p: ['combo', [1, 2, 3], [0.17, 0.32]], trail: { a0: -1.7, a1: 1.2, r: 145, at: 0.17 } },
+  dash:   { dur: 0.48, on: 0.07, off: 0.38, reach: [-20, 165], y: [-180, -40], dmg: 3, kb: 420, ki: 8, launch: -480, push: 2000, pushAt: 0.05, pushDur: 0.28, ghost: true, xcut: true, lean: 22, call: 'GRAPPIN !', p: ['dashcharge', [0, 1, 2, 3], [0.05, 0.2, 0.4]] },
+  cyclone: { dur: 0.9, cost: 35, on: 0.12, off: 0.66, multi: 0.09, reach: [-130, 165], y: [-240, -10], dmg: 1.1, kb: 110, ki: 0, launch: -420, push: 600, pushAt: 0.1, pushDur: 0.5, ghost: true,
+             call: 'CYCLONE !', p: ['special', [0, 1, 2, 1, 2, 3], [0.1, 0.22, 0.34, 0.46, 0.66]], trail: { a0: -3.1, a1: 3.1, r: 150, at: 0.12, w: 30 } },
+};
+// Baki : arts martiaux à mains nues, des coups énormes. Spécial : la frappe fouet (le bras relâché claque comme un fouet,
+// special 0-3). Dos du démon : le spécial devient le direct dévastateur (special 4-7).
+const BK_MOVES = { ...NEWKICK(FIST),
+  punch:     { ...FIST.punch, dmg: FIST.punch.dmg * 1.15 }, cross: { ...FIST.cross, dmg: FIST.cross.dmg * 1.15 }, uppercut: { ...FIST.uppercut, dmg: FIST.uppercut.dmg * 1.15 },
+  dash:      { dur: 0.55, on: 0.16, off: 0.36, reach: [0, 155], y: [-180, -60], dmg: 3.4, kb: 520, ki: 8, launch: -480, push: 1450, pushAt: 0.06, pushDur: 0.28, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  whip:      { dur: 0.78, cost: 35, on: 0.3, off: 0.42, reach: [0, 200], y: [-190, -70], dmg: 5, kb: 980, ki: 0, launch: -420, push: 300, pushAt: 0.26, pushDur: 0.1,
+               call: 'FRAPPE FOUET !', p: ['special', [0, 1, 2, 3], [0.16, 0.3, 0.6]], trail: { a0: -0.9, a1: 0.5, r: 175, at: 0.28, w: 26 } },
+  demonfist: { dur: 0.9, cost: 35, on: 0.36, off: 0.5, reach: [0, 190], y: [-180, -70], dmg: 6.5, kb: 1100, ki: 0, launch: -650, push: 900, pushAt: 0.3, pushDur: 0.14, shock: true, lean: 14,
+               call: 'DOS DU DÉMON !', p: ['special', [4, 5, 6, 7], [0.2, 0.34, 0.66]] },
+};
+// Itachi : calme et précis. Spécial : Katon, la boule de feu soufflée par la bouche (special 0-3) ; en Mangekyô,
+// Amaterasu : des flammes noires naissent directement sur l'ennemi regardé (special 4-7), sans projectile.
+const IT_MOVES = { ...NEWKICK(FIST),
+  dash:      { dur: 0.5, on: 0.14, off: 0.34, reach: [0, 150], y: [-170, -60], dmg: 3, kb: 420, ki: 8, launch: -460, push: 1500, pushAt: 0.05, pushDur: 0.28, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  katon:     { dur: 0.85, cost: 35, proj: { at: 0.4, kind: 'katon', from: 'mouth', speed: 820, dmg: 4.8, kb: 600, launch: -520, life: 1.1, scale: 1.3 }, call: 'KATON : GŌKAKYŪ !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.7]] },
+  amaterasu: { dur: 0.9, cost: 35, ama: { at: 0.5, range: 520, dur: 2.4, dps: 2.4 }, call: 'AMATERASU', p: ['special', [4, 5, 6, 7], [0.18, 0.4, 0.72]] },
+};
+// Eren : deux lames et le grappin, plus rageur que Mikasa. Spécial : l'attaque double aux lames (special 0-3, bond puis
+// double entaille) ; une fois le pouvoir du Titan éveillé, le poing du Titan (special 4-7) et son onde de choc.
+const ER_MOVES = { ...SWORD,
+  smash:  { dur: 0.38, on: 0.10, off: 0.23, cancel: 0.25, reach: [20, 165], y: [-210, 0], dmg: 1.6, kb: 230, ki: 6, p: ['combo', [1, 2, 3], [0.08, 0.22]], trail: { a0: -1.7, a1: 1.2, r: 145, at: 0.08 } },
+  sweep:  { dur: 0.36, on: 0.09, off: 0.21, cancel: 0.23, reach: [0, 170], y: [-180, -20], dmg: 1.7, kb: 260, ki: 6, p: ['combo', [4, 5], [0.08]], trail: { a0: -0.5, a1: 0.6, r: 155, at: 0.08 } },
+  thrust: { dur: 0.44, on: 0.12, off: 0.27, reach: [20, 185], y: [-170, -50], dmg: 2.9, kb: 380, ki: 10, launch: -520, p: ['combo', [6]] },
+  spin:   { dur: 0.42, on: 0.09, off: 0.28, cancel: 0.28, reach: [-110, 165], y: [-170, -20], dmg: 2, kb: 300, ki: 8, p: ['combo', [7]], trail: { a0: -3.1, a1: 3.1, r: 135, w: 30 } },
+  heavy:  { dur: 0.54, on: 0.21, off: 0.34, reach: [20, 175], y: [-220, 0], dmg: 3.2, kb: 380, ki: 10, launch: -600, p: ['combo', [1, 2, 3], [0.19, 0.34]], trail: { a0: -1.7, a1: 1.2, r: 155, at: 0.19, w: 38 } },
+  dash:   { dur: 0.5, on: 0.08, off: 0.38, reach: [-20, 175], y: [-180, -40], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1850, pushAt: 0.05, pushDur: 0.28, ghost: true, xcut: true, lean: 20, call: 'GRAPPIN !', p: ['dashcharge', [0, 1, 2, 3], [0.05, 0.2, 0.42]] },
+  erblades:  { dur: 0.8, cost: 35, on: 0.3, off: 0.46, reach: [0, 200], y: [-230, -40], dmg: 5, kb: 620, ki: 0, launch: -540, push: 900, pushAt: 0.18, pushDur: 0.22, ghost: true, xcut: true,
+               call: 'ATTAQUE !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.62]], trail: { a0: -1.2, a1: 1.0, r: 175, at: 0.3, w: 34 } },
+  titanfist: { dur: 0.9, cost: 35, on: 0.36, off: 0.5, reach: [0, 200], y: [-190, -60], dmg: 6.5, kb: 1100, ki: 0, launch: -650, push: 800, pushAt: 0.3, pushDur: 0.14, shock: true, lean: 14,
+               call: 'POING DU TITAN !', p: ['special', [4, 5, 6, 7], [0.2, 0.34, 0.66]] },
+};
+// Boruto : poings et pieds de ninja. Spécial : le Rasengan évanescent, une petite sphère qui part de la paume tendue
+// (special 2), s'efface en route et réapparaît juste avant l'impact (tir 'vrasen').
+const BO_MOVES = { ...NEWKICK(FIST),
+  dash:   { dur: 0.5, on: 0.14, off: 0.34, reach: [0, 150], y: [-170, -60], dmg: 3, kb: 420, ki: 8, launch: -460, push: 1550, pushAt: 0.05, pushDur: 0.28, ghost: true, lean: 18, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  vrasen: { dur: 0.85, cost: 35, proj: { at: 0.4, kind: 'vrasen', speed: 760, dmg: 4.8, kb: 620, launch: -560, life: 1.0, scale: 1 }, call: 'RASENGAN ÉVANESCENT !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.68]] },
+};
+// Naruto adolescent (Shippuden), variante de la case Naruto : poings et pieds, Rasengan tenu dans la paume (special 0-3,
+// même effet que l'enfant) ; en Mode Ermite, le spécial devient le Rasen-shuriken lancé depuis la main levée (special 4-7),
+// qui éclate en dôme de vent au premier ennemi touché.
+const NS_MOVES = { ...NEWKICK(FIST),
+  dash:     { dur: 0.5, on: 0.14, off: 0.36, reach: [0, 150], y: [-170, -60], dmg: 3, kb: 420, ki: 8, launch: -460, push: 1600, pushAt: 0.05, pushDur: 0.28, ghost: true, lean: 18, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  rasengan: { ...N_MOVES.rasengan, dmg: 5.2 },
+  rshuriken: { dur: 1.0, cost: 35, heldShuriken: true, proj: { at: 0.62, kind: 'shuriken', speed: 640, dmg: 0.6, kb: 200, life: 0.9, scale: 0.55, multiT: 0, final: 3.6, burst: true, blast: 170 },
+               call: 'RASEN-SHURIKEN !', p: ['special', [4, 5, 6, 7], [0.25, 0.55, 0.82]] },
+};
+// Edward : poings et pieds, le bras d'acier en avant. Spécial : la transmutation — il frappe dans ses mains (special 0),
+// pose les deux mains au sol (special 2) et des piques de pierre jaillissent devant lui et avancent (tir 'stonewall') ;
+// bras-lame activé, le spécial devient l'entaille de la lame (special 4-7).
+const ED_MOVES = { ...NEWKICK(FIST),
+  dash:      { dur: 0.52, on: 0.14, off: 0.34, reach: [0, 150], y: [-170, -60], dmg: 3.2, kb: 460, ki: 8, launch: -460, push: 1450, pushAt: 0.05, pushDur: 0.28, ghost: true, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  transmute: { dur: 0.9, cost: 35, proj: { at: 0.42, kind: 'stonewall', speed: 720, dmg: 4.6, kb: 440, launch: -720, life: 0.95, ground: true, scale: 1.25 }, call: 'TRANSMUTATION !', p: ['special', [0, 1, 2, 3], [0.18, 0.34, 0.72]] },
+  armblade:  { dur: 0.8, cost: 35, on: 0.3, off: 0.44, reach: [0, 200], y: [-200, -40], dmg: 6, kb: 760, ki: 0, launch: -560, push: 900, pushAt: 0.24, pushDur: 0.16, lean: 12,
+               call: 'BRAS-LAME !', p: ['special', [4, 5, 6, 7], [0.16, 0.3, 0.62]], trail: { a0: -1.0, a1: 0.7, r: 175, at: 0.3, w: 32 } },
+};
+// Gintoki : le sabre de bois, coups larges et nonchalants. Spécial : le démon blanc, un bond et une grande taille
+// horizontale (special 0-3) ; en Shiroyasha, le spécial devient le coup écrasant (special 4-7).
+const GI_MOVES = { ...SWORD,
+  smash:  { dur: 0.40, on: 0.11, off: 0.25, cancel: 0.27, reach: [20, 175], y: [-210, 0], dmg: 1.7, kb: 240, ki: 6, p: ['combo', [1, 2, 3], [0.09, 0.24]], trail: { a0: -1.7, a1: 1.2, r: 150, at: 0.09 } },
+  sweep:  { dur: 0.38, on: 0.09, off: 0.23, cancel: 0.25, reach: [0, 180], y: [-180, -20], dmg: 1.8, kb: 270, ki: 6, p: ['combo', [4, 5], [0.09]], trail: { a0: -0.5, a1: 0.6, r: 160, at: 0.09 } },
+  thrust: { dur: 0.46, on: 0.12, off: 0.28, reach: [20, 195], y: [-170, -60], dmg: 3, kb: 400, ki: 10, launch: -520, p: ['combo', [6]] },
+  spin:   { dur: 0.46, on: 0.10, off: 0.30, cancel: 0.30, reach: [-110, 170], y: [-170, -20], dmg: 2, kb: 300, ki: 8, p: ['combo', [7]], trail: { a0: -3.1, a1: 3.1, r: 140, w: 30 } },
+  heavy:  { dur: 0.56, on: 0.22, off: 0.36, reach: [20, 185], y: [-230, 0], dmg: 3.3, kb: 400, ki: 10, launch: -620, p: ['combo', [1, 2, 3], [0.2, 0.36]], trail: { a0: -1.7, a1: 1.2, r: 165, at: 0.2, w: 38 } },
+  dash:   { dur: 0.5, on: 0.10, off: 0.38, reach: [-10, 200], y: [-170, -50], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1500, pushAt: 0.06, pushDur: 0.28, ghost: true, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.42]] },
+  shirodemon: { dur: 0.82, cost: 35, on: 0.3, off: 0.46, reach: [-20, 230], y: [-220, -30], dmg: 5, kb: 700, ki: 0, launch: -560, push: 1200, pushAt: 0.16, pushDur: 0.24, ghost: true,
+                call: 'DÉMON BLANC !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.62]], trail: { a0: -0.6, a1: 0.6, r: 210, at: 0.3, w: 40 } },
+  gicrush:    { dur: 0.88, cost: 35, on: 0.38, off: 0.5, reach: [0, 200], y: [-240, 0], dmg: 6.2, kb: 900, ki: 0, launch: -700, push: 500, pushAt: 0.32, pushDur: 0.12, shock: true,
+                call: 'SHIROYASHA !', p: ['special', [4, 5, 6, 7], [0.18, 0.36, 0.66]], trail: { a0: -1.8, a1: 1.3, r: 185, at: 0.36, w: 44 } },
 };
 // Ichigo : grand sabre, Getsuga Tensho
 const IC_MOVES = { ...SWORD,
@@ -718,8 +880,17 @@ const CHARS = {
     name: 'SANGOKU', title: 'Le saiyan au grand cœur', sheet: 'goku', card: 'card_goku',
     colors: ['#ff7a1a', '#3a6bff'], kiColor: '#8fe9ff', hit: '#bff3ff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
     labels: { blast: 'KAMEHAMEHA', ultra: 'GENKIDAMA' },
-    // Super Saiyan : cheveux dorés (planches à part), plus rapide et plus fort tant qu'il reste du ki
-    forms: [{ ki: 50, name: 'SUPER SAIYAN', sheet: 'goku_ssj', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
+    // Formes par paliers (formSteps) : Super Saiyan, puis Blue, puis Ultra Instinct, une transformation à la fois.
+    // Planches à part ; tant que celles de Blue / Ultra Instinct manquent, celles du Super Saiyan teintées (fallback).
+    formSteps: true,
+    forms: [
+      { ki: 50, name: 'SUPER SAIYAN', sheet: 'goku_ssj', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' },
+      { ki: 75, name: 'SUPER SAIYAN BLUE', sheet: 'goku_blue', fallback: ['goku_ssj', 'hue-rotate(165deg) saturate(1.5) brightness(1.08)'], speed: 1.42, dmg: 2.0, at: 0.6, end: 1.0,
+        aura: ['rgba(70,200,255,0.6)', '#4fd2ff'], sparks: true, glow: '#2ab4ff', bar: ['#0a5ad0', '#9fe8ff'], color: '#7fe0ff', hit: '#d8f6ff' },
+      // Ultra Instinct : le corps esquive seul une partie des coups (dodge)
+      { ki: 100, name: 'ULTRA INSTINCT', sheet: 'goku_ui', fallback: ['goku_ssj', 'grayscale(1) brightness(1.3) contrast(1.05)'], speed: 1.55, dmg: 2.2, at: 0.6, end: 1.1,
+        aura: ['rgba(200,220,255,0.55)', '#dfeaff'], sparks: '#eef6ff', glow: '#a9c4ff', dodge: 0.45, bar: ['#5a6aa8', '#ffffff'], color: '#e8f0ff', hit: '#ffffff' },
+    ],
     moves: GK_MOVES, chain: { punch: ['punch', 'cross', 'kiburst', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'] },
     special: 'kamehameha', speed: 260, pose: stdPose, ultra: [startGenki, updateGenki], ultraPose: genkiPose,
   },
@@ -793,11 +964,174 @@ const CHARS = {
     name: 'TRUNKS', title: 'Le guerrier venu du futur', sheet: 'trunks', card: 'card_tr',
     colors: ['#24408a', '#c9a8ff'], kiColor: '#fff07a', hit: '#fff3b0', trail: '#ffffff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
     labels: { blast: 'BURNING ATTACK', ultra: 'SHINING SWORD ATTACK' },
-    forms: [{ ki: 50, name: 'SUPER SAIYAN', filter: 'saturate(1.2) brightness(1.08)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
+    // Super Saiyan : planches aux cheveux dorés (trunks_ssj) ; tant qu'elles manquent, la planche normale dorée et un halo
+    forms: [{ ki: 50, name: 'SUPER SAIYAN', sheet: 'trunks_ssj', fallback: ['trunks', 'sepia(0.55) saturate(2.2) hue-rotate(-8deg) brightness(1.15)'], speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
     moves: TR_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
     special: 'burning', speed: 265, pose: stdPose, ultra: [startShining, updateShining],
     ultraPose: h => ['special', h.t < SHINE.leap ? 4 : h.t < SHINE.cut ? 5 : h.t < SHINE.blast ? 6 : h.t < SHINE.blast + 0.3 ? 2 : 7],
   },
+  ace: {
+    name: 'ACE', title: 'Le poing ardent', sheet: 'ace', card: 'card_ac',
+    colors: ['#ff6a00', '#2a1a10'], kiColor: '#ffb040', hit: '#ffd0a0', trail: '#ff9a3a', element: 'fire', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
+    labels: { blast: 'HIKEN', ultra: 'ENTEI' },
+    // Logia du feu : le corps devient flammes
+    forms: [{ ki: 50, name: 'CORPS DE FLAMMES', filter: 'sepia(0.3) saturate(1.6) hue-rotate(-15deg) brightness(1.08)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,110,20,0.55)', '#ff8a2a'], flames: true, bar: ['#ff5a00', '#ffd060'], color: '#ff8a2a', hit: '#ffd0a0' }],
+    moves: AC_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'hiken', speed: 265, pose: stdPose, ultra: [startUltra, updateUltraPose],
+    ultraPose: h => ['special', h.t < 0.35 ? 4 : h.t < ULTRA.throwAt ? 6 : 2],
+  },
+  guts: {
+    name: 'GUTS', title: 'Le guerrier noir', sheet: 'guts', card: 'card_gt',
+    colors: ['#1a1a1e', '#b01a1a'], kiColor: '#ff6060', hit: '#ffb0b0', trail: '#dcdcdc', stats: [['PUISSANCE', 5], ['VITESSE', 2], ['PORTÉE', 5]],
+    labels: { blast: 'CANON DU BRAS', ultra: 'TUEUR DE DRAGONS' },
+    // l'armure du Berserker : il ne sent plus les coups, les yeux rouges dans le heaume
+    forms: [{ ki: 50, name: 'ARMURE DU BERSERKER', filter: 'brightness(0.72) contrast(1.3) saturate(0.85)', speed: 1.2, dmg: 1.9, at: 0.6, end: 1.0, aura: ['rgba(140,0,0,0.55)', '#d01818'], glow: '#ff1010', ghosts: true, bar: ['#3a0000', '#ff3030'], color: '#ff3030', trail: '#ff5050', hit: '#ffb0b0' }],
+    moves: GT_MOVES, chain: { punch: ['smash', 'sweep', 'thrust'], kick: ['spin', 'heavy'] },
+    special: 'cannon', speed: 225, pose: stdPose, ultra: [startDragonslayer, updateDragonslayer],
+    ultraPose: h => ['special', h.t < DRAGON.leap ? 4 : h.t < DRAGON.cut ? 5 : h.t < DRAGON.blast ? 6 : h.t < DRAGON.blast + 0.35 ? 2 : 7],
+  },
+  sanji: {
+    name: 'SANJI', title: 'La jambe noire', sheet: 'sanji', card: 'card_sj',
+    colors: ['#16161c', '#f2d64a'], kiColor: '#ffb040', hit: '#ffd0a0', trail: '#ffffff', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
+    labels: { blast: 'DIABLE JAMBE', ultra: 'HELL MEMORIES' },
+    // Diable Jambe : la jambe reste en feu, chaque coup de pied brûle
+    forms: [{ ki: 50, name: 'DIABLE JAMBE', filter: 'saturate(1.25) contrast(1.08)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,90,20,0.45)', '#ff6a1a'], legFire: true, bar: ['#c02000', '#ffb040'], color: '#ff6a1a', trail: '#ffb040', hit: '#ffd0a0', element: 'fire' }],
+    moves: SJ_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'diable', speed: 285, pose: stdPose, ultra: [startHellMemories, updateHellMemories],
+    ultraPose: h => ['special', h.t < HELL.leap ? 0 : h.t < HELL.rise ? 4 : h.t < HELL.slam ? 5 : h.t < HELL.slam + 0.35 ? 6 : 7],
+  },
+  shoto: {
+    name: 'SHOTO', title: 'Glace et feu', sheet: 'shoto', card: 'card_st',
+    colors: ['#1c2a6a', '#e8f4ff'], kiColor: '#9fe0ff', hit: '#dff6ff', trail: '#cfefff', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 5]],
+    labels: { blast: 'MUR DE GLACE', ultra: 'GLACIER ET BRASIER' },
+    // les deux moitiés réveillées : givre d'un côté, flammes de l'autre
+    forms: [{ ki: 50, name: 'GLACE ET FEU', filter: 'contrast(1.1) saturate(1.2)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(150,210,255,0.45)', '#ff7a3a'], fireIce: true, bar: ['#2a7ad0', '#ff8a3a'], color: '#9fe0ff', trail: '#ffb070', hit: '#dff6ff' }],
+    moves: ST_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'icewall', speed: 265, pose: stdPose, ultra: [startGlacier, updateGlacier],
+    ultraPose: h => ['special', h.t < 0.3 ? 0 : h.t < GLACIER.ice ? 1 : h.t < GLACIER.ice + 0.3 ? 2 : h.t < GLACIER.fire - 0.2 ? 4 : h.t < GLACIER.fire ? 5 : h.t < GLACIER.end - 0.2 ? 6 : 7],
+  },
+  saber: {
+    name: 'SABER', title: 'Le roi chevalier', sheet: 'saber', card: 'card_sb',
+    colors: ['#2a4aa8', '#f2d64a'], kiColor: '#ffe680', hit: '#fff6c0', trail: '#fff2a0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
+    labels: { blast: 'STRIKE AIR', ultra: 'EXCALIBUR' },
+    // le vent qui cachait la lame se lève : Excalibur apparaît, dorée
+    forms: [{ ki: 50, name: 'EXCALIBUR RÉVÉLÉE', filter: 'brightness(1.08) saturate(1.15)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,215,90,0.55)', '#ffe066'], glow: '#fff0a0', bar: ['#c09000', '#fff2a0'], color: '#ffe680', trail: '#fff2a0', hit: '#fff6c0' }],
+    moves: SB_MOVES, chain: { punch: ['smash', 'sweep', 'thrust'], kick: ['spin', 'heavy'] },
+    special: 'strikeair', speed: 260, pose: stdPose, ultra: [startExcalibur, updateExcalibur],
+    ultraPose: h => h.t < EXCAL.raise ? ['special', 4] : h.t < EXCAL.slash ? ['special', 5] : h.t < EXCAL.beam ? ['special', 6] : h.t < EXCAL.end - 0.15 ? ['combo', 6] : ['special', 7],
+  },
+  mikasa: {
+    name: 'MIKASA', title: 'La soldate Ackerman', sheet: 'mikasa', card: 'card_mk',
+    colors: ['#6a4a2a', '#c8102e'], kiColor: '#ff6070', hit: '#ffd0d0', trail: '#e8eef4', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
+    labels: { blast: 'TOUPIE', ultra: 'ASSAUT TRIDIMENSIONNEL' },
+    // le sang Ackerman se réveille : plus vite, plus fort, l'écharpe rouge laisse une traînée
+    forms: [{ ki: 50, name: 'ACKERMAN', filter: 'contrast(1.12) saturate(1.1)', speed: 1.4, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(200,20,30,0.4)', '#e02030'], ghosts: true, bar: ['#800010', '#ff4050'], color: '#ff4050', trail: '#ff3040', hit: '#ffd0d0' }],
+    moves: MK_MOVES, chain: { punch: ['smash', 'sweep', 'thrust'], kick: ['spin', 'heavy'] },
+    special: 'toupie', speed: 285, pose: stdPose, ultra: [startOdm, updateOdm],
+    ultraPose: h => h.t < ODM.start ? ['dashcharge', 0] : h.t < ODM.start + ODM.passes * ODM.pass ? ['dashcharge', 2] : h.t < ODM.end - 0.3 ? ['special', 6] : ['special', 7],
+  },
+  revy: {
+    name: 'REVY', title: 'Two Hands', sheet: 'revy', card: 'card_rv',
+    colors: ['#1a1a1a', '#7a1c2a'], kiColor: '#ff7060', hit: '#ffe0b0', trail: '#fff0c0', stats: [['PUISSANCE', 3], ['VITESSE', 5], ['PORTÉE', 5]],
+    labels: { blast: 'TWO HANDS', ultra: 'PLUIE DE BALLES' },
+    // Two Hands : la cadence double, une balle de chaque pistolet à chaque tir
+    forms: [{ ki: 50, name: 'TWO HANDS', filter: 'contrast(1.12) saturate(1.15)', speed: 1.25, dmg: 1.5, at: 0.6, end: 1.0, aura: ['rgba(220,40,40,0.45)', '#ff4040'], rapid: true, bar: ['#901010', '#ff6060'], color: '#ff5050', trail: '#ffd0a0', hit: '#ffe0b0' }],
+    moves: RV_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'twohands', speed: 275, pose: stdPose, ultra: [startBulletRain, updateBulletRain],
+    ultraPose: h => h.t < RAIN.leap ? ['special', 4] : h.t < RAIN.end - RAIN.land ? ['special', Math.floor(h.t * 9) % 2 ? 6 : 5] : h.t < RAIN.end - 0.2 ? ['special', 2] : ['special', 7],
+  },
+  gally: {
+    name: 'GALLY', title: 'L\'ange de la ferraille', sheet: 'gally', card: 'card_ga',
+    colors: ['#18181e', '#c8203a'], kiColor: '#7ac8ff', hit: '#d8f0ff', trail: '#cfe8ff', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 3]],
+    labels: { blast: 'FRAPPE DE PAUME', ultra: 'PANZER KUNST' },
+    // corps du Berserker : les jointures du corps cybernétique s'allument en bleu, elle va plus vite
+    forms: [{ ki: 50, name: 'BERSERKER BODY', filter: 'contrast(1.1) saturate(1.2)', speed: 1.4, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(80,160,255,0.45)', '#5ab0ff'], glow: '#7ac8ff', ghosts: true, bar: ['#1050a0', '#7ac8ff'], color: '#7ac8ff', trail: '#bfe4ff', hit: '#d8f0ff' }],
+    moves: GA_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'palm', speed: 285, pose: stdPose, ultra: [startPanzer, updatePanzer],
+    ultraPose: h => h.t < PANZER.rush ? ['special', 0] : h.t < PANZER.leap ? ['combo', [1, 2, 5, 6][Math.floor(h.t / 0.1) % 4]] : h.t < PANZER.kick ? ['special', 5] : h.t < PANZER.palm ? ['special', 6] : h.t < PANZER.end - 0.2 ? ['special', 2] : ['special', 3],
+  },
+
+  levi: {
+    name: 'LIVAÏ', title: 'Le soldat le plus fort de l\'humanité', sheet: 'levi', card: 'card_lv',
+    colors: ['#6a4a2a', '#e8eef4'], kiColor: '#bfe0ff', hit: '#e8f4ff', trail: '#e8eef4', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
+    labels: { blast: 'CYCLONE', ultra: 'TOURBILLON DU CAPITAINE' },
+    // le soldat le plus fort de l'humanité : encore plus vif, une traînée blanche derrière chaque geste
+    forms: [{ ki: 50, name: 'SOLDAT DE L\'HUMANITÉ', filter: 'contrast(1.15) saturate(0.95)', speed: 1.45, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(200,225,255,0.4)', '#cfe4ff'], ghosts: true, bar: ['#304a6a', '#e0f0ff'], color: '#dfeeff', trail: '#ffffff', hit: '#f0f8ff' }],
+    moves: LV_MOVES, chain: { punch: ['smash', 'sweep', 'thrust'], kick: ['spin', 'heavy'] },
+    special: 'cyclone', speed: 290, pose: stdPose, ultra: [startSpiral, updateSpiral],
+    ultraPose: h => h.t < SPIRAL.start ? ['special', 0] : h.t < SPIRAL.start + SPIRAL.run ? ['special', Math.floor(h.t * 12) % 2 ? 2 : 1] : h.t < SPIRAL.end - 0.25 ? ['special', 6] : ['special', 7],
+  },  baki: {
+    name: 'BAKI', title: 'Le fils de l\'ogre', sheet: 'baki', card: 'card_bk',
+    colors: ['#1a1a1a', '#c0281e'], kiColor: '#ff5040', hit: '#ffd0c0', trail: '#ffe0d0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
+    labels: { blast: 'FRAPPE FOUET', ultra: 'ASSAUT DU GRAPPLER' },
+    // les muscles du dos dessinent un visage de démon ; le spécial devient le direct dévastateur
+    forms: [{ ki: 50, name: 'DOS DU DÉMON', filter: 'contrast(1.15) saturate(1.2) brightness(0.96)', speed: 1.2, dmg: 1.9, at: 0.6, end: 1.0, aura: ['rgba(150,10,20,0.5)', '#b01020'], glow: '#a0101a', demon: true, bar: ['#600008', '#ff4030'], color: '#ff4030', hit: '#ffc0b0' }],
+    moves: BK_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'whip', special2: 'demonfist', speed: 255, pose: stdPose, ultra: [startGrappler, updateGrappler],
+    ultraPose: h => h.t < GRAPPLER.rush ? ['special', 4] : h.t < GRAPPLER.whip ? ['combo', Math.floor(h.t / GRAPPLER.every) % 2 ? 2 : 1] : h.t < GRAPPLER.fist - 0.15 ? ['special', 2] : h.t < GRAPPLER.fist ? ['special', 5] : h.t < GRAPPLER.end - 0.2 ? ['special', 6] : ['special', 7],
+  },
+  itachi: {
+    name: 'ITACHI', title: 'Le génie du clan Uchiha', sheet: 'itachi', card: 'card_it',
+    colors: ['#121218', '#c81e2a'], kiColor: '#ff3040', hit: '#ffc8c8', trail: '#ffd0d0', element: 'fire', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 5]],
+    labels: { blast: 'KATON', ultra: 'SUSANOO' },
+    // Mangekyô Sharingan : les yeux s'allument en rouge, des corbeaux s'envolent ; le spécial devient Amaterasu
+    forms: [{ ki: 50, name: 'MANGEKYÔ SHARINGAN', filter: 'contrast(1.12) saturate(1.1)', speed: 1.25, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(200,20,40,0.45)', '#ff2a3a'], glow: '#c0101e', eyes: true, crows: true, bar: ['#80000c', '#ff5060'], color: '#ff3a4a', hit: '#ffc8c8' }],
+    moves: IT_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'katon', special2: 'amaterasu', speed: 260, pose: stdPose, ultra: [startSusanoo, updateSusanoo],
+    ultraPose: h => h.t < SUSANOO.rise ? ['dashcharge', 5] : h.t < SUSANOO.slash ? ['special', 6] : ['special', 7],
+  },
+  eren: {
+    name: 'EREN', title: "L'Assaillant", sheet: 'eren', card: 'card_er',
+    colors: ['#6a4a2a', '#3aa860'], kiColor: '#ffd060', hit: '#fff0c0', trail: '#f2eee0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
+    labels: { blast: 'ATTAQUE AUX LAMES', ultra: 'TITAN ASSAILLANT' },
+    // il se mord la main (dashcharge 5) : éclair jaune, vapeur ; le spécial devient le poing du Titan
+    forms: [{ ki: 50, name: 'POUVOIR DU TITAN', filter: 'contrast(1.12) saturate(1.1)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,215,110,0.4)', '#ffd870'], steam: true, arcs: 'hue-rotate(-70deg) saturate(1.6) brightness(1.2)', arcRate: 0.12, bar: ['#6a3a10', '#ffd860'], color: '#ffd060', hit: '#fff0c0' }],
+    moves: ER_MOVES, chain: { punch: ['smash', 'sweep', 'thrust'], kick: ['spin', 'heavy'] },
+    special: 'erblades', special2: 'titanfist', speed: 275, pose: stdPose, ultra: [startTitan, updateTitan],
+    ultraPose: h => h.t < TITAN.rise ? ['dashcharge', h.t < 0.35 ? 4 : 5] : h.t < TITAN.punch - 0.15 ? ['dashcharge', 6] : h.t < TITAN.punch ? ['special', 5] : h.t < TITAN.end - 0.3 ? ['special', 6] : ['special', 7],
+  },
+  boruto: {
+    name: 'BORUTO', title: 'Le fils du Hokage', sheet: 'boruto', card: 'card_bo',
+    colors: ['#1a1a1a', '#f0d040'], kiColor: '#7fd0ff', hit: '#d8f0ff', trail: '#bfe8ff', stats: [['PUISSANCE', 3], ['VITESSE', 5], ['PORTÉE', 4]],
+    labels: { blast: 'RASENGAN ÉVANESCENT', ultra: 'RASENGAN DES TROIS' },
+    // Jôgan : l'œil droit s'allume en bleu, aura bleutée
+    forms: [{ ki: 50, name: 'JÔGAN', filter: 'contrast(1.1) saturate(1.1)', speed: 1.3, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(120,200,255,0.4)', '#8fd8ff'], glow: '#60b8ff', eyes: true, eyeCol: 'rgba(120,215,255,0.95)', oneEye: true, bar: ['#103a6a', '#bfe8ff'], color: '#9fdcff', hit: '#e0f4ff' }],
+    moves: BO_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'vrasen', speed: 280, pose: stdPose, ultra: [startBoru, updateBoru],
+    ultraPose: h => h.t < BORU.clones ? ['special', 4] : h.t < BORU.throw - 0.25 ? ['special', 0] : h.t < BORU.throw - 0.08 ? ['special', 1] : h.t < BORU.end - 0.3 ? ['special', 2] : ['special', 7],
+  },
+  edward: {
+    name: 'EDWARD', title: 'L\'alchimiste d\'acier', sheet: 'edward', card: 'card_ed',
+    colors: ['#a0141e', '#f0c84a'], kiColor: '#7fd0ff', hit: '#d8f0ff', trail: '#bfe8ff', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 4]],
+    labels: { blast: 'TRANSMUTATION', ultra: 'GRANDE TRANSMUTATION' },
+    // bras-lame : l'automail devient une lame, des éclairs bleus d'alchimie courent sur le bras ; le spécial devient l'entaille
+    forms: [{ ki: 50, name: 'BRAS-LAME', filter: 'contrast(1.1) saturate(1.1)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(120,200,255,0.4)', '#8fd8ff'], glow: '#5ab8ff',
+             arcs: 'hue-rotate(95deg) saturate(1.3) brightness(1.3)', handArcs: true, bar: ['#103a6a', '#bfe8ff'], color: '#9fdcff', hit: '#e0f4ff' }],
+    moves: ED_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'transmute', special2: 'armblade', speed: 270, pose: stdPose, ultra: [startAlchemy, updateAlchemy],
+    ultraPose: h => h.t < ALCH.clap ? ['special', 0] : h.t < ALCH.clap + 0.15 ? ['special', 1] : h.t < ALCH.end - 0.3 ? ['special', 2] : ['special', 3],
+  },
+  gintoki: {
+    name: 'GINTOKI', title: 'Le démon blanc', sheet: 'gintoki', card: 'card_gi',
+    colors: ['#f0f4ff', '#3a6ab8'], kiColor: '#e8f0ff', hit: '#ffffff', trail: '#f0f0ff', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 5]],
+    labels: { blast: 'DÉMON BLANC', ultra: 'GIN-SAN EST SÉRIEUX' },
+    // Shiroyasha : l'ancien démon blanc de la guerre se réveille, aura blanche, plus vif ; le spécial devient le coup écrasant
+    forms: [{ ki: 50, name: 'SHIROYASHA', filter: 'contrast(1.12) brightness(1.05) saturate(0.9)', speed: 1.4, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(240,245,255,0.5)', '#ffffff'], glow: '#e8f0ff', ghosts: true, bar: ['#5a6a88', '#ffffff'], color: '#ffffff', trail: '#ffffff', hit: '#ffffff' }],
+    moves: GI_MOVES, chain: { punch: ['smash', 'sweep', 'thrust'], kick: ['spin', 'heavy'] },
+    special: 'shirodemon', special2: 'gicrush', speed: 270, pose: stdPose, ultra: [startGinsan, updateGinsan],
+    ultraPose: h => h.t < GINSAN.lazy ? ['dashcharge', 5] : h.t < GINSAN.rushEnd ? ['combo', [2, 5, 6, 7][Math.floor((h.t - GINSAN.lazy) / GINSAN.every) % 4]] : h.t < GINSAN.smash ? ['special', 5] : h.t < GINSAN.end - 0.3 ? ['special', 6] : ['special', 7],
+  },  naruto_s: {
+    name: 'NARUTO', title: 'Le ninja de Konoha, trois ans plus tard', sheet: 'naruto_s', card: 'card_ns',
+    colors: ['#1a1a1a', '#ff9a1a'], kiColor: '#8fd0ff', hit: '#cfeaff', trail: '#bfe8ff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
+    labels: { blast: 'RASENGAN', ultra: 'RASEN-SHURIKEN GÉANT' },
+    // Mode Ermite : pigment orange autour des yeux, aura dorée ; le spécial devient le Rasen-shuriken
+    forms: [{ ki: 50, name: 'MODE ERMITE', filter: 'saturate(1.15) contrast(1.08)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,170,40,0.5)', '#ffb030'], glow: '#ffb030', eyes: true, eyeCol: 'rgba(255,140,30,0.95)', bar: ['#a04a00', '#ffd060'], color: '#ffb040', hit: '#ffe0a0' }],
+    moves: NS_MOVES, chain: { punch: ['punch', 'cross', 'uppercut'], kick: ['kick', 'roundhouse', 'spinback'] },
+    special: 'rasengan', special2: 'rshuriken', speed: 285, pose: stdPose, ultra: [startShuriken, updateShuriken],
+    ultraPose: h => h.t < RSH.throwAt - 0.35 ? ['special', 4] : h.t < RSH.throwAt ? ['special', 5] : h.t < RSH.end - 0.25 ? ['special', 6] : ['special', 7],
+  },
+
+
   kakashi: {
     name: 'KAKASHI', title: 'Le ninja copieur', sheet: 'kakashi', card: 'card_ka',
     colors: ['#4a6b8a', '#9fd0ff'], kiColor: '#9fd0ff', hit: '#cfe8ff', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 3]],
@@ -901,10 +1235,14 @@ const CHARS = {
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < 0.95 ? 5 : 6],
   },
 };
+// Forme dont la planche n'est pas encore découpée : elle reprend une autre planche, teintée (fallback)
+for (const C of Object.values(CHARS)) for (const F of C.forms || []) {
+  if (F.fallback && !SPRITES[F.sheet]) { F.sheet = F.fallback[0]; F.filter = F.fallback[1]; }
+}
 // Tailles relatives : les enfants et les persos plus petits le restent à l'écran (Naruto, Gon, Killua…).
 // Toutes les planches du perso (formes comprises) sont réduites ; la cadence de marche suit, pour que le pied
 // posé ne glisse pas.
-const CHAR_SIZE = { naruto: 0.88, gon: 0.87, killua: 0.87, tanjiro: 0.92, izuku: 0.95 };
+const CHAR_SIZE = { naruto: 0.88, gon: 0.87, killua: 0.87, tanjiro: 0.92, izuku: 0.95, guts: 1.1 }; // Guts : colosse, sa garde accroupie le tassait
 // Étapes remplacées par un dessin plus fin (même cadrage) : la garde de Sangoku, trop petite, perdait ses yeux
 const FRAME_HD = { 'goku.combo.0': 'assets/sprites/goku/guard_hd.png' };
 for (const [k, src] of Object.entries(FRAME_HD)) { const [sh, an, i] = k.split('.'); const f = SPRITES[sh]?.[an]?.frames[+i]; if (f) f.src = src; }
@@ -919,8 +1257,15 @@ const WORLD = 0.9;
 for (const who of Object.values(SPRITES)) for (const A of Object.values(who)) { A.scale *= WORLD; if (A.rate) A.rate /= WORLD; }
 for (const [id, k] of Object.entries(CHAR_SIZE))
   for (const sh of charSheets(id)) for (const A of Object.values(SPRITES[sh] || {})) { A.scale *= k; if (A.rate) A.rate /= k; }
+// Variantes : plusieurs versions d'un perso dans la même case de la sélection (↑/↓). La première est la case,
+// les suivantes n'ont pas de case à elles ; une variante absente (pas encore dans CHARS) est ignorée.
+CHARS.naruto.variants = ['naruto', 'naruto_s'];
+const VARIANT_LABEL = { naruto: 'ENFANT', naruto_s: 'SHIPPUDEN' };
+const VARIANT_ONLY = new Set(Object.values(CHARS).flatMap(C => (C.variants || []).slice(1)));
 // Un personnage n'apparaît qu'une fois ses planches découpées (src/sprites.js)
-const CHAR_IDS = Object.keys(CHARS).filter(id => SPRITES[CHARS[id].sheet]);
+const CHAR_IDS = Object.keys(CHARS).filter(id => SPRITES[CHARS[id].sheet] && !VARIANT_ONLY.has(id));
+const variantsOf = k => (CHARS[CHAR_IDS[k]].variants || [CHAR_IDS[k]]).filter(id => CHARS[id] && SPRITES[CHARS[id].sheet]);
+const charAt = (k, v = 0) => { const V = variantsOf(k); return V[Math.min(v || 0, V.length - 1)]; };
 const COLORS_P = ['#4fe3ff', '#ffb13b', '#7fff5a', '#ff4fd8']; // couleur de chaque joueur
 
 // Couleurs du moment (la forme les remplace) : traînée des lames, impacts, élément
@@ -928,7 +1273,9 @@ const trailOf = h => h.boost?.trail || h.C.trail || '#ffffff';
 const hitOf = h => h.boost?.hit || h.C.hit || '#ffe066';
 const elementOf = h => h.boost?.element || h.C.element;
 // La forme la plus forte que le ki permet
-const formFor = h => h.C.forms.filter(f => h.ki >= f.ki).pop();
+const formFor = h => h.C.formSteps ? h.C.forms.find(f => h.ki >= f.ki) : h.C.forms.filter(f => h.ki >= f.ki).pop();
+// Forme suivante quand on est déjà transformé (paliers) : la prochaine que le ki permet
+const formAfter = h => { const fs = h.C.forms; return fs.slice(fs.indexOf(h.boost) + 1).find(f => h.ki >= f.ki); };
 
 // ---------- État du jeu ----------
 let scene = 'loading';
@@ -950,7 +1297,7 @@ function resetGame(chars = ['hero'], lv = levelPick) {
   for (const h of players) h.y = h.gz;
   // Équipe de deux : le partenaire attend son tour (relais)
   if (OPTS.tag && sel.partners) players.forEach((h, i) => { const c = sel.partners[i]; if (c && c !== h.char) h.reserve = newPlayer(i, c, chars.length); });
-  enemies = []; waves = []; stars = []; bombs = []; projs = []; zaps = []; clones = []; fxs = []; particles = []; popups = []; cutins = [];
+  enemies = []; waves = []; stars = []; bombs = []; projs = []; zaps = []; clones = []; blackFlames = []; crows = []; fxs = []; particles = []; popups = []; cutins = [];
   if (scene !== 'loading') requireGame([...players, ...players.map(h => h.reserve).filter(Boolean)].map(h => h.char), LVL); // pas pour la partie fictive du démarrage
   resetLevel();
   camX = 0; shake = 0; flash = 0; hitstop = 0; score = 0; combo = 0; comboT = 0; kills = 0; spawnT = 1.5; sceneT = 0; paused = false;
@@ -964,9 +1311,9 @@ const say = (h, text) => popups.push({ x: h.x, y: h.y - 235, t: 0, text, small: 
 function startMove(h, name, chain = 0) {
   const m = h.C.moves[name];
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
-  h.trailed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = false;
+  h.trailed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0;
   if (m.call) say(h, m.call);
-  if (name === h.C.special && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
+  if ((name === h.C.special || name === h.C.special2) && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
   if (m.rubber) audio.stretch();
   if (m.trail) audio.slash();
   if (name === 'dash') { audio.zip(); audio.whoosh(1.3); }
@@ -1102,8 +1449,9 @@ function updatePlayer(h, dt) {
       else if (pressed.has('punch')) startMove(h, 'punch');
       else if (pressed.has('kick')) startMove(h, 'kick');
       else if (pressed.has('blast')) {
-        const cost = C.moves[C.special].cost;
-        if (h.ki >= cost) { h.ki -= cost; startMove(h, C.special); if (C.special === 'blast') audio.blast(); }
+        // certains persos changent de spécial une fois transformés (Amaterasu d'Itachi, direct de Baki)
+        const sp = h.boost && C.special2 ? C.special2 : C.special, cost = C.moves[sp].cost;
+        if (h.ki >= cost) { h.ki -= cost; startMove(h, sp); if (sp === 'blast') audio.blast(); }
         else denied(h);
       }
       else if (pressed.has('ultra')) {
@@ -1111,7 +1459,8 @@ function updatePlayer(h, dt) {
         else denied(h, 'KI PAS ASSEZ CHARGÉ');
       }
       else if (pressed.has('transform')) {
-        if (h.boost) powerDown(h);
+        if (h.boost && formAfter(h)) { h.nextForm = formAfter(h); h.boost = null; h.state = 'transform'; h.t = 0; h.vx = 0; audio.tone(160, 1, 'sawtooth', 0.08, 260); }
+        else if (h.boost) powerDown(h);
         else if (formFor(h)) { h.nextForm = formFor(h); h.state = 'transform'; h.t = 0; h.vx = 0; audio.tone(120, 1, 'sawtooth', 0.08, 200); }
         else denied(h, 'IL FAUT 50 DE KI');
       }
@@ -1163,6 +1512,7 @@ function updatePlayer(h, dt) {
         if (m.xcut) slashFX(e.x, e.y - 110, h.dir, { x: true, r: 90, c: trailOf(h), life: 0.35 });
         if (m.stopOnHit) h.stopped = true;
         if (m.spiral) { spiralFX(e.x, e.y - 110, '#9fe8ff'); shake = Math.max(shake, 16); }
+        if (m.shock) { shockFX(e.x - h.dir * 20, e.y - 110, h.dir); shake = Math.max(shake, 18); flash = 0.25; hitstop = Math.max(hitstop, 0.08); audio.play('ultraBoom', 0.7, 1.5, 0); }
         if (m.boom) { animFX('nen', e.x, e.y - 110, 300, 0.5); shake = Math.max(shake, 20); flash = 0.3; audio.play('ultraBoom', 0.8, 1.3, 0); }
         if (m.bolts || m.orbFx === 'chidori') animFX('bolt', e.x, e.y - 150, 110, 0.25, { h: 260 });
         if (elementOf(h) === 'fire' && m.trail) for (let k = 0; k < 8; k++) particles.push({ x: e.x + rand(-30, 30), y: e.y - rand(60, 160), vx: rand(-60, 60), vy: rand(-220, -80), t: 0, life: 0.45, c: '#ff8a2a', r: rand(3, 6) });
@@ -1186,11 +1536,18 @@ function moveEffects(h, speed) {
   if (h.whips && !m?.whip) releaseWhips(h);
   if (!m) return;
   if (m.whip) updateWhip(h, m.whip);
+  if (m.legFire && h.t > m.legFire[0] && h.t < m.legFire[1]) legFlames(h, 3);
+  if (m.iceTrail && h.t > (m.pushAt ?? 0) && Math.random() < 0.8) particles.push({ x: h.x - h.dir * rand(0, 40), y: h.gz - rand(0, 14), vx: -h.dir * rand(20, 80), vy: rand(-60, -10), t: 0, life: 0.5, c: Math.random() < 0.5 ? '#e8fbff' : '#9fe0ff', r: rand(3, 6) });
   if (m.push) {
     const at = m.pushAt ?? 0.06, len = m.pushDur ?? 0.44;
     if (h.t > at && h.t < at + len && !h.stopped) h.vx = h.dir * m.push * (m.keepPush ? 1 : 1 - (h.t - at) / len) * speed;
     if (h.stopped) h.vx = 0;
     if (Math.random() < 0.7) particles.push({ x: h.x - h.dir * 40, y: h.y - rand(10, 150), vx: -h.dir * rand(200, 400), vy: 0, t: 0, life: 0.25, c: h.boost ? h.boost.color : '#bfefff', r: rand(1.5, 3) });
+    if (m.lean && h.t > at && !h.leanGo) {
+      h.leanGo = true; shake = Math.max(shake, 7); audio.whoosh(1.2);
+      for (let k = 0; k < 14; k++) particles.push({ x: h.x - h.dir * rand(0, 50), y: h.gz - rand(0, 12), vx: -h.dir * rand(120, 420), vy: rand(-160, -30), t: 0, life: 0.5, c: 'rgba(210,200,185,0.7)', r: rand(5, 11), soft: true });
+    }
+    if (m.lean && h.t > at && h.t < at + len && Math.random() < 0.6) afterImage(h, 0.28, 0.4, h.boost ? h.boost.color : null);
     // Vitesse divine : des images rémanentes restent derrière lui
     if (m.ghost && h.t > at && h.t < at + len && Math.random() < 0.45) afterImage(h);
     // Hekireki Issen : l'éclair filmé reste sur toute la trajectoire
@@ -1228,12 +1585,16 @@ function moveEffects(h, speed) {
     h.thrown = true;
     const P = m.proj, kind = P.kind === 'wave' && elementOf(h) === 'fire' ? 'firewave' : P.kind;
     // les tirs lancés de la main (Rouge de Gojo, Delaware, rafale de ki) partent du bout de la main dessinée
-    const hand = HAND_SHOTS.includes(kind) && handPoint(h);
-    const px = hand ? h.x + h.dir * (hand[0] + 10 + (PROJ_R[kind] || 0) * (P.scale || 1)) : h.x + h.dir * 80, py = hand ? h.y + hand[1] : h.y - (P.low ? 40 : 110);
+    // la boule de feu d'Itachi part de sa bouche (from: 'mouth')
+    const hand = P.from === 'mouth' ? mouthPoint(h) : HAND_SHOTS.includes(kind) && handPoint(h);
+    const px = hand ? h.x + h.dir * (hand[0] + 10 + (PROJ_R[kind] || 0) * (P.scale || 1)) : h.x + h.dir * 80, py = P.ground ? h.y - 6 : hand ? h.y + hand[1] : h.y - (P.low ? 40 : 110);
     projs.push({ ...P, kind, filter: h.boost?.proj || '', owner: h, x: px, y: py, gz: h.gz, dir: h.dir, t: 0, hit: new Set(), dmg: P.dmg * (h.boost ? h.boost.dmg : 1) });
     if (hand) burst(px, py, projColor({ kind }), 10);
     shake = Math.max(shake, 8); audio.slash(1.4);
   }
+  // tirs de pistolet (Revy) : chacun part du bout du canon dessiné à cet instant
+  if (m.shots) while (h.shotN < m.shots.at.length && h.t >= m.shots.at[h.shotN]) { const last = h.shotN === m.shots.at.length - 1; fireBullet(h, last && m.shots.last ? { ...m.shots, ...m.shots.last } : m.shots); h.shotN++; }
+  if (m.ama && !h.struck && h.t >= m.ama.at) { h.struck = true; amaterasu(h, m.ama); }
   if (m.strike && !h.struck && h.t >= m.strike.at) {
     // La foudre tombe sur les ennemis devant (Narukami de Killua)
     h.struck = true; shake = Math.max(shake, 12); flash = 0.3; audio.play('waveHit', 1, 1.4); audio.sweep(0.3, 6000, 1500, 0.3, 1);
@@ -1273,6 +1634,21 @@ function formParticles(h) {
   // Manteau du renard : bulles de chakra rouge qui montent
   if (F.foxCloak && Math.random() < 0.7) particles.push({ x: h.x + rand(-40, 40), y: h.y - rand(10, 190), vx: rand(-25, 25), vy: rand(-170, -80), t: 0, life: 0.5, c: Math.random() < 0.6 ? 'rgba(255,50,20,0.8)' : 'rgba(255,150,60,0.8)', r: rand(3, 7) });
   if (F.flames && Math.random() < 0.7) particles.push({ x: h.x + rand(-40, 40), y: h.y - rand(0, 150), vx: rand(-20, 20), vy: rand(-200, -100), t: 0, life: 0.45, c: Math.random() < 0.5 ? '#ff8a2a' : '#ffd060', r: rand(3, 6) });
+  // Mangekyô : des corbeaux s'envolent autour d'Itachi
+  if (F.crows && Math.random() < 0.1) crows.push({ x: h.x + rand(-30, 30), y: h.y - rand(60, 170), vx: rand(70, 170) * (Math.random() < 0.5 ? -1 : 1), vy: rand(-90, -30), t: 0, life: 1.3, s: rand(0.8, 1.3), ph: rand(0, 6) });
+  // Diable Jambe : la jambe reste en feu
+  if (F.legFire) legFlames(h, 1);
+  // Shoto : flammes qui montent d'un côté, givre qui retombe de l'autre
+  if (F.fireIce && Math.random() < 0.8) {
+    const fire = Math.random() < 0.5, side = fire ? -1 : 1;
+    particles.push({ x: h.x + h.dir * side * rand(5, 40), y: h.y - rand(40, 170), vx: rand(-15, 15), vy: fire ? rand(-190, -90) : rand(20, 70), t: 0, life: 0.45, c: fire ? (Math.random() < 0.5 ? '#ff7a2a' : '#ffd060') : (Math.random() < 0.5 ? '#e8fbff' : '#9fe0ff'), r: rand(2.5, 5) });
+  }
+}
+// Flammes sur le pied le plus en avant (Sanji)
+function legFlames(h, n) {
+  const fp = footPoint(h) || [50, -40];
+  for (let k = 0; k < n; k++) if (Math.random() < 0.85)
+    particles.push({ x: h.x + h.dir * (fp[0] + rand(-14, 6)), y: h.y + fp[1] + rand(-10, 10), vx: -h.dir * rand(20, 90), vy: rand(-170, -60), t: 0, life: 0.35, c: Math.random() < 0.5 ? '#ff5a10' : '#ffc040', r: rand(3, 6) });
 }
 
 // ---------- Clones de Naruto ----------
@@ -1497,6 +1873,12 @@ function handPos(h) {
 
 function hurtHero(h, dmg, dir, big = false) {
   if (h.out || h.assist || h.inv > 0 || ['knock', 'floor', 'getup', 'transform', 'ultra'].includes(h.state)) return;
+  // Ultra Instinct : le corps esquive seul (pas de côté, image rémanente argentée)
+  if (h.boost?.dodge && Math.random() < h.boost.dodge) {
+    h.inv = 0.35; h.x += dir * 46; burst(h.x - dir * 46, h.y - 110, h.boost.color, 10);
+    audio.tone(1400, 0.12, 'sine', 0.06, 600); if (Math.random() < 0.3) say(h, 'ESQUIVE');
+    return;
+  }
   dmg *= DIFF().dmg;
   h.hp -= dmg; combo = 0;
   shake = 10; hitstop = 0.07; audio.hurt();
@@ -1520,11 +1902,12 @@ function hurtHero(h, dmg, dir, big = false) {
 }
 
 // Ultime qui frappe tous les ennemis devant (portée, tolérance de profondeur), avec un gros impact
-function ultraHit(h, reach, dmg, laneTol = 70, back = -40) {
+// kb / launch : recul et envol ; les coups d'une rafale gardent l'ennemi sur place pour que la suite touche
+function ultraHit(h, reach, dmg, laneTol = 70, back = -40, kb = 600, launch = -760) {
   for (const e of enemies) {
     const dx = (e.x - h.x) * h.dir;
     if (!e.alive || e.state === 'down' || dx < back || dx > reach || Math.abs(e.gz - h.gz) > laneTol) continue;
-    damageEnemy(e, dmg, 600 * h.dir, -760, e.x, e.y - 110, hitOf(h));
+    damageEnemy(e, dmg, kb * h.dir, launch, e.x, e.y - 110, hitOf(h));
   }
 }
 
@@ -1534,9 +1917,10 @@ const ULT_SOLO = 1.35;
 // ---------- Ultime du héros et de Sangoku : une énorme sphère d'énergie levée au-dessus de la tête ----------
 const ULTRA = { raise: 1.5, throwAt: 1.75, end: 2.4, maxR: 115 };
 function startUltra(h) {
-  bombs.push({ owner: h, x: h.x, y: h.y - 300, r: 6, vx: 0, vy: 0, state: 'grow', t: 0, hit: new Set(), dir: h.dir });
+  bombs.push({ owner: h, x: h.x, y: h.y - 300, r: 6, vx: 0, vy: 0, state: 'grow', t: 0, hit: new Set(), dir: h.dir, fire: h.char === 'ace' });
   h.ultraSnd = audio.play('ultraCharge', 0.9, 1, 0);
   if (h.char === 'goku') say(h, 'GENKIDAMA !');
+  if (h.char === 'ace') say(h, 'ENTEI !'); // un petit soleil de feu levé au-dessus de lui
 }
 
 function updateUltraPose(h) {
@@ -1549,7 +1933,7 @@ function updateUltraPose(h) {
 // les ennemis la retiennent (elle recule) : il passe Super Saiyan et la repousse d'un faisceau jusqu'à l'explosion.
 const GENKI = { rise: 0.55, height: 120, grow: 1.9, throwAt: 2.15, maxR: 100, clash: 0.55, push: 0.95,
   // paume de la main tendue (étape « special » 7), mesurée sur les planches : départ du faisceau
-  palm: { goku: [52, -135], goku_ssj: [54, -113] } };
+  palm: { goku: [52, -135], goku_ssj: [54, -113], goku_blue: [54, -113], goku_ui: [54, -113] } };
 const easeOut = k => 1 - (1 - k) * (1 - k);
 function startGenki(h) {
   const b = { owner: h, genki: true, x: h.x, y: h.y - 300, r: 6, vx: 0, vy: 0, state: 'grow', t: 0, hit: new Set(), dir: h.dir };
@@ -1605,7 +1989,7 @@ function updateGenkiBomb(b, dt) {
     b.x = h.x - h.dir * 6; b.y = Math.max(b.r * 0.7 + 6, h.y - 235 - b.r * 0.6);
     for (let k = 0; k < 3; k++) {
       const a = rand(0, Math.PI * 2), d = rand(250, 520);
-      particles.push({ x: b.x + Math.cos(a) * d, y: b.y + Math.sin(a) * d, vx: -Math.cos(a) * d * 2.2, vy: -Math.sin(a) * d * 2.2, t: 0, life: 0.42, c: '#9fe8ff', r: rand(2, 4) });
+      particles.push({ x: b.x + Math.cos(a) * d, y: b.y + Math.sin(a) * d, vx: -Math.cos(a) * d * 2.2, vy: -Math.sin(a) * d * 2.2, t: 0, life: 0.42, c: b.fire ? '#ffb040' : '#9fe8ff', r: rand(2, 4) });
     }
     if (h.state !== 'ultra') b.done = true;
     return;
@@ -1658,7 +2042,7 @@ function updateBomb(b, dt) {
     // L'énergie de toute la ville converge vers la sphère
     for (let k = 0; k < 3; k++) {
       const a = rand(0, Math.PI * 2), d = rand(250, 520);
-      particles.push({ x: b.x + Math.cos(a) * d, y: b.y + Math.sin(a) * d, vx: -Math.cos(a) * d * 2.2, vy: -Math.sin(a) * d * 2.2, t: 0, life: 0.42, c: '#9fe8ff', r: rand(2, 4) });
+      particles.push({ x: b.x + Math.cos(a) * d, y: b.y + Math.sin(a) * d, vx: -Math.cos(a) * d * 2.2, vy: -Math.sin(a) * d * 2.2, t: 0, life: 0.42, c: b.fire ? '#ffb040' : '#9fe8ff', r: rand(2, 4) });
     }
     if (h.state === 'ultra' && h.t >= ULTRA.throwAt) {
       b.state = 'fly'; b.t = 0; b.dir = h.dir; b.vx = h.dir * 520; b.vy = 420; b.gz = h.gz;
@@ -1728,7 +2112,11 @@ function updateShuriken(h) {
   h.inv = Math.max(h.inv, 0.1);
   if (!h.thrown && h.t >= RSH.throwAt) {
     h.thrown = true;
-    projs.push({ kind: 'shuriken', owner: h, x: h.x + h.dir * 40, y: h.y - 250, gz: h.gz, dir: h.dir, t: 0, speed: 560, life: 1.2, hit: new Set(), multiT: 0, dmg: 0.8, final: 4 + h.power / 10 });
+    // géant, lancé depuis la main tendue ; il file à hauteur de poitrine, se plante dans le premier ennemi,
+    // le broie un instant (sans le projeter) puis éclate en dôme : l'explosion porte l'essentiel des dégâts
+    const hp = handPoint(h);
+    projs.push({ kind: 'shuriken', owner: h, ult: true, x: h.x + h.dir * ((hp ? hp[0] : 40) + 60), y: hp ? h.y + hp[1] : h.y - 160, gz: h.gz, dir: h.dir, t: 0, speed: 620, life: 1.4,
+      hit: new Set(), multiT: 0, dmg: 0.25, kb: 1, scale: 1.9, blast: 280, final: ULT_SOLO * (3 + h.power / 10) });
     say(h, 'RASENSHURIKEN !');
     audio.play('ultraThrow', 1, 1.2, 0); shake = 12;
   }
@@ -2000,7 +2388,7 @@ function updateShining(h) {
     // la lame tombe du ciel : tout ce qui est devant est fendu
     h.cut = true; flash = 0.5; shake = 22; hitstop = 0.1; audio.slash(1.8);
     slashFX(h.x + h.dir * 120, h.y - 150, h.dir, { a0: -1.55, a1: 1.45, r: 220, w: 46, c: '#ffffff', life: 0.45 });
-    ultraHit(h, SHINE.reach, dmg * 0.55, 80);
+    ultraHit(h, SHINE.reach, dmg * 0.55, 80, -40, 150, 0); // l'ennemi reste au sol : la Burning Attack le cueille
     say(h, 'SWORD !!');
   }
   if (!h.thrown && h.t >= SHINE.blast) {
@@ -2011,6 +2399,513 @@ function updateShining(h) {
     score += 2000;
   }
   if (h.t > SHINE.end) h.state = 'idle';
+}
+// ---------- Ultime de Guts : il fend tout devant lui avec l'épée gigantesque, puis tire le canon de son bras ----------
+const DRAGON = { leap: 0.4, cut: 0.9, blast: 1.35, end: 2.0, reach: 380 };
+function startDragonslayer(h) { h.cut = false; h.thrown = false; say(h, 'TUEUR DE DRAGONS…'); audio.play('ultraCharge', 0.8, 0.9, 0); }
+function updateDragonslayer(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  if (!h.cut && h.t >= DRAGON.cut) {
+    h.cut = true; flash = 0.5; shake = 28; hitstop = 0.14; audio.slash(2);
+    slashFX(h.x + h.dir * 140, h.y - 150, h.dir, { a0: -1.6, a1: 1.5, r: 250, w: 60, c: '#d8d8d8', life: 0.5 });
+    ultraHit(h, DRAGON.reach, dmg * 0.6, 90, -40, 150, 0);
+    say(h, 'HAAAAA !!');
+  }
+  if (!h.thrown && h.t >= DRAGON.blast) {
+    h.thrown = true; flash = 0.4; shake = 20; audio.play('ultraBoom', 1, 0.8, 0);
+    const hp = handPoint(h); // l'obus sort du bras de fer tendu, devant la main
+    projs.push({ kind: 'shell', owner: h, x: h.x + h.dir * ((hp ? hp[0] : 70) + PROJ_R.shell * 1.6), y: hp ? h.y + hp[1] : h.y - 120, gz: h.gz, dir: h.dir, t: 0, speed: 1300, life: 1.0, hit: new Set(), dmg: dmg * 0.4, kb: 700, launch: -800, scale: 1.6 });
+    popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'TUEUR DE DRAGONS !!' });
+    score += 2000;
+  }
+  if (h.t > DRAGON.end) h.state = 'idle';
+}
+
+// ---------- Ultime de Sanji : Hell Memories. Il tourne sur lui-même, bondit et écrase tout d'un talon en flammes ----------
+const HELL = { leap: 0.35, rise: 0.6, slam: 1.0, burst: 1.3, end: 1.9, reach: 300, height: 170 };
+function startHellMemories(h) { h.cut = false; h.thrown = false; say(h, 'HELL MEMORIES…'); audio.play('ultraCharge', 0.8, 1.1, 0); }
+function updateHellMemories(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  legFlames(h, 3);
+  // saut puis chute talon en avant
+  if (h.t > HELL.leap && h.t < HELL.slam) { const u = (h.t - HELL.leap) / (HELL.slam - HELL.leap); h.y = h.gz - HELL.height * Math.sin(Math.PI * Math.min(1, u * 1.15)); }
+  else h.y = h.gz;
+  h.vy = 0; // reste « au sol » pour la physique : la hauteur est imposée ici, comme la Genkidama
+  if (!h.cut && h.t >= HELL.slam) {
+    h.cut = true; flash = 0.5; shake = 26; hitstop = 0.12; audio.slash(1.9); audio.play('ultraBoom', 0.9, 1.3, 0);
+    ultraHit(h, HELL.reach * 0.75, dmg * 0.6, 90, -90, 80, 0);
+    animFX('rupture', h.x + h.dir * 90, h.gz - 70, 260, 0.5);
+    for (let k = 0; k < 40; k++) particles.push({ x: h.x + h.dir * rand(0, 200), y: h.gz - rand(0, 40), vx: rand(-300, 300), vy: rand(-500, -150), t: 0, life: 0.6, c: Math.random() < 0.5 ? '#ff6a1a' : '#ffd060', r: rand(4, 9) });
+    say(h, 'CONCASSÉ !!');
+  }
+  if (!h.thrown && h.t >= HELL.burst) {
+    // l'enfer remonte du sol : une colonne de flammes devant lui
+    h.thrown = true; flash = 0.4; shake = 18;
+    ultraHit(h, HELL.reach, dmg * 0.4, 100, -60);
+    for (let k = 0; k < 70; k++) particles.push({ x: h.x + h.dir * rand(20, HELL.reach), y: h.gz - rand(0, 30), vx: rand(-60, 60), vy: rand(-700, -300), t: 0, life: 0.7, c: Math.random() < 0.5 ? '#ff4a10' : '#ffc040', r: rand(5, 11) });
+    popups.push({ x: h.x + h.dir * 220, y: h.y - 270, t: 0, text: 'HELL MEMORIES !!' });
+    score += 2000;
+  }
+  if (h.t > HELL.end) { h.y = h.gz; h.state = 'idle'; }
+}
+// ---------- Ultime de Shoto : un glacier géant jaillit devant lui, puis un brasier sort de sa main gauche ----------
+const GLACIER = { ice: 0.7, fire: 1.35, end: 2.2, reach: 420 };
+function startGlacier(h) { h.cut = false; h.thrown = false; say(h, 'GLACIER…'); audio.play('ultraCharge', 0.8, 1.0, 0); }
+function updateGlacier(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  if (!h.cut && h.t >= GLACIER.ice) {
+    h.cut = true; flash = 0.5; shake = 24; hitstop = 0.1; audio.slash(1.6);
+    ultraHit(h, GLACIER.reach, dmg * 0.5, 100, -40, 60, 0); // pris dans la glace : le brasier le touche ensuite
+    // pics de glace géants posés au sol devant lui (décor : les dégâts viennent d'ultraHit)
+    projs.push({ kind: 'glacier', owner: h, x: h.x + h.dir * 60, y: h.gz, gz: h.gz, dir: h.dir, t: 0, speed: 0, life: GLACIER.end - GLACIER.ice + 0.3, hit: new Set(), dmg: 0, len: GLACIER.reach });
+  }
+  if (!h.thrown && h.t >= GLACIER.fire) {
+    // brasier continu depuis le bout de la main gauche tendue (il suit la main, voir updateProjs)
+    h.thrown = true; flash = 0.4; shake = 16; audio.play('waveFire', 1.1, 0.8, 0);
+    projs.push({ kind: 'flamejet', owner: h, move: 'ultra', end: GLACIER.end - 0.15, len: 0, reach: 520, x: h.x, y: h.y - 120, gz: h.gz, dir: h.dir, t: 0, hit: new Set(), multiT: 0, dmg: dmg * 0.5 / 9 });
+    popups.push({ x: h.x + h.dir * 240, y: h.y - 270, t: 0, text: 'GLACIER ET BRASIER !!' });
+    score += 2000;
+  }
+  if (h.t > GLACIER.end) h.state = 'idle';
+}
+
+// ---------- Ultime de Saber : Excalibur, l'épée levée tranche puis libère un faisceau doré depuis la lame ----------
+const EXCAL = { raise: 0.35, slash: 0.75, beam: 1.1, end: 2.25 };
+function startExcalibur(h) { h.cut = false; h.beamed = false; say(h, 'EX…'); audio.play('ultraCharge', 0.9, 1.15, 0); }
+function updateExcalibur(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  if (h.t < EXCAL.slash && Math.random() < 0.7) particles.push({ x: h.x + rand(-60, 60), y: h.y - rand(60, 300), vx: rand(-30, 30), vy: rand(-160, -60), t: 0, life: 0.5, c: Math.random() < 0.5 ? '#fff2a0' : '#ffd040', r: rand(2, 5) });
+  if (!h.cut && h.t >= EXCAL.slash) {
+    h.cut = true; flash = 0.4; shake = 16; hitstop = 0.08; audio.slash(1.6);
+    slashFX(h.x + h.dir * 110, h.y - 150, h.dir, { a0: -1.55, a1: 1.45, r: 200, w: 40, c: '#fff2a0', life: 0.4 });
+    ultraHit(h, 300, dmg * 0.3, 80);
+  }
+  if (!h.beamed && h.t >= EXCAL.beam) {
+    // faisceau doré qui part de la pointe de la lame tendue (hand : suit le bout de l'épée dessinée)
+    h.beamed = true; flash = 0.8; shake = 24; say(h, 'EXCALIBUR !!');
+    audio.play('waveFire', 1.2, 0.7, 0); audio.play('ultraBoom', 0.9, 1.2, 0);
+    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: EXCAL.beam, end: EXCAL.end - 0.12, len: 1200, thick: 1.9, dmg: dmg * 0.75 / 13, color: '#fff2a0', filter: 'hue-rotate(205deg) saturate(1.3) brightness(1.35)', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'EXCALIBUR !!' });
+    score += 2000;
+  }
+  if (h.t > EXCAL.end) h.state = 'idle';
+}
+
+// ---------- Ultime de Mikasa : assaut tridimensionnel, des passages au grappin d'un bord à l'autre de l'écran ----------
+const ODM = { start: 0.35, passes: 5, pass: 0.3, end: 2.45 };
+function startOdm(h) { h.pass = -1; h.dir0 = h.dir; h.punched = false; say(h, 'ACKERMAN…'); audio.play('ultraCharge', 0.8, 1.3, 0); }
+function updateOdm(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10), run = h.t - ODM.start, i = Math.floor(run / ODM.pass);
+  if (run >= 0 && i < ODM.passes) {
+    if (i !== h.pass) {
+      // nouveau passage : elle repart du bord opposé, dans l'autre sens
+      h.pass = i; h.passHit = new Set(); h.dir = i % 2 ? -h.dir0 : h.dir0;
+      h.passX0 = h.dir > 0 ? camX + 40 : camX + W - 40; audio.whoosh(1.2); audio.slash(1.3);
+    }
+    const f = (run - i * ODM.pass) / ODM.pass;
+    h.x = h.passX0 + h.dir * (W - 80) * f;
+    for (const e of enemies) {
+      if (!e.alive || e.state === 'down' || h.passHit.has(e) || Math.abs(e.x - h.x) > 70 || Math.abs(e.gz - h.gz) > 75) continue;
+      h.passHit.add(e); damageEnemy(e, dmg * 0.8 / ODM.passes, 40 * h.dir, 0, e.x, e.y - 110, hitOf(h)); // sans projeter : le passage suivant la retrouve
+      slashFX(e.x, e.y - 110, h.dir, { a0: -0.7, a1: 0.7, r: 90, w: 22, c: '#ffffff', life: 0.25 });
+    }
+    for (let k = 0; k < 3; k++) particles.push({ x: h.x - h.dir * rand(0, 60), y: h.y - rand(60, 150), vx: -h.dir * rand(100, 300), vy: rand(-40, 40), t: 0, life: 0.3, c: k ? '#e8eef4' : '#c8102e', r: rand(2, 5) });
+  } else if (run >= 0 && !h.punched) {
+    // dernière double entaille au centre
+    h.punched = true; h.dir = h.dir0; flash = 0.5; shake = 20; hitstop = 0.1; audio.slash(1.8);
+    // le dernier passage la laisse au bord de l'écran : elle revient au grappin juste devant l'ennemi le plus proche
+    const tgt = enemies.filter(e => e.alive && e.x > camX && e.x < camX + W).sort((a, b) => Math.abs(a.x - h.x) - Math.abs(b.x - h.x))[0];
+    if (tgt) { afterImage(h, 0.2, 0.4, '#c8102e'); h.x = tgt.x - h.dir * 110; h.gz = h.y = tgt.gz; }
+    slashFX(h.x + h.dir * 110, h.y - 130, h.dir, { x: true, r: 170, w: 40, c: '#ffffff', life: 0.4 });
+    ultraHit(h, 260, dmg * 0.2, 80, -120);
+    popups.push({ x: h.x + h.dir * 200, y: h.y - 260, t: 0, text: 'ASSAUT TRIDIMENSIONNEL !!' });
+    score += 2000;
+  }
+  if (h.t > ODM.end) h.state = 'idle';
+}
+
+// ---------- Ultime de Revy : pluie de balles. Elle bondit et tourne en l'air en vidant ses deux pistolets, puis achève ----------
+const RAIN = { leap: 0.3, end: 2.3, land: 0.55, every: 0.07, height: 120 };
+function startBulletRain(h) { h.rainT = 0; h.cut = false; say(h, 'ON VA DANSER…'); audio.play('ultraCharge', 0.8, 1.3, 0); }
+function updateBulletRain(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  // ×1,25 : une partie de la pluie passe à côté (mesuré ~15 sans)
+  const dmg = 1.25 * ULT_SOLO * (4 + h.power / 10), air0 = RAIN.leap, air1 = RAIN.end - RAIN.land;
+  // en l'air, elle tourne sur elle-même : les balles partent des deux côtés et frappent tout l'écran
+  if (h.t > air0 && h.t < air1) {
+    const u = (h.t - air0) / (air1 - air0); h.y = h.gz - RAIN.height * Math.sin(Math.PI * u); h.vy = 0;
+    if (h.t - h.rainT >= RAIN.every) {
+      const share = (h.t - Math.max(h.rainT, air0)) / (air1 - air0); // part de la pluie depuis la rafale précédente
+      h.rainT = h.t;
+      const side = Math.floor(h.t / RAIN.every) % 2 ? 1 : -1;
+      const by = h.y - 130 + rand(-15, 15);
+      projs.push({ kind: 'bullet', fx: true, owner: h, x: h.x + side * 40, y: by, gz: h.gz, dir: side, t: 0, speed: 2200, life: 0.45, hit: new Set(), dmg: 0 });
+      fxs.push({ type: 'muzzle', x: h.x + side * 34, y: by, dir: side, t: 0, life: 0.06, rot: rand(-0.3, 0.3) });
+      audio.play('waveHit', 0.2, 2.6, 0.08);
+      for (const e of enemies) {
+        if (!e.alive || e.state === 'down' || e.x < camX - 20 || e.x > camX + W + 20 || Math.abs(e.gz - h.gz) > 110) continue;
+        damageEnemy(e, dmg * 0.78 * share, 30 * Math.sign(e.x - h.x || 1), 0, e.x, e.y - rand(80, 150), '#ffe0a0');
+      }
+    }
+  } else h.y = h.gz;
+  // atterrissage : les deux pistolets ensemble, à bout portant
+  if (!h.cut && h.t >= air1 + 0.1) {
+    h.cut = true; flash = 0.5; shake = 20; hitstop = 0.1; audio.play('ultraBoom', 0.9, 1.4, 0);
+    fireBullet(h, { dmg: 0, kb: 0, fx: true });
+    ultraHit(h, 600, dmg * 0.25, 120, -200);
+    popups.push({ x: h.x + h.dir * 220, y: h.y - 270, t: 0, text: 'PLUIE DE BALLES !!' });
+    score += 2000;
+  }
+  if (h.t > RAIN.end) { h.y = h.gz; h.state = 'idle'; }
+}
+
+// ---------- Ultime de Gally : Panzer Kunst. Une rafale de coups en avançant, un coup de pied tournant, puis la paume ----------
+const PANZER = { rush: 0.3, leap: 1.3, kick: 1.55, palm: 1.9, end: 2.35, every: 0.1 };
+function startPanzer(h) { h.rushT = 0; h.cut = h.thrown = false; say(h, 'PANZER KUNST…'); audio.play('ultraCharge', 0.8, 1.4, 0); }
+function updatePanzer(h, dt) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  if (h.t > PANZER.rush && h.t < PANZER.leap) {
+    // rafale : elle avance coup après coup
+    h.x = clamp(h.x + h.dir * 170 * dt, camX + 40, camX + W - 40);
+    if (h.t - h.rushT >= PANZER.every) {
+      h.rushT = h.t; audio.hit(false); afterImage(h, 0.2, 0.35, '#7ac8ff');
+      ultraHit(h, 200, dmg * 0.5 / ((PANZER.leap - PANZER.rush) / PANZER.every), 70, -20, 90, 0);
+    }
+  }
+  // coup de pied tournant en l'air
+  if (h.t > PANZER.leap && h.t < PANZER.palm) { const u = (h.t - PANZER.leap) / (PANZER.palm - PANZER.leap); h.y = h.gz - 90 * Math.sin(Math.PI * u); h.vy = 0; } else h.y = h.gz;
+  if (!h.cut && h.t >= PANZER.kick) {
+    h.cut = true; shake = 16; hitstop = 0.06; audio.slash(1.5);
+    slashFX(h.x + h.dir * 90, h.y - 110, h.dir, { a0: -3.1, a1: 3.1, r: 150, w: 30, c: '#bfe4ff', life: 0.3 });
+    ultraHit(h, 260, dmg * 0.25, 80, -60, 120, 0);
+  }
+  // la paume finale : onde de choc
+  if (!h.thrown && h.t >= PANZER.palm) {
+    h.thrown = true; flash = 0.6; shake = 24; hitstop = 0.12; audio.play('ultraBoom', 1, 1.2, 0);
+    shockFX(h.x + h.dir * 130, h.y - 120, h.dir);
+    ultraHit(h, 280, dmg * 0.25, 90, -20);
+    popups.push({ x: h.x + h.dir * 220, y: h.y - 270, t: 0, text: 'PANZER KUNST !!' });
+    score += 2000;
+  }
+  if (h.t > PANZER.end) { h.y = h.gz; h.state = 'idle'; }
+}
+
+// ---------- Ultime de Livaï : le tourbillon du capitaine. Il traverse l'écran une fois en toupie, en spirale ----------
+// (il monte et descend en tournant), coupant tout sur son passage à intervalles réguliers, puis double entaille finale.
+const SPIRAL = { start: 0.3, run: 1.4, every: 0.12, height: 90, end: 2.3 };
+function startSpiral(h) { h.spinT = 0; h.cut = false; h.spinHits = new Map(); h.dir0 = h.dir; h.runX0 = h.x; say(h, 'TCH…'); audio.play('ultraCharge', 0.8, 1.4, 0); }
+function updateSpiral(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10), u = (h.t - SPIRAL.start) / SPIRAL.run;
+  if (u >= 0 && u < 1) {
+    // de sa position jusqu'au bord d'en face, en montant et descendant deux fois
+    const x1 = h.dir0 > 0 ? camX + W - 70 : camX + 70;
+    h.x = h.runX0 + (x1 - h.runX0) * u; h.y = h.gz - SPIRAL.height * Math.abs(Math.sin(Math.PI * 2 * u)); h.vy = 0;
+    if (h.t - h.spinT >= SPIRAL.every) {
+      h.spinT = h.t; audio.slash(1.4);
+      slashFX(h.x, h.y - 110, h.dir, { a0: -3.1, a1: 3.1, r: 120, w: 22, c: '#ffffff', life: 0.18 });
+      for (const e of enemies) {
+        // un ennemi n'est dans le tourbillon que le temps de 3 coupes environ : 3 au plus, 25 % chacune
+        const n = h.spinHits.get(e) || 0;
+        if (!e.alive || e.state === 'down' || n >= 3 || Math.abs(e.x - h.x) > 110 || Math.abs(e.gz - h.gz) > 80) continue;
+        h.spinHits.set(e, n + 1); damageEnemy(e, dmg * 0.25, 80 * h.dir, -160, e.x, e.y - 110, hitOf(h));
+      }
+    }
+    for (let k = 0; k < 2; k++) particles.push({ x: h.x + rand(-40, 40), y: h.y - rand(60, 160), vx: -h.dir * rand(80, 240), vy: rand(-60, 60), t: 0, life: 0.3, c: '#e8eef4', r: rand(2, 4) });
+  } else if (u >= 1 && !h.cut) {
+    h.cut = true; h.y = h.gz; h.dir = -h.dir0; flash = 0.5; shake = 20; hitstop = 0.1; audio.slash(1.8);
+    // il se retourne vers ce qu'il vient de traverser : double entaille en croix
+    slashFX(h.x + h.dir * 110, h.y - 130, h.dir, { x: true, r: 170, w: 40, c: '#ffffff', life: 0.4 });
+    ultraHit(h, 300, dmg * 0.25, 90, -60);
+    popups.push({ x: h.x + h.dir * 200, y: h.y - 260, t: 0, text: 'TOURBILLON DU CAPITAINE !!' });
+    score += 2000;
+  }
+  if (h.t > SPIRAL.end) { h.y = h.gz; h.state = 'idle'; }
+}
+
+// ---------- Ultime de Baki : l'assaut du Grappler. Une rafale de coups en avançant, la frappe fouet, puis le direct ----------
+const GRAPPLER = { rush: 0.25, whip: 1.25, fist: 1.7, end: 2.3, every: 0.09 };
+function startGrappler(h) { h.rushT = 0; h.cut = h.thrown = false; say(h, '…'); audio.play('ultraCharge', 0.8, 1.2, 0); }
+function updateGrappler(h, dt) {
+  h.inv = Math.max(h.inv, 0.1);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  if (h.t > GRAPPLER.rush && h.t < GRAPPLER.whip) {
+    h.x = clamp(h.x + h.dir * 140 * dt, camX + 40, camX + W - 40);
+    if (h.t - h.rushT >= GRAPPLER.every) {
+      h.rushT = h.t; audio.hit(false); afterImage(h, 0.18, 0.3, '#ff5040');
+      ultraHit(h, 190, dmg * 0.45 / ((GRAPPLER.whip - GRAPPLER.rush) / GRAPPLER.every), 70, -20, 90, 0);
+    }
+  }
+  if (!h.cut && h.t >= GRAPPLER.whip) {
+    h.cut = true; shake = 16; hitstop = 0.06; audio.slash(1.3);
+    slashFX(h.x + h.dir * 100, h.y - 120, h.dir, { a0: -0.9, a1: 0.5, r: 180, w: 28, c: '#ffd0c0', life: 0.3 });
+    ultraHit(h, 240, dmg * 0.2, 80, -20, 140, 0);
+  }
+  // le direct dévastateur : onde de choc
+  if (!h.thrown && h.t >= GRAPPLER.fist) {
+    h.thrown = true; flash = 0.6; shake = 26; hitstop = 0.14; audio.play('ultraBoom', 1, 1.0, 0);
+    shockFX(h.x + h.dir * 130, h.y - 120, h.dir);
+    ultraHit(h, 300, dmg * 0.35, 90, -20);
+    popups.push({ x: h.x + h.dir * 220, y: h.y - 270, t: 0, text: 'DOS DU DÉMON !!' });
+    score += 2000;
+  }
+  if (h.t > GRAPPLER.end) h.state = 'idle';
+}
+// Visage de démon que dessinent les muscles du dos de Baki : esquissé en rouge sombre derrière ses épaules
+function drawDemonBack(h, sx) {
+  const p = 0.75 + 0.25 * Math.sin(sceneT * 5);
+  ctx.save(); ctx.translate(sx - h.dir * 14, h.y - 150); ctx.scale(h.dir, 1); ctx.globalAlpha = 0.5 * p;
+  ctx.strokeStyle = '#ff2a20'; ctx.fillStyle = 'rgba(120,0,10,0.35)'; ctx.lineWidth = 4; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(-62, -40); ctx.quadraticCurveTo(-78, 30, -30, 72); ctx.quadraticCurveTo(0, 86, 30, 72); ctx.quadraticCurveTo(78, 30, 62, -40); ctx.quadraticCurveTo(0, -70, -62, -40); ctx.fill(); ctx.stroke();
+  // cornes, sourcils froncés, yeux, gueule aux crocs
+  ctx.beginPath(); ctx.moveTo(-50, -42); ctx.lineTo(-74, -88); ctx.lineTo(-30, -52); ctx.moveTo(50, -42); ctx.lineTo(74, -88); ctx.lineTo(30, -52); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-44, -16); ctx.lineTo(-10, -2); ctx.moveTo(44, -16); ctx.lineTo(10, -2); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,90,60,0.9)'; ctx.beginPath(); ctx.ellipse(-24, 6, 9, 5, 0.3, 0, 7); ctx.ellipse(24, 6, 9, 5, -0.3, 0, 7); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-30, 40); ctx.quadraticCurveTo(0, 30, 30, 40); ctx.quadraticCurveTo(0, 64, -30, 40); ctx.stroke();
+  ctx.beginPath(); for (const x of [-18, -6, 6, 18]) { ctx.moveTo(x - 4, 40); ctx.lineTo(x, 50); ctx.lineTo(x + 4, 40); } ctx.stroke();
+  ctx.restore();
+}
+
+// ---------- Ultime d'Itachi : Susanoo. Le guerrier spectral rouge se dresse derrière lui et abat son épée ----------
+const SUSANOO = { rise: 0.9, slash: 1.5, end: 2.4 };
+function startSusanoo(h) { h.cut = false; say(h, 'Susanoo.'); audio.play('ultraCharge', 0.9, 0.8, 0); }
+function updateSusanoo(h) {
+  h.inv = Math.max(h.inv, 0.1); h.vx = 0;
+  if (!h.cut && h.t >= SUSANOO.slash) {
+    h.cut = true; flash = 0.55; shake = 26; hitstop = 0.12; audio.slash(0.8); audio.play('ultraBoom', 1, 0.9, 0);
+    slashFX(h.x + h.dir * 200, h.y - 170, h.dir, { a0: -1.6, a1: 1.2, r: 300, w: 60, c: '#ff4050', life: 0.5 });
+    ultraHit(h, 460, ULT_SOLO * (4 + h.power / 10), 110, -30); // un seul coup : ~19 à 100 de ki
+    popups.push({ x: h.x + h.dir * 260, y: h.y - 290, t: 0, text: 'SUSANOO !!' });
+    score += 2000;
+  }
+  if (h.t > SUSANOO.end) h.state = 'idle';
+}
+function drawSusanoo(h, sx) {
+  const t = h.t, a = Math.min(1, t / SUSANOO.rise) * (t > SUSANOO.end - 0.4 ? Math.max(0, (SUSANOO.end - t) / 0.4) : 1);
+  const s = 0.5 + 0.28 * Math.min(1, t / SUSANOO.rise), red = al => `rgba(255,60,70,${al})`;
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.6 * a;
+  ctx.translate(sx - h.dir * 20, h.y); ctx.scale(h.dir * s, s);
+  // corps : cage thoracique et épaules
+  ctx.fillStyle = red(0.16); ctx.strokeStyle = red(0.8); ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.ellipse(0, -230, 120, 150, 0, 0, 7); ctx.fill(); ctx.stroke();
+  for (let k = 0; k < 5; k++) { ctx.beginPath(); ctx.ellipse(0, -280 + k * 30, 95 - k * 6, 14, 0, 0.15, Math.PI - 0.15); ctx.stroke(); }
+  // tête : crâne à cornes et deux yeux
+  ctx.beginPath(); ctx.ellipse(12, -405, 55, 62, 0, 0, 7); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-28, -445); ctx.lineTo(-55, -505); ctx.lineTo(-8, -458); ctx.moveTo(48, -445); ctx.lineTo(82, -500); ctx.lineTo(32, -458); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,235,235,0.9)'; ctx.beginPath(); ctx.ellipse(0, -410, 11, 5, 0, 0, 7); ctx.ellipse(36, -410, 11, 5, 0, 0, 7); ctx.fill();
+  // bras et épée : levée au ciel, puis abattue devant lui
+  const u = clamp((t - SUSANOO.slash + 0.25) / 0.3, 0, 1);
+  ctx.save(); ctx.translate(90, -320); ctx.rotate(-2.2 + u * 2.4);
+  ctx.strokeStyle = red(0.9); ctx.lineWidth = 22; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(110, 0); ctx.stroke();
+  ctx.fillStyle = red(0.5); ctx.strokeStyle = 'rgba(255,200,200,0.9)'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(100, -14); ctx.lineTo(400, -6); ctx.lineTo(430, 0); ctx.lineTo(400, 6); ctx.lineTo(100, 14); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore(); ctx.restore();
+}
+
+// ---------- Ultime d'Eren : le Titan Assaillant. Il se mord la main, l'éclair jaune tombe, le titan se dresse
+// derrière lui dans la vapeur et écrase le sol d'un coup de poing devant lui ----------
+const TITAN = { rise: 0.75, punch: 1.5, end: 2.4 };
+function startTitan(h) { h.cut = h.lit = false; say(h, 'JE LES EXTERMINERAI TOUS !'); audio.play('ultraCharge', 0.9, 0.8, 0); }
+function updateTitan(h) {
+  h.inv = Math.max(h.inv, 0.1); h.vx = 0;
+  if (!h.lit && h.t >= 0.4) {
+    // la morsure : un éclair jaune frappe là où il se tient
+    h.lit = true; flash = 0.7; shake = 18; audio.play('ultraBoom', 0.8, 1.3, 0);
+    for (let k = 0; k < 6; k++) animFX('green_arc', h.x + rand(-40, 40), h.y - rand(40, 220), rand(60, 110), 0.3, { rot: rand(-1, 1), filter: 'hue-rotate(-70deg) saturate(1.6) brightness(1.3)' });
+  }
+  if (h.t > 0.4 && h.t < TITAN.end - 0.3 && Math.random() < 0.6) particles.push({ x: h.x - h.dir * rand(0, 120), y: h.y - rand(40, 360), vx: rand(-30, 30), vy: rand(-120, -50), t: 0, life: 0.9, c: 'rgba(255,240,235,0.45)', r: rand(10, 22), soft: true });
+  if (!h.cut && h.t >= TITAN.punch) {
+    h.cut = true; flash = 0.6; shake = 30; hitstop = 0.14; audio.play('ultraBoom', 1, 0.8, 0);
+    shockFX(h.x + h.dir * 230, h.gz - 30, h.dir);
+    for (let k = 0; k < 18; k++) particles.push({ x: h.x + h.dir * rand(140, 340), y: h.gz - rand(0, 20), vx: rand(-160, 160), vy: rand(-380, -120), t: 0, life: 0.7, c: Math.random() < 0.5 ? '#8a7060' : '#5a4a40', r: rand(4, 9) });
+    ultraHit(h, 440, ULT_SOLO * (4 + h.power / 10), 120, -30); // un seul coup : ~19 à 100 de ki
+    popups.push({ x: h.x + h.dir * 260, y: h.y - 300, t: 0, text: 'TITAN ASSAILLANT !!' });
+    score += 2000;
+  }
+  if (h.t > TITAN.end) h.state = 'idle';
+}
+function drawTitan(h, sx) {
+  const t = h.t, a = Math.min(1, Math.max(0, (t - 0.4) / 0.4)) * (t > TITAN.end - 0.4 ? Math.max(0, (TITAN.end - t) / 0.4) : 1);
+  if (a <= 0) return;
+  const s = 0.55 + 0.25 * Math.min(1, Math.max(0, (t - 0.4) / 0.5)), skin = al => `rgba(150,70,50,${al})`;
+  ctx.save(); ctx.globalAlpha = 0.62 * a; ctx.translate(sx - h.dir * 40, h.y); ctx.scale(h.dir * s, s);
+  ctx.fillStyle = skin(0.55); ctx.strokeStyle = 'rgba(60,20,15,0.9)'; ctx.lineWidth = 6; ctx.lineJoin = 'round';
+  // torse décharné, côtes et muscles à vif
+  ctx.beginPath(); ctx.moveTo(-90, -120); ctx.quadraticCurveTo(-120, -300, -60, -400); ctx.lineTo(70, -400); ctx.quadraticCurveTo(125, -300, 90, -120); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.lineWidth = 4; for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.moveTo(-60, -330 + k * 40); ctx.quadraticCurveTo(0, -310 + k * 40, 60, -330 + k * 40); ctx.stroke(); }
+  // tête : longs cheveux noirs, yeux verts qui brillent, mâchoire aux dents nues
+  ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(10, -460, 55, 64, 0, 0, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(20,12,10,0.85)'; ctx.beginPath(); ctx.moveTo(-55, -470); ctx.quadraticCurveTo(-30, -560, 40, -540); ctx.quadraticCurveTo(80, -520, 66, -460); ctx.quadraticCurveTo(40, -500, -20, -495); ctx.quadraticCurveTo(-60, -420, -75, -380); ctx.closePath(); ctx.fill();
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = 'rgba(140,255,170,0.95)'; ctx.beginPath(); ctx.ellipse(-2, -470, 10, 5, 0, 0, 7); ctx.ellipse(36, -470, 10, 5, 0, 0, 7); ctx.fill(); ctx.restore();
+  ctx.strokeStyle = 'rgba(255,240,230,0.9)'; ctx.lineWidth = 3; ctx.beginPath(); for (let x = -18; x <= 40; x += 8) { ctx.moveTo(x, -432); ctx.lineTo(x, -418); } ctx.stroke();
+  // le bras : levé au-dessus de la tête, puis le poing s'abat devant lui
+  const u = clamp((t - TITAN.punch + 0.3) / 0.3, 0, 1);
+  ctx.save(); ctx.translate(80, -370); ctx.rotate(-2.3 + u * 3.0);
+  ctx.fillStyle = skin(0.6); ctx.strokeStyle = 'rgba(60,20,15,0.9)'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.ellipse(125, 0, 130, 32, 0, 0, 7); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(270, 0, 52, 0, 7); ctx.fill(); ctx.stroke();
+  ctx.restore(); ctx.restore();
+}
+
+// ---------- Ultime de Boruto : deux clones surgissent à ses côtés et les trois lancent ensemble un Rasengan évanescent ----------
+const BORU = { clones: 0.35, throw: 1.15, end: 2.0, at: [[-80, -45], [-60, 45]] };
+function startBoru(h) { h.thrown = false; say(h, 'MULTI-CLONAGE !'); audio.play('ultraCharge', 0.8, 1.3, 0); for (const [dx, dz] of BORU.at) puff(h.x + h.dir * dx, h.gz + dz); audio.whoosh(1.3); }
+function updateBoru(h) {
+  h.inv = Math.max(h.inv, 0.1); h.vx = 0;
+  if (!h.thrown && h.t >= BORU.throw) {
+    h.thrown = true; flash = 0.45; shake = 18; audio.play('ultraThrow', 0.9, 1.2, 0);
+    const hp = handPoint(h) || [70, -120], dmg = ULT_SOLO * (4 + h.power / 10) / 3; // trois sphères : ~19 si toutes touchent
+    // les sphères des clones touchent d'abord sans projeter ; celle de Boruto, partie un peu en retrait, arrive
+    // la dernière et éjecte (sinon la 1re envoyait la cible au loin et les deux autres la manquaient)
+    const from = [[-110, 0, 1.7, true], ...BORU.at.map(([dx, dz]) => [dx, dz, 1.1, false])];
+    for (const [dx, dz, sc, main] of from)
+      projs.push({ kind: 'vrasen', owner: h, x: h.x + h.dir * (dx + hp[0] + PROJ_R.vrasen * sc), y: h.y + dz + hp[1], gz: h.gz, dir: h.dir, t: 0, speed: 820, life: 1.1, scale: sc, hit: new Set(), dmg, kb: main ? 700 : 40, launch: main ? -700 : 0 });
+    popups.push({ x: h.x + h.dir * 240, y: h.y - 280, t: 0, text: 'RASENGAN DES TROIS !!' });
+    score += 2000;
+  }
+  if (h.t > BORU.end) { h.state = 'idle'; for (const [dx, dz] of BORU.at) puff(h.x + h.dir * dx, h.gz + dz); }
+}
+
+// ---------- Ultime d'Edward : la grande transmutation. Il frappe dans ses mains, pose les mains au sol : un cercle
+// de transmutation géant s'allume devant lui, puis un poing de pierre géant jaillit du sol et frappe ----------
+const ALCH = { clap: 0.35, circle: 0.5, rise: 1.1, hit: 1.4, end: 2.3, at: 250 };
+function startAlchemy(h) { h.cut = h.clap = false; say(h, 'JE SUIS UN ALCHIMISTE !'); audio.play('ultraCharge', 0.85, 1.15, 0); }
+function updateAlchemy(h) {
+  h.inv = Math.max(h.inv, 0.1); h.vx = 0;
+  if (!h.clap && h.t >= ALCH.clap) { h.clap = true; flash = 0.3; audio.slash(1.9); impactFX(h.x + h.dir * 40, h.y - 130, '#bfe8ff', true); }
+  const cx = h.x + h.dir * ALCH.at;
+  if (h.t > ALCH.circle && h.t < ALCH.hit && Math.random() < 0.5) animFX('green_arc', cx + rand(-150, 150), h.gz - rand(0, 30), rand(30, 60), 0.15, { rot: rand(-1.5, 1.5), filter: 'hue-rotate(95deg) saturate(1.3) brightness(1.3)' });
+  if (h.t > ALCH.rise && h.t < ALCH.hit + 0.2 && Math.random() < 0.8)
+    particles.push({ x: cx + rand(-90, 90), y: h.gz - rand(0, 20), vx: rand(-180, 180), vy: rand(-420, -160), t: 0, life: 0.6, c: Math.random() < 0.5 ? '#8a7a68' : '#5a5048', r: rand(4, 9) });
+  if (!h.cut && h.t >= ALCH.hit) {
+    h.cut = true; flash = 0.55; shake = 28; hitstop = 0.14; audio.play('ultraBoom', 1, 0.85, 0);
+    shockFX(cx, h.gz - 30, h.dir);
+    ultraHit(h, ALCH.at + 200, ULT_SOLO * (4 + h.power / 10), 130, 40); // un seul coup : ~19 à 100 de ki
+    popups.push({ x: cx, y: h.y - 310, t: 0, text: 'GRANDE TRANSMUTATION !!' });
+    score += 2000;
+  }
+  if (h.t > ALCH.end) h.state = 'idle';
+}
+// cercle de transmutation au sol (ellipse vue de biais) et poing de pierre qui sort de terre puis s'abat
+function drawAlchemy(h, sx) {
+  const t = h.t, cx = sx + h.dir * ALCH.at, gy = h.gz;
+  if (t > ALCH.circle) {
+    const a = Math.min(1, (t - ALCH.circle) / 0.25) * (t > ALCH.end - 0.4 ? Math.max(0, (ALCH.end - t) / 0.4) : 1), R = 190;
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a; ctx.translate(cx, gy); ctx.scale(1, 0.28);
+    ctx.strokeStyle = 'rgba(120,210,255,0.95)'; ctx.shadowColor = '#5ab8ff'; ctx.shadowBlur = 18; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.arc(0, 0, R, 0, 7); ctx.stroke(); ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(0, 0, R * 0.78, 0, 7); ctx.stroke();
+    // triangle et carré inscrits, qui tournent lentement
+    const rot = t * 0.8;
+    ctx.beginPath(); for (let k = 0; k <= 3; k++) { const q = rot + k * Math.PI * 2 / 3; ctx[k ? 'lineTo' : 'moveTo'](Math.cos(q) * R * 0.78, Math.sin(q) * R * 0.78); } ctx.stroke();
+    ctx.beginPath(); for (let k = 0; k <= 4; k++) { const q = -rot + k * Math.PI / 2 + Math.PI / 4; ctx[k ? 'lineTo' : 'moveTo'](Math.cos(q) * R * 0.55, Math.sin(q) * R * 0.55); } ctx.stroke();
+    for (let k = 0; k < 12; k++) { const q = rot * 0.5 + k * Math.PI / 6; ctx.beginPath(); ctx.arc(Math.cos(q) * R * 0.89, Math.sin(q) * R * 0.89, 7, 0, 7); ctx.stroke(); }
+    ctx.restore();
+  }
+  if (t > ALCH.rise) {
+    // le poing de pierre : il monte du cercle (rise → hit), puis bascule vers l'avant pour frapper
+    const up = Math.min(1, (t - ALCH.rise) / (ALCH.hit - ALCH.rise - 0.1)), fall = clamp((t - ALCH.hit + 0.12) / 0.2, 0, 1);
+    const a = t > ALCH.end - 0.4 ? Math.max(0, (ALCH.end - t) / 0.4) : 1, Hh = 300 * up;
+    ctx.save(); ctx.globalAlpha = a; ctx.translate(cx - h.dir * 40, gy + 6); ctx.scale(h.dir, 1); ctx.rotate(fall * 0.55);
+    const g = ctx.createLinearGradient(0, -Hh, 0, 0); g.addColorStop(0, '#b0a090'); g.addColorStop(1, '#5a5048');
+    ctx.fillStyle = g; ctx.strokeStyle = '#2a241f'; ctx.lineWidth = 5; ctx.lineJoin = 'round';
+    // avant-bras de roche, puis le poing fermé avec ses jointures
+    ctx.beginPath(); ctx.moveTo(-55, 0); ctx.lineTo(-48, -Hh + 90); ctx.lineTo(48, -Hh + 90); ctx.lineTo(60, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+    if (Hh > 90) {
+      ctx.beginPath(); ctx.roundRect(-70, -Hh, 150, 105, 26); ctx.fill(); ctx.stroke();
+      ctx.lineWidth = 3; for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.moveTo(-35 + k * 38, -Hh + 6); ctx.lineTo(-35 + k * 38, -Hh + 48); ctx.stroke(); }
+      ctx.beginPath(); ctx.moveTo(60, -Hh + 40); ctx.quadraticCurveTo(95, -Hh + 55, 70, -Hh + 85); ctx.stroke(); // pouce
+    }
+    ctx.strokeStyle = 'rgba(30,25,20,0.6)'; ctx.lineWidth = 2;
+    for (let k = 1; k < 5; k++) { ctx.beginPath(); ctx.moveTo(-50, -k * Hh / 6); ctx.lineTo(-10, -k * Hh / 6 - 10); ctx.lineTo(30, -k * Hh / 6 + 4); ctx.stroke(); }
+    ctx.restore();
+  }
+}
+
+// ---------- Ultime de Gintoki : « Gin-san est sérieux ». Il se cure le nez, l'air de rien… puis une rafale de coups de
+// sabre de bois en une seconde, et un dernier coup écrasant ----------
+const GINSAN = { lazy: 0.9, every: 0.1, rushEnd: 1.9, smash: 2.05, end: 2.6, reach: 260 };
+function startGinsan(h) { h.cut = false; h.stab = -1; say(h, 'Hein ? Déjà ?'); audio.play('ultraCharge', 0.6, 0.9, 0); }
+function updateGinsan(h) {
+  h.inv = Math.max(h.inv, 0.1); h.vx = 0;
+  const dmg = ULT_SOLO * (4 + h.power / 10), n = Math.round((GINSAN.rushEnd - GINSAN.lazy) / GINSAN.every), i = Math.floor((h.t - GINSAN.lazy) / GINSAN.every);
+  if (h.t >= GINSAN.lazy && i < n && i !== h.stab) {
+    if (i === 0) { say(h, 'BON, D\'ACCORD.'); popups.push({ x: h.x + h.dir * 200, y: h.y - 270, t: 0, text: 'GIN-SAN EST SÉRIEUX !!' }); flash = 0.3; }
+    h.stab = i; audio.slash(1.4 + (i % 3) * 0.2);
+    const y = h.y - 140 + rand(-40, 40);
+    slashFX(h.x + h.dir * 130, y, h.dir, { a0: rand(-1.4, -0.4), a1: rand(0.4, 1.4), r: 150, w: 22, c: '#f0e0b8', life: 0.12 });
+    for (const e of enemies) {
+      const dx = (e.x - h.x) * h.dir;
+      if (!e.alive || e.state === 'down' || dx < -30 || dx > GINSAN.reach || Math.abs(e.gz - h.gz) > 80) continue;
+      damageEnemy(e, dmg * 0.7 / n, 50 * h.dir, 0, e.x, y, hitOf(h));
+    }
+  }
+  if (!h.cut && h.t >= GINSAN.smash) {
+    h.cut = true; flash = 0.5; shake = 24; hitstop = 0.12; audio.play('ultraBoom', 0.9, 1.1, 0);
+    slashFX(h.x + h.dir * 120, h.y - 130, h.dir, { a0: -1.8, a1: 1.3, r: 200, w: 46, c: '#ffffff', life: 0.4 });
+    shockFX(h.x + h.dir * 170, h.gz - 30, h.dir);
+    ultraHit(h, 280, dmg * 0.3, 90, -40);
+    score += 2000;
+  }
+  if (h.t > GINSAN.end) h.state = 'idle';
+}
+
+// ---------- Itachi : flammes noires (Amaterasu) et corbeaux, dessinés sans mode « lighter » (le noir y serait invisible) ----------
+let blackFlames = [], crows = [];
+function amaterasu(h, A) {
+  const tgt = enemies.filter(e => { const dx = (e.x - h.x) * h.dir; return e.alive && e.state !== 'down' && dx > 0 && dx < A.range && Math.abs(e.gz - h.gz) <= 110; }).sort((a, b) => (a.x - b.x) * h.dir)[0];
+  blackFlames.push({ e: tgt || null, x: tgt ? tgt.x : h.x + h.dir * 260, y: tgt ? tgt.y : h.gz, owner: h, t: 0, dur: A.dur, dps: A.dps * (h.boost ? h.boost.dmg : 1), tick: 0 });
+  flash = Math.max(flash, 0.2); shake = Math.max(shake, 10); audio.play('ultraBoom', 0.5, 0.7, 0);
+}
+function updateDarkFX(dt) {
+  for (const b of blackFlames) {
+    b.t += dt;
+    if (b.e && !b.e.alive) b.e = null;
+    if (b.e) { b.x = b.e.x; b.y = b.e.y; if ((b.tick -= dt) <= 0) { b.tick = 0.3; damageEnemy(b.e, b.dps * 0.3, 40 * b.owner.dir, 0, b.x, b.y - 100, '#ff2a3a'); } }
+  }
+  blackFlames = blackFlames.filter(b => b.t < b.dur);
+  for (const c of crows) { c.t += dt; c.x += c.vx * dt; c.y += c.vy * dt; c.vy -= 30 * dt; }
+  crows = crows.filter(c => c.t < c.life);
+}
+function drawDarkFX() {
+  for (const b of blackFlames) {
+    const sx = b.x - camX, a = Math.max(0, Math.min(1, b.t / 0.15, (b.dur - b.t) / 0.4));
+    ctx.save(); ctx.globalAlpha = a;
+    for (let k = 0; k < 7; k++) {
+      const ox = (k - 3) * 15, ph = sceneT * 9 + k * 1.7, h1 = 150 * (0.55 + 0.35 * Math.abs(Math.sin(ph))), w = 16 + 6 * Math.sin(ph * 1.3);
+      const g = ctx.createLinearGradient(0, b.y, 0, b.y - h1); g.addColorStop(0, '#2a0a30'); g.addColorStop(0.5, '#0a0408'); g.addColorStop(1, 'rgba(10,4,8,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(sx + ox - w, b.y);
+      ctx.quadraticCurveTo(sx + ox - w * 0.6 + Math.sin(ph) * 8, b.y - h1 * 0.55, sx + ox + Math.sin(ph * 0.7) * 10, b.y - h1);
+      ctx.quadraticCurveTo(sx + ox + w * 0.6, b.y - h1 * 0.45, sx + ox + w, b.y); ctx.closePath(); ctx.fill();
+    }
+    // liseré pourpre autour des flammes noires
+    ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a * 0.35;
+    const g2 = ctx.createRadialGradient(sx, b.y - 70, 5, sx, b.y - 70, 90); g2.addColorStop(0, 'rgba(160,40,200,0.6)'); g2.addColorStop(1, 'rgba(160,40,200,0)');
+    ctx.fillStyle = g2; ctx.fillRect(sx - 90, b.y - 160, 180, 180);
+    ctx.restore();
+  }
+  for (const c of crows) {
+    const k = 1 - c.t / c.life, fl = Math.sin(c.t * 22 + c.ph), s = c.s;
+    ctx.save(); ctx.globalAlpha = Math.min(1, k * 1.5); ctx.translate(c.x - camX, c.y); ctx.scale(c.vx < 0 ? -1 : 1, 1); ctx.fillStyle = '#0c0a10';
+    ctx.beginPath(); ctx.ellipse(0, 0, 9 * s, 4 * s, 0, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-3 * s, 0); ctx.lineTo(-9 * s, -13 * s * fl - 2); ctx.lineTo(3 * s, -1); ctx.lineTo(9 * s, -11 * s * fl - 2); ctx.lineTo(6 * s, 0); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(8 * s, -2); ctx.lineTo(14 * s, 0); ctx.lineTo(8 * s, 2); ctx.fill();
+    ctx.restore();
+  }
+  // Mangekyô : deux points rouges qui brillent dans les yeux
+  for (const h of players) {
+    if (!h.boost?.eyes || h.out || h.state === 'knock' || h.state === 'floor') continue;
+    const m = mouthPoint(h); if (!m) continue;
+    const ex = h.x - camX + h.dir * (m[0] - (h.boost.oneEye ? 4 : 8)), ey = h.y + m[1] - 10;
+    ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    const g = ctx.createRadialGradient(ex, ey, 0, ex, ey, 14); g.addColorStop(0, h.boost.eyeCol || 'rgba(255,60,60,0.95)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(ex, ey, 14, 0, 7); ctx.fill(); ctx.restore();
+  }
 }
 
 // ---------- Ultime de Vegeta : Final Flash, un rayon jaune immense ----------
@@ -2794,7 +3689,16 @@ function spiralFX(x, y, c) { fxs.push({ type: 'spiral', x, y, c, t: 0, life: 0.4
 // Image rémanente (téléportation) : la pose du moment, qui s'efface sur place
 function afterImage(h, life = 0.35, alpha = 0.5, col = null) {
   const [anim, i] = h.C.pose(h);
-  fxs.push({ type: 'ghost', x: h.x, y: h.y, dir: h.dir, sheet: sheetFor(h, anim), anim, i, t: 0, life, alpha, col });
+  fxs.push({ type: 'ghost', x: h.x, y: h.y, dir: h.dir, sheet: sheetFor(h, anim), anim, i, t: 0, life, alpha, col, lean: leanOf(h) });
+}
+// Dash puissant (champ lean du coup, en degrés) : le corps se couche vers l'avant pendant la ruée, puis se redresse
+function leanOf(h) {
+  const m = h.move;
+  if (!m?.lean || !m.push) return 0;
+  const at = m.pushAt ?? 0.06, len = m.pushDur ?? 0.44, k = (h.t - at) / len;
+  if (k <= 0 || k >= 1.25) return 0;
+  const env = Math.min(1, k * 6) * (k > 0.8 ? Math.max(0, 1 - (k - 0.8) / 0.45) : 1);
+  return m.lean * Math.PI / 180 * env;
 }
 
 function updateFX(dt) {
@@ -2836,8 +3740,30 @@ function drawFX(ghosts = false) {
     }
     if (f.type === 'ghost') {
       ctx.globalAlpha = (f.alpha ?? 0.5) * (1 - k);
+      drawAnim.lean = f.lean || 0;
       drawAnim(f.sheet, f.anim, f.i, sx, f.y, f.dir, f.col ? tintFilter(f.col) : 'brightness(1.8) saturate(0.4)');
+      drawAnim.lean = 0;
       ctx.globalAlpha = 1;
+      continue;
+    }
+    if (f.type === 'muzzle' || f.type === 'shock') {
+      ctx.save(); ctx.translate(sx, f.y); ctx.scale(f.dir || 1, 1); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k;
+      if (f.type === 'muzzle') {
+        // éclair de bouche : une étoile jaune, longue vers l'avant
+        ctx.rotate(f.rot); ctx.fillStyle = '#fff6c0';
+        ctx.beginPath(); ctx.moveTo(0, -7); ctx.lineTo(34, 0); ctx.lineTo(0, 7); ctx.lineTo(-6, 0); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(4, 0); ctx.lineTo(14, -14); ctx.lineTo(12, 0); ctx.lineTo(14, 14); ctx.closePath(); ctx.fill();
+        const g = ctx.createRadialGradient(6, 0, 1, 6, 0, 22); g.addColorStop(0, 'rgba(255,220,120,0.9)'); g.addColorStop(1, 'rgba(255,140,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(6, 0, 22, 0, 7); ctx.fill();
+      } else {
+        // onde de choc : anneaux ovales qui s'ouvrent vers l'avant
+        for (let j = 0; j < 3; j++) {
+          const u = Math.min(1, k * 1.4 + j * 0.12), rx = 30 + u * 120, ry = 60 + u * 70;
+          ctx.strokeStyle = j ? 'rgba(140,200,255,0.7)' : '#ffffff'; ctx.lineWidth = (8 - j * 2) * (1 - k);
+          ctx.beginPath(); ctx.ellipse(u * 60, 0, rx * 0.45, ry, 0, -1.4, 1.4); ctx.stroke();
+        }
+      }
+      ctx.restore();
       continue;
     }
     ctx.save(); ctx.translate(sx, f.y); ctx.globalCompositeOperation = 'lighter';
@@ -2898,7 +3824,8 @@ function updateProjs(dt) {
     const h = p.owner;
     if (p.kind === 'beam') {
       // Le Kamehameha part des mains et s'allonge ; il touche en continu ce qui est sur sa ligne
-      p.x = h.x + h.dir * 78; p.y = h.y - (p.high || 118) * WORLD; p.dir = h.dir; p.gz = h.gz;
+      const hp = p.hand && handPoint(h); // Excalibur : depuis la pointe de la lame dessinée
+      p.x = hp ? h.x + h.dir * (hp[0] + 6) : h.x + h.dir * 78; p.y = hp ? h.y + hp[1] : h.y - (p.high || 118) * WORLD; p.dir = h.dir; p.gz = h.gz;
       p.len = Math.min(p.reach ??= p.len, p.t * 2800); // le rayon s'allonge jusqu'à sa portée
       if (h.state !== p.move || h.t > p.end) { p.done = true; continue; }
       if (p.t - p.multiT >= 0.08) { p.multiT = p.t; p.hit.clear(); }
@@ -2910,16 +3837,40 @@ function updateProjs(dt) {
       if (Math.random() < 0.9) particles.push({ x: p.x + p.dir * rand(0, p.len), y: p.y + rand(-30, 30), vx: p.dir * rand(100, 400), vy: rand(-80, 80), t: 0, life: 0.3, c: '#bff3ff', r: rand(2, 4) });
       continue;
     }
+    if (p.kind === 'flamejet') {
+      // brasier de Shoto : part du bout de la main tendue, s'allonge, touche en continu ce qui est sur sa ligne
+      const hp = handPoint(h);
+      p.x = h.x + h.dir * ((hp ? hp[0] : 70) + 10); p.y = hp ? h.y + hp[1] : h.y - 120; p.dir = h.dir; p.gz = h.gz;
+      p.len = Math.min(p.reach, p.t * 1800);
+      if (h.state !== p.move || h.t > p.end) { p.done = true; continue; }
+      if (p.t - p.multiT >= 0.08) { p.multiT = p.t; p.hit.clear(); }
+      for (const e of enemies) {
+        const dx = (e.x - p.x) * p.dir;
+        if (!e.alive || p.hit.has(e) || e.state === 'down' || dx < -20 || dx > p.len || Math.abs(e.gz - p.gz) > 60) continue;
+        p.hit.add(e); damageEnemy(e, p.dmg, 260 * p.dir, null, e.x, p.y, '#ffd0a0');
+      }
+      for (let k = 0; k < 3; k++) particles.push({ x: p.x + p.dir * rand(0, p.len), y: p.y + rand(-30, 30), vx: p.dir * rand(150, 450), vy: rand(-160, -20), t: 0, life: 0.35, c: Math.random() < 0.5 ? '#ff6a1a' : '#ffd060', r: rand(3, 7) });
+      continue;
+    }
+    if (p.kind === 'glacier') { if (p.t > p.life) p.done = true; continue; } // décor : les coups sont portés par ultraHit
+    if (p.kind === 'bullet' && p.fx) { p.x += p.dir * p.speed * dt; if (p.t > p.life) p.done = true; continue; } // balle de décor (pluie de balles)
     p.x += p.dir * p.speed * dt;
+    if (p.kind === 'stonewall') { p.x0 ??= p.x - p.dir * p.speed * dt; if (Math.random() < 0.7) particles.push({ x: p.x, y: p.gz - rand(0, 20), vx: rand(-80, 80), vy: rand(-240, -80), t: 0, life: 0.45, c: Math.random() < 0.5 ? '#9a8a78' : '#5a5048', r: rand(3, 6) }); }
+    if (p.kind === 'icewall') { p.x0 ??= p.x - p.dir * p.speed * dt; if (Math.random() < 0.7) particles.push({ x: p.x, y: p.gz - rand(0, 20), vx: rand(-60, 60), vy: rand(-200, -60), t: 0, life: 0.4, c: Math.random() < 0.5 ? '#e8fbff' : '#9fe0ff', r: rand(2, 5) }); }
     if (p.kind === 'shuriken') {
-      p.y += ((h.y - 130) - p.y) * Math.min(1, dt * 4);
+      p.y += ((h.y - (p.ult ? 110 : 130)) - p.y) * Math.min(1, dt * 4);
+      if (p.stuckT != null && p.t - p.stuckT > 0.45) p.t = p.life + 1; // ultime : éclate après avoir broyé sa cible
       if (p.t - p.multiT >= 0.08) { p.multiT = p.t; p.hit.clear(); }
     }
-    const R = (p.kind === 'shuriken' ? 95 : p.kind === 'airblade' ? 60 : 75) * (p.scale || 1);
+    const R = (p.kind === 'shuriken' ? 95 : p.kind === 'airblade' ? 60 : p.kind === 'bullet' ? 40 : 75) * (p.scale || 1);
     for (const e of enemies) {
       if (!e.alive || p.hit.has(e) || e.state === 'down' || Math.abs(e.x - p.x) > R || Math.abs(e.gz - p.gz) > 45 * (p.scale || 1)) continue;
       p.hit.add(e);
       damageEnemy(e, p.dmg, (p.kb || 120) * p.dir, p.kind === 'shuriken' ? null : p.launch, e.x, e.y - 110, p.kind === 'firewave' ? '#ffd0a0' : p.kind === 'wave' ? '#bdf0ff' : '#e8fff0');
+      // une balle s'arrête dans le premier ennemi touché et recharge un peu de ki
+      if (p.burst) { p.t = p.life + 1; break; } // Rasen-shuriken : il éclate sur le premier ennemi touché
+      if (p.ult && p.stuckT == null) { p.stuckT = p.t; p.speed = 0; } // ultime : il s'arrête dans le premier ennemi
+      if (p.kind === 'bullet') { p.done = true; if (h) h.ki = Math.min(100, h.ki + p.ki); impactFX(e.x - p.dir * 20, p.y, '#ffe0a0', false); break; }
       if (p.kind === 'airshot' || p.kind === 'red') animFX('explosion', e.x, e.y - 110, 200, 0.4, p.kind === 'red' ? { filter: 'hue-rotate(-30deg) saturate(2)' } : {});
       else if (p.kind !== 'shuriken') slashFX(e.x, e.y - 110, p.dir, { a0: -1.2, a1: 1.2, r: 70, c: projColor(p), life: 0.2 });
     }
@@ -2931,18 +3882,32 @@ function updateProjs(dt) {
       p.done = true;
       if (p.kind === 'shuriken') {
         // Explosion finale : une sphère de vent tranchant
-        flash = 0.8; shake = 26; hitstop = 0.1; audio.play('ultraBoom', 1.2, 1.1, 0);
+        flash = p.burst ? 0.4 : 0.8; shake = p.burst ? 14 : 26; hitstop = 0.1; audio.play('ultraBoom', p.burst ? 0.8 : 1.2, 1.1, 0);
         impactFX(p.x, p.y, '#bff3ff', true); spiralFX(p.x, p.y, '#e8fbff');
-        bombs.push({ owner: h, x: p.x, y: p.gz, gz: p.gz, r: 0, state: 'boom', t: 0, hit: new Set(), dir: p.dir });
-        for (const e of enemies) if (e.alive && e.state !== 'down' && Math.abs(e.x - p.x) < 260) damageEnemy(e, p.final, 600 * (Math.sign(e.x - p.x) || 1), -800, e.x, e.y - 110, '#bff3ff');
-        score += 2000;
+        if (p.burst) shockFX(p.x, p.y, p.dir);
+        else bombs.push({ owner: h, x: p.x, y: p.gz, gz: p.gz, r: 0, state: 'boom', t: 0, hit: new Set(), dir: p.dir });
+        for (const e of enemies) if (e.alive && e.state !== 'down' && Math.abs(e.x - p.x) < (p.blast || 260)) damageEnemy(e, p.final, 600 * (Math.sign(e.x - p.x) || 1), -800, e.x, e.y - 110, '#bff3ff');
+        if (!p.burst) score += 2000;
       }
     }
   }
   projs = projs.filter(p => !p.done);
 }
 
-const projColor = p => ({ airblade: '#e9fff2', wave: '#5ad1ff', firewave: '#ff8a2a', shuriken: '#bff3ff', rocks: '#d8c09a', getsuga: '#bfe8ff', airshot: '#d8ffe0', red: '#ff5060', kiball: '#bff3ff', burning: '#ffe066' })[p.kind] || '#ffffff';
+const projColor = p => ({ airblade: '#e9fff2', wave: '#5ad1ff', firewave: '#ff8a2a', shuriken: '#bff3ff', rocks: '#d8c09a', getsuga: '#bfe8ff', airshot: '#d8ffe0', red: '#ff5060', kiball: '#bff3ff', burning: '#ffe066', hiken: '#ff8a2a', katon: '#ff8a2a', strikeair: '#cfe8ff', shell: '#ffb070', icewall: '#bfefff', flamejet: '#ff8a2a', glacier: '#bfefff', bullet: '#ffe0a0', vrasen: '#9fe0ff', stonewall: '#c8b8a0' })[p.kind] || '#ffffff';
+
+// Balle de pistolet : part DEVANT le bout du canon (point le plus en avant du haut du corps), éclair de bouche.
+// En forme Two Hands, chaque tir lâche deux balles (une par pistolet).
+function fireBullet(h, S) {
+  const hp = handPoint(h), dmg = S.dmg * (h.boost ? h.boost.dmg : 1), n = h.boost?.rapid ? 2 : 1;
+  const px = h.x + h.dir * ((hp ? hp[0] : 70) + PROJ_R.bullet), py = hp ? h.y + hp[1] : h.y - 120;
+  for (let k = 0; k < n; k++)
+    projs.push({ kind: 'bullet', owner: h, x: px - h.dir * k * 14, y: py + k * 10, gz: h.gz, dir: h.dir, t: 0, speed: S.speed || 1900, life: 0.55, hit: new Set(), dmg: dmg / n * (n > 1 ? 1.3 : 1), kb: S.kb || 100, launch: S.launch, ki: 3, fx: S.fx });
+  fxs.push({ type: 'muzzle', x: px - h.dir * PROJ_R.bullet * 0.6, y: py, dir: h.dir, t: 0, life: 0.07, rot: rand(-0.2, 0.2) });
+  audio.play('waveHit', 0.25, 2.4, 0.05); shake = Math.max(shake, 3);
+}
+// Onde de choc de la paume de Gally : anneaux qui s'ouvrent devant le point d'impact
+function shockFX(x, y, dir) { fxs.push({ type: 'shock', x, y, dir, t: 0, life: 0.38 }); impactFX(x, y, '#9fd8ff', true); }
 
 // « Super flash » façon FighterZ : le décor s'assombrit le temps d'un coup spécial ou d'un ultime
 let dimK = 0;
@@ -3021,7 +3986,7 @@ function drawProjs() {
       continue;
     }
     ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
-    if (p.kind === 'shuriken') { ctx.restore(); drawShuriken(sx, p.y, 1, p.t); continue; }
+    if (p.kind === 'shuriken') { ctx.restore(); drawShuriken(sx, p.y, p.scale || 1, p.t); continue; }
     // Croissants en images : lame d'air, Getsuga Tensho, vague d'eau ou de feu
     const sprite = { airblade: ['crescent', 'hue-rotate(-60deg) saturate(0.5) brightness(1.3)'], getsuga: ['crescent', p.filter || ''], wave: ['water_arc', ''], firewave: ['fire_arc', ''] }[p.kind];
     if (p.kind === 'getsuga' && FX.getsuga_v) {
@@ -3060,6 +4025,109 @@ function drawProjs() {
         g.addColorStop(0, j ? 'rgba(255,230,120,0.45)' : '#ffffff'); g.addColorStop(0.4, j ? 'rgba(255,190,40,0.35)' : '#ffe066'); g.addColorStop(1, 'rgba(255,140,0,0)');
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(-j * r * 0.4, 0, r * (1 - j * 0.2), 0, 7); ctx.fill();
       }
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'bullet') {
+      // balle : un trait brillant et sa traînée
+      const L = 46, g = ctx.createLinearGradient(-L * 2, 0, 0, 0);
+      g.addColorStop(0, 'rgba(255,200,90,0)'); g.addColorStop(1, 'rgba(255,230,150,0.85)');
+      ctx.fillStyle = g; ctx.fillRect(-L * 2, -2, L * 2, 4);
+      ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.ellipse(0, 0, 8, 2.5, 0, 0, 7); ctx.fill();
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'strikeair') {
+      // Strike Air de Saber : une rafale de vent tranchante, des spirales bleutées qui tournent en filant
+      const r = 46 * (p.scale || 1);
+      for (let j = 0; j < 4; j++) {
+        const a0 = p.t * 18 + j * 1.6, rr = r * (1 - j * 0.16), x = -j * r * 0.5;
+        ctx.strokeStyle = j ? `rgba(170,215,255,${0.55 - j * 0.1})` : 'rgba(240,250,255,0.9)'; ctx.lineWidth = (6 - j) * (p.scale || 1);
+        ctx.beginPath(); ctx.ellipse(x, 0, rr * 0.6, rr, 0, a0, a0 + 4.2); ctx.stroke();
+      }
+      const g = ctx.createRadialGradient(0, 0, 2, 0, 0, r); g.addColorStop(0, 'rgba(230,245,255,0.55)'); g.addColorStop(1, 'rgba(120,180,255,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(0, 0, r * 0.8, r, 0, 0, 7); ctx.fill();
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'katon') {
+      // Katon d'Itachi : une grosse boule de feu ronde qui roule, flammes qui débordent derrière
+      const r = (40 + Math.sin(p.t * 24) * 4) * (p.scale || 1);
+      for (let j = 4; j >= 0; j--) {
+        const x = -j * r * 0.45, rr = r * (1 - j * 0.14);
+        const g = ctx.createRadialGradient(x, 0, 1, x, 0, rr);
+        g.addColorStop(0, j ? 'rgba(255,190,70,0.5)' : '#fff2c0'); g.addColorStop(0.5, j ? 'rgba(255,90,10,0.45)' : '#ff9a2a'); g.addColorStop(1, 'rgba(180,20,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, Math.sin(p.t * 30 + j) * 5, rr, 0, 7); ctx.fill();
+      }
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'hiken') {
+      // Hiken d'Ace : un poing de flammes qui file, traînée de feu derrière
+      const r = (34 + Math.sin(p.t * 30) * 4) * (p.scale || 1);
+      for (let j = 4; j >= 0; j--) {
+        const x = -j * r * 0.55, rr = r * (1 - j * 0.15);
+        const g = ctx.createRadialGradient(x, 0, 1, x, 0, rr);
+        g.addColorStop(0, j ? 'rgba(255,200,80,0.5)' : '#fff6d0'); g.addColorStop(0.45, j ? 'rgba(255,110,20,0.45)' : '#ffb040'); g.addColorStop(1, 'rgba(200,30,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(x, Math.sin(p.t * 40 + j) * 4, rr * 1.15, rr * 0.8, 0, 0, 7); ctx.fill();
+      }
+      // jointures du poing, en avant
+      ctx.fillStyle = 'rgba(255,240,200,0.8)';
+      for (let k = -1; k <= 1; k++) { ctx.beginPath(); ctx.arc(r * 0.55, k * r * 0.32, r * 0.18, 0, 7); ctx.fill(); }
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'icewall' || p.kind === 'glacier' || p.kind === 'stonewall') {
+      // pics de glace qui jaillissent du sol derrière la tête du mur (ou tout le glacier de l'ultime), puis s'effritent
+      ctx.restore(); ctx.save();
+      const big = p.kind === 'glacier', step = big ? 46 : 30, sc = (p.scale || 1);
+      const span = big ? p.len : Math.min(Math.abs(p.x - (p.x0 ?? p.x)), 420), n = Math.max(1, Math.floor(span / step));
+      const fade = big ? Math.min(1, (p.life - p.t) / 0.4) : Math.min(1, (p.life - p.t) / 0.25);
+      for (let k = n; k >= 0; k--) {
+        const grow = Math.min(1, big ? p.t * 5 - k * 0.08 : (k * step / p.speed) * 6 + 0.2);
+        if (grow <= 0) continue;
+        const x = sx - p.dir * (big ? -k * step : k * step), hh = (big ? 150 + 60 * Math.sin(k * 1.7) : (70 - k * 3) * sc) * grow, w = big ? 34 : 18 * sc;
+        if (hh <= 4) continue;
+        const g = ctx.createLinearGradient(0, p.gz - hh, 0, p.gz);
+        if (p.kind === 'stonewall') { g.addColorStop(0, `rgba(200,188,170,${0.98 * fade})`); g.addColorStop(0.5, `rgba(140,126,110,${0.95 * fade})`); g.addColorStop(1, `rgba(80,70,62,${0.9 * fade})`); }
+        else { g.addColorStop(0, `rgba(240,252,255,${0.95 * fade})`); g.addColorStop(0.5, `rgba(150,215,255,${0.85 * fade})`); g.addColorStop(1, `rgba(70,140,220,${0.75 * fade})`); }
+        ctx.fillStyle = g; ctx.strokeStyle = p.kind === 'stonewall' ? `rgba(40,32,26,${0.9 * fade})` : `rgba(30,70,140,${0.8 * fade})`; ctx.lineWidth = 2;
+        const lean = p.dir * (big ? 10 : 6);
+        ctx.beginPath(); ctx.moveTo(x - w, p.gz + 4); ctx.lineTo(x + lean, p.gz - hh); ctx.lineTo(x + w, p.gz + 4); ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = p.kind === 'stonewall' ? `rgba(230,220,200,${0.35 * fade})` : `rgba(255,255,255,${0.6 * fade})`; ctx.beginPath(); ctx.moveTo(x - w * 0.3, p.gz); ctx.lineTo(x + lean * 0.8, p.gz - hh * 0.85); ctx.lineTo(x, p.gz); ctx.closePath(); ctx.fill();
+      }
+      if (p.kind === 'stonewall' && p.t < 0.5) {
+        // cercle de transmutation là où les mains ont touché le sol, qui s'éteint
+        const ox = (p.x0 ?? p.x) - camX - p.dir * 20, ca = 1 - p.t / 0.5;
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.translate(ox, p.gz); ctx.scale(1, 0.3); ctx.strokeStyle = `rgba(120,210,255,${0.9 * ca})`; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.arc(0, 0, 60, 0, 7); ctx.stroke(); ctx.beginPath(); for (let k = 0; k <= 3; k++) { const q = k * Math.PI * 2 / 3 + p.t * 3; ctx[k ? 'lineTo' : 'moveTo'](Math.cos(q) * 48, Math.sin(q) * 48); } ctx.stroke(); ctx.restore();
+      }
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'flamejet') {
+      // brasier : cône de flammes qui s'élargit en partant de la main, cœur jaune
+      const L = p.len, fl = Math.sin(p.t * 50) * 4; // repère déjà posé sur la main, tourné dans le sens du tir
+      for (const [w, c0, c1] of [[60, 'rgba(255,70,0,0.55)', 'rgba(255,40,0,0)'], [36, 'rgba(255,170,40,0.7)', 'rgba(255,120,0,0)'], [16, 'rgba(255,250,210,0.9)', 'rgba(255,220,120,0)']]) {
+        const g = ctx.createLinearGradient(0, 0, L, 0); g.addColorStop(0, c0); g.addColorStop(1, c1);
+        ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, -w * 0.2); ctx.quadraticCurveTo(L * 0.5, -w - fl, L, -w * 0.6); ctx.lineTo(L, w * 0.6); ctx.quadraticCurveTo(L * 0.5, w + fl, 0, w * 0.2); ctx.closePath(); ctx.fill();
+      }
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'shell') {
+      // obus du bras-canon de Guts : petite masse sombre, fumée derrière, lueur à l'arrière
+      ctx.globalCompositeOperation = 'source-over';
+      const sc = p.scale || 1;
+      for (let j = 1; j <= 5; j++) { ctx.fillStyle = `rgba(90,85,80,${0.35 - j * 0.05})`; ctx.beginPath(); ctx.arc(-j * 16 * sc, Math.sin(p.t * 20 + j) * 3, (8 + j * 3) * sc, 0, 7); ctx.fill(); }
+      ctx.fillStyle = '#2a2a2e'; ctx.beginPath(); ctx.ellipse(0, 0, 14 * sc, 8 * sc, 0, 0, 7); ctx.fill();
+      ctx.fillStyle = '#6a6a72'; ctx.beginPath(); ctx.ellipse(3 * sc, -3 * sc, 6 * sc, 3 * sc, 0, 0, 7); ctx.fill();
+      ctx.globalCompositeOperation = 'lighter';
+      const g = ctx.createRadialGradient(-10 * sc, 0, 0, -10 * sc, 0, 16 * sc); g.addColorStop(0, '#ffe0a0'); g.addColorStop(1, 'rgba(255,120,0,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(-10 * sc, 0, 16 * sc, 0, 7); ctx.fill();
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'vrasen') {
+      // Rasengan évanescent de Boruto : visible au départ, il s'efface à mi-chemin et réapparaît juste avant l'impact
+      const u = p.t / (p.life || 1), sc = p.scale || 1, vis = u < 0.25 ? 1 : u < 0.4 ? 1 - (u - 0.25) / 0.15 : u < 0.6 ? 0.08 : Math.min(1, (u - 0.6) / 0.1);
+      ctx.globalAlpha *= vis; const r = (22 + Math.sin(p.t * 45) * 2) * sc;
+      const g = ctx.createRadialGradient(0, 0, 2, 0, 0, r); g.addColorStop(0, '#ffffff'); g.addColorStop(0.4, '#9fe0ff'); g.addColorStop(1, 'rgba(60,150,255,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill();
+      ctx.strokeStyle = 'rgba(220,245,255,0.8)'; ctx.lineWidth = 2;
+      for (let k = 0; k < 3; k++) { const a0 = p.t * 18 + k * 2.1; ctx.beginPath(); ctx.arc(0, 0, r * 0.62, a0, a0 + 1.6); ctx.stroke(); }
       ctx.restore(); continue;
     }
     if (p.kind === 'kiball') {
@@ -3122,14 +4190,14 @@ function drawRasengan(x, y, r, t) {
 // ---------- Écran de sélection des personnages ----------
 // Le joueur 1 est celui qui a appuyé sur l'écran titre. Le joueur 2 rejoint en appuyant
 // sur une touche du pavé numérique ou sur une autre manette.
-const sel = { joined: [true, false, false, false], pick: [0, 1, 2, 3], ready: [false, false, false, false], dev: ['kb', null, null, null], first: [null, null, null, null], skip: false, go: 0 };
+const sel = { joined: [true, false, false, false], pick: [0, 1, 2, 3], vari: [0, 0, 0, 0], firstVar: [0, 0, 0, 0], ready: [false, false, false, false], dev: ['kb', null, null, null], first: [null, null, null, null], skip: false, go: 0 };
 
 function openSelect() {
   scene = 'select'; sceneT = 0;
   for (const k of Object.keys(padOwner)) delete padOwner[k];
   p2Keyboard = false;
   sel.joined = [true, false, false, false]; sel.ready = [false, false, false, false]; sel.go = 0;
-  sel.pick = [0, 1, 2, 3].map(k => k % CHAR_IDS.length); sel.first = [null, null, null, null];
+  sel.pick = [0, 1, 2, 3].map(k => k % CHAR_IDS.length); sel.first = [null, null, null, null]; sel.vari = [0, 0, 0, 0]; sel.firstVar = [0, 0, 0, 0];
   sel.dev = [lastDevice, null, null, null];
   if (lastDevice !== 'kb') padOwner[lastDevice] = 0;
   rebuildKeymap();
@@ -3170,18 +4238,24 @@ function updateSelect(dt) {
     if (!sel.joined[p] || (p > 0 && sel.skip)) continue;
     const I = INPUT[p], hit = a => I.pressed.has(a);
     if (!sel.ready[p]) {
-      const dk = hit('left') || hit('up') ? -1 : hit('right') || hit('down') ? 1 : 0;
+      // ↑/↓ change de version quand la case en a plusieurs (Naruto enfant / Shippuden), sinon de case
+      const nv = variantsOf(sel.pick[p]).length, vk = nv > 1 ? (hit('up') ? -1 : hit('down') ? 1 : 0) : 0;
+      const dk = vk ? 0 : hit('left') || hit('up') ? -1 : hit('right') || hit('down') ? 1 : 0;
+      if (vk) {
+        sel.vari[p] = (sel.vari[p] + vk + nv) % nv; sel.focus = p; sel.flash = 1;
+        audio.tone(700 + p * 120, 0.08, 'triangle', 0.08, 200);
+      }
       if (dk) {
-        sel.pick[p] = (sel.pick[p] + dk + n) % n; sel.focus = p; sel.flash = 1;
+        sel.pick[p] = (sel.pick[p] + dk + n) % n; sel.vari[p] = 0; sel.focus = p; sel.flash = 1;
         audio.tone(520 + p * 120, 0.06, 'triangle', 0.08);
       }
       if (hit('punch') || hit('jump') || hit('start')) {
         // Équipe de deux : le premier choix est le combattant, le second son partenaire
-        if (OPTS.tag && sel.first[p] === null && n > 1) { sel.first[p] = sel.pick[p]; sel.pick[p] = (sel.pick[p] + 1) % n; }
+        if (OPTS.tag && sel.first[p] === null && n > 1) { sel.first[p] = sel.pick[p]; sel.firstVar[p] = sel.vari[p]; sel.pick[p] = (sel.pick[p] + 1) % n; sel.vari[p] = 0; }
         else sel.ready[p] = true;
         audio.play('hitHeavy', 0.8); audio.tone(780, 0.25, 'triangle', 0.12, 300);
       } else if (hit('kick') || hit('pause')) {
-        if (sel.first[p] !== null) { sel.pick[p] = sel.first[p]; sel.first[p] = null; }
+        if (sel.first[p] !== null) { sel.pick[p] = sel.first[p]; sel.vari[p] = sel.firstVar[p]; sel.first[p] = null; }
         else if (p > 0) leavePlayer(p);
         else { scene = 'title'; sceneT = 0; }
       }
@@ -3194,8 +4268,8 @@ function updateSelect(dt) {
     sel.go += dt;
     if (sel.go > 0.8) {
       const ps = [0, 1, 2, 3].filter(p => sel.joined[p]);
-      sel.chars = ps.map(p => CHAR_IDS[sel.first[p] ?? sel.pick[p]]);
-      sel.partners = ps.map(p => sel.first[p] !== null ? CHAR_IDS[sel.pick[p]] : null);
+      sel.chars = ps.map(p => sel.first[p] !== null ? charAt(sel.first[p], sel.firstVar[p]) : charAt(sel.pick[p], sel.vari[p]));
+      sel.partners = ps.map(p => sel.first[p] !== null ? charAt(sel.pick[p], sel.vari[p]) : null);
       if (gameMode === 'story') openMap(); else openLevels();
     }
   } else sel.go = 0;
@@ -3439,6 +4513,7 @@ function update(dt) {
     for (const b of bombs) updateBomb(b, dt);
     bombs = bombs.filter(b => !b.done);
     updateProjs(dt);
+    updateDarkFX(dt);
     updateFX(dt);
     updateParticles(dt);
 
@@ -3586,6 +4661,7 @@ function drawAnim(who, anim, i, x, y, dir, filter, rot = 0) {
   ctx.translate(x, y);
   if (dir < 0) ctx.scale(-1, 1);
   if (rot) { const cy = -f.h * s / 2; ctx.translate(0, cy); ctx.rotate(rot); ctx.translate(0, -cy); }
+  if (drawAnim.lean) ctx.rotate(drawAnim.lean); // penché vers l'avant, pivot aux pieds (le miroir est déjà appliqué)
   if (drawAnim.grow) ctx.scale(drawAnim.grow, drawAnim.grow);
   if (drawAnim.breath) ctx.scale(1 - drawAnim.breath * 0.35, 1 + drawAnim.breath); // respiration, ancrée aux pieds
   if (filter) ctx.filter = filter;
@@ -3865,9 +4941,9 @@ function energyBall(x, y, r, gold) {
 // Planche affichée : celle de la forme (dorée, Gear 5) si elle a cette animation, sinon la normale
 // Bout de la main sur l'étape affichée : point le plus en avant du haut du corps (60 % du haut), mesuré une fois
 // par image puis gardé. Renvoie [devant, hauteur] par rapport au point posé au sol, à l'échelle du jeu.
-const HAND_SHOTS = ['airshot', 'kiball', 'red', 'burning'], handCache = {};
+const HAND_SHOTS = ['shuriken', 'airshot', 'kiball', 'red', 'burning', 'hiken', 'shell', 'icewall', 'strikeair', 'vrasen', 'stonewall'], handCache = {};
 // rayon des grosses boules : leur centre est avancé d'autant pour qu'elles partent DEVANT la main
-const PROJ_R = { burning: 34, kiball: 26 };
+const PROJ_R = { shuriken: 52, vrasen: 22, katon: 32, burning: 34, kiball: 26, hiken: 34, shell: 12, icewall: 18, strikeair: 30, bullet: 12, stonewall: 18 };
 function handPoint(h) {
   const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
   const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];
@@ -3890,6 +4966,55 @@ function handPoint(h) {
     handCache[f.src] = res;
   }
   return handCache[f.src];
+}
+// Bouche (Itachi) : le bout du visage, mesuré sur la bande de la bouche sous le sommet du crâne
+const mouthCache = {};
+function mouthPoint(h) {
+  const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
+  const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];
+  if (!img) return null;
+  if (!(f.src in mouthCache)) {
+    let res = null;
+    try {
+      const c = document.createElement('canvas'); c.width = f.w; c.height = f.h;
+      const g = c.getContext('2d'); g.drawImage(img, 0, 0, f.w, f.h);
+      const d = g.getImageData(0, 0, f.w, f.h).data;
+      let top = -1;
+      for (let y = 0; y < f.h && top < 0; y++) for (let x = 0; x < f.w; x++) if (d[(y * f.w + x) * 4 + 3] > 100) { top = y; break; }
+      // la bouche est à ~27 px (à l'échelle du jeu) sous le sommet du crâne, quelle que soit la pose (accroupi ou debout)
+      const k = 1 / A.scale, y0 = Math.floor(top + 19 * k), y1 = Math.floor(top + 35 * k);
+      let front = -1;
+      for (let y = y0; y < Math.min(y1, f.h); y++) for (let x = f.w - 1; x > front; x--) if (d[(y * f.w + x) * 4 + 3] > 100) { front = x; break; }
+      if (front >= 0) res = [(front - f.ax) * A.scale, (top + 27 * k - f.ay) * A.scale];
+    } catch (e) { res = null; }
+    mouthCache[f.src] = res;
+  }
+  return mouthCache[f.src];
+}
+// Bout du pied (Sanji) : point le plus en avant sous la tête, mesuré une fois par image
+const footCache = {};
+function footPoint(h) {
+  const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
+  const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];
+  if (!img) return null;
+  if (!(f.src in footCache)) {
+    let res = null;
+    try {
+      const c = document.createElement('canvas'); c.width = f.w; c.height = f.h;
+      const g = c.getContext('2d'); g.drawImage(img, 0, 0, f.w, f.h);
+      const d = g.getImageData(0, 0, f.w, f.h).data;
+      let top = -1;
+      for (let y = 0; y < f.h && top < 0; y++) for (let x = 0; x < f.w; x++) if (d[(y * f.w + x) * 4 + 3] > 100) { top = y; break; }
+      const y0 = top + Math.floor((f.h - top) * 0.2);
+      let front = -1;
+      for (let y = y0; y < f.h; y++) for (let x = f.w - 1; x > front; x--) if (d[(y * f.w + x) * 4 + 3] > 100) { front = x; break; }
+      let sx = 0, sy = 0, n = 0;
+      for (let y = y0; y < f.h; y++) for (let x = Math.max(0, front - 25); x <= front; x++) if (d[(y * f.w + x) * 4 + 3] > 100) { sx += x; sy += y; n++; }
+      if (n) res = [(sx / n - f.ax) * A.scale, (sy / n - f.ay) * A.scale];
+    } catch (e) { res = null; }
+    footCache[f.src] = res;
+  }
+  return footCache[f.src];
 }
 const sheetFor = (h, anim) => h.boost?.sheet && SPRITES[h.boost.sheet][anim] ? h.boost.sheet : h.C.sheet;
 
@@ -3945,8 +5070,8 @@ function drawPlayer(h) {
   // Aura façon anime, seulement en chargeant le ki ou en se transformant : une lueur qui épouse le corps
   // et des flammes qui montent. Or pour la forme dorée et les saiyans transformés, couleur du ki sinon.
   if (h.state === 'charge' || h.state === 'transform') {
-    const N = h.state === 'transform' ? h.nextForm : F, gold = N?.sheet && ['gold', 'goku_ssj', 'vegeta_ssj'].includes(N.sheet);
-    const col = gold ? '#ffd84a' : N?.aura ? N.aura[1] : C.kiColor;
+    const N = h.state === 'transform' ? h.nextForm : F, gold = N?.sheet && ['gold', 'goku_ssj', 'vegeta_ssj', 'trunks_ssj', 'gohan_ssj'].includes(N.sheet);
+    const col = N?.aura ? N.aura[1] : gold ? '#ffd84a' : C.kiColor;
     bodyAura(h, sheet, anim, i, sx, col, h.state === 'transform' ? 0.6 + Math.min(h.t, 1) * 0.6 : 0.9 + Math.min(h.t, 1) * 0.3);
   } else if (F?.foxCloak && !h.out) {
     drawFoxCloak(h, sx, F.foxCloak); // le liseré rouge qui épouse le corps vient du filtre de la forme
@@ -3959,6 +5084,7 @@ function drawPlayer(h) {
     ctx.beginPath(); ctx.ellipse(sx, h.y - 110, 95, 150, 0, 0, 7); ctx.fill(); ctx.restore();
     bodyAura(h, sheet, anim, i, sx, F.glow, 0.3 + 0.08 * Math.sin(sceneT * 6));
   }
+  if (F?.demon && !h.out && h.state !== 'transform') drawDemonBack(h, sx);
   // Charge du ki : le corps tremble sous la puissance
   if (h.state === 'charge' || h.state === 'transform') sx += Math.sin(sceneT * 70) * 1.6;
   // Double saut : une vrille avant, ralentie en fin de tour
@@ -3978,6 +5104,18 @@ function drawPlayer(h) {
     const fi = h.t < 0.6 ? 0 : h.t < KYU.charge - 0.2 ? 1 : h.t < KYU.charge ? 2 : 3, breathe = 1 + Math.sin(h.t * 9) * 0.04;
     fxImg(FX.kyubi_run ? 'kyubi_run' : 'kyubi', fi, sx + h.dir * (lunge - 30), h.y - 180 - (fi === 3 ? 40 : 0), 520 * breathe, null, { alpha: Math.max(0, a), flip: h.dir < 0 });
   }
+  // Susanoo : le guerrier spectral d'Itachi se dresse derrière lui
+  if (h.char === 'itachi' && h.state === 'ultra') drawSusanoo(h, sx);
+  // Titan Assaillant : le titan se dresse derrière Eren dans la vapeur
+  if (h.char === 'eren' && h.state === 'ultra') drawTitan(h, sx);
+  // Grande transmutation : le cercle s'allume au sol devant Edward, le poing de pierre en sort
+  if (h.char === 'edward' && h.state === 'ultra') drawAlchemy(h, sx);
+  // Boruto : ses deux clones, dans la même pose que lui
+  if (h.char === 'boruto' && h.state === 'ultra' && h.t > BORU.clones && h.t < BORU.end) {
+    ctx.globalAlpha = 0.9;
+    for (const [dx, dz] of BORU.at) drawAnim(sheet, anim, i, sx + h.dir * dx, h.y + dz, h.dir, 'brightness(0.92)');
+    ctx.globalAlpha = 1;
+  }
   // Kamehameha père-fils : l'esprit de Sangoku apparaît derrière Gohan, les mains jointes comme lui
   if (h.char === 'gohan' && h.state === 'ultra' && SPRITES.goku?.special) {
     const a = Math.min(1, h.t / 0.5) * (h.t > FSK.end - 0.4 ? Math.max(0, (FSK.end - h.t) / 0.4) : 1);
@@ -3989,7 +5127,9 @@ function drawPlayer(h) {
   // Gon adulte : il grandit pendant son ultime
   drawAnim.grow = h.char === 'gon' && h.state === 'ultra' && h.t > 0.45 ? 1 + 0.55 * Math.min(1, (h.t - 0.45) / 0.3) : 0;
   drawAnim.breath = breathOf(h, h.state === 'idle' && !h.move && h.onGround && !idleAnim(h));
+  drawAnim.lean = leanOf(h);
   drawAnim(sheet, anim, i, sx, h.y, h.dir, filter, rot);
+  drawAnim.lean = 0;
   drawAnim.breath = 0;
   drawAnim.grow = 0;
   ctx.globalAlpha = 1;
@@ -4002,6 +5142,8 @@ function drawPlayer(h) {
     energyBall(p.x - camX, p.y, 6 + 22 * Math.min(1, h.t / MOVES.blast.fire), !!F);
   }
   if (m?.beam && h.t < m.beam.at) energyBall(sx - h.dir * 18, h.y - 102 * WORLD, 6 + 26 * Math.min(1, h.t / m.beam.at), false);
+  if (m?.heldShuriken && h.t < m.proj.at) drawShuriken(sx + h.dir * 18 * WORLD, h.y - 225 * WORLD, 0.25 + 0.3 * Math.min(1, h.t / m.proj.at), h.t);
+  if (h.state === 'ultra' && h.C.ultra[0] === startShuriken && !h.thrown) drawShuriken(sx + h.dir * 30, h.y - 250, 0.3 + 1.6 * Math.min(1, h.t / RSH.throwAt), h.t);
   if (m?.orb && h.t >= m.orb[0] && h.t <= m.orb[1]) {
     const r = 12 + 18 * Math.min(1, h.t / 0.3), low = m.orbFx === 'chidori' && h.t < m.p[2][1];
     const hp = !low && handPoint(h);
@@ -4080,7 +5222,12 @@ function drawWaves() {
   }
 }
 
+// Entei d'Ace : la même sphère, passée au rouge-orangé
 function drawBomb(b) {
+  if (!b.fire) return drawBombBody(b);
+  ctx.save(); ctx.filter = 'hue-rotate(170deg) saturate(2.2) brightness(1.05)'; drawBombBody(b); ctx.restore();
+}
+function drawBombBody(b) {
   const sx = b.x - camX;
   // Faisceau du Super Saiyan qui repousse la sphère
   if (b.genki && b.state === 'clash' && b.owner.genki?.ssj) {
@@ -4167,7 +5314,7 @@ const FACES = {
   card_ip: [0.57, 0.3, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
   card_ki: [0.53, 0.36, 4], card_luffy: [0.71, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
   card_ve: [0.52, 0.37, 4], card_ze: [0.2, 0.36, 4.2], card_zoro: [0.47, 0.27, 4.4],
-  card_jw: [0.765, 0.185, 6.5], card_sk: [0.66, 0.27, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.765, 0.185, 6.5], card_sk: [0.66, 0.27, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.42, 0.29, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.55, 0.2, 4.4], card_st: [0.62, 0.23, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.57, 0.26, 4.0], card_rv: [0.58, 0.27, 4.0], card_ga: [0.58, 0.28, 4.0], card_lv: [0.54, 0.26, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.6, 0.24, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.36, 0.23, 4.0], card_bo: [0.58, 0.22, 4.0], card_ns: [0.51, 0.4, 3.2], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -4193,8 +5340,8 @@ function drawPlayerHUD(h) {
   if (players.length > 1) outlined(`J${p + 1}`, mx, 98, 16, COLORS_P[p]);
   drawLivesAndPartner(h, x, w, right, 104);
   bar(x, 34, w, 16, h.hp / h.maxHp, '#ff3355', '#ffb13b', h.out ? `${C.name} — K.O.` : C.name, right);
-  const L = C.labels, k = (a) => K(a, p), cost = C.moves[C.special].cost, F = h.boost, next = formFor(h) || C.forms[0];
-  const kiLabel = F ? (h.ki >= KI.ultra ? `${F.name} — ${L.ultra} [${k('ultra')}]` : F.name)
+  const L = C.labels, k = (a) => K(a, p), cost = C.moves[C.special].cost, F = h.boost, next = formFor(h) || C.forms[0], up = F && formAfter(h);
+  const kiLabel = F ? (up ? `${F.name} → ${up.name} [${k('transform')}]` : h.ki >= KI.ultra ? `${F.name} — ${L.ultra} [${k('ultra')}]` : F.name)
     : h.ki >= KI.ultra ? `${L.ultra} PRÊT [${k('ultra')}]` : h.ki >= KI.transform ? `KI — ${next.name} [${k('transform')}]`
       : h.ki >= cost ? `KI — ${L.blast} [${k('blast')}]` : `KI  (charge : ${k('charge')})`;
   bar(x, 74, w, 11, h.ki / 100, F ? F.bar[0] : '#2a7bff', F ? F.bar[1] : '#7ff0ff', kiLabel, right);
@@ -4319,6 +5466,153 @@ function drawTitle() {
   ctx.fillText(`${K('charge')} (tenir)  ki     ${K('transform')}  transformation     ${K('ultra')}  ultime     ${K('pause')}  pause et commandes     —     J2 : pavé numérique ou 2e manette`, W / 2, H - 18);
 }
 
+// ---------- Nom de l'animé d'origine, en lettrage évocateur de la série (dessiné en code, aucun logo copié) ----------
+// Chaque perso a une clé `anime` ; ANIME_STYLE donne le nom affiché et le style : police, dégradé de remplissage,
+// contours (intérieur, extérieur), inclinaison, ombre, et un motif propre à la série (deco).
+const CHAR_ANIME = {
+  hero: 'masterclass', luffy: 'op', zoro: 'op', ace: 'op', sanji: 'op', goku: 'db', gohan: 'db', vegeta: 'db', trunks: 'dbz',
+  naruto: 'naruto', sasuke: 'naruto', kakashi: 'naruto', itachi: 'naruto', naruto_s: 'naruto_s', boruto: 'boruto',
+  tanjiro: 'ds', zenitsu: 'ds', inosuke: 'ds', kenshin: 'rk', ichigo: 'bleach', izuku: 'mha', shoto: 'mha', gon: 'hxh', killua: 'hxh',
+  ippo: 'ippo', jinwoo: 'sl', saitama: 'opm', gojo: 'jjk', guts: 'berserk', saber: 'fate', mikasa: 'aot', levi: 'aot', eren: 'aot',
+  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama',
+};
+for (const [id, a] of Object.entries(CHAR_ANIME)) if (CHARS[id]) CHARS[id].anime ??= a;
+const IMPACT = 'Impact, "Arial Black", sans-serif', SERIF = '"Times New Roman", Georgia, serif', BRUSH = '"Brush Script MT", "Segoe Script", cursive';
+const ANIME_STYLE = {
+  masterclass: { name: 'MASTERCLASS', font: `italic 900 %px ${IMPACT}`, fill: ['#fff3a0', '#ff9a1a'], stroke: '#3a0a00', outer: '#ffe14d', skew: -0.12 },
+  op: { name: 'ONE PIECE', font: `900 %px ${IMPACT}`, fill: ['#fff27a', '#ffc21a'], stroke: '#1a3a9a', outer: '#0a1a4a', wave: 0.06, deco: 'hat' },
+  db: { name: 'DRAGON BALL', font: `900 %px ${IMPACT}`, fill: ['#ffe24a', '#ff7a1a'], stroke: '#c0101a', outer: '#2a0a00', arc: 0.18, deco: 'star' },
+  dbz: { name: 'DRAGON BALL Z', font: `900 %px ${IMPACT}`, fill: ['#ffe24a', '#ff7a1a'], stroke: '#c0101a', outer: '#2a0a00', arc: 0.18, deco: 'star' },
+  naruto: { name: 'NARUTO', font: `900 %px ${IMPACT}`, fill: ['#ffb04a', '#ff6a00'], stroke: '#140400', outer: '#ffe0a0', skew: -0.08, deco: 'spiral' },
+  naruto_s: { name: 'NARUTO SHIPPUDEN', font: `900 %px ${IMPACT}`, fill: ['#ffb04a', '#ff6a00'], stroke: '#140400', outer: '#ffe0a0', skew: -0.08, deco: 'spiral' },
+  boruto: { name: 'BORUTO', font: `900 %px ${IMPACT}`, fill: ['#ffffff', '#9fd8ff'], stroke: '#0a1a3a', outer: '#2a6aff', skew: -0.1, deco: 'spiral' },
+  ds: { name: 'DEMON SLAYER', font: `bold %px ${BRUSH}`, fill: ['#1a1414', '#000000'], stroke: '#f2e6d0', skew: -0.05, plate: '#5a0a12', deco: 'checker' },
+  rk: { name: 'RUROUNI KENSHIN', font: `bold %px ${BRUSH}`, fill: ['#ff3a3a', '#a00010'], stroke: '#140000', outer: '#f0e0c0', skew: -0.06, deco: 'ink' },
+  bleach: { name: 'BLEACH', font: `300 %px ${SERIF}`, fill: ['#ffffff', '#d0d0d8'], plate: '#06060a', spacing: 6, deco: 'blade' },
+  mha: { name: 'MY HERO ACADEMIA', font: `italic 900 %px ${IMPACT}`, fill: ['#7dff8a', '#1aa040'], stroke: '#0a2a10', outer: '#ff3a3a', skew: -0.16, deco: 'comic' },
+  hxh: { name: 'HUNTER × HUNTER', font: `900 %px ${IMPACT}`, fill: ['#b8ff7a', '#2fa83a'], stroke: '#06240a', outer: '#f2ffe0', skew: -0.04 },
+  ippo: { name: 'HAJIME NO IPPO', font: `italic 900 %px ${IMPACT}`, fill: ['#ffffff', '#ffd0d0'], stroke: '#b00010', outer: '#200000', skew: -0.14, deco: 'glove' },
+  sl: { name: 'SOLO LEVELING', font: `900 %px ${IMPACT}`, fill: ['#e6f4ff', '#6ab8ff'], stroke: '#0a1440', neon: '#3a9cff', spacing: 3 },
+  opm: { name: 'ONE PUNCH MAN', font: `900 %px ${IMPACT}`, fill: ['#ffe14d', '#ffb000'], stroke: '#c00010', outer: '#200000', skew: -0.06, deco: 'fist' },
+  jjk: { name: 'JUJUTSU KAISEN', font: `900 %px ${IMPACT}`, fill: ['#d6a0ff', '#6a1aa8'], stroke: '#0a0010', outer: '#f0e0ff', skew: -0.04, deco: 'claw' },
+  berserk: { name: 'BERSERK', font: `900 %px ${SERIF}`, fill: ['#2a0a0a', '#000000'], stroke: '#b00010', outer: '#ff4a4a', spacing: 4, deco: 'blood' },
+  fate: { name: 'FATE / STAY NIGHT', font: `italic 700 %px ${SERIF}`, fill: ['#fff2b0', '#d8a020'], stroke: '#0a1a5a', outer: '#2a4aff', skew: -0.05, deco: 'sword' },
+  aot: { name: "L'ATTAQUE DES TITANS", font: `900 %px ${SERIF}`, fill: ['#f4ead8', '#c8b48a'], stroke: '#3a2410', outer: '#120800', deco: 'wings' },
+  lagoon: { name: 'BLACK LAGOON', font: '900 %px "Courier New", monospace', fill: ['#c8d8a0', '#7a8a4a'], stroke: '#141a06', outer: '#f0f4e0', stencil: '#141a06', deco: 'bullets' },
+  gunnm: { name: 'GUNNM', font: `900 %px ${IMPACT}`, fill: ['#e8f0ff', '#7a8aa8'], stroke: '#0a1a3a', outer: '#5ab0ff', metal: true, spacing: 4 },
+  baki: { name: 'BAKI', font: `900 %px ${IMPACT}`, fill: ['#ff6a4a', '#a00a00'], stroke: '#1a0000', outer: '#ffd0a0', skew: -0.1, deco: 'veins' },
+  fma: { name: 'FULLMETAL ALCHEMIST', font: `700 %px ${SERIF}`, fill: ['#ffd0a0', '#c01a1a'], stroke: '#200000', outer: '#f0d080', deco: 'circle' },
+  gintama: { name: 'GINTAMA', font: `900 %px ${IMPACT}`, fill: ['#ffffff', '#cfe6ff'], stroke: '#1a3aa0', outer: '#0a1430', skew: -0.06, deco: 'waves' },
+};
+const animeOf = id => ANIME_STYLE[CHARS[id]?.anime || CHAR_ANIME[id]];
+
+// Dessine le nom de la série centré sur (x, y), ou partant de x si left ; size : hauteur de lettre
+function drawAnimeTitle(id, x, y, size, left = false) {
+  const S = animeOf(id);
+  if (!S) return;
+  ctx.save();
+  ctx.font = S.font.replace('%', size); ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  if ('letterSpacing' in ctx) ctx.letterSpacing = `${S.spacing || 0}px`;
+  const tw = ctx.measureText(S.name).width, x0 = left ? x : x - tw / 2, cx = x0 + tw / 2;
+  // plaque derrière le nom (encre, bandeau noir)
+  if (S.plate) {
+    ctx.fillStyle = S.plate; ctx.beginPath();
+    ctx.moveTo(x0 - 16, y - size * 0.62); ctx.lineTo(x0 + tw + 22, y - size * 0.7); ctx.lineTo(x0 + tw + 14, y + size * 0.66); ctx.lineTo(x0 - 22, y + size * 0.6); ctx.fill();
+  }
+  animeDeco(S.deco, x0, y, tw, size, 'back');
+  ctx.translate(cx, y); ctx.transform(1, 0, S.skew || 0, 1, 0, 0); ctx.translate(-cx, -y);
+  // lettre par lettre quand le nom est courbé (arc) ou ondulé (wave), sinon d'un bloc
+  const glyphs = [];
+  if (S.arc || S.wave) {
+    let gx = x0;
+    [...S.name].forEach((c, i) => {
+      const w = ctx.measureText(c).width + (S.spacing || 0), t = (gx + w / 2 - cx) / (tw / 2 || 1);
+      glyphs.push([c, gx, y + (S.arc ? t * t * size * S.arc * 2 : Math.sin(i * 1.3) * size * S.wave), S.arc ? t * S.arc : 0]);
+      gx += w;
+    });
+  } else glyphs.push([S.name, x0, y, 0]);
+  const put = draw => { for (const [c, gx, gy, rot] of glyphs) { ctx.save(); ctx.translate(gx, gy); ctx.rotate(rot); draw(c); ctx.restore(); } };
+  ctx.lineJoin = 'round';
+  if (S.neon) { ctx.shadowColor = S.neon; ctx.shadowBlur = size * 0.6; }
+  else { ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowOffsetX = 2; ctx.shadowOffsetY = 3; ctx.shadowBlur = 4; }
+  if (S.outer) { ctx.strokeStyle = S.outer; ctx.lineWidth = size * 0.3; put(c => ctx.strokeText(c, 0, 0)); ctx.shadowColor = 'transparent'; }
+  if (S.stroke) { ctx.strokeStyle = S.stroke; ctx.lineWidth = size * (S.outer ? 0.16 : 0.12); put(c => ctx.strokeText(c, 0, 0)); }
+  ctx.shadowColor = S.neon || 'transparent'; ctx.shadowBlur = S.neon ? size * 0.3 : 0; ctx.shadowOffsetX = ctx.shadowOffsetY = 0;
+  const g = ctx.createLinearGradient(0, y - size / 2, 0, y + size / 2);
+  g.addColorStop(0, S.fill[0]); if (S.metal) g.addColorStop(0.5, '#ffffff'); g.addColorStop(1, S.fill[1]);
+  ctx.fillStyle = g; put(c => ctx.fillText(c, 0, 0));
+  // pochoir : barres qui coupent les lettres
+  if (S.stencil) { ctx.shadowColor = 'transparent'; ctx.fillStyle = S.stencil; for (let k = 0; k < 2; k++) ctx.fillRect(x0, y - size * 0.16 + k * size * 0.3, tw, size * 0.06); }
+  ctx.restore();
+  ctx.save(); animeDeco(S.deco, x0, y, tw, size, 'front'); ctx.restore();
+}
+
+// Petits motifs propres à chaque série, derrière (back) ou devant (front) les lettres
+function animeDeco(deco, x0, y, tw, s, layer) {
+  if (!deco) return;
+  const R = x0 + tw, cx = x0 + tw / 2;
+  if (layer === 'back') {
+    if (deco === 'checker') { // damier vert et noir
+      for (let i = 0; i < 4; i++) for (let j = 0; j < 2; j++) { ctx.fillStyle = (i + j) % 2 ? '#0a0a0a' : '#1a8a5a'; ctx.fillRect(x0 - 26 - s * 0.6 + i * s * 0.15, y - s * 0.3 + j * s * 0.3, s * 0.15, s * 0.3); }
+    } else if (deco === 'circle') { // cercle de transmutation
+      ctx.strokeStyle = 'rgba(255,200,120,0.45)'; ctx.lineWidth = 2; const r = s * 0.95;
+      ctx.beginPath(); ctx.arc(cx, y, r, 0, 7); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, y, r * 0.78, 0, 7); ctx.stroke();
+      ctx.beginPath(); for (let k = 0; k <= 3; k++) { const a = -Math.PI / 2 + k * 2.094; ctx[k ? 'lineTo' : 'moveTo'](cx + Math.cos(a) * r * 0.78, y + Math.sin(a) * r * 0.78); } ctx.stroke();
+    } else if (deco === 'blade') { // lame fine sous le nom
+      ctx.fillStyle = '#e8e8f0'; ctx.beginPath(); ctx.moveTo(x0 - 10, y + s * 0.6); ctx.lineTo(R + 30, y + s * 0.55); ctx.lineTo(x0 - 10, y + s * 0.68); ctx.fill();
+    } else if (deco === 'ink') { // tache d'encre au pinceau
+      ctx.fillStyle = 'rgba(10,0,0,0.55)'; ctx.beginPath(); ctx.ellipse(cx, y + s * 0.1, tw * 0.6, s * 0.55, -0.04, 0, 7); ctx.fill();
+    } else if (deco === 'waves') { // vagues du kimono
+      ctx.strokeStyle = 'rgba(120,170,255,0.6)'; ctx.lineWidth = 3;
+      for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.arc(x0 - 14 - k * s * 0.4, y + s * 0.2, s * 0.2, Math.PI, 0); ctx.stroke(); }
+    } else if (deco === 'wings') { // deux ailes, blanche et bleue
+      for (const [d, c] of [[-1, 'rgba(240,240,255,0.6)'], [1, 'rgba(70,110,200,0.65)']]) {
+        ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(x0 - 20, y + s * 0.3);
+        ctx.quadraticCurveTo(x0 - 20 + d * 14, y - s * 0.9, x0 - 20 + d * 22, y - s * 0.2); ctx.closePath(); ctx.fill();
+      }
+    } else if (deco === 'blood') { // éclaboussure
+      ctx.fillStyle = 'rgba(150,0,10,0.75)';
+      for (let k = 0; k < 7; k++) { ctx.beginPath(); ctx.arc(x0 + tw * (0.12 + k * 0.13), y + s * 0.58 + (k % 3) * 4, 2.5 + (k % 2) * 3, 0, 7); ctx.fill(); }
+    }
+    return;
+  }
+  const bx = R + s * 0.55;
+  if (deco === 'star') { // boule orange à étoile rouge
+    const r = s * 0.42, g = ctx.createRadialGradient(bx - r * 0.3, y - r * 0.3, 1, bx, y, r); g.addColorStop(0, '#fff3c0'); g.addColorStop(1, '#ff8a00');
+    ctx.fillStyle = g; ctx.strokeStyle = '#7a2a00'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(bx, y, r, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#d0101a'; ctx.beginPath(); for (let k = 0; k < 10; k++) { const a = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r * 0.2 : r * 0.48; ctx.lineTo(bx + Math.cos(a) * rr, y + Math.sin(a) * rr); } ctx.fill();
+  } else if (deco === 'spiral') { // spirale
+    ctx.strokeStyle = '#ff6a00'; ctx.lineWidth = 3; ctx.beginPath();
+    for (let a = 0; a < 12; a += 0.2) ctx.lineTo(bx + Math.cos(a) * a * s * 0.035, y + Math.sin(a) * a * s * 0.035); ctx.stroke();
+  } else if (deco === 'hat') { // chapeau de paille
+    ctx.fillStyle = '#ffd56a'; ctx.strokeStyle = '#3a2000'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(bx, y + s * 0.1, s * 0.5, s * 0.14, 0, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(bx, y - s * 0.02, s * 0.27, s * 0.26, 0, Math.PI, 0); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#d0101a'; ctx.fillRect(bx - s * 0.27, y - s * 0.04, s * 0.54, s * 0.08);
+  } else if (deco === 'comic') { // éclat de BD
+    ctx.fillStyle = '#ffe14d'; ctx.strokeStyle = '#0a0a0a'; ctx.lineWidth = 2; ctx.beginPath();
+    for (let k = 0; k < 16; k++) { const a = k * Math.PI / 8, rr = k % 2 ? s * 0.22 : s * 0.46; ctx.lineTo(bx + Math.cos(a) * rr, y + Math.sin(a) * rr); }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+  } else if (deco === 'claw') { // griffures à travers les lettres
+    ctx.strokeStyle = 'rgba(10,0,20,0.85)'; ctx.lineWidth = 3;
+    for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.moveTo(x0 + tw * 0.3 + k * 11, y - s * 0.55); ctx.lineTo(x0 + tw * 0.42 + k * 11, y + s * 0.55); ctx.stroke(); }
+  } else if (deco === 'glove' || deco === 'fist') { // gant de boxe / poing
+    ctx.fillStyle = deco === 'glove' ? '#d0101a' : '#ffe0b0'; ctx.strokeStyle = '#200000'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(bx, y, s * 0.34, s * 0.3, 0, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = deco === 'glove' ? '#ffffff' : '#ffe0b0'; ctx.fillRect(bx - s * 0.48, y - s * 0.12, s * 0.16, s * 0.24); ctx.strokeRect(bx - s * 0.48, y - s * 0.12, s * 0.16, s * 0.24);
+  } else if (deco === 'sword') { // épée couchée sous le nom
+    ctx.fillStyle = '#e8eef8'; ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x0, y + s * 0.6); ctx.lineTo(R + 10, y + s * 0.6); ctx.lineTo(R + 24, y + s * 0.66); ctx.lineTo(R + 10, y + s * 0.72); ctx.lineTo(x0, y + s * 0.72); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#d8a020'; ctx.fillRect(x0 - 6, y + s * 0.5, 6, s * 0.32); ctx.fillRect(x0 - 24, y + s * 0.62, 18, s * 0.08);
+  } else if (deco === 'bullets') { // impacts de balles
+    ctx.fillStyle = '#0a0a0a'; ctx.strokeStyle = '#c8d8a0'; ctx.lineWidth = 1.5;
+    for (const [dx, dy] of [[0.2, -0.2], [0.62, 0.15], [0.9, -0.1]]) { ctx.beginPath(); ctx.arc(x0 + tw * dx, y + s * dy, s * 0.07, 0, 7); ctx.fill(); ctx.stroke(); }
+  } else if (deco === 'veins') { // veine saillante
+    ctx.strokeStyle = 'rgba(255,60,40,0.85)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(R + 6, y - s * 0.4); ctx.lineTo(R + 14, y - s * 0.1); ctx.lineTo(R + 8, y + s * 0.15); ctx.lineTo(R + 18, y + s * 0.4); ctx.stroke();
+  }
+}
+
 // ---------- Écran de sélection : une carte par personnage ----------
 // Écran de sélection façon jeu de combat : le portrait du perso en fond, le perso en grand dans sa garde avec son
 // aura, son nom et ses coups, et en bas un carrousel de médaillons qui glisse vers le perso choisi.
@@ -4328,7 +5622,8 @@ const SEL_SIZE = { jinwoo: 0.86, gohan: 0.84 };
 function drawSelect() {
   const n = CHAR_IDS.length, ps = [0, 1, 2, 3].filter(p => sel.joined[p]), focus = sel.focus || 0;
   const pickOf = p => sel.first[p] !== null && sel.ready[p] ? sel.first[p] : sel.pick[p];
-  const C = CHARS[CHAR_IDS[sel.pick[focus]]], art = IMG[C.card];
+  const varOf = p => sel.first[p] !== null && sel.ready[p] ? sel.firstVar[p] : sel.vari[p];
+  const cid = charAt(sel.pick[focus], sel.vari[focus]), C = CHARS[cid], art = IMG[C.card];
   // Fond : portrait agrandi, assombri, teinté aux couleurs du perso, qui dérive lentement
   ctx.fillStyle = '#05030c'; ctx.fillRect(0, 0, W, H);
   if (art) {
@@ -4357,7 +5652,9 @@ function drawSelect() {
   // Vitrine : un emplacement par joueur
   const slotW = Math.min(W * 0.62, W / ps.length), y0 = 400;
   ps.forEach((p, q) => {
-    const id = CHAR_IDS[pickOf(p)], P = CHARS[id], cx = ps.length === 1 ? W * 0.3 : slotW * (q + 0.5);
+    const id = charAt(pickOf(p), varOf(p)), P = CHARS[id], cx = ps.length === 1 ? W * 0.3 : slotW * (q + 0.5);
+    // à plusieurs, l'étiquette de version passe derrière le perso (sa tête peut la chevaucher)
+    if (ps.length > 1) drawVariantTag(pickOf(p), varOf(p), cx, 158, p);
     const S = SPRITES[P.sheet], A = S && (S.idle || S.combo || S.punch);
     if (A) {
       const i = S.idle ? Math.floor(sceneT * A.rate) % A.frames.length : 0, f = A.frames[i], img = IMG[f.src];
@@ -4377,13 +5674,16 @@ function drawSelect() {
     if (ps.length > 1) {
       outlined(`J${p + 1}`, cx, 76, 18, COLORS_P[p]);
       outlined(P.name, cx, 104, 26, '#fff');
+      drawAnimeTitle(id, cx, 132, ps.length > 2 ? 12 : 15);
     }
     if (sel.ready[p]) outlined('PRÊT !', cx, y0 - 120, 44, COLORS_P[p]);
   });
   // Fiche du perso (un seul joueur : grande fiche à droite)
   if (ps.length === 1) {
     const x = W * 0.56, slide = sel.flash * 40;
+    drawAnimeTitle(cid, x + 4 + slide, 74, 30, true); // plus grand, et décollé du nom du perso
     outlined(C.name, x + slide, 150, 64, '#fff', 'left');
+    drawVariantTag(sel.pick[focus], sel.vari[focus], W * 0.3, 80, focus);
     outlined(C.title, x + 4 + slide, 184, 20, C.colors[1], 'left');
     C.stats.forEach(([label, v], r) => {
       const yy = 214 + r * 28;
@@ -4395,7 +5695,7 @@ function drawSelect() {
     });
     ctx.font = 'bold 15px sans-serif'; ctx.fillStyle = '#ffd6e8';
     ctx.fillText(`SPÉCIAL : ${C.labels.blast}`, x + 4, 318); ctx.fillText(`ULTIME : ${C.labels.ultra}`, x + 4, 342);
-    if (C.forms?.[0]) ctx.fillText(`TRANSFORMATION : ${C.forms[0].name}`, x + 4, 366);
+    if (C.forms?.[0]) ctx.fillText(`TRANSFORMATION : ${C.forms.map(F => F.name).join(' → ')}`, x + 4, 366);
   }
   // Bandeau de vignettes inclinées (façon jeu de combat), qui glisse : la carte choisie est plus grande et lumineuse
   const cy = 452, tw = 66, th = 86, gap = 8, SK = -0.22, items = [];
@@ -4407,7 +5707,7 @@ function drawSelect() {
   // rail sombre derrière les vignettes
   ctx.save(); ctx.fillStyle = 'rgba(5,0,15,0.6)'; ctx.fillRect(0, cy - 42, W, 84); ctx.fillStyle = C.colors[1]; ctx.fillRect(0, cy - 43, W, 2); ctx.fillRect(0, cy + 41, W, 2); ctx.restore();
   for (const [k, d] of items) {
-    const P = CHARS[CHAR_IDS[k]], img = IMG[P.card], on = Math.abs(d) < 0.5, ad = Math.abs(d);
+    const P = CHARS[k === sel.pick[focus] ? cid : CHAR_IDS[k]], img = IMG[P.card], on = Math.abs(d) < 0.5, ad = Math.abs(d);
     const sc = on ? 1.3 : 1 - Math.min(0.25, ad * 0.03), w = tw * sc, h = th * sc;
     const x = W / 2 + d * (tw + gap) + Math.sign(d) * (ad > 0.5 ? 14 : 0), y = cy - (on ? 8 + Math.sin(sceneT * 4) * 2 : 0);
     ctx.save(); ctx.translate(x, y); ctx.transform(1, 0, SK, 1, 0, 0);
@@ -4434,8 +5734,23 @@ function drawSelect() {
   // Aide en bas d'écran
   ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
-  ctx.fillText(`${K('left')} ${K('right')} choisir    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
+  ctx.fillText(`${K('left')} ${K('right')} choisir${variantsOf(sel.pick[focus]).length > 1 ? `    ${K('up')} ${K('down')} version` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
   if (sel.go > 0) outlined('EN AVANT !', W / 2, H / 2 - 20, 70 + sel.go * 30, '#ffe14d');
+}
+
+// Étiquette « ▲ ENFANT ▼ » de la case qui a plusieurs versions (rien sinon)
+function drawVariantTag(k, v, cx, y, p) {
+  const V = variantsOf(k);
+  if (V.length < 2) return;
+  const id = V[Math.min(v || 0, V.length - 1)], label = VARIANT_LABEL[id] || CHARS[id].name, bob = Math.sin(sceneT * 5) * 2;
+  ctx.save(); ctx.font = 'italic 900 15px Impact, sans-serif';
+  const w = ctx.measureText(label).width + 56;
+  ctx.fillStyle = 'rgba(10,0,25,0.78)'; ctx.strokeStyle = COLORS_P[p]; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx - w / 2 + 8, y - 13); ctx.lineTo(cx + w / 2 + 4, y - 13); ctx.lineTo(cx + w / 2 - 8, y + 13); ctx.lineTo(cx - w / 2 - 4, y + 13); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  outlined(label, cx, y + 6, 15, '#fff');
+  outlined('▲', cx - w / 2 + 12, y + 5 - bob, 12, COLORS_P[p]); outlined('▼', cx + w / 2 - 12, y + 5 + bob, 12, COLORS_P[p]);
+  V.forEach((_, i) => { ctx.fillStyle = i === (v || 0) ? '#fff' : 'rgba(255,255,255,0.3)'; ctx.beginPath(); ctx.arc(cx + (i - (V.length - 1) / 2) * 10, y + 20, 2.5, 0, 7); ctx.fill(); });
 }
 
 // La carte est dessinée à sa taille de référence (w × h) puis réduite de S pour tenir dans la grille.
@@ -4552,6 +5867,7 @@ function draw() {
   drawStars();
   drawWaves();
   for (const b of bombs) drawBomb(b);
+  drawDarkFX();
   drawProjs();
   drawWhips();
   drawZaps(1 / 60);
