@@ -4123,7 +4123,7 @@ function drawSmallHUD(h) {
 // Cartouche façon jeu de combat : bande inclinée avec le visage énervé du personnage et le nom de son ultime,
 // en haut à gauche pour le joueur 1, en haut à droite pour le joueur 2.
 const CUT = 1.3;
-const CUT_FROM_CARD = new Set(['jinwoo', 'saitama', 'gojo']); // en attendant leurs gros plans
+const CUT_FROM_CARD = new Set(); // tous les persos ont maintenant leur gros plan (assets/ui/cutin)
 function drawCutins() {
   cutins = cutins.filter(c => (c.t += 1 / 60) < CUT);
   for (const c of cutins) {
