@@ -788,7 +788,7 @@ const STRIPS = {
   op2_z3: STRIP('balustrade', 56, 22), bl_z2: STRIP('balustrade', 56, 22), hx_z2: STRIP('balustrade', 56, 22),
   ds_z3: STRIP('rocks_grass', 60, 26), bl_z1: STRIP('rocks_grass', 60, 26), bl_z3: STRIP('rocks_grass', 60, 26),
   nr_z1: STRIP('rocks_grass', 60, 26), nr_z2: STRIP('rocks_grass', 60, 26), nr_z3: STRIP('rocks_grass', 60, 26),
-  db_z1: STRIP('rocks_namek', 80, 30), db_z2: STRIP('rocks_namek', 80, 30),
+  // Namek (plaines, village, vaisseau) : le bas du décor a déjà ses rochers, un rebord et une berge ; une bordure par-dessus les cachait
   db_z3: STRIP('rubble', 70, 30), mh_z2: STRIP('rubble', 70, 30), mh_z3: STRIP('rubble', 70, 30),
   rk_z2: STRIP('rubble', 70, 30), ds2_z3: STRIP('rubble', 70, 30),
   db2_z1: STRIP('rocks_desert', 70, 28), db2_z2: STRIP('rocks_desert', 70, 28),
@@ -798,7 +798,7 @@ const STRIPS = {
   bl2_z1: STRIP('rubble', 70, 30), bl2_z2: STRIP('balustrade', 56, 22), bl2_z3: STRIP('rubble', 70, 30),
   // 4es zones
   op_z4: STRIP('curb_city', 46, 22), ds_z4: STRIP('rail_metal', 64, 24), bl_z4: STRIP('balustrade', 56, 22), hx_z4: STRIP('rail_metal', 64, 24),
-  nr_z4: STRIP('rocks_grass', 60, 26), db_z4: STRIP('rocks_namek', 80, 30), mh_z4: STRIP('rubble', 70, 30), rk_z4: STRIP('rail_wood', 70, 26),
+  nr_z4: STRIP('rocks_grass', 60, 26), mh_z4: STRIP('rubble', 70, 30), rk_z4: STRIP('rail_wood', 70, 26),
   op2_z4: STRIP('balustrade', 56, 22), nr2_z4: STRIP('rail_metal', 64, 24), ds2_z4: STRIP('rail_wood', 70, 26), db2_z4: STRIP('rubble', 70, 30),
   jk_z4: STRIP('rubble', 70, 30), sl_z4: STRIP('rubble', 70, 30), opm_z4: STRIP('rubble', 70, 30), bl2_z4: STRIP('balustrade', 56, 22),
   // routes B (le centre commercial est un intérieur : pas de bordure)
