@@ -606,7 +606,7 @@ const SK_MOVES = { ...FIST,
 // Gohan enfant : poings et pieds de Sangoku, Masenko
 const GH_MOVES = { ...FIST,
   dash:    { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 130], y: [-140, -50], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1100, pushAt: 0.06, pushDur: 0.3, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
-  masenko: { dur: 1.25, cost: 35, beam: { at: 0.5, end: 1.12, len: 900, dmg: 0.6, color: '#ffe066', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.15)' }, call: 'MASENKO !', p: ['special', [0, 1, 2, 3], [0.2, 0.5, 1.14]] },
+  masenko: { dur: 1.25, cost: 35, beam: { hand: true, at: 0.5, end: 1.12, len: 900, dmg: 0.6, color: '#ffe066', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.15)' }, call: 'MASENKO !', p: ['special', [0, 1, 2, 3], [0.2, 0.5, 1.14]] },
 };
 // Inosuke : deux sabres dentelés, souffle de la bête (coups de tête, ruées de sanglier)
 const IN_MOVES = { ...SWORD,
@@ -2279,15 +2279,17 @@ function updateKirin(h) {
 
 // ---------- Ultime de Gohan : le Kamehameha père-fils (l'esprit de Sangoku derrière lui) ----------
 const FSK = { fire: 1.1, end: 2.6 };
-function startFatherSon(h) { h.beamed = false; say(h, 'PAPA…'); audio.play('ultraCharge', 0.9, 1, 0); }
+function startFatherSon(h) { h.beamed = false; h.ultraSheet = 'gohan_ssj'; say(h, 'PAPA…'); audio.play('ultraCharge', 0.9, 1, 0); }
 function updateFatherSon(h) {
   h.inv = Math.max(h.inv, 0.1);
   if (!h.beamed && h.t >= FSK.fire) {
     h.beamed = true; flash = 0.8; shake = 26; audio.voice(h, 'ultra');
-    projs.push({ kind: 'beam', owner: h, move: 'ultra', at: FSK.fire, end: FSK.end - 0.15, len: 1300, thick: 2, dmg: (4 + h.power / 10) / 9.5, color: '#7fd8ff', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: FSK.fire, end: FSK.end - 0.15, len: 1300, thick: 2, dmg: (4 + h.power / 10) / 9.5, color: '#7fd8ff', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
     say(h, 'KAMEHAMEHA !!'); score += 2000;
   }
-  if (h.t > FSK.end) h.state = 'idle';
+  // aura dorée et éclairs du Super Saiyan 2
+  if (Math.random() < 0.8) particles.push({ x: h.x + rand(-45, 45), y: h.y - rand(10, 170), vx: rand(-20, 20), vy: rand(-260, -120), t: 0, life: 0.45, c: Math.random() < 0.7 ? '#ffd84a' : '#8fd8ff', r: rand(3, 6), soft: true });
+  if (h.t > FSK.end) { h.state = 'idle'; h.ultraSheet = null; }
 }
 
 // ---------- Ultime d'Ichigo : un Getsuga Tensho géant ----------
@@ -5016,7 +5018,9 @@ function footPoint(h) {
   }
   return footCache[f.src];
 }
-const sheetFor = (h, anim) => h.boost?.sheet && SPRITES[h.boost.sheet][anim] ? h.boost.sheet : h.C.sheet;
+// planche forcée le temps d'un ultime (Gohan en Super Saiyan 2), sinon celle de la forme
+const formSheet = h => (h.state === 'ultra' && h.ultraSheet) || h.boost?.sheet;
+const sheetFor = (h, anim) => formSheet(h) && SPRITES[formSheet(h)]?.[anim] ? formSheet(h) : h.C.sheet;
 
 // Personnages à planches de 8 étapes (Sangoku, Zoro, Naruto, Tanjiro) : walk, jump, fall,
 // combo (garde, 3 poings | 4 pieds), lowair (accroupi | en l'air), dashcharge (dash | charge), special (spécial | ultime).
