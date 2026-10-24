@@ -6832,7 +6832,9 @@ function frame(now) {
   const dt = Math.min((now - last) / 1000, 1 / 30);
   last = now;
   pollPad();
-  update(dt);
+  // en ligne : l'invité ne fait pas tourner la partie, il dessine l'état envoyé par l'hôte (src/netsync.js)
+  if (net.role === 'guest' && (net.live || netQueue.length)) netGuestTick(dt); else update(dt);
+  if (net.role === 'host') netHostTick(dt);
   updateLoops();
   draw();
   INPUT.forEach(I => I.pressed.clear());

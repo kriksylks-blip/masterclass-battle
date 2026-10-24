@@ -1,6 +1,6 @@
 'use strict';
-// Coopération en ligne (jusqu'à 4 joueurs) : l'hôte fait tourner le jeu et diffuse l'image et le son de sa
-// partie (WebRTC, via PeerJS) ; chaque invité voit cette vidéo et envoie ses touches, qui pilotent un
+// Coopération en ligne (jusqu'à 4 joueurs) : l'hôte fait tourner le jeu et envoie l'état de sa partie (src/netsync.js,
+// WebRTC via PeerJS) ; chaque invité la redessine et envoie ses touches, qui pilotent un
 // joueur de l'hôte (J2, J3 ou J4). Rejoindre = taper le code à 4 lettres affiché chez l'hôte.
 
 const NET_PREFIX = 'mcbattle-v1-';
@@ -78,22 +78,12 @@ function netHost() {
   net.peer.on('error', e => { net.status = 'Erreur réseau : ' + (e.type || e.message); if (e.type === 'unavailable-id') { netClose(); netHost(); } });
   net.peer.on('connection', conn => conn.on('open', () => netAccept(conn)));
 }
-function netStream() {
-  if (net.stream) return net.stream;
-  const s = canvas.captureStream(30);
-  if (audio.ctx) {
-    net.dest = audio.ctx.createMediaStreamDestination();
-    audio.out.connect(net.dest);
-    for (const t of net.dest.stream.getAudioTracks()) s.addTrack(t);
-  }
-  return (net.stream = s);
-}
 function netAccept(conn) {
   const slot = [1, 2, 3].find(s => !net.guests[s] && !(scene === 'select' && sel.joined[s]));
   if (!slot) { conn.send({ t: 'full' }); setTimeout(() => conn.close(), 500); return; }
   net.guests[slot] = conn; conn.slot = slot;
-  conn.send({ t: 'hello', slot });
-  net.peer.call(conn.peer, netStream());
+  conn.send({ t: 'hello', slot, ver: NET_VER });
+  netHookAudio(); netResync(); // l'état complet de la partie part au prochain envoi (src/netsync.js)
   net.status = `J${slot + 1} a rejoint la partie !`;
   audio.tone(880, 0.2, 'triangle', 0.12, 300);
   if (scene === 'select') netJoinSlot(slot);
@@ -113,6 +103,7 @@ function netLeave(slot) {
   net.status = `J${slot + 1} est parti.`;
 }
 function netInput(slot, m) {
+  if (m.t === 'resync') { netResync(); return; } // invité en retard : il repart d'un état complet
   if (m.t !== 'k') return;
   const I = INPUT[slot], a = m.a;
   if (a === 'pause' || a === 'mute') return;
@@ -130,7 +121,7 @@ function netInput(slot, m) {
 function netClose() {
   for (const c of Object.values(net.guests)) try { c.close(); } catch (e) { }
   try { net.peer?.destroy(); } catch (e) { }
-  Object.assign(net, { role: null, peer: null, guests: {}, conn: null, stream: null, code: '', status: '' });
+  Object.assign(net, { role: null, peer: null, guests: {}, conn: null, stream: null, code: '', status: '', live: false });
 }
 
 // ---------- Invité ----------
@@ -143,25 +134,20 @@ function netJoin(code) {
   const watchdog = setTimeout(() => {
     if (net.role === 'guest' && net.slot < 0) { netClose(); openOnline(); net.err = 'Connexion impossible entre vos deux réseaux (il faut un relais TURN). Essayez sur le même wifi.'; }
   }, 15000);
-  net.peer.on('error', e => { net.err = e.type === 'peer-unavailable' ? 'Aucune partie avec ce code.' : 'Erreur réseau : ' + (e.type || e.message); setTimeout(() => { if (net.role === 'guest' && !net.video) { netClose(); openOnline(); net.err = 'Aucune partie avec ce code.'; } }, 2500); });
+  net.peer.on('error', e => { net.err = e.type === 'peer-unavailable' ? 'Aucune partie avec ce code.' : 'Erreur réseau : ' + (e.type || e.message); setTimeout(() => { if (net.role === 'guest' && !net.live) { netClose(); openOnline(); net.err = 'Aucune partie avec ce code.'; } }, 2500); });
   net.peer.on('open', () => {
     const conn = net.conn = net.peer.connect(NET_PREFIX + code, { reliable: true });
     conn.on('data', m => {
-      if (m.t === 'hello') { clearTimeout(watchdog); net.slot = m.slot; net.status = `Connecté : tu es le joueur ${m.slot + 1}. Attente de l'image…`; }
+      if (typeof m === 'string') { netOnState(m); return; } // état de la partie (src/netsync.js)
+      if (m.t === 'hello') {
+        clearTimeout(watchdog);
+        if (m.ver !== NET_VER) { const err = 'Versions du jeu différentes : rechargez la page des deux côtés (Ctrl+F5).'; setTimeout(() => { netClose(); openOnline(); net.err = err; }, 100); return; }
+        net.slot = m.slot; net.status = `Connecté : tu es le joueur ${m.slot + 1}. Attente de la partie…`;
+      }
       if (m.t === 'full') net.err = 'La partie est complète (4 joueurs).';
     });
-    conn.on('close', () => { netShowVideo(null); netClose(); openOnline(); net.err = 'La partie a été fermée par l\'hôte.'; });
+    conn.on('close', () => { netClose(); openOnline(); net.err = 'La partie a été fermée par l\'hôte.'; });
   });
-  net.peer.on('call', call => { call.answer(); call.on('stream', s => netShowVideo(s)); });
-}
-function netShowVideo(stream) {
-  if (!stream) { net.video?.remove(); net.video = null; canvas.style.visibility = ''; return; }
-  const v = net.video || document.createElement('video');
-  v.autoplay = true; v.playsInline = true; v.srcObject = stream;
-  v.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;object-fit:contain;background:#000;z-index:2'; // sous les boutons tactiles
-  if (!net.video) document.body.appendChild(v);
-  net.video = v; v.play().catch(() => {});
-  canvas.style.visibility = 'hidden';
 }
 // Touches de l'invité : ses commandes de joueur 1, envoyées à l'hôte
 const netHeld = new Set();
@@ -184,8 +170,8 @@ addEventListener('keydown', e => {
   }
   if (net.role !== 'guest') return;
   e.preventDefault(); e.stopImmediatePropagation();
-  if (e.code === 'Escape' && !net.video) { netClose(); openOnline(); return; }
-  if (e.code === 'F10') { netShowVideo(null); netClose(); openOnline(); return; }
+  if (e.code === 'Escape' && !net.live) { netClose(); openOnline(); return; }
+  if (e.code === 'F10') { netClose(); openOnline(); return; }
   for (const a of netActionsOf(e.code)) netSend(a, true);
 }, true);
 addEventListener('keyup', e => {
