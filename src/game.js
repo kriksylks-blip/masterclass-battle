@@ -2133,7 +2133,7 @@ function hurtHero(h, dmg, dir, big = false) {
     if (h.hp <= 0) h.hp = 1;
     return;
   }
-  dmg *= DIFF().dmg;
+  dmg *= DIFF().dmg * endlessDmg();
   h.hp -= dmg; combo = 0;
   shake = 10; hitstop = 0.07; audio.hurt();
   burst(h.x, h.y - 120, '#ff4d6d', 14);
@@ -2148,7 +2148,7 @@ function hurtHero(h, dmg, dir, big = false) {
     if (h.hp <= 0) {
       h.hp = 0; h.out = true; h.outT = 0; audio.ko();
       onKO(h);
-      if (allOut()) { scene = 'gameover'; sceneT = 0; }
+      if (allOut()) { scene = 'gameover'; sceneT = 0; if (isEndless()) endlessRecord(); }
     }
   } else {
     h.state = 'hurt'; h.vx = dir * 220; h.inv = 0.5;
@@ -3782,7 +3782,7 @@ function spawnEnemy(type = pickType()) {
   const lvl = Math.min(kills / STAGE.killsToClear, 1);
   enemies.push({
     type, x, y: gz, gz, vx: 0, vy: 0, dir: -side, state: 'walk', t: 0, alive: true,
-    hp: T.hp * DIFF().hp * (T.isBoss && players.length > 1 ? 1 + 0.5 * (players.length - 1) : 1), maxHp: T.hp * DIFF().hp * (T.isBoss && players.length > 1 ? 1 + 0.5 * (players.length - 1) : 1), speed: rand(...T.speed) * (1 + lvl * 0.3), cool: rand(0.4, 1.2), walkT: rand(0, 1), flash: 0, hitDone: false,
+    hp: T.hp * DIFF().hp * endlessHp() * (T.isBoss && players.length > 1 ? 1 + 0.5 * (players.length - 1) : 1), maxHp: T.hp * DIFF().hp * endlessHp() * (T.isBoss && players.length > 1 ? 1 + 0.5 * (players.length - 1) : 1), speed: rand(...T.speed) * (1 + lvl * 0.3), cool: rand(0.4, 1.2), walkT: rand(0, 1), flash: 0, hitDone: false,
     tint: type === 'thug' && Math.random() < 0.3 ? 'hue-rotate(35deg) saturate(1.3)' : '',
   });
 }
@@ -4939,6 +4939,7 @@ function updateLevels(dt) {
     }
     if (sceneT > 0.3 && (hit('punch') || hit('jump') || hit('start'))) {
       resetGame(sel.chars, levelPick);
+      if (isEndless()) endlessStart();
       scene = 'play'; audio.play('hitHeavy', 0.8); audio.tone(780, 0.25, 'triangle', 0.12, 300);
       return;
     }
@@ -5044,7 +5045,8 @@ function drawLevels() {
   // Numéro du monde en très grand, en filigrane
   ctx.save(); ctx.globalAlpha = 0.18; ctx.font = 'italic 900 210px Impact, sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = col;
   ctx.fillText(String(levelPick + 1).padStart(2, '0'), 20 - slide, 270); ctx.restore();
-  outlined('CHOISIS TON UNIVERS', 24, 44, 26, '#ffe14d', 'left');
+  outlined(isEndless() ? 'MODE INFINI — CHOISIS TON MONDE' : 'CHOISIS TON UNIVERS', 24, 44, 26, '#ffe14d', 'left');
+  if (isEndless()) outlined(`RECORD : ${bestScore(L.id) || '—'}`, 44 - slide, 344, 20, '#9fe8ff', 'left');
   outlined(`${levelPick + 1} / ${n}`, W - 24, 44, 22, '#fff', 'right');
   const [univ, place] = L.name.split(' — ');
   ctx.save(); ctx.shadowColor = col; ctx.shadowBlur = 18;
@@ -5185,8 +5187,11 @@ function update(dt) {
     if (scene === 'clear' && sceneT > 1.5 && ['start', 'punch'].some(anyPressed)) {
       if (gameMode === 'story') storyCleared(); else { levelPick = (levelPick + 1) % LEVELS.length; openLevels(); }
     }
-    if (scene === 'gameover' && sceneT > 1.5 && ['start', 'punch'].some(anyPressed)) {
-      if (gameMode === 'story') openMap(); else scene = 'title', sceneT = 0;
+    if (scene === 'gameover' && isEndless() && sceneT > 1.5 && anyPressed('pause')) { scene = 'title'; sceneT = 0; }
+    else if (scene === 'gameover' && sceneT > 1.5 && ['start', 'punch'].some(anyPressed)) {
+      if (gameMode === 'story') openMap();
+      else if (isEndless()) { resetGame(sel.chars, levelPick); endlessStart(); scene = 'play'; }
+      else scene = 'title', sceneT = 0;
     }
   }
   shake *= 0.85;
@@ -6601,7 +6606,16 @@ function draw() {
   ctx.setTransform(RES, 0, 0, RES, 0, 0);
   drawHUD();
 
-  if (scene === 'gameover') {
+  drawEndlessHud();
+  if (scene === 'gameover' && isEndless()) {
+    // mode infini : score final et tableau des scores du monde
+    ctx.fillStyle = `rgba(20,0,30,${Math.min(sceneT, 0.75)})`; ctx.fillRect(0, 0, W, H);
+    outlined('FIN DE LA PARTIE', W / 2, 60, 48, '#ff3355');
+    outlined(`SCORE ${score}  ·  TOUR ${ENDLESS.tour}  ·  ${ENDLESS.wave} VAGUES`, W / 2, 100, 22, '#fff');
+    if (ENDLESS.lastRank === 0) outlined('NOUVEAU RECORD DU MONDE !', W / 2, 128, 20, '#ffe14d');
+    drawScoreboard(LVL.id, 170);
+    if (sceneT > 1.5) outlined('ENTRÉE : rejouer ce monde     ÉCHAP : titre', W / 2, H - 16, 18);
+  } else if (scene === 'gameover') {
     ctx.fillStyle = `rgba(40,0,10,${Math.min(sceneT, 0.6)})`; ctx.fillRect(0, 0, W, H);
     outlined('GAME OVER', W / 2, H / 2 - 10, 90, '#ff3355');
     if (sceneT > 1.5) outlined(gameMode === 'story' ? 'ENTRÉE : retour au plateau pour réessayer' : 'ENTRÉE pour revenir au titre', W / 2, H / 2 + 60, 26);

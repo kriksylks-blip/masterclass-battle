@@ -16,13 +16,14 @@ const saveOpts = () => { try { localStorage.setItem('kfm_opts', JSON.stringify(O
 const DIFF = () => DIFFS[OPTS.diff] || DIFFS[1];
 const applyOpts = () => { if (typeof MUSIC !== 'undefined') MUSIC.volume = 0.05 * OPTS.music; };
 
-// Mode en cours : 'arcade' (niveau au choix) ou 'story' (plateau des mondes)
+// Mode en cours : 'arcade' (niveau au choix), 'story' (plateau des mondes) ou 'endless' (src/endless.js)
 let gameMode = 'arcade';
 
 // ---------- Menu de l'écran titre ----------
 const TITLE_ITEMS = [
   ['story', 'MODE HISTOIRE', 'La Fracture des Mondes — de monde en monde sur le plateau'],
   ['arcade', 'COMBAT LIBRE', 'Choisis ton combattant et ta scène'],
+  ['endless', 'MODE INFINI', 'Des vagues sans fin, de plus en plus dures : bats le record du monde'],
   ['online', 'EN LIGNE', 'Crée une partie ou rejoins des amis avec un code (jusqu\'à 4)'],
   ['options', 'OPTIONS', 'Difficulté, vies, relais, volume et touches'],
 ];
