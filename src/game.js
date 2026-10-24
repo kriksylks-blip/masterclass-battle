@@ -6181,6 +6181,14 @@ const CHAR_ANIME = {
   revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama',
 };
 for (const [id, a] of Object.entries(CHAR_ANIME)) if (CHARS[id]) CHARS[id].anime ??= a;
+// Sélection : les persos rangés par famille (même univers côte à côte), dans l'ordre des séries ci-dessous
+const FAMILY = { dbz: 'db', naruto_s: 'naruto', boruto: 'naruto' };
+const familyOf = id => { const a = CHARS[id]?.anime || CHAR_ANIME[id]; return FAMILY[a] || a; };
+const FAMILY_ORDER = ['masterclass', 'db', 'op', 'naruto', 'ds', 'bleach', 'mha', 'hxh', 'jjk', 'rk', 'opm', 'sl', 'ippo', 'aot', 'berserk', 'fate', 'fma', 'lagoon', 'gunnm', 'baki', 'gintama'];
+{
+  const rank = id => { const r = FAMILY_ORDER.indexOf(familyOf(id)); return r < 0 ? 99 : r; }, pos = Object.fromEntries(CHAR_IDS.map((id, i) => [id, i]));
+  CHAR_IDS.sort((a, b) => rank(a) - rank(b) || pos[a] - pos[b]);
+}
 const IMPACT = 'Impact, "Arial Black", sans-serif', SERIF = '"Times New Roman", Georgia, serif', BRUSH = '"Brush Script MT", "Segoe Script", cursive';
 const ANIME_STYLE = {
   masterclass: { name: 'MASTERCLASS', font: `italic 900 %px ${IMPACT}`, fill: ['#fff3a0', '#ff9a1a'], stroke: '#3a0a00', outer: '#ffe14d', skew: -0.12 },
@@ -6431,6 +6439,16 @@ function drawSelect() {
     ctx.strokeRect(-w / 2, -h / 2, w, h); ctx.shadowBlur = 0;
     ctx.restore();
     who.forEach((p, q) => outlined(`J${p + 1}`, x + (q - (who.length - 1) / 2) * 26, y - h / 2 - 6, 13, COLORS_P[p]));
+  }
+  // début de chaque famille : un trait et le nom de la série au-dessus du bandeau
+  for (const [k, d] of items) {
+    const prev = CHAR_IDS[(k - 1 + n) % n];
+    if (familyOf(prev) === familyOf(CHAR_IDS[k])) continue;
+    const x = W / 2 + d * (tw + gap) + Math.sign(d) * (Math.abs(d) > 0.5 ? 14 : 0) - (tw + gap) / 2 - 6;
+    if (x < 10 || x > W - 30) continue;
+    ctx.save(); ctx.strokeStyle = 'rgba(255,225,77,0.7)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x + 10, cy - 40); ctx.lineTo(x - 10, cy + 40); ctx.stroke(); ctx.restore();
+    const A = animeOf(CHAR_IDS[k]);
+    if (A) { ctx.save(); ctx.font = 'italic 900 11px Impact, sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(5,0,15,0.75)'; const tw2 = ctx.measureText(A.name).width; ctx.fillRect(x + 4, cy - 62, tw2 + 10, 15); ctx.fillStyle = '#ffe14d'; ctx.fillText(A.name, x + 9, cy - 51); ctx.restore(); }
   }
   const pulse = 1 + Math.sin(sceneT * 6) * 0.12;
   outlined('◀', 18 - pulse * 3, cy + 28, 30 * pulse, '#ffe14d');
