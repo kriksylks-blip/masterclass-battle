@@ -14604,601 +14604,6 @@ const SPRITES = {
    ]
   }
  },
- "naruto": {
-  "walk": {
-   "scale": 0.2935,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/walkv_0.png",
-     "w": 314,
-     "h": 576,
-     "ax": 158.5,
-     "ay": 576
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_1.png",
-     "w": 304,
-     "h": 578,
-     "ax": 174.5,
-     "ay": 578
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_2.png",
-     "w": 282,
-     "h": 578,
-     "ax": 170.5,
-     "ay": 578
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_3.png",
-     "w": 242,
-     "h": 586,
-     "ax": 133.5,
-     "ay": 586
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_4.png",
-     "w": 212,
-     "h": 594,
-     "ax": 115.5,
-     "ay": 594
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_5.png",
-     "w": 202,
-     "h": 596,
-     "ax": 112.5,
-     "ay": 596
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_6.png",
-     "w": 208,
-     "h": 594,
-     "ax": 118.5,
-     "ay": 594
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_7.png",
-     "w": 296,
-     "h": 588,
-     "ax": 151.6,
-     "ay": 588
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_8.png",
-     "w": 326,
-     "h": 578,
-     "ax": 178.8,
-     "ay": 578
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_9.png",
-     "w": 318,
-     "h": 576,
-     "ax": 185.0,
-     "ay": 576
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_10.png",
-     "w": 264,
-     "h": 572,
-     "ax": 162.7,
-     "ay": 572
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_11.png",
-     "w": 222,
-     "h": 578,
-     "ax": 122.5,
-     "ay": 578
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_12.png",
-     "w": 216,
-     "h": 584,
-     "ax": 116.5,
-     "ay": 584
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_13.png",
-     "w": 222,
-     "h": 588,
-     "ax": 116.3,
-     "ay": 588
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_14.png",
-     "w": 232,
-     "h": 584,
-     "ax": 118.4,
-     "ay": 584
-    },
-    {
-     "src": "assets/sprites/naruto/walkv_15.png",
-     "w": 276,
-     "h": 580,
-     "ax": 133.5,
-     "ay": 580
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.52,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/jump_0.png",
-     "w": 186,
-     "h": 278,
-     "ax": 101.5,
-     "ay": 278
-    },
-    {
-     "src": "assets/sprites/naruto/jump_1.png",
-     "w": 198,
-     "h": 322,
-     "ax": 124.5,
-     "ay": 322
-    },
-    {
-     "src": "assets/sprites/naruto/jump_2.png",
-     "w": 154,
-     "h": 358,
-     "ax": 99.0,
-     "ay": 358
-    },
-    {
-     "src": "assets/sprites/naruto/jump_3.png",
-     "w": 165,
-     "h": 283,
-     "ax": 86.5,
-     "ay": 283
-    },
-    {
-     "src": "assets/sprites/naruto/jump_4.png",
-     "w": 140,
-     "h": 264,
-     "ax": 81.0,
-     "ay": 264
-    },
-    {
-     "src": "assets/sprites/naruto/jump_5.png",
-     "w": 170,
-     "h": 318,
-     "ax": 109.5,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/naruto/jump_6.png",
-     "w": 253,
-     "h": 332,
-     "ax": 151.5,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/naruto/jump_7.png",
-     "w": 166,
-     "h": 273,
-     "ax": 74.5,
-     "ay": 273
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.5,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/fall_0.png",
-     "w": 211,
-     "h": 321,
-     "ax": 90.5,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/naruto/fall_1.png",
-     "w": 250,
-     "h": 318,
-     "ax": 108.5,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/naruto/fall_2.png",
-     "w": 318,
-     "h": 221,
-     "ax": 135.0,
-     "ay": 221
-    },
-    {
-     "src": "assets/sprites/naruto/fall_3.png",
-     "w": 302,
-     "h": 206,
-     "ax": 115.6,
-     "ay": 206
-    },
-    {
-     "src": "assets/sprites/naruto/fall_4.png",
-     "w": 358,
-     "h": 97,
-     "ax": 172.7,
-     "ay": 97
-    },
-    {
-     "src": "assets/sprites/naruto/fall_5.png",
-     "w": 273,
-     "h": 249,
-     "ax": 179.5,
-     "ay": 249
-    },
-    {
-     "src": "assets/sprites/naruto/fall_6.png",
-     "w": 217,
-     "h": 273,
-     "ax": 136.5,
-     "ay": 273
-    },
-    {
-     "src": "assets/sprites/naruto/fall_7.png",
-     "w": 256,
-     "h": 326,
-     "ax": 130.1,
-     "ay": 326
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.5159,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/combo_0.png",
-     "w": 263,
-     "h": 335,
-     "ax": 135.8,
-     "ay": 335
-    },
-    {
-     "src": "assets/sprites/naruto/combo_1.png",
-     "w": 272,
-     "h": 334,
-     "ax": 131.0,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/naruto/combo_2.png",
-     "w": 308,
-     "h": 336,
-     "ax": 154.5,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/naruto/combo_3.png",
-     "w": 208,
-     "h": 352,
-     "ax": 118.1,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/naruto/combo_4.png",
-     "w": 274,
-     "h": 353,
-     "ax": 81.5,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/naruto/combo_5.png",
-     "w": 301,
-     "h": 347,
-     "ax": 108.0,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/naruto/combo_6.png",
-     "w": 308,
-     "h": 342,
-     "ax": 100.5,
-     "ay": 342
-    },
-    {
-     "src": "assets/sprites/naruto/combo_7.png",
-     "w": 206,
-     "h": 352,
-     "ax": 66.5,
-     "ay": 352
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.5029,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/lowair_0.png",
-     "w": 216,
-     "h": 324,
-     "ax": 137.5,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/naruto/lowair_1.png",
-     "w": 238,
-     "h": 316,
-     "ax": 127.9,
-     "ay": 316
-    },
-    {
-     "src": "assets/sprites/naruto/lowair_2.png",
-     "w": 305,
-     "h": 261,
-     "ax": 120.0,
-     "ay": 261
-    },
-    {
-     "src": "assets/sprites/naruto/lowair_3.png",
-     "w": 245,
-     "h": 321,
-     "ax": 132.4,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/naruto/lowair_4.png",
-     "w": 163,
-     "h": 281,
-     "ax": 82.5,
-     "ay": 281
-    },
-    {
-     "src": "assets/sprites/naruto/lowair_5.png",
-     "w": 255,
-     "h": 347,
-     "ax": 149.0,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/naruto/lowair_6.png",
-     "w": 315,
-     "h": 319,
-     "ax": 150.0,
-     "ay": 319
-    },
-    {
-     "src": "assets/sprites/naruto/lowair_7.png",
-     "w": 232,
-     "h": 367,
-     "ax": 134.0,
-     "ay": 367
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.4666,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/dashcharge_0.png",
-     "w": 276,
-     "h": 309,
-     "ax": 166.0,
-     "ay": 309
-    },
-    {
-     "src": "assets/sprites/naruto/dashcharge_1.png",
-     "w": 269,
-     "h": 317,
-     "ax": 159.5,
-     "ay": 317
-    },
-    {
-     "src": "assets/sprites/naruto/dashcharge_2.png",
-     "w": 311,
-     "h": 326,
-     "ax": 159.0,
-     "ay": 326
-    },
-    {
-     "src": "assets/sprites/naruto/dashcharge_3.png",
-     "w": 253,
-     "h": 331,
-     "ax": 130.2,
-     "ay": 331
-    },
-    {
-     "src": "assets/sprites/naruto/dashcharge_4.png",
-     "w": 202,
-     "h": 359,
-     "ax": 110.0,
-     "ay": 359
-    },
-    {
-     "src": "assets/sprites/naruto/dashcharge_5.png",
-     "w": 201,
-     "h": 360,
-     "ax": 109.0,
-     "ay": 360
-    },
-    {
-     "src": "assets/sprites/naruto/dashcharge_6.png",
-     "w": 204,
-     "h": 330,
-     "ax": 119.0,
-     "ay": 330
-    },
-    {
-     "src": "assets/sprites/naruto/dashcharge_7.png",
-     "w": 241,
-     "h": 347,
-     "ax": 116.8,
-     "ay": 347
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.4985,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/special_0.png",
-     "w": 238,
-     "h": 338,
-     "ax": 131.5,
-     "ay": 338
-    },
-    {
-     "src": "assets/sprites/naruto/special_1.png",
-     "w": 292,
-     "h": 335,
-     "ax": 171.5,
-     "ay": 335
-    },
-    {
-     "src": "assets/sprites/naruto/special_2.png",
-     "w": 330,
-     "h": 339,
-     "ax": 178.0,
-     "ay": 339
-    },
-    {
-     "src": "assets/sprites/naruto/special_3.png",
-     "w": 272,
-     "h": 346,
-     "ax": 138.9,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/naruto/special_4.png",
-     "w": 247,
-     "h": 364,
-     "ax": 115.5,
-     "ay": 364
-    },
-    {
-     "src": "assets/sprites/naruto/special_5.png",
-     "w": 252,
-     "h": 355,
-     "ax": 121.4,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/naruto/special_6.png",
-     "w": 312,
-     "h": 347,
-     "ax": 157.0,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/naruto/special_7.png",
-     "w": 305,
-     "h": 288,
-     "ax": 185.0,
-     "ay": 288
-    }
-   ]
-  },
-  "guard": {
-   "scale": 0.2162,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/guard_0.png",
-     "w": 544,
-     "h": 716,
-     "ax": 291.1,
-     "ay": 716
-    },
-    {
-     "src": "assets/sprites/naruto/guard_1.png",
-     "w": 567,
-     "h": 700,
-     "ax": 375.5,
-     "ay": 700
-    }
-   ]
-  },
-  "idle": {
-   "scale": 0.2783,
-   "rate": 5.65,
-   "frames": [
-    {
-     "src": "assets/sprites/naruto/idlev_0.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_1.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_2.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_3.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_4.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_5.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_6.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_7.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_8.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_9.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_10.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/naruto/idlev_11.png",
-     "w": 408,
-     "h": 546,
-     "ax": 207.2,
-     "ay": 546
-    }
-   ]
-  }
- },
  "op_pirate": {
   "walk": {
    "scale": 0.6154,
@@ -44672,191 +44077,6 @@ const SPRITES = {
    ]
   }
  },
- "fm_chimera": {
-  "walk": {
-   "scale": 0.6267,
-   "frames": [
-    {
-     "src": "assets/sprites/fm_chimera/walk_0.png",
-     "w": 300,
-     "h": 350,
-     "ax": 173.0,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/fm_chimera/walk_1.png",
-     "w": 268,
-     "h": 334,
-     "ax": 157.5,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/fm_chimera/walk_2.png",
-     "w": 257,
-     "h": 344,
-     "ax": 143.0,
-     "ay": 344
-    },
-    {
-     "src": "assets/sprites/fm_chimera/walk_3.png",
-     "w": 286,
-     "h": 358,
-     "ax": 154.0,
-     "ay": 358
-    },
-    {
-     "src": "assets/sprites/fm_chimera/walk_4.png",
-     "w": 297,
-     "h": 355,
-     "ax": 168.3,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/fm_chimera/walk_5.png",
-     "w": 261,
-     "h": 337,
-     "ax": 147.8,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/fm_chimera/walk_6.png",
-     "w": 261,
-     "h": 348,
-     "ax": 144.0,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/fm_chimera/walk_7.png",
-     "w": 292,
-     "h": 359,
-     "ax": 155.0,
-     "ay": 359
-    }
-   ]
-  },
-  "attack": {
-   "scale": 0.6267,
-   "frames": [
-    {
-     "src": "assets/sprites/fm_chimera/attack_0.png",
-     "w": 285,
-     "h": 331,
-     "ax": 154.0,
-     "ay": 331
-    },
-    {
-     "src": "assets/sprites/fm_chimera/attack_1.png",
-     "w": 281,
-     "h": 370,
-     "ax": 183.5,
-     "ay": 370
-    },
-    {
-     "src": "assets/sprites/fm_chimera/attack_2.png",
-     "w": 392,
-     "h": 334,
-     "ax": 202.0,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/fm_chimera/attack_3.png",
-     "w": 271,
-     "h": 347,
-     "ax": 154.5,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/fm_chimera/attack_4.png",
-     "w": 264,
-     "h": 336,
-     "ax": 162.0,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/fm_chimera/attack_5.png",
-     "w": 402,
-     "h": 338,
-     "ax": 210.5,
-     "ay": 338
-    },
-    {
-     "src": "assets/sprites/fm_chimera/attack_6.png",
-     "w": 391,
-     "h": 332,
-     "ax": 227.5,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/fm_chimera/attack_7.png",
-     "w": 282,
-     "h": 365,
-     "ax": 144.0,
-     "ay": 365
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.6267,
-   "frames": [
-    {
-     "src": "assets/sprites/fm_chimera/fall_0.png",
-     "w": 243,
-     "h": 332,
-     "ax": 114.6,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/fm_chimera/fall_1.png",
-     "w": 296,
-     "h": 330,
-     "ax": 89.4,
-     "ay": 330
-    },
-    {
-     "src": "assets/sprites/fm_chimera/fall_2.png",
-     "w": 337,
-     "h": 297,
-     "ax": 132.5,
-     "ay": 297
-    },
-    {
-     "src": "assets/sprites/fm_chimera/fall_3.png",
-     "w": 329,
-     "h": 204,
-     "ax": 95.8,
-     "ay": 204
-    },
-    {
-     "src": "assets/sprites/fm_chimera/fall_4.png",
-     "w": 376,
-     "h": 133,
-     "ax": 148.0,
-     "ay": 133
-    },
-    {
-     "src": "assets/sprites/fm_chimera/fall_5.png",
-     "w": 307,
-     "h": 234,
-     "ax": 185.0,
-     "ay": 234
-    },
-    {
-     "src": "assets/sprites/fm_chimera/fall_6.png",
-     "w": 279,
-     "h": 248,
-     "ax": 171.6,
-     "ay": 248
-    },
-    {
-     "src": "assets/sprites/fm_chimera/fall_7.png",
-     "w": 277,
-     "h": 313,
-     "ax": 169.0,
-     "ay": 313
-    }
-   ]
-  }
- },
  "fm_boss": {
   "walk": {
    "scale": 0.6374,
@@ -48730,6 +47950,786 @@ const SPRITES = {
      "h": 532,
      "ax": 232.6,
      "ay": 532
+    }
+   ]
+  }
+ },
+ "naruto": {
+  "walk": {
+   "scale": 0.2121,
+   "rate": 24.62,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/walkv_0.png",
+     "w": 448,
+     "h": 794,
+     "ax": 276.5,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_1.png",
+     "w": 424,
+     "h": 800,
+     "ax": 246.5,
+     "ay": 800
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_2.png",
+     "w": 394,
+     "h": 810,
+     "ax": 196.5,
+     "ay": 810
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_3.png",
+     "w": 410,
+     "h": 810,
+     "ax": 204.5,
+     "ay": 810
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_4.png",
+     "w": 434,
+     "h": 800,
+     "ax": 216.5,
+     "ay": 800
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_5.png",
+     "w": 472,
+     "h": 800,
+     "ax": 249.5,
+     "ay": 800
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_6.png",
+     "w": 486,
+     "h": 794,
+     "ax": 263.5,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_7.png",
+     "w": 458,
+     "h": 802,
+     "ax": 241.5,
+     "ay": 802
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_8.png",
+     "w": 430,
+     "h": 806,
+     "ax": 219.5,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_9.png",
+     "w": 372,
+     "h": 818,
+     "ax": 187.5,
+     "ay": 818
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_10.png",
+     "w": 372,
+     "h": 822,
+     "ax": 195.5,
+     "ay": 822
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_11.png",
+     "w": 414,
+     "h": 822,
+     "ax": 244.5,
+     "ay": 822
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_12.png",
+     "w": 484,
+     "h": 812,
+     "ax": 290.5,
+     "ay": 812
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_13.png",
+     "w": 514,
+     "h": 804,
+     "ax": 312.5,
+     "ay": 804
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_14.png",
+     "w": 499,
+     "h": 790,
+     "ax": 334.5,
+     "ay": 790
+    },
+    {
+     "src": "assets/sprites/naruto/walkv_15.png",
+     "w": 488,
+     "h": 790,
+     "ax": 321.5,
+     "ay": 790
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.52,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/jump_0.png",
+     "w": 184,
+     "h": 278,
+     "ax": 100.5,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/naruto/jump_1.png",
+     "w": 198,
+     "h": 322,
+     "ax": 124.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/naruto/jump_2.png",
+     "w": 154,
+     "h": 358,
+     "ax": 98.5,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/naruto/jump_3.png",
+     "w": 166,
+     "h": 283,
+     "ax": 89.0,
+     "ay": 283
+    },
+    {
+     "src": "assets/sprites/naruto/jump_4.png",
+     "w": 141,
+     "h": 264,
+     "ax": 82.0,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/naruto/jump_5.png",
+     "w": 169,
+     "h": 318,
+     "ax": 108.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/naruto/jump_6.png",
+     "w": 253,
+     "h": 331,
+     "ax": 150.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/naruto/jump_7.png",
+     "w": 168,
+     "h": 273,
+     "ax": 77.0,
+     "ay": 273
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/fall_0.png",
+     "w": 212,
+     "h": 321,
+     "ax": 90.6,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/naruto/fall_1.png",
+     "w": 250,
+     "h": 318,
+     "ax": 108.0,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/naruto/fall_2.png",
+     "w": 319,
+     "h": 222,
+     "ax": 136.0,
+     "ay": 222
+    },
+    {
+     "src": "assets/sprites/naruto/fall_3.png",
+     "w": 303,
+     "h": 206,
+     "ax": 112.2,
+     "ay": 206
+    },
+    {
+     "src": "assets/sprites/naruto/fall_4.png",
+     "w": 357,
+     "h": 97,
+     "ax": 168.2,
+     "ay": 97
+    },
+    {
+     "src": "assets/sprites/naruto/fall_5.png",
+     "w": 273,
+     "h": 249,
+     "ax": 179.5,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/naruto/fall_6.png",
+     "w": 217,
+     "h": 272,
+     "ax": 136.0,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/naruto/fall_7.png",
+     "w": 256,
+     "h": 327,
+     "ax": 129.7,
+     "ay": 327
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5246,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/combo_0.png",
+     "w": 262,
+     "h": 334,
+     "ax": 133.2,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/naruto/combo_1.png",
+     "w": 272,
+     "h": 334,
+     "ax": 131.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/naruto/combo_2.png",
+     "w": 307,
+     "h": 336,
+     "ax": 154.5,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/naruto/combo_3.png",
+     "w": 208,
+     "h": 353,
+     "ax": 119.6,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/naruto/combo_4.png",
+     "w": 274,
+     "h": 352,
+     "ax": 81.5,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/naruto/combo_5.png",
+     "w": 301,
+     "h": 347,
+     "ax": 103.2,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/naruto/combo_6.png",
+     "w": 308,
+     "h": 342,
+     "ax": 99.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/naruto/combo_7.png",
+     "w": 204,
+     "h": 352,
+     "ax": 65.0,
+     "ay": 352
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4987,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/lowair_0.png",
+     "w": 216,
+     "h": 321,
+     "ax": 138.0,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/naruto/lowair_1.png",
+     "w": 238,
+     "h": 315,
+     "ax": 125.5,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/naruto/lowair_2.png",
+     "w": 305,
+     "h": 260,
+     "ax": 120.5,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/naruto/lowair_3.png",
+     "w": 244,
+     "h": 321,
+     "ax": 129.0,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/naruto/lowair_4.png",
+     "w": 162,
+     "h": 282,
+     "ax": 82.5,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/naruto/lowair_5.png",
+     "w": 255,
+     "h": 348,
+     "ax": 148.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/naruto/lowair_6.png",
+     "w": 315,
+     "h": 318,
+     "ax": 149.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/naruto/lowair_7.png",
+     "w": 232,
+     "h": 368,
+     "ax": 134.5,
+     "ay": 368
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4682,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/dashcharge_0.png",
+     "w": 276,
+     "h": 309,
+     "ax": 166.0,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/naruto/dashcharge_1.png",
+     "w": 269,
+     "h": 317,
+     "ax": 160.0,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/naruto/dashcharge_2.png",
+     "w": 311,
+     "h": 326,
+     "ax": 157.5,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/naruto/dashcharge_3.png",
+     "w": 253,
+     "h": 331,
+     "ax": 130.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/naruto/dashcharge_4.png",
+     "w": 202,
+     "h": 360,
+     "ax": 110.5,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/naruto/dashcharge_5.png",
+     "w": 201,
+     "h": 360,
+     "ax": 109.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/naruto/dashcharge_6.png",
+     "w": 205,
+     "h": 331,
+     "ax": 119.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/naruto/dashcharge_7.png",
+     "w": 241,
+     "h": 347,
+     "ax": 115.2,
+     "ay": 347
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5086,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/special_0.png",
+     "w": 238,
+     "h": 338,
+     "ax": 132.0,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/naruto/special_1.png",
+     "w": 292,
+     "h": 335,
+     "ax": 171.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/naruto/special_2.png",
+     "w": 330,
+     "h": 340,
+     "ax": 179.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/naruto/special_3.png",
+     "w": 272,
+     "h": 345,
+     "ax": 137.8,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/naruto/special_4.png",
+     "w": 246,
+     "h": 365,
+     "ax": 116.1,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/naruto/special_5.png",
+     "w": 252,
+     "h": 353,
+     "ax": 122.2,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/naruto/special_6.png",
+     "w": 311,
+     "h": 347,
+     "ax": 157.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/naruto/special_7.png",
+     "w": 305,
+     "h": 289,
+     "ax": 181.5,
+     "ay": 289
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2165,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/guard_0.png",
+     "w": 544,
+     "h": 715,
+     "ax": 292.0,
+     "ay": 715
+    },
+    {
+     "src": "assets/sprites/naruto/guard_1.png",
+     "w": 566,
+     "h": 700,
+     "ax": 374.0,
+     "ay": 700
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.194,
+   "rate": 7.35,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/idlev_0.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_1.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_2.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_3.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_4.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_5.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_6.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_7.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_8.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_9.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_10.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/naruto/idlev_11.png",
+     "w": 612,
+     "h": 796,
+     "ax": 324.7,
+     "ay": 796
+    }
+   ]
+  }
+ },
+ "fm_chimera": {
+  "walk": {
+   "scale": 0.6267,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_chimera/walk_0.png",
+     "w": 300,
+     "h": 350,
+     "ax": 173.0,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_1.png",
+     "w": 268,
+     "h": 334,
+     "ax": 157.5,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_2.png",
+     "w": 257,
+     "h": 344,
+     "ax": 143.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_3.png",
+     "w": 286,
+     "h": 358,
+     "ax": 154.0,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_4.png",
+     "w": 297,
+     "h": 355,
+     "ax": 168.3,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_5.png",
+     "w": 261,
+     "h": 337,
+     "ax": 147.8,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_6.png",
+     "w": 261,
+     "h": 348,
+     "ax": 144.0,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_7.png",
+     "w": 292,
+     "h": 359,
+     "ax": 155.0,
+     "ay": 359
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6267,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_chimera/attack_0.png",
+     "w": 285,
+     "h": 331,
+     "ax": 154.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_1.png",
+     "w": 281,
+     "h": 370,
+     "ax": 183.5,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_2.png",
+     "w": 392,
+     "h": 334,
+     "ax": 202.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_3.png",
+     "w": 271,
+     "h": 347,
+     "ax": 154.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_4.png",
+     "w": 264,
+     "h": 336,
+     "ax": 162.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_5.png",
+     "w": 402,
+     "h": 338,
+     "ax": 210.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_6.png",
+     "w": 391,
+     "h": 332,
+     "ax": 227.5,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_7.png",
+     "w": 282,
+     "h": 365,
+     "ax": 144.0,
+     "ay": 365
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6267,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_chimera/fall_0.png",
+     "w": 238,
+     "h": 330,
+     "ax": 109.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_1.png",
+     "w": 293,
+     "h": 327,
+     "ax": 87.3,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_2.png",
+     "w": 333,
+     "h": 294,
+     "ax": 130.5,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_3.png",
+     "w": 327,
+     "h": 202,
+     "ax": 92.6,
+     "ay": 202
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_4.png",
+     "w": 373,
+     "h": 133,
+     "ax": 147.5,
+     "ay": 133
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_5.png",
+     "w": 306,
+     "h": 233,
+     "ax": 185.0,
+     "ay": 233
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_6.png",
+     "w": 277,
+     "h": 245,
+     "ax": 170.7,
+     "ay": 245
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_7.png",
+     "w": 275,
+     "h": 309,
+     "ax": 168.5,
+     "ay": 309
     }
    ]
   }

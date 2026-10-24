@@ -1681,6 +1681,108 @@ const FXV = {
    "w": 1220,
    "h": 550
   }
+ ],
+ "katon_v": [
+  {
+   "src": "assets/fx/katon_v_0.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_1.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_2.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_3.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_4.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_5.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_6.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_7.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_8.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_9.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_10.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_11.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_12.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_13.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_14.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_15.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_16.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_17.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_18.png",
+   "w": 1660,
+   "h": 910
+  },
+  {
+   "src": "assets/fx/katon_v_19.png",
+   "w": 1660,
+   "h": 910
+  }
  ]
 };
 Object.assign(FX, FXV);

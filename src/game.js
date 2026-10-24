@@ -4567,7 +4567,7 @@ function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
 }
 
 const fadeCanvas = document.createElement('canvas');
-const FILMED_PROJ = { hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9] };
+const FILMED_PROJ = { katon: ['katon_v', 130, 0.74], hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9] };
 function drawProjs() {
   for (const p of projs) {
     const sx = p.x - camX;
