@@ -500,6 +500,8 @@ const MOVES = {
 };
 // Luffy : bras et jambes en caoutchouc, des coups qui portent très loin
 const L_MOVES = {
+  // lanceur du jonglage : les deux paumes projetées vers le haut (poses du bazooka)
+  rocket:  { dur: 0.6, on: 0.22, off: 0.36, reach: [10, 170], y: [-200, -40], dmg: 3, kb: 220, ki: 10, launch: -760, rubber: true, call: 'GOMU GOMU NO… ROCKET !' },
   punch:   { dur: 0.42, on: 0.13, off: 0.27, cancel: 0.27, reach: [20, 210], y: [-150, -95], dmg: 1.5, kb: 200, ki: 6, rubber: true, call: 'PISTOL !' },
   punch2:  { dur: 0.40, on: 0.12, off: 0.25, cancel: 0.25, reach: [20, 210], y: [-150, -95], dmg: 1.5, kb: 220, ki: 6, rubber: true },
   gatling: { dur: 0.95, on: 0.15, off: 0.78, multi: 0.09, reach: [20, 165], y: [-170, -70], dmg: 0.6, kb: 40, ki: 3, rubber: true, call: 'GATLING !' },
@@ -649,10 +651,9 @@ const GT_MOVES = { ...SWORD,
 };
 // Sanji : uniquement les pieds, mains dans les poches ; Diable Jambe = la jambe s'enflamme en tournant sur lui-même
 const SJ_MOVES = { ...FIST,
-  uppercut: { ...FIST.uppercut, p: ['combo', [0, 2], [0.08]] }, // coup de pied haut qui monte (lanceur du jonglage)
   punch:    { dur: 0.30, on: 0.06, off: 0.17, cancel: 0.17, reach: [20, 150], y: [-150, -60], dmg: 1.2, kb: 180, ki: 6, p: ['combo', [0, 1], [0.05]] },
   cross:    { dur: 0.34, on: 0.07, off: 0.19, cancel: 0.19, reach: [20, 155], y: [-190, -90], dmg: 1.5, kb: 220, ki: 6, p: ['combo', [2]] },
-  uppercut: { dur: 0.50, on: 0.14, off: 0.28, reach: [10, 140], y: [-190, -20], dmg: 3, kb: 320, ki: 10, launch: -420, p: ['combo', [2, 3], [0.12]], trail: { a0: -1.6, a1: 0.6, r: 120, at: 0.12 }, call: 'CONCASSÉ !' },
+  uppercut: { dur: 0.50, on: 0.14, off: 0.28, reach: [10, 140], y: [-190, -20], dmg: 3, kb: 240, ki: 10, launch: -760, p: ['combo', [2, 3], [0.12]], trail: { a0: -1.6, a1: 0.6, r: 120, at: 0.12 }, call: 'CONCASSÉ !' },
   kick:     { dur: 0.42, on: 0.12, off: 0.26, cancel: 0.26, reach: [10, 160], y: [-130, -10], dmg: 1.6, kb: 260, ki: 6, p: ['combo', [4, 5], [0.1]] },
   roundhouse: { dur: 0.48, on: 0.10, off: 0.30, cancel: 0.30, reach: [-110, 160], y: [-130, -10], dmg: 2.2, kb: 320, ki: 8, p: ['combo', [6]], trail: { a0: -3.1, a1: 3.1, r: 130, y: -60 } },
   spinback: { dur: 0.58, on: 0.10, off: 0.32, reach: [-60, 165], y: [-140, -10], dmg: 3, kb: 420, ki: 10, launch: -520, p: ['combo', [5, 6, 7], [0.12, 0.34]], trail: { a0: -3.1, a1: 3.1, r: 135, y: -60 }, call: 'PARAGE SHOT !' },
@@ -887,7 +888,7 @@ const CHARS = {
       // Chargé à bloc : le Gear 5, tout blanc, avec son nuage autour du cou
       { ki: 100, name: 'GEAR 5', sheet: 'luffy5', speed: 1.4, dmg: 1.9, at: 0.6, end: 1.1, cloud: true, aura: ['rgba(255,255,255,0.45)', '#ffffff'], bar: ['#d9d2ff', '#ffffff'], color: '#ffffff', hit: '#ffffff' },
     ],
-    moves: L_MOVES, chain: { punch: ['punch', 'punch2', 'gatling'], kick: ['kick', 'whip', 'axe'] },
+    moves: L_MOVES, chain: { punch: ['punch', 'punch2', 'gatling'], kick: ['kick', 'whip', 'axe'], launcher: 'rocket' },
     special: 'bazooka', speed: 265, pose: luffyPose, ultra: [startGigant, updateGigant],
   },
   goku: {
@@ -1423,9 +1424,11 @@ function finishOf(h) {
   const recent = t => sceneT - (t ?? -9) < 0.5, rel = recent(h.mxT) ? h.lastMx * h.dir : 0;
   if (recent(h.upT)) return C.chain.launcher || kLast || pLast;
   if (recent(h.downT) && C.moves.ckick) return 'ckick';
-  if (rel > 0) return C.moves.finisher ? 'finisher' : pLast;
-  if (rel < 0) return k[1] || kLast || pLast;
-  return C.moves.finisher ? kLast || pLast : pLast;
+  // avant : estocade des épéistes, sinon la ruée explosive ; arrière : coup qui frappe derrière ; neutre : projection normale
+  const notLaunch = n => n && n !== C.chain.launcher;
+  if (rel > 0) return C.moves.thrust ? 'thrust' : C.moves.finisher ? 'finisher' : pLast;
+  if (rel < 0) return k.find(n => C.moves[n]?.reach?.[0] < -50) || k[1] || kLast || pLast;
+  return notLaunch(kLast) ? kLast : notLaunch(pLast) ? pLast : k[1] || pLast;
 }
 // ---------- Garde, parade, esquive (ancien bouton Pied) ----------
 const GUARD = { regen: 22, min: 15, cost: 3.5, chip: 0.15, parry: 0.22, dodgeT: 0.3, dodgeV: 820, dodgeInv: 0.22 };
@@ -1433,7 +1436,7 @@ const GUARD = { regen: 22, min: 15, cost: 3.5, chip: 0.15, parry: 0.22, dodgeT: 
 const CHARGE = { show: 0.32, full: 0.75, weak: 0.4 };
 const MEGA_MOVE = { dur: 0.6, on: 0.12, off: 0.3, reach: [10, 175], y: [-190, -50], dmg: 4, kb: 900, ki: 12, launch: -360, push: 1000, pushAt: 0.04, pushDur: 0.16, lean: 16, shock: true, mega: true };
 // dash aérien, coup plongeant et coup chargé : communs à tous les persos
-for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; C.moves.megasmash ??= MEGA_MOVE; }
+for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; C.moves.megasmash ??= MEGA_MOVE; if (C.pose === stdPose && !C.moves.thrust) C.moves.finisher ??= FINISHER; }
 function megaHit(h, e) {
   const T = ETYPES[e.type];
   if (T.isBoss || e.hp > e.maxHp * CHARGE.weak) { e.smashT = 0.9; return; } // encore solide : grosse projection, rebond au bord
@@ -1655,7 +1658,7 @@ function updatePlayer(h, dt) {
       }
       else if (pressed.has('jump')) { h.state = 'prejump'; h.t = 0; audio.play('swing', 0.4, 0.8); }
       else if (pressed.has('dash')) { startMove(h, 'dash'); h.vx = 0; }
-      else if (pressed.has('punch')) startMove(h, 'punch');
+      else if (pressed.has('punch')) startMove(h, C.chain?.punch?.[0] || 'punch'); // premier coup de SON combo
       else if (pressed.has('blast')) {
         // certains persos changent de spécial une fois transformés (Amaterasu d'Itachi, direct de Baki)
         const sp = h.boost && C.special2 ? C.special2 : C.special, cost = C.moves[sp].cost;
@@ -5376,6 +5379,7 @@ function luffyPose(h) {
     case 'axe': return ['kicks', t < 0.36 ? 2 : 3];
     case 'dash': return ['rocket', step(t, [0.1, 0.18, 0.45])];
     case 'bazooka': return ['bazooka', step(t, [0.24, 0.32, 0.6])];
+    case 'rocket': return ['bazooka', step(t, [0.2, 0.28, 0.5])];
     case 'charge': return ['rocket', 3]; // les étapes 4 et 5 ont un 2e chapeau dessiné par erreur
     case 'transform': return ['rocket', [3, 3, 6, 7][step(t, [0.25, 0.5, 0.8])]];
     case 'ultra': return ['gigant', step(t, [GIGANT.inflate, GIGANT.punch, GIGANT.end - 0.3])];
