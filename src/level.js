@@ -48,6 +48,7 @@ const TOKYO = {
 // 4 zones : la 4e (fichiers <monde>_z4_*, ajoutée le 23/10) se place avant celle du boss -> ordre z1, z2, z4, z3.
 // zone où arrive le véhicule (par défaut la 1re) : le train de l'Infini débarque dans la clairière, pas dans le wagon
 const VEH_ZONE = { ds: 3 };
+const ONE_MID = new Set(['aot', 'bk', 'fz', 'fm', 'rp']);
 function themedLevel(id, name, sub, zoneNames, a, b) {
   const n = zoneNames.length, files = n === 4 ? [1, 2, 4, 3] : [1, 2, 3], from = files.map((_, k) => k * 2900), end = from[n - 1] + 3000;
   const waves = [], props = [], items = ['onigiri', 'ramen', 'drink', 'chicken'];
@@ -61,7 +62,9 @@ function themedLevel(id, name, sub, zoneNames, a, b) {
   waves.push({ x: end - 960, foes: [`${id}_boss`], boss: true });
   return {
     id, name, sub, sky: `${id}_sky`, boss: `${id}_boss`, extra: a, end, waves, props,
-    zones: zoneNames.map((nm, k) => ({ id: `${id}_z${files[k]}`, name: nm, from: from[k], mid: `${id}_z${files[k]}_mid`, mid2: `${id}_z${files[k]}_mid2`, ground: `${id}_z${files[k]}_ground` })),
+    // mondes du 24/10 : leurs deux versions du plan moyen ne se raccordent pas (horizon, lumière ou pièce différents) ;
+    // le fondu entre elles laissait un fantôme. Une seule version, répétée en miroir : aucune coupure visible
+    zones: zoneNames.map((nm, k) => ({ id: `${id}_z${files[k]}`, name: nm, from: from[k], mid: `${id}_z${files[k]}_mid`, mid2: ONE_MID.has(id) ? null : `${id}_z${files[k]}_mid2`, ground: `${id}_z${files[k]}_ground` })),
   };
 }
 
@@ -842,10 +845,12 @@ const STRIPS = {
   nr_z4: STRIP('rocks_grass', 60, 26), mh_z4: STRIP('rubble', 70, 30), rk_z4: STRIP('rail_wood', 70, 26),
   op2_z4: STRIP('balustrade', 56, 22), nr2_z4: STRIP('rail_metal', 64, 24), ds2_z4: STRIP('rail_wood', 70, 26), db2_z4: STRIP('rubble', 70, 30),
   jk_z4: STRIP('rubble', 70, 30), sl_z4: STRIP('rubble', 70, 30), opm_z4: STRIP('rubble', 70, 30), bl2_z4: STRIP('balustrade', 56, 22),
-  // cinq mondes du 24/10 (les intérieurs n'ont pas de bordure)
-  aot_z1: STRIP('rubble', 70, 30), aot_z2: STRIP('rubble', 70, 30), aot_z3: STRIP('rubble', 70, 30),
-  bk_z1: STRIP('rubble', 70, 30), fz_z1: STRIP('curb_city', 46, 22), fz_z2: STRIP('rail_wood', 70, 26), fm_z2: STRIP('curb_city', 46, 22),
-  rp_z1: STRIP('rail_metal', 64, 24), rp_z4: STRIP('curb_city', 46, 22),
+  // cinq mondes du 24/10 : une bordure partout, intérieurs compris (la jointure entre le sol du décor et le sol se voyait)
+  aot_z1: STRIP('rubble', 70, 30), aot_z2: STRIP('rubble', 70, 30), aot_z3: STRIP('rubble', 70, 30), aot_z4: STRIP('rocks_grass', 60, 26),
+  bk_z1: STRIP('rubble', 70, 30), bk_z2: STRIP('balustrade', 56, 22), bk_z3: STRIP('rubble', 70, 30), bk_z4: STRIP('rocks_grass', 60, 26),
+  fz_z1: STRIP('curb_city', 46, 22), fz_z2: STRIP('rail_wood', 70, 26), fz_z3: STRIP('rubble', 70, 30), fz_z4: STRIP('rocks_grass', 60, 26),
+  fm_z1: STRIP('rubble', 70, 30), fm_z2: STRIP('curb_city', 46, 22), fm_z3: STRIP('rubble', 70, 30), fm_z4: STRIP('rail_metal', 64, 24),
+  rp_z1: STRIP('rail_metal', 64, 24), rp_z2: STRIP('rail_wood', 70, 26), rp_z3: STRIP('rail_metal', 64, 24), rp_z4: STRIP('curb_city', 46, 22),
   // routes B (le centre commercial est un intérieur : pas de bordure)
   op_z5: STRIP('curb_city', 46, 22), nr_z5: STRIP('rocks_grass', 60, 26),
 };

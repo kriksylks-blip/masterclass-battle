@@ -1410,7 +1410,7 @@ function airPose(h) {
   const hero = h.C.pose === heroPose, pick = (...c) => c.find(([a]) => SPRITES[sheetFor(h, a)]?.[a]) || ['jump', 4];
   if (h.state === 'airdash') return hero ? pick(['dash', 2]) : pick(['dashcharge', 2]);
   if (h.state === 'dive') return hero ? pick(['jumpkick', 4]) : pick(['lowair', 6]);
-  if (h.state === 'dodge') return hero ? pick(['dash', 1]) : pick(['dashcharge', 1]);
+  if (h.state === 'dodge') return h.dodge?.back ? (hero ? pick(['jump', 3]) : pick(['jump', 3], ['lowair', 1])) : hero ? pick(['dash', 1]) : pick(['dashcharge', 1]);
   // garde et coup chargé armé : planche 'guard' de chaque perso (étape 0 garde, 1 armé), sinon l'ancienne pose
   if (h.state === 'smashcharge') return hero ? pick(['guard', 1], ['charge', 1]) : pick(['guard', 1], ['dashcharge', 4]);
   if (h.state === 'guard') return hero ? pick(['guard', 0], ['punch', 0]) : pick(['guard', 0], ['combo', 0]);
@@ -1435,11 +1435,21 @@ function finishOf(h) {
   return notLaunch(kLast) ? kLast : notLaunch(pLast) ? pLast : k[1] || pLast;
 }
 // ---------- Garde, parade, esquive (ancien bouton Pied) ----------
-const GUARD = { regen: 22, min: 15, cost: 3.5, chip: 0.15, parry: 0.22, dodgeT: 0.3, dodgeV: 820, dodgeInv: 0.22 };
+const GUARD = { regen: 22, min: 15, cost: 3.5, chip: 0.15, parry: 0.22, dodgeT: 0.3, dodgeV: 820, dodgeInv: 0.22, backT: 0.4, backHop: 75 };
 // ---------- Coup chargé : attaque maintenue puis relâchée ; un ennemi affaibli est éjecté hors de l'écran ----------
 const CHARGE = { show: 0.32, full: 0.75, weak: 0.4 };
 const MEGA_MOVE = { dur: 0.6, on: 0.12, off: 0.3, reach: [10, 175], y: [-190, -50], dmg: 4, kb: 900, ki: 12, launch: -360, push: 1000, pushAt: 0.04, pushDur: 0.16, lean: 16, shock: true, mega: true };
 // dash aérien, coup plongeant et coup chargé : communs à tous les persos
+// Uppercut de fin de combo (lanceur, haut + attaque) : uppercut montant façon Shoryuken (24/10). Il avance d'un pas, décolle
+// du sol en frappant, touche plus large et plus haut (il ne rate plus l'ennemi repoussé par le combo) et l'envoie très haut.
+for (const C of Object.values(CHARS)) {
+  const u = C.chain?.launcher === 'uppercut' && C.moves.uppercut;
+  if (!u || u.rise) continue;
+  const on = Math.min(u.on, 0.1);
+  C.moves.uppercut = { ...u, dur: Math.max(u.dur, 0.62), on, off: Math.max(u.off, on + 0.28), reach: [Math.min(u.reach[0], -10), Math.max(u.reach[1], 140)],
+    y: [Math.min(u.y[0], -260), Math.max(u.y[1], -40)], dmg: u.dmg * 1.3, launch: -900, push: u.push ?? 380, pushAt: u.pushAt ?? 0.02, pushDur: u.pushDur ?? 0.14,
+    rise: 115, shock: true };
+}
 for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; C.moves.megasmash ??= MEGA_MOVE; if (C.pose === stdPose && !C.moves.thrust) C.moves.finisher ??= FINISHER; }
 // Combos des combattants à mains nues (24/10) : deux coups de poing, deux coups de pied, puis le finish choisi par la
 // direction (finishOf) — le même bouton enchaîne poings et pieds, comme dans les jeux de combat
@@ -1597,11 +1607,13 @@ function updatePlayer(h, dt) {
   }
   if (h.state === 'juggle') { updateJuggle(h, dt); return; }
   if (h.state === 'dodge') {
-    const k = Math.max(0, 1 - h.t / GUARD.dodgeT);
-    h.vx = h.dodge.x * GUARD.dodgeV * k; h.vz = h.dodge.z * GUARD.dodgeV * 0.5 * k;
+    const T = h.dodge.back ? GUARD.backT : GUARD.dodgeT, k = Math.max(0, 1 - h.t / T);
+    h.vx = h.dodge.x * GUARD.dodgeV * (h.dodge.back ? 0.8 : 1) * k; h.vz = h.dodge.z * GUARD.dodgeV * 0.5 * k;
+    // esquive arrière : petit saut en arc, toujours face à l'ennemi
+    if (h.dodge.back) h.y = h.gz - GUARD.backHop * Math.sin(Math.PI * Math.min(1, h.t / T));
     if (h.t < GUARD.dodgeInv) h.inv = Math.max(h.inv, 0.05);
     if (Math.random() < 0.6) afterImage(h, 0.25, 0.35, '#bfefff');
-    if (h.t > GUARD.dodgeT) h.state = 'idle';
+    if (h.t > T) { h.state = 'idle'; h.y = h.gz; }
   }
   if (h.state === 'airdash' && h.t > 0.1 && pressed.has('punch')) {
     if (held('down') || held('crouch')) { startMove(h, 'dive'); h.vy = 1500; h.vx = h.dir * 560; h.diveVx = h.vx; audio.whoosh(1.6); }
@@ -1621,12 +1633,18 @@ function updatePlayer(h, dt) {
       startMove(h, name, h.chain + 1);
     }
   }
-  if (h.move && h.t > h.move.dur) { h.state = h.onGround ? 'idle' : 'jump'; h.move = null; }
+  // uppercut montant : il décolle en frappant puis retombe sur ses pieds, avec des images rémanentes
+  if (h.move?.rise && h.onGround) {
+    const u = Math.min(1, h.t / h.move.dur);
+    h.y = h.gz - h.move.rise * Math.sin(Math.PI * u);
+    if (h.t > h.move.on && h.t < h.move.off && Math.random() < 0.7) afterImage(h, 0.25, 0.4, hitOf(h));
+  }
+  if (h.move && h.t > h.move.dur) { if (h.move.rise && h.onGround) h.y = h.gz; h.state = h.onGround ? 'idle' : 'jump'; h.move = null; }
 
   const speed = h.boost ? h.boost.speed : 1;
   if (!busy(h)) {
     // Face à l'ennemi le plus proche : s'éloigner de lui = reculer en garde
-    const near = nearestEnemy(h, 320);
+    const near = nearestEnemy(h, 320), dir0 = h.dir;
     h.back = false;
     if (mx) {
       if (near && Math.sign(near.x - h.x) === -mx && h.onGround) { h.dir = -mx; h.back = true; }
@@ -1645,7 +1663,10 @@ function updatePlayer(h, dt) {
       }
       if (held('kick') && !crouching && pressed.has('kick') && (mx || mz)) {
         // esquive : un bond rapide dans la direction tenue, invincible un instant
-        h.state = 'dodge'; h.t = 0; h.dodge = { x: mx, z: mz }; audio.whoosh(1.6); audio.zip();
+        // vers l'arrière (à l'opposé du regard) : saut arrière en gardant le regard vers l'avant
+        const foe = nearestEnemy(h, 700), back = mx !== 0 && (foe ? Math.sign(foe.x - h.x) === -mx : mx !== dir0);
+        if (back) h.dir = -mx;
+        h.state = 'dodge'; h.t = 0; h.dodge = { x: mx, z: mz, back }; audio.whoosh(1.6); audio.zip();
       } else if (held('kick') && !crouching && h.guard > GUARD.min) {
         if (pressed.has('kick')) h.guardPressT = sceneT; // appui frais : parade si un coup arrive tout de suite
         if (h.state !== 'guard') { h.state = 'guard'; h.t = 0; }
@@ -2204,7 +2225,9 @@ const easeOut = k => 1 - (1 - k) * (1 - k);
 function startGenki(h) {
   const b = { owner: h, genki: true, x: h.x, y: h.y - 300, r: 6, vx: 0, vy: 0, state: 'grow', t: 0, hit: new Set(), dir: h.dir };
   bombs.push(b);
-  h.genki = { phase: 'rise', b, ct: 0 };
+  // préparation en forme normale (comme contre Buu) : la forme en cours revient au moment de repousser la sphère
+  h.genki = { phase: 'rise', b, ct: 0, form: h.boost };
+  h.boost = null;
   h.ultraSnd = audio.play('ultraCharge', 0.9, 1, 0);
   say(h, 'GENKIDAMA !');
 }
@@ -2226,7 +2249,7 @@ function updateGenki(h, dt) {
     if (!G.ssj && G.ct >= GENKI.clash) {
       // la transformation qui donne la force de repousser la sphère
       G.ssj = true;
-      const F = h.C.forms[0];
+      const F = G.form || h.C.forms[0];
       if (F) { h.boost = F; h.ki = Math.max(h.ki, 35); }
       flash = 0.9; shake = 20; ring(h.x, h.y - 110); burst(h.x, h.y - 120, '#ffe066', 40);
       audio.play('transform', 1, 1.1, 0); audio.sweep(0.8, 3000, 7000, 0.25, 0.6);
@@ -5837,7 +5860,6 @@ function drawPlayer(h) {
   drawAnim.breath = breathOf(h, h.state === 'idle' && !h.move && h.onGround && !idleAnim(h));
   drawAnim.lean = leanOf(h);
   // garde : légère aura bleutée qui faiblit avec la jauge ; charge du coup chargé : le corps s'embrase et tremble
-  if (h.state === 'guard') bodyAura(h, sheet, anim, i, sx, '#9fe0ff', 0.12 + 0.3 * (h.guard ?? 100) / 100);
   let shakeX = 0;
   if (h.state === 'smashcharge') {
     const k = Math.min(1, h.holdT / CHARGE.full);
@@ -6383,7 +6405,7 @@ function animeDeco(deco, x0, y, tw, s, layer) {
 // aura, son nom et ses coups, et en bas un carrousel de médaillons qui glisse vers le perso choisi.
 // À plusieurs, chaque joueur a son perso en vitrine (côte à côte) et sa marque de couleur sur le carrousel.
 // Vitrine de la sélection : persos dont la garde paraît trop grande à côté des autres
-const SEL_SIZE = { jinwoo: 0.86, gohan: 0.84 };
+const SEL_SIZE = {}; // correction de taille d'un perso dans la vitrine (la taille réelle du jeu suffit en général)
 function drawSelect() {
   const n = CHAR_IDS.length, ps = [0, 1, 2, 3].filter(p => sel.joined[p]), focus = sel.focus || 0;
   const pickOf = p => sel.first[p] !== null && sel.ready[p] ? sel.first[p] : sel.pick[p];
@@ -6424,7 +6446,10 @@ function drawSelect() {
     if (A) {
       const i = S.idle ? Math.floor(sceneT * A.rate) % A.frames.length : 0, f = A.frames[i], img = IMG[f.src];
       const an = S.idle ? 'idle' : S.combo ? 'combo' : 'punch'; // même correction de taille qu'en jeu (ANIM_SIZE)
-      const h = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) * (CHAR_SIZE[id] || 1) * (ANIM_SIZE[id]?.[an] || 1) * (SEL_SIZE[id] || 1), k = h / f.h;
+      // taille réelle du jeu (échelle de la planche), agrandie d'un même facteur pour tous : un perso accroupi ou en manteau
+      // n'est plus étiré à la hauteur d'un perso debout (190 px en jeu = 300 px ici)
+      const zoom = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) / 190;
+      const h = f.h * A.scale / WORLD * zoom * (SEL_SIZE[id] || 1), k = h / f.h; // l'échelle inclut déjà CHAR_SIZE et ANIM_SIZE
       if (img) {
         const pulse = 1 + Math.sin(sceneT * 3 + q) * 0.03, bob = sel.ready[p] ? 0 : Math.sin(sceneT * 2.5 + q) * 2;
         // aura derrière le perso
