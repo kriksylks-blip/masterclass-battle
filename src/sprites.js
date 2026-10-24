@@ -31185,28 +31185,28 @@ const SPRITES = {
      "w": 292,
      "h": 357,
      "ax": 164.7,
-     "ay": 357
+     "ay": 347
     },
     {
      "src": "assets/sprites/guts/combo_2.png",
      "w": 286,
      "h": 283,
      "ax": 136.0,
-     "ay": 283
+     "ay": 269
     },
     {
      "src": "assets/sprites/guts/combo_3.png",
      "w": 242,
      "h": 222,
      "ax": 145.4,
-     "ay": 222
+     "ay": 209
     },
     {
      "src": "assets/sprites/guts/combo_4.png",
      "w": 290,
      "h": 336,
      "ax": 146.9,
-     "ay": 336
+     "ay": 324
     },
     {
      "src": "assets/sprites/guts/combo_5.png",
@@ -31220,7 +31220,7 @@ const SPRITES = {
      "w": 435,
      "h": 274,
      "ax": 196.0,
-     "ay": 274
+     "ay": 268
     },
     {
      "src": "assets/sprites/guts/combo_7.png",
@@ -31246,7 +31246,7 @@ const SPRITES = {
      "w": 236,
      "h": 304,
      "ax": 106.5,
-     "ay": 304
+     "ay": 298
     },
     {
      "src": "assets/sprites/guts/lowair_2.png",
@@ -31260,7 +31260,7 @@ const SPRITES = {
      "w": 247,
      "h": 272,
      "ax": 126.2,
-     "ay": 272
+     "ay": 256
     },
     {
      "src": "assets/sprites/guts/lowair_4.png",
@@ -31281,7 +31281,7 @@ const SPRITES = {
      "w": 383,
      "h": 287,
      "ax": 140.2,
-     "ay": 287
+     "ay": 211
     },
     {
      "src": "assets/sprites/guts/lowair_7.png",
@@ -31307,7 +31307,7 @@ const SPRITES = {
      "w": 355,
      "h": 282,
      "ax": 196.6,
-     "ay": 282
+     "ay": 265
     },
     {
      "src": "assets/sprites/guts/dashcharge_2.png",
@@ -31321,21 +31321,21 @@ const SPRITES = {
      "w": 313,
      "h": 290,
      "ax": 184.8,
-     "ay": 290
+     "ay": 253
     },
     {
      "src": "assets/sprites/guts/dashcharge_4.png",
      "w": 255,
      "h": 350,
      "ax": 119.8,
-     "ay": 350
+     "ay": 344
     },
     {
      "src": "assets/sprites/guts/dashcharge_5.png",
      "w": 263,
      "h": 358,
      "ax": 123.5,
-     "ay": 358
+     "ay": 352
     },
     {
      "src": "assets/sprites/guts/dashcharge_6.png",
@@ -31349,7 +31349,7 @@ const SPRITES = {
      "w": 323,
      "h": 375,
      "ax": 192.1,
-     "ay": 375
+     "ay": 359
     }
    ]
   },
@@ -31375,21 +31375,21 @@ const SPRITES = {
      "w": 327,
      "h": 347,
      "ax": 152.3,
-     "ay": 347
+     "ay": 331
     },
     {
      "src": "assets/sprites/guts/special_3.png",
      "w": 260,
      "h": 347,
      "ax": 130.3,
-     "ay": 347
+     "ay": 333
     },
     {
      "src": "assets/sprites/guts/special_4.png",
      "w": 278,
      "h": 362,
      "ax": 153.3,
-     "ay": 362
+     "ay": 351
     },
     {
      "src": "assets/sprites/guts/special_5.png",
@@ -31403,7 +31403,7 @@ const SPRITES = {
      "w": 552,
      "h": 330,
      "ax": 160.8,
-     "ay": 278
+     "ay": 243
     },
     {
      "src": "assets/sprites/guts/special_7.png",

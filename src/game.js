@@ -6160,13 +6160,13 @@ function drawTitle() {
     const w = 400, h = IMG.logo.height * (w / IMG.logo.width);
     ctx.drawImage(IMG.logo, 28, 22 + Math.sin(sceneT * 2) * 4, w, h);
   } else {
-    outlined('MASTERCLASS', W / 2, 150, 84, '#ff9a1f');
-    outlined('BATTLE', W / 2, 240, 96, '#4fc3ff');
+    outlined('BROKEN', W / 2, 150, 84, '#ff9a1f');
+    outlined('WORLD', W / 2, 240, 96, '#4fc3ff');
   }
   drawTitleMenu();
   ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 66, W, 66);
   ctx.fillStyle = '#fff'; ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText(`J1 :  ${K('left')} ${K('right')} ${K('up')} ${K('down')}  bouger     ${K('jump')}  sauter     ${K('crouch')}  se baisser     ${K('punch')}  poing     ${K('kick')}  pied     ${K('blast')}  spécial     ${K('dash')}  dash`, W / 2, H - 42);
+  ctx.fillText(`J1 :  ${K('left')} ${K('right')} ${K('up')} ${K('down')}  bouger     ${K('jump')}  sauter     ${K('crouch')}  se baisser     ${K('punch')}  attaque (tenir : coup chargé)     ${K('kick')}  garde     ${K('blast')}  spécial     ${K('dash')}  dash`, W / 2, H - 42);
   ctx.fillText(`${K('charge')} (tenir)  ki     ${K('transform')}  transformation     ${K('ultra')}  ultime     ${K('pause')}  pause et commandes     —     J2 : pavé numérique ou 2e manette`, W / 2, H - 18);
 }
 
