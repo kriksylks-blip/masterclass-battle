@@ -49629,5 +49629,453 @@ const SPRITES = {
     }
    ]
   }
+ },
+ "seiya_gold": {
+  "walk": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/walk_0.png",
+     "w": 274,
+     "h": 359,
+     "ax": 134.7,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/seiya_gold/walk_1.png",
+     "w": 273,
+     "h": 359,
+     "ax": 148.5,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/seiya_gold/walk_2.png",
+     "w": 254,
+     "h": 359,
+     "ax": 128.5,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/seiya_gold/walk_3.png",
+     "w": 268,
+     "h": 359,
+     "ax": 143.2,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/seiya_gold/walk_4.png",
+     "w": 269,
+     "h": 359,
+     "ax": 132.5,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/seiya_gold/walk_5.png",
+     "w": 260,
+     "h": 355,
+     "ax": 140.6,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/seiya_gold/walk_6.png",
+     "w": 251,
+     "h": 359,
+     "ax": 125.9,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/seiya_gold/walk_7.png",
+     "w": 269,
+     "h": 360,
+     "ax": 133.0,
+     "ay": 360
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/jump_0.png",
+     "w": 221,
+     "h": 282,
+     "ax": 132.6,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/seiya_gold/jump_1.png",
+     "w": 248,
+     "h": 313,
+     "ax": 144.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/seiya_gold/jump_2.png",
+     "w": 261,
+     "h": 354,
+     "ax": 120.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/seiya_gold/jump_3.png",
+     "w": 215,
+     "h": 272,
+     "ax": 132.0,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/seiya_gold/jump_4.png",
+     "w": 206,
+     "h": 242,
+     "ax": 130.0,
+     "ay": 242
+    },
+    {
+     "src": "assets/sprites/seiya_gold/jump_5.png",
+     "w": 223,
+     "h": 337,
+     "ax": 145.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/seiya_gold/jump_6.png",
+     "w": 233,
+     "h": 337,
+     "ax": 143.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/seiya_gold/jump_7.png",
+     "w": 236,
+     "h": 302,
+     "ax": 131.5,
+     "ay": 302
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/fall_0.png",
+     "w": 255,
+     "h": 385,
+     "ax": 75.0,
+     "ay": 385
+    },
+    {
+     "src": "assets/sprites/seiya_gold/fall_1.png",
+     "w": 307,
+     "h": 362,
+     "ax": 87.5,
+     "ay": 362
+    },
+    {
+     "src": "assets/sprites/seiya_gold/fall_2.png",
+     "w": 336,
+     "h": 305,
+     "ax": 105.5,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/seiya_gold/fall_3.png",
+     "w": 339,
+     "h": 251,
+     "ax": 103.6,
+     "ay": 251
+    },
+    {
+     "src": "assets/sprites/seiya_gold/fall_4.png",
+     "w": 423,
+     "h": 146,
+     "ax": 246.0,
+     "ay": 146
+    },
+    {
+     "src": "assets/sprites/seiya_gold/fall_5.png",
+     "w": 285,
+     "h": 263,
+     "ax": 155.0,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/seiya_gold/fall_6.png",
+     "w": 248,
+     "h": 276,
+     "ax": 140.0,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/seiya_gold/fall_7.png",
+     "w": 263,
+     "h": 361,
+     "ax": 134.0,
+     "ay": 361
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/combo_0.png",
+     "w": 263,
+     "h": 334,
+     "ax": 132.5,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/seiya_gold/combo_1.png",
+     "w": 305,
+     "h": 330,
+     "ax": 136.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/seiya_gold/combo_2.png",
+     "w": 295,
+     "h": 330,
+     "ax": 143.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/seiya_gold/combo_3.png",
+     "w": 244,
+     "h": 370,
+     "ax": 132.0,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/seiya_gold/combo_4.png",
+     "w": 172,
+     "h": 351,
+     "ax": 76.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/seiya_gold/combo_5.png",
+     "w": 283,
+     "h": 350,
+     "ax": 91.0,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/seiya_gold/combo_6.png",
+     "w": 311,
+     "h": 352,
+     "ax": 100.3,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/seiya_gold/combo_7.png",
+     "w": 319,
+     "h": 247,
+     "ax": 113.5,
+     "ay": 247
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/lowair_0.png",
+     "w": 270,
+     "h": 297,
+     "ax": 147.0,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/seiya_gold/lowair_1.png",
+     "w": 287,
+     "h": 274,
+     "ax": 156.0,
+     "ay": 274
+    },
+    {
+     "src": "assets/sprites/seiya_gold/lowair_2.png",
+     "w": 391,
+     "h": 257,
+     "ax": 150.0,
+     "ay": 257
+    },
+    {
+     "src": "assets/sprites/seiya_gold/lowair_3.png",
+     "w": 284,
+     "h": 274,
+     "ax": 159.5,
+     "ay": 274
+    },
+    {
+     "src": "assets/sprites/seiya_gold/lowair_4.png",
+     "w": 236,
+     "h": 306,
+     "ax": 141.5,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/seiya_gold/lowair_5.png",
+     "w": 257,
+     "h": 369,
+     "ax": 142.5,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/seiya_gold/lowair_6.png",
+     "w": 374,
+     "h": 259,
+     "ax": 126.9,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/seiya_gold/lowair_7.png",
+     "w": 262,
+     "h": 371,
+     "ax": 148.0,
+     "ay": 371
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_0.png",
+     "w": 262,
+     "h": 335,
+     "ax": 189.9,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_1.png",
+     "w": 304,
+     "h": 300,
+     "ax": 176.5,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_2.png",
+     "w": 401,
+     "h": 296,
+     "ax": 187.5,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_3.png",
+     "w": 263,
+     "h": 344,
+     "ax": 130.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_4.png",
+     "w": 259,
+     "h": 371,
+     "ax": 119.4,
+     "ay": 371
+    },
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_5.png",
+     "w": 306,
+     "h": 342,
+     "ax": 145.2,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_6.png",
+     "w": 267,
+     "h": 360,
+     "ax": 119.8,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/seiya_gold/dashcharge_7.png",
+     "w": 274,
+     "h": 367,
+     "ax": 134.0,
+     "ay": 367
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/special_0.png",
+     "w": 260,
+     "h": 351,
+     "ax": 137.0,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/seiya_gold/special_1.png",
+     "w": 261,
+     "h": 344,
+     "ax": 127.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/seiya_gold/special_2.png",
+     "w": 333,
+     "h": 340,
+     "ax": 165.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/seiya_gold/special_3.png",
+     "w": 320,
+     "h": 343,
+     "ax": 147.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/seiya_gold/special_4.png",
+     "w": 274,
+     "h": 356,
+     "ax": 138.0,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/seiya_gold/special_5.png",
+     "w": 263,
+     "h": 336,
+     "ax": 165.4,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/seiya_gold/special_6.png",
+     "w": 381,
+     "h": 343,
+     "ax": 200.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/seiya_gold/special_7.png",
+     "w": 273,
+     "h": 364,
+     "ax": 143.0,
+     "ay": 364
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2379,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/guard_0.png",
+     "w": 495,
+     "h": 681,
+     "ax": 266.5,
+     "ay": 681
+    },
+    {
+     "src": "assets/sprites/seiya_gold/guard_1.png",
+     "w": 611,
+     "h": 675,
+     "ax": 353.0,
+     "ay": 675
+    }
+   ]
+  }
  }
 };
