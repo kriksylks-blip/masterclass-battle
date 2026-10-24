@@ -2990,6 +2990,96 @@ const SPRITES = {
      "ay": 587
     }
    ]
+  },
+  "idle": {
+   "scale": 0.1994,
+   "rate": 7.2,
+   "frames": [
+    {
+     "src": "assets/sprites/kenshin/idlev_0.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_1.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_2.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_3.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_4.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_5.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_6.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_7.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_8.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_9.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_10.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/kenshin/idlev_11.png",
+     "w": 862,
+     "h": 800,
+     "ax": 490.8,
+     "ay": 798
+    }
+   ]
   }
  },
  "goku_ssj": {
@@ -4012,6 +4102,96 @@ const SPRITES = {
      "ay": 645
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3492,
+   "rate": 7.58,
+   "frames": [
+    {
+     "src": "assets/sprites/kakashi/idlev_0.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_1.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_2.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_3.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_4.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_5.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_6.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_7.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_8.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_9.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_10.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/kakashi/idlev_11.png",
+     "w": 338,
+     "h": 538,
+     "ax": 175.2,
+     "ay": 538
+    }
+   ]
   }
  },
  "zenitsu": {
@@ -4517,6 +4697,96 @@ const SPRITES = {
      "ay": 600
     }
    ]
+  },
+  "idle": {
+   "scale": 0.1989,
+   "rate": 9.23,
+   "frames": [
+    {
+     "src": "assets/sprites/zenitsu/idlev_0.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_1.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_2.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_3.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_4.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_5.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_6.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_7.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_8.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_9.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_10.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    },
+    {
+     "src": "assets/sprites/zenitsu/idlev_11.png",
+     "w": 970,
+     "h": 820,
+     "ax": 550.2,
+     "ay": 820
+    }
+   ]
   }
  },
  "izuku": {
@@ -5020,6 +5290,96 @@ const SPRITES = {
      "h": 723,
      "ax": 412.6,
      "ay": 723
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.2166,
+   "rate": 9.23,
+   "frames": [
+    {
+     "src": "assets/sprites/izuku/idlev_0.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_1.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_2.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_3.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_4.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_5.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_6.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_7.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_8.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_9.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_10.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/izuku/idlev_11.png",
+     "w": 548,
+     "h": 799,
+     "ax": 273.5,
+     "ay": 799
     }
    ]
   }
@@ -6625,6 +6985,96 @@ const SPRITES = {
      "h": 641,
      "ax": 405.5,
      "ay": 641
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3157,
+   "rate": 6.86,
+   "frames": [
+    {
+     "src": "assets/sprites/killua/idlev_0.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_1.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_2.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_3.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_4.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_5.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_6.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_7.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_8.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_9.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_10.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/killua/idlev_11.png",
+     "w": 308,
+     "h": 528,
+     "ax": 155.1,
+     "ay": 528
     }
    ]
   }
@@ -37947,6 +38397,96 @@ const SPRITES = {
      "h": 658,
      "ax": 372.1,
      "ay": 658
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3447,
+   "rate": 5.14,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/idlev_0.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_1.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_2.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_3.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_4.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_5.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_6.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_7.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_8.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_9.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_10.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/trunks/idlev_11.png",
+     "w": 306,
+     "h": 528,
+     "ax": 156.6,
+     "ay": 528
     }
    ]
   }
