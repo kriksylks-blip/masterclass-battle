@@ -48733,5 +48733,901 @@ const SPRITES = {
     }
    ]
   }
+ },
+ "bakugo": {
+  "walk": {
+   "scale": 0.4907,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/walk_0.png",
+     "w": 303,
+     "h": 370,
+     "ax": 140.2,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/bakugo/walk_1.png",
+     "w": 300,
+     "h": 370,
+     "ax": 141.7,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/bakugo/walk_2.png",
+     "w": 290,
+     "h": 369,
+     "ax": 148.0,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/bakugo/walk_3.png",
+     "w": 289,
+     "h": 372,
+     "ax": 146.0,
+     "ay": 372
+    },
+    {
+     "src": "assets/sprites/bakugo/walk_4.png",
+     "w": 299,
+     "h": 365,
+     "ax": 139.1,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/bakugo/walk_5.png",
+     "w": 295,
+     "h": 367,
+     "ax": 154.3,
+     "ay": 367
+    },
+    {
+     "src": "assets/sprites/bakugo/walk_6.png",
+     "w": 297,
+     "h": 375,
+     "ax": 154.0,
+     "ay": 375
+    },
+    {
+     "src": "assets/sprites/bakugo/walk_7.png",
+     "w": 307,
+     "h": 370,
+     "ax": 167.8,
+     "ay": 370
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4907,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/jump_0.png",
+     "w": 233,
+     "h": 295,
+     "ax": 137.5,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/bakugo/jump_1.png",
+     "w": 240,
+     "h": 346,
+     "ax": 158.4,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/bakugo/jump_2.png",
+     "w": 233,
+     "h": 352,
+     "ax": 136.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/bakugo/jump_3.png",
+     "w": 181,
+     "h": 297,
+     "ax": 105.5,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/bakugo/jump_4.png",
+     "w": 226,
+     "h": 269,
+     "ax": 137.0,
+     "ay": 269
+    },
+    {
+     "src": "assets/sprites/bakugo/jump_5.png",
+     "w": 288,
+     "h": 326,
+     "ax": 175.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/bakugo/jump_6.png",
+     "w": 254,
+     "h": 366,
+     "ax": 145.5,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/bakugo/jump_7.png",
+     "w": 202,
+     "h": 286,
+     "ax": 135.5,
+     "ay": 286
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4907,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/fall_0.png",
+     "w": 290,
+     "h": 359,
+     "ax": 130.9,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/bakugo/fall_1.png",
+     "w": 311,
+     "h": 341,
+     "ax": 150.7,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/bakugo/fall_2.png",
+     "w": 391,
+     "h": 261,
+     "ax": 173.1,
+     "ay": 261
+    },
+    {
+     "src": "assets/sprites/bakugo/fall_3.png",
+     "w": 310,
+     "h": 216,
+     "ax": 191.9,
+     "ay": 216
+    },
+    {
+     "src": "assets/sprites/bakugo/fall_4.png",
+     "w": 387,
+     "h": 163,
+     "ax": 187.7,
+     "ay": 163
+    },
+    {
+     "src": "assets/sprites/bakugo/fall_5.png",
+     "w": 344,
+     "h": 287,
+     "ax": 188.7,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/bakugo/fall_6.png",
+     "w": 240,
+     "h": 299,
+     "ax": 150.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/bakugo/fall_7.png",
+     "w": 276,
+     "h": 370,
+     "ax": 150.2,
+     "ay": 370
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4907,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/combo_0.png",
+     "w": 277,
+     "h": 343,
+     "ax": 127.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/bakugo/combo_1.png",
+     "w": 302,
+     "h": 349,
+     "ax": 159.5,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/bakugo/combo_2.png",
+     "w": 322,
+     "h": 350,
+     "ax": 163.5,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/bakugo/combo_3.png",
+     "w": 249,
+     "h": 359,
+     "ax": 125.2,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/bakugo/combo_4.png",
+     "w": 231,
+     "h": 368,
+     "ax": 115.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/bakugo/combo_5.png",
+     "w": 307,
+     "h": 363,
+     "ax": 100.1,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/bakugo/combo_6.png",
+     "w": 306,
+     "h": 368,
+     "ax": 122.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/bakugo/combo_7.png",
+     "w": 330,
+     "h": 297,
+     "ax": 109.5,
+     "ay": 297
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4907,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/lowair_0.png",
+     "w": 209,
+     "h": 303,
+     "ax": 98.2,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/bakugo/lowair_1.png",
+     "w": 260,
+     "h": 302,
+     "ax": 148.2,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/bakugo/lowair_2.png",
+     "w": 289,
+     "h": 286,
+     "ax": 96.5,
+     "ay": 286
+    },
+    {
+     "src": "assets/sprites/bakugo/lowair_3.png",
+     "w": 255,
+     "h": 302,
+     "ax": 122.5,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/bakugo/lowair_4.png",
+     "w": 195,
+     "h": 292,
+     "ax": 114.0,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/bakugo/lowair_5.png",
+     "w": 237,
+     "h": 375,
+     "ax": 126.8,
+     "ay": 375
+    },
+    {
+     "src": "assets/sprites/bakugo/lowair_6.png",
+     "w": 344,
+     "h": 291,
+     "ax": 148.0,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/bakugo/lowair_7.png",
+     "w": 214,
+     "h": 358,
+     "ax": 131.5,
+     "ay": 358
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4907,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/dashcharge_0.png",
+     "w": 288,
+     "h": 318,
+     "ax": 196.0,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/bakugo/dashcharge_1.png",
+     "w": 350,
+     "h": 258,
+     "ax": 200.7,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/bakugo/dashcharge_2.png",
+     "w": 426,
+     "h": 297,
+     "ax": 169.2,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/bakugo/dashcharge_3.png",
+     "w": 234,
+     "h": 284,
+     "ax": 153.5,
+     "ay": 284
+    },
+    {
+     "src": "assets/sprites/bakugo/dashcharge_4.png",
+     "w": 280,
+     "h": 340,
+     "ax": 143.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/bakugo/dashcharge_5.png",
+     "w": 243,
+     "h": 373,
+     "ax": 123.5,
+     "ay": 373
+    },
+    {
+     "src": "assets/sprites/bakugo/dashcharge_6.png",
+     "w": 293,
+     "h": 366,
+     "ax": 159.6,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/bakugo/dashcharge_7.png",
+     "w": 284,
+     "h": 350,
+     "ax": 130.3,
+     "ay": 350
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4907,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/special_0.png",
+     "w": 340,
+     "h": 358,
+     "ax": 147.0,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/bakugo/special_1.png",
+     "w": 327,
+     "h": 359,
+     "ax": 160.0,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/bakugo/special_2.png",
+     "w": 301,
+     "h": 359,
+     "ax": 145.6,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/bakugo/special_3.png",
+     "w": 310,
+     "h": 354,
+     "ax": 144.0,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/bakugo/special_4.png",
+     "w": 250,
+     "h": 370,
+     "ax": 166.0,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/bakugo/special_5.png",
+     "w": 324,
+     "h": 255,
+     "ax": 178.0,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/bakugo/special_6.png",
+     "w": 418,
+     "h": 305,
+     "ax": 242.3,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/bakugo/special_7.png",
+     "w": 234,
+     "h": 307,
+     "ax": 122.9,
+     "ay": 307
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2414,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/guard_0.png",
+     "w": 505,
+     "h": 686,
+     "ax": 312.5,
+     "ay": 686
+    },
+    {
+     "src": "assets/sprites/bakugo/guard_1.png",
+     "w": 567,
+     "h": 670,
+     "ax": 406.0,
+     "ay": 670
+    }
+   ]
+  }
+ },
+ "seiya": {
+  "walk": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/walk_0.png",
+     "w": 268,
+     "h": 360,
+     "ax": 146.8,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/seiya/walk_1.png",
+     "w": 262,
+     "h": 360,
+     "ax": 141.4,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/seiya/walk_2.png",
+     "w": 226,
+     "h": 359,
+     "ax": 109.0,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/seiya/walk_3.png",
+     "w": 266,
+     "h": 360,
+     "ax": 150.8,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/seiya/walk_4.png",
+     "w": 264,
+     "h": 360,
+     "ax": 145.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/seiya/walk_5.png",
+     "w": 252,
+     "h": 355,
+     "ax": 134.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/seiya/walk_6.png",
+     "w": 223,
+     "h": 360,
+     "ax": 104.9,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/seiya/walk_7.png",
+     "w": 263,
+     "h": 360,
+     "ax": 143.0,
+     "ay": 360
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/jump_0.png",
+     "w": 210,
+     "h": 282,
+     "ax": 128.2,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/seiya/jump_1.png",
+     "w": 248,
+     "h": 313,
+     "ax": 149.1,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/seiya/jump_2.png",
+     "w": 248,
+     "h": 354,
+     "ax": 120.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/seiya/jump_3.png",
+     "w": 171,
+     "h": 273,
+     "ax": 94.5,
+     "ay": 273
+    },
+    {
+     "src": "assets/sprites/seiya/jump_4.png",
+     "w": 140,
+     "h": 242,
+     "ax": 82.0,
+     "ay": 242
+    },
+    {
+     "src": "assets/sprites/seiya/jump_5.png",
+     "w": 218,
+     "h": 337,
+     "ax": 152.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/seiya/jump_6.png",
+     "w": 233,
+     "h": 337,
+     "ax": 154.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/seiya/jump_7.png",
+     "w": 230,
+     "h": 303,
+     "ax": 142.0,
+     "ay": 303
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/fall_0.png",
+     "w": 255,
+     "h": 385,
+     "ax": 75.5,
+     "ay": 385
+    },
+    {
+     "src": "assets/sprites/seiya/fall_1.png",
+     "w": 304,
+     "h": 363,
+     "ax": 85.5,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/seiya/fall_2.png",
+     "w": 333,
+     "h": 307,
+     "ax": 107.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/seiya/fall_3.png",
+     "w": 332,
+     "h": 251,
+     "ax": 104.8,
+     "ay": 251
+    },
+    {
+     "src": "assets/sprites/seiya/fall_4.png",
+     "w": 423,
+     "h": 148,
+     "ax": 246.5,
+     "ay": 148
+    },
+    {
+     "src": "assets/sprites/seiya/fall_5.png",
+     "w": 285,
+     "h": 263,
+     "ax": 156.5,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/seiya/fall_6.png",
+     "w": 249,
+     "h": 276,
+     "ax": 146.5,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/seiya/fall_7.png",
+     "w": 263,
+     "h": 361,
+     "ax": 144.0,
+     "ay": 361
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/combo_0.png",
+     "w": 248,
+     "h": 334,
+     "ax": 136.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/seiya/combo_1.png",
+     "w": 293,
+     "h": 331,
+     "ax": 139.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/seiya/combo_2.png",
+     "w": 295,
+     "h": 330,
+     "ax": 143.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/seiya/combo_3.png",
+     "w": 236,
+     "h": 371,
+     "ax": 149.5,
+     "ay": 371
+    },
+    {
+     "src": "assets/sprites/seiya/combo_4.png",
+     "w": 170,
+     "h": 351,
+     "ax": 73.6,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/seiya/combo_5.png",
+     "w": 280,
+     "h": 350,
+     "ax": 86.5,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/seiya/combo_6.png",
+     "w": 308,
+     "h": 352,
+     "ax": 108.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/seiya/combo_7.png",
+     "w": 315,
+     "h": 247,
+     "ax": 109.5,
+     "ay": 247
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/lowair_0.png",
+     "w": 230,
+     "h": 297,
+     "ax": 126.0,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/seiya/lowair_1.png",
+     "w": 283,
+     "h": 274,
+     "ax": 183.8,
+     "ay": 274
+    },
+    {
+     "src": "assets/sprites/seiya/lowair_2.png",
+     "w": 336,
+     "h": 257,
+     "ax": 101.5,
+     "ay": 257
+    },
+    {
+     "src": "assets/sprites/seiya/lowair_3.png",
+     "w": 270,
+     "h": 275,
+     "ax": 159.5,
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/seiya/lowair_4.png",
+     "w": 174,
+     "h": 307,
+     "ax": 95.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/seiya/lowair_5.png",
+     "w": 206,
+     "h": 370,
+     "ax": 110.0,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/seiya/lowair_6.png",
+     "w": 348,
+     "h": 260,
+     "ax": 129.5,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/seiya/lowair_7.png",
+     "w": 204,
+     "h": 372,
+     "ax": 99.3,
+     "ay": 372
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/dashcharge_0.png",
+     "w": 262,
+     "h": 336,
+     "ax": 189.2,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/seiya/dashcharge_1.png",
+     "w": 303,
+     "h": 300,
+     "ax": 176.5,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/seiya/dashcharge_2.png",
+     "w": 401,
+     "h": 297,
+     "ax": 204.0,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/seiya/dashcharge_3.png",
+     "w": 257,
+     "h": 344,
+     "ax": 140.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/seiya/dashcharge_4.png",
+     "w": 259,
+     "h": 373,
+     "ax": 121.6,
+     "ay": 373
+    },
+    {
+     "src": "assets/sprites/seiya/dashcharge_5.png",
+     "w": 307,
+     "h": 342,
+     "ax": 168.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/seiya/dashcharge_6.png",
+     "w": 267,
+     "h": 361,
+     "ax": 142.8,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/seiya/dashcharge_7.png",
+     "w": 268,
+     "h": 367,
+     "ax": 144.5,
+     "ay": 367
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4878,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/special_0.png",
+     "w": 261,
+     "h": 350,
+     "ax": 142.5,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/seiya/special_1.png",
+     "w": 261,
+     "h": 344,
+     "ax": 142.9,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/seiya/special_2.png",
+     "w": 333,
+     "h": 340,
+     "ax": 171.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/seiya/special_3.png",
+     "w": 320,
+     "h": 343,
+     "ax": 154.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/seiya/special_4.png",
+     "w": 274,
+     "h": 356,
+     "ax": 147.0,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/seiya/special_5.png",
+     "w": 263,
+     "h": 337,
+     "ax": 191.8,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/seiya/special_6.png",
+     "w": 381,
+     "h": 343,
+     "ax": 211.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/seiya/special_7.png",
+     "w": 273,
+     "h": 364,
+     "ax": 149.5,
+     "ay": 364
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2382,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/guard_0.png",
+     "w": 495,
+     "h": 680,
+     "ax": 293.5,
+     "ay": 680
+    },
+    {
+     "src": "assets/sprites/seiya/guard_1.png",
+     "w": 611,
+     "h": 675,
+     "ax": 361.5,
+     "ay": 675
+    }
+   ]
+  }
  }
 };

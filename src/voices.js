@@ -199,5 +199,15 @@ const CV = {
   "special": "tanjiro_special",
   "transform": "aura",
   "ultra": "brutal"
+ },
+ "bakugo": {
+  "special": "brutal",
+  "transform": "brutal",
+  "ultra": "cri_m"
+ },
+ "seiya": {
+  "special": "aura",
+  "transform": "aura",
+  "ultra": "cri_m"
  }
 };

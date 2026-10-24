@@ -783,6 +783,22 @@ const ED_MOVES = { ...NEWKICK(FIST),
   armblade:  { dur: 0.8, cost: 35, on: 0.3, off: 0.44, reach: [0, 200], y: [-200, -40], dmg: 6, kb: 760, ki: 0, launch: -560, push: 900, pushAt: 0.24, pushDur: 0.16, lean: 12,
                call: 'BRAS-LAME !', p: ['special', [4, 5, 6, 7], [0.16, 0.3, 0.62]], trail: { a0: -1.0, a1: 0.7, r: 175, at: 0.3, w: 32 } },
 };
+// Bakugo : poings, pieds et explosions. Le dash est propulsé par une explosion dans le dos (dashcharge 0-3). Spécial :
+// l'AP Shot, un tir concentré de la paume (special 0-3, tir 'apshot') ; en Explosion maximale, le Howitzer Impact :
+// il vrille dans les airs et plonge, paumes en avant, dans une énorme explosion (special 4-7).
+const KB_MOVES = { ...NEWKICK(FIST),
+  dash:     { dur: 0.5, on: 0.12, off: 0.34, reach: [0, 160], y: [-180, -60], dmg: 3.2, kb: 480, ki: 8, launch: -480, push: 1700, pushAt: 0.05, pushDur: 0.28, ghost: true, lean: 18, boomTrail: true, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  apshot:   { dur: 0.8, cost: 35, proj: { at: 0.36, kind: 'apshot', speed: 1500, dmg: 4.6, kb: 620, launch: -520, life: 0.6, scale: 1 }, call: 'AP SHOT !', p: ['special', [0, 1, 2, 3], [0.14, 0.32, 0.6]] },
+  howitzer: { dur: 1.0, cost: 35, on: 0.58, off: 0.74, reach: [-40, 230], y: [-240, 0], dmg: 6.5, kb: 900, ki: 0, launch: -720, push: 700, pushAt: 0.3, pushDur: 0.3, shock: true, boom: true,
+              call: 'HOWITZER IMPACT !!', p: ['special', [4, 5, 6, 7], [0.16, 0.36, 0.62]] },
+};
+// Seiya : poings et pieds du chevalier de Pégase. Spécial : les Météores de Pégase, une pluie de poings de lumière
+// (special 0-3, rafale de tirs 'meteor') ; en Septième sens, la Comète de Pégase, un seul poing de lumière géant (special 4-7).
+const SY_MOVES = { ...NEWKICK(FIST),
+  dash:   { dur: 0.5, on: 0.14, off: 0.34, reach: [0, 150], y: [-170, -60], dmg: 3, kb: 440, ki: 8, launch: -460, push: 1550, pushAt: 0.05, pushDur: 0.28, ghost: true, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
+  meteor: { dur: 1.0, cost: 35, meteors: { from: 0.32, to: 0.8, every: 0.035 }, call: 'MÉTÉORES DE PÉGASE !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.62]] },
+  comet:  { dur: 0.95, cost: 35, proj: { at: 0.5, kind: 'comet', speed: 900, dmg: 6.5, kb: 900, launch: -700, life: 1.0, scale: 1.4 }, call: 'COMÈTE DE PÉGASE !', p: ['special', [4, 5, 6, 7], [0.16, 0.32, 0.62]] },
+};
 // Gintoki : le sabre de bois, coups larges et nonchalants. Spécial : le démon blanc, un bond et une grande taille
 // horizontale (special 0-3) ; en Shiroyasha, le spécial devient le coup écrasant (special 4-7).
 const GI_MOVES = { ...SWORD,
@@ -1126,6 +1142,26 @@ const CHARS = {
     special: 'transmute', special2: 'armblade', speed: 270, pose: stdPose, ultra: [startAlchemy, updateAlchemy],
     ultraPose: h => h.t < ALCH.clap ? ['special', 0] : h.t < ALCH.clap + 0.15 ? ['special', 1] : h.t < ALCH.end - 0.3 ? ['special', 2] : ['special', 3],
   },
+  bakugo: {
+    name: 'BAKUGO', title: 'Le roi des explosions', sheet: 'bakugo', card: 'card_kb',
+    colors: ['#1a1a1a', '#ff7a1a'], kiColor: '#ffb040', hit: '#fff0c0', trail: '#ffb060', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
+    labels: { blast: 'AP SHOT', ultra: 'GRENADE CLUSTER' },
+    // Explosion maximale : il transpire la nitroglycérine, aura orangée crépitante ; le spécial devient le Howitzer Impact
+    forms: [{ ki: 50, name: 'EXPLOSION MAXIMALE', filter: 'contrast(1.12) saturate(1.15)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,150,40,0.45)', '#ffb040'], glow: '#ff8a20', sparks: '#ffd060', bar: ['#6a2a00', '#ffb040'], color: '#ffb040', hit: '#fff0c0' }],
+    moves: KB_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    special: 'apshot', special2: 'howitzer', speed: 280, pose: stdPose, ultra: [startCluster, updateCluster],
+    ultraPose: h => h.t < CLUSTER.rise ? ['dashcharge', 5] : h.t < CLUSTER.end - 0.35 ? ['special', 5 + Math.floor(h.t * 10) % 2] : ['special', 7],
+  },
+  seiya: {
+    name: 'SEIYA', title: 'Le chevalier de Pégase', sheet: 'seiya', card: 'card_sy',
+    colors: ['#c01a2a', '#e8eef8'], kiColor: '#9fd8ff', hit: '#e8f6ff', trail: '#cfe8ff', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
+    labels: { blast: 'MÉTÉORES DE PÉGASE', ultra: 'PLUIE DE MÉTÉORES' },
+    // Septième sens : le cosmos brûle, aura bleue et étoiles ; le spécial devient la Comète de Pégase
+    forms: [{ ki: 50, name: 'SEPTIÈME SENS', filter: 'contrast(1.1) saturate(1.1)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(120,190,255,0.45)', '#9fd8ff'], glow: '#6ab8ff', sparks: '#e8f6ff', bar: ['#0a2a6a', '#9fd8ff'], color: '#9fd8ff', hit: '#e8f6ff' }],
+    moves: SY_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    special: 'meteor', special2: 'comet', speed: 285, pose: stdPose, ultra: [startPegasus, updatePegasus],
+    ultraPose: h => h.t < PEGA.trace ? ['dashcharge', 4] : h.t < PEGA.rain ? ['dashcharge', 6] : h.t < PEGA.end - 0.3 ? ['special', 2 + Math.floor(h.t * 14) % 2] : ['special', 7],
+  },
   gintoki: {
     name: 'GINTOKI', title: 'Le démon blanc', sheet: 'gintoki', card: 'card_gi',
     colors: ['#f0f4ff', '#3a6ab8'], kiColor: '#e8f0ff', hit: '#ffffff', trail: '#f0f0ff', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 5]],
@@ -1330,7 +1366,7 @@ const say = (h, text) => popups.push({ x: h.x, y: h.y - 235, t: 0, text, small: 
 function startMove(h, name, chain = 0) {
   const m = h.C.moves[name];
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
-  h.trailed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0;
+  h.trailed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1;
   if (m.call) say(h, m.call);
   if ((name === h.C.special || name === h.C.special2) && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
   if (m.rubber) audio.stretch();
@@ -1858,6 +1894,15 @@ function moveEffects(h, speed) {
     else if (hand) burst(px, py, projColor({ kind }), 10);
     shake = Math.max(shake, 8); audio.slash(1.4);
   }
+  // Météores de Pégase (Seiya) : une rafale de poings de lumière qui partent de la main tendue
+  if (m.meteors && h.t >= m.meteors.from && h.t <= m.meteors.to && h.t - (h.metT ?? -1) >= m.meteors.every) {
+    h.metT = h.t;
+    const hand = handPoint(h) || [70, -120], px = h.x + h.dir * (hand[0] + 16), py = h.y + hand[1] + rand(-40, 40);
+    projs.push({ kind: 'meteor', owner: h, x: px, y: py, gz: h.gz, dir: h.dir, t: 0, speed: rand(1200, 1500), life: 0.5, scale: rand(0.8, 1.2), hit: new Set(), dmg: 0.5 * (h.boost ? h.boost.dmg : 1), kb: 70, launch: 0, steady: true, filter: '' });
+    if (Math.random() < 0.35) audio.whoosh(2);
+  }
+  // dash de Bakugo : des explosions derrière lui, qui le propulsent
+  if (m.boomTrail && h.t > (m.pushAt ?? 0) && h.t < (m.pushAt ?? 0) + (m.pushDur ?? 0.3) && Math.random() < 0.5) animFX('explosion', h.x - h.dir * rand(50, 90), h.y - rand(70, 130), rand(90, 140), 0.3);
   // tirs de pistolet (Revy) : chacun part du bout du canon dessiné à cet instant
   if (m.shots) while (h.shotN < m.shots.at.length && h.t >= m.shots.at[h.shotN]) { const last = h.shotN === m.shots.at.length - 1; fireBullet(h, last && m.shots.last ? { ...m.shots, ...m.shots.last } : m.shots); h.shotN++; }
   if (m.ama && !h.struck && h.t >= m.ama.at) { h.struck = true; amaterasu(h, m.ama); }
@@ -3441,6 +3486,54 @@ function updateDempseyMax(h, dt) {
   if (h.t > DMAX.end) h.state = 'idle';
 }
 
+// ---------- Ultime de Bakugo : Grenade Cluster, il s'envole et martèle le sol d'explosions devant lui ----------
+const CLUSTER = { rise: 0.35, end: 2.0, every: 0.12, reach: 640 };
+function startCluster(h) { h.hitT = 0; h.punched = false; say(h, 'MEURS !!'); audio.play('ultraCharge', 0.9, 1.2, 0); }
+function updateCluster(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  if (h.t < CLUSTER.end - 0.3) h.y = h.gz - 70 * Math.min(1, h.t / CLUSTER.rise);
+  else h.y += (h.gz - h.y) * 0.3;
+  if (h.t > CLUSTER.rise && h.t < CLUSTER.end - 0.35 && h.t - h.hitT > CLUSTER.every) {
+    h.hitT = h.t; shake = Math.max(shake, 12); audio.play('ultraBoom', 0.55, 1.4 + Math.random() * 0.3, 0);
+    const x = h.x + h.dir * rand(80, CLUSTER.reach), z = h.gz + rand(-40, 40);
+    animFX('explosion', x, z - 90, rand(220, 320), 0.5);
+    for (const e of enemies) if (e.alive && e.state !== 'down' && Math.abs(e.x - x) < 130 && Math.abs(e.gz - z) < 70) damageEnemy(e, ULT_SOLO * (0.5 + h.power / 120), 260 * h.dir, -420, e.x, e.y - 110, hitOf(h));
+  }
+  if (!h.punched && h.t >= CLUSTER.end - 0.35) {
+    h.punched = true; flash = 0.8; shake = 30; hitstop = 0.12; audio.play('ultraBoom', 1.3, 0.8, 0);
+    popups.push({ x: h.x + h.dir * 300, y: h.y - 280, t: 0, text: 'GRENADE CLUSTER !!' });
+    ultraHit(h, CLUSTER.reach, ULT_SOLO * (2 + h.power / 15), 130);
+    for (let k = 0; k < 3; k++) animFX('explosion', h.x + h.dir * (200 + k * 180), h.gz - 140, 420, 0.65);
+    score += 2000;
+  }
+  if (h.t > CLUSTER.end) { h.y = h.gz; h.state = 'idle'; }
+}
+
+// ---------- Ultime de Seiya : il trace la constellation de Pégase, puis une pluie de météores s'abat ----------
+const PEGA = { trace: 0.6, rain: 0.9, end: 2.3, reach: 700 };
+function startPegasus(h) { h.hitT = 0; h.punched = false; say(h, 'BRÛLE, MON COSMOS !'); audio.play('ultraCharge', 0.9, 1.1, 0); }
+function updatePegasus(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  if (h.t < PEGA.trace && Math.random() < 0.9) {
+    // les étoiles de la constellation s'allument autour de lui
+    const a = rand(0, Math.PI * 2), d = rand(60, 150);
+    particles.push({ x: h.x + Math.cos(a) * d, y: h.y - 140 + Math.sin(a) * d, vx: 0, vy: 0, t: 0, life: 0.6, c: '#e8f6ff', r: rand(2, 4) });
+  }
+  if (h.t > PEGA.rain && h.t < PEGA.end - 0.3 && h.t - h.hitT > 0.05) {
+    h.hitT = h.t;
+    projs.push({ kind: 'meteor', owner: h, x: h.x + h.dir * 60, y: h.y - 130 + rand(-60, 60), gz: h.gz + rand(-50, 50), dir: h.dir, t: 0, speed: rand(1200, 1500), life: 0.6, scale: rand(0.9, 1.3), hit: new Set(), dmg: ULT_SOLO * (0.3 + h.power / 300), kb: 60, launch: 0, steady: true, pierce: true });
+    if (Math.random() < 0.3) audio.whoosh(2);
+  }
+  if (!h.punched && h.t >= PEGA.end - 0.3) {
+    h.punched = true; flash = 0.8; shake = 26; hitstop = 0.12; audio.play('ultraBoom', 1.2, 1.2, 0);
+    popups.push({ x: h.x + h.dir * 300, y: h.y - 280, t: 0, text: 'PEGASUS RYU SEI KEN !!' });
+    ultraHit(h, PEGA.reach, ULT_SOLO * (3 + h.power / 12), 140);
+    for (let k = 0; k < 4; k++) burst(h.x + h.dir * (150 + k * 140), h.y - 130, '#e8f6ff', 14);
+    score += 2000;
+  }
+  if (h.t > PEGA.end) h.state = 'idle';
+}
+
 // ---------- Ultime de Naruto : Kurama, le renard à neuf queues, bondit sur les ennemis ----------
 const KYU = { charge: 1.2, end: 2.2 };
 function startKyubi(h) { h.punched = false; say(h, 'KURAMA !'); audio.play('ultraCharge', 0.9, 0.7, 0); shake = 10; }
@@ -4465,6 +4558,10 @@ function updateProjs(dt) {
       if (p.burst) { p.t = p.life + 1; break; } // Rasen-shuriken : il éclate sur le premier ennemi touché
       if (p.ult && p.stuckT == null) { p.stuckT = p.t; p.speed = 0; } // ultime : il s'arrête dans le premier ennemi
       if (p.kind === 'shell') { blastFX(p.x + p.dir * 10, p.y, p.scale || 1); p.done = true; break; }
+      // AP Shot : il éclate dans le premier ennemi touché ; météores : petit éclat ; Comète : traverse et explose
+      if (p.kind === 'apshot') { animFX('explosion', e.x, p.y, 240, 0.45); shake = Math.max(shake, 14); audio.play('ultraBoom', 0.7, 1.4, 0); p.done = true; break; }
+      if (p.kind === 'meteor') { burst(e.x - p.dir * 20, p.y, '#e8f6ff', 4); if (!p.pierce) { p.done = true; break; } continue; } // ultime : ils traversent
+      if (p.kind === 'comet') { flash = Math.max(flash, 0.3); shake = Math.max(shake, 16); burst(e.x, p.y, '#e8f6ff', 18); continue; }
       if (p.kind === 'katon') { blastFX(e.x - p.dir * 10, p.y, 0.8); animFX('explosion', e.x, p.y, 220, 0.45, { filter: 'hue-rotate(-15deg) saturate(1.6)' }); continue; }
       if (p.kind === 'bullet') { p.done = true; if (h) h.ki = Math.min(100, h.ki + p.ki); impactFX(e.x - p.dir * 20, p.y, '#ffe0a0', false); break; }
       if (p.kind === 'airshot' || p.kind === 'red') animFX('explosion', e.x, e.y - 110, 200, 0.4, p.kind === 'red' ? { filter: 'hue-rotate(-30deg) saturate(2)' } : {});
@@ -4492,7 +4589,7 @@ function updateProjs(dt) {
   projs = projs.filter(p => !p.done);
 }
 
-const projColor = p => ({ airblade: '#e9fff2', wave: '#5ad1ff', firewave: '#ff8a2a', shuriken: '#bff3ff', rocks: '#d8c09a', getsuga: '#bfe8ff', airshot: '#d8ffe0', red: '#ff5060', kiball: '#bff3ff', burning: '#ffe066', hiken: '#ff8a2a', katon: '#ff8a2a', strikeair: '#cfe8ff', shell: '#ffb070', icewall: '#bfefff', flamejet: '#ff8a2a', glacier: '#bfefff', bullet: '#ffe0a0', vrasen: '#9fe0ff', stonewall: '#c8b8a0' })[p.kind] || '#ffffff';
+const projColor = p => ({ apshot: '#ffb040', meteor: '#cfeaff', comet: '#bfe4ff', airblade: '#e9fff2', wave: '#5ad1ff', firewave: '#ff8a2a', shuriken: '#bff3ff', rocks: '#d8c09a', getsuga: '#bfe8ff', airshot: '#d8ffe0', red: '#ff5060', kiball: '#bff3ff', burning: '#ffe066', hiken: '#ff8a2a', katon: '#ff8a2a', strikeair: '#cfe8ff', shell: '#ffb070', icewall: '#bfefff', flamejet: '#ff8a2a', glacier: '#bfefff', bullet: '#ffe0a0', vrasen: '#9fe0ff', stonewall: '#c8b8a0' })[p.kind] || '#ffffff';
 
 // Balle de pistolet : part DEVANT le bout du canon (point le plus en avant du haut du corps), éclair de bouche.
 // En forme Two Hands, chaque tir lâche deux balles (une par pistolet).
@@ -4828,6 +4925,26 @@ function drawProjs() {
         ctx.restore();
       }
       continue;
+    }
+    if (p.kind === 'apshot') {
+      // AP Shot de Bakugo : un trait d'explosion concentré, cœur blanc et traînée orange
+      const L = 120 * (p.scale || 1), g = ctx.createLinearGradient(-L, 0, 18, 0);
+      g.addColorStop(0, 'rgba(255,90,0,0)'); g.addColorStop(0.6, 'rgba(255,150,40,0.9)'); g.addColorStop(1, '#fff6d0');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(-L / 2 + 9, 0, L / 2 + 9, 13 + Math.sin(p.t * 60) * 3, 0, 0, 7); ctx.fill();
+      ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(10, 0, 9, 0, 7); ctx.fill();
+      ctx.restore(); continue;
+    }
+    if (p.kind === 'meteor' || p.kind === 'comet') {
+      // Météores et Comète de Pégase : des poings de lumière (traînée bleue, éclat blanc) ; la Comète est un grand éclat
+      const big = p.kind === 'comet', r = (big ? 42 : 12) * (p.scale || 1), L = r * (big ? 3.2 : 5);
+      const g = ctx.createLinearGradient(-L, 0, r, 0);
+      g.addColorStop(0, 'rgba(80,160,255,0)'); g.addColorStop(0.7, 'rgba(160,215,255,0.85)'); g.addColorStop(1, '#ffffff');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(-L / 2 + r / 2, 0, L / 2 + r / 2, r * 0.8, 0, 0, 7); ctx.fill();
+      const c = ctx.createRadialGradient(r * 0.4, 0, 1, r * 0.4, 0, r * 1.4);
+      c.addColorStop(0, '#ffffff'); c.addColorStop(0.5, 'rgba(200,235,255,0.8)'); c.addColorStop(1, 'rgba(120,190,255,0)');
+      ctx.fillStyle = c; ctx.beginPath(); ctx.arc(r * 0.4, 0, r * 1.4, 0, 7); ctx.fill();
+      if (big) { ctx.globalAlpha = 0.7; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3; for (let k = 0; k < 6; k++) { const a = k * 1.047 + p.t * 6; ctx.beginPath(); ctx.moveTo(r * 0.4, 0); ctx.lineTo(r * 0.4 + Math.cos(a) * r * 2, Math.sin(a) * r * 2); ctx.stroke(); } }
+      ctx.restore(); continue;
     }
     if (p.kind === 'kiball') {
       // Rafale de ki de Sangoku : une boule bleue qui palpite
@@ -5666,11 +5783,11 @@ function energyBall(x, y, r, gold) {
 // Planche affichée : celle de la forme (dorée, Gear 5) si elle a cette animation, sinon la normale
 // Bout de la main sur l'étape affichée : point le plus en avant du haut du corps (60 % du haut), mesuré une fois
 // par image puis gardé. Renvoie [devant, hauteur] par rapport au point posé au sol, à l'échelle du jeu.
-const HAND_SHOTS = ['shuriken', 'airshot', 'kiball', 'red', 'burning', 'hiken', 'shell', 'icewall', 'strikeair', 'vrasen', 'stonewall'], handCache = {};
+const HAND_SHOTS = ['apshot', 'meteor', 'comet', 'shuriken', 'airshot', 'kiball', 'red', 'burning', 'hiken', 'shell', 'icewall', 'strikeair', 'vrasen', 'stonewall'], handCache = {};
 // rayon des grosses boules : leur centre est avancé d'autant pour qu'elles partent DEVANT la main
 // décalage vertical du départ (vers le bas) : la pointe de l'épée levée de Saber partait trop haut
 const PROJ_DY = { strikeair: 38 };
-const PROJ_R = { shuriken: 52, vrasen: 40, katon: 52, burning: 34, kiball: 26, hiken: 34, shell: 12, icewall: 18, strikeair: 30, bullet: 12, stonewall: 18 };
+const PROJ_R = { apshot: 18, meteor: 14, comet: 40, shuriken: 52, vrasen: 40, katon: 52, burning: 34, kiball: 26, hiken: 34, shell: 12, icewall: 18, strikeair: 30, bullet: 12, stonewall: 18 };
 function handPoint(h) {
   const [anim, i] = h.C.pose(h), sheet = sheetFor(h, anim), A = SPRITES[sheet]?.[anim];
   const f = A?.frames[clamp(i, 0, A.frames.length - 1)], img = f && IMG[f.src];
@@ -6091,7 +6208,7 @@ const FACES = {
   card_ip: [0.55, 0.22, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
   card_ki: [0.53, 0.36, 4], card_luffy: [0.725, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
   card_ve: [0.52, 0.37, 4], card_ze: [0.2, 0.36, 4.2], card_zoro: [0.47, 0.27, 4.4],
-  card_jw: [0.765, 0.185, 6.5], card_sk: [0.6, 0.22, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.36, 0.33, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.52, 0.15, 4.4], card_st: [0.57, 0.19, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.55, 0.21, 4.0], card_rv: [0.56, 0.3, 4.0], card_ga: [0.62, 0.18, 4.0], card_lv: [0.57, 0.19, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.38, 0.34, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.38, 0.16, 4.0], card_bo: [0.6, 0.33, 4.0], card_ns: [0.51, 0.4, 3.2], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.765, 0.185, 6.5], card_sk: [0.6, 0.22, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.36, 0.33, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.52, 0.15, 4.4], card_st: [0.57, 0.19, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.55, 0.21, 4.0], card_rv: [0.56, 0.3, 4.0], card_ga: [0.62, 0.18, 4.0], card_lv: [0.57, 0.19, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.38, 0.34, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.38, 0.16, 4.0], card_bo: [0.6, 0.33, 4.0], card_ns: [0.51, 0.4, 3.2], card_kb: [0.7, 0.47, 3.6], card_sy: [0.56, 0.36, 3.8], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -6253,13 +6370,13 @@ const CHAR_ANIME = {
   naruto: 'naruto', sasuke: 'naruto', kakashi: 'naruto', itachi: 'naruto', naruto_s: 'naruto_s', boruto: 'boruto',
   tanjiro: 'ds', zenitsu: 'ds', inosuke: 'ds', kenshin: 'rk', ichigo: 'bleach', izuku: 'mha', shoto: 'mha', gon: 'hxh', killua: 'hxh',
   ippo: 'ippo', jinwoo: 'sl', saitama: 'opm', gojo: 'jjk', guts: 'berserk', saber: 'fate', mikasa: 'aot', levi: 'aot', eren: 'aot',
-  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama',
+  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama', bakugo: 'mha', seiya: 'saintseiya',
 };
 for (const [id, a] of Object.entries(CHAR_ANIME)) if (CHARS[id]) CHARS[id].anime ??= a;
 // Sélection : les persos rangés par famille (même univers côte à côte), dans l'ordre des séries ci-dessous
 const FAMILY = { dbz: 'db', naruto_s: 'naruto', boruto: 'naruto' };
 const familyOf = id => { const a = CHARS[id]?.anime || CHAR_ANIME[id]; return FAMILY[a] || a; };
-const FAMILY_ORDER = ['masterclass', 'db', 'op', 'naruto', 'ds', 'bleach', 'mha', 'hxh', 'jjk', 'rk', 'opm', 'sl', 'ippo', 'aot', 'berserk', 'fate', 'fma', 'lagoon', 'gunnm', 'baki', 'gintama'];
+const FAMILY_ORDER = ['masterclass', 'db', 'op', 'naruto', 'ds', 'bleach', 'mha', 'hxh', 'jjk', 'rk', 'opm', 'sl', 'ippo', 'aot', 'berserk', 'fate', 'fma', 'lagoon', 'gunnm', 'baki', 'gintama', 'saintseiya'];
 {
   const rank = id => { const r = FAMILY_ORDER.indexOf(familyOf(id)); return r < 0 ? 99 : r; }, pos = Object.fromEntries(CHAR_IDS.map((id, i) => [id, i]));
   CHAR_IDS.sort((a, b) => rank(a) - rank(b) || pos[a] - pos[b]);
@@ -6289,6 +6406,7 @@ const ANIME_STYLE = {
   gunnm: { name: 'GUNNM', font: `900 %px ${IMPACT}`, fill: ['#e8f0ff', '#7a8aa8'], stroke: '#0a1a3a', outer: '#5ab0ff', metal: true, spacing: 4 },
   baki: { name: 'BAKI', font: `900 %px ${IMPACT}`, fill: ['#ff6a4a', '#a00a00'], stroke: '#1a0000', outer: '#ffd0a0', skew: -0.1, deco: 'veins' },
   fma: { name: 'FULLMETAL ALCHEMIST', font: `700 %px ${SERIF}`, fill: ['#ffd0a0', '#c01a1a'], stroke: '#200000', outer: '#f0d080', deco: 'circle' },
+  saintseiya: { name: 'SAINT SEIYA', font: `italic 900 %px ${SERIF}`, fill: ['#ffffff', '#9fd0ff'], stroke: '#0a1a5a', outer: '#ffd860', skew: -0.06, deco: 'star' },
   gintama: { name: 'GINTAMA', font: `900 %px ${IMPACT}`, fill: ['#ffffff', '#cfe6ff'], stroke: '#1a3aa0', outer: '#0a1430', skew: -0.06, deco: 'waves' },
 };
 const animeOf = id => ANIME_STYLE[CHARS[id]?.anime || CHAR_ANIME[id]];
