@@ -1603,63 +1603,83 @@ const FXV = {
  "strikeair_v": [
   {
    "src": "assets/fx/strikeair_v_0.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_1.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_2.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_3.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_4.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_5.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_6.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_7.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_8.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_9.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_10.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
   },
   {
    "src": "assets/fx/strikeair_v_11.png",
-   "w": 1190,
-   "h": 600
+   "w": 1220,
+   "h": 550
+  },
+  {
+   "src": "assets/fx/strikeair_v_12.png",
+   "w": 1220,
+   "h": 550
+  },
+  {
+   "src": "assets/fx/strikeair_v_13.png",
+   "w": 1220,
+   "h": 550
+  },
+  {
+   "src": "assets/fx/strikeair_v_14.png",
+   "w": 1220,
+   "h": 550
+  },
+  {
+   "src": "assets/fx/strikeair_v_15.png",
+   "w": 1220,
+   "h": 550
   }
  ]
 };
