@@ -3317,6 +3317,23 @@ function updateDarkFX(dt) {
 function drawDarkFX() {
   for (const b of blackFlames) {
     const sx = b.x - camX, a = Math.max(0, Math.min(1, b.t / 0.15, (b.dur - b.t) / 0.4));
+    const img = IMG.fx_amaterasu;
+    if (img) {
+      // flammes noires dessinées (assets/fx/amaterasu.png) : deux couches qui ondulent en décalé, lueur pourpre au pied
+      const rise = Math.min(1, b.t / 0.25), hh = 230 * rise, ww = hh * img.width / img.height;
+      ctx.save(); ctx.globalAlpha = a * 0.5; ctx.globalCompositeOperation = 'lighter';
+      const g = ctx.createRadialGradient(sx, b.y - 10, 4, sx, b.y - 10, 90);
+      g.addColorStop(0, 'rgba(150,0,60,0.6)'); g.addColorStop(1, 'rgba(60,0,40,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(sx, b.y - 10, 90, 30, 0, 0, 7); ctx.fill(); ctx.restore();
+      for (const [k, ph] of [[1, 0], [0.82, 2.1]]) {
+        const sy = 1 + 0.06 * Math.sin(sceneT * 11 + ph), sk = 0.08 * Math.sin(sceneT * 7 + ph);
+        ctx.save(); ctx.globalAlpha = a * (k === 1 ? 1 : 0.75); ctx.translate(sx, b.y + 6);
+        if (ph) ctx.scale(-1, 1);
+        ctx.transform(1, 0, sk, 1, 0, 0); ctx.drawImage(img, -ww * k / 2, -hh * k * sy, ww * k, hh * k * sy);
+        ctx.restore();
+      }
+      continue;
+    }
     ctx.save(); ctx.globalAlpha = a;
     for (let k = 0; k < 7; k++) {
       const ox = (k - 3) * 15, ph = sceneT * 9 + k * 1.7, h1 = 150 * (0.55 + 0.35 * Math.abs(Math.sin(ph))), w = 16 + 6 * Math.sin(ph * 1.3);
