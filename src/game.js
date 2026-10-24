@@ -1322,7 +1322,7 @@ function resetGame(chars = ['hero'], lv = levelPick) {
 }
 
 // ---------- Joueurs ----------
-const STATES_BUSY = ['hurt', 'prejump', 'charge', 'transform', 'ultra'];
+const STATES_BUSY = ['hurt', 'prejump', 'charge', 'transform', 'ultra', 'diveland'];
 const busy = h => !!h.move || STATES_BUSY.includes(h.state);
 const say = (h, text) => popups.push({ x: h.x, y: h.y - 235, t: 0, text, small: true, c: h.C.colors[1] });
 
@@ -1397,6 +1397,33 @@ function updateJuggle(h, dt) {
 function endJuggle(h) {
   if (h.juggle?.e) h.juggle.e.juggled = false;
   h.juggle = null; h.state = 'jump'; h.t = 0; h.vy = -260; h.vx = 0; h.onGround = false;
+}
+
+// ---------- Dash aérien et coup plongeant (24/10) ----------
+// Garde-fous : un dash par saut ; le plongeant laisse vulnérable à l'atterrissage (DIVE.recover) ; dégâts modérés ;
+// l'onde au sol renverse les sbires proches mais les boss encaissent sans tomber.
+const DIVE = { recover: 0.4, radius: 170, dmg: 2 };
+const AIRDASH_MOVE = { dur: 0.3, push: 950, pushAt: 0, pushDur: 0.3, keepPush: true, ghost: true };
+const DIVE_MOVE = { dur: 1.2, on: 0.02, off: 1.2, reach: [-40, 120], y: [-130, 40], dmg: 2.5, kb: 320, ki: 8, launch: -480 };
+// dash aérien et coup plongeant : communs à tous les persos
+for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; }
+function airPose(h) {
+  const hero = h.C.pose === heroPose, pick = (...c) => c.find(([a]) => SPRITES[sheetFor(h, a)]?.[a]) || ['jump', 4];
+  if (h.state === 'airdash') return hero ? pick(['dash', 2]) : pick(['dashcharge', 2]);
+  if (h.state === 'dive') return hero ? pick(['jumpkick', 4]) : pick(['lowair', 6]);
+  return hero ? pick(['crouch', 1]) : pick(['lowair', 1]); // réception accroupie
+}
+function diveImpact(h) {
+  h.state = 'diveland'; h.t = 0; h.vx = 0;
+  shake = Math.max(shake, 16); hitstop = Math.max(hitstop, 0.05); audio.play('ultraBoom', 0.6, 1.6, 0); audio.play('body', 0.9);
+  shockFX(h.x + h.dir * 30, h.gz - 20, h.dir); impactFX(h.x + h.dir * 30, h.gz - 20, hitOf(h), true);
+  for (let k = 0; k < 20; k++) particles.push({ x: h.x + rand(-80, 80), y: h.gz - rand(0, 10), vx: rand(-380, 380), vy: rand(-240, -60), t: 0, life: 0.55, c: 'rgba(210,200,185,0.75)', r: rand(5, 11), soft: true });
+  const mult = h.boost ? h.boost.dmg : 1;
+  for (const e of enemies) {
+    if (!e.alive || e.state === 'down' || e.state === 'knock' || h.hitSet?.has(e) || Math.abs(e.x - h.x) > DIVE.radius || Math.abs(e.gz - h.gz) > 60) continue;
+    const boss = ETYPES[e.type].isBoss;
+    damageEnemy(e, DIVE.dmg * mult * (boss ? 0.6 : 1), 260 * (Math.sign(e.x - h.x) || h.dir), boss ? null : -420, e.x, e.y - 60, hitOf(h));
+  }
 }
 
 function powerDown(h) {
@@ -1499,6 +1526,12 @@ function updatePlayer(h, dt) {
     else if (J.want && J.t > 0.1) startJuggle(h);
   }
   if (h.state === 'juggle') { updateJuggle(h, dt); return; }
+  if (h.state === 'airdash' && h.t > 0.1 && (pressed.has('kick') || pressed.has('punch'))) {
+    if (held('down') || held('crouch')) { startMove(h, 'dive'); h.vy = 1500; h.vx = h.dir * 560; h.diveVx = h.vx; audio.whoosh(1.6); }
+    else startMove(h, 'airkick');
+  }
+  if (h.state === 'dive') { h.vx = h.diveVx || 0; if (Math.random() < 0.8) afterImage(h, 0.18, 0.35, hitOf(h)); }
+  if (h.state === 'diveland' && h.t > DIVE.recover) { h.state = 'idle'; }
 
   // Combos : un coup demandé pendant le coup en cours s'enchaîne dès la fin de sa fenêtre active
   const m0 = h.move;
@@ -1565,6 +1598,12 @@ function updatePlayer(h, dt) {
       if (pressed.has('jump') && !h.doubled) {
         h.doubled = true; h.vy = -700; h.t = 0;
         ring(h.x, h.y - 10); burst(h.x, h.y - 10, '#bfefff', 8); audio.zip();
+      } else if (pressed.has('dash') && !h.airDashed) {
+        // dash aérien : un seul par saut, il file à l'horizontale sans tomber
+        h.airDashed = true; startMove(h, 'airdash'); h.vy = 0; audio.zip(); audio.whoosh(1.5); ring(h.x - h.dir * 30, h.y - 100);
+      } else if ((pressed.has('kick') || pressed.has('punch')) && (held('down') || held('crouch'))) {
+        // coup plongeant : à la verticale, ou en diagonale si une direction est tenue
+        startMove(h, 'dive'); h.vy = 1500; h.vx = mx ? h.dir * 560 : 0; h.diveVx = h.vx; audio.whoosh(1.6);
       } else if (pressed.has('kick') || pressed.has('punch')) startMove(h, 'airkick');
     }
   }
@@ -1573,14 +1612,18 @@ function updatePlayer(h, dt) {
   moveEffects(h, speed);
 
   // Physique
-  if (!h.onGround) h.vy += 1900 * dt;
+  if (!h.onGround && !(h.state === 'airdash')) h.vy += 1900 * dt;
   // Profondeur : la ligne de sol bouge, le personnage (même en l'air) suit
   const nz = clamp(h.gz + h.vz * dt, Z_TOP, Z_BOT);
   h.y += nz - h.gz; h.gz = nz;
   h.x += h.vx * dt; h.y += h.vy * dt;
   if (h.y >= h.gz) {
     h.y = h.gz; h.vy = 0;
-    if (!h.onGround) { h.onGround = true; h.doubled = false; h.move = null; h.state = 'land'; h.t = 0; audio.play('step', 0.6, 0.8); }
+    if (!h.onGround) {
+      const dived = h.state === 'dive';
+      h.onGround = true; h.doubled = false; h.airDashed = false; h.move = null; h.state = 'land'; h.t = 0; audio.play('step', 0.6, 0.8);
+      if (dived) diveImpact(h);
+    }
   }
   h.x = clamp(h.x, camX + 40, camX + W - 40);
   if (h.state === 'walk') {
@@ -5178,6 +5221,7 @@ const jumpFrame = h => flipping(h) ? 4 : h.vy < -550 ? 2 : h.vy < -220 ? 3 : h.v
 
 function heroPose(h) {
   const t = h.t;
+  if (['airdash', 'dive', 'diveland'].includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h); return [h.back ? 'back' : 'walk', Math.floor(h.walkT * fps) % n]; }
@@ -5212,6 +5256,7 @@ function heroPose(h) {
 // lowair (accroupi, balayage | piétinement en l'air), rocket (fusée | charge), gigant.
 function luffyPose(h) {
   const t = h.t;
+  if (['airdash', 'dive', 'diveland'].includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h), i = Math.floor(h.walkT * fps) % n; return ['walk', h.back ? n - 1 - i : i]; }
@@ -5522,6 +5567,7 @@ const sheetFor = (h, anim) => formSheet(h) && SPRITES[formSheet(h)]?.[anim] ? fo
 // Les coups donnent leur propre pose (champ p).
 function stdPose(h) {
   const t = h.t, m = h.move;
+  if (['airdash', 'dive', 'diveland'].includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
   if (m && m.cyc && t >= m.cyc.from) return [m.cyc.anim, t < m.cyc.to ? m.cyc.frames[Math.floor((t - m.cyc.from) * m.cyc.fps) % m.cyc.frames.length] : m.cyc.last];
   if (m && m.p) { const [a, f, marks] = m.p, v = f[Math.min(step(t, marks || []), f.length - 1)]; return Array.isArray(v) ? v : [a, v]; }
