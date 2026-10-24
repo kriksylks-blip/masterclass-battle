@@ -711,6 +711,25 @@ const SPRITES = {
      "ay": 709
     }
    ]
+  },
+  "guard": {
+   "scale": 0.3109,
+   "frames": [
+    {
+     "src": "assets/sprites/hero/guard_0.png",
+     "w": 321,
+     "h": 550,
+     "ax": 164.4,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/hero/guard_1.png",
+     "w": 539,
+     "h": 542,
+     "ax": 282.3,
+     "ay": 542
+    }
+   ]
   }
  },
  "gold": {
@@ -1243,6 +1262,25 @@ const SPRITES = {
      "h": 327,
      "ax": 131.1,
      "ay": 327
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.3103,
+   "frames": [
+    {
+     "src": "assets/sprites/gold/guard_0.png",
+     "w": 319,
+     "h": 551,
+     "ax": 178.8,
+     "ay": 551
+    },
+    {
+     "src": "assets/sprites/gold/guard_1.png",
+     "w": 328,
+     "h": 554,
+     "ax": 167.0,
+     "ay": 554
     }
    ]
   }
@@ -2248,6 +2286,25 @@ const SPRITES = {
      "ay": 353
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2589,
+   "frames": [
+    {
+     "src": "assets/sprites/luffy/guard_0.png",
+     "w": 480,
+     "h": 643,
+     "ax": 277.0,
+     "ay": 643
+    },
+    {
+     "src": "assets/sprites/luffy/guard_1.png",
+     "w": 616,
+     "h": 632,
+     "ax": 337.0,
+     "ay": 632
+    }
+   ]
   }
  },
  "kenshin": {
@@ -2732,6 +2789,25 @@ const SPRITES = {
      "h": 362,
      "ax": 163.0,
      "ay": 362
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2567,
+   "frames": [
+    {
+     "src": "assets/sprites/kenshin/guard_0.png",
+     "w": 668,
+     "h": 554,
+     "ax": 349.5,
+     "ay": 554
+    },
+    {
+     "src": "assets/sprites/kenshin/guard_1.png",
+     "w": 567,
+     "h": 587,
+     "ax": 218.0,
+     "ay": 587
     }
    ]
   }
@@ -3232,6 +3308,25 @@ const SPRITES = {
      "ay": 315
     }
    ]
+  },
+  "guard": {
+   "scale": 0.245,
+   "frames": [
+    {
+     "src": "assets/sprites/goku_ssj/guard_0.png",
+     "w": 523,
+     "h": 742,
+     "ax": 294.5,
+     "ay": 742
+    },
+    {
+     "src": "assets/sprites/goku_ssj/guard_1.png",
+     "w": 633,
+     "h": 744,
+     "ax": 391.0,
+     "ay": 744
+    }
+   ]
   }
  },
  "kakashi": {
@@ -3716,6 +3811,25 @@ const SPRITES = {
      "h": 357,
      "ax": 126.0,
      "ay": 357
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2545,
+   "frames": [
+    {
+     "src": "assets/sprites/kakashi/guard_0.png",
+     "w": 410,
+     "h": 679,
+     "ax": 244.0,
+     "ay": 679
+    },
+    {
+     "src": "assets/sprites/kakashi/guard_1.png",
+     "w": 493,
+     "h": 645,
+     "ax": 317.0,
+     "ay": 645
     }
    ]
   }
@@ -4204,6 +4318,25 @@ const SPRITES = {
      "ay": 300
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2719,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/guard_0.png",
+     "w": 520,
+     "h": 629,
+     "ax": 307.5,
+     "ay": 629
+    },
+    {
+     "src": "assets/sprites/ichigo/guard_1.png",
+     "w": 612,
+     "h": 568,
+     "ax": 379.2,
+     "ay": 568
+    }
+   ]
   }
  },
  "zenitsu": {
@@ -4688,6 +4821,25 @@ const SPRITES = {
      "h": 271,
      "ax": 133.9,
      "ay": 271
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2705,
+   "frames": [
+    {
+     "src": "assets/sprites/zenitsu/guard_0.png",
+     "w": 553,
+     "h": 559,
+     "ax": 250.0,
+     "ay": 559
+    },
+    {
+     "src": "assets/sprites/zenitsu/guard_1.png",
+     "w": 558,
+     "h": 600,
+     "ax": 270.5,
+     "ay": 600
     }
    ]
   }
@@ -5176,6 +5328,25 @@ const SPRITES = {
      "ay": 332
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2152,
+   "frames": [
+    {
+     "src": "assets/sprites/izuku/guard_0.png",
+     "w": 571,
+     "h": 736,
+     "ax": 326.5,
+     "ay": 736
+    },
+    {
+     "src": "assets/sprites/izuku/guard_1.png",
+     "w": 595,
+     "h": 723,
+     "ax": 412.6,
+     "ay": 723
+    }
+   ]
   }
  },
  "vegeta": {
@@ -5660,6 +5831,25 @@ const SPRITES = {
      "h": 372,
      "ax": 162.0,
      "ay": 372
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2232,
+   "frames": [
+    {
+     "src": "assets/sprites/vegeta/guard_0.png",
+     "w": 408,
+     "h": 742,
+     "ax": 247.0,
+     "ay": 742
+    },
+    {
+     "src": "assets/sprites/vegeta/guard_1.png",
+     "w": 577,
+     "h": 723,
+     "ax": 398.0,
+     "ay": 723
     }
    ]
   }
@@ -6148,6 +6338,25 @@ const SPRITES = {
      "ay": 391
     }
    ]
+  },
+  "guard": {
+   "scale": 0.3573,
+   "frames": [
+    {
+     "src": "assets/sprites/gon/guard_0.png",
+     "w": 281,
+     "h": 403,
+     "ax": 175.0,
+     "ay": 403
+    },
+    {
+     "src": "assets/sprites/gon/guard_1.png",
+     "w": 346,
+     "h": 393,
+     "ax": 188.0,
+     "ay": 393
+    }
+   ]
   }
  },
  "killua": {
@@ -6632,6 +6841,25 @@ const SPRITES = {
      "h": 262,
      "ax": 155.0,
      "ay": 262
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2095,
+   "frames": [
+    {
+     "src": "assets/sprites/killua/guard_0.png",
+     "w": 479,
+     "h": 696,
+     "ax": 262.0,
+     "ay": 696
+    },
+    {
+     "src": "assets/sprites/killua/guard_1.png",
+     "w": 561,
+     "h": 641,
+     "ax": 405.5,
+     "ay": 641
     }
    ]
   }
@@ -7120,6 +7348,25 @@ const SPRITES = {
      "ay": 434
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2186,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/guard_0.png",
+     "w": 446,
+     "h": 700,
+     "ax": 253.5,
+     "ay": 700
+    },
+    {
+     "src": "assets/sprites/ippo/guard_1.png",
+     "w": 607,
+     "h": 675,
+     "ax": 331.0,
+     "ay": 675
+    }
+   ]
   }
  },
  "vegeta_ssj": {
@@ -7606,6 +7853,25 @@ const SPRITES = {
      "ay": 374
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2343,
+   "frames": [
+    {
+     "src": "assets/sprites/vegeta_ssj/guard_0.png",
+     "w": 434,
+     "h": 753,
+     "ax": 266.0,
+     "ay": 753
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/guard_1.png",
+     "w": 571,
+     "h": 723,
+     "ax": 400.7,
+     "ay": 723
+    }
+   ]
   }
  },
  "izuku_dark": {
@@ -8090,6 +8356,25 @@ const SPRITES = {
      "h": 323,
      "ax": 195.5,
      "ay": 323
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2164,
+   "frames": [
+    {
+     "src": "assets/sprites/izuku_dark/guard_0.png",
+     "w": 561,
+     "h": 757,
+     "ax": 281.0,
+     "ay": 757
+    },
+    {
+     "src": "assets/sprites/izuku_dark/guard_1.png",
+     "w": 610,
+     "h": 699,
+     "ax": 354.5,
+     "ay": 699
     }
    ]
   }
@@ -9294,6 +9579,25 @@ const SPRITES = {
      "ay": 333
     }
    ]
+  },
+  "guard": {
+   "scale": 0.4783,
+   "frames": [
+    {
+     "src": "assets/sprites/luffy5/guard_0.png",
+     "w": 241,
+     "h": 350,
+     "ax": 141.0,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/luffy5/guard_1.png",
+     "w": 358,
+     "h": 355,
+     "ax": 171.0,
+     "ay": 355
+    }
+   ]
   }
  },
  "jinwoo": {
@@ -9778,6 +10082,25 @@ const SPRITES = {
      "h": 345,
      "ax": 104.0,
      "ay": 345
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2884,
+   "frames": [
+    {
+     "src": "assets/sprites/jinwoo/guard_0.png",
+     "w": 491,
+     "h": 593,
+     "ax": 299.6,
+     "ay": 593
+    },
+    {
+     "src": "assets/sprites/jinwoo/guard_1.png",
+     "w": 524,
+     "h": 543,
+     "ax": 307.0,
+     "ay": 543
     }
    ]
   }
@@ -10266,6 +10589,25 @@ const SPRITES = {
      "ay": 332
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2555,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/guard_0.png",
+     "w": 493,
+     "h": 634,
+     "ax": 234.3,
+     "ay": 634
+    },
+    {
+     "src": "assets/sprites/saitama/guard_1.png",
+     "w": 687,
+     "h": 592,
+     "ax": 340.6,
+     "ay": 592
+    }
+   ]
   }
  },
  "gojo": {
@@ -10750,6 +11092,25 @@ const SPRITES = {
      "h": 366,
      "ax": 59.0,
      "ay": 366
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2791,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/guard_0.png",
+     "w": 513,
+     "h": 661,
+     "ax": 276.5,
+     "ay": 661
+    },
+    {
+     "src": "assets/sprites/gojo/guard_1.png",
+     "w": 668,
+     "h": 611,
+     "ax": 416.6,
+     "ay": 611
     }
    ]
   }
@@ -11238,6 +11599,25 @@ const SPRITES = {
      "ay": 365
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2728,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/guard_0.png",
+     "w": 416,
+     "h": 607,
+     "ax": 245.5,
+     "ay": 607
+    },
+    {
+     "src": "assets/sprites/sasuke/guard_1.png",
+     "w": 460,
+     "h": 604,
+     "ax": 267.0,
+     "ay": 604
+    }
+   ]
   }
  },
  "gohan": {
@@ -11724,6 +12104,25 @@ const SPRITES = {
      "ay": 313
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2109,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/guard_0.png",
+     "w": 427,
+     "h": 640,
+     "ax": 238.0,
+     "ay": 640
+    },
+    {
+     "src": "assets/sprites/gohan/guard_1.png",
+     "w": 589,
+     "h": 658,
+     "ax": 325.0,
+     "ay": 658
+    }
+   ]
   }
  },
  "gohan_ssj": {
@@ -12147,6 +12546,25 @@ const SPRITES = {
      "h": 344,
      "ax": 96.7,
      "ay": 344
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2139,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/guard_0.png",
+     "w": 390,
+     "h": 631,
+     "ax": 222.5,
+     "ay": 631
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/guard_1.png",
+     "w": 531,
+     "h": 606,
+     "ax": 320.5,
+     "ay": 606
     }
    ]
   }
@@ -12635,6 +13053,25 @@ const SPRITES = {
      "ay": 297
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2633,
+   "frames": [
+    {
+     "src": "assets/sprites/goku/guard_0.png",
+     "w": 510,
+     "h": 670,
+     "ax": 294.0,
+     "ay": 670
+    },
+    {
+     "src": "assets/sprites/goku/guard_1.png",
+     "w": 609,
+     "h": 632,
+     "ax": 319.5,
+     "ay": 632
+    }
+   ]
   }
  },
  "zoro": {
@@ -13119,6 +13556,25 @@ const SPRITES = {
      "h": 310,
      "ax": 92.5,
      "ay": 310
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2475,
+   "frames": [
+    {
+     "src": "assets/sprites/zoro/guard_0.png",
+     "w": 582,
+     "h": 672,
+     "ax": 195.0,
+     "ay": 672
+    },
+    {
+     "src": "assets/sprites/zoro/guard_1.png",
+     "w": 636,
+     "h": 590,
+     "ax": 342.5,
+     "ay": 590
     }
    ]
   }
@@ -13607,6 +14063,25 @@ const SPRITES = {
      "ay": 288
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2162,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/guard_0.png",
+     "w": 544,
+     "h": 716,
+     "ax": 291.1,
+     "ay": 716
+    },
+    {
+     "src": "assets/sprites/naruto/guard_1.png",
+     "w": 567,
+     "h": 700,
+     "ax": 375.5,
+     "ay": 700
+    }
+   ]
   }
  },
  "tanjiro": {
@@ -14091,6 +14566,25 @@ const SPRITES = {
      "h": 284,
      "ax": 166.5,
      "ay": 284
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2433,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/guard_0.png",
+     "w": 522,
+     "h": 688,
+     "ax": 290.5,
+     "ay": 688
+    },
+    {
+     "src": "assets/sprites/tanjiro/guard_1.png",
+     "w": 571,
+     "h": 665,
+     "ax": 347.0,
+     "ay": 665
     }
    ]
   }
@@ -30441,6 +30935,25 @@ const SPRITES = {
      "ay": 261
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2368,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/guard_0.png",
+     "w": 567,
+     "h": 669,
+     "ax": 332.0,
+     "ay": 669
+    },
+    {
+     "src": "assets/sprites/inosuke/guard_1.png",
+     "w": 614,
+     "h": 623,
+     "ax": 340.7,
+     "ay": 623
+    }
+   ]
   }
  },
  "ace": {
@@ -30925,6 +31438,25 @@ const SPRITES = {
      "h": 356,
      "ax": 57.2,
      "ay": 356
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2385,
+   "frames": [
+    {
+     "src": "assets/sprites/ace/guard_0.png",
+     "w": 425,
+     "h": 702,
+     "ax": 210.6,
+     "ay": 702
+    },
+    {
+     "src": "assets/sprites/ace/guard_1.png",
+     "w": 567,
+     "h": 661,
+     "ax": 352.4,
+     "ay": 661
     }
    ]
   }
@@ -31413,6 +31945,25 @@ const SPRITES = {
      "ay": 241
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2575,
+   "frames": [
+    {
+     "src": "assets/sprites/guts/guard_0.png",
+     "w": 591,
+     "h": 699,
+     "ax": 268.6,
+     "ay": 699
+    },
+    {
+     "src": "assets/sprites/guts/guard_1.png",
+     "w": 710,
+     "h": 560,
+     "ax": 410.6,
+     "ay": 560
+    }
+   ]
   }
  },
  "sanji": {
@@ -31897,6 +32448,25 @@ const SPRITES = {
      "h": 260,
      "ax": 55.9,
      "ay": 260
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2716,
+   "frames": [
+    {
+     "src": "assets/sprites/sanji/guard_0.png",
+     "w": 449,
+     "h": 623,
+     "ax": 246.1,
+     "ay": 623
+    },
+    {
+     "src": "assets/sprites/sanji/guard_1.png",
+     "w": 377,
+     "h": 726,
+     "ax": 189.6,
+     "ay": 726
     }
    ]
   }
@@ -32385,6 +32955,25 @@ const SPRITES = {
      "ay": 357
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2583,
+   "frames": [
+    {
+     "src": "assets/sprites/shoto/guard_0.png",
+     "w": 396,
+     "h": 648,
+     "ax": 202.8,
+     "ay": 648
+    },
+    {
+     "src": "assets/sprites/shoto/guard_1.png",
+     "w": 528,
+     "h": 613,
+     "ax": 328.5,
+     "ay": 613
+    }
+   ]
   }
  },
  "saber": {
@@ -32869,6 +33458,25 @@ const SPRITES = {
      "h": 236,
      "ax": 114.3,
      "ay": 236
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2488,
+   "frames": [
+    {
+     "src": "assets/sprites/saber/guard_0.png",
+     "w": 525,
+     "h": 644,
+     "ax": 224.6,
+     "ay": 644
+    },
+    {
+     "src": "assets/sprites/saber/guard_1.png",
+     "w": 597,
+     "h": 593,
+     "ax": 313.7,
+     "ay": 593
     }
    ]
   }
@@ -33357,6 +33965,25 @@ const SPRITES = {
      "ay": 352
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2377,
+   "frames": [
+    {
+     "src": "assets/sprites/mikasa/guard_0.png",
+     "w": 426,
+     "h": 728,
+     "ax": 231.0,
+     "ay": 728
+    },
+    {
+     "src": "assets/sprites/mikasa/guard_1.png",
+     "w": 529,
+     "h": 645,
+     "ax": 304.6,
+     "ay": 645
+    }
+   ]
   }
  },
  "revy": {
@@ -33841,6 +34468,25 @@ const SPRITES = {
      "h": 273,
      "ax": 110.4,
      "ay": 273
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2256,
+   "frames": [
+    {
+     "src": "assets/sprites/revy/guard_0.png",
+     "w": 388,
+     "h": 710,
+     "ax": 182.7,
+     "ay": 710
+    },
+    {
+     "src": "assets/sprites/revy/guard_1.png",
+     "w": 464,
+     "h": 715,
+     "ax": 222.8,
+     "ay": 715
     }
    ]
   }
@@ -34329,6 +34975,25 @@ const SPRITES = {
      "ay": 333
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2253,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/guard_0.png",
+     "w": 474,
+     "h": 687,
+     "ax": 235.7,
+     "ay": 687
+    },
+    {
+     "src": "assets/sprites/gally/guard_1.png",
+     "w": 595,
+     "h": 644,
+     "ax": 316.5,
+     "ay": 644
+    }
+   ]
   }
  },
  "levi": {
@@ -34813,6 +35478,25 @@ const SPRITES = {
      "h": 331,
      "ax": 86.5,
      "ay": 331
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2382,
+   "frames": [
+    {
+     "src": "assets/sprites/levi/guard_0.png",
+     "w": 436,
+     "h": 745,
+     "ax": 230.8,
+     "ay": 745
+    },
+    {
+     "src": "assets/sprites/levi/guard_1.png",
+     "w": 597,
+     "h": 595,
+     "ax": 344.0,
+     "ay": 595
     }
    ]
   }
@@ -35301,6 +35985,25 @@ const SPRITES = {
      "ay": 357
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2818,
+   "frames": [
+    {
+     "src": "assets/sprites/itachi/guard_0.png",
+     "w": 380,
+     "h": 594,
+     "ax": 174.2,
+     "ay": 594
+    },
+    {
+     "src": "assets/sprites/itachi/guard_1.png",
+     "w": 537,
+     "h": 580,
+     "ax": 282.9,
+     "ay": 580
+    }
+   ]
   }
  },
  "eren": {
@@ -35785,6 +36488,25 @@ const SPRITES = {
      "h": 330,
      "ax": 108.9,
      "ay": 330
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2496,
+   "frames": [
+    {
+     "src": "assets/sprites/eren/guard_0.png",
+     "w": 446,
+     "h": 743,
+     "ax": 245.4,
+     "ay": 743
+    },
+    {
+     "src": "assets/sprites/eren/guard_1.png",
+     "w": 543,
+     "h": 578,
+     "ax": 317.2,
+     "ay": 578
     }
    ]
   }
@@ -36273,6 +36995,25 @@ const SPRITES = {
      "ay": 368
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2554,
+   "frames": [
+    {
+     "src": "assets/sprites/edward/guard_0.png",
+     "w": 459,
+     "h": 592,
+     "ax": 240.6,
+     "ay": 592
+    },
+    {
+     "src": "assets/sprites/edward/guard_1.png",
+     "w": 563,
+     "h": 581,
+     "ax": 272.4,
+     "ay": 581
+    }
+   ]
   }
  },
  "gintoki": {
@@ -36757,6 +37498,25 @@ const SPRITES = {
      "h": 345,
      "ax": 93.8,
      "ay": 345
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2444,
+   "frames": [
+    {
+     "src": "assets/sprites/gintoki/guard_0.png",
+     "w": 415,
+     "h": 685,
+     "ax": 236.3,
+     "ay": 685
+    },
+    {
+     "src": "assets/sprites/gintoki/guard_1.png",
+     "w": 509,
+     "h": 657,
+     "ax": 251.3,
+     "ay": 657
     }
    ]
   }
@@ -37245,6 +38005,25 @@ const SPRITES = {
      "ay": 288
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2537,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/guard_0.png",
+     "w": 442,
+     "h": 667,
+     "ax": 214.5,
+     "ay": 667
+    },
+    {
+     "src": "assets/sprites/trunks/guard_1.png",
+     "w": 648,
+     "h": 658,
+     "ax": 372.1,
+     "ay": 658
+    }
+   ]
   }
  },
  "trunks_ssj": {
@@ -37672,6 +38451,25 @@ const SPRITES = {
      "h": 309,
      "ax": 128.9,
      "ay": 309
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2603,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks_ssj/guard_0.png",
+     "w": 510,
+     "h": 650,
+     "ax": 255.5,
+     "ay": 650
+    },
+    {
+     "src": "assets/sprites/trunks_ssj/guard_1.png",
+     "w": 657,
+     "h": 650,
+     "ax": 409.4,
+     "ay": 650
     }
    ]
   }
@@ -38103,6 +38901,25 @@ const SPRITES = {
      "ay": 330
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2582,
+   "frames": [
+    {
+     "src": "assets/sprites/goku_blue/guard_0.png",
+     "w": 496,
+     "h": 704,
+     "ax": 284.0,
+     "ay": 704
+    },
+    {
+     "src": "assets/sprites/goku_blue/guard_1.png",
+     "w": 632,
+     "h": 701,
+     "ax": 365.5,
+     "ay": 701
+    }
+   ]
   }
  },
  "goku_ui": {
@@ -38530,6 +39347,25 @@ const SPRITES = {
      "h": 325,
      "ax": 139.8,
      "ay": 325
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2642,
+   "frames": [
+    {
+     "src": "assets/sprites/goku_ui/guard_0.png",
+     "w": 540,
+     "h": 688,
+     "ax": 308.0,
+     "ay": 688
+    },
+    {
+     "src": "assets/sprites/goku_ui/guard_1.png",
+     "w": 602,
+     "h": 664,
+     "ax": 384.0,
+     "ay": 664
     }
    ]
   }
@@ -39137,6 +39973,25 @@ const SPRITES = {
      "ay": 322
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2465,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto_s/guard_0.png",
+     "w": 394,
+     "h": 701,
+     "ax": 198.4,
+     "ay": 701
+    },
+    {
+     "src": "assets/sprites/naruto_s/guard_1.png",
+     "w": 504,
+     "h": 643,
+     "ax": 312.1,
+     "ay": 643
+    }
+   ]
   }
  },
  "baki": {
@@ -39623,6 +40478,25 @@ const SPRITES = {
      "ay": 368
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2462,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/guard_0.png",
+     "w": 452,
+     "h": 680,
+     "ax": 204.9,
+     "ay": 680
+    },
+    {
+     "src": "assets/sprites/baki/guard_1.png",
+     "w": 644,
+     "h": 700,
+     "ax": 342.7,
+     "ay": 700
+    }
+   ]
   }
  },
  "boruto": {
@@ -40107,6 +40981,25 @@ const SPRITES = {
      "h": 352,
      "ax": 70.9,
      "ay": 352
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2501,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/guard_0.png",
+     "w": 445,
+     "h": 619,
+     "ax": 264.6,
+     "ay": 619
+    },
+    {
+     "src": "assets/sprites/boruto/guard_1.png",
+     "w": 528,
+     "h": 605,
+     "ax": 293.5,
+     "ay": 605
     }
    ]
   }

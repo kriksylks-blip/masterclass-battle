@@ -906,7 +906,7 @@ const CHARS = {
       { ki: 100, name: 'ULTRA INSTINCT', sheet: 'goku_ui', fallback: ['goku_ssj', 'grayscale(1) brightness(1.3) contrast(1.05)'], speed: 1.55, dmg: 2.2, at: 0.6, end: 1.1,
         aura: ['rgba(200,220,255,0.55)', '#dfeaff'], sparks: '#eef6ff', glow: '#a9c4ff', dodge: 0.45, bar: ['#5a6aa8', '#ffffff'], color: '#e8f0ff', hit: '#ffffff' },
     ],
-    moves: GK_MOVES, chain: { punch: ['punch', 'cross', 'kiburst', 'finisher'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'], launcher: 'uppercut' },
+    moves: GK_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'], launcher: 'uppercut' },
     special: 'kamehameha', speed: 260, pose: stdPose, ultra: [startGenki, updateGenki], ultraPose: genkiPose,
   },
   gohan: {
@@ -1411,8 +1411,9 @@ function airPose(h) {
   if (h.state === 'airdash') return hero ? pick(['dash', 2]) : pick(['dashcharge', 2]);
   if (h.state === 'dive') return hero ? pick(['jumpkick', 4]) : pick(['lowair', 6]);
   if (h.state === 'dodge') return hero ? pick(['dash', 1]) : pick(['dashcharge', 1]);
-  if (h.state === 'smashcharge') return hero ? pick(['charge', 1]) : pick(['dashcharge', 4]);
-  if (h.state === 'guard') return hero ? pick(['punch', 0]) : pick(['combo', 0]);
+  // garde et coup chargé armé : planche 'guard' de chaque perso (étape 0 garde, 1 armé), sinon l'ancienne pose
+  if (h.state === 'smashcharge') return hero ? pick(['guard', 1], ['charge', 1]) : pick(['guard', 1], ['dashcharge', 4]);
+  if (h.state === 'guard') return hero ? pick(['guard', 0], ['punch', 0]) : pick(['guard', 0], ['combo', 0]);
   if (h.state === 'megasmash') return hero ? pick(['pcombo', h.t < 0.1 ? 1 : 4]) : pick(['combo', h.t < 0.1 ? 0 : 2]);
   return hero ? pick(['crouch', 1]) : pick(['lowair', 1]); // réception accroupie
 }
@@ -1427,7 +1428,10 @@ function finishOf(h) {
   // avant : estocade des épéistes, sinon la ruée explosive ; arrière : coup qui frappe derrière ; neutre : projection normale
   const notLaunch = n => n && n !== C.chain.launcher;
   if (rel > 0) return C.moves.thrust ? 'thrust' : C.moves.finisher ? 'finisher' : pLast;
-  if (rel < 0) return k.find(n => C.moves[n]?.reach?.[0] < -50) || k[1] || kLast || pLast;
+  if (rel < 0) { // un coup qui frappe derrière, pas déjà joué dans le combo
+    const used = new Set(C.chain.punch.slice(0, -1));
+    return k.find(n => C.moves[n]?.reach?.[0] < -50 && !used.has(n)) || (C.moves.spinback && !used.has('spinback') ? 'spinback' : null) || k.find(n => !used.has(n)) || kLast || pLast;
+  }
   return notLaunch(kLast) ? kLast : notLaunch(pLast) ? pLast : k[1] || pLast;
 }
 // ---------- Garde, parade, esquive (ancien bouton Pied) ----------
@@ -1437,6 +1441,14 @@ const CHARGE = { show: 0.32, full: 0.75, weak: 0.4 };
 const MEGA_MOVE = { dur: 0.6, on: 0.12, off: 0.3, reach: [10, 175], y: [-190, -50], dmg: 4, kb: 900, ki: 12, launch: -360, push: 1000, pushAt: 0.04, pushDur: 0.16, lean: 16, shock: true, mega: true };
 // dash aérien, coup plongeant et coup chargé : communs à tous les persos
 for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; C.moves.megasmash ??= MEGA_MOVE; if (C.pose === stdPose && !C.moves.thrust) C.moves.finisher ??= FINISHER; }
+// Combos des combattants à mains nues (24/10) : deux coups de poing, deux coups de pied, puis le finish choisi par la
+// direction (finishOf) — le même bouton enchaîne poings et pieds, comme dans les jeux de combat
+for (const C of Object.values(CHARS)) {
+  const P = C.chain?.punch, K = C.chain?.kick;
+  if (!P || !K || P.join() !== 'punch,cross,finisher' || K.length < 3) continue;
+  if (![K[0], K[1]].every(n => C.moves[n]?.cancel)) continue;
+  C.chain.punch = ['punch', 'cross', K[0], K[1], 'finisher'];
+}
 function megaHit(h, e) {
   const T = ETYPES[e.type];
   if (T.isBoss || e.hp > e.maxHp * CHARGE.weak) { e.smashT = 0.9; return; } // encore solide : grosse projection, rebond au bord
@@ -6125,7 +6137,9 @@ const CUT_FROM_CARD = new Set(); // tous les persos ont maintenant leur gros pla
 function drawCutins() {
   cutins = cutins.filter(c => (c.t += 1 / 60) < CUT);
   for (const c of cutins) {
-    const h = c.h, right = c.duo ? h.idx % 2 === 0 : h.idx % 2 === 1, img = IMG['cutin_' + h.char];
+    // bandeau du côté de l'écran opposé au perso (il s'élève pendant certains ultimes : le bandeau le cachait)
+    c.right ??= c.duo ? c.h.idx % 2 === 0 : c.h.x - camX < W / 2;
+    const h = c.h, right = c.right, img = IMG['cutin_' + h.char];
     ctx.globalAlpha = 0.95;
     const k = c.t / CUT, slide = c.t < 0.18 ? 1 - c.t / 0.18 : k > 0.85 ? (k - 0.85) / 0.15 : 0;
     // en haut, sous les jauges : on voit le visage sans cacher les combattants
