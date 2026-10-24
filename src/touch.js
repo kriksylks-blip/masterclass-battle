@@ -45,8 +45,8 @@
   root.innerHTML = `
     <div class="zone"><div class="hint">joystick : pose ton pouce ici</div><div class="stick"><div class="knob"></div></div></div>
     <div class="btn big" data-a="jump"   style="right:92px; bottom:14px">SAUT</div>
-    <div class="btn big" data-a="kick"   style="right:18px; bottom:88px">PIED</div>
-    <div class="btn big" data-a="punch"  style="right:166px;bottom:88px">POING</div>
+    <div class="btn big" data-a="kick"   style="right:18px; bottom:88px">GARDE</div>
+    <div class="btn big" data-a="punch"  style="right:166px;bottom:88px">ATTAQUE</div>
     <div class="btn big" data-a="blast"  style="right:92px; bottom:162px">SPÉCIAL</div>
     <div class="btn small" data-a="dash"  style="right:200px;bottom:178px">DASH</div>
     <div class="btn small" data-a="ki"    style="right:22px; bottom:186px" id="tcKi">KI</div>

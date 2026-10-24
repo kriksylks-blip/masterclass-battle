@@ -93,7 +93,7 @@ const anyPressed = a => INPUT.some(I => I.pressed.has(a));
 const ACTIONS = [
   ['left', 'Gauche'], ['right', 'Droite'], ['up', 'Monter (vers le fond)'], ['down', 'Descendre (vers l\'avant)'],
   ['jump', 'Sauter (2× = double saut)'], ['crouch', 'Se baisser'],
-  ['punch', 'Poing'], ['kick', 'Pied'], ['blast', 'Coup spécial'], ['dash', 'Dash'],
+  ['punch', 'Attaque (tenir : coup chargé)'], ['kick', 'Garde / parade / esquive'], ['blast', 'Coup spécial'], ['dash', 'Dash'],
   ['charge', 'Charger le ki (tenir)'], ['transform', 'Transformation'], ['ultra', 'Attaque ultime'],
   ['tag', 'Relais / attaque à deux'], ['pause', 'Pause / commandes'], ['mute', 'Couper le son'],
 ];
@@ -864,7 +864,7 @@ const GJ_MOVES = { ...NEWKICK(FIST),
   dash: { dur: 0.5, on: 0.2, off: 0.38, reach: [0, 125], y: [-150, -60], dmg: 3, kb: 420, ki: 8, launch: -480, teleport: 0.16, call: 'INFINI.', p: ['dashcharge', [0, 1, 2, 3], [0.1, 0.22, 0.42]] },
   red:  { dur: 0.75, cost: 35, proj: { at: 0.3, kind: 'red', speed: 1150, dmg: 4.5, kb: 640, launch: -560, life: 0.9 }, call: 'INVERSION : ROUGE !', p: ['special', [0, 1, 2, 3], [0.18, 0.3, 0.55]] },
 };
-const KI = { transform: 50, ultra: 90, chargeRate: 32, regen: 4, goldDrain: 6 };
+const KI = { transform: 50, ultra: 90, formUltra: 50, chargeRate: 32, regen: 4, goldDrain: 6 };
 
 // Fiche de chaque personnage. Pour en ajouter un : ses planches dans tools/slice_sheets.py,
 // son portrait (ui/card_<nom>.png), ses coups, ses formes, son ultime et sa fonction de poses.
@@ -1322,7 +1322,7 @@ function resetGame(chars = ['hero'], lv = levelPick) {
 }
 
 // ---------- Joueurs ----------
-const STATES_BUSY = ['hurt', 'prejump', 'charge', 'transform', 'ultra', 'diveland'];
+const STATES_BUSY = ['hurt', 'prejump', 'charge', 'transform', 'ultra', 'diveland', 'dodge'];
 const busy = h => !!h.move || STATES_BUSY.includes(h.state);
 const say = (h, text) => popups.push({ x: h.x, y: h.y - 235, t: 0, text, small: true, c: h.C.colors[1] });
 
@@ -1405,14 +1405,65 @@ function endJuggle(h) {
 const DIVE = { recover: 0.4, radius: 170, dmg: 2 };
 const AIRDASH_MOVE = { dur: 0.3, push: 950, pushAt: 0, pushDur: 0.3, keepPush: true, ghost: true };
 const DIVE_MOVE = { dur: 1.2, on: 0.02, off: 1.2, reach: [-40, 120], y: [-130, 40], dmg: 2.5, kb: 320, ki: 8, launch: -480 };
-// dash aérien et coup plongeant : communs à tous les persos
-for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; }
 function airPose(h) {
   const hero = h.C.pose === heroPose, pick = (...c) => c.find(([a]) => SPRITES[sheetFor(h, a)]?.[a]) || ['jump', 4];
   if (h.state === 'airdash') return hero ? pick(['dash', 2]) : pick(['dashcharge', 2]);
   if (h.state === 'dive') return hero ? pick(['jumpkick', 4]) : pick(['lowair', 6]);
+  if (h.state === 'dodge') return hero ? pick(['dash', 1]) : pick(['dashcharge', 1]);
+  if (h.state === 'smashcharge') return hero ? pick(['charge', 1]) : pick(['dashcharge', 4]);
+  if (h.state === 'guard') return hero ? pick(['punch', 0]) : pick(['combo', 0]);
+  if (h.state === 'megasmash') return hero ? pick(['pcombo', h.t < 0.1 ? 1 : 4]) : pick(['combo', h.t < 0.1 ? 0 : 2]);
   return hero ? pick(['crouch', 1]) : pick(['lowair', 1]); // réception accroupie
 }
+const POSE_STATES = ['airdash', 'dive', 'diveland', 'dodge', 'smashcharge', 'guard', 'megasmash'];
+// ---------- Bouton Attaque unique (24/10) : le dernier coup du combo dépend de la direction tenue ----------
+// haut : lanceur (jonglage) ; bas : balayage ; avant : ruée explosive ; arrière : il se retourne et frappe ; neutre : projection
+function finishOf(h) {
+  const C = h.C, k = C.chain.kick || [], kLast = k[k.length - 1], pLast = C.chain.punch[C.chain.punch.length - 1];
+  const recent = t => sceneT - (t ?? -9) < 0.5, rel = recent(h.mxT) ? h.lastMx * h.dir : 0;
+  if (recent(h.upT)) return C.chain.launcher || kLast || pLast;
+  if (recent(h.downT) && C.moves.ckick) return 'ckick';
+  if (rel > 0) return C.moves.finisher ? 'finisher' : pLast;
+  if (rel < 0) return k[1] || kLast || pLast;
+  return C.moves.finisher ? kLast || pLast : pLast;
+}
+// ---------- Garde, parade, esquive (ancien bouton Pied) ----------
+const GUARD = { regen: 22, min: 15, cost: 3.5, chip: 0.15, parry: 0.22, dodgeT: 0.3, dodgeV: 820, dodgeInv: 0.22 };
+// ---------- Coup chargé : attaque maintenue puis relâchée ; un ennemi affaibli est éjecté hors de l'écran ----------
+const CHARGE = { show: 0.32, full: 0.75, weak: 0.4 };
+const MEGA_MOVE = { dur: 0.6, on: 0.12, off: 0.3, reach: [10, 175], y: [-190, -50], dmg: 4, kb: 900, ki: 12, launch: -360, push: 1000, pushAt: 0.04, pushDur: 0.16, lean: 16, shock: true, mega: true };
+// dash aérien, coup plongeant et coup chargé : communs à tous les persos
+for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; C.moves.megasmash ??= MEGA_MOVE; }
+function megaHit(h, e) {
+  const T = ETYPES[e.type];
+  if (T.isBoss || e.hp > e.maxHp * CHARGE.weak) { e.smashT = 0.9; return; } // encore solide : grosse projection, rebond au bord
+  // éjecté, comme dans Smash Bros : vers le bord de l'écran, ou vers le ciel (haut tenu) avant de disparaître au loin
+  const sky = sceneT - (h.upT ?? -9) < 0.5;
+  if (e.hp > 0) { e.hp = 0; kills++; score += T.score; }
+  e.alive = false; e.state = 'knock'; e.t = 0; e.getUp = false;
+  e.eject = { sky, t: 0, vx: h.dir * (sky ? 520 : 2300), vy: sky ? -1500 : -260, rot: 0 };
+  flash = 0.6; hitstop = Math.max(hitstop, 0.22); shake = Math.max(shake, 26);
+  audio.play('ultraBoom', 1, 1.2, 0); popups.push({ x: e.x, y: e.y - 260, t: 0, text: 'ÉJECTÉ !!', c: '#ffe14d' });
+}
+function updateEject(e, dt) {
+  const E = e.eject; E.t += dt; e.t = Math.min(e.t, 1);
+  e.x += E.vx * dt; e.y += E.vy * dt; E.rot += dt * (E.sky ? 10 : 22) * Math.sign(E.vx || 1);
+  if (E.sky) E.vy *= 1 - dt * 0.6;
+  if (Math.random() < 0.9) particles.push({ x: e.x, y: e.y - 100, vx: -E.vx * 0.2, vy: -E.vy * 0.2, t: 0, life: 0.35, c: 'rgba(255,255,255,0.8)', r: rand(2, 4), streak: true });
+  const out = E.sky ? E.t > 0.75 : e.x < camX - 20 || e.x > camX + W + 20;
+  if (out && !E.done) {
+    E.done = true; e.t = 2; // retiré au tour suivant
+    if (E.sky) { // petite étoile qui scintille au loin
+      const x = clamp(e.x, camX + 40, camX + W - 40), y = Math.max(40, e.y - 100);
+      for (let k = 0; k < 2; k++) particles.push({ x, y, t: 0, life: 0.5, ring: true });
+      fxs.push({ type: 'impact', x, y, r: 40, c: '#ffffff', n: 8, rot: 0, t: 0, life: 0.5 }); audio.tone(2200, 0.35, 'sine', 0.08, 800);
+    } else { // choc contre le bord de l'écran
+      const x = E.vx > 0 ? camX + W - 10 : camX + 10;
+      impactFX(x, e.y - 100, '#ffffff', true); shake = Math.max(shake, 20); flash = 0.4; audio.play('ultraBoom', 0.9, 0.9, 0);
+    }
+  }
+}
+
 function diveImpact(h) {
   h.state = 'diveland'; h.t = 0; h.vx = 0;
   shake = Math.max(shake, 16); hitstop = Math.max(hitstop, 0.05); audio.play('ultraBoom', 0.6, 1.6, 0); audio.play('body', 0.9);
@@ -1448,7 +1499,8 @@ function updatePlayer(h, dt) {
   h.t += dt;
   h.inv = Math.max(0, h.inv - dt);
   updateReserve(h, dt);
-  if (h.boost) { h.ki -= dt * KI.goldDrain; if (h.ki <= 0) { h.ki = 0; powerDown(h); } }
+  if (h.formUltra && h.state !== 'ultra') { h.formUltra = false; powerDown(h); } // l'ultime renforcé a consumé la forme
+  if (h.boost && !h.formUltra) { h.ki -= dt * KI.goldDrain; if (h.ki <= 0) { h.ki = 0; powerDown(h); } }
   else if (h.state !== 'ultra' && !h.out) h.ki = Math.min(100, h.ki + dt * KI.regen);
   formParticles(h);
   if (level.trans) { transitionWalk(h, dt); return; }
@@ -1517,8 +1569,11 @@ function updatePlayer(h, dt) {
 
   // Jonglage aérien : l'ennemi vient d'être envoyé en l'air par le dernier coup du combo de pieds
   // l'appui est mémorisé (même un peu avant que le coup touche) : marteler le pied suffit
-  if (['punch', 'kick', 'jump'].some(a => pressed.has(a))) h.atkPressT = sceneT;
+  if (['punch', 'jump'].some(a => pressed.has(a))) h.atkPressT = sceneT;
+  h.holdT = held('punch') ? (h.holdT || 0) + dt : (h.state === 'smashcharge' ? h.holdT : 0);
   if (held('up')) h.upT = sceneT;
+  if (held('down') || held('crouch')) h.downT = sceneT;
+  if (held('left') || held('right')) { h.mxT = sceneT; h.lastMx = held('right') ? 1 : -1; }
   if (h.juggle && h.state !== 'juggle') {
     const J = h.juggle; J.t += dt;
     if ((h.atkPressT ?? -9) > J.from) J.want = true; // un nouvel appui depuis le début du coup lanceur
@@ -1526,7 +1581,14 @@ function updatePlayer(h, dt) {
     else if (J.want && J.t > 0.1) startJuggle(h);
   }
   if (h.state === 'juggle') { updateJuggle(h, dt); return; }
-  if (h.state === 'airdash' && h.t > 0.1 && (pressed.has('kick') || pressed.has('punch'))) {
+  if (h.state === 'dodge') {
+    const k = Math.max(0, 1 - h.t / GUARD.dodgeT);
+    h.vx = h.dodge.x * GUARD.dodgeV * k; h.vz = h.dodge.z * GUARD.dodgeV * 0.5 * k;
+    if (h.t < GUARD.dodgeInv) h.inv = Math.max(h.inv, 0.05);
+    if (Math.random() < 0.6) afterImage(h, 0.25, 0.35, '#bfefff');
+    if (h.t > GUARD.dodgeT) h.state = 'idle';
+  }
+  if (h.state === 'airdash' && h.t > 0.1 && pressed.has('punch')) {
     if (held('down') || held('crouch')) { startMove(h, 'dive'); h.vy = 1500; h.vx = h.dir * 560; h.diveVx = h.vx; audio.whoosh(1.6); }
     else startMove(h, 'airkick');
   }
@@ -1537,12 +1599,11 @@ function updatePlayer(h, dt) {
   const m0 = h.move;
   if (m0 && m0.cancel && h.chain < C.chain.punch.length - 1) {
     if (pressed.has('punch')) h.buffer = 'punch';
-    else if (pressed.has('kick')) h.buffer = 'kick';
-    if (h.buffer && h.t >= m0.cancel && C.chain[h.buffer][h.chain + 1]) {
-      if (mx) h.dir = mx;
-      // dernier coup du combo de pieds avec HAUT tenu (à tout moment depuis le coup précédent, ou juste avant) : le lanceur
-      const last = h.buffer === 'kick' && h.chain + 2 === C.chain.kick.length && C.chain.launcher && sceneT - (h.upT ?? -9) < 0.5;
-      startMove(h, last ? C.chain.launcher : C.chain[h.buffer][h.chain + 1], h.chain + 1);
+    if (h.buffer && h.t >= m0.cancel && C.chain.punch[h.chain + 1]) {
+      // dernier coup : la direction tenue (ou tenue juste avant) choisit le finish
+      const last = h.chain + 2 === C.chain.punch.length, name = last ? finishOf(h) : C.chain.punch[h.chain + 1];
+      if (mx) h.dir = mx; // arrière : il se retourne (coup retourné)
+      startMove(h, name, h.chain + 1);
     }
   }
   if (h.move && h.t > h.move.dur) { h.state = h.onGround ? 'idle' : 'jump'; h.move = null; }
@@ -1560,20 +1621,41 @@ function updatePlayer(h, dt) {
     h.vz = mz * 165 * speed;
 
     if (h.onGround) {
-      if (h.state !== 'land') {
+      h.guard = Math.min(100, (h.guard ?? 100) + dt * (h.state === 'guard' ? 0 : GUARD.regen));
+      if (h.state === 'smashcharge' && !held('punch')) {
+        // relâché : coup chargé s'il a assez concentré, sinon rien
+        const full = h.holdT >= CHARGE.full;
+        h.state = 'idle'; h.holdT = 0; h.chargeFull = false;
+        if (full) { startMove(h, 'megasmash'); audio.voice(h, 'special', 0.8); }
+      }
+      if (held('kick') && !crouching && pressed.has('kick') && (mx || mz)) {
+        // esquive : un bond rapide dans la direction tenue, invincible un instant
+        h.state = 'dodge'; h.t = 0; h.dodge = { x: mx, z: mz }; audio.whoosh(1.6); audio.zip();
+      } else if (held('kick') && !crouching && h.guard > GUARD.min) {
+        if (pressed.has('kick')) h.guardPressT = sceneT; // appui frais : parade si un coup arrive tout de suite
+        if (h.state !== 'guard') { h.state = 'guard'; h.t = 0; }
+        h.vx = 0; h.vz = 0;
+      } else if (h.holdT > CHARGE.show && held('punch')) {
+        // attaque maintenue : il concentre sa force (coup chargé au relâchement)
+        if (h.state !== 'smashcharge') { h.state = 'smashcharge'; h.t = 0; audio.tone(140, 0.5, 'sawtooth', 0.06, 160); }
+        h.vx = 0; h.vz = 0;
+        if (Math.random() < 0.5) { const a = rand(0, 6.28), d = rand(50, 90); particles.push({ x: h.x + Math.cos(a) * d, y: h.gz - rand(0, 8), vx: -Math.cos(a) * 140 - Math.sin(a) * 120, vy: rand(-60, -10), t: 0, life: 0.45, c: 'rgba(210,200,185,0.6)', r: rand(4, 8), soft: true }); }
+        if (h.holdT >= CHARGE.full && !h.chargeFull) { h.chargeFull = true; ring(h.x, h.y - 110); flash = 0.15; audio.tone(900, 0.15, 'square', 0.06, 400); }
+      } else if (h.state !== 'land' && !h.move) {
         if (crouching) { if (h.state !== 'crouch') { h.state = 'crouch'; h.t = 0; } }
         else h.state = mx || mz ? 'walk' : 'idle';
       }
+      if (h.state === 'guard' || h.state === 'smashcharge' || h.state === 'dodge') { /* pas d'autre action pendant la garde ou la charge */ }
+      else {
       const attack = ['punch', 'kick', 'blast', 'dash'].some(a => pressed.has(a));
       if (attack && mx) h.dir = mx; // la direction tenue choisit le côté du coup
       if (h.state === 'crouch') {
         h.vx = 0; h.vz = 0;
-        if (pressed.has('punch') || pressed.has('kick')) startMove(h, 'ckick');
+        if (pressed.has('punch')) startMove(h, 'ckick');
       }
       else if (pressed.has('jump')) { h.state = 'prejump'; h.t = 0; audio.play('swing', 0.4, 0.8); }
       else if (pressed.has('dash')) { startMove(h, 'dash'); h.vx = 0; }
       else if (pressed.has('punch')) startMove(h, 'punch');
-      else if (pressed.has('kick')) startMove(h, 'kick');
       else if (pressed.has('blast')) {
         // certains persos changent de spécial une fois transformés (Amaterasu d'Itachi, direct de Baki)
         const sp = h.boost && C.special2 ? C.special2 : C.special, cost = C.moves[sp].cost;
@@ -1581,7 +1663,9 @@ function updatePlayer(h, dt) {
         else denied(h);
       }
       else if (pressed.has('ultra')) {
-        if (h.ki >= KI.ultra) { h.power = h.ki; h.ki = 0; powerDown(h); h.state = 'ultra'; h.t = 0; h.vx = 0; h.move = null; C.ultra[0](h); audio.voice(h, 'ultra'); cutins = cutins.filter(c => c.h !== h); cutins.push({ h, t: 0 }); audio.sweep(0.5, 600, 4000, 0.3, 1); }
+        // transformé : l'ultime part dès 50 de ki, renforcé, et la forme s'achève avec lui
+        const inForm = !!h.boost;
+        if (h.ki >= (inForm ? KI.formUltra : KI.ultra)) { h.power = inForm ? Math.min(140, h.ki + 50) : h.ki; h.ki = 0; if (inForm) h.formUltra = true; else powerDown(h); h.state = 'ultra'; h.t = 0; h.vx = 0; h.move = null; C.ultra[0](h); audio.voice(h, 'ultra'); cutins = cutins.filter(c => c.h !== h); cutins.push({ h, t: 0 }); audio.sweep(0.5, 600, 4000, 0.3, 1); }
         else denied(h, 'KI PAS ASSEZ CHARGÉ');
       }
       else if (pressed.has('transform')) {
@@ -1591,6 +1675,7 @@ function updatePlayer(h, dt) {
         else denied(h, 'IL FAUT 50 DE KI');
       }
       else if (held('charge') && !h.boost) { h.state = 'charge'; h.t = 0; }
+      }
     } else {
       h.state = 'jump';
       if (mx) h.dir = mx;
@@ -1601,13 +1686,13 @@ function updatePlayer(h, dt) {
       } else if (pressed.has('dash') && !h.airDashed) {
         // dash aérien : un seul par saut, il file à l'horizontale sans tomber
         h.airDashed = true; startMove(h, 'airdash'); h.vy = 0; audio.zip(); audio.whoosh(1.5); ring(h.x - h.dir * 30, h.y - 100);
-      } else if ((pressed.has('kick') || pressed.has('punch')) && (held('down') || held('crouch'))) {
+      } else if (pressed.has('punch') && (held('down') || held('crouch'))) {
         // coup plongeant : à la verticale, ou en diagonale si une direction est tenue
         startMove(h, 'dive'); h.vy = 1500; h.vx = mx ? h.dir * 560 : 0; h.diveVx = h.vx; audio.whoosh(1.6);
-      } else if (pressed.has('kick') || pressed.has('punch')) startMove(h, 'airkick');
+      } else if (pressed.has('punch')) startMove(h, 'airkick');
     }
   }
-  if (h.onGround && busy(h) && h.state !== 'hurt') { h.vx = 0; h.vz = 0; }
+  if (h.onGround && busy(h) && h.state !== 'hurt' && h.state !== 'dodge') { h.vx = 0; h.vz = 0; }
   if (h.state === 'hurt') { h.vx *= 0.88; h.vz = 0; }
   moveEffects(h, speed);
 
@@ -1649,6 +1734,7 @@ function updatePlayer(h, dt) {
         if (m.stopOnHit) h.stopped = true;
         if (m.spiral) { spiralFX(e.x, e.y - 110, '#9fe8ff'); shake = Math.max(shake, 16); }
         if (m.shock) { shockFX(e.x - h.dir * 20, e.y - 110, h.dir); shake = Math.max(shake, 18); flash = 0.25; hitstop = Math.max(hitstop, 0.08); audio.play('ultraBoom', 0.7, 1.5, 0); }
+        if (m.mega) megaHit(h, e);
         // dernier coup du combo de pieds : l'ennemi part haut, on peut le poursuivre (jonglage aérien)
         const kc = C_chainLast(h);
         if (kc && h.state === kc && e.state === 'knock' && !ETYPES[e.type].isBoss && !e.juggled) {
@@ -2022,6 +2108,26 @@ function hurtHero(h, dmg, dir, big = false) {
   if (h.boost?.dodge && Math.random() < h.boost.dodge) {
     h.inv = 0.35; h.x += dir * 46; burst(h.x - dir * 46, h.y - 110, h.boost.color, 10);
     audio.tone(1400, 0.12, 'sine', 0.06, 600); if (Math.random() < 0.3) say(h, 'ESQUIVE');
+    return;
+  }
+  // garde : face au coup, on encaisse peu ; appui juste avant l'impact = parade
+  if (h.state === 'guard' && h.dir === -dir) {
+    if (sceneT - (h.guardPressT ?? -9) < GUARD.parry) {
+      flash = 0.3; hitstop = Math.max(hitstop, 0.14); shake = Math.max(shake, 8); h.ki = Math.min(100, h.ki + 12); h.inv = 0.3;
+      ring(h.x + h.dir * 40, h.y - 120); impactFX(h.x + h.dir * 50, h.y - 120, '#ffffff', true); audio.tone(1500, 0.18, 'square', 0.08, 900); audio.slash(1.6);
+      popups.push({ x: h.x, y: h.y - 240, t: 0, text: 'PARADE !', c: '#9fe8ff' });
+      // l'attaquant le plus proche devant lui est déséquilibré : on peut contre-attaquer
+      const foe = enemies.filter(e => e.alive && !['knock', 'down'].includes(e.state) && (e.x - h.x) * h.dir > -20 && Math.abs(e.x - h.x) < 280 && Math.abs(e.gz - h.gz) < 60).sort((a, b) => Math.abs(a.x - h.x) - Math.abs(b.x - h.x))[0];
+      if (foe && !ETYPES[foe.type].isBoss) { foe.state = 'hurt'; foe.t = -0.6; foe.vx = h.dir * 160; foe.atk = null; foe.hitDone = true; }
+      return;
+    }
+    h.guard -= dmg * GUARD.cost; h.hp -= dmg * GUARD.chip * DIFF().dmg; h.vx = dir * 160; h.inv = 0.25;
+    shake = Math.max(shake, 5); audio.tone(420, 0.1, 'square', 0.06, -120); burst(h.x + h.dir * 40, h.y - 120, '#bfefff', 10);
+    if (h.guard <= 0) {
+      h.guard = 0; h.state = 'hurt'; h.t = -0.5; h.vx = dir * 260;
+      popups.push({ x: h.x, y: h.y - 240, t: 0, text: 'GARDE BRISÉE', c: '#ff4d6d' }); audio.tone(200, 0.4, 'sawtooth', 0.1, -150);
+    }
+    if (h.hp <= 0) h.hp = 1;
     return;
   }
   dmg *= DIFF().dmg;
@@ -3716,6 +3822,7 @@ function updateEnemy(e, dt) {
   e.tgtT = (e.tgtT || 0) - dt;
   if (e.cool > 0) e.cool -= dt * (DIFF().aggr - 1); // difficulté : attaques plus ou moins rapprochées
   const T = ETYPES[e.type], h = targetOf(e);
+  if (e.eject) { updateEject(e, dt); return; }
   e.t += dt; e.flash = Math.max(0, e.flash - dt);
   if (e.hop) return; // en plein saut par-dessus un trou (updatePits)
   const dx = h.x - e.x, dist = Math.abs(dx), dz = h.gz - e.gz;
@@ -5221,7 +5328,7 @@ const jumpFrame = h => flipping(h) ? 4 : h.vy < -550 ? 2 : h.vy < -220 ? 3 : h.v
 
 function heroPose(h) {
   const t = h.t;
-  if (['airdash', 'dive', 'diveland'].includes(h.state)) return airPose(h);
+  if (POSE_STATES.includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h); return [h.back ? 'back' : 'walk', Math.floor(h.walkT * fps) % n]; }
@@ -5256,7 +5363,7 @@ function heroPose(h) {
 // lowair (accroupi, balayage | piétinement en l'air), rocket (fusée | charge), gigant.
 function luffyPose(h) {
   const t = h.t;
-  if (['airdash', 'dive', 'diveland'].includes(h.state)) return airPose(h);
+  if (POSE_STATES.includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h), i = Math.floor(h.walkT * fps) % n; return ['walk', h.back ? n - 1 - i : i]; }
@@ -5567,7 +5674,7 @@ const sheetFor = (h, anim) => formSheet(h) && SPRITES[formSheet(h)]?.[anim] ? fo
 // Les coups donnent leur propre pose (champ p).
 function stdPose(h) {
   const t = h.t, m = h.move;
-  if (['airdash', 'dive', 'diveland'].includes(h.state)) return airPose(h);
+  if (POSE_STATES.includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
   if (m && m.cyc && t >= m.cyc.from) return [m.cyc.anim, t < m.cyc.to ? m.cyc.frames[Math.floor((t - m.cyc.from) * m.cyc.fps) % m.cyc.frames.length] : m.cyc.last];
   if (m && m.p) { const [a, f, marks] = m.p, v = f[Math.min(step(t, marks || []), f.length - 1)]; return Array.isArray(v) ? v : [a, v]; }
@@ -5674,7 +5781,15 @@ function drawPlayer(h) {
   drawAnim.grow = h.char === 'gon' && h.state === 'ultra' && h.t > 0.45 ? 1 + 0.55 * Math.min(1, (h.t - 0.45) / 0.3) : 0;
   drawAnim.breath = breathOf(h, h.state === 'idle' && !h.move && h.onGround && !idleAnim(h));
   drawAnim.lean = leanOf(h);
-  drawAnim(sheet, anim, i, sx, h.y, h.dir, filter, rot);
+  // garde : légère aura bleutée qui faiblit avec la jauge ; charge du coup chargé : le corps s'embrase et tremble
+  if (h.state === 'guard') bodyAura(h, sheet, anim, i, sx, '#9fe0ff', 0.12 + 0.3 * (h.guard ?? 100) / 100);
+  let shakeX = 0;
+  if (h.state === 'smashcharge') {
+    const k = Math.min(1, h.holdT / CHARGE.full);
+    bodyAura(h, sheet, anim, i, sx, hitOf(h), 0.25 + 0.75 * k);
+    if (k >= 1) shakeX = (Math.random() - 0.5) * 5;
+  }
+  drawAnim(sheet, anim, i, sx + shakeX, h.y, h.dir, filter, rot);
   drawAnim.lean = 0;
   drawAnim.breath = 0;
   drawAnim.grow = 0;
@@ -5732,6 +5847,13 @@ function drawPlayer(h) {
 
 function drawEnemy(e) {
   const T = ETYPES[e.type], sx = e.x - camX;
+  if (e.eject) { // éjecté : il tournoie, et rapetisse en s'éloignant vers le ciel
+    if (e.eject.done) return;
+    const [anim, i] = enemyPose(e), own = !!SPRITES[T.sheet];
+    drawAnim.grow = e.eject.sky ? Math.max(0.2, 1 - e.eject.t * 1.1) : 0;
+    drawAnim(own ? T.sheet : T.alt, anim, i, sx, e.y, e.dir, own ? '' : T.altTint, e.eject.rot);
+    drawAnim.grow = 0; return;
+  }
   if (!e.alive && e.t > 0.6 && Math.floor(e.t * 15) % 2) return; // clignote avant de disparaître
   shadow(sx, e, ETYPES[e.type].isBoss ? 2 : ETYPES[e.type].armor ? 1.4 : 1);
   const [anim, i] = enemyPose(e);
@@ -5919,7 +6041,7 @@ function drawPlayerHUD(h) {
   drawLivesAndPartner(h, x, w, right, 104);
   bar(x, 34, w, 16, h.hp / h.maxHp, '#ff3355', '#ffb13b', h.out ? `${C.name} — K.O.` : C.name, right);
   const L = C.labels, k = (a) => K(a, p), cost = C.moves[C.special].cost, F = h.boost, next = formFor(h) || C.forms[0], up = F && formAfter(h);
-  const kiLabel = F ? (up ? `${F.name} → ${up.name} [${k('transform')}]` : h.ki >= KI.ultra ? `${F.name} — ${L.ultra} [${k('ultra')}]` : F.name)
+  const kiLabel = F ? (up ? `${F.name} → ${up.name} [${k('transform')}]` : h.ki >= KI.formUltra ? `${F.name} — ${L.ultra} [${k('ultra')}]` : F.name)
     : h.ki >= KI.ultra ? `${L.ultra} PRÊT [${k('ultra')}]` : h.ki >= KI.transform ? `KI — ${next.name} [${k('transform')}]`
       : h.ki >= cost ? `KI — ${L.blast} [${k('blast')}]` : `KI  (charge : ${k('charge')})`;
   bar(x, 74, w, 11, h.ki / 100, F ? F.bar[0] : '#2a7bff', F ? F.bar[1] : '#7ff0ff', kiLabel, right);
