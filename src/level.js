@@ -100,6 +100,17 @@ const LEVELS = [
     ['LA CITÉ Z ABANDONNÉE', 'LE QG DE L\'ASSOCIATION', 'LE CENTRE-VILLE EN RUINE', 'LE VAISSEAU DES ENVAHISSEURS'], 'opm_monster', 'opm_alien'),
   themedLevel('bl2', 'BLEACH — HUECO MUNDO', 'Jusqu\'au sommet de Las Noches',
     ['LE DÉSERT DE LA NUIT ÉTERNELLE', 'LES COULOIRS DE LAS NOCHES', 'LA SALLE DU TRÔNE', 'LE DÔME DE LAS NOCHES'], 'bl2_arrancar', 'bl2_fraccion'),
+  // cinq mondes du 24/10 (images : tools/world5_prompts.js)
+  themedLevel('aot', 'L\'ATTAQUE DES TITANS — TROST', 'Les titans ont percé le mur',
+    ['LES REMPARTS DE TROST', 'LES RUES DE TROST', 'LA FORÊT DES ARBRES GÉANTS', 'LES RUINES DE SHIGANSHINA'], 'aot_titan', 'aot_soldier'),
+  themedLevel('bk', 'BERSERK — L\'ÉCLIPSE', 'Du champ de bataille à l\'Éclipse',
+    ['LE CHAMP DE BATAILLE', 'LE CHÂTEAU DE WINDHAM', 'LA FORÊT MAUDITE', 'L\'ÉCLIPSE'], 'bk_soldier', 'bk_apostle'),
+  themedLevel('fz', 'FATE / STAY NIGHT — FUYUKI', 'La guerre du Graal, une nuit à Fuyuki',
+    ['LES RUES DE FUYUKI', 'LA DEMEURE EMIYA', 'LES MARCHES DU TEMPLE', 'LA CAVERNE DU GRAAL'], 'fz_skeleton', 'fz_shadow'),
+  themedLevel('fm', 'FULLMETAL ALCHEMIST — CENTRAL', 'Le secret de la pierre philosophale',
+    ['LA VILLE DE LIORE', 'LES AVENUES DE CENTRAL', 'LE 5E LABORATOIRE', 'LA SALLE DU PÈRE'], 'fm_chimera', 'fm_soldier'),
+  themedLevel('rp', 'BLACK LAGOON — ROANAPUR', 'La ville où tout s\'achète',
+    ['LE PORT DE ROANAPUR', 'LE YELLOW FLAG', 'LE MARCHÉ DE NUIT', 'L\'ENTREPÔT DE LA MAFIA'], 'rp_thug', 'rp_gunman'),
 ];
 // Images des niveaux : ciel, décor (plan moyen détouré, ou mur plein pour les intérieurs) et sol de chaque zone
 for (const L of LEVELS.slice(1)) {
@@ -157,7 +168,7 @@ const levelExtras = L => [...L.waves.map(w => w.vehicle).filter(Boolean), ...(L.
 // proportion : en travers de la chaussée ou étirée, elle paraissait déformée. Le train garde son échelle de profil.
 // Image assets/backgrounds/gates/<id>.png ; mondes à 4 zones : g1 (z1→z2), g3 (z2→z4), g2 (z4→z3, l'antre du boss).
 const GATES = { tokyo: ['tokyo_g1', 'tokyo_g2', 'tokyo_g3', 'tokyo_g4'] };
-for (const id of ['op', 'ds', 'bl', 'hx', 'nr', 'db', 'mh', 'rk', 'op2', 'nr2', 'ds2', 'db2', 'jk', 'sl', 'opm', 'bl2'])
+for (const id of ['op', 'ds', 'bl', 'hx', 'nr', 'db', 'mh', 'rk', 'op2', 'nr2', 'ds2', 'db2', 'jk', 'sl', 'opm', 'bl2', 'aot', 'bk', 'fz', 'fm', 'rp'])
   GATES[id] = [`${id}_g1`, `${id}_g3`, `${id}_g2`];
 for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = (GATES[L.id] || [])[k - 1]; });
 // Porte au fond de la rue : centre à GATE.dx avant la limite de zone, pied sur la bordure du fond, hauteur fixe
@@ -258,6 +269,16 @@ const ENEMY_INFO = {
   jk_mini: ['MAHITO', 'Il remodèle les âmes d\'un toucher'],
   sl_mini: ['KANG TAESHIK', 'Chasseur assassin — frappe dans le dos'],
   opm_mini: ['GERYUGANSHOOP', 'Le télépathe des envahisseurs'],
+  aot_titan: ['TITAN PUR', 'Il agrippe et mord — garde tes distances'], aot_soldier: ['SOLDAT DE MAHR', 'Tire au fusil — renvoie ses balles !'],
+  aot_mini: ['ANNIE', 'Combattante redoutable, coups de pied fulgurants'], aot_boss: ['ZEKE', 'Le titan bestial lance des rochers'],
+  bk_soldier: ['SOLDAT DE TUDOR', 'Armure lourde — encaisse les petits coups'], bk_apostle: ['APÔTRE', 'Démon affamé qui bondit sur sa proie'],
+  bk_mini: ['NOSFERATU ZODD', 'L\'immortel, guerrier bestial à l\'épée géante'], bk_boss: ['FEMTO', 'Le faucon des ténèbres, maître de l\'Éclipse'],
+  fz_skeleton: ['GUERRIER SQUELETTE', 'Familier de dents de dragon — se rue sur toi'], fz_shadow: ['OMBRE', 'Créature de l\'ombre qui tire des sphères'],
+  fz_mini: ['LANCER', 'Le lancier à la lance écarlate'], fz_boss: ['GILGAMESH', 'Le roi des héros et son trésor'],
+  fm_chimera: ['CHIMÈRE', 'Homme-lion fusionné par l\'alchimie'], fm_soldier: ['SOLDAT D\'AMESTRIS', 'Tire au fusil — renvoie ses balles !'],
+  fm_mini: ['ENVY', 'L\'homonculus qui change de forme'], fm_boss: ['KING BRADLEY', 'Le Fürher et ses deux sabres'],
+  rp_thug: ['HOMME DE MAIN', 'Couteau à la main — se rue sur toi'], rp_gunman: ['TIREUR DU CARTEL', 'Tire au pistolet — renvoie ses balles !'],
+  rp_mini: ['EDA', 'La nonne aux deux pistolets'], rp_boss: ['ROBERTA', 'La bonne de la famille Lovelace, chien de chasse'],
   bl2_mini: ['GRIMMJOW', 'Sixième Espada, la panthère'],
 };
 for (const k of Object.keys(ENEMY_INFO)) if (k.includes('_')) ASSETS.ui[`intro_${k}`] = `assets/ui/intro/${k}.jpg`;
@@ -821,6 +842,10 @@ const STRIPS = {
   nr_z4: STRIP('rocks_grass', 60, 26), mh_z4: STRIP('rubble', 70, 30), rk_z4: STRIP('rail_wood', 70, 26),
   op2_z4: STRIP('balustrade', 56, 22), nr2_z4: STRIP('rail_metal', 64, 24), ds2_z4: STRIP('rail_wood', 70, 26), db2_z4: STRIP('rubble', 70, 30),
   jk_z4: STRIP('rubble', 70, 30), sl_z4: STRIP('rubble', 70, 30), opm_z4: STRIP('rubble', 70, 30), bl2_z4: STRIP('balustrade', 56, 22),
+  // cinq mondes du 24/10 (les intérieurs n'ont pas de bordure)
+  aot_z1: STRIP('rubble', 70, 30), aot_z2: STRIP('rubble', 70, 30), aot_z3: STRIP('rubble', 70, 30),
+  bk_z1: STRIP('rubble', 70, 30), fz_z1: STRIP('curb_city', 46, 22), fz_z2: STRIP('rail_wood', 70, 26), fm_z2: STRIP('curb_city', 46, 22),
+  rp_z1: STRIP('rail_metal', 64, 24), rp_z4: STRIP('curb_city', 46, 22),
   // routes B (le centre commercial est un intérieur : pas de bordure)
   op_z5: STRIP('curb_city', 46, 22), nr_z5: STRIP('rocks_grass', 60, 26),
 };

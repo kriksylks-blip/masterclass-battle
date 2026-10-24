@@ -3473,6 +3473,22 @@ Object.assign(ETYPES, {
   opm_boss: BOSS('opm_boss', { proj: 'beam', projColor: '#ff7a3a', adds: ['opm_monster', 'opm_alien'], roar: 'EFFONDREMENT STELLAIRE !!', h: 310 }),
   bl2_arrancar: MINION('bl2_arrancar', { lunge: true, slash: '#d8ecff', hp: 6 }),
   bl2_fraccion: MINION('bl2_fraccion', { hp: 10, armor: true, dmg: 15, h: 250, speed: [80, 100] }),
+  // cinq mondes du 24/10
+  aot_titan: MINION('aot_titan', { lunge: true, hp: 7, h: 230, speed: [100, 130] }),
+  aot_soldier: MINION('aot_soldier', { ranged: 'bullet' }),
+  aot_boss: BOSS('aot_boss', { proj: 'muggy', projColor: '#c8b8a0', adds: ['aot_titan', 'aot_soldier'], roar: 'LANCER DE ROCHERS !!' }),
+  bk_soldier: MINION('bk_soldier', { hp: 9, armor: true, dmg: 14, h: 240, speed: [90, 110], reach: 140, slash: '#dfe6ff' }),
+  bk_apostle: MINION('bk_apostle', { lunge: true, slash: '#ff3040', hp: 7, speed: [150, 180] }),
+  bk_boss: BOSS('bk_boss', { proj: 'shock', projColor: '#3a0010', adds: ['bk_soldier', 'bk_apostle'], roar: 'C\'EST L\'ÉCLIPSE.' }),
+  fz_skeleton: MINION('fz_skeleton', { lunge: true, slash: '#e8e8ff', hp: 5 }),
+  fz_shadow: MINION('fz_shadow', { ranged: 'orb' }),
+  fz_boss: BOSS('fz_boss', { proj: 'beam', projColor: '#ffd84a', adds: ['fz_skeleton', 'fz_shadow'], roar: 'GATE OF BABYLON !!' }),
+  fm_chimera: MINION('fm_chimera', { lunge: true, slash: '#ffcf6a', hp: 7, speed: [150, 180] }),
+  fm_soldier: MINION('fm_soldier', { ranged: 'bullet' }),
+  fm_boss: BOSS('fm_boss', { proj: 'slash', projColor: '#ffffff', adds: ['fm_chimera', 'fm_soldier'], roar: 'L\'ŒIL ULTIME !!' }),
+  rp_thug: MINION('rp_thug', { lunge: true, slash: '#e8f0ff', hp: 6 }),
+  rp_gunman: MINION('rp_gunman', { ranged: 'bullet' }),
+  rp_boss: BOSS('rp_boss', { proj: 'beam', projColor: '#ffb070', adds: ['rp_thug', 'rp_gunman'], roar: 'CHIEN DE CHASSE !!' }),
   bl2_boss: BOSS('bl2_boss', { proj: 'beam', projColor: '#6aff9a', adds: ['bl2_arrancar', 'bl2_fraccion'], roar: 'CERO OSCURAS.' }),
 });
 // Mini-boss, à mi-parcours de chaque monde : gabarit des boss (planches marche / attaque / spécial / chute), 70 % de
@@ -3481,6 +3497,7 @@ const MINI_ROAR = {
   tokyo: 'ÉCRASÉS !!', op: 'WHITE BLOW !!', ds: 'DORS…', bl: 'HIHIO ZABIMARU !!', hx: 'DOUBLE !', nr: 'SABAKU SÔSÔ !!',
   db: 'BODY CHANGE !!', mh: 'DÉSINTÉGRATION…', rk: 'SHUKUCHI !', op2: 'RANKYAKU !!', nr2: 'SHIKIGAMI NO MAI.', ds2: 'CHI GAMA !!',
   db2: 'ÉNERGIE ABSORBÉE.', jk: 'MUTATION OISIVE !', sl: 'FURTIVITÉ…', opm: 'SOUMETS-TOI !', bl2: 'GRAN REY CERO !!',
+  aot: 'TU NE PASSERAS PAS !', bk: 'COMBATS, GUERRIER NOIR !', fz: 'GAE BOLG !!', fm: 'TRANSFORMATION !', rp: 'ADIOS, AMIGO.',
 };
 for (const L of LEVELS) {
   const B = ETYPES[L.boss];
@@ -4989,7 +5006,7 @@ function warmLevelLayers() {
 // Écran des univers, façon cinématique : les zones du monde défilent en fond (fondu + lent zoom), un grand bandeau
 // incliné à gauche (numéro, univers, lieu, zones), le boss en grand à droite, un carrousel de vignettes en
 // perspective en bas, et un coup de lame lumineux à chaque changement de monde.
-const LV_COLOR = { tokyo: '#ff2d8a', op: '#ff5a2a', ds: '#ff3340', bl: '#e8e8ff', hx: '#3ad17a', nr: '#ff8a00', db: '#3ad1a0',
+const LV_COLOR = { aot: '#c8a060', bk: '#b0101a', fz: '#ffd84a', fm: '#ff8a2a', rp: '#3ad1a0', tokyo: '#ff2d8a', op: '#ff5a2a', ds: '#ff3340', bl: '#e8e8ff', hx: '#3ad17a', nr: '#ff8a00', db: '#3ad1a0',
   mh: '#2ab0ff', rk: '#c03aff', op2: '#ffb020', nr2: '#7a9cff', ds2: '#ff4fd8', db2: '#ffd040',
   jk: '#9a4aff', sl: '#3a8aff', opm: '#ffcf3a', bl2: '#cfe8ff' };
 // Calques d'une zone pour le fond (aperçus réduits chargés à la demande) ; null tant qu'ils ne sont pas arrivés

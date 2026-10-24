@@ -40110,5 +40110,4315 @@ const SPRITES = {
     }
    ]
   }
+ },
+ "aot_titan": {
+  "walk": {
+   "scale": 0.5923,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_titan/walk_0.png",
+     "w": 344,
+     "h": 355,
+     "ax": 262.5,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/aot_titan/walk_1.png",
+     "w": 274,
+     "h": 345,
+     "ax": 199.1,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/aot_titan/walk_2.png",
+     "w": 271,
+     "h": 355,
+     "ax": 174.9,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/aot_titan/walk_3.png",
+     "w": 276,
+     "h": 358,
+     "ax": 174.1,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/aot_titan/walk_4.png",
+     "w": 334,
+     "h": 363,
+     "ax": 231.2,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/aot_titan/walk_5.png",
+     "w": 290,
+     "h": 349,
+     "ax": 209.5,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/aot_titan/walk_6.png",
+     "w": 287,
+     "h": 360,
+     "ax": 212.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/aot_titan/walk_7.png",
+     "w": 278,
+     "h": 360,
+     "ax": 205.5,
+     "ay": 360
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5923,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_titan/attack_0.png",
+     "w": 291,
+     "h": 324,
+     "ax": 144.1,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/aot_titan/attack_1.png",
+     "w": 205,
+     "h": 369,
+     "ax": 99.8,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/aot_titan/attack_2.png",
+     "w": 330,
+     "h": 334,
+     "ax": 147.4,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/aot_titan/attack_3.png",
+     "w": 240,
+     "h": 329,
+     "ax": 137.6,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/aot_titan/attack_4.png",
+     "w": 217,
+     "h": 327,
+     "ax": 128.5,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/aot_titan/attack_5.png",
+     "w": 326,
+     "h": 336,
+     "ax": 153.2,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/aot_titan/attack_6.png",
+     "w": 275,
+     "h": 329,
+     "ax": 201.9,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/aot_titan/attack_7.png",
+     "w": 263,
+     "h": 366,
+     "ax": 122.3,
+     "ay": 366
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5923,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_titan/fall_0.png",
+     "w": 180,
+     "h": 324,
+     "ax": 79.3,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/aot_titan/fall_1.png",
+     "w": 222,
+     "h": 319,
+     "ax": 60.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/aot_titan/fall_2.png",
+     "w": 307,
+     "h": 262,
+     "ax": 84.6,
+     "ay": 262
+    },
+    {
+     "src": "assets/sprites/aot_titan/fall_3.png",
+     "w": 275,
+     "h": 242,
+     "ax": 45.7,
+     "ay": 242
+    },
+    {
+     "src": "assets/sprites/aot_titan/fall_4.png",
+     "w": 363,
+     "h": 133,
+     "ax": 142.9,
+     "ay": 133
+    },
+    {
+     "src": "assets/sprites/aot_titan/fall_5.png",
+     "w": 307,
+     "h": 190,
+     "ax": 186.7,
+     "ay": 190
+    },
+    {
+     "src": "assets/sprites/aot_titan/fall_6.png",
+     "w": 239,
+     "h": 236,
+     "ax": 136.3,
+     "ay": 236
+    },
+    {
+     "src": "assets/sprites/aot_titan/fall_7.png",
+     "w": 179,
+     "h": 296,
+     "ax": 110.0,
+     "ay": 296
+    }
+   ]
+  }
+ },
+ "aot_soldier": {
+  "walk": {
+   "scale": 0.5942,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_soldier/walk_0.png",
+     "w": 273,
+     "h": 337,
+     "ax": 112.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/aot_soldier/walk_1.png",
+     "w": 250,
+     "h": 341,
+     "ax": 90.5,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/aot_soldier/walk_2.png",
+     "w": 222,
+     "h": 343,
+     "ax": 63.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/aot_soldier/walk_3.png",
+     "w": 274,
+     "h": 341,
+     "ax": 115.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/aot_soldier/walk_4.png",
+     "w": 277,
+     "h": 342,
+     "ax": 113.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/aot_soldier/walk_5.png",
+     "w": 257,
+     "h": 345,
+     "ax": 100.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/aot_soldier/walk_6.png",
+     "w": 237,
+     "h": 345,
+     "ax": 82.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/aot_soldier/walk_7.png",
+     "w": 272,
+     "h": 345,
+     "ax": 111.5,
+     "ay": 345
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5942,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_soldier/attack_0.png",
+     "w": 257,
+     "h": 298,
+     "ax": 74.5,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/aot_soldier/attack_1.png",
+     "w": 283,
+     "h": 292,
+     "ax": 95.0,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/aot_soldier/attack_2.png",
+     "w": 363,
+     "h": 255,
+     "ax": 133.5,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/aot_soldier/attack_3.png",
+     "w": 272,
+     "h": 294,
+     "ax": 94.5,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/aot_soldier/attack_4.png",
+     "w": 269,
+     "h": 300,
+     "ax": 85.0,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/aot_soldier/attack_5.png",
+     "w": 345,
+     "h": 290,
+     "ax": 121.5,
+     "ay": 290
+    },
+    {
+     "src": "assets/sprites/aot_soldier/attack_6.png",
+     "w": 288,
+     "h": 292,
+     "ax": 92.0,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/aot_soldier/attack_7.png",
+     "w": 218,
+     "h": 297,
+     "ax": 79.9,
+     "ay": 297
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5942,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_soldier/fall_0.png",
+     "w": 258,
+     "h": 334,
+     "ax": 90.6,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/aot_soldier/fall_1.png",
+     "w": 262,
+     "h": 323,
+     "ax": 80.0,
+     "ay": 323
+    },
+    {
+     "src": "assets/sprites/aot_soldier/fall_2.png",
+     "w": 310,
+     "h": 258,
+     "ax": 128.5,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/aot_soldier/fall_3.png",
+     "w": 284,
+     "h": 221,
+     "ax": 105.5,
+     "ay": 221
+    },
+    {
+     "src": "assets/sprites/aot_soldier/fall_4.png",
+     "w": 365,
+     "h": 138,
+     "ax": 174.5,
+     "ay": 138
+    },
+    {
+     "src": "assets/sprites/aot_soldier/fall_5.png",
+     "w": 324,
+     "h": 187,
+     "ax": 182.5,
+     "ay": 187
+    },
+    {
+     "src": "assets/sprites/aot_soldier/fall_6.png",
+     "w": 285,
+     "h": 251,
+     "ax": 126.0,
+     "ay": 251
+    },
+    {
+     "src": "assets/sprites/aot_soldier/fall_7.png",
+     "w": 254,
+     "h": 309,
+     "ax": 101.6,
+     "ay": 309
+    }
+   ]
+  }
+ },
+ "aot_boss": {
+  "walk": {
+   "scale": 0.7057,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_boss/walk_0.png",
+     "w": 249,
+     "h": 326,
+     "ax": 138.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/aot_boss/walk_1.png",
+     "w": 199,
+     "h": 315,
+     "ax": 125.5,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/aot_boss/walk_2.png",
+     "w": 188,
+     "h": 321,
+     "ax": 120.5,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/aot_boss/walk_3.png",
+     "w": 240,
+     "h": 331,
+     "ax": 124.7,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/aot_boss/walk_4.png",
+     "w": 245,
+     "h": 331,
+     "ax": 133.1,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/aot_boss/walk_5.png",
+     "w": 209,
+     "h": 317,
+     "ax": 131.5,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/aot_boss/walk_6.png",
+     "w": 206,
+     "h": 320,
+     "ax": 129.5,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/aot_boss/walk_7.png",
+     "w": 201,
+     "h": 333,
+     "ax": 123.5,
+     "ay": 333
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.7057,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_boss/attack_0.png",
+     "w": 248,
+     "h": 345,
+     "ax": 126.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/aot_boss/attack_1.png",
+     "w": 261,
+     "h": 371,
+     "ax": 137.0,
+     "ay": 371
+    },
+    {
+     "src": "assets/sprites/aot_boss/attack_2.png",
+     "w": 316,
+     "h": 324,
+     "ax": 180.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/aot_boss/attack_3.png",
+     "w": 258,
+     "h": 246,
+     "ax": 170.0,
+     "ay": 246
+    },
+    {
+     "src": "assets/sprites/aot_boss/attack_4.png",
+     "w": 228,
+     "h": 331,
+     "ax": 129.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/aot_boss/attack_5.png",
+     "w": 358,
+     "h": 346,
+     "ax": 151.1,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/aot_boss/attack_6.png",
+     "w": 318,
+     "h": 296,
+     "ax": 159.1,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/aot_boss/attack_7.png",
+     "w": 303,
+     "h": 376,
+     "ax": 146.0,
+     "ay": 376
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.7057,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_boss/special_0.png",
+     "w": 217,
+     "h": 345,
+     "ax": 99.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/aot_boss/special_1.png",
+     "w": 245,
+     "h": 337,
+     "ax": 103.2,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/aot_boss/special_2.png",
+     "w": 300,
+     "h": 338,
+     "ax": 128.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/aot_boss/special_3.png",
+     "w": 213,
+     "h": 326,
+     "ax": 126.8,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/aot_boss/special_4.png",
+     "w": 239,
+     "h": 243,
+     "ax": 141.0,
+     "ay": 243
+    },
+    {
+     "src": "assets/sprites/aot_boss/special_5.png",
+     "w": 217,
+     "h": 361,
+     "ax": 106.5,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/aot_boss/special_6.png",
+     "w": 212,
+     "h": 252,
+     "ax": 119.5,
+     "ay": 252
+    },
+    {
+     "src": "assets/sprites/aot_boss/special_7.png",
+     "w": 200,
+     "h": 340,
+     "ax": 117.5,
+     "ay": 340
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.7057,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_boss/fall_0.png",
+     "w": 244,
+     "h": 324,
+     "ax": 99.5,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/aot_boss/fall_1.png",
+     "w": 281,
+     "h": 306,
+     "ax": 117.5,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/aot_boss/fall_2.png",
+     "w": 315,
+     "h": 236,
+     "ax": 162.5,
+     "ay": 236
+    },
+    {
+     "src": "assets/sprites/aot_boss/fall_3.png",
+     "w": 292,
+     "h": 197,
+     "ax": 125.5,
+     "ay": 197
+    },
+    {
+     "src": "assets/sprites/aot_boss/fall_4.png",
+     "w": 364,
+     "h": 113,
+     "ax": 165.4,
+     "ay": 113
+    },
+    {
+     "src": "assets/sprites/aot_boss/fall_5.png",
+     "w": 335,
+     "h": 160,
+     "ax": 196.5,
+     "ay": 160
+    },
+    {
+     "src": "assets/sprites/aot_boss/fall_6.png",
+     "w": 211,
+     "h": 227,
+     "ax": 134.5,
+     "ay": 227
+    },
+    {
+     "src": "assets/sprites/aot_boss/fall_7.png",
+     "w": 202,
+     "h": 284,
+     "ax": 123.5,
+     "ay": 284
+    }
+   ]
+  }
+ },
+ "bk_soldier": {
+  "walk": {
+   "scale": 0.6495,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_soldier/walk_0.png",
+     "w": 378,
+     "h": 330,
+     "ax": 166.6,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/bk_soldier/walk_1.png",
+     "w": 378,
+     "h": 325,
+     "ax": 162.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/bk_soldier/walk_2.png",
+     "w": 378,
+     "h": 327,
+     "ax": 163.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/bk_soldier/walk_3.png",
+     "w": 335,
+     "h": 326,
+     "ax": 163.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/bk_soldier/walk_4.png",
+     "w": 381,
+     "h": 331,
+     "ax": 167.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/bk_soldier/walk_5.png",
+     "w": 382,
+     "h": 326,
+     "ax": 176.4,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/bk_soldier/walk_6.png",
+     "w": 382,
+     "h": 330,
+     "ax": 165.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/bk_soldier/walk_7.png",
+     "w": 337,
+     "h": 328,
+     "ax": 164.5,
+     "ay": 328
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6495,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_soldier/attack_0.png",
+     "w": 337,
+     "h": 287,
+     "ax": 125.0,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/bk_soldier/attack_1.png",
+     "w": 325,
+     "h": 359,
+     "ax": 181.5,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/bk_soldier/attack_2.png",
+     "w": 390,
+     "h": 321,
+     "ax": 148.0,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/bk_soldier/attack_3.png",
+     "w": 310,
+     "h": 285,
+     "ax": 141.0,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/bk_soldier/attack_4.png",
+     "w": 334,
+     "h": 293,
+     "ax": 115.7,
+     "ay": 293
+    },
+    {
+     "src": "assets/sprites/bk_soldier/attack_5.png",
+     "w": 352,
+     "h": 289,
+     "ax": 117.5,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/bk_soldier/attack_6.png",
+     "w": 359,
+     "h": 267,
+     "ax": 139.1,
+     "ay": 267
+    },
+    {
+     "src": "assets/sprites/bk_soldier/attack_7.png",
+     "w": 237,
+     "h": 351,
+     "ax": 133.2,
+     "ay": 351
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6495,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_soldier/fall_0.png",
+     "w": 296,
+     "h": 293,
+     "ax": 124.5,
+     "ay": 293
+    },
+    {
+     "src": "assets/sprites/bk_soldier/fall_1.png",
+     "w": 302,
+     "h": 299,
+     "ax": 148.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/bk_soldier/fall_2.png",
+     "w": 306,
+     "h": 233,
+     "ax": 138.3,
+     "ay": 233
+    },
+    {
+     "src": "assets/sprites/bk_soldier/fall_3.png",
+     "w": 320,
+     "h": 175,
+     "ax": 164.5,
+     "ay": 175
+    },
+    {
+     "src": "assets/sprites/bk_soldier/fall_4.png",
+     "w": 366,
+     "h": 130,
+     "ax": 165.0,
+     "ay": 130
+    },
+    {
+     "src": "assets/sprites/bk_soldier/fall_5.png",
+     "w": 356,
+     "h": 173,
+     "ax": 182.5,
+     "ay": 173
+    },
+    {
+     "src": "assets/sprites/bk_soldier/fall_6.png",
+     "w": 316,
+     "h": 221,
+     "ax": 147.5,
+     "ay": 221
+    },
+    {
+     "src": "assets/sprites/bk_soldier/fall_7.png",
+     "w": 295,
+     "h": 262,
+     "ax": 155.0,
+     "ay": 262
+    }
+   ]
+  }
+ },
+ "bk_apostle": {
+  "walk": {
+   "scale": 0.625,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_apostle/walk_0.png",
+     "w": 323,
+     "h": 364,
+     "ax": 146.5,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/bk_apostle/walk_1.png",
+     "w": 285,
+     "h": 365,
+     "ax": 132.0,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/bk_apostle/walk_2.png",
+     "w": 288,
+     "h": 368,
+     "ax": 133.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/bk_apostle/walk_3.png",
+     "w": 317,
+     "h": 368,
+     "ax": 128.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/bk_apostle/walk_4.png",
+     "w": 294,
+     "h": 359,
+     "ax": 135.5,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/bk_apostle/walk_5.png",
+     "w": 277,
+     "h": 359,
+     "ax": 128.0,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/bk_apostle/walk_6.png",
+     "w": 277,
+     "h": 360,
+     "ax": 123.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/bk_apostle/walk_7.png",
+     "w": 306,
+     "h": 361,
+     "ax": 128.7,
+     "ay": 361
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.625,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_apostle/attack_0.png",
+     "w": 301,
+     "h": 302,
+     "ax": 132.9,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/bk_apostle/attack_1.png",
+     "w": 264,
+     "h": 369,
+     "ax": 114.5,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/bk_apostle/attack_2.png",
+     "w": 370,
+     "h": 304,
+     "ax": 172.0,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/bk_apostle/attack_3.png",
+     "w": 266,
+     "h": 303,
+     "ax": 117.5,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/bk_apostle/attack_4.png",
+     "w": 315,
+     "h": 309,
+     "ax": 153.9,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/bk_apostle/attack_5.png",
+     "w": 366,
+     "h": 316,
+     "ax": 164.5,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/bk_apostle/attack_6.png",
+     "w": 374,
+     "h": 308,
+     "ax": 170.1,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/bk_apostle/attack_7.png",
+     "w": 251,
+     "h": 355,
+     "ax": 125.6,
+     "ay": 355
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.625,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_apostle/fall_0.png",
+     "w": 278,
+     "h": 330,
+     "ax": 130.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/bk_apostle/fall_1.png",
+     "w": 326,
+     "h": 319,
+     "ax": 119.0,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/bk_apostle/fall_2.png",
+     "w": 364,
+     "h": 243,
+     "ax": 161.0,
+     "ay": 243
+    },
+    {
+     "src": "assets/sprites/bk_apostle/fall_3.png",
+     "w": 299,
+     "h": 239,
+     "ax": 157.8,
+     "ay": 239
+    },
+    {
+     "src": "assets/sprites/bk_apostle/fall_4.png",
+     "w": 364,
+     "h": 196,
+     "ax": 201.0,
+     "ay": 196
+    },
+    {
+     "src": "assets/sprites/bk_apostle/fall_5.png",
+     "w": 326,
+     "h": 227,
+     "ax": 180.5,
+     "ay": 227
+    },
+    {
+     "src": "assets/sprites/bk_apostle/fall_6.png",
+     "w": 258,
+     "h": 276,
+     "ax": 116.5,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/bk_apostle/fall_7.png",
+     "w": 255,
+     "h": 292,
+     "ax": 102.7,
+     "ay": 292
+    }
+   ]
+  }
+ },
+ "bk_boss": {
+  "walk": {
+   "scale": 0.678,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_boss/walk_0.png",
+     "w": 292,
+     "h": 342,
+     "ax": 123.0,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/bk_boss/walk_1.png",
+     "w": 267,
+     "h": 345,
+     "ax": 128.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/bk_boss/walk_2.png",
+     "w": 265,
+     "h": 344,
+     "ax": 123.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/bk_boss/walk_3.png",
+     "w": 266,
+     "h": 346,
+     "ax": 125.9,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/bk_boss/walk_4.png",
+     "w": 291,
+     "h": 354,
+     "ax": 128.0,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/bk_boss/walk_5.png",
+     "w": 270,
+     "h": 352,
+     "ax": 131.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/bk_boss/walk_6.png",
+     "w": 270,
+     "h": 354,
+     "ax": 126.0,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/bk_boss/walk_7.png",
+     "w": 270,
+     "h": 354,
+     "ax": 131.5,
+     "ay": 354
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.678,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_boss/attack_0.png",
+     "w": 273,
+     "h": 348,
+     "ax": 126.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/bk_boss/attack_1.png",
+     "w": 258,
+     "h": 350,
+     "ax": 125.8,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/bk_boss/attack_2.png",
+     "w": 332,
+     "h": 339,
+     "ax": 152.1,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/bk_boss/attack_3.png",
+     "w": 300,
+     "h": 256,
+     "ax": 152.0,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/bk_boss/attack_4.png",
+     "w": 275,
+     "h": 343,
+     "ax": 136.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/bk_boss/attack_5.png",
+     "w": 354,
+     "h": 337,
+     "ax": 145.3,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/bk_boss/attack_6.png",
+     "w": 317,
+     "h": 296,
+     "ax": 174.0,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/bk_boss/attack_7.png",
+     "w": 329,
+     "h": 347,
+     "ax": 147.4,
+     "ay": 347
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.678,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_boss/special_0.png",
+     "w": 265,
+     "h": 346,
+     "ax": 126.0,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/bk_boss/special_1.png",
+     "w": 321,
+     "h": 302,
+     "ax": 160.8,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/bk_boss/special_2.png",
+     "w": 384,
+     "h": 315,
+     "ax": 181.0,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/bk_boss/special_3.png",
+     "w": 249,
+     "h": 331,
+     "ax": 121.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/bk_boss/special_4.png",
+     "w": 282,
+     "h": 241,
+     "ax": 149.5,
+     "ay": 241
+    },
+    {
+     "src": "assets/sprites/bk_boss/special_5.png",
+     "w": 311,
+     "h": 326,
+     "ax": 172.5,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/bk_boss/special_6.png",
+     "w": 299,
+     "h": 259,
+     "ax": 159.0,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/bk_boss/special_7.png",
+     "w": 267,
+     "h": 319,
+     "ax": 156.5,
+     "ay": 319
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.678,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_boss/fall_0.png",
+     "w": 256,
+     "h": 294,
+     "ax": 105.3,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/bk_boss/fall_1.png",
+     "w": 293,
+     "h": 288,
+     "ax": 108.5,
+     "ay": 288
+    },
+    {
+     "src": "assets/sprites/bk_boss/fall_2.png",
+     "w": 383,
+     "h": 300,
+     "ax": 192.5,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/bk_boss/fall_3.png",
+     "w": 241,
+     "h": 297,
+     "ax": 156.2,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/bk_boss/fall_4.png",
+     "w": 350,
+     "h": 106,
+     "ax": 159.5,
+     "ay": 106
+    },
+    {
+     "src": "assets/sprites/bk_boss/fall_5.png",
+     "w": 265,
+     "h": 217,
+     "ax": 142.5,
+     "ay": 217
+    },
+    {
+     "src": "assets/sprites/bk_boss/fall_6.png",
+     "w": 238,
+     "h": 227,
+     "ax": 124.6,
+     "ay": 227
+    },
+    {
+     "src": "assets/sprites/bk_boss/fall_7.png",
+     "w": 213,
+     "h": 289,
+     "ax": 103.7,
+     "ay": 289
+    }
+   ]
+  }
+ },
+ "fz_skeleton": {
+  "walk": {
+   "scale": 0.5925,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_skeleton/walk_0.png",
+     "w": 266,
+     "h": 324,
+     "ax": 159.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/walk_1.png",
+     "w": 203,
+     "h": 320,
+     "ax": 117.8,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/walk_2.png",
+     "w": 187,
+     "h": 325,
+     "ax": 100.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/walk_3.png",
+     "w": 187,
+     "h": 343,
+     "ax": 103.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/walk_4.png",
+     "w": 242,
+     "h": 327,
+     "ax": 147.7,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/walk_5.png",
+     "w": 204,
+     "h": 320,
+     "ax": 119.6,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/walk_6.png",
+     "w": 189,
+     "h": 326,
+     "ax": 103.5,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/walk_7.png",
+     "w": 186,
+     "h": 346,
+     "ax": 101.5,
+     "ay": 346
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5925,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_skeleton/attack_0.png",
+     "w": 230,
+     "h": 341,
+     "ax": 118.4,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/attack_1.png",
+     "w": 257,
+     "h": 373,
+     "ax": 151.6,
+     "ay": 373
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/attack_2.png",
+     "w": 338,
+     "h": 314,
+     "ax": 166.5,
+     "ay": 314
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/attack_3.png",
+     "w": 213,
+     "h": 322,
+     "ax": 142.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/attack_4.png",
+     "w": 239,
+     "h": 328,
+     "ax": 137.2,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/attack_5.png",
+     "w": 390,
+     "h": 326,
+     "ax": 112.5,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/attack_6.png",
+     "w": 370,
+     "h": 289,
+     "ax": 165.0,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/attack_7.png",
+     "w": 274,
+     "h": 372,
+     "ax": 157.7,
+     "ay": 372
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5925,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_skeleton/fall_0.png",
+     "w": 207,
+     "h": 335,
+     "ax": 104.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/fall_1.png",
+     "w": 298,
+     "h": 333,
+     "ax": 124.8,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/fall_2.png",
+     "w": 306,
+     "h": 275,
+     "ax": 101.3,
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/fall_3.png",
+     "w": 292,
+     "h": 226,
+     "ax": 87.5,
+     "ay": 226
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/fall_4.png",
+     "w": 402,
+     "h": 116,
+     "ax": 162.6,
+     "ay": 116
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/fall_5.png",
+     "w": 272,
+     "h": 231,
+     "ax": 148.5,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/fall_6.png",
+     "w": 289,
+     "h": 268,
+     "ax": 158.7,
+     "ay": 268
+    },
+    {
+     "src": "assets/sprites/fz_skeleton/fall_7.png",
+     "w": 217,
+     "h": 309,
+     "ax": 122.5,
+     "ay": 309
+    }
+   ]
+  }
+ },
+ "fz_shadow": {
+  "walk": {
+   "scale": 0.6213,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_shadow/walk_0.png",
+     "w": 255,
+     "h": 328,
+     "ax": 131.6,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/fz_shadow/walk_1.png",
+     "w": 205,
+     "h": 329,
+     "ax": 114.0,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/fz_shadow/walk_2.png",
+     "w": 200,
+     "h": 329,
+     "ax": 118.4,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/fz_shadow/walk_3.png",
+     "w": 189,
+     "h": 336,
+     "ax": 113.9,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/fz_shadow/walk_4.png",
+     "w": 250,
+     "h": 331,
+     "ax": 131.1,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/fz_shadow/walk_5.png",
+     "w": 198,
+     "h": 327,
+     "ax": 113.3,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/fz_shadow/walk_6.png",
+     "w": 206,
+     "h": 330,
+     "ax": 118.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/fz_shadow/walk_7.png",
+     "w": 188,
+     "h": 338,
+     "ax": 115.4,
+     "ay": 338
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6213,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_shadow/attack_0.png",
+     "w": 238,
+     "h": 294,
+     "ax": 130.0,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/fz_shadow/attack_1.png",
+     "w": 223,
+     "h": 342,
+     "ax": 128.3,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/fz_shadow/attack_2.png",
+     "w": 382,
+     "h": 296,
+     "ax": 168.9,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/fz_shadow/attack_3.png",
+     "w": 228,
+     "h": 310,
+     "ax": 124.4,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/fz_shadow/attack_4.png",
+     "w": 213,
+     "h": 345,
+     "ax": 121.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/fz_shadow/attack_5.png",
+     "w": 339,
+     "h": 340,
+     "ax": 138.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/fz_shadow/attack_6.png",
+     "w": 344,
+     "h": 316,
+     "ax": 165.0,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/fz_shadow/attack_7.png",
+     "w": 201,
+     "h": 320,
+     "ax": 126.0,
+     "ay": 320
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6213,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_shadow/fall_0.png",
+     "w": 234,
+     "h": 319,
+     "ax": 135.9,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/fz_shadow/fall_1.png",
+     "w": 291,
+     "h": 304,
+     "ax": 120.0,
+     "ay": 304
+    },
+    {
+     "src": "assets/sprites/fz_shadow/fall_2.png",
+     "w": 361,
+     "h": 223,
+     "ax": 167.0,
+     "ay": 223
+    },
+    {
+     "src": "assets/sprites/fz_shadow/fall_3.png",
+     "w": 256,
+     "h": 243,
+     "ax": 85.1,
+     "ay": 243
+    },
+    {
+     "src": "assets/sprites/fz_shadow/fall_4.png",
+     "w": 390,
+     "h": 143,
+     "ax": 181.6,
+     "ay": 143
+    },
+    {
+     "src": "assets/sprites/fz_shadow/fall_5.png",
+     "w": 283,
+     "h": 224,
+     "ax": 134.5,
+     "ay": 224
+    },
+    {
+     "src": "assets/sprites/fz_shadow/fall_6.png",
+     "w": 230,
+     "h": 253,
+     "ax": 137.1,
+     "ay": 253
+    },
+    {
+     "src": "assets/sprites/fz_shadow/fall_7.png",
+     "w": 196,
+     "h": 311,
+     "ax": 114.5,
+     "ay": 311
+    }
+   ]
+  }
+ },
+ "fz_boss": {
+  "walk": {
+   "scale": 0.6757,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_boss/walk_0.png",
+     "w": 273,
+     "h": 315,
+     "ax": 159.5,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/fz_boss/walk_1.png",
+     "w": 251,
+     "h": 295,
+     "ax": 154.0,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/fz_boss/walk_2.png",
+     "w": 233,
+     "h": 324,
+     "ax": 128.8,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/fz_boss/walk_3.png",
+     "w": 219,
+     "h": 333,
+     "ax": 113.5,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/fz_boss/walk_4.png",
+     "w": 255,
+     "h": 319,
+     "ax": 154.7,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/fz_boss/walk_5.png",
+     "w": 243,
+     "h": 309,
+     "ax": 143.2,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/fz_boss/walk_6.png",
+     "w": 224,
+     "h": 324,
+     "ax": 126.5,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/fz_boss/walk_7.png",
+     "w": 215,
+     "h": 333,
+     "ax": 108.5,
+     "ay": 333
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6757,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_boss/attack_0.png",
+     "w": 170,
+     "h": 349,
+     "ax": 87.5,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/fz_boss/attack_1.png",
+     "w": 210,
+     "h": 358,
+     "ax": 88.5,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/fz_boss/attack_2.png",
+     "w": 306,
+     "h": 294,
+     "ax": 156.0,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/fz_boss/attack_3.png",
+     "w": 226,
+     "h": 273,
+     "ax": 134.8,
+     "ay": 273
+    },
+    {
+     "src": "assets/sprites/fz_boss/attack_4.png",
+     "w": 245,
+     "h": 310,
+     "ax": 121.4,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/fz_boss/attack_5.png",
+     "w": 317,
+     "h": 322,
+     "ax": 153.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/fz_boss/attack_6.png",
+     "w": 263,
+     "h": 271,
+     "ax": 168.0,
+     "ay": 271
+    },
+    {
+     "src": "assets/sprites/fz_boss/attack_7.png",
+     "w": 289,
+     "h": 349,
+     "ax": 151.0,
+     "ay": 349
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6757,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_boss/special_0.png",
+     "w": 198,
+     "h": 369,
+     "ax": 97.0,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/fz_boss/special_1.png",
+     "w": 235,
+     "h": 328,
+     "ax": 91.0,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/fz_boss/special_2.png",
+     "w": 284,
+     "h": 336,
+     "ax": 128.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/fz_boss/special_3.png",
+     "w": 185,
+     "h": 348,
+     "ax": 93.0,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/fz_boss/special_4.png",
+     "w": 218,
+     "h": 262,
+     "ax": 127.0,
+     "ay": 262
+    },
+    {
+     "src": "assets/sprites/fz_boss/special_5.png",
+     "w": 224,
+     "h": 357,
+     "ax": 111.5,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/fz_boss/special_6.png",
+     "w": 235,
+     "h": 272,
+     "ax": 145.6,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/fz_boss/special_7.png",
+     "w": 227,
+     "h": 346,
+     "ax": 156.5,
+     "ay": 346
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6757,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_boss/fall_0.png",
+     "w": 211,
+     "h": 321,
+     "ax": 80.3,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/fz_boss/fall_1.png",
+     "w": 246,
+     "h": 316,
+     "ax": 72.5,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/fz_boss/fall_2.png",
+     "w": 326,
+     "h": 275,
+     "ax": 126.5,
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/fz_boss/fall_3.png",
+     "w": 250,
+     "h": 242,
+     "ax": 81.9,
+     "ay": 242
+    },
+    {
+     "src": "assets/sprites/fz_boss/fall_4.png",
+     "w": 385,
+     "h": 121,
+     "ax": 154.0,
+     "ay": 121
+    },
+    {
+     "src": "assets/sprites/fz_boss/fall_5.png",
+     "w": 234,
+     "h": 231,
+     "ax": 122.0,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/fz_boss/fall_6.png",
+     "w": 221,
+     "h": 272,
+     "ax": 117.0,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/fz_boss/fall_7.png",
+     "w": 190,
+     "h": 315,
+     "ax": 126.7,
+     "ay": 315
+    }
+   ]
+  }
+ },
+ "fm_soldier": {
+  "walk": {
+   "scale": 0.5807,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_soldier/walk_0.png",
+     "w": 271,
+     "h": 343,
+     "ax": 126.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/fm_soldier/walk_1.png",
+     "w": 263,
+     "h": 332,
+     "ax": 128.0,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/fm_soldier/walk_2.png",
+     "w": 215,
+     "h": 348,
+     "ax": 68.0,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/fm_soldier/walk_3.png",
+     "w": 258,
+     "h": 346,
+     "ax": 121.5,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/fm_soldier/walk_4.png",
+     "w": 270,
+     "h": 347,
+     "ax": 121.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/fm_soldier/walk_5.png",
+     "w": 261,
+     "h": 339,
+     "ax": 122.0,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/fm_soldier/walk_6.png",
+     "w": 215,
+     "h": 351,
+     "ax": 66.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/fm_soldier/walk_7.png",
+     "w": 255,
+     "h": 353,
+     "ax": 105.0,
+     "ay": 353
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5807,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_soldier/attack_0.png",
+     "w": 280,
+     "h": 327,
+     "ax": 78.0,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/fm_soldier/attack_1.png",
+     "w": 293,
+     "h": 318,
+     "ax": 111.8,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/fm_soldier/attack_2.png",
+     "w": 395,
+     "h": 300,
+     "ax": 161.0,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/fm_soldier/attack_3.png",
+     "w": 263,
+     "h": 328,
+     "ax": 82.0,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/fm_soldier/attack_4.png",
+     "w": 212,
+     "h": 356,
+     "ax": 102.1,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/fm_soldier/attack_5.png",
+     "w": 317,
+     "h": 313,
+     "ax": 118.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/fm_soldier/attack_6.png",
+     "w": 346,
+     "h": 307,
+     "ax": 108.5,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/fm_soldier/attack_7.png",
+     "w": 240,
+     "h": 317,
+     "ax": 73.5,
+     "ay": 317
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5807,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_soldier/fall_0.png",
+     "w": 230,
+     "h": 351,
+     "ax": 63.0,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/fm_soldier/fall_1.png",
+     "w": 253,
+     "h": 338,
+     "ax": 87.3,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/fm_soldier/fall_2.png",
+     "w": 316,
+     "h": 285,
+     "ax": 120.0,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/fm_soldier/fall_3.png",
+     "w": 305,
+     "h": 261,
+     "ax": 138.5,
+     "ay": 261
+    },
+    {
+     "src": "assets/sprites/fm_soldier/fall_4.png",
+     "w": 393,
+     "h": 157,
+     "ax": 190.2,
+     "ay": 157
+    },
+    {
+     "src": "assets/sprites/fm_soldier/fall_5.png",
+     "w": 335,
+     "h": 197,
+     "ax": 116.7,
+     "ay": 197
+    },
+    {
+     "src": "assets/sprites/fm_soldier/fall_6.png",
+     "w": 257,
+     "h": 248,
+     "ax": 134.0,
+     "ay": 248
+    },
+    {
+     "src": "assets/sprites/fm_soldier/fall_7.png",
+     "w": 241,
+     "h": 314,
+     "ax": 105.5,
+     "ay": 314
+    }
+   ]
+  }
+ },
+ "fm_chimera": {
+  "walk": {
+   "scale": 0.6267,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_chimera/walk_0.png",
+     "w": 300,
+     "h": 350,
+     "ax": 173.0,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_1.png",
+     "w": 268,
+     "h": 334,
+     "ax": 157.5,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_2.png",
+     "w": 257,
+     "h": 344,
+     "ax": 143.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_3.png",
+     "w": 286,
+     "h": 358,
+     "ax": 154.0,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_4.png",
+     "w": 297,
+     "h": 355,
+     "ax": 168.3,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_5.png",
+     "w": 261,
+     "h": 337,
+     "ax": 147.8,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_6.png",
+     "w": 261,
+     "h": 348,
+     "ax": 144.0,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/fm_chimera/walk_7.png",
+     "w": 292,
+     "h": 359,
+     "ax": 155.0,
+     "ay": 359
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6267,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_chimera/attack_0.png",
+     "w": 285,
+     "h": 331,
+     "ax": 154.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_1.png",
+     "w": 281,
+     "h": 370,
+     "ax": 183.5,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_2.png",
+     "w": 392,
+     "h": 334,
+     "ax": 202.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_3.png",
+     "w": 271,
+     "h": 347,
+     "ax": 154.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_4.png",
+     "w": 264,
+     "h": 336,
+     "ax": 162.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_5.png",
+     "w": 402,
+     "h": 338,
+     "ax": 210.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_6.png",
+     "w": 391,
+     "h": 332,
+     "ax": 227.5,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/fm_chimera/attack_7.png",
+     "w": 282,
+     "h": 365,
+     "ax": 144.0,
+     "ay": 365
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6267,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_chimera/fall_0.png",
+     "w": 243,
+     "h": 332,
+     "ax": 114.6,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_1.png",
+     "w": 296,
+     "h": 330,
+     "ax": 89.4,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_2.png",
+     "w": 337,
+     "h": 297,
+     "ax": 132.5,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_3.png",
+     "w": 329,
+     "h": 204,
+     "ax": 95.8,
+     "ay": 204
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_4.png",
+     "w": 376,
+     "h": 133,
+     "ax": 148.0,
+     "ay": 133
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_5.png",
+     "w": 307,
+     "h": 234,
+     "ax": 185.0,
+     "ay": 234
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_6.png",
+     "w": 279,
+     "h": 248,
+     "ax": 171.6,
+     "ay": 248
+    },
+    {
+     "src": "assets/sprites/fm_chimera/fall_7.png",
+     "w": 277,
+     "h": 313,
+     "ax": 169.0,
+     "ay": 313
+    }
+   ]
+  }
+ },
+ "fm_boss": {
+  "walk": {
+   "scale": 0.6374,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_boss/walk_0.png",
+     "w": 277,
+     "h": 345,
+     "ax": 160.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/fm_boss/walk_1.png",
+     "w": 269,
+     "h": 340,
+     "ax": 153.8,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/fm_boss/walk_2.png",
+     "w": 264,
+     "h": 348,
+     "ax": 153.0,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/fm_boss/walk_3.png",
+     "w": 264,
+     "h": 341,
+     "ax": 149.3,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/fm_boss/walk_4.png",
+     "w": 277,
+     "h": 352,
+     "ax": 157.8,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/fm_boss/walk_5.png",
+     "w": 266,
+     "h": 348,
+     "ax": 151.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/fm_boss/walk_6.png",
+     "w": 262,
+     "h": 349,
+     "ax": 152.7,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/fm_boss/walk_7.png",
+     "w": 266,
+     "h": 353,
+     "ax": 150.2,
+     "ay": 353
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6374,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_boss/attack_0.png",
+     "w": 284,
+     "h": 335,
+     "ax": 84.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/fm_boss/attack_1.png",
+     "w": 287,
+     "h": 361,
+     "ax": 90.0,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/fm_boss/attack_2.png",
+     "w": 382,
+     "h": 303,
+     "ax": 154.0,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/fm_boss/attack_3.png",
+     "w": 223,
+     "h": 247,
+     "ax": 158.0,
+     "ay": 247
+    },
+    {
+     "src": "assets/sprites/fm_boss/attack_4.png",
+     "w": 309,
+     "h": 321,
+     "ax": 138.5,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/fm_boss/attack_5.png",
+     "w": 412,
+     "h": 300,
+     "ax": 140.5,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/fm_boss/attack_6.png",
+     "w": 244,
+     "h": 267,
+     "ax": 151.3,
+     "ay": 267
+    },
+    {
+     "src": "assets/sprites/fm_boss/attack_7.png",
+     "w": 248,
+     "h": 338,
+     "ax": 126.5,
+     "ay": 338
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6374,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_boss/special_0.png",
+     "w": 234,
+     "h": 327,
+     "ax": 114.5,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/fm_boss/special_1.png",
+     "w": 252,
+     "h": 331,
+     "ax": 131.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/fm_boss/special_2.png",
+     "w": 411,
+     "h": 305,
+     "ax": 187.5,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/fm_boss/special_3.png",
+     "w": 212,
+     "h": 273,
+     "ax": 131.0,
+     "ay": 273
+    },
+    {
+     "src": "assets/sprites/fm_boss/special_4.png",
+     "w": 251,
+     "h": 324,
+     "ax": 139.5,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/fm_boss/special_5.png",
+     "w": 272,
+     "h": 461,
+     "ax": 92.5,
+     "ay": 461
+    },
+    {
+     "src": "assets/sprites/fm_boss/special_6.png",
+     "w": 231,
+     "h": 257,
+     "ax": 149.5,
+     "ay": 257
+    },
+    {
+     "src": "assets/sprites/fm_boss/special_7.png",
+     "w": 167,
+     "h": 369,
+     "ax": 101.0,
+     "ay": 369
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6374,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_boss/fall_0.png",
+     "w": 202,
+     "h": 339,
+     "ax": 98.7,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/fm_boss/fall_1.png",
+     "w": 302,
+     "h": 329,
+     "ax": 108.5,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/fm_boss/fall_2.png",
+     "w": 311,
+     "h": 289,
+     "ax": 127.5,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/fm_boss/fall_3.png",
+     "w": 300,
+     "h": 254,
+     "ax": 113.4,
+     "ay": 254
+    },
+    {
+     "src": "assets/sprites/fm_boss/fall_4.png",
+     "w": 339,
+     "h": 126,
+     "ax": 171.6,
+     "ay": 126
+    },
+    {
+     "src": "assets/sprites/fm_boss/fall_5.png",
+     "w": 305,
+     "h": 198,
+     "ax": 210.2,
+     "ay": 198
+    },
+    {
+     "src": "assets/sprites/fm_boss/fall_6.png",
+     "w": 244,
+     "h": 242,
+     "ax": 157.8,
+     "ay": 242
+    },
+    {
+     "src": "assets/sprites/fm_boss/fall_7.png",
+     "w": 195,
+     "h": 337,
+     "ax": 119.7,
+     "ay": 337
+    }
+   ]
+  }
+ },
+ "rp_gunman": {
+  "walk": {
+   "scale": 0.5925,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_gunman/walk_0.png",
+     "w": 313,
+     "h": 315,
+     "ax": 150.0,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/rp_gunman/walk_1.png",
+     "w": 211,
+     "h": 312,
+     "ax": 124.0,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/rp_gunman/walk_2.png",
+     "w": 180,
+     "h": 325,
+     "ax": 107.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/rp_gunman/walk_3.png",
+     "w": 146,
+     "h": 340,
+     "ax": 55.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/rp_gunman/walk_4.png",
+     "w": 292,
+     "h": 322,
+     "ax": 141.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/rp_gunman/walk_5.png",
+     "w": 192,
+     "h": 322,
+     "ax": 123.0,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/rp_gunman/walk_6.png",
+     "w": 190,
+     "h": 327,
+     "ax": 111.5,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/rp_gunman/walk_7.png",
+     "w": 157,
+     "h": 346,
+     "ax": 54.0,
+     "ay": 346
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5925,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_gunman/attack_0.png",
+     "w": 173,
+     "h": 346,
+     "ax": 90.1,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/rp_gunman/attack_1.png",
+     "w": 191,
+     "h": 363,
+     "ax": 92.5,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/rp_gunman/attack_2.png",
+     "w": 339,
+     "h": 331,
+     "ax": 146.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/rp_gunman/attack_3.png",
+     "w": 190,
+     "h": 332,
+     "ax": 103.5,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/rp_gunman/attack_4.png",
+     "w": 175,
+     "h": 355,
+     "ax": 67.0,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/rp_gunman/attack_5.png",
+     "w": 299,
+     "h": 337,
+     "ax": 94.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/rp_gunman/attack_6.png",
+     "w": 253,
+     "h": 339,
+     "ax": 103.3,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/rp_gunman/attack_7.png",
+     "w": 173,
+     "h": 355,
+     "ax": 83.5,
+     "ay": 355
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5925,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_gunman/fall_0.png",
+     "w": 182,
+     "h": 352,
+     "ax": 80.4,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/rp_gunman/fall_1.png",
+     "w": 253,
+     "h": 331,
+     "ax": 87.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/rp_gunman/fall_2.png",
+     "w": 315,
+     "h": 225,
+     "ax": 129.9,
+     "ay": 225
+    },
+    {
+     "src": "assets/sprites/rp_gunman/fall_3.png",
+     "w": 322,
+     "h": 196,
+     "ax": 150.2,
+     "ay": 196
+    },
+    {
+     "src": "assets/sprites/rp_gunman/fall_4.png",
+     "w": 367,
+     "h": 109,
+     "ax": 163.8,
+     "ay": 109
+    },
+    {
+     "src": "assets/sprites/rp_gunman/fall_5.png",
+     "w": 324,
+     "h": 209,
+     "ax": 211.0,
+     "ay": 209
+    },
+    {
+     "src": "assets/sprites/rp_gunman/fall_6.png",
+     "w": 220,
+     "h": 255,
+     "ax": 128.5,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/rp_gunman/fall_7.png",
+     "w": 183,
+     "h": 305,
+     "ax": 97.1,
+     "ay": 305
+    }
+   ]
+  }
+ },
+ "rp_thug": {
+  "walk": {
+   "scale": 0.5959,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_thug/walk_0.png",
+     "w": 262,
+     "h": 333,
+     "ax": 134.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/rp_thug/walk_1.png",
+     "w": 189,
+     "h": 327,
+     "ax": 102.6,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/rp_thug/walk_2.png",
+     "w": 185,
+     "h": 333,
+     "ax": 109.5,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/rp_thug/walk_3.png",
+     "w": 196,
+     "h": 342,
+     "ax": 102.2,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/rp_thug/walk_4.png",
+     "w": 261,
+     "h": 333,
+     "ax": 131.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/rp_thug/walk_5.png",
+     "w": 188,
+     "h": 328,
+     "ax": 100.7,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/rp_thug/walk_6.png",
+     "w": 186,
+     "h": 333,
+     "ax": 108.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/rp_thug/walk_7.png",
+     "w": 194,
+     "h": 344,
+     "ax": 97.5,
+     "ay": 344
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5959,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_thug/attack_0.png",
+     "w": 239,
+     "h": 319,
+     "ax": 133.0,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/rp_thug/attack_1.png",
+     "w": 237,
+     "h": 351,
+     "ax": 128.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/rp_thug/attack_2.png",
+     "w": 305,
+     "h": 317,
+     "ax": 152.0,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/rp_thug/attack_3.png",
+     "w": 222,
+     "h": 339,
+     "ax": 118.6,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/rp_thug/attack_4.png",
+     "w": 263,
+     "h": 336,
+     "ax": 159.5,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/rp_thug/attack_5.png",
+     "w": 298,
+     "h": 327,
+     "ax": 149.5,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/rp_thug/attack_6.png",
+     "w": 357,
+     "h": 279,
+     "ax": 204.5,
+     "ay": 279
+    },
+    {
+     "src": "assets/sprites/rp_thug/attack_7.png",
+     "w": 192,
+     "h": 370,
+     "ax": 66.2,
+     "ay": 370
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5959,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_thug/fall_0.png",
+     "w": 175,
+     "h": 326,
+     "ax": 70.6,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/rp_thug/fall_1.png",
+     "w": 255,
+     "h": 313,
+     "ax": 73.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/rp_thug/fall_2.png",
+     "w": 309,
+     "h": 256,
+     "ax": 131.0,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/rp_thug/fall_3.png",
+     "w": 296,
+     "h": 170,
+     "ax": 127.8,
+     "ay": 170
+    },
+    {
+     "src": "assets/sprites/rp_thug/fall_4.png",
+     "w": 383,
+     "h": 135,
+     "ax": 185.0,
+     "ay": 135
+    },
+    {
+     "src": "assets/sprites/rp_thug/fall_5.png",
+     "w": 284,
+     "h": 195,
+     "ax": 145.1,
+     "ay": 195
+    },
+    {
+     "src": "assets/sprites/rp_thug/fall_6.png",
+     "w": 219,
+     "h": 249,
+     "ax": 116.0,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/rp_thug/fall_7.png",
+     "w": 180,
+     "h": 324,
+     "ax": 100.1,
+     "ay": 324
+    }
+   ]
+  }
+ },
+ "rp_boss": {
+  "walk": {
+   "scale": 0.6286,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_boss/walk_0.png",
+     "w": 301,
+     "h": 340,
+     "ax": 151.0,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/rp_boss/walk_1.png",
+     "w": 250,
+     "h": 302,
+     "ax": 160.5,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/rp_boss/walk_2.png",
+     "w": 225,
+     "h": 343,
+     "ax": 146.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/rp_boss/walk_3.png",
+     "w": 246,
+     "h": 350,
+     "ax": 129.5,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/rp_boss/walk_4.png",
+     "w": 292,
+     "h": 345,
+     "ax": 140.4,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/rp_boss/walk_5.png",
+     "w": 236,
+     "h": 321,
+     "ax": 145.0,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/rp_boss/walk_6.png",
+     "w": 240,
+     "h": 344,
+     "ax": 148.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/rp_boss/walk_7.png",
+     "w": 268,
+     "h": 348,
+     "ax": 143.0,
+     "ay": 348
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6286,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_boss/attack_0.png",
+     "w": 287,
+     "h": 292,
+     "ax": 109.5,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/rp_boss/attack_1.png",
+     "w": 252,
+     "h": 374,
+     "ax": 144.0,
+     "ay": 374
+    },
+    {
+     "src": "assets/sprites/rp_boss/attack_2.png",
+     "w": 301,
+     "h": 275,
+     "ax": 137.5,
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/rp_boss/attack_3.png",
+     "w": 210,
+     "h": 205,
+     "ax": 95.5,
+     "ay": 205
+    },
+    {
+     "src": "assets/sprites/rp_boss/attack_4.png",
+     "w": 247,
+     "h": 330,
+     "ax": 153.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/rp_boss/attack_5.png",
+     "w": 418,
+     "h": 293,
+     "ax": 136.0,
+     "ay": 293
+    },
+    {
+     "src": "assets/sprites/rp_boss/attack_6.png",
+     "w": 284,
+     "h": 262,
+     "ax": 171.4,
+     "ay": 262
+    },
+    {
+     "src": "assets/sprites/rp_boss/attack_7.png",
+     "w": 316,
+     "h": 332,
+     "ax": 184.0,
+     "ay": 332
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6286,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_boss/special_0.png",
+     "w": 229,
+     "h": 281,
+     "ax": 66.8,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/rp_boss/special_1.png",
+     "w": 238,
+     "h": 272,
+     "ax": 84.1,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/rp_boss/special_2.png",
+     "w": 332,
+     "h": 278,
+     "ax": 80.5,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/rp_boss/special_3.png",
+     "w": 241,
+     "h": 278,
+     "ax": 86.0,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/rp_boss/special_4.png",
+     "w": 131,
+     "h": 289,
+     "ax": 57.0,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/rp_boss/special_5.png",
+     "w": 127,
+     "h": 397,
+     "ax": 67.5,
+     "ay": 397
+    },
+    {
+     "src": "assets/sprites/rp_boss/special_6.png",
+     "w": 180,
+     "h": 198,
+     "ax": 74.2,
+     "ay": 198
+    },
+    {
+     "src": "assets/sprites/rp_boss/special_7.png",
+     "w": 114,
+     "h": 289,
+     "ax": 55.0,
+     "ay": 289
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6286,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_boss/fall_0.png",
+     "w": 244,
+     "h": 334,
+     "ax": 129.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/rp_boss/fall_1.png",
+     "w": 267,
+     "h": 319,
+     "ax": 96.0,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/rp_boss/fall_2.png",
+     "w": 317,
+     "h": 254,
+     "ax": 147.7,
+     "ay": 254
+    },
+    {
+     "src": "assets/sprites/rp_boss/fall_3.png",
+     "w": 305,
+     "h": 204,
+     "ax": 151.5,
+     "ay": 204
+    },
+    {
+     "src": "assets/sprites/rp_boss/fall_4.png",
+     "w": 378,
+     "h": 95,
+     "ax": 183.5,
+     "ay": 95
+    },
+    {
+     "src": "assets/sprites/rp_boss/fall_5.png",
+     "w": 303,
+     "h": 201,
+     "ax": 185.0,
+     "ay": 201
+    },
+    {
+     "src": "assets/sprites/rp_boss/fall_6.png",
+     "w": 305,
+     "h": 241,
+     "ax": 135.0,
+     "ay": 241
+    },
+    {
+     "src": "assets/sprites/rp_boss/fall_7.png",
+     "w": 190,
+     "h": 307,
+     "ax": 105.0,
+     "ay": 307
+    }
+   ]
+  }
+ },
+ "aot_mini": {
+  "walk": {
+   "scale": 0.6012,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_mini/walk_0.png",
+     "w": 235,
+     "h": 330,
+     "ax": 138.0,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/aot_mini/walk_1.png",
+     "w": 202,
+     "h": 320,
+     "ax": 120.0,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/aot_mini/walk_2.png",
+     "w": 182,
+     "h": 334,
+     "ax": 104.5,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/aot_mini/walk_3.png",
+     "w": 257,
+     "h": 335,
+     "ax": 131.4,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/aot_mini/walk_4.png",
+     "w": 257,
+     "h": 338,
+     "ax": 144.8,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/aot_mini/walk_5.png",
+     "w": 196,
+     "h": 323,
+     "ax": 118.0,
+     "ay": 323
+    },
+    {
+     "src": "assets/sprites/aot_mini/walk_6.png",
+     "w": 189,
+     "h": 339,
+     "ax": 115.5,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/aot_mini/walk_7.png",
+     "w": 262,
+     "h": 341,
+     "ax": 142.0,
+     "ay": 341
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6012,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_mini/attack_0.png",
+     "w": 209,
+     "h": 340,
+     "ax": 113.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/aot_mini/attack_1.png",
+     "w": 213,
+     "h": 365,
+     "ax": 111.8,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/aot_mini/attack_2.png",
+     "w": 289,
+     "h": 324,
+     "ax": 168.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/aot_mini/attack_3.png",
+     "w": 182,
+     "h": 266,
+     "ax": 107.5,
+     "ay": 266
+    },
+    {
+     "src": "assets/sprites/aot_mini/attack_4.png",
+     "w": 234,
+     "h": 343,
+     "ax": 131.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/aot_mini/attack_5.png",
+     "w": 320,
+     "h": 345,
+     "ax": 151.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/aot_mini/attack_6.png",
+     "w": 273,
+     "h": 303,
+     "ax": 164.5,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/aot_mini/attack_7.png",
+     "w": 256,
+     "h": 370,
+     "ax": 133.0,
+     "ay": 370
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6012,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_mini/special_0.png",
+     "w": 229,
+     "h": 338,
+     "ax": 129.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/aot_mini/special_1.png",
+     "w": 221,
+     "h": 341,
+     "ax": 137.4,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/aot_mini/special_2.png",
+     "w": 345,
+     "h": 321,
+     "ax": 180.5,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/aot_mini/special_3.png",
+     "w": 193,
+     "h": 339,
+     "ax": 114.1,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/aot_mini/special_4.png",
+     "w": 205,
+     "h": 234,
+     "ax": 109.0,
+     "ay": 234
+    },
+    {
+     "src": "assets/sprites/aot_mini/special_5.png",
+     "w": 201,
+     "h": 361,
+     "ax": 110.8,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/aot_mini/special_6.png",
+     "w": 215,
+     "h": 271,
+     "ax": 130.5,
+     "ay": 271
+    },
+    {
+     "src": "assets/sprites/aot_mini/special_7.png",
+     "w": 194,
+     "h": 366,
+     "ax": 127.6,
+     "ay": 366
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6012,
+   "frames": [
+    {
+     "src": "assets/sprites/aot_mini/fall_0.png",
+     "w": 186,
+     "h": 308,
+     "ax": 80.9,
+     "ay": 308
+    },
+    {
+     "src": "assets/sprites/aot_mini/fall_1.png",
+     "w": 243,
+     "h": 307,
+     "ax": 65.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/aot_mini/fall_2.png",
+     "w": 316,
+     "h": 230,
+     "ax": 142.5,
+     "ay": 230
+    },
+    {
+     "src": "assets/sprites/aot_mini/fall_3.png",
+     "w": 262,
+     "h": 193,
+     "ax": 85.1,
+     "ay": 193
+    },
+    {
+     "src": "assets/sprites/aot_mini/fall_4.png",
+     "w": 360,
+     "h": 119,
+     "ax": 149.5,
+     "ay": 119
+    },
+    {
+     "src": "assets/sprites/aot_mini/fall_5.png",
+     "w": 299,
+     "h": 182,
+     "ax": 53.4,
+     "ay": 182
+    },
+    {
+     "src": "assets/sprites/aot_mini/fall_6.png",
+     "w": 205,
+     "h": 266,
+     "ax": 118.9,
+     "ay": 266
+    },
+    {
+     "src": "assets/sprites/aot_mini/fall_7.png",
+     "w": 149,
+     "h": 332,
+     "ax": 84.3,
+     "ay": 332
+    }
+   ]
+  }
+ },
+ "bk_mini": {
+  "walk": {
+   "scale": 0.787,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_mini/walk_0.png",
+     "w": 296,
+     "h": 315,
+     "ax": 185.5,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/bk_mini/walk_1.png",
+     "w": 290,
+     "h": 314,
+     "ax": 190.5,
+     "ay": 314
+    },
+    {
+     "src": "assets/sprites/bk_mini/walk_2.png",
+     "w": 271,
+     "h": 319,
+     "ax": 178.3,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/bk_mini/walk_3.png",
+     "w": 295,
+     "h": 324,
+     "ax": 182.5,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/bk_mini/walk_4.png",
+     "w": 295,
+     "h": 318,
+     "ax": 186.5,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/bk_mini/walk_5.png",
+     "w": 280,
+     "h": 313,
+     "ax": 189.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/bk_mini/walk_6.png",
+     "w": 271,
+     "h": 321,
+     "ax": 175.3,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/bk_mini/walk_7.png",
+     "w": 272,
+     "h": 321,
+     "ax": 182.5,
+     "ay": 321
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.787,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_mini/attack_0.png",
+     "w": 275,
+     "h": 349,
+     "ax": 120.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/bk_mini/attack_1.png",
+     "w": 278,
+     "h": 357,
+     "ax": 156.9,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/bk_mini/attack_2.png",
+     "w": 350,
+     "h": 294,
+     "ax": 153.0,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/bk_mini/attack_3.png",
+     "w": 275,
+     "h": 236,
+     "ax": 161.5,
+     "ay": 236
+    },
+    {
+     "src": "assets/sprites/bk_mini/attack_4.png",
+     "w": 250,
+     "h": 367,
+     "ax": 132.0,
+     "ay": 367
+    },
+    {
+     "src": "assets/sprites/bk_mini/attack_5.png",
+     "w": 503,
+     "h": 299,
+     "ax": 156.4,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/bk_mini/attack_6.png",
+     "w": 344,
+     "h": 260,
+     "ax": 214.2,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/bk_mini/attack_7.png",
+     "w": 287,
+     "h": 343,
+     "ax": 126.0,
+     "ay": 343
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.787,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_mini/special_0.png",
+     "w": 305,
+     "h": 334,
+     "ax": 185.8,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/bk_mini/special_1.png",
+     "w": 303,
+     "h": 344,
+     "ax": 177.9,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/bk_mini/special_2.png",
+     "w": 418,
+     "h": 343,
+     "ax": 170.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/bk_mini/special_3.png",
+     "w": 307,
+     "h": 339,
+     "ax": 191.5,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/bk_mini/special_4.png",
+     "w": 328,
+     "h": 260,
+     "ax": 184.5,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/bk_mini/special_5.png",
+     "w": 285,
+     "h": 371,
+     "ax": 113.0,
+     "ay": 371
+    },
+    {
+     "src": "assets/sprites/bk_mini/special_6.png",
+     "w": 328,
+     "h": 272,
+     "ax": 138.5,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/bk_mini/special_7.png",
+     "w": 255,
+     "h": 351,
+     "ax": 120.5,
+     "ay": 351
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.787,
+   "frames": [
+    {
+     "src": "assets/sprites/bk_mini/fall_0.png",
+     "w": 287,
+     "h": 312,
+     "ax": 168.0,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/bk_mini/fall_1.png",
+     "w": 329,
+     "h": 310,
+     "ax": 146.0,
+     "ay": 310
+    },
+    {
+     "src": "assets/sprites/bk_mini/fall_2.png",
+     "w": 307,
+     "h": 275,
+     "ax": 125.0,
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/bk_mini/fall_3.png",
+     "w": 298,
+     "h": 262,
+     "ax": 132.5,
+     "ay": 262
+    },
+    {
+     "src": "assets/sprites/bk_mini/fall_4.png",
+     "w": 341,
+     "h": 105,
+     "ax": 171.0,
+     "ay": 105
+    },
+    {
+     "src": "assets/sprites/bk_mini/fall_5.png",
+     "w": 314,
+     "h": 222,
+     "ax": 184.7,
+     "ay": 222
+    },
+    {
+     "src": "assets/sprites/bk_mini/fall_6.png",
+     "w": 284,
+     "h": 246,
+     "ax": 191.0,
+     "ay": 246
+    },
+    {
+     "src": "assets/sprites/bk_mini/fall_7.png",
+     "w": 303,
+     "h": 274,
+     "ax": 192.5,
+     "ay": 274
+    }
+   ]
+  }
+ },
+ "fz_mini": {
+  "walk": {
+   "scale": 0.6358,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_mini/walk_0.png",
+     "w": 311,
+     "h": 320,
+     "ax": 136.0,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/fz_mini/walk_1.png",
+     "w": 309,
+     "h": 320,
+     "ax": 145.5,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/fz_mini/walk_2.png",
+     "w": 307,
+     "h": 323,
+     "ax": 149.1,
+     "ay": 323
+    },
+    {
+     "src": "assets/sprites/fz_mini/walk_3.png",
+     "w": 304,
+     "h": 332,
+     "ax": 135.0,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/fz_mini/walk_4.png",
+     "w": 319,
+     "h": 329,
+     "ax": 135.5,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/fz_mini/walk_5.png",
+     "w": 318,
+     "h": 319,
+     "ax": 140.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/fz_mini/walk_6.png",
+     "w": 316,
+     "h": 326,
+     "ax": 143.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/fz_mini/walk_7.png",
+     "w": 312,
+     "h": 346,
+     "ax": 137.0,
+     "ay": 346
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6358,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_mini/attack_0.png",
+     "w": 316,
+     "h": 299,
+     "ax": 134.5,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/fz_mini/attack_1.png",
+     "w": 273,
+     "h": 373,
+     "ax": 148.0,
+     "ay": 373
+    },
+    {
+     "src": "assets/sprites/fz_mini/attack_2.png",
+     "w": 276,
+     "h": 335,
+     "ax": 140.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/fz_mini/attack_3.png",
+     "w": 316,
+     "h": 240,
+     "ax": 185.5,
+     "ay": 240
+    },
+    {
+     "src": "assets/sprites/fz_mini/attack_4.png",
+     "w": 306,
+     "h": 327,
+     "ax": 144.6,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/fz_mini/attack_5.png",
+     "w": 389,
+     "h": 302,
+     "ax": 148.6,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/fz_mini/attack_6.png",
+     "w": 332,
+     "h": 262,
+     "ax": 168.9,
+     "ay": 262
+    },
+    {
+     "src": "assets/sprites/fz_mini/attack_7.png",
+     "w": 279,
+     "h": 365,
+     "ax": 137.5,
+     "ay": 365
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6358,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_mini/special_0.png",
+     "w": 283,
+     "h": 280,
+     "ax": 137.0,
+     "ay": 280
+    },
+    {
+     "src": "assets/sprites/fz_mini/special_1.png",
+     "w": 311,
+     "h": 278,
+     "ax": 130.2,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/fz_mini/special_2.png",
+     "w": 299,
+     "h": 281,
+     "ax": 147.0,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/fz_mini/special_3.png",
+     "w": 261,
+     "h": 284,
+     "ax": 128.0,
+     "ay": 284
+    },
+    {
+     "src": "assets/sprites/fz_mini/special_4.png",
+     "w": 283,
+     "h": 221,
+     "ax": 140.3,
+     "ay": 221
+    },
+    {
+     "src": "assets/sprites/fz_mini/special_5.png",
+     "w": 277,
+     "h": 315,
+     "ax": 128.7,
+     "ay": 315
+    },
+    {
+     "src": "assets/sprites/fz_mini/special_6.png",
+     "w": 296,
+     "h": 228,
+     "ax": 160.5,
+     "ay": 228
+    },
+    {
+     "src": "assets/sprites/fz_mini/special_7.png",
+     "w": 273,
+     "h": 310,
+     "ax": 145.4,
+     "ay": 310
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6358,
+   "frames": [
+    {
+     "src": "assets/sprites/fz_mini/fall_0.png",
+     "w": 280,
+     "h": 306,
+     "ax": 142.4,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/fz_mini/fall_1.png",
+     "w": 317,
+     "h": 291,
+     "ax": 155.4,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/fz_mini/fall_2.png",
+     "w": 348,
+     "h": 204,
+     "ax": 166.6,
+     "ay": 204
+    },
+    {
+     "src": "assets/sprites/fz_mini/fall_3.png",
+     "w": 325,
+     "h": 277,
+     "ax": 139.7,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/fz_mini/fall_4.png",
+     "w": 361,
+     "h": 111,
+     "ax": 164.7,
+     "ay": 111
+    },
+    {
+     "src": "assets/sprites/fz_mini/fall_5.png",
+     "w": 321,
+     "h": 170,
+     "ax": 184.5,
+     "ay": 170
+    },
+    {
+     "src": "assets/sprites/fz_mini/fall_6.png",
+     "w": 307,
+     "h": 195,
+     "ax": 132.2,
+     "ay": 195
+    },
+    {
+     "src": "assets/sprites/fz_mini/fall_7.png",
+     "w": 284,
+     "h": 260,
+     "ax": 139.6,
+     "ay": 260
+    }
+   ]
+  }
+ },
+ "fm_mini": {
+  "walk": {
+   "scale": 0.5691,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_mini/walk_0.png",
+     "w": 255,
+     "h": 356,
+     "ax": 113.0,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/fm_mini/walk_1.png",
+     "w": 219,
+     "h": 346,
+     "ax": 134.0,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/fm_mini/walk_2.png",
+     "w": 186,
+     "h": 353,
+     "ax": 97.8,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/fm_mini/walk_3.png",
+     "w": 259,
+     "h": 360,
+     "ax": 119.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/fm_mini/walk_4.png",
+     "w": 240,
+     "h": 365,
+     "ax": 113.0,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/fm_mini/walk_5.png",
+     "w": 200,
+     "h": 359,
+     "ax": 112.5,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/fm_mini/walk_6.png",
+     "w": 189,
+     "h": 364,
+     "ax": 87.4,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/fm_mini/walk_7.png",
+     "w": 235,
+     "h": 369,
+     "ax": 110.0,
+     "ay": 369
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5691,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_mini/attack_0.png",
+     "w": 219,
+     "h": 349,
+     "ax": 105.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/fm_mini/attack_1.png",
+     "w": 215,
+     "h": 367,
+     "ax": 94.2,
+     "ay": 367
+    },
+    {
+     "src": "assets/sprites/fm_mini/attack_2.png",
+     "w": 269,
+     "h": 314,
+     "ax": 142.5,
+     "ay": 314
+    },
+    {
+     "src": "assets/sprites/fm_mini/attack_3.png",
+     "w": 222,
+     "h": 250,
+     "ax": 119.5,
+     "ay": 250
+    },
+    {
+     "src": "assets/sprites/fm_mini/attack_4.png",
+     "w": 248,
+     "h": 351,
+     "ax": 101.2,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/fm_mini/attack_5.png",
+     "w": 283,
+     "h": 348,
+     "ax": 125.7,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/fm_mini/attack_6.png",
+     "w": 314,
+     "h": 289,
+     "ax": 173.5,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/fm_mini/attack_7.png",
+     "w": 249,
+     "h": 370,
+     "ax": 112.9,
+     "ay": 370
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5691,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_mini/special_0.png",
+     "w": 239,
+     "h": 359,
+     "ax": 125.3,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/fm_mini/special_1.png",
+     "w": 253,
+     "h": 363,
+     "ax": 92.5,
+     "ay": 363
+    },
+    {
+     "src": "assets/sprites/fm_mini/special_2.png",
+     "w": 347,
+     "h": 347,
+     "ax": 175.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/fm_mini/special_3.png",
+     "w": 196,
+     "h": 356,
+     "ax": 113.5,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/fm_mini/special_4.png",
+     "w": 245,
+     "h": 272,
+     "ax": 125.3,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/fm_mini/special_5.png",
+     "w": 241,
+     "h": 368,
+     "ax": 139.5,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/fm_mini/special_6.png",
+     "w": 245,
+     "h": 267,
+     "ax": 133.4,
+     "ay": 267
+    },
+    {
+     "src": "assets/sprites/fm_mini/special_7.png",
+     "w": 181,
+     "h": 374,
+     "ax": 95.5,
+     "ay": 374
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5691,
+   "frames": [
+    {
+     "src": "assets/sprites/fm_mini/fall_0.png",
+     "w": 235,
+     "h": 322,
+     "ax": 75.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/fm_mini/fall_1.png",
+     "w": 253,
+     "h": 316,
+     "ax": 82.0,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/fm_mini/fall_2.png",
+     "w": 302,
+     "h": 244,
+     "ax": 103.2,
+     "ay": 244
+    },
+    {
+     "src": "assets/sprites/fm_mini/fall_3.png",
+     "w": 279,
+     "h": 221,
+     "ax": 55.5,
+     "ay": 221
+    },
+    {
+     "src": "assets/sprites/fm_mini/fall_4.png",
+     "w": 358,
+     "h": 118,
+     "ax": 151.5,
+     "ay": 118
+    },
+    {
+     "src": "assets/sprites/fm_mini/fall_5.png",
+     "w": 319,
+     "h": 189,
+     "ax": 198.5,
+     "ay": 189
+    },
+    {
+     "src": "assets/sprites/fm_mini/fall_6.png",
+     "w": 206,
+     "h": 226,
+     "ax": 122.0,
+     "ay": 226
+    },
+    {
+     "src": "assets/sprites/fm_mini/fall_7.png",
+     "w": 193,
+     "h": 290,
+     "ax": 104.5,
+     "ay": 290
+    }
+   ]
+  }
+ },
+ "rp_mini": {
+  "walk": {
+   "scale": 0.6304,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_mini/walk_0.png",
+     "w": 231,
+     "h": 348,
+     "ax": 104.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/rp_mini/walk_1.png",
+     "w": 146,
+     "h": 349,
+     "ax": 77.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/rp_mini/walk_2.png",
+     "w": 155,
+     "h": 344,
+     "ax": 85.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/rp_mini/walk_3.png",
+     "w": 233,
+     "h": 344,
+     "ax": 108.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/rp_mini/walk_4.png",
+     "w": 205,
+     "h": 345,
+     "ax": 87.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/rp_mini/walk_5.png",
+     "w": 156,
+     "h": 348,
+     "ax": 85.0,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/rp_mini/walk_6.png",
+     "w": 160,
+     "h": 348,
+     "ax": 87.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/rp_mini/walk_7.png",
+     "w": 204,
+     "h": 347,
+     "ax": 96.5,
+     "ay": 347
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6304,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_mini/attack_0.png",
+     "w": 157,
+     "h": 352,
+     "ax": 70.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/rp_mini/attack_1.png",
+     "w": 186,
+     "h": 367,
+     "ax": 88.5,
+     "ay": 367
+    },
+    {
+     "src": "assets/sprites/rp_mini/attack_2.png",
+     "w": 270,
+     "h": 319,
+     "ax": 127.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/rp_mini/attack_3.png",
+     "w": 186,
+     "h": 259,
+     "ax": 107.5,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/rp_mini/attack_4.png",
+     "w": 205,
+     "h": 340,
+     "ax": 85.4,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/rp_mini/attack_5.png",
+     "w": 323,
+     "h": 331,
+     "ax": 134.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/rp_mini/attack_6.png",
+     "w": 271,
+     "h": 280,
+     "ax": 157.5,
+     "ay": 280
+    },
+    {
+     "src": "assets/sprites/rp_mini/attack_7.png",
+     "w": 253,
+     "h": 357,
+     "ax": 128.0,
+     "ay": 357
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6304,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_mini/special_0.png",
+     "w": 216,
+     "h": 338,
+     "ax": 98.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/rp_mini/special_1.png",
+     "w": 224,
+     "h": 332,
+     "ax": 89.3,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/rp_mini/special_2.png",
+     "w": 294,
+     "h": 339,
+     "ax": 134.9,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/rp_mini/special_3.png",
+     "w": 177,
+     "h": 349,
+     "ax": 76.1,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/rp_mini/special_4.png",
+     "w": 208,
+     "h": 221,
+     "ax": 112.5,
+     "ay": 221
+    },
+    {
+     "src": "assets/sprites/rp_mini/special_5.png",
+     "w": 195,
+     "h": 360,
+     "ax": 105.7,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/rp_mini/special_6.png",
+     "w": 202,
+     "h": 242,
+     "ax": 123.0,
+     "ay": 242
+    },
+    {
+     "src": "assets/sprites/rp_mini/special_7.png",
+     "w": 183,
+     "h": 342,
+     "ax": 90.5,
+     "ay": 342
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6304,
+   "frames": [
+    {
+     "src": "assets/sprites/rp_mini/fall_0.png",
+     "w": 170,
+     "h": 311,
+     "ax": 78.0,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/rp_mini/fall_1.png",
+     "w": 249,
+     "h": 303,
+     "ax": 104.0,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/rp_mini/fall_2.png",
+     "w": 293,
+     "h": 263,
+     "ax": 127.6,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/rp_mini/fall_3.png",
+     "w": 269,
+     "h": 143,
+     "ax": 102.9,
+     "ay": 143
+    },
+    {
+     "src": "assets/sprites/rp_mini/fall_4.png",
+     "w": 347,
+     "h": 67,
+     "ax": 150.6,
+     "ay": 67
+    },
+    {
+     "src": "assets/sprites/rp_mini/fall_5.png",
+     "w": 282,
+     "h": 184,
+     "ax": 174.0,
+     "ay": 184
+    },
+    {
+     "src": "assets/sprites/rp_mini/fall_6.png",
+     "w": 204,
+     "h": 224,
+     "ax": 102.0,
+     "ay": 224
+    },
+    {
+     "src": "assets/sprites/rp_mini/fall_7.png",
+     "w": 174,
+     "h": 284,
+     "ax": 86.0,
+     "ay": 284
+    }
+   ]
+  }
  }
 };

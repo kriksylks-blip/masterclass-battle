@@ -53,3 +53,5 @@ const STAGE = { killsToClear: 25 }; // sert au réglage de la difficulté des en
 const MUSIC = { battle: 'assets/music/battle.mp3', volume: 0.35, levels: {} };
 // Une musique par niveau (fichier absent : on garde la musique de combat commune)
 for (const id of ['tokyo', 'op', 'ds', 'bl', 'hx', 'nr', 'db', 'mh', 'rk', 'op2', 'nr2', 'ds2', 'db2', 'jk', 'sl', 'opm', 'bl2']) MUSIC.levels[id] = `assets/music/${id}.mp3`;
+// cinq mondes du 24/10 : morceaux déjà présents qui collent à l'ambiance
+Object.assign(MUSIC.levels, { aot: 'assets/music/nr2.mp3', bk: 'assets/music/bl2.mp3', fz: 'assets/music/jk.mp3', fm: 'assets/music/mh.mp3', rp: 'assets/music/tokyo.mp3' });
