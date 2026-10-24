@@ -730,6 +730,96 @@ const SPRITES = {
      "ay": 542
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3572,
+   "rate": 6.13,
+   "frames": [
+    {
+     "src": "assets/sprites/hero/idlev_0.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_1.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_2.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_3.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_4.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_5.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_6.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_7.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_8.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_9.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_10.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/hero/idlev_11.png",
+     "w": 338,
+     "h": 538,
+     "ax": 192.2,
+     "ay": 538
+    }
+   ]
   }
  },
  "gold": {
@@ -2305,6 +2395,96 @@ const SPRITES = {
      "ay": 632
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3463,
+   "rate": 7.02,
+   "frames": [
+    {
+     "src": "assets/sprites/luffy/idlev_0.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_1.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_2.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_3.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_4.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_5.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_6.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_7.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_8.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_9.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_10.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/luffy/idlev_11.png",
+     "w": 384,
+     "h": 538,
+     "ax": 198.8,
+     "ay": 538
+    }
+   ]
   }
  },
  "kenshin": {
@@ -3834,511 +4014,6 @@ const SPRITES = {
    ]
   }
  },
- "ichigo": {
-  "walk": {
-   "scale": 0.3309,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/walkv_0.png",
-     "w": 594,
-     "h": 564,
-     "ax": 161.5,
-     "ay": 564
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_1.png",
-     "w": 559,
-     "h": 564,
-     "ax": 144.5,
-     "ay": 564
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_2.png",
-     "w": 505,
-     "h": 569,
-     "ax": 120.5,
-     "ay": 569
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_3.png",
-     "w": 470,
-     "h": 574,
-     "ax": 102.5,
-     "ay": 574
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_4.png",
-     "w": 466,
-     "h": 572,
-     "ax": 113.5,
-     "ay": 572
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_5.png",
-     "w": 462,
-     "h": 570,
-     "ax": 124.5,
-     "ay": 570
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_6.png",
-     "w": 458,
-     "h": 568,
-     "ax": 136.3,
-     "ay": 568
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_7.png",
-     "w": 460,
-     "h": 566,
-     "ax": 152.4,
-     "ay": 566
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_8.png",
-     "w": 472,
-     "h": 570,
-     "ax": 162.6,
-     "ay": 570
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_9.png",
-     "w": 489,
-     "h": 574,
-     "ax": 161.9,
-     "ay": 574
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_10.png",
-     "w": 517,
-     "h": 578,
-     "ax": 164.2,
-     "ay": 578
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_11.png",
-     "w": 538,
-     "h": 582,
-     "ax": 168.8,
-     "ay": 582
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_12.png",
-     "w": 546,
-     "h": 584,
-     "ax": 172.5,
-     "ay": 584
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_13.png",
-     "w": 558,
-     "h": 580,
-     "ax": 163.5,
-     "ay": 580
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_14.png",
-     "w": 562,
-     "h": 574,
-     "ax": 142.0,
-     "ay": 574
-    },
-    {
-     "src": "assets/sprites/ichigo/walkv_15.png",
-     "w": 581,
-     "h": 570,
-     "ax": 147.5,
-     "ay": 570
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.5737,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/jump_0.png",
-     "w": 300,
-     "h": 249,
-     "ax": 214.5,
-     "ay": 249
-    },
-    {
-     "src": "assets/sprites/ichigo/jump_1.png",
-     "w": 302,
-     "h": 309,
-     "ax": 199.7,
-     "ay": 309
-    },
-    {
-     "src": "assets/sprites/ichigo/jump_2.png",
-     "w": 272,
-     "h": 331,
-     "ax": 108.5,
-     "ay": 331
-    },
-    {
-     "src": "assets/sprites/ichigo/jump_3.png",
-     "w": 263,
-     "h": 317,
-     "ax": 117.6,
-     "ay": 317
-    },
-    {
-     "src": "assets/sprites/ichigo/jump_4.png",
-     "w": 291,
-     "h": 307,
-     "ax": 115.0,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/ichigo/jump_5.png",
-     "w": 265,
-     "h": 319,
-     "ax": 97.5,
-     "ay": 319
-    },
-    {
-     "src": "assets/sprites/ichigo/jump_6.png",
-     "w": 261,
-     "h": 321,
-     "ax": 98.5,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/ichigo/jump_7.png",
-     "w": 307,
-     "h": 273,
-     "ax": 155.0,
-     "ay": 273
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.557,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/fall_0.png",
-     "w": 349,
-     "h": 320,
-     "ax": 115.1,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/ichigo/fall_1.png",
-     "w": 322,
-     "h": 295,
-     "ax": 97.6,
-     "ay": 295
-    },
-    {
-     "src": "assets/sprites/ichigo/fall_2.png",
-     "w": 427,
-     "h": 293,
-     "ax": 259.9,
-     "ay": 293
-    },
-    {
-     "src": "assets/sprites/ichigo/fall_3.png",
-     "w": 311,
-     "h": 313,
-     "ax": 172.2,
-     "ay": 313
-    },
-    {
-     "src": "assets/sprites/ichigo/fall_4.png",
-     "w": 352,
-     "h": 164,
-     "ax": 152.1,
-     "ay": 164
-    },
-    {
-     "src": "assets/sprites/ichigo/fall_5.png",
-     "w": 355,
-     "h": 226,
-     "ax": 205.5,
-     "ay": 226
-    },
-    {
-     "src": "assets/sprites/ichigo/fall_6.png",
-     "w": 310,
-     "h": 275,
-     "ax": 131.5,
-     "ay": 275
-    },
-    {
-     "src": "assets/sprites/ichigo/fall_7.png",
-     "w": 321,
-     "h": 315,
-     "ax": 156.5,
-     "ay": 315
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.5557,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/combo_0.png",
-     "w": 436,
-     "h": 301,
-     "ax": 161.0,
-     "ay": 301
-    },
-    {
-     "src": "assets/sprites/ichigo/combo_1.png",
-     "w": 416,
-     "h": 307,
-     "ax": 143.0,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/ichigo/combo_2.png",
-     "w": 355,
-     "h": 296,
-     "ax": 151.5,
-     "ay": 296
-    },
-    {
-     "src": "assets/sprites/ichigo/combo_3.png",
-     "w": 318,
-     "h": 333,
-     "ax": 203.0,
-     "ay": 333
-    },
-    {
-     "src": "assets/sprites/ichigo/combo_4.png",
-     "w": 330,
-     "h": 313,
-     "ax": 126.0,
-     "ay": 313
-    },
-    {
-     "src": "assets/sprites/ichigo/combo_5.png",
-     "w": 305,
-     "h": 316,
-     "ax": 189.0,
-     "ay": 316
-    },
-    {
-     "src": "assets/sprites/ichigo/combo_6.png",
-     "w": 275,
-     "h": 351,
-     "ax": 175.5,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/ichigo/combo_7.png",
-     "w": 212,
-     "h": 343,
-     "ax": 140.8,
-     "ay": 343
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.6229,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/lowair_0.png",
-     "w": 377,
-     "h": 258,
-     "ax": 138.0,
-     "ay": 258
-    },
-    {
-     "src": "assets/sprites/ichigo/lowair_1.png",
-     "w": 283,
-     "h": 283,
-     "ax": 140.1,
-     "ay": 283
-    },
-    {
-     "src": "assets/sprites/ichigo/lowair_2.png",
-     "w": 361,
-     "h": 248,
-     "ax": 163.0,
-     "ay": 248
-    },
-    {
-     "src": "assets/sprites/ichigo/lowair_3.png",
-     "w": 301,
-     "h": 259,
-     "ax": 139.5,
-     "ay": 259
-    },
-    {
-     "src": "assets/sprites/ichigo/lowair_4.png",
-     "w": 251,
-     "h": 341,
-     "ax": 160.6,
-     "ay": 341
-    },
-    {
-     "src": "assets/sprites/ichigo/lowair_5.png",
-     "w": 256,
-     "h": 344,
-     "ax": 168.0,
-     "ay": 344
-    },
-    {
-     "src": "assets/sprites/ichigo/lowair_6.png",
-     "w": 234,
-     "h": 360,
-     "ax": 155.5,
-     "ay": 360
-    },
-    {
-     "src": "assets/sprites/ichigo/lowair_7.png",
-     "w": 288,
-     "h": 349,
-     "ax": 176.8,
-     "ay": 349
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.5208,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/dashcharge_0.png",
-     "w": 303,
-     "h": 284,
-     "ax": 190.5,
-     "ay": 284
-    },
-    {
-     "src": "assets/sprites/ichigo/dashcharge_1.png",
-     "w": 362,
-     "h": 240,
-     "ax": 235.5,
-     "ay": 240
-    },
-    {
-     "src": "assets/sprites/ichigo/dashcharge_2.png",
-     "w": 442,
-     "h": 287,
-     "ax": 159.0,
-     "ay": 287
-    },
-    {
-     "src": "assets/sprites/ichigo/dashcharge_3.png",
-     "w": 311,
-     "h": 299,
-     "ax": 148.0,
-     "ay": 299
-    },
-    {
-     "src": "assets/sprites/ichigo/dashcharge_4.png",
-     "w": 347,
-     "h": 306,
-     "ax": 137.6,
-     "ay": 306
-    },
-    {
-     "src": "assets/sprites/ichigo/dashcharge_5.png",
-     "w": 325,
-     "h": 270,
-     "ax": 136.0,
-     "ay": 270
-    },
-    {
-     "src": "assets/sprites/ichigo/dashcharge_6.png",
-     "w": 286,
-     "h": 351,
-     "ax": 165.4,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/ichigo/dashcharge_7.png",
-     "w": 322,
-     "h": 317,
-     "ax": 128.8,
-     "ay": 317
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.5462,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/special_0.png",
-     "w": 303,
-     "h": 347,
-     "ax": 182.0,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/ichigo/special_1.png",
-     "w": 281,
-     "h": 358,
-     "ax": 176.0,
-     "ay": 358
-    },
-    {
-     "src": "assets/sprites/ichigo/special_2.png",
-     "w": 325,
-     "h": 271,
-     "ax": 216.0,
-     "ay": 271
-    },
-    {
-     "src": "assets/sprites/ichigo/special_3.png",
-     "w": 349,
-     "h": 298,
-     "ax": 235.5,
-     "ay": 298
-    },
-    {
-     "src": "assets/sprites/ichigo/special_4.png",
-     "w": 496,
-     "h": 314,
-     "ax": 163.0,
-     "ay": 314
-    },
-    {
-     "src": "assets/sprites/ichigo/special_5.png",
-     "w": 365,
-     "h": 265,
-     "ax": 262.5,
-     "ay": 265
-    },
-    {
-     "src": "assets/sprites/ichigo/special_6.png",
-     "w": 359,
-     "h": 320,
-     "ax": 198.0,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/ichigo/special_7.png",
-     "w": 388,
-     "h": 300,
-     "ax": 267.8,
-     "ay": 300
-    }
-   ]
-  },
-  "guard": {
-   "scale": 0.2719,
-   "frames": [
-    {
-     "src": "assets/sprites/ichigo/guard_0.png",
-     "w": 520,
-     "h": 629,
-     "ax": 307.5,
-     "ay": 629
-    },
-    {
-     "src": "assets/sprites/ichigo/guard_1.png",
-     "w": 612,
-     "h": 568,
-     "ax": 379.2,
-     "ay": 568
-    }
-   ]
-  }
- },
  "zenitsu": {
   "walk": {
    "scale": 0.2612,
@@ -5850,6 +5525,96 @@ const SPRITES = {
      "h": 723,
      "ax": 398.0,
      "ay": 723
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3291,
+   "rate": 6.86,
+   "frames": [
+    {
+     "src": "assets/sprites/vegeta/idlev_0.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_1.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_2.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_3.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_4.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_5.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_6.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_7.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_8.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_9.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_10.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/vegeta/idlev_11.png",
+     "w": 262,
+     "h": 535,
+     "ax": 130.8,
+     "ay": 535
     }
    ]
   }
@@ -10608,6 +10373,96 @@ const SPRITES = {
      "ay": 592
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3251,
+   "rate": 7.02,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/idlev_0.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_1.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_2.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_3.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_4.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_5.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_6.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_7.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_8.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_9.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_10.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/saitama/idlev_11.png",
+     "w": 382,
+     "h": 530,
+     "ax": 213.2,
+     "ay": 530
+    }
+   ]
   }
  },
  "gojo": {
@@ -11111,6 +10966,96 @@ const SPRITES = {
      "h": 611,
      "ax": 416.6,
      "ay": 611
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3754,
+   "rate": 7.2,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/idlev_0.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_1.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_2.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_3.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_4.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_5.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_6.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_7.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_8.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_9.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_10.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gojo/idlev_11.png",
+     "w": 364,
+     "h": 538,
+     "ax": 183.5,
+     "ay": 538
     }
    ]
   }
@@ -11618,6 +11563,96 @@ const SPRITES = {
      "ay": 604
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3396,
+   "rate": 6.7,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/idlev_0.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_1.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_2.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_3.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_4.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_5.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_6.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_7.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_8.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_9.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_10.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/sasuke/idlev_11.png",
+     "w": 382,
+     "h": 534,
+     "ax": 203.7,
+     "ay": 534
+    }
+   ]
   }
  },
  "gohan": {
@@ -12121,6 +12156,96 @@ const SPRITES = {
      "h": 658,
      "ax": 325.0,
      "ay": 658
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.2544,
+   "rate": 9.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/idlev_0.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_1.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_2.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_3.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_4.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_5.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_6.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_7.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_8.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_9.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_10.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/gohan/idlev_11.png",
+     "w": 336,
+     "h": 542,
+     "ax": 167.1,
+     "ay": 542
     }
    ]
   }
@@ -13072,6 +13197,96 @@ const SPRITES = {
      "ay": 632
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3146,
+   "rate": 9.0,
+   "frames": [
+    {
+     "src": "assets/sprites/goku/idlev_0.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_1.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_2.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_3.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_4.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_5.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_6.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_7.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_8.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_9.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_10.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    },
+    {
+     "src": "assets/sprites/goku/idlev_11.png",
+     "w": 384,
+     "h": 586,
+     "ax": 186.3,
+     "ay": 586
+    }
+   ]
   }
  },
  "zoro": {
@@ -13575,6 +13790,96 @@ const SPRITES = {
      "h": 590,
      "ax": 342.5,
      "ay": 590
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3372,
+   "rate": 7.58,
+   "frames": [
+    {
+     "src": "assets/sprites/zoro/idlev_0.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_1.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_2.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_3.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_4.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_5.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_6.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_7.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_8.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_9.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_10.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/zoro/idlev_11.png",
+     "w": 480,
+     "h": 542,
+     "ax": 184.2,
+     "ay": 542
     }
    ]
   }
@@ -14082,509 +14387,94 @@ const SPRITES = {
      "ay": 700
     }
    ]
-  }
- },
- "tanjiro": {
-  "walk": {
-   "scale": 0.3243,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/tanjiro/walkv_0.png",
-     "w": 586,
-     "h": 555,
-     "ax": 204.8,
-     "ay": 555
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_1.png",
-     "w": 563,
-     "h": 555,
-     "ax": 188.3,
-     "ay": 555
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_2.png",
-     "w": 564,
-     "h": 559,
-     "ax": 190.8,
-     "ay": 559
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_3.png",
-     "w": 565,
-     "h": 564,
-     "ax": 193.8,
-     "ay": 564
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_4.png",
-     "w": 564,
-     "h": 565,
-     "ax": 194.3,
-     "ay": 565
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_5.png",
-     "w": 562,
-     "h": 560,
-     "ax": 189.8,
-     "ay": 560
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_6.png",
-     "w": 560,
-     "h": 553,
-     "ax": 183.8,
-     "ay": 553
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_7.png",
-     "w": 561,
-     "h": 555,
-     "ax": 182.3,
-     "ay": 555
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_8.png",
-     "w": 562,
-     "h": 558,
-     "ax": 186.3,
-     "ay": 558
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_9.png",
-     "w": 567,
-     "h": 566,
-     "ax": 193.8,
-     "ay": 566
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_10.png",
-     "w": 568,
-     "h": 570,
-     "ax": 194.8,
-     "ay": 570
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_11.png",
-     "w": 566,
-     "h": 575,
-     "ax": 194.3,
-     "ay": 575
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_12.png",
-     "w": 562,
-     "h": 574,
-     "ax": 191.3,
-     "ay": 574
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_13.png",
-     "w": 560,
-     "h": 572,
-     "ax": 187.3,
-     "ay": 572
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_14.png",
-     "w": 561,
-     "h": 563,
-     "ax": 184.3,
-     "ay": 563
-    },
-    {
-     "src": "assets/sprites/tanjiro/walkv_15.png",
-     "w": 574,
-     "h": 560,
-     "ax": 195.8,
-     "ay": 560
-    }
-   ]
   },
-  "jump": {
-   "scale": 0.5225,
+  "idle": {
+   "scale": 0.32,
+   "rate": 5.65,
    "frames": [
     {
-     "src": "assets/sprites/tanjiro/jump_0.png",
-     "w": 301,
-     "h": 277,
-     "ax": 134.0,
-     "ay": 277
+     "src": "assets/sprites/naruto/idlev_0.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/jump_1.png",
-     "w": 348,
-     "h": 296,
-     "ax": 159.5,
-     "ay": 296
+     "src": "assets/sprites/naruto/idlev_1.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/jump_2.png",
-     "w": 339,
-     "h": 336,
-     "ax": 139.0,
-     "ay": 336
+     "src": "assets/sprites/naruto/idlev_2.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/jump_3.png",
-     "w": 254,
-     "h": 340,
-     "ax": 105.5,
-     "ay": 340
+     "src": "assets/sprites/naruto/idlev_3.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/jump_4.png",
-     "w": 282,
-     "h": 247,
-     "ax": 115.5,
-     "ay": 247
+     "src": "assets/sprites/naruto/idlev_4.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/jump_5.png",
-     "w": 310,
-     "h": 322,
-     "ax": 118.0,
-     "ay": 322
+     "src": "assets/sprites/naruto/idlev_5.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/jump_6.png",
-     "w": 328,
-     "h": 319,
-     "ax": 127.0,
-     "ay": 319
+     "src": "assets/sprites/naruto/idlev_6.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/jump_7.png",
-     "w": 367,
-     "h": 270,
-     "ax": 133.0,
-     "ay": 270
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.5225,
-   "frames": [
-    {
-     "src": "assets/sprites/tanjiro/fall_0.png",
-     "w": 307,
-     "h": 330,
-     "ax": 98.4,
-     "ay": 330
+     "src": "assets/sprites/naruto/idlev_7.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/fall_1.png",
-     "w": 320,
-     "h": 305,
-     "ax": 105.9,
-     "ay": 305
+     "src": "assets/sprites/naruto/idlev_8.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/fall_2.png",
-     "w": 331,
-     "h": 247,
-     "ax": 157.7,
-     "ay": 247
+     "src": "assets/sprites/naruto/idlev_9.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/fall_3.png",
-     "w": 311,
-     "h": 229,
-     "ax": 136.2,
-     "ay": 229
+     "src": "assets/sprites/naruto/idlev_10.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/tanjiro/fall_4.png",
-     "w": 368,
-     "h": 139,
-     "ax": 198.8,
-     "ay": 139
-    },
-    {
-     "src": "assets/sprites/tanjiro/fall_5.png",
-     "w": 345,
-     "h": 247,
-     "ax": 179.0,
-     "ay": 247
-    },
-    {
-     "src": "assets/sprites/tanjiro/fall_6.png",
-     "w": 287,
-     "h": 272,
-     "ax": 132.0,
-     "ay": 272
-    },
-    {
-     "src": "assets/sprites/tanjiro/fall_7.png",
-     "w": 332,
-     "h": 313,
-     "ax": 134.6,
-     "ay": 313
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.5225,
-   "frames": [
-    {
-     "src": "assets/sprites/tanjiro/combo_0.png",
-     "w": 400,
-     "h": 339,
-     "ax": 152.6,
-     "ay": 339
-    },
-    {
-     "src": "assets/sprites/tanjiro/combo_1.png",
-     "w": 418,
-     "h": 324,
-     "ax": 156.5,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/tanjiro/combo_2.png",
-     "w": 354,
-     "h": 286,
-     "ax": 199.5,
-     "ay": 286
-    },
-    {
-     "src": "assets/sprites/tanjiro/combo_3.png",
-     "w": 271,
-     "h": 355,
-     "ax": 177.9,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/tanjiro/combo_4.png",
-     "w": 416,
-     "h": 343,
-     "ax": 219.0,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/tanjiro/combo_5.png",
-     "w": 356,
-     "h": 330,
-     "ax": 144.5,
-     "ay": 330
-    },
-    {
-     "src": "assets/sprites/tanjiro/combo_6.png",
-     "w": 264,
-     "h": 360,
-     "ax": 162.5,
-     "ay": 360
-    },
-    {
-     "src": "assets/sprites/tanjiro/combo_7.png",
-     "w": 402,
-     "h": 308,
-     "ax": 199.5,
-     "ay": 308
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.5225,
-   "frames": [
-    {
-     "src": "assets/sprites/tanjiro/lowair_0.png",
-     "w": 238,
-     "h": 253,
-     "ax": 151.0,
-     "ay": 253
-    },
-    {
-     "src": "assets/sprites/tanjiro/lowair_1.png",
-     "w": 240,
-     "h": 289,
-     "ax": 145.8,
-     "ay": 289
-    },
-    {
-     "src": "assets/sprites/tanjiro/lowair_2.png",
-     "w": 347,
-     "h": 263,
-     "ax": 178.0,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/tanjiro/lowair_3.png",
-     "w": 279,
-     "h": 282,
-     "ax": 146.5,
-     "ay": 282
-    },
-    {
-     "src": "assets/sprites/tanjiro/lowair_4.png",
-     "w": 228,
-     "h": 265,
-     "ax": 133.0,
-     "ay": 265
-    },
-    {
-     "src": "assets/sprites/tanjiro/lowair_5.png",
-     "w": 236,
-     "h": 257,
-     "ax": 84.5,
-     "ay": 257
-    },
-    {
-     "src": "assets/sprites/tanjiro/lowair_6.png",
-     "w": 341,
-     "h": 292,
-     "ax": 142.5,
-     "ay": 292
-    },
-    {
-     "src": "assets/sprites/tanjiro/lowair_7.png",
-     "w": 277,
-     "h": 335,
-     "ax": 189.0,
-     "ay": 335
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.5225,
-   "frames": [
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_0.png",
-     "w": 289,
-     "h": 349,
-     "ax": 188.0,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_1.png",
-     "w": 277,
-     "h": 316,
-     "ax": 192.0,
-     "ay": 316
-    },
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_2.png",
-     "w": 270,
-     "h": 349,
-     "ax": 162.8,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_3.png",
-     "w": 292,
-     "h": 318,
-     "ax": 149.1,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_4.png",
-     "w": 271,
-     "h": 307,
-     "ax": 183.9,
-     "ay": 307
-    },
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_5.png",
-     "w": 268,
-     "h": 306,
-     "ax": 182.6,
-     "ay": 306
-    },
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_6.png",
-     "w": 230,
-     "h": 362,
-     "ax": 129.3,
-     "ay": 362
-    },
-    {
-     "src": "assets/sprites/tanjiro/dashcharge_7.png",
-     "w": 411,
-     "h": 328,
-     "ax": 144.7,
-     "ay": 328
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.5225,
-   "frames": [
-    {
-     "src": "assets/sprites/tanjiro/special_0.png",
-     "w": 252,
-     "h": 288,
-     "ax": 138.9,
-     "ay": 288
-    },
-    {
-     "src": "assets/sprites/tanjiro/special_1.png",
-     "w": 461,
-     "h": 291,
-     "ax": 209.4,
-     "ay": 291
-    },
-    {
-     "src": "assets/sprites/tanjiro/special_2.png",
-     "w": 415,
-     "h": 282,
-     "ax": 165.9,
-     "ay": 282
-    },
-    {
-     "src": "assets/sprites/tanjiro/special_3.png",
-     "w": 389,
-     "h": 286,
-     "ax": 131.4,
-     "ay": 286
-    },
-    {
-     "src": "assets/sprites/tanjiro/special_4.png",
-     "w": 257,
-     "h": 348,
-     "ax": 158.5,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/tanjiro/special_5.png",
-     "w": 353,
-     "h": 305,
-     "ax": 163.5,
-     "ay": 305
-    },
-    {
-     "src": "assets/sprites/tanjiro/special_6.png",
-     "w": 357,
-     "h": 299,
-     "ax": 183.0,
-     "ay": 299
-    },
-    {
-     "src": "assets/sprites/tanjiro/special_7.png",
-     "w": 401,
-     "h": 284,
-     "ax": 166.5,
-     "ay": 284
-    }
-   ]
-  },
-  "guard": {
-   "scale": 0.2433,
-   "frames": [
-    {
-     "src": "assets/sprites/tanjiro/guard_0.png",
-     "w": 522,
-     "h": 688,
-     "ax": 290.5,
-     "ay": 688
-    },
-    {
-     "src": "assets/sprites/tanjiro/guard_1.png",
-     "w": 571,
-     "h": 665,
-     "ax": 347.0,
-     "ay": 665
+     "src": "assets/sprites/naruto/idlev_11.png",
+     "w": 408,
+     "h": 546,
+     "ax": 207.2,
+     "ay": 546
     }
    ]
   }
@@ -30451,511 +30341,6 @@ const SPRITES = {
    ]
   }
  },
- "inosuke": {
-  "walk": {
-   "scale": 0.3302,
-   "rate": 25.73,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/walkv_0.png",
-     "w": 606,
-     "h": 534,
-     "ax": 190.1,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_1.png",
-     "w": 646,
-     "h": 520,
-     "ax": 214.1,
-     "ay": 520
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_2.png",
-     "w": 660,
-     "h": 512,
-     "ax": 225.3,
-     "ay": 512
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_3.png",
-     "w": 612,
-     "h": 520,
-     "ax": 191.6,
-     "ay": 520
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_4.png",
-     "w": 592,
-     "h": 532,
-     "ax": 185.1,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_5.png",
-     "w": 574,
-     "h": 544,
-     "ax": 181.0,
-     "ay": 544
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_6.png",
-     "w": 554,
-     "h": 548,
-     "ax": 174.8,
-     "ay": 548
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_7.png",
-     "w": 532,
-     "h": 544,
-     "ax": 181.8,
-     "ay": 544
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_8.png",
-     "w": 554,
-     "h": 528,
-     "ax": 248.0,
-     "ay": 528
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_9.png",
-     "w": 570,
-     "h": 516,
-     "ax": 269.0,
-     "ay": 516
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_10.png",
-     "w": 564,
-     "h": 514,
-     "ax": 274.8,
-     "ay": 514
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_11.png",
-     "w": 544,
-     "h": 516,
-     "ax": 262.5,
-     "ay": 516
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_12.png",
-     "w": 520,
-     "h": 524,
-     "ax": 222.5,
-     "ay": 524
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_13.png",
-     "w": 510,
-     "h": 534,
-     "ax": 195.8,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_14.png",
-     "w": 552,
-     "h": 540,
-     "ax": 181.0,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/inosuke/walkv_15.png",
-     "w": 578,
-     "h": 534,
-     "ax": 180.0,
-     "ay": 534
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.4972,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/jump_0.png",
-     "w": 307,
-     "h": 300,
-     "ax": 149.3,
-     "ay": 300
-    },
-    {
-     "src": "assets/sprites/inosuke/jump_1.png",
-     "w": 362,
-     "h": 335,
-     "ax": 206.9,
-     "ay": 335
-    },
-    {
-     "src": "assets/sprites/inosuke/jump_2.png",
-     "w": 302,
-     "h": 356,
-     "ax": 108.7,
-     "ay": 356
-    },
-    {
-     "src": "assets/sprites/inosuke/jump_3.png",
-     "w": 288,
-     "h": 290,
-     "ax": 108.0,
-     "ay": 290
-    },
-    {
-     "src": "assets/sprites/inosuke/jump_4.png",
-     "w": 266,
-     "h": 263,
-     "ax": 168.2,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/inosuke/jump_5.png",
-     "w": 285,
-     "h": 342,
-     "ax": 105.7,
-     "ay": 342
-    },
-    {
-     "src": "assets/sprites/inosuke/jump_6.png",
-     "w": 255,
-     "h": 314,
-     "ax": 105.5,
-     "ay": 314
-    },
-    {
-     "src": "assets/sprites/inosuke/jump_7.png",
-     "w": 339,
-     "h": 294,
-     "ax": 137.5,
-     "ay": 294
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.4972,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/fall_0.png",
-     "w": 262,
-     "h": 342,
-     "ax": 123.4,
-     "ay": 342
-    },
-    {
-     "src": "assets/sprites/inosuke/fall_1.png",
-     "w": 261,
-     "h": 328,
-     "ax": 133.1,
-     "ay": 328
-    },
-    {
-     "src": "assets/sprites/inosuke/fall_2.png",
-     "w": 311,
-     "h": 292,
-     "ax": 125.4,
-     "ay": 292
-    },
-    {
-     "src": "assets/sprites/inosuke/fall_3.png",
-     "w": 318,
-     "h": 256,
-     "ax": 150.7,
-     "ay": 256
-    },
-    {
-     "src": "assets/sprites/inosuke/fall_4.png",
-     "w": 409,
-     "h": 146,
-     "ax": 204.5,
-     "ay": 146
-    },
-    {
-     "src": "assets/sprites/inosuke/fall_5.png",
-     "w": 293,
-     "h": 229,
-     "ax": 140.0,
-     "ay": 229
-    },
-    {
-     "src": "assets/sprites/inosuke/fall_6.png",
-     "w": 237,
-     "h": 282,
-     "ax": 145.2,
-     "ay": 282
-    },
-    {
-     "src": "assets/sprites/inosuke/fall_7.png",
-     "w": 339,
-     "h": 311,
-     "ax": 142.7,
-     "ay": 311
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.4972,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/combo_0.png",
-     "w": 306,
-     "h": 309,
-     "ax": 149.4,
-     "ay": 309
-    },
-    {
-     "src": "assets/sprites/inosuke/combo_1.png",
-     "w": 479,
-     "h": 324,
-     "ax": 219.0,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/inosuke/combo_2.png",
-     "w": 409,
-     "h": 321,
-     "ax": 170.6,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/inosuke/combo_3.png",
-     "w": 297,
-     "h": 320,
-     "ax": 172.9,
-     "ay": 320
-    },
-    {
-     "src": "assets/sprites/inosuke/combo_4.png",
-     "w": 277,
-     "h": 332,
-     "ax": 158.2,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/inosuke/combo_5.png",
-     "w": 361,
-     "h": 345,
-     "ax": 189.0,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/inosuke/combo_6.png",
-     "w": 316,
-     "h": 345,
-     "ax": 159.6,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/inosuke/combo_7.png",
-     "w": 368,
-     "h": 322,
-     "ax": 190.5,
-     "ay": 322
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.4972,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/lowair_0.png",
-     "w": 262,
-     "h": 255,
-     "ax": 130.4,
-     "ay": 255
-    },
-    {
-     "src": "assets/sprites/inosuke/lowair_1.png",
-     "w": 383,
-     "h": 214,
-     "ax": 191.5,
-     "ay": 214
-    },
-    {
-     "src": "assets/sprites/inosuke/lowair_2.png",
-     "w": 344,
-     "h": 234,
-     "ax": 197.4,
-     "ay": 234
-    },
-    {
-     "src": "assets/sprites/inosuke/lowair_3.png",
-     "w": 347,
-     "h": 256,
-     "ax": 178.7,
-     "ay": 256
-    },
-    {
-     "src": "assets/sprites/inosuke/lowair_4.png",
-     "w": 273,
-     "h": 410,
-     "ax": 170.3,
-     "ay": 410
-    },
-    {
-     "src": "assets/sprites/inosuke/lowair_5.png",
-     "w": 250,
-     "h": 351,
-     "ax": 157.5,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/inosuke/lowair_6.png",
-     "w": 313,
-     "h": 302,
-     "ax": 201.2,
-     "ay": 302
-    },
-    {
-     "src": "assets/sprites/inosuke/lowair_7.png",
-     "w": 277,
-     "h": 320,
-     "ax": 112.0,
-     "ay": 320
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.4972,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/dashcharge_0.png",
-     "w": 350,
-     "h": 263,
-     "ax": 180.1,
-     "ay": 263
-    },
-    {
-     "src": "assets/sprites/inosuke/dashcharge_1.png",
-     "w": 326,
-     "h": 231,
-     "ax": 182.6,
-     "ay": 231
-    },
-    {
-     "src": "assets/sprites/inosuke/dashcharge_2.png",
-     "w": 494,
-     "h": 299,
-     "ax": 247.0,
-     "ay": 299
-    },
-    {
-     "src": "assets/sprites/inosuke/dashcharge_3.png",
-     "w": 306,
-     "h": 290,
-     "ax": 155.3,
-     "ay": 290
-    },
-    {
-     "src": "assets/sprites/inosuke/dashcharge_4.png",
-     "w": 252,
-     "h": 525,
-     "ax": 136.4,
-     "ay": 525
-    },
-    {
-     "src": "assets/sprites/inosuke/dashcharge_5.png",
-     "w": 292,
-     "h": 325,
-     "ax": 146.7,
-     "ay": 325
-    },
-    {
-     "src": "assets/sprites/inosuke/dashcharge_6.png",
-     "w": 461,
-     "h": 351,
-     "ax": 231.1,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/inosuke/dashcharge_7.png",
-     "w": 273,
-     "h": 368,
-     "ax": 154.2,
-     "ay": 368
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.4972,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/special_0.png",
-     "w": 300,
-     "h": 324,
-     "ax": 168.0,
-     "ay": 324
-    },
-    {
-     "src": "assets/sprites/inosuke/special_1.png",
-     "w": 344,
-     "h": 270,
-     "ax": 202.4,
-     "ay": 270
-    },
-    {
-     "src": "assets/sprites/inosuke/special_2.png",
-     "w": 465,
-     "h": 332,
-     "ax": 211.6,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/inosuke/special_3.png",
-     "w": 301,
-     "h": 313,
-     "ax": 134.2,
-     "ay": 313
-    },
-    {
-     "src": "assets/sprites/inosuke/special_4.png",
-     "w": 318,
-     "h": 336,
-     "ax": 156.0,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/inosuke/special_5.png",
-     "w": 281,
-     "h": 231,
-     "ax": 137.3,
-     "ay": 231
-    },
-    {
-     "src": "assets/sprites/inosuke/special_6.png",
-     "w": 526,
-     "h": 287,
-     "ax": 263.0,
-     "ay": 287
-    },
-    {
-     "src": "assets/sprites/inosuke/special_7.png",
-     "w": 345,
-     "h": 261,
-     "ax": 163.0,
-     "ay": 261
-    }
-   ]
-  },
-  "guard": {
-   "scale": 0.2368,
-   "frames": [
-    {
-     "src": "assets/sprites/inosuke/guard_0.png",
-     "w": 567,
-     "h": 669,
-     "ax": 332.0,
-     "ay": 669
-    },
-    {
-     "src": "assets/sprites/inosuke/guard_1.png",
-     "w": 614,
-     "h": 623,
-     "ax": 340.7,
-     "ay": 623
-    }
-   ]
-  }
- },
  "ace": {
   "walk": {
    "scale": 0.352,
@@ -31457,6 +30842,96 @@ const SPRITES = {
      "h": 661,
      "ax": 352.4,
      "ay": 661
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3508,
+   "rate": 5.43,
+   "frames": [
+    {
+     "src": "assets/sprites/ace/idlev_0.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_1.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_2.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_3.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_4.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_5.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_6.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_7.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_8.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_9.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_10.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/ace/idlev_11.png",
+     "w": 262,
+     "h": 520,
+     "ax": 120.8,
+     "ay": 520
     }
    ]
   }
@@ -31964,6 +31439,96 @@ const SPRITES = {
      "ay": 560
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3286,
+   "rate": 7.2,
+   "frames": [
+    {
+     "src": "assets/sprites/guts/idlev_0.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_1.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_2.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_3.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_4.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_5.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_6.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_7.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_8.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_9.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_10.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/guts/idlev_11.png",
+     "w": 476,
+     "h": 540,
+     "ax": 278.4,
+     "ay": 524
+    }
+   ]
   }
  },
  "sanji": {
@@ -32467,6 +32032,96 @@ const SPRITES = {
      "h": 726,
      "ax": 189.6,
      "ay": 726
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3711,
+   "rate": 5.05,
+   "frames": [
+    {
+     "src": "assets/sprites/sanji/idlev_0.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_1.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_2.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_3.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_4.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_5.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_6.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_7.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_8.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_9.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_10.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/sanji/idlev_11.png",
+     "w": 270,
+     "h": 524,
+     "ax": 124.6,
+     "ay": 524
     }
    ]
   }
@@ -33984,6 +33639,96 @@ const SPRITES = {
      "ay": 645
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3324,
+   "rate": 6.55,
+   "frames": [
+    {
+     "src": "assets/sprites/mikasa/idlev_0.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_1.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_2.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_3.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_4.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_5.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_6.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_7.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_8.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_9.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_10.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/mikasa/idlev_11.png",
+     "w": 328,
+     "h": 530,
+     "ax": 143.7,
+     "ay": 530
+    }
+   ]
   }
  },
  "revy": {
@@ -35499,6 +35244,96 @@ const SPRITES = {
      "ay": 595
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3196,
+   "rate": 6.86,
+   "frames": [
+    {
+     "src": "assets/sprites/levi/idlev_0.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_1.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_2.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_3.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_4.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_5.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_6.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_7.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_8.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_9.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_10.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/levi/idlev_11.png",
+     "w": 346,
+     "h": 532,
+     "ax": 140.2,
+     "ay": 532
+    }
+   ]
   }
  },
  "itachi": {
@@ -36002,6 +35837,96 @@ const SPRITES = {
      "h": 580,
      "ax": 282.9,
      "ay": 580
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3378,
+   "rate": 7.78,
+   "frames": [
+    {
+     "src": "assets/sprites/itachi/idlev_0.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_1.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_2.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_3.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_4.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_5.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_6.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_7.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_8.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_9.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_10.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/itachi/idlev_11.png",
+     "w": 306,
+     "h": 528,
+     "ax": 154.7,
+     "ay": 528
     }
    ]
   }
@@ -45310,6 +45235,1701 @@ const SPRITES = {
      "h": 284,
      "ax": 86.0,
      "ay": 284
+    }
+   ]
+  }
+ },
+ "ichigo": {
+  "walk": {
+   "scale": 0.3309,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/walkv_0.png",
+     "w": 594,
+     "h": 564,
+     "ax": 161.5,
+     "ay": 564
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_1.png",
+     "w": 559,
+     "h": 564,
+     "ax": 144.5,
+     "ay": 564
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_2.png",
+     "w": 505,
+     "h": 569,
+     "ax": 120.5,
+     "ay": 569
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_3.png",
+     "w": 470,
+     "h": 574,
+     "ax": 102.5,
+     "ay": 574
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_4.png",
+     "w": 466,
+     "h": 572,
+     "ax": 113.5,
+     "ay": 572
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_5.png",
+     "w": 462,
+     "h": 570,
+     "ax": 124.5,
+     "ay": 570
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_6.png",
+     "w": 458,
+     "h": 568,
+     "ax": 136.3,
+     "ay": 568
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_7.png",
+     "w": 460,
+     "h": 566,
+     "ax": 152.4,
+     "ay": 566
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_8.png",
+     "w": 472,
+     "h": 570,
+     "ax": 162.6,
+     "ay": 570
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_9.png",
+     "w": 489,
+     "h": 574,
+     "ax": 161.9,
+     "ay": 574
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_10.png",
+     "w": 517,
+     "h": 578,
+     "ax": 164.2,
+     "ay": 578
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_11.png",
+     "w": 538,
+     "h": 582,
+     "ax": 168.8,
+     "ay": 582
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_12.png",
+     "w": 546,
+     "h": 584,
+     "ax": 172.5,
+     "ay": 584
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_13.png",
+     "w": 558,
+     "h": 580,
+     "ax": 163.5,
+     "ay": 580
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_14.png",
+     "w": 562,
+     "h": 574,
+     "ax": 142.0,
+     "ay": 574
+    },
+    {
+     "src": "assets/sprites/ichigo/walkv_15.png",
+     "w": 581,
+     "h": 570,
+     "ax": 147.5,
+     "ay": 570
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.5737,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/jump_0.png",
+     "w": 380,
+     "h": 249,
+     "ax": 294.5,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/ichigo/jump_1.png",
+     "w": 302,
+     "h": 309,
+     "ax": 199.7,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/ichigo/jump_2.png",
+     "w": 272,
+     "h": 331,
+     "ax": 108.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/ichigo/jump_3.png",
+     "w": 263,
+     "h": 317,
+     "ax": 117.6,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/ichigo/jump_4.png",
+     "w": 291,
+     "h": 307,
+     "ax": 115.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/ichigo/jump_5.png",
+     "w": 265,
+     "h": 319,
+     "ax": 97.5,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/ichigo/jump_6.png",
+     "w": 261,
+     "h": 321,
+     "ax": 98.5,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/ichigo/jump_7.png",
+     "w": 387,
+     "h": 273,
+     "ax": 155.0,
+     "ay": 273
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.557,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/fall_0.png",
+     "w": 349,
+     "h": 320,
+     "ax": 115.1,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/ichigo/fall_1.png",
+     "w": 322,
+     "h": 295,
+     "ax": 97.6,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/ichigo/fall_2.png",
+     "w": 427,
+     "h": 294,
+     "ax": 259.9,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/ichigo/fall_3.png",
+     "w": 311,
+     "h": 313,
+     "ax": 172.2,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/ichigo/fall_4.png",
+     "w": 352,
+     "h": 164,
+     "ax": 152.1,
+     "ay": 164
+    },
+    {
+     "src": "assets/sprites/ichigo/fall_5.png",
+     "w": 355,
+     "h": 226,
+     "ax": 205.5,
+     "ay": 226
+    },
+    {
+     "src": "assets/sprites/ichigo/fall_6.png",
+     "w": 310,
+     "h": 275,
+     "ax": 131.5,
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/ichigo/fall_7.png",
+     "w": 401,
+     "h": 315,
+     "ax": 156.5,
+     "ay": 315
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5557,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/combo_0.png",
+     "w": 436,
+     "h": 301,
+     "ax": 161.0,
+     "ay": 301
+    },
+    {
+     "src": "assets/sprites/ichigo/combo_1.png",
+     "w": 416,
+     "h": 307,
+     "ax": 143.0,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/ichigo/combo_2.png",
+     "w": 356,
+     "h": 296,
+     "ax": 151.5,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/ichigo/combo_3.png",
+     "w": 318,
+     "h": 333,
+     "ax": 203.0,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/ichigo/combo_4.png",
+     "w": 330,
+     "h": 313,
+     "ax": 126.0,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/ichigo/combo_5.png",
+     "w": 305,
+     "h": 316,
+     "ax": 189.0,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/ichigo/combo_6.png",
+     "w": 275,
+     "h": 351,
+     "ax": 175.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/ichigo/combo_7.png",
+     "w": 212,
+     "h": 343,
+     "ax": 140.8,
+     "ay": 343
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.6229,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/lowair_0.png",
+     "w": 377,
+     "h": 258,
+     "ax": 138.0,
+     "ay": 258
+    },
+    {
+     "src": "assets/sprites/ichigo/lowair_1.png",
+     "w": 283,
+     "h": 283,
+     "ax": 140.1,
+     "ay": 283
+    },
+    {
+     "src": "assets/sprites/ichigo/lowair_2.png",
+     "w": 361,
+     "h": 248,
+     "ax": 163.0,
+     "ay": 248
+    },
+    {
+     "src": "assets/sprites/ichigo/lowair_3.png",
+     "w": 381,
+     "h": 259,
+     "ax": 139.5,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/ichigo/lowair_4.png",
+     "w": 251,
+     "h": 341,
+     "ax": 160.6,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/ichigo/lowair_5.png",
+     "w": 256,
+     "h": 344,
+     "ax": 168.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/ichigo/lowair_6.png",
+     "w": 234,
+     "h": 360,
+     "ax": 155.5,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/ichigo/lowair_7.png",
+     "w": 288,
+     "h": 349,
+     "ax": 176.8,
+     "ay": 349
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.5208,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/dashcharge_0.png",
+     "w": 383,
+     "h": 284,
+     "ax": 270.5,
+     "ay": 284
+    },
+    {
+     "src": "assets/sprites/ichigo/dashcharge_1.png",
+     "w": 362,
+     "h": 240,
+     "ax": 235.5,
+     "ay": 240
+    },
+    {
+     "src": "assets/sprites/ichigo/dashcharge_2.png",
+     "w": 442,
+     "h": 287,
+     "ax": 159.0,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/ichigo/dashcharge_3.png",
+     "w": 391,
+     "h": 299,
+     "ax": 148.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/ichigo/dashcharge_4.png",
+     "w": 347,
+     "h": 306,
+     "ax": 137.6,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/ichigo/dashcharge_5.png",
+     "w": 325,
+     "h": 270,
+     "ax": 136.0,
+     "ay": 270
+    },
+    {
+     "src": "assets/sprites/ichigo/dashcharge_6.png",
+     "w": 286,
+     "h": 351,
+     "ax": 165.4,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/ichigo/dashcharge_7.png",
+     "w": 322,
+     "h": 317,
+     "ax": 128.8,
+     "ay": 317
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5462,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/special_0.png",
+     "w": 303,
+     "h": 347,
+     "ax": 182.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/ichigo/special_1.png",
+     "w": 282,
+     "h": 358,
+     "ax": 177.0,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/ichigo/special_2.png",
+     "w": 325,
+     "h": 271,
+     "ax": 216.0,
+     "ay": 271
+    },
+    {
+     "src": "assets/sprites/ichigo/special_3.png",
+     "w": 349,
+     "h": 298,
+     "ax": 235.5,
+     "ay": 298
+    },
+    {
+     "src": "assets/sprites/ichigo/special_4.png",
+     "w": 496,
+     "h": 314,
+     "ax": 163.0,
+     "ay": 314
+    },
+    {
+     "src": "assets/sprites/ichigo/special_5.png",
+     "w": 365,
+     "h": 265,
+     "ax": 262.5,
+     "ay": 265
+    },
+    {
+     "src": "assets/sprites/ichigo/special_6.png",
+     "w": 359,
+     "h": 320,
+     "ax": 198.0,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/ichigo/special_7.png",
+     "w": 388,
+     "h": 300,
+     "ax": 267.8,
+     "ay": 300
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2719,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/guard_0.png",
+     "w": 520,
+     "h": 629,
+     "ax": 307.5,
+     "ay": 629
+    },
+    {
+     "src": "assets/sprites/ichigo/guard_1.png",
+     "w": 612,
+     "h": 568,
+     "ax": 379.2,
+     "ay": 568
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3086,
+   "rate": 4.5,
+   "frames": [
+    {
+     "src": "assets/sprites/ichigo/idlev_0.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_1.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_2.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_3.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_4.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_5.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_6.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_7.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_8.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_9.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_10.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/ichigo/idlev_11.png",
+     "w": 754,
+     "h": 546,
+     "ax": 394.3,
+     "ay": 546
+    }
+   ]
+  }
+ },
+ "inosuke": {
+  "walk": {
+   "scale": 0.3302,
+   "rate": 25.73,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/walkv_0.png",
+     "w": 606,
+     "h": 534,
+     "ax": 190.1,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_1.png",
+     "w": 646,
+     "h": 520,
+     "ax": 214.1,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_2.png",
+     "w": 660,
+     "h": 512,
+     "ax": 225.3,
+     "ay": 512
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_3.png",
+     "w": 612,
+     "h": 520,
+     "ax": 191.6,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_4.png",
+     "w": 592,
+     "h": 532,
+     "ax": 185.1,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_5.png",
+     "w": 574,
+     "h": 544,
+     "ax": 181.0,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_6.png",
+     "w": 554,
+     "h": 548,
+     "ax": 174.8,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_7.png",
+     "w": 532,
+     "h": 544,
+     "ax": 181.8,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_8.png",
+     "w": 554,
+     "h": 528,
+     "ax": 248.0,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_9.png",
+     "w": 570,
+     "h": 516,
+     "ax": 269.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_10.png",
+     "w": 564,
+     "h": 514,
+     "ax": 274.8,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_11.png",
+     "w": 544,
+     "h": 516,
+     "ax": 262.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_12.png",
+     "w": 520,
+     "h": 524,
+     "ax": 222.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_13.png",
+     "w": 510,
+     "h": 534,
+     "ax": 195.8,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_14.png",
+     "w": 552,
+     "h": 540,
+     "ax": 181.0,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/inosuke/walkv_15.png",
+     "w": 578,
+     "h": 534,
+     "ax": 180.0,
+     "ay": 534
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/jump_0.png",
+     "w": 407,
+     "h": 300,
+     "ax": 149.3,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_1.png",
+     "w": 285,
+     "h": 335,
+     "ax": 129.9,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_2.png",
+     "w": 302,
+     "h": 356,
+     "ax": 108.7,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_3.png",
+     "w": 288,
+     "h": 290,
+     "ax": 108.0,
+     "ay": 290
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_4.png",
+     "w": 266,
+     "h": 263,
+     "ax": 168.2,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_5.png",
+     "w": 285,
+     "h": 342,
+     "ax": 105.7,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_6.png",
+     "w": 255,
+     "h": 314,
+     "ax": 105.5,
+     "ay": 314
+    },
+    {
+     "src": "assets/sprites/inosuke/jump_7.png",
+     "w": 384,
+     "h": 294,
+     "ax": 137.5,
+     "ay": 294
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/fall_0.png",
+     "w": 262,
+     "h": 342,
+     "ax": 123.4,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_1.png",
+     "w": 261,
+     "h": 328,
+     "ax": 133.1,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_2.png",
+     "w": 311,
+     "h": 292,
+     "ax": 125.4,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_3.png",
+     "w": 318,
+     "h": 256,
+     "ax": 150.7,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_4.png",
+     "w": 409,
+     "h": 146,
+     "ax": 204.5,
+     "ay": 146
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_5.png",
+     "w": 293,
+     "h": 229,
+     "ax": 140.0,
+     "ay": 229
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_6.png",
+     "w": 237,
+     "h": 282,
+     "ax": 145.2,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/inosuke/fall_7.png",
+     "w": 384,
+     "h": 311,
+     "ax": 142.7,
+     "ay": 311
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/combo_0.png",
+     "w": 422,
+     "h": 309,
+     "ax": 149.4,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_1.png",
+     "w": 437,
+     "h": 324,
+     "ax": 177.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_2.png",
+     "w": 454,
+     "h": 333,
+     "ax": 174.1,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_3.png",
+     "w": 297,
+     "h": 320,
+     "ax": 172.9,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_4.png",
+     "w": 277,
+     "h": 332,
+     "ax": 158.2,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_5.png",
+     "w": 361,
+     "h": 345,
+     "ax": 189.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_6.png",
+     "w": 316,
+     "h": 345,
+     "ax": 159.6,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/inosuke/combo_7.png",
+     "w": 413,
+     "h": 322,
+     "ax": 199.6,
+     "ay": 322
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/lowair_0.png",
+     "w": 245,
+     "h": 255,
+     "ax": 130.4,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_1.png",
+     "w": 517,
+     "h": 214,
+     "ax": 258.5,
+     "ay": 214
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_2.png",
+     "w": 437,
+     "h": 234,
+     "ax": 218.5,
+     "ay": 234
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_3.png",
+     "w": 334,
+     "h": 256,
+     "ax": 130.7,
+     "ay": 256
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_4.png",
+     "w": 273,
+     "h": 410,
+     "ax": 170.3,
+     "ay": 410
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_5.png",
+     "w": 250,
+     "h": 351,
+     "ax": 157.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_6.png",
+     "w": 313,
+     "h": 302,
+     "ax": 201.2,
+     "ay": 302
+    },
+    {
+     "src": "assets/sprites/inosuke/lowair_7.png",
+     "w": 322,
+     "h": 320,
+     "ax": 112.0,
+     "ay": 320
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/dashcharge_0.png",
+     "w": 398,
+     "h": 263,
+     "ax": 180.1,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_1.png",
+     "w": 323,
+     "h": 231,
+     "ax": 179.6,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_2.png",
+     "w": 494,
+     "h": 299,
+     "ax": 247.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_3.png",
+     "w": 351,
+     "h": 290,
+     "ax": 155.3,
+     "ay": 290
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_4.png",
+     "w": 252,
+     "h": 359,
+     "ax": 129.7,
+     "ay": 359
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_5.png",
+     "w": 292,
+     "h": 325,
+     "ax": 146.7,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_6.png",
+     "w": 461,
+     "h": 351,
+     "ax": 231.1,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/inosuke/dashcharge_7.png",
+     "w": 273,
+     "h": 368,
+     "ax": 154.2,
+     "ay": 368
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4972,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/special_0.png",
+     "w": 300,
+     "h": 324,
+     "ax": 168.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/inosuke/special_1.png",
+     "w": 344,
+     "h": 270,
+     "ax": 202.4,
+     "ay": 270
+    },
+    {
+     "src": "assets/sprites/inosuke/special_2.png",
+     "w": 510,
+     "h": 352,
+     "ax": 216.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/inosuke/special_3.png",
+     "w": 301,
+     "h": 313,
+     "ax": 134.2,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/inosuke/special_4.png",
+     "w": 318,
+     "h": 336,
+     "ax": 156.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/inosuke/special_5.png",
+     "w": 281,
+     "h": 231,
+     "ax": 137.3,
+     "ay": 231
+    },
+    {
+     "src": "assets/sprites/inosuke/special_6.png",
+     "w": 526,
+     "h": 287,
+     "ax": 263.0,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/inosuke/special_7.png",
+     "w": 390,
+     "h": 261,
+     "ax": 163.0,
+     "ay": 261
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2368,
+   "frames": [
+    {
+     "src": "assets/sprites/inosuke/guard_0.png",
+     "w": 567,
+     "h": 669,
+     "ax": 332.0,
+     "ay": 669
+    },
+    {
+     "src": "assets/sprites/inosuke/guard_1.png",
+     "w": 614,
+     "h": 623,
+     "ax": 340.7,
+     "ay": 623
+    }
+   ]
+  }
+ },
+ "tanjiro": {
+  "walk": {
+   "scale": 0.3243,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/walkv_0.png",
+     "w": 586,
+     "h": 555,
+     "ax": 204.8,
+     "ay": 555
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_1.png",
+     "w": 563,
+     "h": 555,
+     "ax": 188.3,
+     "ay": 555
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_2.png",
+     "w": 564,
+     "h": 559,
+     "ax": 190.8,
+     "ay": 559
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_3.png",
+     "w": 565,
+     "h": 564,
+     "ax": 193.8,
+     "ay": 564
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_4.png",
+     "w": 564,
+     "h": 565,
+     "ax": 194.3,
+     "ay": 565
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_5.png",
+     "w": 562,
+     "h": 560,
+     "ax": 189.8,
+     "ay": 560
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_6.png",
+     "w": 560,
+     "h": 553,
+     "ax": 183.8,
+     "ay": 553
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_7.png",
+     "w": 561,
+     "h": 555,
+     "ax": 182.3,
+     "ay": 555
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_8.png",
+     "w": 562,
+     "h": 558,
+     "ax": 186.3,
+     "ay": 558
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_9.png",
+     "w": 567,
+     "h": 566,
+     "ax": 193.8,
+     "ay": 566
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_10.png",
+     "w": 568,
+     "h": 570,
+     "ax": 194.8,
+     "ay": 570
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_11.png",
+     "w": 566,
+     "h": 575,
+     "ax": 194.3,
+     "ay": 575
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_12.png",
+     "w": 562,
+     "h": 574,
+     "ax": 191.3,
+     "ay": 574
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_13.png",
+     "w": 560,
+     "h": 572,
+     "ax": 187.3,
+     "ay": 572
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_14.png",
+     "w": 561,
+     "h": 563,
+     "ax": 184.3,
+     "ay": 563
+    },
+    {
+     "src": "assets/sprites/tanjiro/walkv_15.png",
+     "w": 574,
+     "h": 560,
+     "ax": 195.8,
+     "ay": 560
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.5225,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/jump_0.png",
+     "w": 301,
+     "h": 278,
+     "ax": 134.0,
+     "ay": 278
+    },
+    {
+     "src": "assets/sprites/tanjiro/jump_1.png",
+     "w": 348,
+     "h": 296,
+     "ax": 159.5,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/tanjiro/jump_2.png",
+     "w": 339,
+     "h": 336,
+     "ax": 139.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/tanjiro/jump_3.png",
+     "w": 254,
+     "h": 340,
+     "ax": 105.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/tanjiro/jump_4.png",
+     "w": 282,
+     "h": 247,
+     "ax": 115.5,
+     "ay": 247
+    },
+    {
+     "src": "assets/sprites/tanjiro/jump_5.png",
+     "w": 310,
+     "h": 322,
+     "ax": 118.0,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/tanjiro/jump_6.png",
+     "w": 329,
+     "h": 319,
+     "ax": 127.0,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/tanjiro/jump_7.png",
+     "w": 367,
+     "h": 270,
+     "ax": 133.0,
+     "ay": 270
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5225,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/fall_0.png",
+     "w": 307,
+     "h": 330,
+     "ax": 98.4,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/tanjiro/fall_1.png",
+     "w": 320,
+     "h": 305,
+     "ax": 105.9,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/tanjiro/fall_2.png",
+     "w": 331,
+     "h": 247,
+     "ax": 157.7,
+     "ay": 247
+    },
+    {
+     "src": "assets/sprites/tanjiro/fall_3.png",
+     "w": 311,
+     "h": 229,
+     "ax": 136.2,
+     "ay": 229
+    },
+    {
+     "src": "assets/sprites/tanjiro/fall_4.png",
+     "w": 368,
+     "h": 139,
+     "ax": 198.8,
+     "ay": 139
+    },
+    {
+     "src": "assets/sprites/tanjiro/fall_5.png",
+     "w": 345,
+     "h": 247,
+     "ax": 179.0,
+     "ay": 247
+    },
+    {
+     "src": "assets/sprites/tanjiro/fall_6.png",
+     "w": 287,
+     "h": 273,
+     "ax": 132.0,
+     "ay": 273
+    },
+    {
+     "src": "assets/sprites/tanjiro/fall_7.png",
+     "w": 332,
+     "h": 313,
+     "ax": 134.6,
+     "ay": 313
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5225,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/combo_0.png",
+     "w": 401,
+     "h": 339,
+     "ax": 152.6,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/tanjiro/combo_1.png",
+     "w": 418,
+     "h": 324,
+     "ax": 156.5,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/tanjiro/combo_2.png",
+     "w": 354,
+     "h": 286,
+     "ax": 199.5,
+     "ay": 286
+    },
+    {
+     "src": "assets/sprites/tanjiro/combo_3.png",
+     "w": 271,
+     "h": 355,
+     "ax": 177.9,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/tanjiro/combo_4.png",
+     "w": 416,
+     "h": 343,
+     "ax": 219.0,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/tanjiro/combo_5.png",
+     "w": 356,
+     "h": 330,
+     "ax": 144.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/tanjiro/combo_6.png",
+     "w": 264,
+     "h": 360,
+     "ax": 162.5,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/tanjiro/combo_7.png",
+     "w": 402,
+     "h": 308,
+     "ax": 199.5,
+     "ay": 308
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.5225,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/lowair_0.png",
+     "w": 238,
+     "h": 253,
+     "ax": 151.0,
+     "ay": 253
+    },
+    {
+     "src": "assets/sprites/tanjiro/lowair_1.png",
+     "w": 240,
+     "h": 289,
+     "ax": 145.8,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/tanjiro/lowair_2.png",
+     "w": 347,
+     "h": 263,
+     "ax": 178.0,
+     "ay": 263
+    },
+    {
+     "src": "assets/sprites/tanjiro/lowair_3.png",
+     "w": 279,
+     "h": 282,
+     "ax": 146.5,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/tanjiro/lowair_4.png",
+     "w": 228,
+     "h": 265,
+     "ax": 133.0,
+     "ay": 265
+    },
+    {
+     "src": "assets/sprites/tanjiro/lowair_5.png",
+     "w": 236,
+     "h": 257,
+     "ax": 84.5,
+     "ay": 257
+    },
+    {
+     "src": "assets/sprites/tanjiro/lowair_6.png",
+     "w": 341,
+     "h": 292,
+     "ax": 142.5,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/tanjiro/lowair_7.png",
+     "w": 277,
+     "h": 335,
+     "ax": 189.0,
+     "ay": 335
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.5225,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_0.png",
+     "w": 289,
+     "h": 349,
+     "ax": 188.0,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_1.png",
+     "w": 277,
+     "h": 316,
+     "ax": 192.0,
+     "ay": 316
+    },
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_2.png",
+     "w": 270,
+     "h": 349,
+     "ax": 162.8,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_3.png",
+     "w": 292,
+     "h": 318,
+     "ax": 149.1,
+     "ay": 318
+    },
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_4.png",
+     "w": 271,
+     "h": 307,
+     "ax": 183.9,
+     "ay": 307
+    },
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_5.png",
+     "w": 268,
+     "h": 306,
+     "ax": 182.6,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_6.png",
+     "w": 230,
+     "h": 362,
+     "ax": 129.3,
+     "ay": 362
+    },
+    {
+     "src": "assets/sprites/tanjiro/dashcharge_7.png",
+     "w": 411,
+     "h": 329,
+     "ax": 144.7,
+     "ay": 329
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5225,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/special_0.png",
+     "w": 252,
+     "h": 289,
+     "ax": 138.9,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/tanjiro/special_1.png",
+     "w": 461,
+     "h": 291,
+     "ax": 209.4,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/tanjiro/special_2.png",
+     "w": 415,
+     "h": 282,
+     "ax": 165.9,
+     "ay": 282
+    },
+    {
+     "src": "assets/sprites/tanjiro/special_3.png",
+     "w": 389,
+     "h": 287,
+     "ax": 131.4,
+     "ay": 287
+    },
+    {
+     "src": "assets/sprites/tanjiro/special_4.png",
+     "w": 257,
+     "h": 348,
+     "ax": 158.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/tanjiro/special_5.png",
+     "w": 353,
+     "h": 305,
+     "ax": 163.5,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/tanjiro/special_6.png",
+     "w": 357,
+     "h": 299,
+     "ax": 183.0,
+     "ay": 299
+    },
+    {
+     "src": "assets/sprites/tanjiro/special_7.png",
+     "w": 401,
+     "h": 286,
+     "ax": 166.5,
+     "ay": 286
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2433,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/guard_0.png",
+     "w": 522,
+     "h": 688,
+     "ax": 290.5,
+     "ay": 688
+    },
+    {
+     "src": "assets/sprites/tanjiro/guard_1.png",
+     "w": 571,
+     "h": 665,
+     "ax": 347.0,
+     "ay": 665
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3393,
+   "rate": 4.88,
+   "frames": [
+    {
+     "src": "assets/sprites/tanjiro/idlev_0.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_1.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_2.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_3.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_4.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_5.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_6.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_7.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_8.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_9.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_10.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/tanjiro/idlev_11.png",
+     "w": 620,
+     "h": 532,
+     "ax": 232.6,
+     "ay": 532
     }
    ]
   }
