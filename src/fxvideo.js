@@ -1783,6 +1783,170 @@ const FXV = {
    "w": 1660,
    "h": 910
   }
+ ],
+ "vrasen_v": [
+  {
+   "src": "assets/fx/vrasen_v_0.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_1.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_2.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_3.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_4.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_5.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_6.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_7.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_8.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_9.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_10.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_11.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_12.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_13.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_14.png",
+   "w": 960,
+   "h": 480
+  },
+  {
+   "src": "assets/fx/vrasen_v_15.png",
+   "w": 960,
+   "h": 480
+  }
+ ],
+ "rsh_v": [
+  {
+   "src": "assets/fx/rsh_v_0.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_1.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_2.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_3.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_4.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_5.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_6.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_7.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_8.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_9.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_10.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_11.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_12.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_13.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_14.png",
+   "w": 880,
+   "h": 600
+  },
+  {
+   "src": "assets/fx/rsh_v_15.png",
+   "w": 880,
+   "h": 600
+  }
  ]
 };
 Object.assign(FX, FXV);

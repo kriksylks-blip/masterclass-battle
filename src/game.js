@@ -4696,7 +4696,7 @@ function drawProjs() {
       continue;
     }
     ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
-    if (p.kind === 'shuriken') { ctx.restore(); drawShuriken(sx, p.y, (p.scale || 1) * (p.ult ? Math.min(1, 0.55 + p.t * 1.8) : 1), p.t); continue; } // l'ultime grossit en s'éloignant
+    if (p.kind === 'shuriken') { ctx.restore(); drawShuriken(sx, p.y, (p.scale || 1) * (p.ult ? Math.min(1, 0.55 + p.t * 1.8) : 1), p.t, p.dir); continue; } // l'ultime grossit en s'éloignant
     // Croissants en images : lame d'air, Getsuga Tensho, vague d'eau ou de feu
     const sprite = { airblade: ['crescent', 'hue-rotate(-60deg) saturate(0.5) brightness(1.3)'], getsuga: ['crescent', p.filter || ''], wave: ['water_arc', ''], firewave: ['fire_arc', ''] }[p.kind];
     if (p.kind === 'getsuga' && FX.getsuga_v) {
@@ -4903,6 +4903,16 @@ function drawProjs() {
       const u = p.t / (p.life || 1), sc = p.scale || 1, ease = k => k * k * (3 - 2 * k);
       const vis = p.steady ? 1 : u < 0.22 ? 1 : u < 0.42 ? 1 - 0.88 * ease((u - 0.22) / 0.2) : u < 0.56 ? 0.12 : 0.12 + 0.88 * ease(Math.min(1, (u - 0.56) / 0.12));
       const r = (48 + Math.sin(p.t * 38) * 3) * sc;
+      // Rasengan évanescent filmé (vrasen_v, fond noir) : sphère, anneaux de vent et traînée d'étincelles ;
+      // le centre de la sphère est à 66 % de la largeur de l'image
+      const L = FX.vrasen_v, fv = L && L[Math.floor(p.t * 16) % L.length], iv = fv && IMG[fv.src];
+      if (iv) {
+        ctx.restore();
+        const hh = r * 3.2, ww = hh * fv.w / fv.h;
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = vis; ctx.translate(sx, p.y); ctx.scale(p.dir, 1);
+        ctx.drawImage(iv, -ww * 0.66, -hh / 2, ww, hh); ctx.restore();
+        continue;
+      }
       // légère traînée bleue derrière la boule
       for (let j = 1; j <= 4; j++) {
         ctx.globalAlpha = vis * (0.32 - j * 0.06);
@@ -4983,7 +4993,16 @@ function drawProjs() {
 }
 
 // Rasenshuriken : quatre pales de vent blanches autour d'une sphère bleue
-function drawShuriken(x, y, s, t) {
+function drawShuriken(x, y, s, t, dir) {
+  // En vol (dir donné) : Rasen-shuriken filmé (rsh_v, fond noir) qui tourne avec sa traînée de vent derrière lui ;
+  // le centre de la sphère est à 45 % de la largeur de l'image
+  const L = dir && FX.rsh_v, fv = L && L[Math.floor(t * 16) % L.length], iv = fv && IMG[fv.src];
+  if (iv) {
+    const ww = 260 * s, hh = ww * fv.h / fv.w;
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.translate(x, y); ctx.scale(dir, 1);
+    ctx.drawImage(iv, -ww * 0.45, -hh / 2, ww, hh); ctx.restore();
+    return;
+  }
   // Rasen-shuriken dessiné (assets/fx/rsh.png, fond noir détouré) : il tourne très vite, une 2e couche en sens inverse
   // donne le flou des pales ; halo de vent autour
   const img = IMG.fx_rsh;
