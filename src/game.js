@@ -7338,7 +7338,8 @@ function frame(now) {
   if (net.role === 'guest' && (net.live || netQueue.length)) netGuestTick(dt); else update(dt);
   if (net.role === 'host') netHostTick(dt);
   updateLoops();
-  draw();
+  // une erreur de dessin ne doit pas figer le jeu (écran noir) : on la signale (diagnostic de index.html) et on continue
+  try { draw(); } catch (e) { if (!frame.err) { frame.err = 1; setTimeout(() => { throw e; }); } }
   INPUT.forEach(I => I.pressed.clear());
   requestAnimationFrame(frame);
 }

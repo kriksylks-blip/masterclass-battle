@@ -141,7 +141,7 @@ function netJoin(code) {
       if (typeof m === 'string') { netOnState(m); return; } // état de la partie (src/netsync.js)
       if (m.t === 'hello') {
         clearTimeout(watchdog);
-        if (m.ver !== NET_VER) { const err = 'Versions du jeu différentes : rechargez le jeu des deux côtés (sur téléphone : fermez l'onglet puis rouvrez-le).'; setTimeout(() => { netClose(); openOnline(); net.err = err; }, 100); return; }
+        if (m.ver !== NET_VER) { const err = 'Versions du jeu différentes : rechargez le jeu des deux côtés (sur téléphone : fermez l’onglet puis rouvrez-le).'; setTimeout(() => { netClose(); openOnline(); net.err = err; }, 100); return; }
         net.slot = m.slot; net.status = `Connecté : tu es le joueur ${m.slot + 1}. Attente de la partie…`;
       }
       if (m.t === 'full') net.err = 'La partie est complète (4 joueurs).';
