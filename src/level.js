@@ -118,6 +118,9 @@ const LEVELS = [
   themedLevel('bu', 'DRAGON BALL Z — MAJIN BOO', 'Le démon rose s\'est réveillé',
     ['LE GRAND TOURNOI', 'LE VAISSEAU DE BABIDI', 'LE PALAIS DE DIEU', 'DANS LE VENTRE DE BOO'], 'bu_brute', 'bu_minion'),
 ];
+// Monde de Boo : au palais de Dieu (3e zone), le gros Boo attend à la place de la grosse vague
+{ const L = LEVELS.find(L => L.id === 'bu'), x0 = L.zones[2].from, w = L.waves.find(w => w.x === x0 + 1900);
+  if (w) Object.assign(w, { foes: ['bu_fat', 'bu_brute', 'bu_minion'], mini: true }); }
 // Images des niveaux : ciel, décor (plan moyen détouré, ou mur plein pour les intérieurs) et sol de chaque zone
 for (const L of LEVELS.slice(1)) {
   ASSETS.backgrounds[L.sky] = `assets/backgrounds/levels/${L.sky}.jpg`;
@@ -165,7 +168,10 @@ for (const [id, name] of Object.entries(ROUTES)) {
   ASSETS.backgrounds[L.route.gate] = `assets/backgrounds/gates/${L.route.gate}.png`;
 }
 // Images en plus du décor de base (véhicules, route B) : chargées avec le niveau (levelNeeds dans game.js)
-const levelExtras = L => [...L.waves.map(w => w.vehicle).filter(Boolean), ...(L.route ? ['mid', 'mid2', 'ground', 'gate'].map(k => L.route[k]) : [])];
+// Plans moyens en une seule longue bande (tools/extend_mid.py, src/midx.js) : <clé>_x remplace la clé et sa 2e version
+const midX = key => typeof MID_X !== 'undefined' && MID_X.has(key) ? key + '_x' : null;
+if (typeof MID_X !== 'undefined') for (const k of MID_X) ASSETS.backgrounds[k + '_x'] = `assets/backgrounds/levels/${k}_x.png`;
+const levelExtras = L => [...L.waves.map(w => w.vehicle).filter(Boolean), ...(L.route ? ['mid', 'mid2', 'ground', 'gate'].map(k => L.route[k]) : []), ...(L.route && midX(L.route.mid) ? [midX(L.route.mid)] : [])];
 
 // Passage d'une zone à la suivante : la caméra s'arrête juste avant la limite (on ne voit jamais deux décors
 // côte à côte) ; quand la vague est finie, un élément de passage (porte, arche, sas…) attend au fond de la rue,
@@ -285,7 +291,8 @@ const ENEMY_INFO = {
   fm_mini: ['ENVY', 'L\'homonculus qui change de forme'], fm_boss: ['KING BRADLEY', 'Le Fürher et ses deux sabres'],
   rp_thug: ['HOMME DE MAIN', 'Couteau à la main — se rue sur toi'], rp_gunman: ['TIREUR DU CARTEL', 'Tire au pistolet — renvoie ses balles !'],
   bu_brute: ['SPOPOVICH', 'Une brute gonflée par la magie de Babidi'], bu_minion: ['GUERRIER DE BABIDI', 'Possédé par la magie — tire des boules d\'énergie'],
-  bu_mini: ['DABURA', 'Le roi des démons et son épée'], bu_boss: ['MAJIN BOO', 'Le démon rose qui change tout en bonbons'],
+  bu_mini: ['DABURA', 'Le roi des démons et son épée'], bu_boss: ['SUPER BOO', 'Le démon qui absorbe les guerriers'],
+  bu_fat: ['MAJIN BOO', 'Le démon rose qui change tout en bonbons'],
   rp_mini: ['EDA', 'La nonne aux deux pistolets'], rp_boss: ['ROBERTA', 'La bonne de la famille Lovelace, chien de chasse'],
   bl2_mini: ['GRIMMJOW', 'Sixième Espada, la panthère'],
 };
@@ -796,7 +803,15 @@ function drawZoneLayer(kind) {
     ctx.save();
     // découpe nette sur la limite : l'élément de passage (porte, ponton…) recouvre la jointure
     ctx.beginPath(); ctx.rect(Math.max(-10, sx0), -20, Math.min(W + 20, sx1) - Math.max(-10, sx0), H + 40); ctx.clip();
-    if (kind === 'mid') {
+    const xk = kind === 'mid' && midX(key), ximg = xk && IMG[xk];
+    if (ximg) {
+      // une seule bande continue, calée sur le début de la zone : elle défile sans jamais se répéter
+      const main = harmonizedMid(xk, ximg, Z.ground), s = Z.midScale || 1, h = L.h * s, y = L.y + L.h - h, w = ximg.width * h / ximg.height;
+      const x0 = (Z.from - camX) * f;
+      drawStrip(main, x0, y, h, w);
+      if (s < 1 && y > 0) drawStrip(main, x0, -2, y + 3, w, [0, (y + 3) * ximg.height / h]);
+    }
+    else if (kind === 'mid') {
       // deux versions du plan moyen en alternance (la 2e prolonge le même lieu) : le décor ne se répète plus toutes les largeurs d'écran
       const alt = Z.mid2 && IMG[Z.mid2] ? harmonizedMid(Z.mid2, IMG[Z.mid2], Z.ground) : null, main = harmonizedMid(key, img, Z.ground);
       // midScale : décor rapetissé (pied inchangé) quand il écrase les personnages ; le haut est complété par
@@ -879,6 +894,16 @@ function groundLight(key, img) {
 // deux textures (image double, floue). On garde donc une jointure nette, comme un rebord : ombre portée sur le haut
 // du sol, et le bas du plan moyen assombri et teinté vers la couleur du sol pour que les deux se raccordent.
 const STEP = { shadow: 28, dark: 0.5, tint: 0.45, shade: 0.25, from: 0.7 }, harmCache = {};
+// Bande de décor posée à x ; si la zone va plus loin que la bande, la suite est la même bande retournée (jamais vu
+// en jeu : les bandes couvrent toute la zone) ; src : bande source retournée de haut en bas (décor rapetissé)
+function drawStrip(im, x, y, h, w, src = null) {
+  const put = (dx, flip) => {
+    ctx.save(); ctx.translate(dx + (flip ? w : 0), src ? y + h : y); ctx.scale(flip ? -1 : 1, src ? -1 : 1);
+    if (src) ctx.drawImage(im, 0, src[0], im.width, src[1], 0, 0, w + 1, h); else ctx.drawImage(im, 0, 0, w + 1, h);
+    ctx.restore();
+  };
+  for (let k = 0, dx = x; dx < W && k < 6; k++, dx += w) if (dx + w > 0) put(dx, k % 2 === 1);
+}
 function harmonizedMid(key, img, groundKey) {
   const ck = key + '|' + groundKey;
   if (ck in harmCache) return harmCache[ck];

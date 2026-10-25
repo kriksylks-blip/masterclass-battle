@@ -214,5 +214,10 @@ const CV = {
   "special": "gohan_special",
   "transform": "aura",
   "ultra": "cri_m"
+ },
+ "buu": {
+  "special": "aura",
+  "transform": "brutal",
+  "ultra": "goku_special"
  }
 };

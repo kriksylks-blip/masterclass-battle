@@ -59,7 +59,7 @@ function levelNeeds(L) {
   // sans planche à lui, un ennemi emprunte celle de sa doublure (alt)
   const known = [...types].filter(t => t && ETYPES[t]), sheets = known.map(t => SPRITES[ETYPES[t].sheet || t] || !ETYPES[t].alt ? ETYPES[t].sheet || t : ETYPES[t].alt);
   const bgs = new Set([L.sky, ...(L.far ? ['far'] : [])]);
-  for (const Z of L.zones) for (const k of [Z.sky, Z.mid, Z.mid2, Z.ground, STRIPS[Z.id]?.img]) if (k) bgs.add(k);
+  for (const Z of L.zones) for (const k of [Z.sky, ...(midX(Z.mid) ? [midX(Z.mid)] : [Z.mid, Z.mid2]), Z.ground, STRIPS[Z.id]?.img]) if (k) bgs.add(k);
   for (const k of [...GATES[L.id] || [], ...levelExtras(L)]) bgs.add(k);
   return { sheets, bgs: [...bgs].filter(k => ASSETS.backgrounds[k]), intros: known.map(t => 'intro_' + t).filter(k => ASSETS.ui[k]) };
 }
@@ -812,6 +812,12 @@ const PC_MOVES = { ...NEWKICK(FIST),
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 160], y: [-170, -50], dmg: 3, kb: 420, ki: 8, launch: -460, push: 1200, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 12, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
   makanko: { dur: 1.3, cost: 35, beam: { hand: true, at: 0.62, end: 1.15, len: 1100, dmg: 0.75, thick: 0.42, color: '#ffe680', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.2)' }, call: 'MAKANKOSAPPO !', p: ['special', [0, 1, 2, 3], [0.3, 0.62, 1.2]] },
 };
+// Majin Boo : gros coups de ventre et rayon d'antenne (special 0-3) ; en petit Boo, mêmes coups, plus vif.
+// Ultime : il imite le Kamehameha (rayon rose géant).
+const MB_MOVES = { ...NEWKICK(FIST),
+  dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 150], y: [-160, -40], dmg: 3.2, kb: 520, ki: 8, launch: -480, push: 1150, pushAt: 0.06, pushDur: 0.3, lean: 10, call: 'BOO !', p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
+  candy:  { dur: 1.2, cost: 35, beam: { hand: true, at: 0.5, end: 1.05, len: 900, dmg: 0.62, thick: 0.6, color: '#ff8ad8', filter: 'hue-rotate(110deg) saturate(1.6) brightness(1.1)' }, call: 'DEVIENS UN BONBON !', p: ['special', [0, 1, 2, 3], [0.22, 0.5, 1.1]] },
+};
 // Gintoki : le sabre de bois, coups larges et nonchalants. Spécial : le démon blanc, un bond et une grande taille
 // horizontale (special 0-3) ; en Shiroyasha, le spécial devient le coup écrasant (special 4-7).
 const GI_MOVES = { ...SWORD,
@@ -1197,6 +1203,16 @@ const CHARS = {
     special: 'makanko', speed: 265, pose: stdPose, ultra: [startHellzone, updateHellzone],
     ultraPose: h => ['special', h.t < HZ.throw ? 4 : h.t < HZ.close ? 5 + Math.floor(h.t * 10) % 2 : 7],
   },
+  buu: {
+    name: 'MAJIN BOO', title: 'Le démon rose', sheet: 'buu', card: 'card_mb',
+    colors: ['#ff8ad8', '#7a3aa8'], kiColor: '#ffb0e8', hit: '#ffe0f6', stats: [['PUISSANCE', 5], ['VITESSE', 3], ['PORTÉE', 4]],
+    labels: { blast: 'RAYON BONBON', ultra: 'KAMEHAMEHA DE BOO' },
+    // petit Boo : la forme originelle, petite et folle (planches à part)
+    forms: [{ ki: 50, name: 'PETIT BOO', sheet: 'buu_kid', speed: 1.4, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,120,210,0.55)', '#ff7ad8'], sparks: '#ffd0f0', glow: '#ff4fc0', bar: ['#a0207a', '#ffb0e8'], color: '#ff9ae0', hit: '#ffe0f6' }],
+    moves: MB_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    special: 'candy', speed: 250, pose: stdPose, ultra: [startKameMax, updateKameMax],
+    ultraPose: h => ['special', h.t < KMAX.fire - 0.45 ? 4 : h.t < KMAX.fire ? 5 : h.t < KMAX.end - 0.3 ? 6 : 7],
+  },
   gintoki: {
     name: 'GINTOKI', title: 'Le démon blanc', sheet: 'gintoki', card: 'card_gi',
     colors: ['#f0f4ff', '#3a6ab8'], kiColor: '#e8f0ff', hit: '#ffffff', trail: '#f0f0ff', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 5]],
@@ -1323,6 +1339,29 @@ const CHARS = {
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < 0.95 ? 5 : 6],
   },
 };
+// Tenues de rechange (tools/outfit_prompts.js) : [nom, planche, carte, planches des formes remplacées]. Chaque tenue est
+// une version de la case (touche Spécial à la sélection) : CHARS['goku@1']… ; en jeu le perso reste 'goku' (h.char),
+// seules ses planches changent (h.C). Les formes sans planche (filtre) gardent la tenue ; Blue / Ultra Instinct de
+// Sangoku reprennent leurs planches d'origine.
+const OUTFITS = {
+  goku: [['TENUE DE WHIS', 'goku_whis', 'card_kw', { goku_ssj: 'goku_whis_ssj' }]],
+  gohan_a: [['GRAND SAIYAMAN', 'gohan_a_gsm', 'card_uy'], ['TENUE DE PICCOLO', 'gohan_a_pic', 'card_up']],
+  vegeta: [['SAGA BOO', 'vegeta_buu', 'card_vm', { vegeta_ssj: 'vegeta_buu_ssj' }]],
+  zoro: [['PAYS DE WANO', 'zoro_wano', 'card_zw']],
+  saitama: [['DÉCONTRACTÉ', 'saitama_casual', 'card_sh']],
+};
+const OUTFIT_LABEL = {};
+for (const [id, list] of Object.entries(OUTFITS)) {
+  const C = CHARS[id]; if (!C) continue;
+  const ids = list.filter(o => SPRITES[o[1]]).map((o, k) => {
+    const [name, sheet, card, map = {}] = o, key = `${id}@${k + 1}`;
+    CHARS[key] = { ...C, base: id, sheet, card, forms: (C.forms || []).map(F => ({ ...F, sheet: map[F.sheet] || F.sheet,
+      fallback: F.fallback && F.fallback[0] === C.sheet ? [sheet, F.fallback[1]] : F.fallback })) };
+    OUTFIT_LABEL[key] = name;
+    return key;
+  });
+  if (ids.length) { C.variants = [id, ...ids]; OUTFIT_LABEL[id] = 'TENUE CLASSIQUE'; }
+}
 // Forme dont la planche n'est pas encore découpée : elle reprend une autre planche, teintée (fallback)
 for (const C of Object.values(CHARS)) for (const F of C.forms || []) {
   if (F.fallback && !SPRITES[F.sheet]) { F.sheet = F.fallback[0]; F.filter = F.fallback[1]; }
@@ -1350,7 +1389,7 @@ for (const [id, k] of Object.entries(CHAR_SIZE))
 // Variantes : plusieurs versions d'un perso dans la même case de la sélection (↑/↓). La première est la case,
 // les suivantes n'ont pas de case à elles ; une variante absente (pas encore dans CHARS) est ignorée.
 // (Naruto enfant et Naruto ado sont deux cases distinctes depuis le 25/10 : plus clair pour le joueur)
-const VARIANT_LABEL = { naruto: 'ENFANT', naruto_s: 'SHIPPUDEN' };
+const VARIANT_LABEL = { naruto: 'ENFANT', naruto_s: 'SHIPPUDEN', ...OUTFIT_LABEL };
 const VARIANT_ONLY = new Set(Object.values(CHARS).flatMap(C => (C.variants || []).slice(1)));
 // Un personnage n'apparaît qu'une fois ses planches découpées (src/sprites.js)
 const CHAR_IDS = Object.keys(CHARS).filter(id => SPRITES[CHARS[id].sheet] && !VARIANT_ONLY.has(id));
@@ -1374,7 +1413,7 @@ let players, enemies, waves, bombs, projs, fxs, particles, popups, camX, shake, 
 
 function newPlayer(idx, char, n) {
   return {
-    idx, char, C: CHARS[char],
+    idx, char: CHARS[char]?.base || char, cid: char, C: CHARS[char], // cid : la version choisie (tenue), char : le perso
     x: 300 - (n - 1) * 50 + idx * 100, y: GROUND, gz: [GROUND, GROUND - 50, GROUND + 25, GROUND - 80][idx % 4], vx: 0, vz: 0, vy: 0, dir: 1, state: 'idle', t: 0, move: null, hitSet: null,
     hp: 100, maxHp: 100, ki: 50, inv: 0, onGround: true, walkT: 0, lastHit: -9, back: false,
     chain: 0, buffer: null, doubled: false, boost: null, out: false, outT: 0, lives: OPTS.lives, tagCool: 0, reserve: null,
@@ -1388,7 +1427,7 @@ function resetGame(chars = ['hero'], lv = levelPick) {
   // Équipe de deux : le partenaire attend son tour (relais)
   if (OPTS.tag && sel.partners) players.forEach((h, i) => { const c = sel.partners[i]; if (c && c !== h.char) h.reserve = newPlayer(i, c, chars.length); });
   enemies = []; waves = []; stars = []; bombs = []; projs = []; zaps = []; clones = []; blackFlames = []; crows = []; fxs = []; particles = []; popups = []; cutins = [];
-  if (scene !== 'loading') requireGame([...players, ...players.map(h => h.reserve).filter(Boolean)].map(h => h.char), LVL); // pas pour la partie fictive du démarrage
+  if (scene !== 'loading') requireGame([...players, ...players.map(h => h.reserve).filter(Boolean)].map(h => h.cid || h.char), LVL); // pas pour la partie fictive du démarrage
   resetLevel();
   camX = 0; shake = 0; flash = 0; hitstop = 0; score = 0; combo = 0; comboT = 0; kills = 0; spawnT = 1.5; sceneT = 0; paused = false;
 }
@@ -3519,7 +3558,8 @@ function updateKameMax(h) {
   }
   if (!h.beamed && h.t >= KMAX.fire) {
     h.beamed = true; flash = 0.8; shake = 26; audio.voice(h, 'ultra');
-    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: KMAX.fire, end: KMAX.end - 0.2, len: 1300, thick: 2.2, dmg: (4 + h.power / 10) / 9, color: '#7fd8ff', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    const pink = h.char === 'buu';
+    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: KMAX.fire, end: KMAX.end - 0.2, len: 1300, thick: 2.2, dmg: (4 + h.power / 10) / 9, color: pink ? '#ff8ad8' : '#7fd8ff', filter: pink ? 'hue-rotate(110deg) saturate(1.6) brightness(1.1)' : undefined, t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
     say(h, 'HAAAAA !!'); popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'KAMEHAMEHA !!' }); score += 2000;
   }
   if (h.t > KMAX.end) h.state = 'idle';
@@ -3732,7 +3772,8 @@ Object.assign(ETYPES, {
   // monde de Majin Boo (25/10)
   bu_brute: MINION('bu_brute', { hp: 9, armor: true, dmg: 14, h: 245, speed: [90, 110], slash: '#ffe0f0' }),
   bu_minion: MINION('bu_minion', { ranged: 'ki' }),
-  bu_boss: BOSS('bu_boss', { proj: 'beam', projColor: '#ff7ad8', adds: ['bu_brute', 'bu_minion'], roar: 'BOO VA TE CHANGER EN CHOCOLAT !!' }),
+  bu_boss: BOSS('bu_super', { proj: 'beam', projColor: '#ff7ad8', adds: ['bu_brute', 'bu_minion'], roar: 'JE VAIS TOUS VOUS ABSORBER !!' }), // Super Boo (planches bu_super)
+  bu_fat: BOSS('bu_fat', { proj: 'beam', projColor: '#ff7ad8', h: 250, score: 12000, superArmor: false, adds: [], roar: 'BOO VA TE CHANGER EN CHOCOLAT !!', mini: true }),
   bl2_boss: BOSS('bl2_boss', { proj: 'beam', projColor: '#6aff9a', adds: ['bl2_arrancar', 'bl2_fraccion'], roar: 'CERO OSCURAS.' }),
 });
 // Mini-boss, à mi-parcours de chaque monde : gabarit des boss (planches marche / attaque / spécial / chute), 70 % de
@@ -6409,7 +6450,8 @@ const FACES = {
   card_ip: [0.56, 0.288, 4.34], card_iz: [0.584, 0.354, 3.9], card_ka: [0.473, 0.249, 4.2], card_kenshin: [0.553, 0.278, 3.9],
   card_ki: [0.571, 0.423, 4.13], card_luffy: [0.687, 0.345, 3.41], card_naruto: [0.623, 0.343, 3.25], card_tanjiro: [0.426, 0.325, 3.64],
   card_ve: [0.509, 0.404, 3.1], card_ze: [0.187, 0.344, 4.34], card_zoro: [0.482, 0.288, 3.9],
-  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], card_ug: [0.32, 0.39, 4.16], card_pc: [0.685, 0.307, 3.47], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], card_ug: [0.32, 0.39, 4.16], card_pc: [0.685, 0.307, 3.47],
+  card_mb: [0.47, 0.36, 3.2], card_kw: [0.629, 0.383, 2.76], card_uy: [0.32, 0.39, 4.16], card_up: [0.32, 0.39, 4.16], card_vm: [0.509, 0.404, 3.1], card_zw: [0.482, 0.288, 3.9], card_sh: [0.579, 0.132, 7.75], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -6571,12 +6613,12 @@ const CHAR_ANIME = {
   naruto: 'naruto', sasuke: 'naruto', kakashi: 'naruto', itachi: 'naruto', naruto_s: 'naruto_s', boruto: 'boruto',
   tanjiro: 'ds', zenitsu: 'ds', inosuke: 'ds', kenshin: 'rk', ichigo: 'bleach', izuku: 'mha', shoto: 'mha', gon: 'hxh', killua: 'hxh',
   ippo: 'ippo', jinwoo: 'sl', saitama: 'opm', gojo: 'jjk', guts: 'berserk', saber: 'fate', mikasa: 'aot', levi: 'aot', eren: 'aot',
-  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama', bakugo: 'mha', seiya: 'saintseiya', gohan_a: 'dbz', piccolo: 'dbz',
+  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama', bakugo: 'mha', seiya: 'saintseiya', gohan_a: 'dbz', piccolo: 'dbz', buu: 'dbz',
 };
 for (const [id, a] of Object.entries(CHAR_ANIME)) if (CHARS[id]) CHARS[id].anime ??= a;
 // Sélection : les persos rangés par famille (même univers côte à côte), dans l'ordre des séries ci-dessous
 const FAMILY = { dbz: 'db', naruto_s: 'naruto', boruto: 'naruto' };
-const familyOf = id => { const a = CHARS[id]?.anime || CHAR_ANIME[id]; return FAMILY[a] || a; };
+const familyOf = id => { const a = CHARS[id]?.anime || CHAR_ANIME[CHARS[id]?.base || id]; return FAMILY[a] || a; };
 const FAMILY_ORDER = ['masterclass', 'db', 'op', 'naruto', 'ds', 'bleach', 'mha', 'hxh', 'jjk', 'rk', 'opm', 'sl', 'ippo', 'aot', 'berserk', 'fate', 'fma', 'lagoon', 'gunnm', 'baki', 'gintama', 'saintseiya'];
 {
   const rank = id => { const r = FAMILY_ORDER.indexOf(familyOf(id)); return r < 0 ? 99 : r; }, pos = Object.fromEntries(CHAR_IDS.map((id, i) => [id, i]));
@@ -6610,7 +6652,7 @@ const ANIME_STYLE = {
   saintseiya: { name: 'SAINT SEIYA', font: `italic 900 %px ${SERIF}`, fill: ['#ffffff', '#9fd0ff'], stroke: '#0a1a5a', outer: '#ffd860', skew: -0.06, deco: 'star' },
   gintama: { name: 'GINTAMA', font: `900 %px ${IMPACT}`, fill: ['#ffffff', '#cfe6ff'], stroke: '#1a3aa0', outer: '#0a1430', skew: -0.06, deco: 'waves' },
 };
-const animeOf = id => ANIME_STYLE[CHARS[id]?.anime || CHAR_ANIME[id]];
+const animeOf = id => ANIME_STYLE[CHARS[id]?.anime || CHAR_ANIME[CHARS[id]?.base || id]];
 
 // Dessine le nom de la série centré sur (x, y), ou partant de x si left ; size : hauteur de lettre
 function drawAnimeTitle(id, x, y, size, left = false) {
@@ -6792,7 +6834,7 @@ function drawSelect() {
   // Aide en bas d'écran
   ctx.fillStyle = 'rgba(0,0,0,0.75)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
-  ctx.fillText(`${K('left')} ${K('right')} ${K('up')} ${K('down')} choisir${variantsOf(sel.pick[focus]).length > 1 ? `    ${K('blast')} version` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
+  ctx.fillText(`${K('left')} ${K('right')} ${K('up')} ${K('down')} choisir${variantsOf(sel.pick[focus]).length > 1 ? `    ${K('blast')} tenue` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
   if (sel.go > 0) {
     ctx.save(); ctx.fillStyle = `rgba(255,255,255,${Math.max(0, 0.5 - sel.go)})`; ctx.fillRect(0, 0, W, H); ctx.restore();
     outlined('EN AVANT !', W / 2, H / 2 + 20, 70 + sel.go * 30, '#ffe14d');
