@@ -71,7 +71,7 @@ function updateOptions() {
   }
   if (sceneT > 0.2 && ['start', 'punch', 'jump'].some(hit)) {
     if (id === 'tag') { OPTS.tag = !OPTS.tag; saveOpts(); }
-    if (id === 'binds') { paused = true; openMenu(); menu.row = 1; }
+    if (id === 'binds') { paused = true; openMenu('binds'); }
     if (id === 'reset') { story.unlocked = 1; story.node = 0; saveStory(); optMenu.msg = 'Progression du mode histoire effacée'; }
     if (id === 'back') { scene = 'title'; sceneT = 0; }
     audio.tone(880, 0.1, 'triangle', 0.1);

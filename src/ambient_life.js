@@ -19,6 +19,8 @@ const AMB_FLAGS = {}; // drapeaux retirés (demande du 25/10)
 // hauteur à l'écran (px) de l'animal posé
 const AMB_SIZE = { cat: 46, rat: 24, dog: 58, pigeon: 30, crow: 40, bat: 34 };
 const AMB_BIRD = new Set(['pigeon', 'crow']);
+// au repos, le chat, le chien et le rat sont assis (planche 'sit' : chat, chien, rat) ; hauteur à l'écran assis
+const AMB_SIT = { cat: [0, 50], dog: [1, 60], rat: [2, 26] };
 // lueurs sur les bandes de décor (pixels de la bande, taille = diamètre) : vortex, cristaux, flammes
 const AMB_SPOTS = {
   sl_z1_mid: [['vortex', 690, 541, 300]],
@@ -92,6 +94,15 @@ function drawCritter(c) {
     k = c.flee ? (c.t < 0.12 ? 1 : 2 + Math.floor(c.t * 12) % 4) : (Math.sin(c.t * 2.3) > 0.85 ? 1 : 0);
     y = c.gz + c.y;
   } else k = c.flee ? Math.floor(c.t * 14) : 0;
+  const sit = !c.flee && AMB_SIT[c.kind] && ambFrame('sit', AMB_SIT[c.kind][0]);
+  if (sit) {
+    // assis, il respire et tourne parfois la tête (petit balancement)
+    const img = IMG['amb_' + sit.src], h = AMB_SIT[c.kind][1] * (1 + Math.sin(c.t * 3) * 0.015), w = sit.w * h / sit.h;
+    ctx.save(); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.beginPath(); ctx.ellipse(sx, c.gz, w * 0.35, 3, 0, 0, 7); ctx.fill();
+    ctx.translate(sx, c.gz); if ((c.dir || 1) < 0) ctx.scale(-1, 1); ctx.rotate(Math.sin(c.t * 0.9) * 0.02);
+    ctx.drawImage(img, -w / 2, -h, w, h); ctx.restore();
+    return;
+  }
   const f = ambFrame(c.kind, k), f0 = ambFrame(c.kind, 0); if (!f || !f0) return;
   const img = IMG['amb_' + f.src], s = size / f0.h, w = f.w * s, h = f.h * s;
   if (!c.flee && c.kind !== 'bat' && !AMB_BIRD.has(c.kind)) y += Math.sin(c.t * 3) * 0.6; // il respire

@@ -1,66 +1,29 @@
-// ---------- Version mobile : joystick et boutons tactiles (joueur 1) ----------
-// Affichée seulement sur un écran tactile. Chaque bouton envoie au jeu les mêmes touches que le clavier du
-// joueur 1 : le combat, les menus, la sélection et la pause marchent donc sans rien changer ailleurs.
-// Commandes simplifiées : joystick (8 directions), Poing / Pied / Saut / Spécial, Dash, Ki (maintenir = charger,
-// toucher quand la barre est assez pleine = se transformer), Ultime, Pause, Relais. Pas d'accroupi.
+// ---------- Écran tactile (téléphone, tablette) ----------
+// En combat, le tactile ne sert à rien (on joue à la manette) : il fait seulement passer en plein écran sur Android.
+// Dans les menus, on touche un élément pour le choisir (ou le valider s'il l'est déjà) et on glisse le doigt pour se
+// déplacer (une case tous les ~60 px) ; un bouton « ◀ » en haut à gauche revient en arrière.
 (() => {
-  // Seulement les vrais téléphones et tablettes (écran tactile et pas de souris) : un ordinateur, même avec un écran
-  // tactile, garde le clavier, sans boutons ni plein écran forcé. ?touch=1 / ?touch=0 pour forcer.
+  // Seulement les vrais téléphones et tablettes (écran tactile et pas de souris). ?touch=1 / ?touch=0 pour forcer.
   const q = location.search, TOUCH = /[?&]touch=1/.test(q) || (!/[?&]touch=0/.test(q) && matchMedia('(hover: none) and (pointer: coarse)').matches);
   if (!TOUCH) return;
 
-  const codeOf = a => binds[0].keys[a]?.[0];
-  const send = (a, down) => {
-    const code = a === 'pause' ? 'Escape' : codeOf(a);
-    if (code) dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup', { code, bubbles: true }));
-  };
-
   const css = document.createElement('style');
   css.textContent = `
-    #tc { position: fixed; inset: 0; z-index: 5; touch-action: none; user-select: none; -webkit-user-select: none; pointer-events: none; }
-    #tc .zone { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; pointer-events: auto; }
-    #tc .btn { position: absolute; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: auto;
-      font: 900 italic 13px Impact, sans-serif; color: #fff; text-shadow: 0 1px 2px #000; letter-spacing: .5px;
-      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), rgba(255,255,255,.08) 60%, rgba(0,0,0,.25));
-      border: 2px solid rgba(255,255,255,.55); box-shadow: 0 2px 8px rgba(0,0,0,.5); }
-    #tc .btn.on { transform: scale(.9); background: rgba(255,225,77,.55); }
-    #tc .big { width: 68px; height: 68px; font-size: 15px; }
-    #tc .small { width: 50px; height: 50px; font-size: 11px; }
-    #tc .top { width: 44px; height: 30px; border-radius: 10px; font-size: 11px; }
-    #tc .ready { border-color: #ffe14d; box-shadow: 0 0 14px #ffe14d; animation: tcp .6s infinite alternate; }
-    @keyframes tcp { to { box-shadow: 0 0 26px #ffe14d; } }
-    #tc .stick { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.4); background: rgba(255,255,255,.08); display: none; }
-    #tc .knob { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%;
-      background: rgba(255,255,255,.45); border: 2px solid #fff; }
-    #tc .hint { position: absolute; left: 6%; bottom: 14%; color: rgba(255,255,255,.35); font: 700 12px sans-serif; }
+    #tcBack { position: fixed; left: 8px; top: 8px; z-index: 6; width: 52px; height: 40px; border-radius: 12px; display: none;
+      align-items: center; justify-content: center; font: 900 22px Impact, sans-serif; color: #fff; text-shadow: 0 1px 2px #000;
+      background: rgba(10,0,25,.75); border: 2px solid rgba(255,225,77,.8); touch-action: none; user-select: none; -webkit-user-select: none; }
+    #tcBack.on { background: rgba(255,225,77,.5); }
     #turn { position: fixed; inset: 0; z-index: 9; display: none; background: #05030c; color: #fff; font: 700 20px sans-serif;
       align-items: center; justify-content: center; text-align: center; flex-direction: column; gap: 14px; }
     #turn b { font: 900 italic 30px Impact, sans-serif; color: #ffe14d; }
     @media (orientation: portrait) { #turn { display: flex; } }
   `;
   document.head.appendChild(css);
-
-  const root = document.createElement('div'); root.id = 'tc';
-  root.innerHTML = `
-    <div class="zone"><div class="hint">joystick : pose ton pouce ici</div><div class="stick"><div class="knob"></div></div></div>
-    <div class="btn big" data-a="jump"   style="right:92px; bottom:14px">SAUT</div>
-    <div class="btn big" data-a="kick"   style="right:18px; bottom:88px">GARDE</div>
-    <div class="btn big" data-a="punch"  style="right:166px;bottom:88px">ATTAQUE</div>
-    <div class="btn big" data-a="blast"  style="right:92px; bottom:162px">SPÉCIAL</div>
-    <div class="btn small" data-a="dash"  style="right:200px;bottom:178px">DASH</div>
-    <div class="btn small" data-a="ki"    style="right:22px; bottom:186px" id="tcKi">KI</div>
-    <div class="btn small" data-a="ultra" style="right:30px; bottom:248px" id="tcUlt">ULTIME</div>
-    <div class="btn top" data-a="pause" style="left:50%; top:6px; margin-left:-50px">❚❚</div>
-    <div class="btn top" data-a="tag"   style="left:50%; top:6px; margin-left:6px" id="tcTag">RELAIS</div>`;
-  document.body.appendChild(root);
   const turn = document.createElement('div'); turn.id = 'turn';
   turn.innerHTML = '<b>⟳</b>Tourne ton téléphone<br>à l\'horizontale';
   document.body.appendChild(turn);
 
-  // Plein écran et paysage au premier contact (refusé sur certains téléphones : on garde le message « Tourne »)
-  // Plein écran à chaque contact tant qu'on n'y est pas (le navigateur l'exige pendant un geste, et on peut en sortir
-  // d'un balayage). iPhone : Safari ne le permet pas ; « Ajouter à l'écran d'accueil » lance le jeu en plein écran.
+  // Plein écran à chaque contact tant qu'on n'y est pas (le navigateur l'exige pendant un geste).
   // iPhone / iPad dans Safari : pas de plein écran possible pour une page ; on explique comment l'avoir
   const iOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const standalone = matchMedia('(display-mode: standalone), (display-mode: fullscreen)').matches || navigator.standalone;
@@ -84,72 +47,79 @@
   addEventListener('pointerup', goFull, true);
   addEventListener('touchend', goFull, true);
 
-  // Boutons : appui = touche enfoncée, relâché = touche relâchée (plusieurs doigts à la fois)
-  for (const b of root.querySelectorAll('.btn')) {
-    const a = b.dataset.a;
-    let t0 = 0;
-    const down = e => {
-      e.preventDefault(); goFull(); b.setPointerCapture?.(e.pointerId); b.classList.add('on'); t0 = performance.now();
-      if (a === 'ki') send('charge', true); else send(a, true);
-    };
-    const up = e => {
-      if (!b.classList.contains('on')) return;
-      e.preventDefault(); b.classList.remove('on');
-      if (a === 'ki') {
-        send('charge', false);
-        // touche brève avec assez de ki : transformation (ou retour à la forme normale)
-        const h = typeof players !== 'undefined' && players?.[0];
-        if (performance.now() - t0 < 260 && h && (h.boost || h.ki >= KI.transform)) { send('transform', true); send('transform', false); }
-      } else send(a, false);
-    };
-    b.addEventListener('pointerdown', down);
-    b.addEventListener('pointerup', up);
-    b.addEventListener('pointercancel', up);
+  // ---- Menus au doigt ----
+  const inMenu = () => typeof scene !== 'undefined' && (scene !== 'play' || paused) && scene !== 'loading';
+  const press = a => { INPUT[0].pressed.add(a); audio.unlock(); };
+  const arrow = d => {
+    if (paused) { menuMove(d === 'up' ? -1 : d === 'down' ? 1 : 0, d === 'left' ? -1 : d === 'right' ? 1 : 0); return; }
+    press(d);
+  };
+  const canvas = document.getElementById('game');
+  const toGame = e => { const r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) * W / r.width, (e.clientY - r.top) * H / r.height]; };
+  const inBox = (x, y, b) => x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h;
+  const tick = () => audio.tone(1250, 0.025, 'sine', 0.03);
+
+  // Toucher : on choisit l'élément touché ; s'il était déjà choisi, on le valide
+  function tap(x, y) {
+    if (paused) { const b = menu.hits.find(b => inBox(x, y, b)); if (b) b.tap(); return; }
+    if (scene === 'title') {
+      const k = TITLE_ITEMS.findIndex((_, k) => x < 400 && y > 286 + k * 44 - 30 && y < 286 + k * 44 + 12);
+      if (k < 0) return;
+      if (titleMenu.row === k) press('punch'); else { titleMenu.row = k; tick(); }
+      return;
+    }
+    if (scene === 'options') {
+      const k = OPT_ROWS.findIndex((_, k) => y > 130 + k * 52 - 30 && y < 130 + k * 52 + 20);
+      if (k < 0) return;
+      if (optMenu.row !== k) { optMenu.row = k; tick(); return; }
+      // ligne réglable : à gauche de la valeur on baisse, à droite on monte
+      if (['diff', 'lives', 'tag', 'music'].includes(OPT_ROWS[k])) press(x < W - 260 ? 'left' : 'right'); else press('punch');
+      return;
+    }
+    if (scene === 'select') {
+      if (sel.outfit[0]) { press(x < 226 ? 'left' : x < 452 ? 'right' : 'punch'); return; }
+      const ps = [0, 1, 2, 3].filter(p => sel.joined[p]), G = selGrid(ps.length);
+      const c = Math.floor((x - G.gx) / G.cell), r = Math.floor((y - G.gy) / G.cell), k = r * G.cols + c;
+      if (c < 0 || c >= G.cols || r < 0 || k >= CHAR_IDS.length) return;
+      if (sel.ready[0]) return;
+      if (sel.pick[0] === k) press('punch');
+      else { sel.pick[0] = k; sel.vari[0] = 0; sel.focus = 0; sel.flash = 1; sel.pf[0] = 1; tick(); }
+      return;
+    }
+    if (scene === 'levels') { if (Math.abs(x - W / 2) < 260) press('punch'); else press(x < W / 2 ? 'left' : 'right'); return; }
+    press('punch'); // carte, histoire, en ligne, fin de niveau : toucher = continuer
   }
 
-  // Joystick flottant : il apparaît là où le pouce se pose, dans la moitié gauche
-  const zone = root.querySelector('.zone'), stick = root.querySelector('.stick'), knob = root.querySelector('.knob'), hint = root.querySelector('.hint');
-  const R = 50, held = new Set();
-  let sid = null, ox = 0, oy = 0;
-  const setDirs = dirs => {
-    for (const d of ['left', 'right', 'up', 'down']) {
-      if (dirs.has(d) && !held.has(d)) { held.add(d); send(d, true); }
-      if (!dirs.has(d) && held.has(d)) { held.delete(d); send(d, false); }
-    }
-  };
-  zone.addEventListener('pointerdown', e => {
-    e.preventDefault(); goFull();
-    // un nouveau contact reprend toujours le joystick (un relâché perdu ne doit pas le bloquer)
-    setDirs(new Set());
-    sid = e.pointerId; try { zone.setPointerCapture(e.pointerId); } catch (_) {}
-    ox = e.clientX; oy = e.clientY;
-    stick.style.display = 'block'; stick.style.left = ox + 'px'; stick.style.top = oy + 'px'; hint.style.display = 'none';
-    knob.style.transform = '';
+  // Glisser : une direction par tranche de ~60 px, dans l'axe dominant
+  let tid = null, sx = 0, sy = 0, lx = 0, ly = 0, moved = false;
+  canvas.addEventListener('pointerdown', e => {
+    if (!inMenu()) return;
+    e.preventDefault(); tid = e.pointerId; [sx, sy] = toGame(e); lx = sx; ly = sy; moved = false;
   });
-  zone.addEventListener('pointermove', e => {
-    if (e.pointerId !== sid) return;
-    e.preventDefault();
-    let dx = e.clientX - ox, dy = e.clientY - oy;
-    const d = Math.hypot(dx, dy);
-    if (d > R) { dx *= R / d; dy *= R / d; }
-    knob.style.transform = `translate(${dx}px, ${dy}px)`;
-    const dirs = new Set();
-    if (d > 14) {
-      if (dx < -R * 0.38) dirs.add('left'); if (dx > R * 0.38) dirs.add('right');
-      if (dy < -R * 0.45) dirs.add('up'); if (dy > R * 0.45) dirs.add('down');
-    }
-    setDirs(dirs);
+  canvas.addEventListener('pointermove', e => {
+    if (e.pointerId !== tid || !inMenu()) return;
+    const [x, y] = toGame(e), dx = x - lx, dy = y - ly, STEP = 60;
+    if (Math.abs(x - sx) > 14 || Math.abs(y - sy) > 14) moved = true;
+    if (Math.abs(dx) >= STEP && Math.abs(dx) > Math.abs(dy)) { arrow(dx > 0 ? 'right' : 'left'); lx = x; ly = y; }
+    else if (Math.abs(dy) >= STEP) { arrow(dy > 0 ? 'down' : 'up'); lx = x; ly = y; }
   });
-  const release = e => {
-    if (e.pointerId !== sid) return;
-    sid = null; stick.style.display = 'none'; setDirs(new Set());
-  };
-  zone.addEventListener('pointerup', release);
-  zone.addEventListener('pointercancel', release);
-  zone.addEventListener('lostpointercapture', release);
+  canvas.addEventListener('pointerup', e => {
+    if (e.pointerId !== tid) return;
+    tid = null;
+    if (!moved && inMenu()) { const [x, y] = toGame(e); tap(x, y); }
+  });
+  canvas.addEventListener('pointercancel', () => { tid = null; });
 
-  // État des boutons : Ultime qui brille quand il est prêt, Ki qui annonce la transformation, Relais si actif
-  const ki = document.getElementById('tcKi'), ult = document.getElementById('tcUlt'), tag = document.getElementById('tcTag');
+  // Bouton retour des menus
+  const back = document.createElement('div'); back.id = 'tcBack'; back.textContent = '◀';
+  document.body.appendChild(back);
+  back.addEventListener('pointerdown', e => { e.preventDefault(); back.classList.add('on'); });
+  back.addEventListener('pointerup', e => {
+    e.preventDefault(); back.classList.remove('on');
+    if (paused) menuBack(); else press('kick');
+  });
+
+  // Saisie du code d'une partie en ligne (clavier du téléphone)
   const box = document.createElement('div');
   box.id = 'tcCode';
   box.innerHTML = `<div class="t">CODE DE LA PARTIE</div><input maxlength="4" autocapitalize="characters" autocomplete="off" spellcheck="false">
@@ -176,17 +146,13 @@
   }
   inp.addEventListener('pointerup', e => { e.stopPropagation(); inp.focus(); });
 
-  const tick = () => {
+  const loop = () => {
     if (typeof net !== 'undefined' && scene === 'online' && net.typing && box.style.display !== 'flex') {
       box.style.display = 'flex'; inp.value = ''; setTimeout(() => inp.focus(), 50);
     }
-    const h = typeof players !== 'undefined' && scene === 'play' ? players?.[0] : null;
-    ult.classList.toggle('ready', !!h && h.ki >= KI.ultra);
-    const canForm = !!h && !h.boost && h.ki >= KI.transform;
-    ki.classList.toggle('ready', canForm);
-    ki.textContent = h?.boost ? 'KI ▼' : canForm ? 'TRANSFO' : 'KI';
-    tag.style.display = h?.reserve ? 'flex' : 'none';
-    requestAnimationFrame(tick);
+    // le bouton retour n'apparaît que dans les menus où il sert
+    back.style.display = typeof scene !== 'undefined' && inMenu() && scene !== 'title' ? 'flex' : 'none';
+    requestAnimationFrame(loop);
   };
-  tick();
+  loop();
 })();

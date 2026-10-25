@@ -68,7 +68,7 @@ let gameLoading = null; // { done, total } pendant le chargement d'une partie
 function requireGame(chars, L) {
   const sheets = new Set([...chars.flatMap(charSheets), ...levelNeeds(L).sheets]);
   const frames = [...sheets].flatMap(sh => Object.values(SPRITES[sh] || {}).flatMap(a => a.frames.map(f => f.src)));
-  const { bgs, intros } = levelNeeds(L), cuts = chars.map(id => 'cutin_' + id);
+  const { bgs, intros } = levelNeeds(L), cuts = chars.map(id => 'cutin_' + (CHARS[id]?.base || id)); // tenue : le gros plan du perso d'origine
   // on libère les sprites, décors et images de présentation qui ne servent plus (mémoire du téléphone)
   const keep = new Set([...frames, ...bgs, ...intros, ...cuts, ...showcaseFrames()]);
   for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin)_/.test(k)) && !keep.has(k)) delete IMG[k];
@@ -159,7 +159,8 @@ const KEY_NAMES = {
 };
 const keyLabel = c => KEY_NAMES[c] || (/^Numpad\d$/.test(c) ? c.slice(6) + ' pavé'
   : (layout && layout.get(c) || c.replace(/^(Key|Digit)/, '')).toUpperCase());
-const PAD_NAMES = ['A', 'B', 'X', 'Y', 'LB', 'RB', 'LT', 'RT', 'Select', 'Start', 'L3', 'R3', 'Croix ↑', 'Croix ↓', 'Croix ←', 'Croix →', 'Home'];
+// boutons nommés comme sur la manette du joueur (disposition Nintendo : B en bas, A à droite, Y à gauche, X en haut)
+const PAD_NAMES = ['B', 'A', 'Y', 'X', 'L', 'R', 'ZL', 'ZR', '−', '+', 'L3', 'R3', 'Croix ↑', 'Croix ↓', 'Croix ←', 'Croix →', 'Home'];
 const padLabel = i => PAD_NAMES[i] || `Bouton ${i}`;
 // Touches d'une action d'un joueur, pour les aides à l'écran (deux au plus)
 const K = (a, p = 0) => binds[p].keys[a].slice(0, 2).map(keyLabel).join(' / ') || '—';
@@ -232,32 +233,49 @@ function pollPad() {
 
 // ---------- Menu pause : voir et modifier les commandes de chaque joueur ----------
 // Lignes : le joueur, une ligne par action, puis « Commandes par défaut » et « Reprendre ». Colonnes : clavier, manette.
-const menu = { p: 0, row: 0, col: 0, capture: null, msg: '' };
-const MENU_ROWS = ACTIONS.length + 5, ROW_MUSIC = ACTIONS.length + 1, ROW_DEFAULT = ACTIONS.length + 2, ROW_RESUME = ACTIONS.length + 3;
+const menu = { p: 0, row: 0, col: 0, capture: null, msg: '', page: 'main', mrow: 0, fromOptions: false, hits: [] };
+// Page « commandes » : le joueur, une ligne par action, « Commandes par défaut » et « Retour ». Colonnes : clavier, manette.
+const MENU_ROWS = ACTIONS.length + 3, ROW_DEFAULT = ACTIONS.length + 1, ROW_RESUME = ACTIONS.length + 2;
+// Page principale : gros boutons
+const pauseItems = () => [['resume', 'REPRENDRE'], ['binds', 'COMMANDES'], ['music', `MUSIQUE : ${OPTS.musicOff ? 'NON' : 'OUI'}`], ['quit', 'QUITTER LA PARTIE']];
 
-function openMenu() { menu.row = ROW_RESUME; menu.col = 0; menu.capture = null; menu.msg = ''; }
+function openMenu(page = 'main') { menu.page = page; menu.mrow = 0; menu.row = 1; menu.col = 0; menu.capture = null; menu.msg = ''; menu.fromOptions = scene === 'options'; }
 function closeMenu() { paused = false; menu.capture = null; INPUT.forEach(I => { I.keys.clear(); I.pressed.clear(); }); }
+// « retour » : de la page des commandes à la page principale (ou aux options), de la page principale au jeu
+function menuBack() {
+  if (menu.page === 'binds' && !menu.fromOptions) { menu.page = 'main'; menu.mrow = 1; audio.tone(420, 0.06, 'sine', 0.05, -80); }
+  else closeMenu();
+}
 
 function menuMove(dr, dc) {
-  menu.row = (menu.row + dr + MENU_ROWS) % MENU_ROWS;
-  if (menu.row === 0 && dc) menu.p = clamp(menu.p + dc, 0, 3);
-  else menu.col = clamp(menu.col + dc, 0, 1);
+  if (menu.page === 'main') { const n = pauseItems().length; menu.mrow = (menu.mrow + dr + n) % n; }
+  else {
+    menu.row = (menu.row + dr + MENU_ROWS) % MENU_ROWS;
+    if (menu.row === 0 && dc) menu.p = clamp(menu.p + dc, 0, 3);
+    else menu.col = clamp(menu.col + dc, 0, 1);
+  }
   menu.msg = '';
-  audio.tone(660, 0.05, 'triangle', 0.05);
+  audio.tone(1250, 0.025, 'sine', 0.03);
 }
 
 function menuActivate() {
+  audio.tone(880, 0.08, 'sine', 0.06, 160);
+  if (menu.page === 'main') {
+    const id = pauseItems()[menu.mrow][0];
+    if (id === 'resume') closeMenu();
+    else if (id === 'binds') { menu.page = 'binds'; menu.row = 1; menu.col = 0; }
+    else if (id === 'music') { OPTS.musicOff = !OPTS.musicOff; saveOpts(); } // musique seule (les bruitages restent)
+    else if (id === 'quit') { closeMenu(); scene = 'title'; sceneT = 0; audio.stopAll(); }
+    return;
+  }
   if (menu.row === 0) { menu.p = (menu.p + 1) % 4; return; }
   if (menu.row <= ACTIONS.length) { menu.capture = menu.col ? 'pad' : 'key'; menu.msg = ''; return; }
-  if (menu.row === ROW_MUSIC) { OPTS.musicOff = !OPTS.musicOff; saveOpts(); return; } // musique seule (les bruitages restent)
   if (menu.row === ROW_DEFAULT) {
     binds[menu.p] = copy(DEFAULT_BINDS[menu.p]); saveBinds(); rebuildKeymap();
     menu.msg = `Commandes par défaut rétablies (joueur ${menu.p + 1})`;
     return;
   }
-  closeMenu();
-  // Dernière ligne : quitter la partie et revenir à l'écran titre
-  if (menu.row > ROW_RESUME && scene !== 'options') { scene = 'title'; sceneT = 0; audio.stopAll(); }
+  menuBack();
 }
 
 // Nouvelle touche pour l'action choisie. Si elle servait déjà ailleurs, les deux actions échangent leurs touches.
@@ -288,7 +306,7 @@ function menuKey(e) {
   else if (e.code === 'ArrowRight') menuMove(0, 1);
   else if (e.repeat) return;
   else if (e.code === 'Enter' || e.code === 'Space') menuActivate();
-  else if (e.code === 'Escape' || KEYMAP[e.code]?.[1] === 'pause') closeMenu();
+  else if (e.code === 'Escape' || e.code === 'Backspace' || KEYMAP[e.code]?.[1] === 'pause') menuBack();
 }
 
 function menuPad(fresh, n) {
@@ -303,53 +321,111 @@ function menuPad(fresh, n) {
   if (fresh(14)) menuMove(0, -1);
   if (fresh(15)) menuMove(0, 1);
   if (fresh(0) || fresh(2)) menuActivate(); // bas, gauche : valider
-  if (fresh(1) || fresh(3) || fresh(9)) closeMenu(); // droite, haut, Start : revenir
+  if (fresh(1) || fresh(3)) menuBack(); // droite, haut : revenir
+  if (fresh(9)) closeMenu(); // Start : reprendre
+}
+
+// Bouton incliné façon arcade (même style que le menu de l'écran titre)
+function arcadeBtn(x, y, w, h, label, on, size = 24) {
+  const dx = on ? 12 + Math.sin(sceneT * 6) * 2 : 0;
+  ctx.save(); ctx.translate(x + dx, y); ctx.transform(1, 0, -0.18, 1, 0, 0);
+  ctx.fillStyle = on ? 'rgba(220,20,60,0.95)' : 'rgba(10,0,25,0.78)'; ctx.fillRect(0, 0, w, h);
+  ctx.strokeStyle = on ? '#ffe14d' : 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2; ctx.strokeRect(0, 0, w, h);
+  if (on) { ctx.fillStyle = '#ffe14d'; ctx.fillRect(0, 0, 8, h); ctx.fillRect(0, h - 3, w, 3); }
+  ctx.restore();
+  outlined(label, x + 30 + dx, y + h / 2 + size * 0.36, on ? size + 2 : size, on ? '#ffe14d' : '#fff', 'left');
+}
+// Touche ou bouton dessiné comme une petite pastille
+function keyChip(x, y, txt, active, waiting) {
+  ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'left';
+  const w = Math.max(30, ctx.measureText(txt).width + 16), h = 18;
+  ctx.fillStyle = waiting ? 'rgba(255,225,77,0.25)' : active ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.08)';
+  ctx.beginPath(); ctx.roundRect(x, y, w, h, 6); ctx.fill();
+  ctx.strokeStyle = waiting || active ? '#ffe14d' : 'rgba(255,255,255,0.25)'; ctx.lineWidth = active ? 2 : 1; ctx.stroke();
+  ctx.fillStyle = waiting ? '#ffe14d' : '#fff'; ctx.fillText(txt, x + 8, y + 14);
+  return w;
 }
 
 function drawPauseMenu() {
-  ctx.fillStyle = 'rgba(5,0,20,0.85)'; ctx.fillRect(0, 0, W, H);
-  outlined('PAUSE', W / 2, 42, 36);
-  const x0 = 170, xk = 520, xp = 720, top = 58, rh = 19, B = binds[menu.p];
-  const blink = Math.floor(performance.now() / 300) % 2;
-  for (let r = 0; r < MENU_ROWS; r++) {
-    const y = top + r * rh + (r > 0 ? 22 : 0) + (r > ACTIONS.length ? 10 : 0), sel = r === menu.row;
-    if (sel) { ctx.fillStyle = 'rgba(127,240,255,0.14)'; ctx.fillRect(x0 - 14, y, 640, rh - 2); }
-    ctx.font = (sel ? 'bold ' : '') + '14px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = sel ? '#fff' : '#cfd3ff';
-    if (r === 0) {
-      // Onglets joueur 1 / joueur 2
-      ['JOUEUR 1', 'JOUEUR 2', 'JOUEUR 3', 'JOUEUR 4'].forEach((txt, p) => {
-        const x = x0 + p * 130, on = menu.p === p;
-        ctx.fillStyle = on ? COLORS_P[p] : 'rgba(255,255,255,0.08)'; ctx.fillRect(x, y, 118, rh - 2);
-        ctx.fillStyle = on ? '#120420' : '#9aa0d0'; ctx.font = 'bold 13px sans-serif'; ctx.fillText(txt, x + 26, y + 14);
-      });
-      ctx.fillStyle = '#7ff0ff'; ctx.font = 'bold 13px sans-serif';
-      ctx.fillText('CLAVIER', xk - 10, y + 36);
-      const pn = Object.keys(padOwner).length;
-      ctx.fillText(padNames.length ? `MANETTE${pn ? ' du joueur' : ''}` : 'MANETTE (non branchée)', xp - 10, y + 36);
-      continue;
-    }
-    if (r <= ACTIONS.length) {
-      const [a, label] = ACTIONS[r - 1];
-      ctx.fillText(label, x0, y + 14);
-      const cells = [B.keys[a].map(keyLabel).join('  /  '), B.pad[a].map(padLabel).join('  /  ')];
-      cells.forEach((txt, c) => {
-        const x = c ? xp : xk, active = sel && menu.col === c;
-        if (active) { ctx.strokeStyle = '#ffe14d'; ctx.lineWidth = 2; ctx.strokeRect(x - 10, y + 1, 190, rh - 4); }
-        const waiting = active && menu.capture;
-        ctx.fillStyle = waiting ? '#ffe14d' : active ? '#fff' : '#9aa0d0';
-        ctx.fillText(waiting ? (blink ? (c ? 'Appuie sur un bouton…' : 'Appuie sur une touche…') : '') : txt, x, y + 14);
-      });
-    } else {
-      ctx.fillStyle = sel ? '#ffe14d' : '#cfd3ff';
-      ctx.fillText(r === ROW_MUSIC ? `♪  Musique : ${OPTS.musicOff ? 'NON' : 'OUI'}   (les bruitages restent)` : r === ROW_DEFAULT ? `↺  Commandes par défaut (joueur ${menu.p + 1})` : r === ROW_RESUME ? (scene === 'options' ? '▶  Retour aux options' : '▶  Reprendre la partie') : (scene === 'options' ? '' : '✕  Quitter la partie (écran titre)'), x0, y + 14);
-    }
+  menu.hits = [];
+  // fond : le jeu assombri, bandes diagonales qui défilent, vignette
+  ctx.fillStyle = 'rgba(6,0,22,0.78)'; ctx.fillRect(0, 0, W, H);
+  ctx.save(); ctx.globalAlpha = 0.06; ctx.fillStyle = '#ff2f6d';
+  for (let k = -4; k < 14; k++) { const x = k * 110 + (sceneT * 30) % 110; ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 50, 0); ctx.lineTo(x - 150, H); ctx.lineTo(x - 200, H); ctx.fill(); }
+  ctx.restore();
+  const g = ctx.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9);
+  g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,0.6)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  if (menu.page === 'main') drawPauseMain(); else drawPauseBinds();
+}
+
+function drawPauseMain() {
+  // portrait du perso du joueur 1, en grand à droite
+  const h = players[0], card = h && IMG[h.C?.card];
+  if (card && scene !== 'options') {
+    const ch = H * 1.02, cw = card.width * ch / card.height;
+    ctx.save(); ctx.globalAlpha = 0.9; ctx.drawImage(card, W - cw * 0.92, H - ch + 10, cw, ch); ctx.restore();
+    const fade = ctx.createLinearGradient(W - cw * 0.92, 0, W - cw * 0.5, 0);
+    fade.addColorStop(0, 'rgba(6,0,22,1)'); fade.addColorStop(1, 'rgba(6,0,22,0)'); ctx.fillStyle = fade; ctx.fillRect(W - cw * 0.92 - 2, 0, cw * 0.42, H);
   }
+  ctx.save(); ctx.translate(60, 110); ctx.rotate(-0.06); outlined('PAUSE', 0, 0, 86, '#ffe14d', 'left'); ctx.restore();
+  ctx.fillStyle = '#ff2f6d'; ctx.fillRect(64, 128, 230, 5);
+  const lv = typeof LVL !== 'undefined' && LVL?.name;
+  if (lv) { ctx.font = 'bold 15px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#cfd3ff'; ctx.fillText(lv, 66, 156); }
+  pauseItems().forEach(([id, label], k) => {
+    const x = 70, y = 200 + k * 62, on = k === menu.mrow;
+    arcadeBtn(x, y, 360, 46, label, on);
+    menu.hits.push({ x, y, w: 380, h: 46, tap: () => { menu.mrow = k; menuActivate(); }, over: () => { if (menu.mrow !== k) { menu.mrow = k; audio.tone(1250, 0.025, 'sine', 0.03); } } });
+  });
+  ctx.textAlign = 'center'; ctx.font = '13px sans-serif'; ctx.fillStyle = 'rgba(207,211,255,0.85)';
+  ctx.fillText('↑ ↓ choisir     Entrée / B / Y valider     Échap / A / X revenir', W / 2, H - 16);
+}
+
+function drawPauseBinds() {
+  const B = binds[menu.p], blink = Math.floor(performance.now() / 300) % 2;
+  outlined('COMMANDES', 40, 50, 38, '#ffe14d', 'left');
+  // onglets des joueurs
+  ['JOUEUR 1', 'JOUEUR 2', 'JOUEUR 3', 'JOUEUR 4'].forEach((txt, p) => {
+    const x = 330 + p * 150, y = 22, on = menu.p === p;
+    ctx.save(); ctx.translate(x, y); ctx.transform(1, 0, -0.2, 1, 0, 0);
+    ctx.fillStyle = on ? COLORS_P[p] : 'rgba(255,255,255,0.08)'; ctx.fillRect(0, 0, 136, 30);
+    if (menu.row === 0 && on) { ctx.strokeStyle = '#ffe14d'; ctx.lineWidth = 3; ctx.strokeRect(0, 0, 136, 30); }
+    ctx.restore();
+    ctx.font = 'italic 900 16px Impact, "Arial Black", sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = on ? '#120420' : '#9aa0d0'; ctx.fillText(txt, x + 66, y + 22);
+    menu.hits.push({ x, y, w: 136, h: 30, tap: () => { menu.row = 0; menu.p = p; } });
+  });
+  // tableau : action | clavier | manette
+  const x0 = 60, xk = 380, xp = 640, top = 70, rh = 21, pw = W - 120;
+  ctx.fillStyle = 'rgba(10,0,30,0.7)'; ctx.beginPath(); ctx.roundRect(x0 - 16, top - 6, pw + 32, rh * ACTIONS.length + 40, 12); ctx.fill();
+  ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#7ff0ff';
+  ctx.fillText('ACTION', x0, top + 12); ctx.fillText('CLAVIER', xk, top + 12);
+  ctx.fillText(padNames.length ? 'MANETTE' : 'MANETTE (non branchée)', xp, top + 12);
+  ACTIONS.forEach(([a, label], i) => {
+    const r = i + 1, y = top + 22 + i * rh, sel = menu.row === r;
+    if (i % 2) { ctx.fillStyle = 'rgba(255,255,255,0.03)'; ctx.fillRect(x0 - 8, y, pw + 16, rh); }
+    if (sel) { ctx.fillStyle = 'rgba(255,47,109,0.22)'; ctx.fillRect(x0 - 8, y, pw + 16, rh); ctx.fillStyle = '#ff2f6d'; ctx.fillRect(x0 - 8, y, 4, rh); }
+    ctx.font = (sel ? 'bold ' : '') + '14px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = sel ? '#fff' : '#cfd3ff';
+    ctx.fillText(label, x0, y + 15);
+    [B.keys[a].map(keyLabel), B.pad[a].map(padLabel)].forEach((list, c) => {
+      const active = sel && menu.col === c, waiting = active && menu.capture;
+      let x = c ? xp : xk;
+      if (waiting) keyChip(x, y + 1, blink ? (c ? 'Appuie sur un bouton…' : 'Appuie sur une touche…') : ' ', true, true);
+      else for (const t of (list.length ? list : ['—'])) x += keyChip(x, y + 1, t, active, false) + 6;
+      menu.hits.push({ x: c ? xp : xk, y, w: 230, h: rh, tap: () => { menu.row = r; menu.col = c; menuActivate(); } });
+    });
+  });
+  // boutons du bas
+  const yb = top + 40 + rh * ACTIONS.length + 10;
+  [[ROW_DEFAULT, `↺  PAR DÉFAUT (J${menu.p + 1})`], [ROW_RESUME, menu.fromOptions ? '◀  RETOUR AUX OPTIONS' : '◀  RETOUR']].forEach(([r, label], k) => {
+    const x = 70 + k * 400;
+    arcadeBtn(x, yb, 330, 38, label, menu.row === r, 19);
+    menu.hits.push({ x, y: yb, w: 350, h: 38, tap: () => { menu.row = r; menuActivate(); } });
+  });
   ctx.textAlign = 'center'; ctx.font = '13px sans-serif';
-  if (menu.msg) { ctx.fillStyle = '#ffe14d'; ctx.fillText(menu.msg, W / 2, H - 40); }
-  ctx.fillStyle = '#cfd3ff';
+  if (menu.msg) { ctx.fillStyle = '#ffe14d'; ctx.fillText(menu.msg, W / 2, H - 34); }
+  ctx.fillStyle = 'rgba(207,211,255,0.85)';
   ctx.fillText(menu.capture
     ? 'Appuie sur la nouvelle touche ou le nouveau bouton — Échap (ou Start) pour annuler'
-    : '↑ ↓ choisir   ← → joueur / clavier / manette   Entrée (A) modifier   Échap (B) reprendre', W / 2, H - 18);
+    : '↑ ↓ choisir   ← → joueur / clavier / manette   Entrée / B / Y modifier   Échap / A / X revenir', W / 2, H - 12);
 }
 
 // ---------- Sons ----------
@@ -5722,7 +5798,7 @@ function drawLayer(key) {
 function drawBackground() {
   // Ciel
   if (ZONES.some(Z => Z.sky)) drawZoneLayer('sky');
-  else if (IMG[LVL.sky]) drawTiled(IMG[LVL.sky], LAYERS.sky.factor, LAYERS.sky.y, LAYERS.sky.h);
+  else if (IMG[LVL.sky]) drawTiled(IMG[LVL.sky], LAYERS.sky.factor, LAYERS.sky.y, LAYERS.sky.h, undefined, true); // en miroir : les nuages ne sont plus coupés au raccord
   else {
     const g = ctx.createLinearGradient(0, 0, 0, H);
     g.addColorStop(0, '#0b0624'); g.addColorStop(0.55, '#3a1460'); g.addColorStop(1, '#ff3d8a');
@@ -6639,11 +6715,7 @@ function drawTitle() {
     outlined('BROKEN', W / 2, 150, 84, '#ff9a1f');
     outlined('WORLD', W / 2, 240, 96, '#4fc3ff');
   }
-  drawTitleMenu();
-  ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 66, W, 66);
-  ctx.fillStyle = '#fff'; ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText(`J1 :  ${K('left')} ${K('right')} ${K('up')} ${K('down')}  bouger     ${K('jump')}  sauter     ${K('crouch')}  se baisser     ${K('punch')}  attaque (tenir : coup chargé)     ${K('kick')}  garde     ${K('blast')}  spécial     ${K('dash')}  dash`, W / 2, H - 42);
-  ctx.fillText(`${K('charge')} (tenir)  ki     ${K('transform')}  transformation     ${K('ultra')}  ultime     ${K('pause')}  pause et commandes     —     J2 : pavé numérique ou 2e manette`, W / 2, H - 18);
+  drawTitleMenu(); // les commandes se voient dans le menu pause (plus de bandeau des touches ici)
 }
 
 // ---------- Nom de l'animé d'origine, en lettrage évocateur de la série (dessiné en code, aucun logo copié) ----------

@@ -794,7 +794,7 @@ function drawItem(it) {
 function drawZoneLayer(kind) {
   const L = LAYERS[kind === 'mid' ? 'mid' : kind === 'sky' ? 'sky' : 'street'];
   // décors des niveaux à thème : une copie sur deux en miroir, pour qu'aucune coupure ne se voie entre deux copies
-  const f = L.factor, mirror = kind === 'mid' ? LVL !== TOKYO : kind === 'sky' ? false : L.mirror;
+  const f = L.factor, mirror = kind === 'mid' ? LVL !== TOKYO : kind === 'sky' ? true : L.mirror; // ciel en miroir : nuages continus
   for (let k = 0; k < ZONES.length; k++) {
     const Z = ZONES[k], key = kind === 'sky' ? Z.sky || LVL.sky : Z[kind], img = IMG[key] || (kind === 'mid' && IMG[midX(key)]), next = ZONES[k + 1];
     if (!img) continue;
