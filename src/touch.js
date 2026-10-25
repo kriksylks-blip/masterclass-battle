@@ -86,8 +86,16 @@
       else { sel.pick[0] = k; sel.vari[0] = 0; sel.focus = 0; sel.flash = 1; sel.pf[0] = 1; tick(); }
       return;
     }
-    if (scene === 'levels') { if (Math.abs(x - W / 2) < 260) press('punch'); else press(x < W / 2 ? 'left' : 'right'); return; }
-    press('punch'); // carte, histoire, en ligne, fin de niveau : toucher = continuer
+    if (scene === 'levels') {
+      // liste verticale des univers à gauche (carte choisie au milieu, ~104 px entre deux cartes) ; à droite : l'aperçu
+      if (x > lvSplitX(y)) { press('punch'); return; }
+      const d = Math.round((y - (H / 2 + 6)) / 104);
+      if (!d) { press('punch'); return; }
+      const n = LEVELS.length; levelPick = ((levelPick + d) % n + n) % n; lvSel.flash = 1; tick();
+      return;
+    }
+    if (scene === 'map') { press(x < W * 0.3 ? 'left' : x > W * 0.7 ? 'right' : 'punch'); return; } // carte du mode histoire
+    press('punch'); // histoire, en ligne, fin de niveau : toucher = continuer
   }
 
   // Glisser : une direction par tranche de ~60 px, dans l'axe dominant
