@@ -242,7 +242,7 @@ const MAP_NODES = [
 // Les maîtres recrutés dans chaque monde : la Masterclass (affichée en bas du plateau)
 const RECRUITS = {
   tokyo: ['ippo', 'baki'], op: ['luffy', 'ace'], ds: ['tanjiro'], hx: ['gon', 'killua'], nr: ['naruto', 'kakashi', 'boruto'], bl: ['ichigo', 'eren'], mh: ['izuku', 'shoto', 'bakugo'],
-  rk: ['kenshin', 'revy', 'gintoki'], sl: ['jinwoo', 'saber', 'edward'], op2: ['zoro', 'sanji'], ds2: ['zenitsu', 'inosuke'], jk: ['gojo', 'levi'], nr2: ['sasuke', 'itachi'], opm: ['saitama', 'mikasa'], bl2: ['guts', 'gally'],
+  rk: ['kenshin', 'revy', 'gintoki'], sl: ['jinwoo', 'saber', 'edward'], op2: ['zoro', 'sanji'], ds2: ['zenitsu', 'inosuke'], jk: ['gojo', 'levi'], nr2: ['sasuke', 'itachi', 'naruto_s'], opm: ['saitama', 'mikasa'], bl2: ['guts', 'gally'],
   db: ['goku', 'vegeta', 'seiya'], db2: ['gohan', 'trunks'],
 };
 const story = { unlocked: 1, node: 0, done: [] };

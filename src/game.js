@@ -945,7 +945,7 @@ const CHARS = {
     ultraPose: h => h.t < SANZEN.spin ? ['special', 4 + Math.floor(h.t * 14) % 3] : h.t < SANZEN.dash ? ['dashcharge', 1] : ['dashcharge', h.t < SANZEN.dash + 0.25 ? 2 : 3],
   },
   naruto: {
-    name: 'NARUTO', title: 'Le ninja de Konoha', sheet: 'naruto', card: 'card_naruto',
+    name: 'NARUTO ENFANT', title: 'Le ninja de Konoha', sheet: 'naruto', card: 'card_naruto',
     colors: ['#ff8a00', '#2a5cff'], kiColor: '#8fd0ff', hit: '#cfeaff', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 3]],
     labels: { blast: 'RASENGAN', ultra: 'MULTI-CLONAGE' },
     // La rage : le manteau de chakra rouge du démon renard, avec ses queues
@@ -1172,7 +1172,7 @@ const CHARS = {
     special: 'shirodemon', special2: 'gicrush', speed: 270, pose: stdPose, ultra: [startGinsan, updateGinsan],
     ultraPose: h => h.t < GINSAN.lazy ? ['dashcharge', 5] : h.t < GINSAN.rushEnd ? ['combo', [2, 5, 6, 7][Math.floor((h.t - GINSAN.lazy) / GINSAN.every) % 4]] : h.t < GINSAN.smash ? ['special', 5] : h.t < GINSAN.end - 0.3 ? ['special', 6] : ['special', 7],
   },  naruto_s: {
-    name: 'NARUTO', title: 'Le ninja de Konoha, trois ans plus tard', sheet: 'naruto_s', card: 'card_ns',
+    name: 'NARUTO ADO', title: 'Le ninja de Konoha, trois ans plus tard', sheet: 'naruto_s', card: 'card_ns',
     colors: ['#1a1a1a', '#ff9a1a'], kiColor: '#8fd0ff', hit: '#cfeaff', trail: '#bfe8ff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 4]],
     labels: { blast: 'RASENGAN', ultra: 'RASEN-SHURIKEN GÉANT' },
     // Mode Kyûbi (24/10, demandé à la place du Mode Ermite) : tout le corps passe au chakra doré, les vêtements sombres
@@ -1314,7 +1314,7 @@ for (const [id, k] of Object.entries(CHAR_SIZE))
   for (const sh of charSheets(id)) for (const A of Object.values(SPRITES[sh] || {})) { A.scale *= k; if (A.rate) A.rate /= k; }
 // Variantes : plusieurs versions d'un perso dans la même case de la sélection (↑/↓). La première est la case,
 // les suivantes n'ont pas de case à elles ; une variante absente (pas encore dans CHARS) est ignorée.
-CHARS.naruto.variants = ['naruto', 'naruto_s'];
+// (Naruto enfant et Naruto ado sont deux cases distinctes depuis le 25/10 : plus clair pour le joueur)
 const VARIANT_LABEL = { naruto: 'ENFANT', naruto_s: 'SHIPPUDEN' };
 const VARIANT_ONLY = new Set(Object.values(CHARS).flatMap(C => (C.variants || []).slice(1)));
 // Un personnage n'apparaît qu'une fois ses planches découpées (src/sprites.js)
@@ -6321,7 +6321,7 @@ const FACES = {
   card_ip: [0.56, 0.288, 4.34], card_iz: [0.584, 0.354, 3.9], card_ka: [0.473, 0.249, 4.2], card_kenshin: [0.553, 0.278, 3.9],
   card_ki: [0.571, 0.423, 4.13], card_luffy: [0.687, 0.345, 3.41], card_naruto: [0.623, 0.343, 3.25], card_tanjiro: [0.426, 0.325, 3.64],
   card_ve: [0.509, 0.404, 3.1], card_ze: [0.187, 0.344, 4.34], card_zoro: [0.482, 0.288, 3.9],
-  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.4, 3.2], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
