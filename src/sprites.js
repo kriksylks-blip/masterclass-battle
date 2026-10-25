@@ -55730,63 +55730,120 @@ const SPRITES = {
  },
  "goku_whis_ssj": {
   "walk": {
-   "scale": 0.5534,
+   "scale": 0.3776,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_0.png",
-     "w": 297,
-     "h": 357,
-     "ax": 161.7,
-     "ay": 357
+     "src": "assets/sprites/goku_whis_ssj/walkv_0.png",
+     "w": 308,
+     "h": 522,
+     "ax": 178.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_1.png",
-     "w": 256,
-     "h": 354,
-     "ax": 141.5,
-     "ay": 354
+     "src": "assets/sprites/goku_whis_ssj/walkv_1.png",
+     "w": 304,
+     "h": 514,
+     "ax": 196.5,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_2.png",
-     "w": 246,
-     "h": 355,
-     "ax": 131.0,
-     "ay": 355
+     "src": "assets/sprites/goku_whis_ssj/walkv_2.png",
+     "w": 272,
+     "h": 518,
+     "ax": 175.5,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_3.png",
-     "w": 240,
-     "h": 361,
-     "ax": 118.5,
-     "ay": 361
+     "src": "assets/sprites/goku_whis_ssj/walkv_3.png",
+     "w": 258,
+     "h": 518,
+     "ax": 160.5,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_4.png",
-     "w": 255,
-     "h": 358,
-     "ax": 149.0,
-     "ay": 358
+     "src": "assets/sprites/goku_whis_ssj/walkv_4.png",
+     "w": 226,
+     "h": 524,
+     "ax": 126.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_5.png",
-     "w": 236,
-     "h": 356,
-     "ax": 118.5,
-     "ay": 356
+     "src": "assets/sprites/goku_whis_ssj/walkv_5.png",
+     "w": 204,
+     "h": 526,
+     "ax": 101.5,
+     "ay": 526
     },
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_6.png",
+     "src": "assets/sprites/goku_whis_ssj/walkv_6.png",
      "w": 214,
-     "h": 365,
-     "ax": 86.5,
-     "ay": 365
+     "h": 524,
+     "ax": 109.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/goku_whis_ssj/walk_7.png",
-     "w": 237,
-     "h": 358,
-     "ax": 120.5,
-     "ay": 358
+     "src": "assets/sprites/goku_whis_ssj/walkv_7.png",
+     "w": 248,
+     "h": 518,
+     "ax": 142.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_8.png",
+     "w": 280,
+     "h": 516,
+     "ax": 171.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_9.png",
+     "w": 290,
+     "h": 520,
+     "ax": 181.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_10.png",
+     "w": 262,
+     "h": 526,
+     "ax": 157.0,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_11.png",
+     "w": 246,
+     "h": 530,
+     "ax": 141.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_12.png",
+     "w": 202,
+     "h": 534,
+     "ax": 100.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_13.png",
+     "w": 210,
+     "h": 536,
+     "ax": 111.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_14.png",
+     "w": 220,
+     "h": 534,
+     "ax": 122.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/walkv_15.png",
+     "w": 278,
+     "h": 528,
+     "ax": 152.5,
+     "ay": 528
     }
    ]
   },
@@ -57188,63 +57245,120 @@ const SPRITES = {
  },
  "vegeta_buu_ssj": {
   "walk": {
-   "scale": 0.5255,
+   "scale": 0.3735,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_0.png",
-     "w": 234,
-     "h": 372,
-     "ax": 129.0,
-     "ay": 372
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_0.png",
+     "w": 276,
+     "h": 514,
+     "ax": 157.5,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_1.png",
-     "w": 217,
-     "h": 370,
-     "ax": 115.0,
-     "ay": 370
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_1.png",
+     "w": 292,
+     "h": 518,
+     "ax": 179.5,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_2.png",
-     "w": 207,
-     "h": 368,
-     "ax": 106.5,
-     "ay": 368
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_2.png",
+     "w": 284,
+     "h": 520,
+     "ax": 173.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_3.png",
-     "w": 252,
-     "h": 371,
-     "ax": 150.9,
-     "ay": 371
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_3.png",
+     "w": 251,
+     "h": 528,
+     "ax": 149.5,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_4.png",
-     "w": 225,
-     "h": 371,
-     "ax": 124.5,
-     "ay": 371
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_4.png",
+     "w": 230,
+     "h": 532,
+     "ax": 132.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_5.png",
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_5.png",
+     "w": 176,
+     "h": 538,
+     "ax": 88.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_6.png",
+     "w": 194,
+     "h": 534,
+     "ax": 111.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_7.png",
      "w": 210,
-     "h": 373,
+     "h": 530,
+     "ax": 127.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_8.png",
+     "w": 284,
+     "h": 524,
+     "ax": 153.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_9.png",
+     "w": 294,
+     "h": 520,
+     "ax": 177.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_10.png",
+     "w": 280,
+     "h": 518,
+     "ax": 180.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_11.png",
+     "w": 240,
+     "h": 516,
+     "ax": 158.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_12.png",
+     "w": 210,
+     "h": 524,
+     "ax": 124.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_13.png",
+     "w": 192,
+     "h": 524,
+     "ax": 101.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_14.png",
+     "w": 208,
+     "h": 520,
      "ax": 107.5,
-     "ay": 373
+     "ay": 520
     },
     {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_6.png",
-     "w": 209,
-     "h": 371,
-     "ax": 110.0,
-     "ay": 371
-    },
-    {
-     "src": "assets/sprites/vegeta_buu_ssj/walk_7.png",
-     "w": 245,
-     "h": 371,
-     "ax": 144.3,
-     "ay": 371
+     "src": "assets/sprites/vegeta_buu_ssj/walkv_15.png",
+     "w": 228,
+     "h": 518,
+     "ax": 123.5,
+     "ay": 518
     }
    ]
   },
