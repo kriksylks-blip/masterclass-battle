@@ -7261,12 +7261,10 @@ function draw() {
 
   const s = shake > 0.5 ? shake : 0;
   ctx.setTransform(RES, 0, 0, RES, rand(-s, s) * RES, rand(-s, s) * RES);
-  // invité en ligne : un élément mal reçu ne doit pas effacer tout le reste de l'image (il manque seul)
-  const safe = net?.role === 'guest' ? f => { ctx.save(); try { f(); } catch (e) { if (!safe.w) { safe.w = 1; console.warn('dessin invité', e); } } ctx.restore(); } : f => f();
-  safe(drawBackground);
+  drawBackground();
   superDim();
-  safe(drawKirinBack);
-  safe(() => drawFX(true));
+  drawKirinBack();
+  drawFX(true);
   // Du plus au fond au plus en avant ; un corps au sol passe derrière ceux qui sont debout sur la même ligne
   const all = [
     ...enemies.map(e => ({ z: e.gz - (e.state === 'down' ? 6 : 0), f: () => drawEnemy(e) })),
@@ -7274,7 +7272,7 @@ function draw() {
     ...clones.map(c => ({ z: c.gz + 0.4, f: () => drawClone(c) })),
     ...levelDrawables(),
   ];
-  all.sort((a, b) => a.z - b.z).forEach(o => safe(o.f));
+  all.sort((a, b) => a.z - b.z).forEach(o => o.f());
   drawStars();
   drawWaves();
   for (const b of bombs) drawBomb(b);
