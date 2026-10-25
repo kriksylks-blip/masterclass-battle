@@ -5201,7 +5201,7 @@ function drawRasengan(x, y, r, t) {
 // ---------- Écran de sélection des personnages ----------
 // Le joueur 1 est celui qui a appuyé sur l'écran titre. Le joueur 2 rejoint en appuyant
 // sur une touche du pavé numérique ou sur une autre manette.
-const sel = { joined: [true, false, false, false], pick: [0, 1, 2, 3], vari: [0, 0, 0, 0], firstVar: [0, 0, 0, 0], ready: [false, false, false, false], dev: ['kb', null, null, null], first: [null, null, null, null], pf: [0, 0, 0, 0], skip: false, go: 0 };
+const sel = { joined: [true, false, false, false], pick: [0, 1, 2, 3], vari: [0, 0, 0, 0], firstVar: [0, 0, 0, 0], ready: [false, false, false, false], dev: ['kb', null, null, null], first: [null, null, null, null], outfit: [false, false, false, false], pf: [0, 0, 0, 0], skip: false, go: 0 };
 
 function openSelect() {
   scene = 'select'; sceneT = 0;
@@ -5249,13 +5249,22 @@ function updateSelect(dt) {
   for (let p = 0; p < 4; p++) {
     if (!sel.joined[p] || (p > 0 && sel.skip)) continue;
     const I = INPUT[p], hit = a => I.pressed.has(a);
-    if (!sel.ready[p]) {
-      // ↑/↓ change de version quand la case en a plusieurs (Naruto enfant / Shippuden), sinon de case
+    if (!sel.ready[p] && sel.outfit[p]) {
+      // 2e temps : le perso est choisi, gauche / droite font défiler ses tenues, poing valide, pied revient à la grille
+      const nv = variantsOf(sel.pick[p]).length, dv = hit('left') || hit('up') ? -1 : hit('right') || hit('down') || hit('blast') ? 1 : 0;
+      if (dv) { sel.vari[p] = (sel.vari[p] + dv + nv) % nv; sel.focus = p; sel.pf[p] = 1; audio.tone(880, 0.05, 'sine', 0.05, 120); }
+      if (hit('punch') || hit('jump') || hit('start')) {
+        sel.outfit[p] = false;
+        if (OPTS.tag && sel.first[p] === null && n > 1) { sel.first[p] = sel.pick[p]; sel.firstVar[p] = sel.vari[p]; sel.pick[p] = (sel.pick[p] + 1) % n; sel.vari[p] = 0; }
+        else sel.ready[p] = true;
+        audio.play('hitHeavy', 0.6); audio.tone(660, 0.18, 'sine', 0.09, 220);
+      } else if (hit('kick') || hit('pause')) { sel.outfit[p] = false; sel.vari[p] = 0; audio.tone(420, 0.06, 'sine', 0.05, -80); }
+    } else if (!sel.ready[p]) {
       const nv = variantsOf(sel.pick[p]).length, vk = nv > 1 && hit('blast') ? 1 : 0;
       const dx = hit('left') ? -1 : hit('right') ? 1 : 0, dy = dx ? 0 : hit('up') ? -1 : hit('down') ? 1 : 0;
       if (vk) {
         sel.vari[p] = (sel.vari[p] + vk + nv) % nv; sel.focus = p; sel.flash = 1; sel.pf[p] = 1;
-        audio.tone(700 + p * 120, 0.08, 'triangle', 0.08, 200);
+        audio.tone(880, 0.05, 'sine', 0.05, 120);
       }
       if (dx || dy) {
         // grille : gauche / droite d'une case (en passant d'une rangée à l'autre), haut / bas d'une rangée dans la même colonne
@@ -5264,9 +5273,12 @@ function updateSelect(dt) {
         if (dx) k = (k + dx + n) % n;
         else { const c = k % cols; let r = Math.floor(k / cols); do r = (r + dy + rows) % rows; while (r * cols + c >= n); k = r * cols + c; }
         sel.pick[p] = k; sel.vari[p] = 0; sel.focus = p; sel.flash = 1; sel.pf[p] = 1;
-        audio.tone(520 + p * 120, 0.06, 'triangle', 0.08); audio.whoosh?.(0.4);
+        audio.tone(1250 + p * 90, 0.025, 'sine', 0.03); // petit clic discret
       }
-      if (hit('punch') || hit('jump') || hit('start') || (hit('blast') && nv < 2)) {
+      if (nv > 1 && (hit('punch') || hit('jump') || hit('start'))) {
+        // perso à plusieurs tenues : on passe au choix de la tenue
+        sel.outfit[p] = true; sel.focus = p; sel.pf[p] = 1; audio.tone(740, 0.12, 'sine', 0.07, 160);
+      } else if (hit('punch') || hit('jump') || hit('start') || (hit('blast') && nv < 2)) {
         // Équipe de deux : le premier choix est le combattant, le second son partenaire
         if (OPTS.tag && sel.first[p] === null && n > 1) { sel.first[p] = sel.pick[p]; sel.firstVar[p] = sel.vari[p]; sel.pick[p] = (sel.pick[p] + 1) % n; sel.vari[p] = 0; }
         else sel.ready[p] = true;
@@ -6448,11 +6460,11 @@ function outlined(text, x, y, size, fill = '#fff', align = 'center') {
 // Position du visage dans chaque image de carte (fraction de la largeur, de la hauteur) et taille d'affichage
 const FACES = {
   card_go: [0.592, 0.419, 3.54], card_goku: [0.629, 0.383, 2.76], card_hero: [0.6, 0.37, 3.3], card_ic: [0.38, 0.289, 5.68],
-  card_ip: [0.56, 0.288, 4.34], card_iz: [0.584, 0.354, 3.9], card_ka: [0.473, 0.249, 4.2], card_kenshin: [0.553, 0.278, 3.9],
+  card_ip: [0.56, 0.288, 4.34], card_iz: [0.584, 0.354, 3.9], card_ka: [0.518, 0.262, 3.8], card_kenshin: [0.553, 0.278, 3.9],
   card_ki: [0.571, 0.423, 4.13], card_luffy: [0.687, 0.345, 3.41], card_naruto: [0.623, 0.343, 3.25], card_tanjiro: [0.426, 0.325, 3.64],
   card_ve: [0.509, 0.404, 3.1], card_ze: [0.187, 0.344, 4.34], card_zoro: [0.482, 0.288, 3.9],
-  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], card_ug: [0.32, 0.39, 4.16], card_pc: [0.685, 0.307, 3.47],
-  card_mb: [0.47, 0.36, 3.2], card_kw: [0.629, 0.383, 2.76], card_uy: [0.32, 0.39, 4.16], card_up: [0.32, 0.39, 4.16], card_vm: [0.509, 0.404, 3.1], card_zw: [0.482, 0.288, 3.9], card_sh: [0.579, 0.132, 7.75], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.545, 0.192, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], card_ug: [0.32, 0.39, 4.16], card_pc: [0.685, 0.307, 3.47],
+  card_mb: [0.58, 0.275, 3.0], card_kw: [0.629, 0.383, 2.76], card_uy: [0.32, 0.39, 4.16], card_up: [0.32, 0.39, 4.16], card_vm: [0.509, 0.404, 3.1], card_zw: [0.482, 0.288, 3.9], card_sh: [0.579, 0.132, 7.75], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -6835,7 +6847,7 @@ function drawSelect() {
   // Aide en bas d'écran
   ctx.fillStyle = 'rgba(0,0,0,0.75)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
-  ctx.fillText(`${K('left')} ${K('right')} ${K('up')} ${K('down')} choisir${variantsOf(sel.pick[focus]).length > 1 ? `    ${K('blast')} tenue` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
+  ctx.fillText(`${K('left')} ${K('right')} ${K('up')} ${K('down')} choisir${sel.outfit?.[focus] ? `    ${K('left')} ${K('right')} tenue` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
   if (sel.go > 0) {
     ctx.save(); ctx.fillStyle = `rgba(255,255,255,${Math.max(0, 0.5 - sel.go)})`; ctx.fillRect(0, 0, W, H); ctx.restore();
     outlined('EN AVANT !', W / 2, H / 2 + 20, 70 + sel.go * 30, '#ffe14d');
@@ -6951,6 +6963,12 @@ function selPanel(p, x, y, w, h, mirror, full) {
     medallion(F, mx, y + 92, 26, COLORS_P[p]); outlined('★', mx + 20, y + 120, 16, COLORS_P[p]);
   }
   if (ready) { ctx.save(); ctx.translate(x + w / 2, y + h * 0.5); ctx.rotate(-0.2); outlined('PRÊT !', 0, 0, full ? 64 : 40, COLORS_P[p]); ctx.restore(); }
+  else if (sel.outfit?.[p]) {
+    const yy = y + h * 0.68, bob = Math.sin(sceneT * 6) * 4;
+    ctx.fillStyle = 'rgba(5,0,15,0.78)'; ctx.fillRect(x, yy - 26, w, 44);
+    outlined('CHOISIS TA TENUE', x + w / 2, yy + 6, full ? 26 : 16, '#ffe14d');
+    outlined('◀', x + 18 - bob, yy + 6, 24, COLORS_P[p]); outlined('▶', x + w - 18 + bob, yy + 6, 24, COLORS_P[p]);
+  }
 }
 
 // Étiquette « ▲ ENFANT ▼ » de la case qui a plusieurs versions (rien sinon)
