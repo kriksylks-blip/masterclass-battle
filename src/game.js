@@ -4088,7 +4088,10 @@ function minionAI(e, dt, h, heroDown) {
 // Image de marche d'un ennemi : les marches tirées d'une vidéo (16 images) ont leur propre cadence
 function ewalk(e, fps) {
   const A = SPRITES[ETYPES[e.type].sheet || e.type]?.walk;
-  return A?.rate ? Math.floor(e.walkT * A.rate) % A.frames.length : Math.floor(e.walkT * fps) % 8;
+  const n = A?.rate ? A.frames.length : 8, k = Math.floor(e.walkT * (A?.rate || fps)) % n;
+  // il recule en gardant le joueur en face (tireurs qui reprennent leurs distances) : le pas se joue à l'envers,
+  // sinon il « marche » en avant tout en glissant en arrière
+  return e.backing ? n - 1 - k : k;
 }
 function minionPose(e) {
   const t = e.t;

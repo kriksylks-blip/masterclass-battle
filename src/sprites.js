@@ -52986,112 +52986,112 @@ const SPRITES = {
      "src": "assets/sprites/bu_brute/walkv_0.png",
      "w": 398,
      "h": 544,
-     "ax": 214.5,
+     "ax": 183.5,
      "ay": 544
     },
     {
      "src": "assets/sprites/bu_brute/walkv_1.png",
      "w": 404,
      "h": 536,
-     "ax": 188.5,
+     "ax": 215.5,
      "ay": 536
     },
     {
      "src": "assets/sprites/bu_brute/walkv_2.png",
      "w": 378,
      "h": 536,
-     "ax": 157.5,
+     "ax": 220.5,
      "ay": 536
     },
     {
      "src": "assets/sprites/bu_brute/walkv_3.png",
      "w": 360,
      "h": 542,
-     "ax": 162.5,
+     "ax": 197.5,
      "ay": 542
     },
     {
      "src": "assets/sprites/bu_brute/walkv_4.png",
      "w": 316,
      "h": 550,
-     "ax": 164.5,
+     "ax": 151.5,
      "ay": 550
     },
     {
      "src": "assets/sprites/bu_brute/walkv_5.png",
      "w": 304,
      "h": 556,
-     "ax": 165.5,
+     "ax": 138.5,
      "ay": 556
     },
     {
      "src": "assets/sprites/bu_brute/walkv_6.png",
      "w": 330,
      "h": 554,
-     "ax": 176.5,
+     "ax": 153.5,
      "ay": 554
     },
     {
      "src": "assets/sprites/bu_brute/walkv_7.png",
      "w": 370,
      "h": 548,
-     "ax": 197.5,
+     "ax": 172.5,
      "ay": 548
     },
     {
      "src": "assets/sprites/bu_brute/walkv_8.png",
      "w": 396,
      "h": 546,
-     "ax": 211.5,
+     "ax": 184.5,
      "ay": 546
     },
     {
      "src": "assets/sprites/bu_brute/walkv_9.png",
      "w": 406,
      "h": 538,
-     "ax": 213.5,
+     "ax": 192.5,
      "ay": 538
     },
     {
      "src": "assets/sprites/bu_brute/walkv_10.png",
      "w": 400,
      "h": 543,
-     "ax": 202.5,
+     "ax": 197.5,
      "ay": 543
     },
     {
      "src": "assets/sprites/bu_brute/walkv_11.png",
      "w": 346,
      "h": 550,
-     "ax": 184.5,
+     "ax": 161.5,
      "ay": 550
     },
     {
      "src": "assets/sprites/bu_brute/walkv_12.png",
      "w": 308,
      "h": 560,
-     "ax": 163.5,
+     "ax": 144.5,
      "ay": 560
     },
     {
      "src": "assets/sprites/bu_brute/walkv_13.png",
      "w": 292,
      "h": 566,
-     "ax": 162.5,
+     "ax": 129.5,
      "ay": 566
     },
     {
      "src": "assets/sprites/bu_brute/walkv_14.png",
      "w": 280,
      "h": 566,
-     "ax": 158.5,
+     "ax": 121.5,
      "ay": 566
     },
     {
      "src": "assets/sprites/bu_brute/walkv_15.png",
      "w": 344,
      "h": 558,
-     "ax": 189.5,
+     "ax": 154.5,
      "ay": 558
     }
    ]
