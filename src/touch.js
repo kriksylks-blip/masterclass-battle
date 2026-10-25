@@ -176,7 +176,7 @@
   zone.addEventListener('lostpointercapture', release);
 
   // ---- Menus au doigt : toucher / glisser sur l'écran (hors joystick et boutons) ----
-  const inMenu = () => typeof scene !== 'undefined' && (scene !== 'play' || paused || (typeof net !== 'undefined' && net.gpause)) && scene !== 'loading';
+  const inMenu = () => typeof scene !== 'undefined' && (scene !== 'play' || paused || !!(typeof net !== 'undefined' && net.gpause)) && scene !== 'loading';
   const press = a => tapAction(a);
   const arrow = d => {
     if (paused) { menuMove(d === 'up' ? -1 : d === 'down' ? 1 : 0, d === 'left' ? -1 : d === 'right' ? 1 : 0); return; }
@@ -283,9 +283,11 @@
     ult.classList.toggle('ready', !!h && h.ki >= KI.ultra);
     const canForm = !!h && !h.boost && h.ki >= KI.transform;
     ki.classList.toggle('ready', canForm);
-    ki.textContent = h?.boost ? 'KI ▼' : canForm ? 'TRANSFO' : 'KI';
-    tag.style.display = h?.reserve ? 'flex' : 'none';
-    root.classList.toggle('menu', inMenu());
+    const kt = h?.boost ? 'KI ▼' : canForm ? 'TRANSFO' : 'KI';
+    if (ki.textContent !== kt) ki.textContent = kt; // seulement s'il change : sinon le téléphone refait la page à chaque image
+    const td = h?.reserve ? 'flex' : 'none';
+    if (tag.style.display !== td) tag.style.display = td;
+    root.classList.toggle('menu', !!inMenu());
     requestAnimationFrame(tick);
   };
   tick();
