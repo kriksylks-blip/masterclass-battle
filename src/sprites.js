@@ -26286,63 +26286,120 @@ const SPRITES = {
  },
  "op_mini": {
   "walk": {
-   "scale": 0.6825,
+   "scale": 0.2868,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/op_mini/walk_0.png",
-     "w": 347,
-     "h": 330,
-     "ax": 136.1,
-     "ay": 330
+     "src": "assets/sprites/op_mini/walkv_0.png",
+     "w": 746,
+     "h": 788,
+     "ax": 236.5,
+     "ay": 788
     },
     {
-     "src": "assets/sprites/op_mini/walk_1.png",
-     "w": 308,
-     "h": 314,
-     "ax": 166.0,
-     "ay": 314
+     "src": "assets/sprites/op_mini/walkv_1.png",
+     "w": 752,
+     "h": 780,
+     "ax": 229.5,
+     "ay": 780
     },
     {
-     "src": "assets/sprites/op_mini/walk_2.png",
-     "w": 321,
-     "h": 326,
-     "ax": 158.0,
-     "ay": 326
+     "src": "assets/sprites/op_mini/walkv_2.png",
+     "w": 742,
+     "h": 776,
+     "ax": 242.5,
+     "ay": 776
     },
     {
-     "src": "assets/sprites/op_mini/walk_3.png",
-     "w": 334,
-     "h": 335,
-     "ax": 146.9,
-     "ay": 335
+     "src": "assets/sprites/op_mini/walkv_3.png",
+     "w": 732,
+     "h": 776,
+     "ax": 235.9,
+     "ay": 776
     },
     {
-     "src": "assets/sprites/op_mini/walk_4.png",
-     "w": 323,
-     "h": 336,
-     "ax": 133.9,
-     "ay": 336
+     "src": "assets/sprites/op_mini/walkv_4.png",
+     "w": 718,
+     "h": 786,
+     "ax": 237.5,
+     "ay": 786
     },
     {
-     "src": "assets/sprites/op_mini/walk_5.png",
-     "w": 318,
-     "h": 330,
-     "ax": 170.0,
-     "ay": 330
+     "src": "assets/sprites/op_mini/walkv_5.png",
+     "w": 698,
+     "h": 796,
+     "ax": 245.9,
+     "ay": 796
     },
     {
-     "src": "assets/sprites/op_mini/walk_6.png",
-     "w": 304,
-     "h": 337,
-     "ax": 160.5,
-     "ay": 337
+     "src": "assets/sprites/op_mini/walkv_6.png",
+     "w": 678,
+     "h": 796,
+     "ax": 270.6,
+     "ay": 796
     },
     {
-     "src": "assets/sprites/op_mini/walk_7.png",
-     "w": 310,
-     "h": 333,
-     "ax": 155.5,
-     "ay": 333
+     "src": "assets/sprites/op_mini/walkv_7.png",
+     "w": 654,
+     "h": 790,
+     "ax": 287.4,
+     "ay": 790
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_8.png",
+     "w": 648,
+     "h": 778,
+     "ax": 297.1,
+     "ay": 778
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_9.png",
+     "w": 638,
+     "h": 778,
+     "ax": 299.5,
+     "ay": 778
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_10.png",
+     "w": 632,
+     "h": 782,
+     "ax": 292.6,
+     "ay": 782
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_11.png",
+     "w": 654,
+     "h": 790,
+     "ax": 276.4,
+     "ay": 790
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_12.png",
+     "w": 678,
+     "h": 798,
+     "ax": 253.9,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_13.png",
+     "w": 704,
+     "h": 808,
+     "ax": 231.6,
+     "ay": 808
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_14.png",
+     "w": 724,
+     "h": 808,
+     "ax": 221.3,
+     "ay": 808
+    },
+    {
+     "src": "assets/sprites/op_mini/walkv_15.png",
+     "w": 740,
+     "h": 800,
+     "ax": 218.0,
+     "ay": 800
     }
    ]
   },
@@ -26532,63 +26589,120 @@ const SPRITES = {
  },
  "ds_mini": {
   "walk": {
-   "scale": 0.6425,
+   "scale": 0.2739,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/ds_mini/walk_0.png",
-     "w": 309,
-     "h": 351,
-     "ax": 151.7,
-     "ay": 351
+     "src": "assets/sprites/ds_mini/walkv_0.png",
+     "w": 636,
+     "h": 802,
+     "ax": 356.5,
+     "ay": 802
     },
     {
-     "src": "assets/sprites/ds_mini/walk_1.png",
-     "w": 275,
-     "h": 329,
-     "ax": 149.9,
-     "ay": 329
+     "src": "assets/sprites/ds_mini/walkv_1.png",
+     "w": 626,
+     "h": 809,
+     "ax": 360.5,
+     "ay": 809
     },
     {
-     "src": "assets/sprites/ds_mini/walk_2.png",
-     "w": 273,
-     "h": 334,
-     "ax": 161.5,
-     "ay": 334
+     "src": "assets/sprites/ds_mini/walkv_2.png",
+     "w": 610,
+     "h": 823,
+     "ax": 367.5,
+     "ay": 823
     },
     {
-     "src": "assets/sprites/ds_mini/walk_3.png",
-     "w": 285,
-     "h": 354,
-     "ax": 150.0,
-     "ay": 354
+     "src": "assets/sprites/ds_mini/walkv_3.png",
+     "w": 582,
+     "h": 832,
+     "ax": 364.5,
+     "ay": 832
     },
     {
-     "src": "assets/sprites/ds_mini/walk_4.png",
-     "w": 284,
-     "h": 351,
-     "ax": 152.5,
-     "ay": 351
+     "src": "assets/sprites/ds_mini/walkv_4.png",
+     "w": 566,
+     "h": 832,
+     "ax": 366.5,
+     "ay": 832
     },
     {
-     "src": "assets/sprites/ds_mini/walk_5.png",
-     "w": 278,
-     "h": 340,
-     "ax": 149.5,
-     "ay": 340
+     "src": "assets/sprites/ds_mini/walkv_5.png",
+     "w": 568,
+     "h": 826,
+     "ax": 369.5,
+     "ay": 826
     },
     {
-     "src": "assets/sprites/ds_mini/walk_6.png",
-     "w": 276,
-     "h": 340,
-     "ax": 168.5,
-     "ay": 340
+     "src": "assets/sprites/ds_mini/walkv_6.png",
+     "w": 603,
+     "h": 814,
+     "ax": 369.5,
+     "ay": 814
     },
     {
-     "src": "assets/sprites/ds_mini/walk_7.png",
-     "w": 281,
-     "h": 358,
-     "ax": 150.0,
-     "ay": 358
+     "src": "assets/sprites/ds_mini/walkv_7.png",
+     "w": 584,
+     "h": 805,
+     "ax": 364.5,
+     "ay": 805
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_8.png",
+     "w": 523,
+     "h": 793,
+     "ax": 328.5,
+     "ay": 793
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_9.png",
+     "w": 524,
+     "h": 796,
+     "ax": 322.5,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_10.png",
+     "w": 524,
+     "h": 809,
+     "ax": 307.5,
+     "ay": 809
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_11.png",
+     "w": 528,
+     "h": 816,
+     "ax": 300.5,
+     "ay": 816
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_12.png",
+     "w": 536,
+     "h": 818,
+     "ax": 302.5,
+     "ay": 818
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_13.png",
+     "w": 568,
+     "h": 812,
+     "ax": 318.5,
+     "ay": 812
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_14.png",
+     "w": 614,
+     "h": 802,
+     "ax": 344.5,
+     "ay": 802
+    },
+    {
+     "src": "assets/sprites/ds_mini/walkv_15.png",
+     "w": 638,
+     "h": 802,
+     "ax": 359.5,
+     "ay": 802
     }
    ]
   },
@@ -26778,63 +26892,120 @@ const SPRITES = {
  },
  "bl_mini": {
   "walk": {
-   "scale": 0.6389,
+   "scale": 0.2769,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/bl_mini/walk_0.png",
-     "w": 308,
-     "h": 343,
-     "ax": 189.0,
-     "ay": 343
+     "src": "assets/sprites/bl_mini/walkv_0.png",
+     "w": 451,
+     "h": 804,
+     "ax": 273.5,
+     "ay": 804
     },
     {
-     "src": "assets/sprites/bl_mini/walk_1.png",
-     "w": 291,
-     "h": 327,
-     "ax": 184.0,
-     "ay": 327
+     "src": "assets/sprites/bl_mini/walkv_1.png",
+     "w": 464,
+     "h": 800,
+     "ax": 280.5,
+     "ay": 800
     },
     {
-     "src": "assets/sprites/bl_mini/walk_2.png",
-     "w": 271,
-     "h": 355,
+     "src": "assets/sprites/bl_mini/walkv_2.png",
+     "w": 464,
+     "h": 800,
+     "ax": 280.5,
+     "ay": 800
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_3.png",
+     "w": 450,
+     "h": 796,
+     "ax": 268.5,
+     "ay": 796
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_4.png",
+     "w": 425,
+     "h": 790,
+     "ax": 254.5,
+     "ay": 790
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_5.png",
+     "w": 392,
+     "h": 792,
+     "ax": 232.5,
+     "ay": 792
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_6.png",
+     "w": 352,
+     "h": 794,
+     "ax": 203.5,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_7.png",
+     "w": 322,
+     "h": 798,
+     "ax": 175.0,
+     "ay": 798
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_8.png",
+     "w": 332,
+     "h": 802,
      "ax": 172.5,
-     "ay": 355
+     "ay": 802
     },
     {
-     "src": "assets/sprites/bl_mini/walk_3.png",
-     "w": 315,
-     "h": 349,
-     "ax": 176.0,
-     "ay": 349
+     "src": "assets/sprites/bl_mini/walkv_9.png",
+     "w": 344,
+     "h": 816,
+     "ax": 183.5,
+     "ay": 816
     },
     {
-     "src": "assets/sprites/bl_mini/walk_4.png",
-     "w": 301,
-     "h": 347,
-     "ax": 189.5,
-     "ay": 347
+     "src": "assets/sprites/bl_mini/walkv_10.png",
+     "w": 344,
+     "h": 816,
+     "ax": 183.5,
+     "ay": 816
     },
     {
-     "src": "assets/sprites/bl_mini/walk_5.png",
-     "w": 359,
-     "h": 327,
-     "ax": 183.0,
-     "ay": 327
+     "src": "assets/sprites/bl_mini/walkv_11.png",
+     "w": 334,
+     "h": 820,
+     "ax": 190.0,
+     "ay": 820
     },
     {
-     "src": "assets/sprites/bl_mini/walk_6.png",
-     "w": 262,
-     "h": 360,
-     "ax": 168.0,
-     "ay": 360
+     "src": "assets/sprites/bl_mini/walkv_12.png",
+     "w": 360,
+     "h": 818,
+     "ax": 216.0,
+     "ay": 818
     },
     {
-     "src": "assets/sprites/bl_mini/walk_7.png",
-     "w": 317,
-     "h": 352,
-     "ax": 178.0,
-     "ay": 352
+     "src": "assets/sprites/bl_mini/walkv_13.png",
+     "w": 391,
+     "h": 816,
+     "ax": 234.5,
+     "ay": 816
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_14.png",
+     "w": 420,
+     "h": 812,
+     "ax": 257.5,
+     "ay": 812
+    },
+    {
+     "src": "assets/sprites/bl_mini/walkv_15.png",
+     "w": 442,
+     "h": 808,
+     "ax": 270.5,
+     "ay": 808
     }
    ]
   },
@@ -27024,63 +27195,120 @@ const SPRITES = {
  },
  "hx_mini": {
   "walk": {
-   "scale": 0.6389,
+   "scale": 0.278,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/hx_mini/walk_0.png",
-     "w": 287,
-     "h": 337,
-     "ax": 169.0,
-     "ay": 337
+     "src": "assets/sprites/hx_mini/walkv_0.png",
+     "w": 518,
+     "h": 797,
+     "ax": 313.5,
+     "ay": 797
     },
     {
-     "src": "assets/sprites/hx_mini/walk_1.png",
-     "w": 261,
-     "h": 330,
-     "ax": 149.5,
-     "ay": 330
+     "src": "assets/sprites/hx_mini/walkv_1.png",
+     "w": 454,
+     "h": 794,
+     "ax": 286.5,
+     "ay": 794
     },
     {
-     "src": "assets/sprites/hx_mini/walk_2.png",
-     "w": 185,
-     "h": 356,
-     "ax": 78.0,
-     "ay": 356
+     "src": "assets/sprites/hx_mini/walkv_2.png",
+     "w": 428,
+     "h": 796,
+     "ax": 261.5,
+     "ay": 796
     },
     {
-     "src": "assets/sprites/hx_mini/walk_3.png",
-     "w": 214,
-     "h": 360,
-     "ax": 96.0,
-     "ay": 360
+     "src": "assets/sprites/hx_mini/walkv_3.png",
+     "w": 370,
+     "h": 804,
+     "ax": 204.5,
+     "ay": 804
     },
     {
-     "src": "assets/sprites/hx_mini/walk_4.png",
-     "w": 285,
-     "h": 352,
-     "ax": 155.0,
-     "ay": 352
+     "src": "assets/sprites/hx_mini/walkv_4.png",
+     "w": 335,
+     "h": 806,
+     "ax": 168.5,
+     "ay": 806
     },
     {
-     "src": "assets/sprites/hx_mini/walk_5.png",
-     "w": 250,
-     "h": 345,
-     "ax": 159.0,
-     "ay": 345
+     "src": "assets/sprites/hx_mini/walkv_5.png",
+     "w": 370,
+     "h": 802,
+     "ax": 191.5,
+     "ay": 802
     },
     {
-     "src": "assets/sprites/hx_mini/walk_6.png",
-     "w": 207,
-     "h": 348,
-     "ax": 108.5,
-     "ay": 348
+     "src": "assets/sprites/hx_mini/walkv_6.png",
+     "w": 400,
+     "h": 797,
+     "ax": 216.5,
+     "ay": 797
     },
     {
-     "src": "assets/sprites/hx_mini/walk_7.png",
-     "w": 228,
-     "h": 356,
-     "ax": 132.2,
-     "ay": 356
+     "src": "assets/sprites/hx_mini/walkv_7.png",
+     "w": 453,
+     "h": 799,
+     "ax": 259.5,
+     "ay": 799
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_8.png",
+     "w": 454,
+     "h": 805,
+     "ax": 270.5,
+     "ay": 805
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_9.png",
+     "w": 432,
+     "h": 806,
+     "ax": 251.5,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_10.png",
+     "w": 372,
+     "h": 813,
+     "ax": 200.5,
+     "ay": 813
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_11.png",
+     "w": 338,
+     "h": 816,
+     "ax": 170.5,
+     "ay": 816
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_12.png",
+     "w": 352,
+     "h": 821,
+     "ax": 193.5,
+     "ay": 821
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_13.png",
+     "w": 374,
+     "h": 819,
+     "ax": 217.5,
+     "ay": 819
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_14.png",
+     "w": 488,
+     "h": 812,
+     "ax": 261.5,
+     "ay": 812
+    },
+    {
+     "src": "assets/sprites/hx_mini/walkv_15.png",
+     "w": 526,
+     "h": 804,
+     "ax": 300.5,
+     "ay": 804
     }
    ]
   },
@@ -27762,63 +27990,120 @@ const SPRITES = {
  },
  "mh_mini": {
   "walk": {
-   "scale": 0.7077,
+   "scale": 0.251,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/mh_mini/walk_0.png",
-     "w": 357,
-     "h": 298,
-     "ax": 151.0,
-     "ay": 298
+     "src": "assets/sprites/mh_mini/walkv_0.png",
+     "w": 522,
+     "h": 846,
+     "ax": 340.5,
+     "ay": 846
     },
     {
-     "src": "assets/sprites/mh_mini/walk_1.png",
-     "w": 341,
-     "h": 290,
-     "ax": 158.5,
-     "ay": 290
+     "src": "assets/sprites/mh_mini/walkv_1.png",
+     "w": 496,
+     "h": 850,
+     "ax": 312.5,
+     "ay": 850
     },
     {
-     "src": "assets/sprites/mh_mini/walk_2.png",
-     "w": 313,
-     "h": 300,
-     "ax": 153.2,
-     "ay": 300
+     "src": "assets/sprites/mh_mini/walkv_2.png",
+     "w": 396,
+     "h": 868,
+     "ax": 199.5,
+     "ay": 868
     },
     {
-     "src": "assets/sprites/mh_mini/walk_3.png",
-     "w": 319,
-     "h": 322,
-     "ax": 155.4,
-     "ay": 322
+     "src": "assets/sprites/mh_mini/walkv_3.png",
+     "w": 408,
+     "h": 868,
+     "ax": 203.5,
+     "ay": 868
     },
     {
-     "src": "assets/sprites/mh_mini/walk_4.png",
-     "w": 377,
-     "h": 308,
-     "ax": 158.9,
-     "ay": 308
+     "src": "assets/sprites/mh_mini/walkv_4.png",
+     "w": 468,
+     "h": 862,
+     "ax": 250.5,
+     "ay": 862
     },
     {
-     "src": "assets/sprites/mh_mini/walk_5.png",
-     "w": 335,
-     "h": 295,
-     "ax": 165.5,
-     "ay": 295
+     "src": "assets/sprites/mh_mini/walkv_5.png",
+     "w": 526,
+     "h": 850,
+     "ax": 301.5,
+     "ay": 850
     },
     {
-     "src": "assets/sprites/mh_mini/walk_6.png",
-     "w": 330,
-     "h": 308,
-     "ax": 150.8,
-     "ay": 308
+     "src": "assets/sprites/mh_mini/walkv_6.png",
+     "w": 580,
+     "h": 848,
+     "ax": 353.0,
+     "ay": 848
     },
     {
-     "src": "assets/sprites/mh_mini/walk_7.png",
-     "w": 337,
-     "h": 325,
-     "ax": 171.1,
-     "ay": 325
+     "src": "assets/sprites/mh_mini/walkv_7.png",
+     "w": 588,
+     "h": 844,
+     "ax": 362.5,
+     "ay": 844
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_8.png",
+     "w": 560,
+     "h": 850,
+     "ax": 340.0,
+     "ay": 850
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_9.png",
+     "w": 490,
+     "h": 864,
+     "ax": 284.5,
+     "ay": 864
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_10.png",
+     "w": 402,
+     "h": 876,
+     "ax": 209.5,
+     "ay": 876
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_11.png",
+     "w": 420,
+     "h": 880,
+     "ax": 236.5,
+     "ay": 880
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_12.png",
+     "w": 464,
+     "h": 876,
+     "ax": 285.5,
+     "ay": 876
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_13.png",
+     "w": 548,
+     "h": 862,
+     "ax": 336.5,
+     "ay": 862
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_14.png",
+     "w": 560,
+     "h": 852,
+     "ax": 358.5,
+     "ay": 852
+    },
+    {
+     "src": "assets/sprites/mh_mini/walkv_15.png",
+     "w": 544,
+     "h": 844,
+     "ax": 364.5,
+     "ay": 844
     }
    ]
   },
@@ -49180,67 +49465,214 @@ const SPRITES = {
      "ay": 670
     }
    ]
+  },
+  "idle": {
+   "scale": 0.2147,
+   "rate": 6.55,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/idlev_0.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_1.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_2.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_3.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_4.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_5.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_6.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_7.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_8.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_9.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_10.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/bakugo/idlev_11.png",
+     "w": 648,
+     "h": 794,
+     "ax": 310.9,
+     "ay": 794
+    }
+   ]
   }
  },
  "seiya": {
   "walk": {
-   "scale": 0.4878,
+   "scale": 0.2237,
+   "rate": 20.94,
    "frames": [
     {
-     "src": "assets/sprites/seiya/walk_0.png",
-     "w": 268,
-     "h": 360,
-     "ax": 146.8,
-     "ay": 360
+     "src": "assets/sprites/seiya/walkv_0.png",
+     "w": 448,
+     "h": 774,
+     "ax": 272.5,
+     "ay": 774
     },
     {
-     "src": "assets/sprites/seiya/walk_1.png",
-     "w": 262,
-     "h": 360,
-     "ax": 141.4,
-     "ay": 360
+     "src": "assets/sprites/seiya/walkv_1.png",
+     "w": 390,
+     "h": 784,
+     "ax": 209.5,
+     "ay": 784
     },
     {
-     "src": "assets/sprites/seiya/walk_2.png",
-     "w": 226,
-     "h": 359,
-     "ax": 109.0,
-     "ay": 359
+     "src": "assets/sprites/seiya/walkv_2.png",
+     "w": 372,
+     "h": 788,
+     "ax": 185.5,
+     "ay": 788
     },
     {
-     "src": "assets/sprites/seiya/walk_3.png",
-     "w": 266,
-     "h": 360,
-     "ax": 150.8,
-     "ay": 360
+     "src": "assets/sprites/seiya/walkv_3.png",
+     "w": 408,
+     "h": 790,
+     "ax": 203.5,
+     "ay": 790
     },
     {
-     "src": "assets/sprites/seiya/walk_4.png",
-     "w": 264,
-     "h": 360,
-     "ax": 145.0,
-     "ay": 360
+     "src": "assets/sprites/seiya/walkv_4.png",
+     "w": 446,
+     "h": 785,
+     "ax": 223.5,
+     "ay": 785
     },
     {
-     "src": "assets/sprites/seiya/walk_5.png",
-     "w": 252,
-     "h": 355,
-     "ax": 134.5,
-     "ay": 355
+     "src": "assets/sprites/seiya/walkv_5.png",
+     "w": 480,
+     "h": 780,
+     "ax": 249.5,
+     "ay": 780
     },
     {
-     "src": "assets/sprites/seiya/walk_6.png",
-     "w": 223,
-     "h": 360,
-     "ax": 104.9,
-     "ay": 360
+     "src": "assets/sprites/seiya/walkv_6.png",
+     "w": 526,
+     "h": 778,
+     "ax": 286.5,
+     "ay": 778
     },
     {
-     "src": "assets/sprites/seiya/walk_7.png",
-     "w": 263,
-     "h": 360,
-     "ax": 143.0,
-     "ay": 360
+     "src": "assets/sprites/seiya/walkv_7.png",
+     "w": 536,
+     "h": 773,
+     "ax": 294.0,
+     "ay": 773
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_8.png",
+     "w": 510,
+     "h": 779,
+     "ax": 275.5,
+     "ay": 779
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_9.png",
+     "w": 440,
+     "h": 790,
+     "ax": 219.5,
+     "ay": 790
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_10.png",
+     "w": 398,
+     "h": 800,
+     "ax": 198.5,
+     "ay": 800
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_11.png",
+     "w": 368,
+     "h": 804,
+     "ax": 190.5,
+     "ay": 804
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_12.png",
+     "w": 388,
+     "h": 802,
+     "ax": 218.5,
+     "ay": 802
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_13.png",
+     "w": 505,
+     "h": 791,
+     "ax": 269.5,
+     "ay": 791
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_14.png",
+     "w": 528,
+     "h": 785,
+     "ax": 289.5,
+     "ay": 785
+    },
+    {
+     "src": "assets/sprites/seiya/walkv_15.png",
+     "w": 510,
+     "h": 771,
+     "ax": 310.5,
+     "ay": 771
     }
    ]
   },
@@ -49626,6 +50058,96 @@ const SPRITES = {
      "h": 675,
      "ax": 361.5,
      "ay": 675
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.2083,
+   "rate": 4.44,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/idlev_0.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_1.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_2.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_3.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_4.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_5.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_6.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_7.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_8.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_9.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_10.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
+    },
+    {
+     "src": "assets/sprites/seiya/idlev_11.png",
+     "w": 594,
+     "h": 806,
+     "ax": 301.6,
+     "ay": 806
     }
    ]
   }
@@ -50074,6 +50596,96 @@ const SPRITES = {
      "h": 675,
      "ax": 353.0,
      "ay": 675
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.2068,
+   "rate": 4.5,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya_gold/idlev_0.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_1.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_2.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_3.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_4.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_5.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_6.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_7.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_8.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_9.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_10.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
+    },
+    {
+     "src": "assets/sprites/seiya_gold/idlev_11.png",
+     "w": 612,
+     "h": 794,
+     "ax": 315.4,
+     "ay": 794
     }
    ]
   }

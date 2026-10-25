@@ -5020,7 +5020,7 @@ function drawRasengan(x, y, r, t) {
 // ---------- Écran de sélection des personnages ----------
 // Le joueur 1 est celui qui a appuyé sur l'écran titre. Le joueur 2 rejoint en appuyant
 // sur une touche du pavé numérique ou sur une autre manette.
-const sel = { joined: [true, false, false, false], pick: [0, 1, 2, 3], vari: [0, 0, 0, 0], firstVar: [0, 0, 0, 0], ready: [false, false, false, false], dev: ['kb', null, null, null], first: [null, null, null, null], skip: false, go: 0 };
+const sel = { joined: [true, false, false, false], pick: [0, 1, 2, 3], vari: [0, 0, 0, 0], firstVar: [0, 0, 0, 0], ready: [false, false, false, false], dev: ['kb', null, null, null], first: [null, null, null, null], pf: [0, 0, 0, 0], skip: false, go: 0 };
 
 function openSelect() {
   scene = 'select'; sceneT = 0;
@@ -5064,22 +5064,28 @@ function updateSelect(dt) {
   let d = target - sel.cur; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
   sel.cur = (sel.cur + d * Math.min(1, dt * 9) + n) % n;
   sel.flash = Math.max(0, (sel.flash || 0) - dt * 3);
+  sel.pf = (sel.pf || [0, 0, 0, 0]).map(v => Math.max(0, v - dt * 4));
   for (let p = 0; p < 4; p++) {
     if (!sel.joined[p] || (p > 0 && sel.skip)) continue;
     const I = INPUT[p], hit = a => I.pressed.has(a);
     if (!sel.ready[p]) {
       // ↑/↓ change de version quand la case en a plusieurs (Naruto enfant / Shippuden), sinon de case
-      const nv = variantsOf(sel.pick[p]).length, vk = nv > 1 ? (hit('up') ? -1 : hit('down') ? 1 : 0) : 0;
-      const dk = vk ? 0 : hit('left') || hit('up') ? -1 : hit('right') || hit('down') ? 1 : 0;
+      const nv = variantsOf(sel.pick[p]).length, vk = nv > 1 && hit('blast') ? 1 : 0;
+      const dx = hit('left') ? -1 : hit('right') ? 1 : 0, dy = dx ? 0 : hit('up') ? -1 : hit('down') ? 1 : 0;
       if (vk) {
-        sel.vari[p] = (sel.vari[p] + vk + nv) % nv; sel.focus = p; sel.flash = 1;
+        sel.vari[p] = (sel.vari[p] + vk + nv) % nv; sel.focus = p; sel.flash = 1; sel.pf[p] = 1;
         audio.tone(700 + p * 120, 0.08, 'triangle', 0.08, 200);
       }
-      if (dk) {
-        sel.pick[p] = (sel.pick[p] + dk + n) % n; sel.vari[p] = 0; sel.focus = p; sel.flash = 1;
-        audio.tone(520 + p * 120, 0.06, 'triangle', 0.08);
+      if (dx || dy) {
+        // grille : gauche / droite d'une case (en passant d'une rangée à l'autre), haut / bas d'une rangée dans la même colonne
+        const { cols, rows } = selGrid(sel.joined.filter(Boolean).length);
+        let k = sel.pick[p];
+        if (dx) k = (k + dx + n) % n;
+        else { const c = k % cols; let r = Math.floor(k / cols); do r = (r + dy + rows) % rows; while (r * cols + c >= n); k = r * cols + c; }
+        sel.pick[p] = k; sel.vari[p] = 0; sel.focus = p; sel.flash = 1; sel.pf[p] = 1;
+        audio.tone(520 + p * 120, 0.06, 'triangle', 0.08); audio.whoosh?.(0.4);
       }
-      if (hit('punch') || hit('jump') || hit('start')) {
+      if (hit('punch') || hit('jump') || hit('start') || (hit('blast') && nv < 2)) {
         // Équipe de deux : le premier choix est le combattant, le second son partenaire
         if (OPTS.tag && sel.first[p] === null && n > 1) { sel.first[p] = sel.pick[p]; sel.firstVar[p] = sel.vari[p]; sel.pick[p] = (sel.pick[p] + 1) % n; sel.vari[p] = 0; }
         else sel.ready[p] = true;
@@ -6574,142 +6580,194 @@ function animeDeco(deco, x0, y, tw, s, layer) {
   }
 }
 
-// ---------- Écran de sélection : une carte par personnage ----------
-// Écran de sélection façon jeu de combat : le portrait du perso en fond, le perso en grand dans sa garde avec son
-// aura, son nom et ses coups, et en bas un carrousel de médaillons qui glisse vers le perso choisi.
-// À plusieurs, chaque joueur a son perso en vitrine (côte à côte) et sa marque de couleur sur le carrousel.
-// Vitrine de la sélection : persos dont la garde paraît trop grande à côté des autres
-const SEL_SIZE = {}; // correction de taille d'un perso dans la vitrine (la taille réelle du jeu suffit en général)
+// ---------- Écran de sélection, façon borne d'arcade ----------
+// Une grille de visages et, pour chaque joueur, un grand panneau : le portrait du perso entre en glissant, avec son
+// ombre colorée, son nom en filigrane derrière lui, sa série et son titre. Seul : panneau à gauche (avec ses
+// caractéristiques et sa garde en jeu), grille à droite. À deux : un panneau de chaque côté, J2 en miroir, comme dans
+// les jeux de combat. À trois ou quatre : grille en haut, panneaux en bas.
+const SEL_SIZE = {}; // correction de taille d'un perso en garde (la taille réelle du jeu suffit en général)
+function selGrid(np) {
+  const n = CHAR_IDS.length;
+  const [cols, x0, x1, y0, y1] = np === 1 ? [8, 462, 950, 70, 404] : np === 2 ? [8, 238, 722, 74, 506] : [15, 20, 940, 62, 250];
+  const rows = Math.ceil(n / cols), cell = Math.floor(Math.min((x1 - x0) / cols, (y1 - y0) / rows, 64));
+  return { cols, rows, cell, gx: (x0 + x1) / 2 - cols * cell / 2, gy: y0 };
+}
+const selPickOf = p => sel.first[p] !== null && sel.ready[p] ? sel.first[p] : sel.pick[p];
+const selVarOf = p => sel.first[p] !== null && sel.ready[p] ? sel.firstVar[p] : sel.vari[p];
+
 function drawSelect() {
   const n = CHAR_IDS.length, ps = [0, 1, 2, 3].filter(p => sel.joined[p]), focus = sel.focus || 0;
-  const pickOf = p => sel.first[p] !== null && sel.ready[p] ? sel.first[p] : sel.pick[p];
-  const varOf = p => sel.first[p] !== null && sel.ready[p] ? sel.firstVar[p] : sel.vari[p];
-  const cid = charAt(sel.pick[focus], sel.vari[focus]), C = CHARS[cid], art = IMG[C.card];
-  // Fond : portrait agrandi, assombri, teinté aux couleurs du perso, qui dérive lentement
-  ctx.fillStyle = '#05030c'; ctx.fillRect(0, 0, W, H);
-  if (art) {
-    const s = H * 1.5 / art.height, [fx, fy] = FACES[C.card] || [0.5, 0.25];
-    ctx.save(); ctx.globalAlpha = 0.45; ctx.filter = 'blur(2px)';
-    ctx.drawImage(art, W * 0.62 - fx * art.width * s + Math.sin(sceneT * 0.3) * 20, H * 0.32 - fy * art.height * s, art.width * s, art.height * s);
-    ctx.restore();
+  const C = CHARS[charAt(sel.pick[focus], sel.vari[focus])], G = selGrid(ps.length);
+  // Fond : bandes obliques aux couleurs du perso qui défilent, trame et lignes de balayage d'écran cathodique
+  ctx.fillStyle = '#07040f'; ctx.fillRect(0, 0, W, H);
+  ctx.save(); ctx.globalAlpha = 0.16;
+  for (let k = -2; k < 14; k++) {
+    const x = k * 90 + (sceneT * 40) % 180;
+    ctx.fillStyle = k % 2 ? C.colors[0] : C.colors[1];
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 45, 0); ctx.lineTo(x - 155, H); ctx.lineTo(x - 200, H); ctx.fill();
   }
-  const g = ctx.createLinearGradient(0, 0, W, 0);
-  g.addColorStop(0, 'rgba(5,3,12,0.92)'); g.addColorStop(0.45, C.colors[0] + '55'); g.addColorStop(1, 'rgba(5,3,12,0.7)');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  // Rayons qui tournent et lignes de vitesse
-  ctx.save(); ctx.globalCompositeOperation = 'lighter';
-  ctx.translate(W * 0.3, H * 0.55); ctx.rotate(sceneT * 0.15);
-  ctx.fillStyle = C.colors[1]; ctx.globalAlpha = 0.06;
-  for (let r = 0; r < 16; r++) { ctx.rotate(Math.PI / 8); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(700, -60); ctx.lineTo(700, 60); ctx.fill(); }
   ctx.restore();
-  ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 2;
-  for (let k = 0; k < 18; k++) { const x = W + 200 - ((k * 173 + sceneT * 700) % (W + 400)), y = 70 + (k * 97) % 320; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 80 + (k % 4) * 30, y); ctx.stroke(); }
-  ctx.restore();
+  // Panneaux des joueurs
+  if (ps.length === 1) selPanel(ps[0], 0, 0, 452, H - 30, false, true);
+  else if (ps.length === 2) { selPanel(ps[0], 0, 0, 232, H - 30, false); selPanel(ps[1], W - 232, 0, 232, H - 30, true); }
+  else { const w = W / ps.length; ps.forEach((p, q) => selPanel(p, q * w + 3, 258, w - 6, H - 30 - 262, q >= ps.length / 2)); }
   // Titre
-  ctx.save(); ctx.fillStyle = 'rgba(10,0,25,0.75)'; ctx.beginPath(); ctx.moveTo(0, 14); ctx.lineTo(470, 14); ctx.lineTo(440, 56); ctx.lineTo(0, 56); ctx.fill();
-  ctx.fillStyle = '#ffe14d'; ctx.fillRect(0, 56, 440, 3); ctx.restore();
-  outlined('CHOISIS TON COMBATTANT', 22, 46, 30, '#ffe14d', 'left');
-  if (OPTS.tag) outlined(ps.some(p => !sel.ready[p] && sel.first[p] !== null) ? 'CHOISIS TON PARTENAIRE DE RELAIS' : 'ÉQUIPE DE DEUX : choisis 2 combattants', W - 20, 44, 16, '#ffe14d', 'right');
-  // Vitrine : un emplacement par joueur
-  const slotW = Math.min(W * 0.62, W / ps.length), y0 = 400;
-  ps.forEach((p, q) => {
-    const id = charAt(pickOf(p), varOf(p)), P = CHARS[id], cx = ps.length === 1 ? W * 0.3 : slotW * (q + 0.5);
-    // à plusieurs, l'étiquette de version passe derrière le perso (sa tête peut la chevaucher)
-    if (ps.length > 1) drawVariantTag(pickOf(p), varOf(p), cx, 158, p);
-    const S = SPRITES[P.sheet], A = S && (S.idle || S.combo || S.punch);
-    if (A) {
-      const i = S.idle ? Math.floor(sceneT * A.rate) % A.frames.length : 0, f = A.frames[i], img = IMG[f.src];
-      const an = S.idle ? 'idle' : S.combo ? 'combo' : 'punch'; // même correction de taille qu'en jeu (ANIM_SIZE)
-      // taille réelle du jeu (échelle de la planche), agrandie d'un même facteur pour tous : un perso accroupi ou en manteau
-      // n'est plus étiré à la hauteur d'un perso debout (190 px en jeu = 300 px ici)
-      const zoom = (ps.length === 1 ? 300 : ps.length === 2 ? 250 : 200) / 190;
-      const h = f.h * A.scale / WORLD * zoom * (SEL_SIZE[id] || 1), k = h / f.h; // l'échelle inclut déjà CHAR_SIZE et ANIM_SIZE
-      if (img) {
-        const pulse = 1 + Math.sin(sceneT * 3 + q) * 0.03, bob = sel.ready[p] ? 0 : Math.sin(sceneT * 2.5 + q) * 2;
-        // aura derrière le perso
-        const ag = ctx.createRadialGradient(cx, y0 - h * 0.5, 10, cx, y0 - h * 0.5, h * 0.75 * pulse);
-        ag.addColorStop(0, P.kiColor + 'aa'); ag.addColorStop(0.6, P.colors[0] + '44'); ag.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = ag; ctx.beginPath(); ctx.ellipse(cx, y0 - h * 0.5, h * 0.55 * pulse, h * 0.75 * pulse, 0, 0, 7); ctx.fill(); ctx.restore();
-        ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.beginPath(); ctx.ellipse(cx, y0 + 2, h * 0.28, h * 0.05, 0, 0, 7); ctx.fill();
-        ctx.save(); if (sel.flash > 0 && p === focus) ctx.filter = `brightness(${1 + sel.flash})`;
-        ctx.drawImage(img, cx - f.ax * k, y0 - f.ay * k + bob, f.w * k, f.h * k); ctx.restore();
-      }
-    }
-    if (ps.length > 1) {
-      outlined(`J${p + 1}`, cx, 76, 18, COLORS_P[p]);
-      outlined(P.name, cx, 104, 26, '#fff');
-      drawAnimeTitle(id, cx, 132, ps.length > 2 ? 12 : 15);
-    }
-    if (sel.ready[p]) outlined('PRÊT !', cx, y0 - 120, 44, COLORS_P[p]);
+  const tx = ps.length === 1 ? G.gx : W / 2, al = ps.length === 1 ? 'left' : 'center';
+  if (ps.length < 3) {
+    outlined('CHOISIS TON COMBATTANT', tx, G.gy - 20, ps.length === 1 ? 30 : 24, '#ffe14d', al);
+    if (OPTS.tag) outlined(ps.some(p => !sel.ready[p] && sel.first[p] !== null) ? 'CHOISIS TON PARTENAIRE' : 'ÉQUIPE DE DEUX', ps.length === 1 ? W - 12 : W / 2, ps.length === 1 ? G.gy - 22 : H - 40, 14, '#fff', ps.length === 1 ? 'right' : 'center');
+  }
+  // Grille de visages
+  const { cols, cell, gx, gy } = G;
+  ctx.save(); ctx.fillStyle = 'rgba(5,0,15,0.7)'; ctx.fillRect(gx - 6, gy - 6, cols * cell + 12, Math.ceil(n / cols) * cell + 12); ctx.restore();
+  for (let k = 0; k < n; k++) selTile(k, gx + (k % cols) * cell, gy + Math.floor(k / cols) * cell, cell, ps);
+  // Curseurs des joueurs (clignotent, décalés vers l'intérieur s'ils sont sur la même case)
+  ps.forEach(p => {
+    const k = sel.pick[p], x = gx + (k % cols) * cell, y = gy + Math.floor(k / cols) * cell;
+    const q = ps.filter(o => o < p && sel.pick[o] === k).length, i = 2 + q * 4, pulse = sel.ready[p] ? 1 : 0.5 + 0.5 * Math.sin(sceneT * 10);
+    ctx.save(); ctx.strokeStyle = COLORS_P[p]; ctx.lineWidth = 3 + pulse * 2; ctx.shadowColor = COLORS_P[p]; ctx.shadowBlur = 6 + pulse * 14;
+    ctx.strokeRect(x + i, y + i, cell - 2 * i, cell - 2 * i); ctx.restore();
+    const lx = q % 2 ? x + cell - 22 : x - 2, ly = q < 2 ? y - 6 : y + cell + 6;
+    ctx.fillStyle = COLORS_P[p]; ctx.fillRect(lx, ly - 8, 24, 14);
+    ctx.fillStyle = '#120420'; ctx.font = 'italic 900 12px Impact, sans-serif'; ctx.textAlign = 'center'; ctx.fillText(`${p + 1}P`, lx + 12, ly + 4);
   });
-  // Fiche du perso (un seul joueur : grande fiche à droite)
+  // Seul : caractéristiques et coups sous la grille
   if (ps.length === 1) {
-    const x = W * 0.56, slide = sel.flash * 40;
-    drawAnimeTitle(cid, x + 4 + slide, 74, 30, true); // plus grand, et décollé du nom du perso
-    outlined(C.name, x + slide, 150, 64, '#fff', 'left');
-    drawVariantTag(sel.pick[focus], sel.vari[focus], W * 0.3, 80, focus);
-    outlined(C.title, x + 4 + slide, 184, 20, C.colors[1], 'left');
+    const y = gy + Math.ceil(n / cols) * cell + 14, x = gx;
     C.stats.forEach(([label, v], r) => {
-      const yy = 214 + r * 28;
-      ctx.fillStyle = '#e4e6ff'; ctx.font = 'bold 14px sans-serif'; ctx.fillText(label, x + 4, yy + 13);
+      const xx = x + r * 162;
+      ctx.fillStyle = '#e4e6ff'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(label, xx, y + 10);
       for (let q = 0; q < 5; q++) {
         ctx.fillStyle = q < v ? C.colors[1] : 'rgba(255,255,255,0.15)';
-        ctx.beginPath(); ctx.moveTo(x + 120 + q * 34, yy + 16); ctx.lineTo(x + 130 + q * 34, yy); ctx.lineTo(x + 152 + q * 34, yy); ctx.lineTo(x + 142 + q * 34, yy + 16); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(xx + q * 26, y + 30); ctx.lineTo(xx + 8 + q * 26, y + 16); ctx.lineTo(xx + 26 + q * 26, y + 16); ctx.lineTo(xx + 18 + q * 26, y + 30); ctx.fill();
       }
     });
-    ctx.font = 'bold 15px sans-serif'; ctx.fillStyle = '#ffd6e8';
-    ctx.fillText(`SPÉCIAL : ${C.labels.blast}`, x + 4, 318); ctx.fillText(`ULTIME : ${C.labels.ultra}`, x + 4, 342);
-    if (C.forms?.[0]) ctx.fillText(`TRANSFORMATION : ${C.forms.map(F => F.name).join(' → ')}`, x + 4, 366);
+    ctx.font = 'bold 14px sans-serif'; ctx.fillStyle = '#ffd6e8'; ctx.textAlign = 'left';
+    ctx.fillText(`SPÉCIAL : ${C.labels.blast}`, x, y + 52); ctx.fillText(`ULTIME : ${C.labels.ultra}`, x, y + 71);
+    if (C.forms?.[0]) ctx.fillText(`TRANSFORMATION : ${C.forms.map(F => F.name).join(' → ')}`, x, y + 90);
   }
-  // Bandeau de vignettes inclinées (façon jeu de combat), qui glisse : la carte choisie est plus grande et lumineuse
-  const cy = 452, tw = 66, th = 86, gap = 8, SK = -0.22, items = [];
-  for (let k = 0; k < n; k++) {
-    let d = k - sel.cur; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
-    if (Math.abs(d) <= 7) items.push([k, d]);
-  }
-  items.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
-  // rail sombre derrière les vignettes
-  ctx.save(); ctx.fillStyle = 'rgba(5,0,15,0.6)'; ctx.fillRect(0, cy - 42, W, 84); ctx.fillStyle = C.colors[1]; ctx.fillRect(0, cy - 43, W, 2); ctx.fillRect(0, cy + 41, W, 2); ctx.restore();
-  for (const [k, d] of items) {
-    const P = CHARS[k === sel.pick[focus] ? cid : CHAR_IDS[k]], img = IMG[P.card], on = Math.abs(d) < 0.5, ad = Math.abs(d);
-    const sc = on ? 1.3 : 1 - Math.min(0.25, ad * 0.03), w = tw * sc, h = th * sc;
-    const x = W / 2 + d * (tw + gap) + Math.sign(d) * (ad > 0.5 ? 14 : 0), y = cy - (on ? 8 + Math.sin(sceneT * 4) * 2 : 0);
-    ctx.save(); ctx.translate(x, y); ctx.transform(1, 0, SK, 1, 0, 0);
-    ctx.beginPath(); ctx.rect(-w / 2, -h / 2, w, h); ctx.save(); ctx.clip();
-    const g2 = ctx.createLinearGradient(0, -h / 2, 0, h / 2); g2.addColorStop(0, P.colors[0]); g2.addColorStop(1, '#12031f');
-    ctx.fillStyle = g2; ctx.fillRect(-w / 2, -h / 2, w, h);
-    if (img) {
-      ctx.transform(1, 0, -SK, 1, 0, 0); // portrait redressé dans le cadre incliné
-      const [fx, fy, fk] = FACES[P.card] || [0.5, 0.2, 4], s2 = h * 0.55 * fk / img.height;
-      ctx.drawImage(img, -img.width * s2 * fx, -h * 0.05 - img.height * s2 * fy, img.width * s2, img.height * s2);
-    }
-    ctx.restore();
-    if (!on) { ctx.fillStyle = `rgba(5,0,15,${Math.min(0.65, 0.25 + ad * 0.07)})`; ctx.fillRect(-w / 2, -h / 2, w, h); }
-    const who = ps.filter(p => sel.pick[p] === k);
-    ctx.lineWidth = on ? 4 : 2; ctx.strokeStyle = who.length ? COLORS_P[who[0]] : on ? '#ffe14d' : 'rgba(255,255,255,0.35)';
-    if (on || who.length) { ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = on ? 18 : 8; }
-    ctx.strokeRect(-w / 2, -h / 2, w, h); ctx.shadowBlur = 0;
-    ctx.restore();
-    who.forEach((p, q) => outlined(`J${p + 1}`, x + (q - (who.length - 1) / 2) * 26, y - h / 2 - 6, 13, COLORS_P[p]));
-  }
-  // début de chaque famille : un trait et le nom de la série au-dessus du bandeau
-  for (const [k, d] of items) {
-    const prev = CHAR_IDS[(k - 1 + n) % n];
-    if (familyOf(prev) === familyOf(CHAR_IDS[k])) continue;
-    const x = W / 2 + d * (tw + gap) + Math.sign(d) * (Math.abs(d) > 0.5 ? 14 : 0) - (tw + gap) / 2 - 6;
-    if (x < 10 || x > W - 30) continue;
-    ctx.save(); ctx.strokeStyle = 'rgba(255,225,77,0.7)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x + 10, cy - 40); ctx.lineTo(x - 10, cy + 40); ctx.stroke(); ctx.restore();
-    const A = animeOf(CHAR_IDS[k]);
-    if (A) { ctx.save(); ctx.font = 'italic 900 11px Impact, sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(5,0,15,0.75)'; const tw2 = ctx.measureText(A.name).width; ctx.fillRect(x + 4, cy - 62, tw2 + 10, 15); ctx.fillStyle = '#ffe14d'; ctx.fillText(A.name, x + 9, cy - 51); ctx.restore(); }
-  }
-  const pulse = 1 + Math.sin(sceneT * 6) * 0.12;
-  outlined('◀', 18 - pulse * 3, cy + 28, 30 * pulse, '#ffe14d');
-  outlined('▶', W - 18 + pulse * 3, cy + 28, 30 * pulse, '#ffe14d');
+  // Lignes de balayage
+  ctx.fillStyle = 'rgba(0,0,0,0.12)';
+  for (let y = 0; y < H; y += 3) ctx.fillRect(0, y, W, 1);
   // Aide en bas d'écran
-  ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 30, W, 30);
+  ctx.fillStyle = 'rgba(0,0,0,0.75)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
-  ctx.fillText(`${K('left')} ${K('right')} choisir${variantsOf(sel.pick[focus]).length > 1 ? `    ${K('up')} ${K('down')} version` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
-  if (sel.go > 0) outlined('EN AVANT !', W / 2, H / 2 - 20, 70 + sel.go * 30, '#ffe14d');
+  ctx.fillText(`${K('left')} ${K('right')} ${K('up')} ${K('down')} choisir${variantsOf(sel.pick[focus]).length > 1 ? `    ${K('blast')} version` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
+  if (sel.go > 0) {
+    ctx.save(); ctx.fillStyle = `rgba(255,255,255,${Math.max(0, 0.5 - sel.go)})`; ctx.fillRect(0, 0, W, H); ctx.restore();
+    outlined('EN AVANT !', W / 2, H / 2 + 20, 70 + sel.go * 30, '#ffe14d');
+  }
+}
+
+// Une case de la grille : le visage du perso cadré serré, assombri sauf sous un curseur
+function selTile(k, x, y, s, ps) {
+  const id = CHAR_IDS[k], P = CHARS[id], img = IMG[P.card], on = ps.some(p => sel.pick[p] === k);
+  ctx.save(); ctx.beginPath(); ctx.rect(x + 1, y + 1, s - 2, s - 2); ctx.clip();
+  const g = ctx.createLinearGradient(0, y, 0, y + s); g.addColorStop(0, P.colors[0]); g.addColorStop(1, '#12031f');
+  ctx.fillStyle = g; ctx.fillRect(x, y, s, s);
+  if (img) {
+    const [fx, fy, fk] = FACES[P.card] || [0.5, 0.3, 4.2], sc = s * 0.62 * fk / img.height;
+    ctx.drawImage(img, x + s / 2 - img.width * sc * fx, y + s * 0.52 - img.height * sc * fy, img.width * sc, img.height * sc);
+  }
+  ctx.fillStyle = P.colors[1]; ctx.fillRect(x, y + s - 4, s, 3);
+  if (!on) { ctx.fillStyle = 'rgba(5,0,15,0.38)'; ctx.fillRect(x, y, s, s); }
+  else { ctx.fillStyle = `rgba(255,255,255,${0.1 + Math.sin(sceneT * 8) * 0.06})`; ctx.fillRect(x, y, s, s); }
+  // reflet en biais
+  ctx.fillStyle = 'rgba(255,255,255,0.07)'; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + s * 0.6, y); ctx.lineTo(x, y + s * 0.6); ctx.fill();
+  ctx.restore();
+  ctx.strokeStyle = 'rgba(0,0,0,0.9)'; ctx.lineWidth = 1; ctx.strokeRect(x + 0.5, y + 0.5, s - 1, s - 1);
+  ps.filter(p => sel.ready[p] && selPickOf(p) === k).forEach(p => { ctx.fillStyle = COLORS_P[p] + '55'; ctx.fillRect(x, y, s, s); });
+}
+
+// Grand panneau d'un joueur. mirror : J2 regarde vers la gauche ; full : panneau du joueur seul (avec sa garde en jeu)
+function selPanel(p, x, y, w, h, mirror, full) {
+  const id = charAt(selPickOf(p), selVarOf(p)), C = CHARS[id], art = IMG[C.card], fl = sel.pf?.[p] || 0, ready = sel.ready[p];
+  const sk = Math.min(40, w * 0.12), dir = mirror ? -1 : 1;
+  const frame = () => {
+    ctx.beginPath();
+    if (mirror) { ctx.moveTo(x + sk, y); ctx.lineTo(x + w, y); ctx.lineTo(x + w, y + h); ctx.lineTo(x, y + h); }
+    else { ctx.moveTo(x, y); ctx.lineTo(x + w, y); ctx.lineTo(x + w - sk, y + h); ctx.lineTo(x, y + h); }
+    ctx.closePath();
+  };
+  ctx.save(); frame();
+  ctx.save(); ctx.clip();
+  const g = ctx.createLinearGradient(x, y, x, y + h);
+  g.addColorStop(0, C.colors[0]); g.addColorStop(0.7, '#2a0830'); g.addColorStop(1, '#0a0214');
+  ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
+  const fcx = x + w * (mirror ? 0.55 : 0.45), fcy = y + h * 0.3;
+  // rayons qui tournent autour du visage
+  ctx.save(); ctx.translate(fcx, fcy); ctx.rotate(sceneT * 0.3 * dir);
+  ctx.fillStyle = C.colors[1]; ctx.globalAlpha = ready ? 0.3 : 0.15;
+  for (let r = 0; r < 12; r++) { ctx.rotate(Math.PI / 6); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(h, -h * 0.12); ctx.lineTo(h, h * 0.12); ctx.fill(); }
+  ctx.restore();
+  // trame de points façon manga
+  ctx.fillStyle = 'rgba(255,255,255,0.07)';
+  for (let yy = y; yy < y + h; yy += 9) for (let xx = x + ((yy / 9) % 2) * 4.5; xx < x + w; xx += 9) ctx.fillRect(xx, yy, 2, 2);
+  // nom géant en filigrane, qui défile
+  ctx.save(); ctx.globalAlpha = 0.12; ctx.fillStyle = '#fff'; ctx.font = `italic 900 ${Math.round(h * 0.22)}px Impact, sans-serif`; ctx.textAlign = 'left';
+  const nw = ctx.measureText(C.name + '  ').width;
+  for (let r = 0; r < 3; r++) {
+    const off = ((sceneT * 30 * (r % 2 ? 1 : -1)) % nw + nw) % nw;
+    for (let xx = x - off; xx < x + w; xx += nw) ctx.fillText(C.name, xx, y + h * (0.24 + r * 0.24));
+  }
+  ctx.restore();
+  // portrait : entre en glissant, avec une ombre pleine décalée aux couleurs du perso
+  if (art) {
+    const [fx, fy, fk] = FACES[C.card] || [0.5, 0.3, 4.2];
+    const R = full ? h * 0.24 : Math.min(w * 0.44, h * 0.27), s = Math.min(R * fk / art.height, 1.2 * (full ? 1 : 0.9)), iw = art.width * s, ih = art.height * s;
+    const e = fl * fl, slide = -dir * e * 160;
+    let ix = fcx - fx * iw, iy = fcy - fy * ih;
+    iy = Math.max(iy, y + h - ih + 10 - (full ? 0 : 0)); // pas de vide sous le buste
+    ctx.save(); ctx.globalAlpha = 1 - e * 0.8;
+    if (mirror) { ctx.translate(2 * fcx, 0); ctx.scale(-1, 1); }
+    ctx.shadowColor = C.colors[1] + 'cc'; ctx.shadowOffsetX = -12 * dir * RES; ctx.shadowOffsetY = 0;
+    if (sel.flash > 0 && p === (sel.focus || 0) || ready) ctx.filter = `brightness(${1 + (ready ? 0.15 + Math.sin(sceneT * 6) * 0.08 : sel.flash * 0.6)})`;
+    ctx.drawImage(art, ix + (mirror ? -slide : slide), iy, iw, ih);
+    ctx.restore();
+  }
+  // trait de vitesse au changement de perso
+  if (fl > 0) {
+    ctx.save(); ctx.globalAlpha = fl * 0.8; ctx.fillStyle = '#fff';
+    for (let k = 0; k < 7; k++) { const yy = y + ((k * 71 + 23) % 97) / 97 * h, len = w * (0.4 + (k % 3) * 0.2), xx = mirror ? x + w - len * (1 - fl) - len : x + len * (1 - fl); ctx.fillRect(xx, yy, len, 2 + (k % 2) * 2); }
+    ctx.restore();
+  }
+  // dégradé sombre pour lire le nom
+  const g2 = ctx.createLinearGradient(0, y + h * 0.62, 0, y + h); g2.addColorStop(0, 'rgba(5,0,15,0)'); g2.addColorStop(1, 'rgba(5,0,15,0.95)');
+  ctx.fillStyle = g2; ctx.fillRect(x, y + h * 0.62, w, h * 0.38);
+  ctx.restore(); // fin du découpage
+  // cadre à la couleur du joueur
+  ctx.strokeStyle = COLORS_P[p]; ctx.lineWidth = ready ? 5 : 3;
+  if (ready) { ctx.shadowColor = COLORS_P[p]; ctx.shadowBlur = 20; }
+  frame(); ctx.stroke(); ctx.shadowBlur = 0;
+  ctx.restore();
+  // garde en jeu (joueur seul) : le perso tel qu'on le jouera, au premier plan
+  if (full) {
+    const S = SPRITES[C.sheet], A = S && (S.idle || S.combo || S.punch);
+    if (A) {
+      const i = S.idle ? Math.floor(sceneT * A.rate) % A.frames.length : 0, f = A.frames[i], img = IMG[f.src];
+      const hh = f.h * A.scale / WORLD * (190 / 190) * (SEL_SIZE[id] || 1), k = hh / f.h, cx = x + w - 84, gy = y + h - 16;
+      if (img) {
+        ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.beginPath(); ctx.ellipse(cx, gy + 2, hh * 0.25, hh * 0.05, 0, 0, 7); ctx.fill();
+        ctx.drawImage(img, cx - f.ax * k, gy - f.ay * k, f.w * k, f.h * k);
+      }
+    }
+  }
+  // textes : série, version, nom, titre
+  const tx = mirror ? x + w - 14 : x + 14, al = mirror ? 'right' : 'left', small = !full;
+  outlined(`${p + 1}P`, tx, y + 28, 22, COLORS_P[p], al);
+  if (full) drawAnimeTitle(id, x + 70, y + 26, 18, true);
+  drawVariantTag(selPickOf(p), selVarOf(p), x + w / 2, y + (full ? 62 : 52), p);
+  const nameY = y + h - (full ? 52 : 34), ns = full ? 56 : Math.min(34, w / Math.max(4, C.name.length) * 1.5);
+  outlined(C.name, tx + (mirror ? -1 : 1) * (1 - fl) * 0, nameY, ns, '#fff', al);
+  ctx.font = `italic bold ${full ? 17 : 12}px sans-serif`; ctx.textAlign = al; ctx.fillStyle = C.colors[1];
+  ctx.fillText(C.title, tx + (mirror ? -2 : 2), nameY + (full ? 24 : 18));
+  if (!full) drawAnimeTitle(id, x + w / 2, nameY - ns - 2, 11);
+  // équipe de deux : le combattant déjà choisi, en médaillon
+  if (sel.first[p] !== null && !ready) {
+    const F = CHARS[charAt(sel.first[p], sel.firstVar[p])], mx = mirror ? x + 40 : x + w - 40 - (full ? sk : 0);
+    medallion(F, mx, y + 92, 26, COLORS_P[p]); outlined('★', mx + 20, y + 120, 16, COLORS_P[p]);
+  }
+  if (ready) { ctx.save(); ctx.translate(x + w / 2, y + h * 0.5); ctx.rotate(-0.2); outlined('PRÊT !', 0, 0, full ? 64 : 40, COLORS_P[p]); ctx.restore(); }
 }
 
 // Étiquette « ▲ ENFANT ▼ » de la case qui a plusieurs versions (rien sinon)
