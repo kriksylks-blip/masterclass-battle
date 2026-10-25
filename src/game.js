@@ -24,8 +24,7 @@ function loadImage(key, src) {
 let RES = 1;
 function fitCanvas() {
   const r = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
-  // téléphone : 1× (960 × 540, 2,25 fois moins de pixels qu'en 1,5×) ; ?res=1.5 pour comparer
-  const max = Number(new URLSearchParams(location.search).get('res')) || (matchMedia('(pointer: coarse)').matches ? 1 : 2);
+  const max = matchMedia('(pointer: coarse)').matches ? 1.5 : 2;
   const res = Math.min(max, Math.max(1, Math.round(r.width * dpr / W * 4) / 4));
   if (res !== RES || canvas.width !== Math.round(W * res)) { RES = res; canvas.width = Math.round(W * RES); canvas.height = Math.round(H * RES); }
 }
@@ -99,9 +98,8 @@ function requireGame(chars, L) {
   const cards = new Set(Object.values(CHARS).map(C => C.card));
   for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin|pv)_/.test(k) || lazy.has(k) || cards.has(k)) && !keep.has(k)) delete IMG[k];
   menuImagesOk = false;
-  for (const k of Object.keys(layerCache)) { freeLayers(layerCache[k]); delete layerCache[k]; } // refaits au besoin
-  bigOrder.length = 0;
-  if (typeof harmCache !== 'undefined') for (const k of Object.keys(harmCache)) if (!bgs.some(b => k.startsWith(b))) { const c = harmCache[k]; if (c instanceof HTMLCanvasElement) { c.width = 0; c.height = 0; } delete harmCache[k]; } // décors harmonisés des autres niveaux
+  for (const k of Object.keys(layerCache)) delete layerCache[k]; // vignettes des niveaux déjà réduites : refaites au besoin
+  if (typeof harmCache !== 'undefined') for (const k of Object.keys(harmCache)) if (!bgs.some(b => k.startsWith(b))) delete harmCache[k]; // décors harmonisés des autres niveaux
   const todo = [...frames.map(src => [src, src]), ...fxv.map(src => [src, src]), ...bgs.map(k => [k, ASSETS.backgrounds[k]]), ...intros.map(k => [k, ASSETS.ui[k]]),
     ...cuts.map(k => [k, `assets/ui/cutin/${k.slice(6)}.jpg`])].filter(([k]) => !IMG[k]);
   if (!todo.length) { gameLoading = null; return; }
@@ -5516,15 +5514,6 @@ function updateLevels(dt) {
 // (saccades de plusieurs dixièmes de seconde). On garde donc, par niveau, des calques déjà réduits à deux tailles :
 // vignette (THUMB_W) et plein écran, préparés une fois puis simplement recopiés.
 const THUMB_W = 200, layerCache = {};
-// Safari (iPhone) plafonne la mémoire totale des canvas : au-delà, même l'écran du jeu devient noir. Les vignettes
-// restent toutes en cache (petites) ; les calques plein écran (un monde, une zone) seulement pour les 4 derniers vus.
-const BIG_KEEP = 4, bigOrder = [];
-function freeLayers(C) { for (const c of Object.values(C || {})) if (c instanceof HTMLCanvasElement) { c.width = 0; c.height = 0; } }
-function cacheBig(key, C) {
-  bigOrder.push(key);
-  while (bigOrder.length > BIG_KEEP) { const old = bigOrder.shift(); freeLayers(layerCache[old]); delete layerCache[old]; }
-  return (layerCache[key] = C);
-}
 function levelLayers(L, bw) {
   const key = L.id + '|' + bw;
   if (layerCache[key]) return layerCache[key];
@@ -5539,7 +5528,7 @@ function levelLayers(L, bw) {
   if (L.far && pv('far')) C.far = bake(pv('far'), pv('far').width * LAYERS.far.h / pv('far').height * k, LAYERS.far.h * k);
   if (mid) C.mid = bake(mid, mid.width * LAYERS.mid.h / mid.height * k, LAYERS.mid.h * k);
   if (gr) C.gr = bake(gr, LAYERS.street.w * k, LAYERS.street.h * k);
-  return bw > THUMB_W ? cacheBig(key, C) : (layerCache[key] = C);
+  return (layerCache[key] = C);
 }
 function drawLevelThumb(L, x, y, w, h, scroll = 0) {
   const bw = w > THUMB_W * 1.5 ? W : THUMB_W, C = levelLayers(L, bw), k = C.k, s = w / bw;
@@ -5556,7 +5545,7 @@ function drawLevelThumb(L, x, y, w, h, scroll = 0) {
 }
 // Prépare les calques de tous les niveaux, un par tranche de temps libre, pour que le menu ne saccade jamais
 function warmLevelLayers() {
-  const todo = LEVELS.map(L => [L, THUMB_W]); // vignettes seulement : le plein écran se fait à la demande
+  const todo = LEVELS.flatMap(L => [[L, THUMB_W], [L, W]]);
   const step = () => { const j = todo.shift(); if (!j) return; levelLayers(...j); setTimeout(step, 30); };
   setTimeout(step, 300);
 }
@@ -5582,7 +5571,7 @@ function zoneLayers(L, zi) {
   if (L.far && pv('far')) C.far = bake(pv('far'), pv('far').width * LAYERS.far.h / pv('far').height, LAYERS.far.h);
   if (pv(Z.mid)) C.mid = bake(pv(Z.mid), pv(Z.mid).width * LAYERS.mid.h / pv(Z.mid).height, LAYERS.mid.h);
   if (pv(Z.ground)) C.gr = bake(pv(Z.ground), LAYERS.street.w, LAYERS.street.h);
-  return cacheBig(key, C);
+  return (layerCache[key] = C);
 }
 function drawZoneBg(L, zi, scroll, zoom, alpha) {
   const C = zoneLayers(L, zi) || (zi ? zoneLayers(L, 0) : null);
@@ -7333,15 +7322,13 @@ function updateLoops() {
 let last = performance.now();
 function frame(now) {
   const dt = Math.min((now - last) / 1000, 1 / 30);
-  frame.fps = (frame.fps || 60) * 0.95 + (now > last ? 1000 / (now - last) : 60) * 0.05; // images par seconde (diagnostic)
   last = now;
   pollPad();
   // en ligne : l'invité ne fait pas tourner la partie, il dessine l'état envoyé par l'hôte (src/netsync.js)
   if (net.role === 'guest' && (net.live || netQueue.length)) netGuestTick(dt); else update(dt);
   if (net.role === 'host') netHostTick(dt);
   updateLoops();
-  // une erreur de dessin ne doit pas figer le jeu (écran noir) : on la signale (diagnostic de index.html) et on continue
-  try { draw(); } catch (e) { if (!frame.err) { frame.err = 1; setTimeout(() => { throw e; }); } }
+  draw();
   INPUT.forEach(I => I.pressed.clear());
   requestAnimationFrame(frame);
 }
