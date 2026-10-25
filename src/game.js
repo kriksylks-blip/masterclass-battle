@@ -1175,7 +1175,8 @@ const CHARS = {
     forms: [{ ki: 50, name: 'EXPLOSION MAXIMALE', filter: 'contrast(1.12) saturate(1.15)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,150,40,0.45)', '#ffb040'], glow: '#ff8a20', sparks: '#ffd060', bar: ['#6a2a00', '#ffb040'], color: '#ffb040', hit: '#fff0c0' }],
     moves: KB_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'apshot', special2: 'howitzer', speed: 280, pose: stdPose, ultra: [startCluster, updateCluster],
-    ultraPose: h => h.t < CLUSTER.rise ? ['dashcharge', 5] : h.t < CLUSTER.end - 0.35 ? ['special', 5 + Math.floor(h.t * 10) % 2] : ['special', 7],
+    // accroupi, puis il décolle en s'aidant de ses explosions, tourne en l'air (vol / plongée) et retombe accroupi
+    ultraPose: h => h.t < 0.12 ? ['dashcharge', 4] : h.t < CLUSTER.rise ? ['special', 4] : h.t < CLUSTER.end - 0.35 ? ['special', 5 + Math.floor(h.t * 6) % 2] : ['special', 7],
   },
   seiya: {
     name: 'SEIYA', title: 'Le chevalier de Pégase', sheet: 'seiya', card: 'card_sy',
@@ -3632,8 +3633,13 @@ const CLUSTER = { rise: 0.35, end: 2.0, every: 0.12, reach: 640 };
 function startCluster(h) { h.hitT = 0; h.punched = false; say(h, 'MEURS !!'); audio.play('ultraCharge', 0.9, 1.2, 0); }
 function updateCluster(h) {
   h.inv = Math.max(h.inv, 0.1);
-  if (h.t < CLUSTER.end - 0.3) h.y = h.gz - 70 * Math.min(1, h.t / CLUSTER.rise);
+  // il décolle propulsé par ses paumes, plane en tanguant, puis retombe
+  const up = h.t < 0.12 ? 0 : Math.min(1, (h.t - 0.12) / (CLUSTER.rise - 0.12));
+  if (h.t < CLUSTER.end - 0.3) h.y = h.gz - 110 * (1 - (1 - up) * (1 - up)) - (up >= 1 ? Math.sin(h.t * 7) * 10 : 0);
   else h.y += (h.gz - h.y) * 0.3;
+  // explosions de propulsion sous ses mains (vers le sol), plus fortes au décollage
+  if (h.t > 0.1 && h.t < CLUSTER.end - 0.35 && Math.random() < (h.t < CLUSTER.rise ? 0.7 : 0.25))
+    animFX('explosion', h.x - h.dir * rand(10, 60), h.y + rand(-10, 30), rand(70, h.t < CLUSTER.rise ? 150 : 100), 0.3);
   if (h.t > CLUSTER.rise && h.t < CLUSTER.end - 0.35 && h.t - h.hitT > CLUSTER.every) {
     h.hitT = h.t; shake = Math.max(shake, 12); audio.play('ultraBoom', 0.55, 1.4 + Math.random() * 0.3, 0);
     const x = h.x + h.dir * rand(80, CLUSTER.reach), z = h.gz + rand(-40, 40);

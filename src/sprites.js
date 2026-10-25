@@ -49819,63 +49819,120 @@ const SPRITES = {
  },
  "bakugo": {
   "walk": {
-   "scale": 0.4907,
+   "scale": 0.3445,
+   "rate": 28.5,
    "frames": [
     {
-     "src": "assets/sprites/bakugo/walk_0.png",
-     "w": 303,
-     "h": 370,
-     "ax": 140.2,
-     "ay": 370
+     "src": "assets/sprites/bakugo/walkv_0.png",
+     "w": 390,
+     "h": 520,
+     "ax": 183.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/bakugo/walk_1.png",
-     "w": 300,
-     "h": 370,
-     "ax": 141.7,
-     "ay": 370
+     "src": "assets/sprites/bakugo/walkv_1.png",
+     "w": 394,
+     "h": 518,
+     "ax": 187.5,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/bakugo/walk_2.png",
-     "w": 290,
-     "h": 369,
-     "ax": 148.0,
-     "ay": 369
+     "src": "assets/sprites/bakugo/walkv_2.png",
+     "w": 379,
+     "h": 522,
+     "ax": 177.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/bakugo/walk_3.png",
-     "w": 289,
-     "h": 372,
-     "ax": 146.0,
-     "ay": 372
+     "src": "assets/sprites/bakugo/walkv_3.png",
+     "w": 326,
+     "h": 536,
+     "ax": 156.5,
+     "ay": 536
     },
     {
-     "src": "assets/sprites/bakugo/walk_4.png",
-     "w": 299,
-     "h": 365,
-     "ax": 139.1,
-     "ay": 365
+     "src": "assets/sprites/bakugo/walkv_4.png",
+     "w": 286,
+     "h": 542,
+     "ax": 143.5,
+     "ay": 542
     },
     {
-     "src": "assets/sprites/bakugo/walk_5.png",
-     "w": 295,
-     "h": 367,
-     "ax": 154.3,
-     "ay": 367
+     "src": "assets/sprites/bakugo/walkv_5.png",
+     "w": 256,
+     "h": 548,
+     "ax": 128.2,
+     "ay": 548
     },
     {
-     "src": "assets/sprites/bakugo/walk_6.png",
-     "w": 297,
-     "h": 375,
-     "ax": 154.0,
-     "ay": 375
+     "src": "assets/sprites/bakugo/walkv_6.png",
+     "w": 276,
+     "h": 543,
+     "ax": 156.5,
+     "ay": 543
     },
     {
-     "src": "assets/sprites/bakugo/walk_7.png",
-     "w": 307,
-     "h": 370,
-     "ax": 167.8,
-     "ay": 370
+     "src": "assets/sprites/bakugo/walkv_7.png",
+     "w": 334,
+     "h": 530,
+     "ax": 196.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_8.png",
+     "w": 358,
+     "h": 524,
+     "ax": 216.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_9.png",
+     "w": 360,
+     "h": 514,
+     "ax": 247.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_10.png",
+     "w": 336,
+     "h": 514,
+     "ax": 221.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_11.png",
+     "w": 314,
+     "h": 521,
+     "ax": 198.5,
+     "ay": 521
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_12.png",
+     "w": 262,
+     "h": 532,
+     "ax": 141.2,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_13.png",
+     "w": 260,
+     "h": 534,
+     "ax": 128.2,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_14.png",
+     "w": 316,
+     "h": 530,
+     "ax": 150.0,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/bakugo/walkv_15.png",
+     "w": 351,
+     "h": 524,
+     "ax": 159.5,
+     "ay": 524
     }
    ]
   },
