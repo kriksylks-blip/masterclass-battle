@@ -54096,6 +54096,25 @@ const SPRITES = {
      "ay": 536
     }
    ]
+  },
+  "guard": {
+   "scale": 0.2825,
+   "frames": [
+    {
+     "src": "assets/sprites/buu/guard_0.png",
+     "w": 487,
+     "h": 653,
+     "ax": 266.5,
+     "ay": 653
+    },
+    {
+     "src": "assets/sprites/buu/guard_1.png",
+     "w": 665,
+     "h": 618,
+     "ax": 330.5,
+     "ay": 618
+    }
+   ]
   }
  },
  "buu_kid": {
@@ -54670,6 +54689,25 @@ const SPRITES = {
      "h": 550,
      "ax": 201.0,
      "ay": 550
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2039,
+   "frames": [
+    {
+     "src": "assets/sprites/buu_kid/guard_0.png",
+     "w": 437,
+     "h": 662,
+     "ax": 262.5,
+     "ay": 662
+    },
+    {
+     "src": "assets/sprites/buu_kid/guard_1.png",
+     "w": 621,
+     "h": 679,
+     "ax": 303.0,
+     "ay": 679
     }
    ]
   }
