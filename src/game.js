@@ -4571,9 +4571,9 @@ function fxImg(name, i, x, y, w, h, o = {}) {
   const hh = h ?? w * f.h / f.w;
   ctx.save(); ctx.globalCompositeOperation = name === 'explosion' || name === 'rupture' ? 'source-over' : 'lighter';
   if (o.alpha !== undefined) ctx.globalAlpha = o.alpha;
-  if (o.filter) ctx.filter = o.filter;
+  const bk = bakeable(o.filter); if (o.filter && !bk) ctx.filter = o.filter;
   ctx.translate(x, y); if (o.rot) ctx.rotate(o.rot); if (o.flip) ctx.scale(-1, 1);
-  ctx.drawImage(img, -w / 2, -hh / 2, w, hh);
+  ctx.drawImage(bk ? baked(img, o.filter) : img, -w / 2, -hh / 2, w, hh);
   ctx.restore();
   return true;
 }
@@ -4649,9 +4649,10 @@ function drawFX(ghosts = false) {
       const a = (f.alpha ?? 1) * Math.min(1, f.t / 0.05) * (vimg ? (k > 0.85 ? 1 - (k - 0.85) / 0.15 : 1) : k > 0.55 ? 1 - (k - 0.55) / 0.45 : 1);
       const sc = vimg ? GFX_V_SCALE : 1 + (f.grow || 0) * k;
       const w = f.w * sc, hh = (f.h ?? f.w * img.height / img.width) * sc;
-      ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a; if (f.filter) ctx.filter = f.filter;
+      const bk = bakeable(f.filter);
+      ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a; if (f.filter && !bk) ctx.filter = f.filter;
       ctx.translate(x, y); ctx.scale(dir, 1); ctx.rotate((f.rot || 0) + (vimg ? 0 : (f.spin || 0) * f.t * Math.PI * 2));
-      ctx.drawImage(img, -w / 2, -hh / 2, w, hh); ctx.restore();
+      ctx.drawImage(bk ? baked(img, f.filter) : img, -w / 2, -hh / 2, w, hh); ctx.restore();
       continue;
     }
     if (f.type === 'anim') {
@@ -5014,8 +5015,9 @@ function drawProjs() {
       const th = (p.thick || 1) * (64 + Math.sin(p.t * 50) * 5), x2 = sx + p.dir * p.len, o = { filter: p.filter, flip: p.dir < 0 };
       const body = FX.beam[1], img = IMG[body.src];
       if (img) {
-        ctx.save(); ctx.globalCompositeOperation = 'lighter'; if (p.filter) ctx.filter = p.filter;
-        ctx.drawImage(img, 0, 0, body.w, body.h, Math.min(sx, x2), p.y - th / 2, Math.abs(x2 - sx), th);
+        const bk = bakeable(p.filter);
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; if (p.filter && !bk) ctx.filter = p.filter;
+        ctx.drawImage(bk ? baked(img, p.filter) : img, 0, 0, body.w, body.h, Math.min(sx, x2), p.y - th / 2, Math.abs(x2 - sx), th);
         ctx.restore();
       }
       fxImg('beam', 0, sx, p.y, 110 * (p.thick || 1), null, o);
@@ -5042,9 +5044,10 @@ function drawProjs() {
       const L = FX.getsuga_v, f = L[Math.floor(p.t * 14) % L.length], img = IMG[f.src];
       if (img) {
         const hh = 190 * (p.scale || 1) * WORLD, ww = hh * f.w / f.h;
-        ctx.save(); ctx.globalCompositeOperation = 'lighter'; if (p.filter) ctx.filter = p.filter;
+        const bk = bakeable(p.filter);
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; if (p.filter && !bk) ctx.filter = p.filter;
         ctx.translate(sx + p.dir * 30, p.y); ctx.scale(p.dir, 1);
-        ctx.drawImage(img, -ww * 0.91, -hh / 2, ww, hh); ctx.restore();
+        ctx.drawImage(bk ? baked(img, p.filter) : img, -ww * 0.91, -hh / 2, ww, hh); ctx.restore();
       }
       continue;
     }
@@ -5922,6 +5925,20 @@ function drawBackground() {
 // ---------- Rendu : personnages ----------
 // Les images regardent toutes vers la droite ; (ax, ay) = point posé au sol, au niveau du torse.
 // rot : rotation (radians) autour du milieu du corps, pour la vrille du double saut.
+// Filtres de couleur (teinte d'un ennemi, flash, forme…) : Safari sur iPhone les calcule sans la puce graphique, à
+// chaque image, et le combat rame. L'image filtrée est donc préparée une fois (cache), puis dessinée telle quelle.
+const BAKED = new Map(), BAKED_MAX = 160;
+function baked(img, filter) {
+  const key = (img.src || '') + '|' + filter;
+  let c = BAKED.get(key);
+  if (c) { BAKED.delete(key); BAKED.set(key, c); return c; } // le plus récent en dernier
+  c = document.createElement('canvas'); c.width = img.naturalWidth || img.width; c.height = img.naturalHeight || img.height;
+  const g = c.getContext('2d'); g.filter = filter; g.drawImage(img, 0, 0);
+  BAKED.set(key, c);
+  if (BAKED.size > BAKED_MAX) { const [k0, c0] = BAKED.entries().next().value; c0.width = c0.height = 0; BAKED.delete(k0); }
+  return c;
+}
+const bakeable = f => f && f !== 'none' && !/drop-shadow|blur/.test(f); // ombres et flous débordent de l'image : laissés tels quels
 function drawAnim(who, anim, i, x, y, dir, filter, rot = 0) {
   const A = SPRITES[who][anim], f = A.frames[clamp(i, 0, A.frames.length - 1)], img = IMG[f.src];
   if (!img) return;
@@ -5933,8 +5950,8 @@ function drawAnim(who, anim, i, x, y, dir, filter, rot = 0) {
   if (drawAnim.lean) ctx.rotate(drawAnim.lean); // penché vers l'avant, pivot aux pieds (le miroir est déjà appliqué)
   if (drawAnim.grow) ctx.scale(drawAnim.grow, drawAnim.grow);
   if (drawAnim.breath) ctx.scale(1 - drawAnim.breath * 0.35, 1 + drawAnim.breath); // respiration, ancrée aux pieds
-  if (filter) ctx.filter = filter;
-  ctx.drawImage(img, -f.ax * s, -f.ay * s, f.w * s, f.h * s);
+  if (bakeable(filter)) ctx.drawImage(baked(img, filter), -f.ax * s, -f.ay * s, f.w * s, f.h * s);
+  else { if (filter) ctx.filter = filter; ctx.drawImage(img, -f.ax * s, -f.ay * s, f.w * s, f.h * s); }
   ctx.restore();
 }
 

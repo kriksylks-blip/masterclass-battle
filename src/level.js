@@ -835,9 +835,9 @@ function drawZoneLayer(kind) {
       const S = STRIPS[Z.id], simg = S && IMG[S.img];
       if (simg) {
         const sh = S.h, sw = simg.width * sh / simg.height;
-        ctx.save(); ctx.filter = `brightness(${groundLight(Z.mid, IMG[Z.mid] || IMG[midX(Z.mid)])})`;
-        drawTiled(simg, f, L.y + S.dy - sh, sh, sw, true);
-        ctx.restore();
+        // luminosité accordée au décor : bordure préparée une fois (voir baked dans game.js), pas de filtre à chaque image
+        const lum = Math.round(groundLight(Z.mid, IMG[Z.mid] || IMG[midX(Z.mid)]) * 50) / 50;
+        drawTiled(lum === 1 ? simg : baked(simg, `brightness(${lum})`), f, L.y + S.dy - sh, sh, sw, true);
       }
     } else drawTiled(img, f, L.y, L.h, L.w, mirror);
     ctx.restore();
