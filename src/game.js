@@ -7327,6 +7327,7 @@ function frame(now) {
   if (net.role === 'host') netHostTick(dt);
   updateLoops();
   draw();
+  if (net.gpause) drawGuestPause(); // pause de l'invité en ligne (src/net.js)
   INPUT.forEach(I => I.pressed.clear());
   requestAnimationFrame(frame);
 }

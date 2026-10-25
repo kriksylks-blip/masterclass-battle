@@ -87,7 +87,8 @@ function netAccept(conn) {
   net.status = `J${slot + 1} a rejoint la partie !`;
   audio.tone(880, 0.2, 'triangle', 0.12, 300);
   if (scene === 'select') netJoinSlot(slot);
-  conn.on('data', m => netInput(conn.slot, m));
+  conn.last = performance.now();
+  conn.on('data', m => { conn.last = performance.now(); netInput(conn.slot, m); });
   conn.on('close', () => netLeave(conn.slot));
 }
 // Place les invités connectés sur l'écran de sélection (appelé aussi à chaque ouverture de cet écran)
@@ -97,13 +98,29 @@ function netJoinSlot(s) {
   sel.pick[s] = s % CHAR_IDS.length; sel.vari[s] = 0;
 }
 function netLeave(slot) {
-  delete net.guests[slot];
+  const conn = net.guests[slot];
+  if (!conn) return;
+  delete net.guests[slot]; // d'abord, sinon la fermeture rappellerait netLeave
+  try { conn.close(); } catch (e) { }
   const I = INPUT[slot]; I.keys.clear(); I.pressed.clear();
   if (scene === 'select') sel.joined[slot] = false;
+  // en pleine partie : son personnage quitte le combat
+  const h = players.find(p => p.idx === slot);
+  if (h && ['play', 'clear', 'gameover'].includes(scene)) {
+    players = players.filter(p => p !== h);
+    popups.push({ x: h.x, y: h.y - 200, t: 0, text: `J${slot + 1} A QUITTÉ LA PARTIE` });
+    burst(h.x, h.y - 110, '#ffffff', 20);
+  }
   net.status = `J${slot + 1} est parti.`;
 }
+// Hôte : un invité silencieux depuis 6 s (il envoie un signe de vie chaque seconde) est retiré de la partie
+setInterval(() => {
+  if (net.role !== 'host') return;
+  for (const [s, c] of Object.entries(net.guests)) if (performance.now() - (c.last || 0) > 6000) netLeave(+s);
+}, 1000);
 function netInput(slot, m) {
   if (m.t === 'resync') { netResync(); return; } // invité en retard : il repart d'un état complet
+  if (m.t === 'ping') return; // signe de vie
   if (m.t !== 'k') return;
   const I = INPUT[slot], a = m.a;
   if (a === 'pause' || a === 'mute') return;
@@ -149,6 +166,41 @@ function netJoin(code) {
     conn.on('close', () => { netClose(); openOnline(); net.err = 'La partie a été fermée par l\'hôte.'; });
   });
 }
+setInterval(() => {
+  if (net.role !== 'guest' || !net.conn?.open) return;
+  try { net.conn.send({ t: 'ping' }); } catch (e) { }
+  if (net.live && performance.now() - (net.lastState || performance.now()) > 8000) { netClose(); openOnline(); net.err = 'Connexion perdue avec l\u2019hôte.'; }
+}, 1000);
+// ---------- Pause de l'invité ----------
+// La partie tourne chez l'hôte et ne s'arrête pas : l'invité a son propre petit menu (reprendre, quitter la partie)
+const GPAUSE = ['REPRENDRE', 'QUITTER LA PARTIE'];
+function netGuestMenu(a) {
+  const G = net.gpause;
+  if (a === 'up' || a === 'down') { G.row = (G.row + GPAUSE.length + (a === 'up' ? -1 : 1)) % GPAUSE.length; audio.tone(1250, 0.025, 'sine', 0.03); }
+  else if (a === 'punch' || a === 'jump' || a === 'start') {
+    if (G.row === 0) net.gpause = null;
+    else { net.gpause = null; netClose(); scene = 'title'; sceneT = 0; audio.stopAll?.(); }
+  } else if (a === 'kick' || a === 'pause') net.gpause = null;
+}
+function netGuestAction(a, d) {
+  // pendant la partie, Pause ouvre le menu de l'invité au lieu de partir chez l'hôte (qui l'ignorait)
+  if (d && a === 'pause' && net.live && scene === 'play') { if (net.gpause) net.gpause = null; else { net.gpause = { row: 0 }; for (const x of [...netHeld]) netSend(x, false); } return; }
+  if (net.gpause) { if (d) netGuestMenu(a); return; }
+  netSend(a, d);
+}
+function drawGuestPause() {
+  if (!net.gpause || net.role !== 'guest') return;
+  ctx.setTransform(RES, 0, 0, RES, 0, 0);
+  ctx.fillStyle = 'rgba(6,0,22,0.78)'; ctx.fillRect(0, 0, W, H);
+  outlined('PAUSE', W / 2, 120, 64, '#ffe14d');
+  ctx.font = '15px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
+  ctx.fillText('En ligne, la partie continue chez l\u2019hôte pendant ta pause.', W / 2, 160);
+  GPAUSE.forEach((t, k) => {
+    const on = k === net.gpause.row, y = 250 + k * 70;
+    if (on) { ctx.fillStyle = 'rgba(220,20,60,0.9)'; ctx.fillRect(W / 2 - 230, y - 36, 460, 52); }
+    outlined(t, W / 2, y, on ? 32 : 26, on ? '#ffe14d' : '#fff');
+  });
+}
 // Touches de l'invité : ses commandes de joueur 1, envoyées à l'hôte
 const netHeld = new Set();
 function netSend(a, d) {
@@ -172,13 +224,13 @@ addEventListener('keydown', e => {
   e.preventDefault(); e.stopImmediatePropagation();
   if (e.code === 'Escape' && !net.live) { netClose(); openOnline(); return; }
   if (e.code === 'F10') { netClose(); openOnline(); return; }
-  for (const a of netActionsOf(e.code)) netSend(a, true);
+  for (const a of netActionsOf(e.code)) netGuestAction(a, true);
 }, true);
 addEventListener('keyup', e => {
   if (e.target instanceof HTMLInputElement) return;
   if (net.role !== 'guest') return;
   e.stopImmediatePropagation();
-  for (const a of netActionsOf(e.code)) netSend(a, false);
+  for (const a of netActionsOf(e.code)) netGuestAction(a, false);
 }, true);
 // Manette de l'invité
 const netPadOn = new Set();
@@ -196,8 +248,8 @@ const netPadOn = new Set();
       const [ax, ay] = padAxes(gp);
       if (ax < -0.4) on.add('left'); if (ax > 0.4) on.add('right'); if (ay > 0.5) on.add('down'); if (ay < -0.5) on.add('up');
       for (const a of new Set([...on, ...netPadOn])) {
-        if (on.has(a) && !netPadOn.has(a)) { netPadOn.add(a); netSend(a, true); }
-        else if (!on.has(a) && netPadOn.has(a)) { netPadOn.delete(a); netSend(a, false); }
+        if (on.has(a) && !netPadOn.has(a)) { netPadOn.add(a); netGuestAction(a === 'start' && scene === 'play' ? 'pause' : a, true); }
+        else if (!on.has(a) && netPadOn.has(a)) { netPadOn.delete(a); netGuestAction(a, false); }
       }
     }
   }

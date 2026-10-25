@@ -140,7 +140,7 @@ function netOnState(txt) {
   const full = txt.startsWith('{"t":"s","full":1');
   if (netWaitFull && !full) return;
   if (full) netWaitFull = false;
-  netQueue.push(txt);
+  netQueue.push(txt); net.lastState = performance.now();
 }
 let netWaitFull = false;
 let netLvl = null, netChars = '', netSinceSnap = 0, netCam = { at: 0, v: 0 };

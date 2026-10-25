@@ -117,7 +117,7 @@
   // un appui bref : chez l'invité d'une partie en ligne, il part chez l'hôte (comme ses touches), sinon il agit ici
   function tapAction(a) {
     audio.unlock();
-    if (typeof net !== 'undefined' && net.role === 'guest') { netSend(a, true); setTimeout(() => netSend(a, false), 90); return; }
+    if (typeof net !== 'undefined' && net.role === 'guest') { netGuestAction(a, true); setTimeout(() => netGuestAction(a, false), 90); return; }
     INPUT[0].pressed.add(a);
   }
   for (const b of root.querySelectorAll('.mbtn')) {
@@ -176,7 +176,7 @@
   zone.addEventListener('lostpointercapture', release);
 
   // ---- Menus au doigt : toucher / glisser sur l'écran (hors joystick et boutons) ----
-  const inMenu = () => typeof scene !== 'undefined' && (scene !== 'play' || paused) && scene !== 'loading';
+  const inMenu = () => typeof scene !== 'undefined' && (scene !== 'play' || paused || (typeof net !== 'undefined' && net.gpause)) && scene !== 'loading';
   const press = a => tapAction(a);
   const arrow = d => {
     if (paused) { menuMove(d === 'up' ? -1 : d === 'down' ? 1 : 0, d === 'left' ? -1 : d === 'right' ? 1 : 0); return; }
