@@ -903,7 +903,11 @@ const STEP = { shadow: 28, dark: 0.5, tint: 0.45, shade: 0.25, from: 0.7 }, harm
 function drawStrip(im, x, y, h, w, src = null) {
   const put = (dx, flip) => {
     ctx.save(); ctx.translate(dx + (flip ? w : 0), src ? y + h : y); ctx.scale(flip ? -1 : 1, src ? -1 : 1);
-    if (src) ctx.drawImage(im, 0, src[0], im.width, src[1], 0, 0, w + 1, h); else ctx.drawImage(im, 0, 0, w + 1, h);
+    if (im.tiles) {
+      // bande en morceaux : chacun à sa place (avec 1 px de recouvrement pour ne pas voir de joint)
+      const k = w / im.width, sy = src ? src[0] : 0, sh = src ? src[1] : im.height;
+      for (const t of im.tiles) ctx.drawImage(t.c, 0, sy, t.c.width, sh, t.x * k, 0, t.c.width * k + 1, h);
+    } else if (src) ctx.drawImage(im, 0, src[0], im.width, src[1], 0, 0, w + 1, h); else ctx.drawImage(im, 0, 0, w + 1, h);
     ctx.restore();
   };
   for (let k = 0, dx = x; dx < W && k < 6; k++, dx += w) if (dx + w > 0) put(dx, k % 2 === 1);
@@ -938,7 +942,21 @@ function harmonizedMid(key, img, groundKey) {
     g.putImageData(d, 0, y0);
     out = c;
   } catch (e) { out = img; }
-  return (harmCache[ck] = out);
+  return (harmCache[ck] = tileStrip(out));
+}
+// Une bande de plus de 2 048 px est découpée en morceaux : les puces graphiques des téléphones ne prennent souvent pas
+// d'image de plus de 4 096 px de large, et Safari la dessine alors sans elles (le jeu rame). Même rendu.
+const TILE = 2048;
+function tileStrip(src) {
+  if (src.width <= TILE) return src;
+  const tiles = [];
+  for (let x = 0; x < src.width; x += TILE) {
+    const tw = Math.min(TILE, src.width - x), c = document.createElement('canvas');
+    c.width = tw; c.height = src.height; c.getContext('2d').drawImage(src, x, 0, tw, src.height, 0, 0, tw, src.height);
+    tiles.push({ c, x });
+  }
+  if (src instanceof HTMLCanvasElement) { src.width = 0; src.height = 0; } // la grande copie n'est plus utile
+  return { tiles, width: tiles.reduce((s, t) => s + t.c.width, 0), height: tiles[0].c.height };
 }
 
 // ---------- Cartes et bandeaux ----------
