@@ -187,7 +187,11 @@ const netPadOn = new Set();
     const gp = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find(Boolean);
     if (gp) {
       const btn = gp.buttons.map(b => b.pressed || b.value > 0.5), on = new Set();
-      for (const [a, list] of Object.entries(binds[0].pad)) if (list.some(i => btn[i])) on.add(a);
+      // dans les menus, comme chez l'hôte : bas et gauche valident, droite et haut reviennent
+      const inMenu = scene !== 'play';
+      for (const [a, list] of Object.entries(binds[0].pad)) if (list.some(i => btn[i] && !(inMenu && i < 4))) on.add(a);
+      if (inMenu && (btn[0] || btn[2])) on.add('punch');
+      if (inMenu && (btn[1] || btn[3])) on.add('kick');
       if (btn[9]) on.add('start');
       const [ax, ay] = padAxes(gp);
       if (ax < -0.4) on.add('left'); if (ax > 0.4) on.add('right'); if (ay > 0.5) on.add('down'); if (ay < -0.5) on.add('up');

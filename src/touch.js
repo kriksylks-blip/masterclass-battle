@@ -114,13 +114,19 @@
     b.addEventListener('pointercancel', up);
   }
 
+  // un appui bref : chez l'invité d'une partie en ligne, il part chez l'hôte (comme ses touches), sinon il agit ici
+  function tapAction(a) {
+    audio.unlock();
+    if (typeof net !== 'undefined' && net.role === 'guest') { netSend(a, true); setTimeout(() => netSend(a, false), 90); return; }
+    INPUT[0].pressed.add(a);
+  }
   for (const b of root.querySelectorAll('.mbtn')) {
     b.addEventListener('pointerdown', e => { e.preventDefault(); goFull(); b.classList.add('on'); });
     b.addEventListener('pointerup', e => {
       e.preventDefault(); b.classList.remove('on');
       const ok = b.dataset.m === 'ok';
       if (paused) { if (ok) menuActivate(); else menuBack(); return; }
-      INPUT[0].pressed.add(ok ? 'punch' : 'kick'); audio.unlock();
+      tapAction(ok ? 'punch' : 'kick');
     });
   }
 
@@ -171,7 +177,7 @@
 
   // ---- Menus au doigt : toucher / glisser sur l'écran (hors joystick et boutons) ----
   const inMenu = () => typeof scene !== 'undefined' && (scene !== 'play' || paused) && scene !== 'loading';
-  const press = a => { INPUT[0].pressed.add(a); audio.unlock(); };
+  const press = a => tapAction(a);
   const arrow = d => {
     if (paused) { menuMove(d === 'up' ? -1 : d === 'down' ? 1 : 0, d === 'left' ? -1 : d === 'right' ? 1 : 0); return; }
     press(d);
@@ -183,6 +189,7 @@
 
   // Toucher : on choisit l'élément touché ; s'il était déjà choisi, on le valide
   function tap(x, y) {
+    if (typeof net !== 'undefined' && net.role === 'guest') return; // invité : joystick + VALIDER / RETOUR (envoyés à l'hôte)
     if (paused) { const b = menu.hits.find(b => inBox(x, y, b)); if (b) b.tap(); return; }
     if (scene === 'title') {
       const k = TITLE_ITEMS.findIndex((_, k) => x < 400 && y > 286 + k * 44 - 30 && y < 286 + k * 44 + 12);
