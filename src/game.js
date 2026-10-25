@@ -799,6 +799,19 @@ const SY_MOVES = { ...NEWKICK(FIST),
   meteor: { dur: 1.0, cost: 35, meteors: { from: 0.32, to: 0.8, every: 0.035 }, call: 'MÉTÉORES DE PÉGASE !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.62]] },
   comet:  { dur: 0.95, cost: 35, proj: { at: 0.5, kind: 'comet', speed: 900, dmg: 6.5, kb: 900, launch: -700, life: 1.0, scale: 1.4 }, call: 'COMÈTE DE PÉGASE !', p: ['special', [4, 5, 6, 7], [0.16, 0.32, 0.62]] },
 };
+// Sangohan adulte (saga Boo, Gohan ultime) : poings et pieds puissants ; spécial Kamehameha (special 0-3),
+// ruée de coups en forme (special 4-7). Ultime : un Kamehameha géant chargé longuement.
+const UG_MOVES = { ...NEWKICK(FIST),
+  dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 140], y: [-150, -50], dmg: 3, kb: 440, ki: 8, launch: -480, push: 1300, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
+  kamehameha: { dur: 1.35, cost: 35, beam: { hand: true, at: 0.55, end: 1.2, len: 950, dmg: 0.6, color: '#7fd8ff' }, call: 'KAMEHAMEHA !', p: ['special', [0, 1, 2, 3], [0.25, 0.55, 1.22]] },
+  gorush: { dur: 0.9, cost: 35, on: 0.2, off: 0.62, multi: 0.12, reach: [0, 170], y: [-200, -40], dmg: 1.6, kb: 160, ki: 0, launch: -300, push: 900, pushAt: 0.12, pushDur: 0.4, ghost: true, shock: true, call: 'HAAAA !', p: ['special', [4, 5, 6, 7], [0.14, 0.34, 0.6]] },
+};
+// Piccolo : spécial Makankosappo, un rayon fin et perçant tiré des deux doigts (special 0-3) ;
+// ultime Hellzone Grenade : des boules d'énergie encerclent l'ennemi puis se referment sur lui (special 4-7).
+const PC_MOVES = { ...NEWKICK(FIST),
+  dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 160], y: [-170, -50], dmg: 3, kb: 420, ki: 8, launch: -460, push: 1200, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 12, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
+  makanko: { dur: 1.3, cost: 35, beam: { hand: true, at: 0.62, end: 1.15, len: 1100, dmg: 0.75, thick: 0.42, color: '#ffe680', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.2)' }, call: 'MAKANKOSAPPO !', p: ['special', [0, 1, 2, 3], [0.3, 0.62, 1.2]] },
+};
 // Gintoki : le sabre de bois, coups larges et nonchalants. Spécial : le démon blanc, un bond et une grande taille
 // horizontale (special 0-3) ; en Shiroyasha, le spécial devient le coup écrasant (special 4-7).
 const GI_MOVES = { ...SWORD,
@@ -1161,6 +1174,28 @@ const CHARS = {
     moves: SY_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'meteor', special2: 'comet', speed: 285, pose: stdPose, ultra: [startPegasus, updatePegasus],
     ultraPose: h => h.t < PEGA.trace ? ['dashcharge', 4] : h.t < PEGA.rain ? ['dashcharge', 6] : h.t < PEGA.end - 0.3 ? ['special', 2 + Math.floor(h.t * 14) % 2] : ['special', 7],
+  },
+  gohan_a: {
+    name: 'SANGOHAN', title: 'Le guerrier ultime', sheet: 'gohan_a', card: 'card_ug',
+    colors: ['#ff7a1a', '#2a3a8a'], kiColor: '#ffffff', hit: '#e8f6ff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
+    labels: { blast: 'KAMEHAMEHA', ultra: 'KAMEHAMEHA ULTIME' },
+    // Gohan ultime (le pouvoir libéré par le Vieux Kaioshin) : pas de cheveux dorés, une aura blanche et des éclairs
+    forms: [{ ki: 50, name: 'GOHAN ULTIME', sheet: 'gohan_a_ult', fallback: ['gohan_a', 'brightness(1.08) contrast(1.05)'], speed: 1.35, dmg: 1.9, at: 0.6, end: 1.0,
+      aura: ['rgba(235,245,255,0.55)', '#ffffff'], sparks: '#ffffff', glow: '#cfe6ff', bar: ['#5a6aa8', '#ffffff'], color: '#e8f4ff', hit: '#ffffff' }],
+    moves: UG_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    special: 'kamehameha', special2: 'gorush', speed: 270, pose: stdPose, ultra: [startKameMax, updateKameMax],
+    ultraPose: h => ['special', h.t < KMAX.fire - 0.45 ? 0 : h.t < KMAX.fire ? 1 : h.t < KMAX.end - 0.3 ? 2 : 3],
+  },
+  piccolo: {
+    name: 'PICCOLO', title: 'Le démon devenu mentor', sheet: 'piccolo', card: 'card_pc',
+    colors: ['#3a8a2a', '#6a2a8a'], kiColor: '#ffe680', hit: '#fff3b0', stats: [['PUISSANCE', 4], ['VITESSE', 4], ['PORTÉE', 5]],
+    labels: { blast: 'MAKANKOSAPPO', ultra: 'HELLZONE GRENADE' },
+    // Fusionné avec le Tout-Puissant : même apparence, une aura blanche, plus de force et de vitesse
+    forms: [{ ki: 50, name: 'FUSION AVEC DIEU', sheet: 'piccolo_fused', fallback: ['piccolo', 'brightness(1.06) saturate(1.15)'], speed: 1.3, dmg: 1.8, at: 0.6, end: 1.0,
+      aura: ['rgba(230,255,220,0.5)', '#f4fff0'], sparks: '#ffffff', glow: '#d8ffcf', bar: ['#2a6a1a', '#e8ffd8'], color: '#f0ffe8', hit: '#ffffff' }],
+    moves: PC_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    special: 'makanko', speed: 265, pose: stdPose, ultra: [startHellzone, updateHellzone],
+    ultraPose: h => ['special', h.t < HZ.throw ? 4 : h.t < HZ.close ? 5 + Math.floor(h.t * 10) % 2 : 7],
   },
   gintoki: {
     name: 'GINTOKI', title: 'Le démon blanc', sheet: 'gintoki', card: 'card_gi',
@@ -3472,6 +3507,54 @@ function updateFinalFlash(h) {
   if (h.t > 2.3) h.state = 'idle';
 }
 
+// ---------- Ultime de Sangohan adulte : Kamehameha géant, chargé mains à la hanche ----------
+const KMAX = { fire: 1.15, end: 2.6 };
+function startKameMax(h) { h.beamed = false; say(h, 'KA… MÉ… HA… MÉ…'); audio.play('ultraCharge', 1, 0.9, 0); }
+function updateKameMax(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  // la charge : l'énergie converge vers les mains
+  if (h.t < KMAX.fire && Math.random() < 0.9) {
+    const a = rand(0, 7), r = rand(90, 170);
+    particles.push({ x: h.x - h.dir * 30 + Math.cos(a) * r, y: h.y - 110 + Math.sin(a) * r, vx: -Math.cos(a) * r * 2.4, vy: -Math.sin(a) * r * 2.4, t: 0, life: 0.4, c: Math.random() < 0.6 ? '#8fe9ff' : '#ffffff', r: rand(2, 4) });
+  }
+  if (!h.beamed && h.t >= KMAX.fire) {
+    h.beamed = true; flash = 0.8; shake = 26; audio.voice(h, 'ultra');
+    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: KMAX.fire, end: KMAX.end - 0.2, len: 1300, thick: 2.2, dmg: (4 + h.power / 10) / 9, color: '#7fd8ff', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    say(h, 'HAAAAA !!'); popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'KAMEHAMEHA !!' }); score += 2000;
+  }
+  if (h.t > KMAX.end) h.state = 'idle';
+}
+
+// ---------- Ultime de Piccolo : Hellzone Grenade, des boules d'énergie encerclent la zone puis s'y referment ----------
+const HZ = { throw: 0.35, close: 1.45, boom: 1.7, end: 2.3, every: 0.06, reach: 560, cx: 300 };
+function startHellzone(h) { h.hzT = 0; h.hz = []; h.cut = false; say(h, 'HELLZONE…'); audio.play('ultraCharge', 0.8, 1.2, 0); }
+function updateHellzone(h) {
+  h.inv = Math.max(h.inv, 0.1);
+  // centre : l'ennemi le plus proche devant lui, sinon un point devant
+  const tg = enemies.filter(e => e.alive && e.state !== 'down' && (e.x - h.x) * h.dir > 0 && (e.x - h.x) * h.dir < HZ.reach && Math.abs(e.gz - h.gz) < 120).sort((a, b) => Math.abs(a.x - h.x) - Math.abs(b.x - h.x))[0];
+  h.hzC ??= { x: tg ? tg.x : h.x + h.dir * HZ.cx, y: (tg ? tg.gz : h.gz) - 110 };
+  if (h.t > HZ.throw && h.t < HZ.close && h.t - h.hzT > HZ.every) {
+    // une boule part de sa main et va se placer sur le cercle autour de la cible
+    h.hzT = h.t; audio.play('waveFire', 0.25, 1.8 + Math.random() * 0.3, 0);
+    const a = rand(0, Math.PI * 2), r = rand(150, 220), ball = { type: 'hzball', x: h.x + h.dir * 50, y: h.y - 130, tx: h.hzC.x + Math.cos(a) * r, ty: h.hzC.y + Math.sin(a) * r * 0.75, t: 0, life: 99 };
+    fxs.push(ball); h.hz.push(ball);
+  }
+  for (const b of h.hz) {
+    // en vol vers le cercle, puis immobiles ; à la fermeture, tous foncent vers le centre
+    const k = h.t >= HZ.close ? Math.min(1, (h.t - HZ.close) / (HZ.boom - HZ.close)) : 0;
+    const gx = b.tx + (h.hzC.x - b.tx) * k * k, gy = b.ty + (h.hzC.y - b.ty) * k * k;
+    b.x += (gx - b.x) * (k ? 0.5 : 0.22); b.y += (gy - b.y) * (k ? 0.5 : 0.22);
+  }
+  if (!h.cut && h.t >= HZ.boom) {
+    h.cut = true; flash = 0.8; shake = 30; hitstop = 0.12; audio.play('ultraBoom', 1.3, 0.9, 0);
+    for (const b of h.hz) b.life = 0;
+    animFX('explosion', h.hzC.x, h.hzC.y, 460, 0.7); gfx('cannon_boom', h.hzC.x, h.hzC.y, 420, 0.6, { grow: 0.4, filter: 'hue-rotate(20deg) brightness(1.15)' });
+    for (const e of enemies) if (e.alive && e.state !== 'down' && Math.abs(e.x - h.hzC.x) < 230 && Math.abs(e.gz - (h.hzC.y + 110)) < 130) damageEnemy(e, ULT_SOLO * (4 + h.power / 10), 300 * h.dir, -760, e.x, e.y - 110, hitOf(h));
+    popups.push({ x: h.hzC.x, y: h.hzC.y - 170, t: 0, text: 'HELLZONE GRENADE !!' }); score += 2000;
+  }
+  if (h.t > HZ.end) { h.state = 'idle'; h.hzC = null; h.hz = []; }
+}
+
 // ---------- Ultime d'Ippo : un Dempsey Roll qui ne s'arrête plus, puis le coup final ----------
 const DMAX = { end: 2.8 };
 function startDempseyMax(h) { h.hitT = 0; h.punched = false; say(h, 'DEMPSEY ROLL !!'); }
@@ -4355,6 +4438,7 @@ function drawFX(ghosts = false) {
     if ((f.type === 'ghost') !== ghosts) continue;
     if (f.t < 0) continue; // effet programmé un peu plus tard (coups en série)
     const k = f.t / f.life, sx = f.x - camX;
+    if (f.type === 'hzball') { energyBall(sx, f.y, 15 + Math.sin(f.t * 30 + f.tx) * 2, true); continue; } // Hellzone Grenade
     if (f.type === 'gimg') {
       const img = IMG['fx_' + f.name]; if (!img) continue;
       const P = f.who != null && players.find(q => q.idx === f.who), dir = f.dir || 1;
@@ -4664,7 +4748,7 @@ const KAME = { th: 100, src: 165, fps: 14 };
 // Rayons filmés par perso : corps du rayon, gerbe aux mains (src, ancrée à gauche) ou sphère (orb, centrée)
 function beamFxOf(p) {
   const c = p.owner?.char;
-  if ((c === 'goku' || (c === 'gohan' && p.move === 'ultra')) && FX.kame_body) return { body: 'kame_body', src: 'kame_src' };
+  if ((c === 'goku' || c === 'gohan_a' || (c === 'gohan' && p.move === 'ultra')) && FX.kame_body) return { body: 'kame_body', src: 'kame_src' };
   if (c === 'vegeta' && p.move === 'galick' && FX.galick_body) return { body: 'galick_body', src: 'galick_src' };
   if (c === 'gojo' && p.move === 'ultra' && FX.violet_body) return { body: 'violet_body', orb: 'violet_orb' };
   return null;
@@ -6321,7 +6405,7 @@ const FACES = {
   card_ip: [0.56, 0.288, 4.34], card_iz: [0.584, 0.354, 3.9], card_ka: [0.473, 0.249, 4.2], card_kenshin: [0.553, 0.278, 3.9],
   card_ki: [0.571, 0.423, 4.13], card_luffy: [0.687, 0.345, 3.41], card_naruto: [0.623, 0.343, 3.25], card_tanjiro: [0.426, 0.325, 3.64],
   card_ve: [0.509, 0.404, 3.1], card_ze: [0.187, 0.344, 4.34], card_zoro: [0.482, 0.288, 3.9],
-  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], // cartes en pied : visage repéré sur la carte
+  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], card_ug: [0.32, 0.39, 4.16], card_pc: [0.685, 0.307, 3.47], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -6483,7 +6567,7 @@ const CHAR_ANIME = {
   naruto: 'naruto', sasuke: 'naruto', kakashi: 'naruto', itachi: 'naruto', naruto_s: 'naruto_s', boruto: 'boruto',
   tanjiro: 'ds', zenitsu: 'ds', inosuke: 'ds', kenshin: 'rk', ichigo: 'bleach', izuku: 'mha', shoto: 'mha', gon: 'hxh', killua: 'hxh',
   ippo: 'ippo', jinwoo: 'sl', saitama: 'opm', gojo: 'jjk', guts: 'berserk', saber: 'fate', mikasa: 'aot', levi: 'aot', eren: 'aot',
-  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama', bakugo: 'mha', seiya: 'saintseiya',
+  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama', bakugo: 'mha', seiya: 'saintseiya', gohan_a: 'dbz', piccolo: 'dbz',
 };
 for (const [id, a] of Object.entries(CHAR_ANIME)) if (CHARS[id]) CHARS[id].anime ??= a;
 // Sélection : les persos rangés par famille (même univers côte à côte), dans l'ordre des séries ci-dessous
