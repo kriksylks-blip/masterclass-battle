@@ -27,28 +27,28 @@
 (() => {
   const d = document.getElementById('diag'), vOf = () => (document.querySelector('script[src*="game.js"]')?.src || '').match(/v=(\w+)/)?.[1] || '?';
   const errs = [];
-  const show = () => { const st = typeof scene !== 'undefined' ? scene : '…'; d.textContent = `v${vOf()} · ${st} · ${document.getElementById("game").width}×${document.getElementById("game").height}` + (errs.length ? ' | ' + errs.slice(-3).join(' | '): ''); d.style.color = errs.length ? '#ff8080' : '#9aa0d0'; };
+  const show = () => { const st = typeof scene !== 'undefined' ? scene : '…'; d.textContent = `v${vOf()} · ${st} · ${document.getElementById("game").width}×${document.getElementById("game").height} · ${Math.round(window.frame?.fps || 0)} i/s` + (errs.length ? ' | ' + errs.slice(-3).join(' | '): ''); d.style.color = errs.length ? '#ff8080' : '#9aa0d0'; };
   addEventListener('error', e => { errs.push('Erreur : ' + (e.message || e.error) + ' (' + (e.filename || '').split('/').pop() + ':' + e.lineno + ')'); show(); });
   addEventListener('unhandledrejection', e => { errs.push('Erreur : ' + (e.reason?.message || e.reason)); show(); });
   setInterval(show, 1000); show();
 })();
 </script>
-<script src="src/config.js?v=1200"></script>
-<script src="src/sprites.js?v=1200"></script>
-<script src="src/sounds.js?v=1200"></script>
-<script src="src/voices.js?v=1200"></script>
-<script src="src/fx.js?v=1200"></script>
-<script src="src/fxvideo.js?v=1200"></script>
-<script src="src/midx.js?v=1200"></script>
-<script src="src/level.js?v=1200"></script>
-<script src="src/ambient.js?v=1200"></script>
-<script src="src/ambient_life.js?v=1200"></script>
+<script src="src/config.js?v=1202"></script>
+<script src="src/sprites.js?v=1202"></script>
+<script src="src/sounds.js?v=1202"></script>
+<script src="src/voices.js?v=1202"></script>
+<script src="src/fx.js?v=1202"></script>
+<script src="src/fxvideo.js?v=1202"></script>
+<script src="src/midx.js?v=1202"></script>
+<script src="src/level.js?v=1202"></script>
+<script src="src/ambient.js?v=1202"></script>
+<script src="src/ambient_life.js?v=1202"></script>
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-<script src="src/modes.js?v=1200"></script>
-<script src="src/endless.js?v=1200"></script>
-<script src="src/net.js?v=1200"></script>
-<script src="src/netsync.js?v=1200"></script>
-<script src="src/game.js?v=1200"></script>
-<script src="src/touch.js?v=1200"></script>
+<script src="src/modes.js?v=1202"></script>
+<script src="src/endless.js?v=1202"></script>
+<script src="src/net.js?v=1202"></script>
+<script src="src/netsync.js?v=1202"></script>
+<script src="src/game.js?v=1202"></script>
+<script src="src/touch.js?v=1202"></script>
 </body>
 </html>

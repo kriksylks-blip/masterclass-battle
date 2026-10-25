@@ -24,7 +24,8 @@ function loadImage(key, src) {
 let RES = 1;
 function fitCanvas() {
   const r = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
-  const max = matchMedia('(pointer: coarse)').matches ? 1.5 : 2;
+  // téléphone : 1× (960 × 540, 2,25 fois moins de pixels qu'en 1,5×) ; ?res=1.5 pour comparer
+  const max = Number(new URLSearchParams(location.search).get('res')) || (matchMedia('(pointer: coarse)').matches ? 1 : 2);
   const res = Math.min(max, Math.max(1, Math.round(r.width * dpr / W * 4) / 4));
   if (res !== RES || canvas.width !== Math.round(W * res)) { RES = res; canvas.width = Math.round(W * RES); canvas.height = Math.round(H * RES); }
 }
@@ -7332,6 +7333,7 @@ function updateLoops() {
 let last = performance.now();
 function frame(now) {
   const dt = Math.min((now - last) / 1000, 1 / 30);
+  frame.fps = (frame.fps || 60) * 0.95 + (now > last ? 1000 / (now - last) : 60) * 0.05; // images par seconde (diagnostic)
   last = now;
   pollPad();
   // en ligne : l'invité ne fait pas tourner la partie, il dessine l'état envoyé par l'hôte (src/netsync.js)

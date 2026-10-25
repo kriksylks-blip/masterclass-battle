@@ -903,7 +903,12 @@ const STEP = { shadow: 28, dark: 0.5, tint: 0.45, shade: 0.25, from: 0.7 }, harm
 function drawStrip(im, x, y, h, w, src = null) {
   const put = (dx, flip) => {
     ctx.save(); ctx.translate(dx + (flip ? w : 0), src ? y + h : y); ctx.scale(flip ? -1 : 1, src ? -1 : 1);
-    if (src) ctx.drawImage(im, 0, src[0], im.width, src[1], 0, 0, w + 1, h); else ctx.drawImage(im, 0, 0, w + 1, h);
+    if (src) ctx.drawImage(im, 0, src[0], im.width, src[1], 0, 0, w + 1, h);
+    else {
+      // seulement la partie visible de la bande (elle fait plus de 4 000 px : la dessiner entière ralentit les téléphones)
+      const a = Math.max(0, flip ? dx + w - W : -dx), b = Math.min(w, flip ? dx + w : W - dx), k = im.width / w;
+      if (b > a) ctx.drawImage(im, a * k, 0, Math.min(im.width - a * k, (b - a + 1) * k), im.height, a, 0, b - a + 1, h);
+    }
     ctx.restore();
   };
   for (let k = 0, dx = x; dx < W && k < 6; k++, dx += w) if (dx + w > 0) put(dx, k % 2 === 1);
