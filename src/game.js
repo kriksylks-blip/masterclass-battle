@@ -822,7 +822,12 @@ const PC_MOVES = { ...NEWKICK(FIST),
 // Ultime : il imite le Kamehameha (rayon rose géant).
 const MB_MOVES = { ...NEWKICK(FIST),
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 150], y: [-160, -40], dmg: 3.2, kb: 520, ki: 8, launch: -480, push: 1150, pushAt: 0.06, pushDur: 0.3, lean: 10, call: 'BOO !', p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
-  candy:  { dur: 1.2, cost: 35, beam: { hand: true, at: 0.5, end: 1.05, len: 900, dmg: 0.62, thick: 0.6, color: '#ff8ad8', filter: 'hue-rotate(110deg) saturate(1.6) brightness(1.1)' }, call: 'DEVIENS UN BONBON !', p: ['special', [0, 1, 2, 3], [0.22, 0.5, 1.1]] },
+  candy:  { dur: 1.2, cost: 35, beam: { hand: true, charge: [[50, -268], [180, -259]], org: [178, -261], ball: true, at: 0.5, end: 1.05, len: 900, dmg: 0.62, thick: 0.6, color: '#ff8ad8', filter: 'hue-rotate(110deg) saturate(1.6) brightness(1.1)' }, call: 'DEVIENS UN BONBON !', p: ['special', [0, 1, 2, 3], [0.22, 0.5, 1.1]] },
+};
+// Petit Boo : rapide et fou. Spécial : rayon rose tiré des deux paumes (special 0-3).
+const KD_MOVES = { ...NEWKICK(FIST),
+  dash:   { dur: 0.45, on: 0.1, off: 0.32, reach: [0, 150], y: [-150, -30], dmg: 3, kb: 480, ki: 8, launch: -460, push: 1500, pushAt: 0.05, pushDur: 0.26, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.18, 0.36]] },
+  vapor:  { dur: 1.1, cost: 35, beam: { hand: true, charge: [[108, -218], [64, -157]], org: [120, -226], ball: true, at: 0.45, end: 0.98, len: 950, dmg: 0.66, thick: 0.7, color: '#ff8ad8', filter: 'hue-rotate(110deg) saturate(1.6) brightness(1.1)' }, call: 'HA HA HA !', p: ['special', [0, 1, 2, 3], [0.2, 0.45, 1.02]] },
 };
 // Gintoki : le sabre de bois, coups larges et nonchalants. Spécial : le démon blanc, un bond et une grande taille
 // horizontale (special 0-3) ; en Shiroyasha, le spécial devient le coup écrasant (special 4-7).
@@ -1214,11 +1219,20 @@ const CHARS = {
     name: 'MAJIN BOO', title: 'Le démon rose', sheet: 'buu', card: 'card_mb',
     colors: ['#ff8ad8', '#7a3aa8'], kiColor: '#ffb0e8', hit: '#ffe0f6', stats: [['PUISSANCE', 5], ['VITESSE', 3], ['PORTÉE', 4]],
     labels: { blast: 'RAYON BONBON', ultra: 'KAMEHAMEHA DE BOO' },
-    // petit Boo : la forme originelle, petite et folle (planches à part)
-    forms: [{ ki: 50, name: 'PETIT BOO', sheet: 'buu_kid', speed: 1.4, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,120,210,0.55)', '#ff7ad8'], sparks: '#ffd0f0', glow: '#ff4fc0', bar: ['#a0207a', '#ffb0e8'], color: '#ff9ae0', hit: '#ffe0f6' }],
+    // Boo en colère : la vapeur lui sort de la tête (petit Boo est un personnage à part)
+    forms: [{ ki: 50, name: 'BOO EN COLÈRE', filter: 'saturate(1.35) contrast(1.08)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,120,210,0.55)', '#ff7ad8'], sparks: '#ffd0f0', glow: '#ff4fc0', bar: ['#a0207a', '#ffb0e8'], color: '#ff9ae0', hit: '#ffe0f6' }],
     moves: MB_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'candy', speed: 250, pose: stdPose, ultra: [startKameMax, updateKameMax],
     ultraPose: h => ['special', h.t < KMAX.fire - 0.45 ? 4 : h.t < KMAX.fire ? 5 : h.t < KMAX.end - 0.3 ? 6 : 7],
+  },
+  buu_kid: {
+    name: 'PETIT BOO', title: 'La forme originelle', sheet: 'buu_kid', card: 'card_kd',
+    colors: ['#ff7ad8', '#3a1a4a'], kiColor: '#ff9ae0', hit: '#ffe0f6', stats: [['PUISSANCE', 5], ['VITESSE', 5], ['PORTÉE', 3]],
+    labels: { blast: 'RAYON DESTRUCTEUR', ultra: 'KAMEHAMEHA DE BOO' },
+    forms: [{ ki: 50, name: 'FOLIE DESTRUCTRICE', filter: 'saturate(1.4) contrast(1.1)', speed: 1.35, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,120,210,0.55)', '#ff7ad8'], sparks: '#ffd0f0', glow: '#ff4fc0', bar: ['#a0207a', '#ffb0e8'], color: '#ff9ae0', hit: '#ffe0f6' }],
+    moves: KD_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    special: 'vapor', speed: 300, pose: stdPose, ultra: [startKameMax, updateKameMax],
+    ultraPose: h => ['special', h.t < KMAX.fire - 0.45 ? 0 : h.t < KMAX.fire ? 1 : h.t < KMAX.end - 0.3 ? 2 : 3],
   },
   gintoki: {
     name: 'GINTOKI', title: 'Le démon blanc', sheet: 'gintoki', card: 'card_gi',
@@ -3565,8 +3579,8 @@ function updateKameMax(h) {
   }
   if (!h.beamed && h.t >= KMAX.fire) {
     h.beamed = true; flash = 0.8; shake = 26; audio.voice(h, 'ultra');
-    const pink = h.char === 'buu';
-    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: KMAX.fire, end: KMAX.end - 0.2, len: 1300, thick: 2.2, dmg: (4 + h.power / 10) / 9, color: pink ? '#ff8ad8' : '#7fd8ff', filter: pink ? 'hue-rotate(110deg) saturate(1.6) brightness(1.1)' : undefined, t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    const pink = h.char === 'buu' || h.char === 'buu_kid';
+    projs.push({ kind: 'beam', hand: true, org: h.char === 'buu_kid' ? [120, -226] : undefined, owner: h, move: 'ultra', at: KMAX.fire, end: KMAX.end - 0.2, len: 1300, thick: 2.2, dmg: (4 + h.power / 10) / 9, color: pink ? '#ff8ad8' : '#7fd8ff', filter: pink ? 'hue-rotate(110deg) saturate(1.6) brightness(1.1)' : undefined, t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
     say(h, 'HAAAAA !!'); popups.push({ x: h.x + h.dir * 260, y: h.y - 270, t: 0, text: 'KAMEHAMEHA !!' }); score += 2000;
   }
   if (h.t > KMAX.end) h.state = 'idle';
@@ -4670,8 +4684,11 @@ function updateProjs(dt) {
     const h = p.owner;
     if (p.kind === 'beam') {
       // Le Kamehameha part des mains et s'allonge ; il touche en continu ce qui est sur sa ligne
-      const hp = p.hand && handPoint(h); // Excalibur : depuis la pointe de la lame dessinée
-      p.x = hp ? h.x + h.dir * (hp[0] + 6) : h.x + h.dir * 78; p.y = hp ? clamp(h.y + hp[1] + (p.dy || 0), h.y - 150, h.y - 40) : h.y - (p.high || 118) * WORLD; p.dir = h.dir; p.gz = h.gz;
+      const hp = !p.org && p.hand && handPoint(h); // Excalibur : depuis la pointe de la lame dessinée
+      const OA = p.org && SPRITES[sheetFor(h, 'special')]?.special; // org : point fixe de la planche (nez de Boo)
+      if (OA) { p.x = h.x + h.dir * p.org[0] * OA.scale; p.y = h.y + p.org[1] * OA.scale; }
+      else { p.x = hp ? h.x + h.dir * (hp[0] + 6) : h.x + h.dir * 78; p.y = hp ? clamp(h.y + hp[1] + (p.dy || 0), h.y - 150, h.y - 40) : h.y - (p.high || 118) * WORLD; }
+      p.dir = h.dir; p.gz = h.gz;
       p.len = Math.min(p.reach ??= p.len, p.t * 2800); // le rayon s'allonge jusqu'à sa portée
       if (h.state !== p.move || h.t > p.end) { p.done = true; continue; }
       if (p.t - p.multiT >= 0.08) { p.multiT = p.t; p.hit.clear(); }
@@ -6475,7 +6492,7 @@ const FACES = {
   card_ki: [0.571, 0.423, 4.13], card_luffy: [0.687, 0.345, 3.41], card_naruto: [0.623, 0.343, 3.25], card_tanjiro: [0.426, 0.325, 3.64],
   card_ve: [0.509, 0.404, 3.1], card_ze: [0.187, 0.344, 4.34], card_zoro: [0.482, 0.288, 3.9],
   card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.545, 0.192, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], card_ug: [0.32, 0.39, 4.16], card_pc: [0.685, 0.307, 3.47],
-  card_mb: [0.58, 0.275, 3.0], card_kw: [0.629, 0.383, 2.76], card_uy: [0.665, 0.37, 3.6], card_up: [0.32, 0.39, 4.16], card_vm: [0.509, 0.404, 3.1], card_zw: [0.482, 0.288, 3.9], card_sh: [0.579, 0.132, 7.75], // cartes en pied : visage repéré sur la carte
+  card_mb: [0.58, 0.275, 3.0], card_kd: [0.62, 0.4, 2.9], card_kw: [0.629, 0.383, 2.76], card_uy: [0.665, 0.37, 3.6], card_up: [0.32, 0.39, 4.16], card_vm: [0.509, 0.404, 3.1], card_zw: [0.482, 0.288, 3.9], card_sh: [0.579, 0.132, 7.75], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -6637,7 +6654,7 @@ const CHAR_ANIME = {
   naruto: 'naruto', sasuke: 'naruto', kakashi: 'naruto', itachi: 'naruto', naruto_s: 'naruto_s', boruto: 'boruto',
   tanjiro: 'ds', zenitsu: 'ds', inosuke: 'ds', kenshin: 'rk', ichigo: 'bleach', izuku: 'mha', shoto: 'mha', gon: 'hxh', killua: 'hxh',
   ippo: 'ippo', jinwoo: 'sl', saitama: 'opm', gojo: 'jjk', guts: 'berserk', saber: 'fate', mikasa: 'aot', levi: 'aot', eren: 'aot',
-  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama', bakugo: 'mha', seiya: 'saintseiya', gohan_a: 'dbz', piccolo: 'dbz', buu: 'dbz',
+  revy: 'lagoon', gally: 'gunnm', baki: 'baki', edward: 'fma', gintoki: 'gintama', bakugo: 'mha', seiya: 'saintseiya', gohan_a: 'dbz', piccolo: 'dbz', buu: 'dbz', buu_kid: 'dbz',
 };
 for (const [id, a] of Object.entries(CHAR_ANIME)) if (CHARS[id]) CHARS[id].anime ??= a;
 // Sélection : les persos rangés par famille (même univers côte à côte), dans l'ordre des séries ci-dessous

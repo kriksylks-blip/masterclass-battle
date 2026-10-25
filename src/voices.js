@@ -195,6 +195,11 @@ const CV = {
   "transform": "aura",
   "ultra": "cri_m"
  },
+ "naruto_s": {
+  "special": "naruto_special",
+  "transform": "aura",
+  "ultra": "naruto_ultra"
+ },
  "gintoki": {
   "special": "tanjiro_special",
   "transform": "aura",
@@ -210,6 +215,11 @@ const CV = {
   "transform": "aura",
   "ultra": "cri_m"
  },
+ "gohan_a": {
+  "special": "goku_special",
+  "transform": "aura",
+  "ultra": "goku_special"
+ },
  "piccolo": {
   "special": "gohan_special",
   "transform": "aura",
@@ -218,6 +228,11 @@ const CV = {
  "buu": {
   "special": "aura",
   "transform": "brutal",
+  "ultra": "goku_special"
+ },
+ "buu_kid": {
+  "special": "brutal",
+  "transform": "cri_m",
   "ultra": "goku_special"
  }
 };
