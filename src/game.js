@@ -58,6 +58,14 @@ function loadAll() {
   for (const L of LEVELS) for (const key of levelPreviewKeys(L)) jobs.push(want('pv_' + key, `assets/web/preview/${key}.webp`));
   return Promise.all(jobs);
 }
+// Images des menus (vitrine de la sélection, aperçus des niveaux) : rechargées en revenant dans les menus
+let menuImagesOk = true;
+function menuImages() {
+  if (menuImagesOk) return; menuImagesOk = true;
+  for (const src of showcaseFrames()) want(src, src);
+  for (const L of LEVELS) for (const key of levelPreviewKeys(L)) want('pv_' + key, `assets/web/preview/${key}.webp`);
+  for (const C of Object.values(CHARS)) want(C.card, `assets/ui/${C.card}.png`);
+}
 // Vitrine de la sélection : la garde (ou la respiration filmée) de chaque perso
 const showcaseFrames = () => Object.values(CHARS).flatMap(C => {
   const S = SPRITES[C.sheet] || {}, A = S.idle || S.combo || S.punch;
@@ -83,8 +91,15 @@ function requireGame(chars, L) {
   const { bgs, intros } = levelNeeds(L), cuts = chars.map(id => 'cutin_' + (CHARS[id]?.base || id)); // tenue : le gros plan du perso d'origine
   // on libère les sprites, décors et images de présentation qui ne servent plus (mémoire du téléphone)
   const fxv = lazyFxFor(chars), lazy = new Set(Object.keys(FX_LAZY).flatMap(k => (FX[k] || []).map(f => f.src)));
-  const keep = new Set([...frames, ...bgs, ...intros, ...cuts, ...showcaseFrames(), ...fxv]);
-  for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin)_/.test(k) || lazy.has(k)) && !keep.has(k)) delete IMG[k];
+  const keep = new Set([...frames, ...bgs, ...intros, ...cuts, ...fxv]);
+  // pendant le combat, on libère aussi la vitrine de la sélection et les aperçus des niveaux (~270 Mo décodés) :
+  // ils reviennent au retour dans les menus (menuImages). Sinon un téléphone sature et n'affiche plus les persos.
+  for (const id of chars) keep.add(CHARS[id]?.card); // portraits : seulement ceux des persos en jeu (les autres reviennent avec les menus)
+  const cards = new Set(Object.values(CHARS).map(C => C.card));
+  for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin|pv)_/.test(k) || lazy.has(k) || cards.has(k)) && !keep.has(k)) delete IMG[k];
+  menuImagesOk = false;
+  for (const k of Object.keys(layerCache)) delete layerCache[k]; // vignettes des niveaux déjà réduites : refaites au besoin
+  if (typeof harmCache !== 'undefined') for (const k of Object.keys(harmCache)) if (!bgs.some(b => k.startsWith(b))) delete harmCache[k]; // décors harmonisés des autres niveaux
   const todo = [...frames.map(src => [src, src]), ...fxv.map(src => [src, src]), ...bgs.map(k => [k, ASSETS.backgrounds[k]]), ...intros.map(k => [k, ASSETS.ui[k]]),
     ...cuts.map(k => [k, `assets/ui/cutin/${k.slice(6)}.jpg`])].filter(([k]) => !IMG[k]);
   if (!todo.length) { gameLoading = null; return; }
@@ -4968,7 +4983,7 @@ function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
   }
   if (B.src && FX[B.src]) {
     const fs = FX[B.src][k % FX[B.src].length], simg = IMG[fs.src];
-    if (simg) { const ss = KAME.src * WORLD * (p.thick || 1) / fs.h; ctx.drawImage(simg, -150 * ss, -300 * ss, fs.w * ss, fs.h * ss); }
+    if (simg) { const ss = KAME.src * WORLD * (p.thick || 1) / fs.h; ctx.drawImage(simg, -150 * ss * fs.w / 420, -300 * ss * fs.h / 620, fs.w * ss, fs.h * ss); } // ancre prise sur l'image d'origine (420 × 620)
   }
   if (B.orb && FX[B.orb]) {
     const L = FX[B.orb], fo = L[L.length - 1 - (k % 4)], oimg = IMG[fo.src];
@@ -4982,6 +4997,10 @@ function drawKameBeam(p, sx, B = { body: 'kame_body', src: 'kame_src' }) {
 }
 
 const fadeCanvas = document.createElement('canvas');
+// Canvas de travail unique pour les analyses d'images (main, bouche, pieds…). Un canvas neuf par image de sprite
+// finissait par dépasser la limite de mémoire des canvas de Safari sur iPhone : plus rien ne s'y dessinait.
+const SCRATCH = document.createElement('canvas');
+function scratchCanvas(w, h) { SCRATCH.width = w; SCRATCH.height = h; return SCRATCH; }
 const FILMED_PROJ = { katon: ['katon_v', 130, 0.74], hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9] };
 function drawProjs() {
   for (const p of projs) {
@@ -6210,7 +6229,7 @@ function handPoint(h) {
   if (!(f.src in handCache)) {
     let res = null;
     try {
-      const c = document.createElement('canvas'); c.width = f.w; c.height = f.h;
+      const c = scratchCanvas(f.w, f.h);
       const g = c.getContext('2d'); g.drawImage(img, 0, 0, f.w, f.h); // l'image peut être une version réduite
       const d = g.getImageData(0, 0, f.w, f.h).data;
       let top = -1;
@@ -6235,7 +6254,7 @@ function mouthPoint(h) {
   if (!(f.src in mouthCache)) {
     let res = null;
     try {
-      const c = document.createElement('canvas'); c.width = f.w; c.height = f.h;
+      const c = scratchCanvas(f.w, f.h);
       const g = c.getContext('2d'); g.drawImage(img, 0, 0, f.w, f.h);
       const d = g.getImageData(0, 0, f.w, f.h).data;
       let top = -1;
@@ -6259,7 +6278,7 @@ function footPoint(h) {
   if (!(f.src in footCache)) {
     let res = null;
     try {
-      const c = document.createElement('canvas'); c.width = f.w; c.height = f.h;
+      const c = scratchCanvas(f.w, f.h);
       const g = c.getContext('2d'); g.drawImage(img, 0, 0, f.w, f.h);
       const d = g.getImageData(0, 0, f.w, f.h).data;
       let top = -1;
@@ -7228,8 +7247,8 @@ function draw() {
   ctx.clearRect(0, 0, W, H);
   if (scene === 'loading') { ctx.fillStyle = '#05030c'; ctx.fillRect(0, 0, W, H); outlined('CHARGEMENT…', W / 2, H / 2, 40); return; }
   if (scene === 'title') { drawTitle(); return; }
-  if (scene === 'select') { drawSelect(); return; }
-  if (scene === 'levels') { drawLevels(); return; }
+  if (scene === 'select') { menuImages(); drawSelect(); return; }
+  if (scene === 'levels') { menuImages(); drawLevels(); return; }
   if (drawModes()) return;
   if (gameLoading && scene === 'play') {
     ctx.fillStyle = '#05030c'; ctx.fillRect(0, 0, W, H);

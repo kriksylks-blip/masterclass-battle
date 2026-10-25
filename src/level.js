@@ -886,7 +886,7 @@ function groundLight(key, img) {
   if (key in lightCache) return lightCache[key];
   let v = 1;
   try {
-    const c = document.createElement('canvas'); c.width = 64; c.height = 16;
+    const c = scratchCanvas(64, 16);
     const g = c.getContext('2d'); g.drawImage(img, 0, 0, 64, 16);
     const d = g.getImageData(0, 0, 64, 16).data; let sum = 0, n = 0;
     for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 128) { sum += 0.3 * d[i] + 0.59 * d[i + 1] + 0.11 * d[i + 2]; n++; }
@@ -920,7 +920,7 @@ function harmonizedMid(key, img, groundKey) {
     const y0 = Math.floor(img.height * STEP.from), d = g.getImageData(0, y0, img.width, img.height - y0);
     let gc = null;
     if (gimg) {
-      const t = document.createElement('canvas'); t.width = 200; t.height = 40;
+      const t = scratchCanvas(200, 40);
       t.getContext('2d').drawImage(gimg, 0, 0, gimg.width, gimg.height * 0.12, 0, 0, 200, 40);
       gc = mean(t.getContext('2d').getImageData(0, 0, 200, 40).data, false);
     }

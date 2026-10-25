@@ -571,7 +571,7 @@ function updateModes(dt) {
 }
 function drawModes() {
   if (scene === 'options') { drawOptions(); return true; }
-  if (scene === 'map') { drawMap(); return true; }
+  if (scene === 'map') { menuImages(); drawMap(); return true; }
   if (scene === 'story') { drawDialogue(); return true; }
   if (scene === 'online') { drawOnline(); return true; }
   return false;
