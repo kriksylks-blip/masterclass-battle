@@ -15,7 +15,7 @@ const AMB_WORLD = {
 const AMB_ROOMS = new Set(['ds_z1', 'hx_z2', 'hx_z3', 'jk_z2', 'sl_z2', 'sl_z3', 'opm_z3', 'bl2_z2', 'hx_z4', 'ds2_z4', 'sl_z4', 'bl2_z4', 'jk_z5',
   'bk_z2', 'fz_z3', 'fm_z4', 'fm_z3', 'rp_z2', 'rp_z3', 'bu_z3']);
 const AMB_BATS = new Set(['sl_z2', 'sl_z3', 'sl_z4', 'bk_z3', 'bk_z4', 'fz_z3', 'nr_z3', 'ds_z3', 'jk_z3', 'bl2_z3', 'fm_z3', 'rk_z3', 'nr2_z3']);
-const AMB_FLAGS = { aot_z1: [400, 1900], bk_z1: [700, 2100], bu_z1: [350, 1500, 2500], op_z2: [900], rk_z1: [1600] };
+const AMB_FLAGS = {}; // drapeaux retirés (demande du 25/10)
 // hauteur à l'écran (px) de l'animal posé
 const AMB_SIZE = { cat: 46, rat: 24, dog: 58, pigeon: 30, crow: 40, bat: 34 };
 const AMB_BIRD = new Set(['pigeon', 'crow']);

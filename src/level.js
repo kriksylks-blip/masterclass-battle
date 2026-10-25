@@ -820,8 +820,9 @@ function drawZoneLayer(kind) {
       // midScale : décor rapetissé (pied inchangé) quand il écrase les personnages ; le haut est complété par
       // le reflet de sa propre bande supérieure (plafond, ciel), sans toucher à la taille des persos
       const s = Z.midScale || 1, h = L.h * s, y = L.y + L.h - h, w = img.width * h / img.height;
-      drawTiled(main, f, y, h, w, mirror, null, alt);
-      if (s < 1 && y > 0) drawTiled(main, f, -2, y + 3, w, mirror, [0, (y + 3) * img.height / h], alt);
+      // plus de fondu entre deux images (il se voyait flou) : l'image seule, suivie de son reflet en miroir
+      const x0 = (Z.from - camX) * f; void alt;
+      drawStrip(main, x0, y, h, w); if (s < 1 && y > 0) drawStrip(main, x0, -2, y + 3, w, [0, (y + 3) * img.height / h]);
     }
     else if (kind === 'ground') {
       drawTiled(img, f, L.y, L.h, L.w, mirror);
