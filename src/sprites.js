@@ -54411,6 +54411,96 @@ const SPRITES = {
      "ay": 342
     }
    ]
+  },
+  "idle": {
+   "scale": 0.2577,
+   "rate": 6.55,
+   "frames": [
+    {
+     "src": "assets/sprites/buu_kid/idlev_0.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_1.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_2.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_3.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_4.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_5.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_6.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_7.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_8.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_9.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_10.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    },
+    {
+     "src": "assets/sprites/buu_kid/idlev_11.png",
+     "w": 384,
+     "h": 550,
+     "ax": 201.0,
+     "ay": 550
+    }
+   ]
   }
  },
  "bu_boss": {
@@ -54907,63 +54997,120 @@ const SPRITES = {
  },
  "goku_whis": {
   "walk": {
-   "scale": 0.5385,
+   "scale": 0.3675,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/goku_whis/walk_0.png",
-     "w": 278,
-     "h": 355,
-     "ax": 155.0,
-     "ay": 355
+     "src": "assets/sprites/goku_whis/walkv_0.png",
+     "w": 322,
+     "h": 516,
+     "ax": 212.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/goku_whis/walk_1.png",
-     "w": 257,
-     "h": 360,
-     "ax": 143.3,
-     "ay": 360
+     "src": "assets/sprites/goku_whis/walkv_1.png",
+     "w": 296,
+     "h": 514,
+     "ax": 180.5,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/goku_whis/walk_2.png",
-     "w": 189,
-     "h": 361,
-     "ax": 80.5,
-     "ay": 361
+     "src": "assets/sprites/goku_whis/walkv_2.png",
+     "w": 276,
+     "h": 516,
+     "ax": 157.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/goku_whis/walk_3.png",
-     "w": 262,
-     "h": 364,
-     "ax": 145.5,
-     "ay": 364
+     "src": "assets/sprites/goku_whis/walkv_3.png",
+     "w": 254,
+     "h": 522,
+     "ax": 126.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/goku_whis/walk_4.png",
-     "w": 263,
-     "h": 354,
-     "ax": 151.0,
-     "ay": 354
+     "src": "assets/sprites/goku_whis/walkv_4.png",
+     "w": 268,
+     "h": 526,
+     "ax": 133.5,
+     "ay": 526
     },
     {
-     "src": "assets/sprites/goku_whis/walk_5.png",
-     "w": 260,
-     "h": 360,
-     "ax": 145.8,
-     "ay": 360
+     "src": "assets/sprites/goku_whis/walkv_5.png",
+     "w": 276,
+     "h": 524,
+     "ax": 137.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/goku_whis/walk_6.png",
-     "w": 201,
-     "h": 360,
-     "ax": 84.5,
-     "ay": 360
+     "src": "assets/sprites/goku_whis/walkv_6.png",
+     "w": 294,
+     "h": 527,
+     "ax": 152.5,
+     "ay": 527
     },
     {
-     "src": "assets/sprites/goku_whis/walk_7.png",
-     "w": 267,
-     "h": 360,
-     "ax": 154.5,
-     "ay": 360
+     "src": "assets/sprites/goku_whis/walkv_7.png",
+     "w": 318,
+     "h": 528,
+     "ax": 176.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_8.png",
+     "w": 294,
+     "h": 528,
+     "ax": 157.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_9.png",
+     "w": 274,
+     "h": 528,
+     "ax": 140.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_10.png",
+     "w": 246,
+     "h": 530,
+     "ax": 122.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_11.png",
+     "w": 232,
+     "h": 538,
+     "ax": 118.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_12.png",
+     "w": 244,
+     "h": 540,
+     "ax": 135.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_13.png",
+     "w": 312,
+     "h": 536,
+     "ax": 171.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_14.png",
+     "w": 352,
+     "h": 528,
+     "ax": 201.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/goku_whis/walkv_15.png",
+     "w": 354,
+     "h": 524,
+     "ax": 213.5,
+     "ay": 524
     }
    ]
   },
@@ -56251,63 +56398,120 @@ const SPRITES = {
  },
  "vegeta_buu": {
   "walk": {
-   "scale": 0.4986,
+   "scale": 0.3549,
+   "rate": 18.78,
    "frames": [
     {
-     "src": "assets/sprites/vegeta_buu/walk_0.png",
-     "w": 188,
-     "h": 369,
-     "ax": 90.5,
-     "ay": 369
+     "src": "assets/sprites/vegeta_buu/walkv_0.png",
+     "w": 156,
+     "h": 518,
+     "ax": 76.5,
+     "ay": 518
     },
     {
-     "src": "assets/sprites/vegeta_buu/walk_1.png",
-     "w": 203,
-     "h": 368,
-     "ax": 104.3,
-     "ay": 368
+     "src": "assets/sprites/vegeta_buu/walkv_1.png",
+     "w": 186,
+     "h": 512,
+     "ax": 88.0,
+     "ay": 512
     },
     {
-     "src": "assets/sprites/vegeta_buu/walk_2.png",
-     "w": 175,
-     "h": 366,
-     "ax": 74.5,
-     "ay": 366
+     "src": "assets/sprites/vegeta_buu/walkv_2.png",
+     "w": 240,
+     "h": 510,
+     "ax": 110.5,
+     "ay": 510
     },
     {
-     "src": "assets/sprites/vegeta_buu/walk_3.png",
-     "w": 216,
-     "h": 368,
-     "ax": 117.0,
-     "ay": 368
+     "src": "assets/sprites/vegeta_buu/walkv_3.png",
+     "w": 250,
+     "h": 514,
+     "ax": 127.5,
+     "ay": 514
     },
     {
-     "src": "assets/sprites/vegeta_buu/walk_4.png",
-     "w": 189,
-     "h": 367,
-     "ax": 91.0,
-     "ay": 367
+     "src": "assets/sprites/vegeta_buu/walkv_4.png",
+     "w": 220,
+     "h": 520,
+     "ax": 115.0,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/vegeta_buu/walk_5.png",
-     "w": 193,
-     "h": 363,
-     "ax": 101.0,
-     "ay": 363
+     "src": "assets/sprites/vegeta_buu/walkv_5.png",
+     "w": 198,
+     "h": 522,
+     "ax": 107.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/vegeta_buu/walk_6.png",
-     "w": 176,
-     "h": 369,
-     "ax": 75.0,
-     "ay": 369
+     "src": "assets/sprites/vegeta_buu/walkv_6.png",
+     "w": 164,
+     "h": 528,
+     "ax": 86.5,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/vegeta_buu/walk_7.png",
-     "w": 190,
-     "h": 368,
-     "ax": 92.0,
-     "ay": 368
+     "src": "assets/sprites/vegeta_buu/walkv_7.png",
+     "w": 144,
+     "h": 534,
+     "ax": 72.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_8.png",
+     "w": 166,
+     "h": 530,
+     "ax": 98.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_9.png",
+     "w": 224,
+     "h": 524,
+     "ax": 123.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_10.png",
+     "w": 274,
+     "h": 516,
+     "ax": 147.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_11.png",
+     "w": 276,
+     "h": 514,
+     "ax": 166.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_12.png",
+     "w": 276,
+     "h": 514,
+     "ax": 166.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_13.png",
+     "w": 226,
+     "h": 516,
+     "ax": 147.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_14.png",
+     "w": 194,
+     "h": 516,
+     "ax": 121.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/vegeta_buu/walkv_15.png",
+     "w": 166,
+     "h": 522,
+     "ax": 93.5,
+     "ay": 522
     }
    ]
   },
@@ -57208,63 +57412,120 @@ const SPRITES = {
    ]
   },
   "walk": {
-   "scale": 0.5431,
+   "scale": 0.3514,
+   "rate": 22.76,
    "frames": [
     {
-     "src": "assets/sprites/zoro_wano/walk_0.png",
-     "w": 300,
-     "h": 341,
-     "ax": 125.1,
-     "ay": 341
+     "src": "assets/sprites/zoro_wano/walkv_0.png",
+     "w": 462,
+     "h": 548,
+     "ax": 229.5,
+     "ay": 548
     },
     {
-     "src": "assets/sprites/zoro_wano/walk_1.png",
-     "w": 280,
-     "h": 347,
-     "ax": 153.7,
-     "ay": 347
+     "src": "assets/sprites/zoro_wano/walkv_1.png",
+     "w": 465,
+     "h": 550,
+     "ax": 232.0,
+     "ay": 550
     },
     {
-     "src": "assets/sprites/zoro_wano/walk_2.png",
-     "w": 265,
-     "h": 347,
-     "ax": 150.0,
-     "ay": 347
+     "src": "assets/sprites/zoro_wano/walkv_2.png",
+     "w": 468,
+     "h": 550,
+     "ax": 233.5,
+     "ay": 550
     },
     {
-     "src": "assets/sprites/zoro_wano/walk_3.png",
-     "w": 283,
-     "h": 345,
-     "ax": 145.1,
-     "ay": 345
+     "src": "assets/sprites/zoro_wano/walkv_3.png",
+     "w": 470,
+     "h": 546,
+     "ax": 234.5,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/zoro_wano/walk_4.png",
-     "w": 298,
-     "h": 346,
-     "ax": 136.3,
-     "ay": 346
+     "src": "assets/sprites/zoro_wano/walkv_4.png",
+     "w": 488,
+     "h": 536,
+     "ax": 251.0,
+     "ay": 536
     },
     {
-     "src": "assets/sprites/zoro_wano/walk_5.png",
-     "w": 274,
-     "h": 342,
-     "ax": 159.5,
-     "ay": 342
+     "src": "assets/sprites/zoro_wano/walkv_5.png",
+     "w": 476,
+     "h": 527,
+     "ax": 238.5,
+     "ay": 527
     },
     {
-     "src": "assets/sprites/zoro_wano/walk_6.png",
-     "w": 274,
-     "h": 350,
-     "ax": 146.0,
-     "ay": 350
+     "src": "assets/sprites/zoro_wano/walkv_6.png",
+     "w": 474,
+     "h": 526,
+     "ax": 236.5,
+     "ay": 526
     },
     {
-     "src": "assets/sprites/zoro_wano/walk_7.png",
-     "w": 286,
-     "h": 348,
-     "ax": 141.4,
-     "ay": 348
+     "src": "assets/sprites/zoro_wano/walkv_7.png",
+     "w": 474,
+     "h": 528,
+     "ax": 236.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_8.png",
+     "w": 471,
+     "h": 530,
+     "ax": 235.0,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_9.png",
+     "w": 468,
+     "h": 535,
+     "ax": 233.5,
+     "ay": 535
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_10.png",
+     "w": 464,
+     "h": 536,
+     "ax": 231.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_11.png",
+     "w": 464,
+     "h": 531,
+     "ax": 231.5,
+     "ay": 531
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_12.png",
+     "w": 462,
+     "h": 534,
+     "ax": 228.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_13.png",
+     "w": 463,
+     "h": 534,
+     "ax": 228.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_14.png",
+     "w": 466,
+     "h": 541,
+     "ax": 229.5,
+     "ay": 541
+    },
+    {
+     "src": "assets/sprites/zoro_wano/walkv_15.png",
+     "w": 462,
+     "h": 543,
+     "ax": 228.5,
+     "ay": 543
     }
    ]
   },
@@ -58289,63 +58550,120 @@ const SPRITES = {
  },
  "gohan_a_gsm": {
   "walk": {
-   "scale": 0.5249,
+   "scale": 0.3532,
+   "rate": 20.22,
    "frames": [
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_0.png",
-     "w": 304,
-     "h": 358,
-     "ax": 174.4,
-     "ay": 358
+     "src": "assets/sprites/gohan_a_gsm/walkv_0.png",
+     "w": 347,
+     "h": 550,
+     "ax": 186.0,
+     "ay": 550
     },
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_1.png",
-     "w": 306,
-     "h": 358,
-     "ax": 168.7,
-     "ay": 358
+     "src": "assets/sprites/gohan_a_gsm/walkv_1.png",
+     "w": 358,
+     "h": 546,
+     "ax": 194.5,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_2.png",
-     "w": 286,
-     "h": 360,
-     "ax": 166.0,
-     "ay": 360
+     "src": "assets/sprites/gohan_a_gsm/walkv_2.png",
+     "w": 400,
+     "h": 538,
+     "ax": 203.5,
+     "ay": 538
     },
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_3.png",
-     "w": 291,
-     "h": 356,
-     "ax": 171.4,
-     "ay": 356
+     "src": "assets/sprites/gohan_a_gsm/walkv_3.png",
+     "w": 448,
+     "h": 530,
+     "ax": 214.0,
+     "ay": 530
     },
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_4.png",
-     "w": 305,
-     "h": 358,
-     "ax": 172.5,
-     "ay": 358
+     "src": "assets/sprites/gohan_a_gsm/walkv_4.png",
+     "w": 456,
+     "h": 524,
+     "ax": 226.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_5.png",
-     "w": 308,
-     "h": 358,
-     "ax": 172.0,
-     "ay": 358
+     "src": "assets/sprites/gohan_a_gsm/walkv_5.png",
+     "w": 440,
+     "h": 522,
+     "ax": 232.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_6.png",
-     "w": 294,
-     "h": 357,
-     "ax": 165.0,
-     "ay": 357
+     "src": "assets/sprites/gohan_a_gsm/walkv_6.png",
+     "w": 426,
+     "h": 524,
+     "ax": 245.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/gohan_a_gsm/walk_7.png",
-     "w": 295,
-     "h": 362,
-     "ax": 160.5,
-     "ay": 362
+     "src": "assets/sprites/gohan_a_gsm/walkv_7.png",
+     "w": 436,
+     "h": 532,
+     "ax": 260.0,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_8.png",
+     "w": 434,
+     "h": 536,
+     "ax": 273.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_9.png",
+     "w": 426,
+     "h": 538,
+     "ax": 273.0,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_10.png",
+     "w": 414,
+     "h": 530,
+     "ax": 265.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_11.png",
+     "w": 394,
+     "h": 526,
+     "ax": 249.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_12.png",
+     "w": 377,
+     "h": 526,
+     "ax": 233.0,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_13.png",
+     "w": 361,
+     "h": 532,
+     "ax": 212.0,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_14.png",
+     "w": 351,
+     "h": 538,
+     "ax": 196.0,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walkv_15.png",
+     "w": 348,
+     "h": 546,
+     "ax": 188.5,
+     "ay": 546
     }
    ]
   },
