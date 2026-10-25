@@ -331,7 +331,7 @@ function updateLevel(dt) {
     // le véhicule entre par la droite, au fond de la rue ; les ennemis attendent qu'il soit arrêté
     if (wv.vehicle && IMG[wv.vehicle]) {
       const img = IMG[wv.vehicle], V0 = VEH_SIZE[wv.vehicle] || VEH, s = Math.min(V0.w / img.width, V0.maxH / img.height);
-      level.veh = { img, w: img.width * s, h: img.height * s, x0: camX + W + 260, x: camX + W + 260, tx: camX + W - 250, t: 0, state: 'in' };
+      level.veh = { key: wv.vehicle, w: img.width * s, h: img.height * s, x0: camX + W + 260, x: camX + W + 260, tx: camX + W - 250, t: 0, state: 'in' };
       audio.whoosh(1.4); audio.tone(70, 1.2, 'sawtooth', 0.06, 30);
     }
   }
@@ -526,8 +526,8 @@ function updateVehicle(dt) {
   }
 }
 function drawVehicle() {
-  const V = level.veh;
-  if (!V) return;
+  const V = level.veh, img = V && IMG[V.key]; // l'image elle-même ne passe pas en ligne : on la retrouve par son nom
+  if (!img) return;
   const sx = V.x - camX, bob = V.state === 'brake' ? Math.sin(V.t / VEH.brake * Math.PI) * 6 : V.state === 'in' || V.state === 'out' ? Math.sin(V.t * 40) * 1.2 : 0;
   const g = ctx.createRadialGradient(sx, Z_TOP + 2, 10, sx, Z_TOP + 2, V.w * 0.55);
   g.addColorStop(0, 'rgba(0,0,0,0.5)'); g.addColorStop(1, 'rgba(0,0,0,0)');
@@ -535,7 +535,7 @@ function drawVehicle() {
   ctx.save(); ctx.translate(sx, Z_TOP + 4);
   if (V.state === 'brake') ctx.rotate(-0.025 * Math.sin(V.t / VEH.brake * Math.PI)); // il pique du nez en freinant
   if (V.state === 'out') ctx.scale(-1, 1); // il fait demi-tour et repart vers la droite
-  ctx.drawImage(V.img, -V.w / 2, -V.h + bob, V.w, V.h);
+  ctx.drawImage(img, -V.w / 2, -V.h + bob, V.w, V.h);
   ctx.restore();
 }
 
