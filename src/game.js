@@ -34,12 +34,24 @@ addEventListener('resize', fitCanvas);
 // d'un niveau ne sont chargés qu'au lancement de la partie (requireGame) : tout charger d'un coup demandait
 // ~1,5 Go de mémoire, trop pour un téléphone.
 const PENDING = {};
+// effets filmés lourds : chargés seulement quand un de leurs persos joue (sinon le téléphone sature au démarrage)
+const FX_LAZY = {
+  sanji_spin_v: ['sanji'], hell_pillar_v: ['sanji'], blade_spin_v: ['mikasa', 'levi'], big_slash_v: ['gintoki', 'trunks', 'guts'],
+  fang_x_v: ['inosuke'], palm_wave_v: ['gally'], whip_arc_v: ['baki'], cannon_boom_v: ['revy', 'itachi', 'piccolo'],
+  shoto_ice_v: ['shoto'], shoto_fire_v: ['shoto'], titan_bolt_v: ['eren'], alchemy_v: ['edward'], muzzle_v: ['revy'],
+  ed_spike1_v: ['edward'], susanoo_sword_v: ['itachi'],
+  getsuga_v: ['ichigo'], genki_v: ['goku'], gigant_v: ['luffy'], violet_orb: ['gojo'], violet_body: ['gojo'], zoro_x: ['zoro'],
+  galick_body: ['vegeta'], galick_src: ['vegeta'], chidori_v: ['sasuke', 'kakashi'], hinokami_v: ['tanjiro'], hekireki_v: ['zenitsu'],
+  entei_v: ['ace'], hiken_v: ['ace'], burning_v: ['trunks'], strikeair_v: ['saber'], katon_v: ['itachi'], vrasen_v: ['boruto'],
+  rsh_v: ['naruto_s'], rasen_v: ['naruto', 'naruto_s', 'boruto'],
+};
+const lazyFxFor = chars => Object.entries(FX_LAZY).filter(([k, who]) => FX[k] && chars.some(id => who.includes(CHARS[id]?.base || id))).flatMap(([k]) => FX[k].map(f => f.src));
 const want = (key, src) => IMG[key] ? Promise.resolve() : PENDING[key] || (PENDING[key] = loadImage(key, src).finally(() => delete PENDING[key]));
 function loadAll() {
   const jobs = [];
   for (const [k, src] of Object.entries(ASSETS.ui)) if (!k.startsWith('intro_') && k !== 'title') jobs.push(want(k, src)); // présentations : à la demande
   jobs.push(want('title_art', `assets/ui/title/title_${titlePick}.jpg`).then(() => IMG.title_art || want('title', ASSETS.ui.title)));
-  if (typeof FX !== 'undefined') for (const list of Object.values(FX)) for (const f of list) jobs.push(want(f.src, f.src));
+  if (typeof FX !== 'undefined') for (const [k, list] of Object.entries(FX)) if (!FX_LAZY[k]) for (const f of list) jobs.push(want(f.src, f.src));
   if (typeof AMB_FRAMES !== 'undefined') for (const list of Object.values(AMB_FRAMES)) for (const f of list) jobs.push(want('amb_' + f.src, f.src)); // décor vivant
   for (const C of Object.values(CHARS)) jobs.push(want(C.card, `assets/ui/${C.card}.png`)); // gros plans d'ultime : à la demande
   for (const src of showcaseFrames()) jobs.push(want(src, src)); // garde de chaque perso (vitrine de la sélection)
@@ -70,9 +82,10 @@ function requireGame(chars, L) {
   const frames = [...sheets].flatMap(sh => Object.values(SPRITES[sh] || {}).flatMap(a => a.frames.map(f => f.src)));
   const { bgs, intros } = levelNeeds(L), cuts = chars.map(id => 'cutin_' + (CHARS[id]?.base || id)); // tenue : le gros plan du perso d'origine
   // on libère les sprites, décors et images de présentation qui ne servent plus (mémoire du téléphone)
-  const keep = new Set([...frames, ...bgs, ...intros, ...cuts, ...showcaseFrames()]);
-  for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin)_/.test(k)) && !keep.has(k)) delete IMG[k];
-  const todo = [...frames.map(src => [src, src]), ...bgs.map(k => [k, ASSETS.backgrounds[k]]), ...intros.map(k => [k, ASSETS.ui[k]]),
+  const fxv = lazyFxFor(chars), lazy = new Set(Object.keys(FX_LAZY).flatMap(k => (FX[k] || []).map(f => f.src)));
+  const keep = new Set([...frames, ...bgs, ...intros, ...cuts, ...showcaseFrames(), ...fxv]);
+  for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin)_/.test(k) || lazy.has(k)) && !keep.has(k)) delete IMG[k];
+  const todo = [...frames.map(src => [src, src]), ...fxv.map(src => [src, src]), ...bgs.map(k => [k, ASSETS.backgrounds[k]]), ...intros.map(k => [k, ASSETS.ui[k]]),
     ...cuts.map(k => [k, `assets/ui/cutin/${k.slice(6)}.jpg`])].filter(([k]) => !IMG[k]);
   if (!todo.length) { gameLoading = null; return; }
   const state = gameLoading = { done: 0, total: todo.length };
