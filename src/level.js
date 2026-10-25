@@ -794,7 +794,7 @@ function drawZoneLayer(kind) {
   // décors des niveaux à thème : une copie sur deux en miroir, pour qu'aucune coupure ne se voie entre deux copies
   const f = L.factor, mirror = kind === 'mid' ? LVL !== TOKYO : kind === 'sky' ? false : L.mirror;
   for (let k = 0; k < ZONES.length; k++) {
-    const Z = ZONES[k], key = kind === 'sky' ? Z.sky || LVL.sky : Z[kind], img = IMG[key], next = ZONES[k + 1];
+    const Z = ZONES[k], key = kind === 'sky' ? Z.sky || LVL.sky : Z[kind], img = IMG[key] || (kind === 'mid' && IMG[midX(key)]), next = ZONES[k + 1];
     if (!img) continue;
     // bornes de la zone à l'écran : à la vitesse du sol pour tous les plans, sinon le fond d'une zone
     // apparaît au-dessus du sol de la précédente (le calque lui-même défile toujours à la vitesse f)
@@ -831,7 +831,7 @@ function drawZoneLayer(kind) {
       const S = STRIPS[Z.id], simg = S && IMG[S.img];
       if (simg) {
         const sh = S.h, sw = simg.width * sh / simg.height;
-        ctx.save(); ctx.filter = `brightness(${groundLight(Z.mid, IMG[Z.mid])})`;
+        ctx.save(); ctx.filter = `brightness(${groundLight(Z.mid, IMG[Z.mid] || IMG[midX(Z.mid)])})`;
         drawTiled(simg, f, L.y + S.dy - sh, sh, sw, true);
         ctx.restore();
       }

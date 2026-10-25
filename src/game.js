@@ -5702,7 +5702,7 @@ function drawBackground() {
     }
   }
   // Boutiques au plan moyen
-  if (IMG[ZONES[0].mid]) drawZoneLayer('mid');
+  if (IMG[ZONES[0].mid] || IMG[midX(ZONES[0].mid)]) drawZoneLayer('mid');
   else {
     const L = city.mid, off = (camX * LAYERS.mid.factor) % L.len;
     for (let rep = 0; rep < 2; rep++) for (const s of L.s) {
