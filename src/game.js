@@ -796,7 +796,7 @@ const GA_MOVES = { ...NEWKICK(FIST),
   punch:  { ...FIST.punch, dur: 0.26, cancel: 0.14 }, cross: { ...FIST.cross, dur: 0.28, cancel: 0.15 },
   dash:   { dur: 0.5, on: 0.18, off: 0.36, reach: [0, 150], y: [-170, -60], dmg: 3.2, kb: 480, ki: 8, launch: -480, push: 1500, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 18, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
   palm:   { dur: 0.85, cost: 35, on: 0.3, off: 0.44, reach: [0, 175], y: [-180, -60], dmg: 5.5, kb: 820, ki: 0, launch: -600, push: 500, pushAt: 0.26, pushDur: 0.12, shock: true,
-            call: 'PANZER KUNST !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.6]], gfx: { n: 'palm_wave', at: 0.3, w: 360, life: 0.4, dx: 210, dy: -120, grow: 0.25 } },
+            call: 'PANZER KUNST !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.6]], gfx: { n: 'palm_wave', at: 0.3, w: 360, life: 0.4, dx: 290, dy: -120, grow: 0.25 } },
 };
 // Livaï : deux lames en prise inversée, plus petit et plus vif que Mikasa ; le spécial est un cyclone aérien
 // (special 0 bond, 1-2 rotation lames écartées, 3 réception), qui coupe plusieurs fois et soulève.
@@ -4529,7 +4529,10 @@ function fxImg(name, i, x, y, w, h, o = {}) {
 // Effet en image fixe (assets/fx/<nom>.png, Flow image sur fond noir, tools/process_fx_images.py) : il apparaît
 // en un éclair, grandit un peu (o.grow), tourne (o.spin tours/s, o.rot), puis s'efface ; o.who : suit ce joueur
 // (décalage o.dx devant lui, o.dy en hauteur) ; o.dir : sens du coup (image tournée vers la droite)
-function gfx(name, x, y, w, life, o = {}) { if (IMG['fx_' + name]) fxs.push({ type: 'gimg', name, x, y, w, t: 0, life, ...o }); }
+function gfx(name, x, y, w, life, o = {}) { if (IMG['fx_' + name] || FX[name + '_v']) fxs.push({ type: 'gimg', name, x, y, w, t: 0, life, ...o }); }
+// version filmée d'un effet en image (FX[nom + '_v'], tools/fxauto.py) : ses étapes défilent sur la durée de l'effet ;
+// le cadre filmé a des marges autour de l'effet, d'où un peu plus grand
+const GFX_V_SCALE = 1.3;
 // Effet animé qui joue ses étapes une fois (explosion, éclair…)
 function animFX(name, x, y, w, life, o = {}) { fxs.push({ type: 'anim', name, x, y, w, h: o.h, filter: o.filter, rot: o.rot, t: 0, life }); }
 // Teinte des petits arcs électriques (planche verte) selon le personnage
@@ -4587,13 +4590,16 @@ function drawFX(ghosts = false) {
     const k = f.t / f.life, sx = f.x - camX;
     if (f.type === 'hzball') { energyBall(sx, f.y, 15 + Math.sin(f.t * 30 + f.tx) * 2, true); continue; } // Hellzone Grenade
     if (f.type === 'gimg') {
-      const img = IMG['fx_' + f.name]; if (!img) continue;
+      const V = FX[f.name + '_v'], vf = V && V[Math.min(V.length - 1, Math.floor(k * V.length))], vimg = vf && IMG[vf.src];
+      const img = vimg || IMG['fx_' + f.name]; if (!img) continue;
       const P = f.who != null && players.find(q => q.idx === f.who), dir = f.dir || 1;
       const x = P ? P.x + dir * (f.dx || 0) - camX : sx, y = P ? P.y + (f.dy || 0) : f.y;
-      const a = (f.alpha ?? 1) * Math.min(1, f.t / 0.05) * (k > 0.55 ? 1 - (k - 0.55) / 0.45 : 1), sc = 1 + (f.grow || 0) * k;
+      // la vidéo s'allume et s'éteint d'elle-même : pas de fondu ajouté, pas de grossissement ni de rotation
+      const a = (f.alpha ?? 1) * Math.min(1, f.t / 0.05) * (vimg ? (k > 0.85 ? 1 - (k - 0.85) / 0.15 : 1) : k > 0.55 ? 1 - (k - 0.55) / 0.45 : 1);
+      const sc = vimg ? GFX_V_SCALE : 1 + (f.grow || 0) * k;
       const w = f.w * sc, hh = (f.h ?? f.w * img.height / img.width) * sc;
       ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a; if (f.filter) ctx.filter = f.filter;
-      ctx.translate(x, y); ctx.scale(dir, 1); ctx.rotate((f.rot || 0) + (f.spin || 0) * f.t * Math.PI * 2);
+      ctx.translate(x, y); ctx.scale(dir, 1); ctx.rotate((f.rot || 0) + (vimg ? 0 : (f.spin || 0) * f.t * Math.PI * 2));
       ctx.drawImage(img, -w / 2, -hh / 2, w, hh); ctx.restore();
       continue;
     }
@@ -5085,7 +5091,9 @@ function drawProjs() {
       // glace de Shoto (assets/fx/shoto_ice.png) : la vague de pics se révèle de gauche à droite derrière le front
       // du tir et jaillit du sol avec un petit rebond ; elle se brise en fondu à la fin
       ctx.restore(); ctx.save();
-      const img = IMG.fx_shoto_ice, big = p.kind === 'glacier', sc = p.scale || 1;
+      // glacier (ultime) : version filmée, les cristaux poussent pendant la première moitié puis restent
+      const V = p.kind === 'glacier' && FX.shoto_ice_v, vimg = V && IMG[V[Math.min(V.length - 1, Math.floor(p.t / 0.9 * V.length))].src];
+      const img = vimg || IMG.fx_shoto_ice, big = p.kind === 'glacier', sc = p.scale || 1;
       const H = big ? 300 : 160 * sc, Wf = H * img.width / img.height;
       const ob = u => 1 + 3.2 * Math.pow(u - 1, 3) + 2.2 * Math.pow(u - 1, 2), up = Math.max(0, ob(Math.min(1, p.t / (big ? 0.25 : 0.15))));
       const fade = Math.max(0, Math.min(1, (p.life - p.t) / (big ? 0.4 : 0.25)));
@@ -5133,7 +5141,9 @@ function drawProjs() {
     }
     if (p.kind === 'flamejet' && IMG.fx_shoto_fire) {
       // brasier de Shoto (assets/fx/shoto_fire.png) étiré depuis la main jusqu'au front, qui ondule ; lueur et braises
-      const img = IMG.fx_shoto_fire, L = Math.max(20, p.len), Hh = Math.min(230, L * 0.42) * (1 + 0.08 * Math.sin(p.t * 32)), st = 1 + 0.03 * Math.sin(p.t * 47);
+      // version filmée (shoto_fire_v) : les flammes ondulent pour de vrai
+      const V = FX.shoto_fire_v, vimg = V && IMG[V[Math.floor(p.t * 16) % V.length].src];
+      const img = vimg || IMG.fx_shoto_fire, L = Math.max(20, p.len), Hh = Math.min(230, L * 0.42) * (1 + 0.08 * Math.sin(p.t * 32)), st = 1 + 0.03 * Math.sin(p.t * 47);
       const gl = ctx.createRadialGradient(L * 0.75, 0, 10, L * 0.75, 0, Hh); gl.addColorStop(0, 'rgba(255,170,60,0.45)'); gl.addColorStop(1, 'rgba(255,80,0,0)');
       ctx.fillStyle = gl; ctx.beginPath(); ctx.ellipse(L * 0.7, 0, L * 0.5, Hh * 0.8, 0, 0, 7); ctx.fill();
       ctx.globalCompositeOperation = 'source-over';
