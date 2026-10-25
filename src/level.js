@@ -301,7 +301,7 @@ for (const k of Object.keys(ENEMY_INFO)) if (k.includes('_')) ASSETS.ui[`intro_$
 const level = { passed: 0, trans: null, wave: 0, lock: null, queue: [], spawnT: 0, cleared: true, goT: 0, card: null, banner: null, zone: -1, seen: new Set(), props: [], items: [], bossDead: false, veh: null, collapse: null };
 
 function resetLevel() {
-  Object.assign(level, { passed: 0, trans: null, wave: 0, lock: null, queue: [], spawnT: 0, cleared: true, goT: 0, card: null, banner: null, zone: -1, seen: new Set(), items: [], bossDead: false, veh: null, collapse: null });
+  Object.assign(level, { critters: null, passed: 0, trans: null, wave: 0, lock: null, queue: [], spawnT: 0, cleared: true, goT: 0, card: null, banner: null, zone: -1, seen: new Set(), items: [], bossDead: false, veh: null, collapse: null });
   for (const Z of ZONES) if (Z.orig) Object.assign(Z, Z.orig); // la route B ne vaut que pour la partie
   level.props = PROPS.map(([x, type, item], k) => ({ x, gz: k % 2 ? Z_TOP + 25 : Z_BOT - 30, type, item, hp: 2, broken: false, t: 0, shakeT: 0 }));
 }
@@ -310,6 +310,7 @@ const zoneAt = x => { let k = 0; while (k + 1 < ZONES.length && x >= ZONES[k + 1
 
 // Appelé à chaque image de jeu (hors pause)
 function updateLevel(dt) {
+  updateAmbient(dt); // décor vivant (src/ambient_life.js)
   // Bandeau de zone quand la caméra entre dans un nouveau quartier
   const z = zoneAt(camX + W / 2);
   if (z !== level.zone) { level.zone = z; level.banner = { text: `ZONE ${z + 1} — ${ZONES[z].name}`, t: 0 }; }
@@ -760,6 +761,7 @@ function levelDrawables() {
   const out = [];
   for (const p of level.props) out.push({ z: p.gz - 2, f: () => drawProp(p) });
   for (const it of level.items) out.push({ z: it.gz - 1, f: () => drawItem(it) });
+  for (const c of level.critters || []) out.push({ z: c.gz - 3, f: () => drawCritter(c) });
   return out;
 }
 
@@ -809,6 +811,7 @@ function drawZoneLayer(kind) {
       const main = harmonizedMid(xk, ximg, Z.ground), s = Z.midScale || 1, h = L.h * s, y = L.y + L.h - h, w = ximg.width * h / ximg.height;
       const x0 = (Z.from - camX) * f;
       drawStrip(main, x0, y, h, w);
+      drawSpots(key, x0, y, h / ximg.height); // lueurs animées (vortex, cristaux…)
       if (s < 1 && y > 0) drawStrip(main, x0, -2, y + 3, w, [0, (y + 3) * ximg.height / h]);
     }
     else if (kind === 'mid') {

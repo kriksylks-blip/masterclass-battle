@@ -40,6 +40,7 @@ function loadAll() {
   for (const [k, src] of Object.entries(ASSETS.ui)) if (!k.startsWith('intro_') && k !== 'title') jobs.push(want(k, src)); // présentations : à la demande
   jobs.push(want('title_art', `assets/ui/title/title_${titlePick}.jpg`).then(() => IMG.title_art || want('title', ASSETS.ui.title)));
   if (typeof FX !== 'undefined') for (const list of Object.values(FX)) for (const f of list) jobs.push(want(f.src, f.src));
+  if (typeof AMB_FRAMES !== 'undefined') for (const list of Object.values(AMB_FRAMES)) for (const f of list) jobs.push(want('amb_' + f.src, f.src)); // décor vivant
   for (const C of Object.values(CHARS)) jobs.push(want(C.card, `assets/ui/${C.card}.png`)); // gros plans d'ultime : à la demande
   for (const src of showcaseFrames()) jobs.push(want(src, src)); // garde de chaque perso (vitrine de la sélection)
   for (const L of LEVELS) for (const key of levelPreviewKeys(L)) jobs.push(want('pv_' + key, `assets/web/preview/${key}.webp`));
