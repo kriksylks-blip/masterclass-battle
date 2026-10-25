@@ -211,10 +211,12 @@ function pollPad() {
     // Une manette libre qui appuie sur l'écran de sélection fait entrer le joueur 2
     if (scene === 'select' && padOwner[gp.index] === undefined && [0, 2, 9].some(fresh)) joinPlayer(gp.index);
     const p = padOwner[gp.index] ?? 0, set = now[p];
-    // Dans les menus, le bouton de droite (A sur Switch, B sur Xbox) sert toujours à revenir en arrière / annuler
-    const inMenu = scene !== 'play', back = i => inMenu && i === 1;
-    for (const [a, list] of Object.entries(binds[p].pad)) if (list.some(i => btn[i] && !back(i))) set.add(a);
-    if (inMenu && btn[1]) set.add('kick');
+    // Dans les menus, les 4 boutons de façade ont un rôle fixe : bas et gauche valident, droite et haut reviennent
+    // en arrière (manette Switch : B et Y valident, A et X annulent)
+    const inMenu = scene !== 'play';
+    for (const [a, list] of Object.entries(binds[p].pad)) if (list.some(i => btn[i] && !(inMenu && i < 4))) set.add(a);
+    if (inMenu && (btn[0] || btn[2])) set.add('punch');
+    if (inMenu && (btn[1] || btn[3])) set.add('kick');
     if (btn[9]) set.add('start');
     const [ax, ay] = padAxes(gp);
     if (ax < -0.4) set.add('left');
@@ -300,8 +302,8 @@ function menuPad(fresh, n) {
   if (fresh(13)) menuMove(1, 0);
   if (fresh(14)) menuMove(0, -1);
   if (fresh(15)) menuMove(0, 1);
-  if (fresh(0)) menuActivate();
-  if (fresh(1) || fresh(9)) closeMenu();
+  if (fresh(0) || fresh(2)) menuActivate(); // bas, gauche : valider
+  if (fresh(1) || fresh(3) || fresh(9)) closeMenu(); // droite, haut, Start : revenir
 }
 
 function drawPauseMenu() {
@@ -6850,7 +6852,7 @@ function drawSelect() {
   // Aide en bas d'écran
   ctx.fillStyle = 'rgba(0,0,0,0.75)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
-  ctx.fillText(`${K('left')} ${K('right')} ${K('up')} ${K('down')} choisir${sel.outfit?.[focus] ? `    ${K('left')} ${K('right')} tenue` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou A sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
+  ctx.fillText(`${K('left')} ${K('right')} ${K('up')} ${K('down')} choisir${sel.outfit?.[focus] ? `    ${K('left')} ${K('right')} tenue` : ''}    ${K('punch')} valider    ${K('kick')} annuler${ps.length < 4 ? `    —    autres joueurs : ${K('punch', 1)} (pavé) ou B / Y sur une manette${net.role === 'host' ? `   —   code en ligne : ${net.code}` : ''}` : ''}`, W / 2, H - 10);
   if (sel.go > 0) {
     ctx.save(); ctx.fillStyle = `rgba(255,255,255,${Math.max(0, 0.5 - sel.go)})`; ctx.fillRect(0, 0, W, H); ctx.restore();
     outlined('EN AVANT !', W / 2, H / 2 + 20, 70 + sel.go * 30, '#ffe14d');
