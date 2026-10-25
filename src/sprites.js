@@ -5386,120 +5386,120 @@ const SPRITES = {
  },
  "vegeta": {
   "walk": {
-   "scale": 0.3318,
+   "scale": 0.3515,
    "rate": 29.09,
    "frames": [
     {
      "src": "assets/sprites/vegeta/walkv_0.png",
-     "w": 282,
-     "h": 546,
-     "ax": 148.5,
-     "ay": 546
+     "w": 246,
+     "h": 518,
+     "ax": 122.5,
+     "ay": 518
     },
     {
      "src": "assets/sprites/vegeta/walkv_1.png",
      "w": 238,
-     "h": 550,
-     "ax": 135.5,
-     "ay": 550
+     "h": 526,
+     "ax": 118.5,
+     "ay": 526
     },
     {
      "src": "assets/sprites/vegeta/walkv_2.png",
-     "w": 174,
-     "h": 552,
-     "ax": 100.5,
-     "ay": 552
+     "w": 228,
+     "h": 527,
+     "ax": 113.5,
+     "ay": 527
     },
     {
      "src": "assets/sprites/vegeta/walkv_3.png",
-     "w": 158,
-     "h": 554,
-     "ax": 76.5,
-     "ay": 554
+     "w": 220,
+     "h": 526,
+     "ax": 109.5,
+     "ay": 526
     },
     {
      "src": "assets/sprites/vegeta/walkv_4.png",
-     "w": 186,
-     "h": 554,
-     "ax": 78.5,
-     "ay": 554
+     "w": 204,
+     "h": 532,
+     "ax": 101.5,
+     "ay": 532
     },
     {
      "src": "assets/sprites/vegeta/walkv_5.png",
-     "w": 216,
-     "h": 550,
-     "ax": 108.5,
-     "ay": 550
+     "w": 206,
+     "h": 532,
+     "ax": 107.5,
+     "ay": 532
     },
     {
      "src": "assets/sprites/vegeta/walkv_6.png",
-     "w": 234,
-     "h": 548,
-     "ax": 113.5,
-     "ay": 548
+     "w": 218,
+     "h": 530,
+     "ax": 121.5,
+     "ay": 530
     },
     {
      "src": "assets/sprites/vegeta/walkv_7.png",
-     "w": 270,
-     "h": 544,
-     "ax": 137.5,
-     "ay": 544
+     "w": 246,
+     "h": 528,
+     "ax": 134.5,
+     "ay": 528
     },
     {
      "src": "assets/sprites/vegeta/walkv_8.png",
-     "w": 268,
-     "h": 550,
-     "ax": 154.0,
-     "ay": 550
+     "w": 270,
+     "h": 520,
+     "ax": 158.0,
+     "ay": 520
     },
     {
      "src": "assets/sprites/vegeta/walkv_9.png",
-     "w": 238,
-     "h": 558,
-     "ax": 136.5,
-     "ay": 558
+     "w": 254,
+     "h": 520,
+     "ax": 158.5,
+     "ay": 520
     },
     {
      "src": "assets/sprites/vegeta/walkv_10.png",
-     "w": 184,
-     "h": 564,
-     "ax": 90.5,
-     "ay": 564
+     "w": 244,
+     "h": 518,
+     "ax": 146.5,
+     "ay": 518
     },
     {
      "src": "assets/sprites/vegeta/walkv_11.png",
-     "w": 150,
-     "h": 568,
-     "ax": 63.5,
-     "ay": 568
+     "w": 232,
+     "h": 518,
+     "ax": 131.5,
+     "ay": 518
     },
     {
      "src": "assets/sprites/vegeta/walkv_12.png",
-     "w": 144,
-     "h": 569,
-     "ax": 61.5,
-     "ay": 569
+     "w": 210,
+     "h": 522,
+     "ax": 104.5,
+     "ay": 522
     },
     {
      "src": "assets/sprites/vegeta/walkv_13.png",
-     "w": 202,
-     "h": 564,
-     "ax": 81.5,
-     "ay": 564
+     "w": 226,
+     "h": 522,
+     "ax": 112.5,
+     "ay": 522
     },
     {
      "src": "assets/sprites/vegeta/walkv_14.png",
-     "w": 244,
-     "h": 558,
-     "ax": 95.5,
-     "ay": 558
+     "w": 232,
+     "h": 516,
+     "ax": 115.5,
+     "ay": 516
     },
     {
      "src": "assets/sprites/vegeta/walkv_15.png",
-     "w": 282,
-     "h": 550,
-     "ax": 120.5,
-     "ay": 550
+     "w": 238,
+     "h": 514,
+     "ax": 118.5,
+     "ay": 514
     }
    ]
   },
@@ -51490,63 +51490,120 @@ const SPRITES = {
  },
  "gohan_a": {
   "walk": {
-   "scale": 0.5263,
+   "scale": 0.3582,
+   "rate": 29.09,
    "frames": [
     {
-     "src": "assets/sprites/gohan_a/walk_0.png",
-     "w": 235,
-     "h": 356,
-     "ax": 123.6,
-     "ay": 356
+     "src": "assets/sprites/gohan_a/walkv_0.png",
+     "w": 308,
+     "h": 522,
+     "ax": 171.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/gohan_a/walk_1.png",
-     "w": 237,
-     "h": 356,
-     "ax": 129.2,
-     "ay": 356
+     "src": "assets/sprites/gohan_a/walkv_1.png",
+     "w": 282,
+     "h": 528,
+     "ax": 150.5,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/gohan_a/walk_2.png",
-     "w": 190,
-     "h": 357,
-     "ax": 76.5,
-     "ay": 357
+     "src": "assets/sprites/gohan_a/walkv_2.png",
+     "w": 266,
+     "h": 532,
+     "ax": 138.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/gohan_a/walk_3.png",
-     "w": 214,
-     "h": 354,
-     "ax": 115.3,
-     "ay": 354
+     "src": "assets/sprites/gohan_a/walkv_3.png",
+     "w": 244,
+     "h": 538,
+     "ax": 121.5,
+     "ay": 538
     },
     {
-     "src": "assets/sprites/gohan_a/walk_4.png",
-     "w": 246,
-     "h": 356,
-     "ax": 136.0,
-     "ay": 356
+     "src": "assets/sprites/gohan_a/walkv_4.png",
+     "w": 242,
+     "h": 540,
+     "ax": 126.5,
+     "ay": 540
     },
     {
-     "src": "assets/sprites/gohan_a/walk_5.png",
-     "w": 243,
-     "h": 356,
-     "ax": 125.7,
-     "ay": 356
+     "src": "assets/sprites/gohan_a/walkv_5.png",
+     "w": 250,
+     "h": 538,
+     "ax": 135.5,
+     "ay": 538
     },
     {
-     "src": "assets/sprites/gohan_a/walk_6.png",
-     "w": 192,
-     "h": 355,
-     "ax": 78.5,
-     "ay": 355
+     "src": "assets/sprites/gohan_a/walkv_6.png",
+     "w": 306,
+     "h": 528,
+     "ax": 174.0,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/gohan_a/walk_7.png",
-     "w": 219,
-     "h": 361,
-     "ax": 107.0,
-     "ay": 361
+     "src": "assets/sprites/gohan_a/walkv_7.png",
+     "w": 318,
+     "h": 521,
+     "ax": 194.5,
+     "ay": 521
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_8.png",
+     "w": 306,
+     "h": 520,
+     "ax": 194.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_9.png",
+     "w": 300,
+     "h": 518,
+     "ax": 187.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_10.png",
+     "w": 272,
+     "h": 520,
+     "ax": 156.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_11.png",
+     "w": 244,
+     "h": 526,
+     "ax": 121.5,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_12.png",
+     "w": 250,
+     "h": 524,
+     "ax": 124.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_13.png",
+     "w": 264,
+     "h": 518,
+     "ax": 131.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_14.png",
+     "w": 288,
+     "h": 518,
+     "ax": 151.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/gohan_a/walkv_15.png",
+     "w": 296,
+     "h": 518,
+     "ax": 158.5,
+     "ay": 518
     }
    ]
   },
@@ -51934,67 +51991,214 @@ const SPRITES = {
      "ay": 585
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3569,
+   "rate": 7.02,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a/idlev_0.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_1.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_2.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_3.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_4.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_5.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_6.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_7.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_8.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_9.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_10.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gohan_a/idlev_11.png",
+     "w": 336,
+     "h": 528,
+     "ax": 164.2,
+     "ay": 528
+    }
+   ]
   }
  },
  "piccolo": {
   "walk": {
-   "scale": 0.625,
+   "scale": 0.3769,
+   "rate": 24.73,
    "frames": [
     {
-     "src": "assets/sprites/piccolo/walk_0.png",
-     "w": 254,
-     "h": 325,
-     "ax": 114.9,
-     "ay": 325
+     "src": "assets/sprites/piccolo/walkv_0.png",
+     "w": 240,
+     "h": 551,
+     "ax": 111.5,
+     "ay": 551
     },
     {
-     "src": "assets/sprites/piccolo/walk_1.png",
-     "w": 270,
-     "h": 325,
-     "ax": 135.0,
-     "ay": 325
+     "src": "assets/sprites/piccolo/walkv_1.png",
+     "w": 342,
+     "h": 542,
+     "ax": 144.5,
+     "ay": 542
     },
     {
-     "src": "assets/sprites/piccolo/walk_2.png",
+     "src": "assets/sprites/piccolo/walkv_2.png",
+     "w": 366,
+     "h": 534,
+     "ax": 180.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_3.png",
+     "w": 364,
+     "h": 530,
+     "ax": 190.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_4.png",
+     "w": 312,
+     "h": 530,
+     "ax": 171.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_5.png",
      "w": 236,
-     "h": 327,
-     "ax": 93.0,
-     "ay": 327
+     "h": 538,
+     "ax": 131.5,
+     "ay": 538
     },
     {
-     "src": "assets/sprites/piccolo/walk_3.png",
-     "w": 266,
-     "h": 325,
-     "ax": 130.7,
-     "ay": 325
+     "src": "assets/sprites/piccolo/walkv_6.png",
+     "w": 212,
+     "h": 540,
+     "ax": 104.5,
+     "ay": 540
     },
     {
-     "src": "assets/sprites/piccolo/walk_4.png",
-     "w": 253,
-     "h": 324,
-     "ax": 115.0,
-     "ay": 324
+     "src": "assets/sprites/piccolo/walkv_7.png",
+     "w": 200,
+     "h": 546,
+     "ax": 96.5,
+     "ay": 546
     },
     {
-     "src": "assets/sprites/piccolo/walk_5.png",
-     "w": 260,
-     "h": 325,
-     "ax": 123.3,
-     "ay": 325
+     "src": "assets/sprites/piccolo/walkv_8.png",
+     "w": 248,
+     "h": 538,
+     "ax": 123.5,
+     "ay": 538
     },
     {
-     "src": "assets/sprites/piccolo/walk_6.png",
-     "w": 238,
-     "h": 328,
-     "ax": 89.5,
-     "ay": 328
+     "src": "assets/sprites/piccolo/walkv_9.png",
+     "w": 300,
+     "h": 532,
+     "ax": 148.5,
+     "ay": 532
     },
     {
-     "src": "assets/sprites/piccolo/walk_7.png",
-     "w": 262,
-     "h": 319,
-     "ax": 131.0,
-     "ay": 319
+     "src": "assets/sprites/piccolo/walkv_10.png",
+     "w": 324,
+     "h": 534,
+     "ax": 179.0,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_11.png",
+     "w": 332,
+     "h": 537,
+     "ax": 188.5,
+     "ay": 537
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_12.png",
+     "w": 300,
+     "h": 542,
+     "ax": 170.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_13.png",
+     "w": 230,
+     "h": 552,
+     "ax": 123.5,
+     "ay": 552
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_14.png",
+     "w": 190,
+     "h": 554,
+     "ax": 94.0,
+     "ay": 554
+    },
+    {
+     "src": "assets/sprites/piccolo/walkv_15.png",
+     "w": 196,
+     "h": 558,
+     "ax": 79.5,
+     "ay": 558
     }
    ]
   },
@@ -52380,6 +52584,96 @@ const SPRITES = {
      "h": 588,
      "ax": 356.5,
      "ay": 588
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3842,
+   "rate": 7.38,
+   "frames": [
+    {
+     "src": "assets/sprites/piccolo/idlev_0.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_1.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_2.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_3.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_4.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_5.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_6.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_7.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_8.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_9.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_10.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/piccolo/idlev_11.png",
+     "w": 414,
+     "h": 542,
+     "ax": 189.0,
+     "ay": 542
     }
    ]
   }
@@ -53002,63 +53296,120 @@ const SPRITES = {
  },
  "buu": {
   "walk": {
-   "scale": 0.5874,
+   "scale": 0.3897,
+   "rate": 17.78,
    "frames": [
     {
-     "src": "assets/sprites/buu/walk_0.png",
-     "w": 286,
-     "h": 345,
-     "ax": 142.6,
-     "ay": 345
+     "src": "assets/sprites/buu/walkv_0.png",
+     "w": 520,
+     "h": 526,
+     "ax": 282.5,
+     "ay": 526
     },
     {
-     "src": "assets/sprites/buu/walk_1.png",
-     "w": 297,
-     "h": 345,
-     "ax": 153.5,
-     "ay": 345
+     "src": "assets/sprites/buu/walkv_1.png",
+     "w": 488,
+     "h": 540,
+     "ax": 292.5,
+     "ay": 540
     },
     {
-     "src": "assets/sprites/buu/walk_2.png",
-     "w": 296,
-     "h": 345,
-     "ax": 151.6,
-     "ay": 345
+     "src": "assets/sprites/buu/walkv_2.png",
+     "w": 446,
+     "h": 524,
+     "ax": 258.5,
+     "ay": 524
     },
     {
-     "src": "assets/sprites/buu/walk_3.png",
-     "w": 287,
-     "h": 345,
-     "ax": 147.5,
-     "ay": 345
+     "src": "assets/sprites/buu/walkv_3.png",
+     "w": 418,
+     "h": 510,
+     "ax": 246.5,
+     "ay": 510
     },
     {
-     "src": "assets/sprites/buu/walk_4.png",
-     "w": 289,
-     "h": 346,
-     "ax": 144.0,
-     "ay": 346
+     "src": "assets/sprites/buu/walkv_4.png",
+     "w": 428,
+     "h": 506,
+     "ax": 238.5,
+     "ay": 506
     },
     {
-     "src": "assets/sprites/buu/walk_5.png",
-     "w": 289,
-     "h": 345,
-     "ax": 144.5,
-     "ay": 345
+     "src": "assets/sprites/buu/walkv_5.png",
+     "w": 440,
+     "h": 520,
+     "ax": 238.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/buu/walk_6.png",
-     "w": 292,
-     "h": 340,
-     "ax": 143.5,
-     "ay": 340
+     "src": "assets/sprites/buu/walkv_6.png",
+     "w": 464,
+     "h": 520,
+     "ax": 253.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/buu/walk_7.png",
-     "w": 288,
-     "h": 349,
-     "ax": 143.0,
-     "ay": 349
+     "src": "assets/sprites/buu/walkv_7.png",
+     "w": 499,
+     "h": 518,
+     "ax": 273.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/buu/walkv_8.png",
+     "w": 518,
+     "h": 524,
+     "ax": 280.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/buu/walkv_9.png",
+     "w": 504,
+     "h": 536,
+     "ax": 295.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/walkv_10.png",
+     "w": 464,
+     "h": 530,
+     "ax": 269.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/buu/walkv_11.png",
+     "w": 426,
+     "h": 506,
+     "ax": 250.5,
+     "ay": 506
+    },
+    {
+     "src": "assets/sprites/buu/walkv_12.png",
+     "w": 430,
+     "h": 512,
+     "ax": 234.5,
+     "ay": 512
+    },
+    {
+     "src": "assets/sprites/buu/walkv_13.png",
+     "w": 450,
+     "h": 520,
+     "ax": 246.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/buu/walkv_14.png",
+     "w": 480,
+     "h": 520,
+     "ax": 265.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/buu/walkv_15.png",
+     "w": 512,
+     "h": 516,
+     "ax": 279.5,
+     "ay": 516
     }
    ]
   },
@@ -53427,67 +53778,214 @@ const SPRITES = {
      "ay": 346
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3796,
+   "rate": 4.8,
+   "frames": [
+    {
+     "src": "assets/sprites/buu/idlev_0.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_1.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_2.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_3.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_4.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_5.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_6.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_7.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_8.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_9.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_10.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/buu/idlev_11.png",
+     "w": 538,
+     "h": 536,
+     "ax": 325.5,
+     "ay": 536
+    }
+   ]
   }
  },
  "buu_kid": {
   "walk": {
-   "scale": 0.4335,
+   "scale": 0.2871,
+   "rate": 28.67,
    "frames": [
     {
-     "src": "assets/sprites/buu_kid/walk_0.png",
-     "w": 274,
-     "h": 345,
-     "ax": 145.3,
-     "ay": 345
+     "src": "assets/sprites/buu_kid/walkv_0.png",
+     "w": 372,
+     "h": 528,
+     "ax": 210.5,
+     "ay": 528
     },
     {
-     "src": "assets/sprites/buu_kid/walk_1.png",
-     "w": 275,
-     "h": 344,
-     "ax": 138.2,
-     "ay": 344
+     "src": "assets/sprites/buu_kid/walkv_1.png",
+     "w": 358,
+     "h": 516,
+     "ax": 225.5,
+     "ay": 516
     },
     {
-     "src": "assets/sprites/buu_kid/walk_2.png",
-     "w": 226,
-     "h": 342,
-     "ax": 114.0,
-     "ay": 342
+     "src": "assets/sprites/buu_kid/walkv_2.png",
+     "w": 318,
+     "h": 502,
+     "ax": 213.5,
+     "ay": 502
     },
     {
-     "src": "assets/sprites/buu_kid/walk_3.png",
-     "w": 261,
-     "h": 344,
-     "ax": 125.0,
-     "ay": 344
+     "src": "assets/sprites/buu_kid/walkv_3.png",
+     "w": 292,
+     "h": 502,
+     "ax": 185.5,
+     "ay": 502
     },
     {
-     "src": "assets/sprites/buu_kid/walk_4.png",
-     "w": 277,
-     "h": 343,
-     "ax": 146.5,
-     "ay": 343
+     "src": "assets/sprites/buu_kid/walkv_4.png",
+     "w": 242,
+     "h": 512,
+     "ax": 130.5,
+     "ay": 512
     },
     {
-     "src": "assets/sprites/buu_kid/walk_5.png",
-     "w": 265,
-     "h": 344,
-     "ax": 129.5,
-     "ay": 344
+     "src": "assets/sprites/buu_kid/walkv_5.png",
+     "w": 268,
+     "h": 520,
+     "ax": 133.5,
+     "ay": 520
     },
     {
-     "src": "assets/sprites/buu_kid/walk_6.png",
-     "w": 252,
-     "h": 344,
-     "ax": 130.9,
-     "ay": 344
+     "src": "assets/sprites/buu_kid/walkv_6.png",
+     "w": 282,
+     "h": 522,
+     "ax": 140.5,
+     "ay": 522
     },
     {
-     "src": "assets/sprites/buu_kid/walk_7.png",
-     "w": 251,
-     "h": 346,
-     "ax": 116.5,
-     "ay": 346
+     "src": "assets/sprites/buu_kid/walkv_7.png",
+     "w": 302,
+     "h": 520,
+     "ax": 150.5,
+     "ay": 520
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_8.png",
+     "w": 336,
+     "h": 519,
+     "ax": 176.5,
+     "ay": 519
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_9.png",
+     "w": 330,
+     "h": 514,
+     "ax": 178.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_10.png",
+     "w": 306,
+     "h": 514,
+     "ax": 161.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_11.png",
+     "w": 272,
+     "h": 518,
+     "ax": 136.5,
+     "ay": 518
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_12.png",
+     "w": 232,
+     "h": 530,
+     "ax": 121.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_13.png",
+     "w": 234,
+     "h": 540,
+     "ax": 123.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_14.png",
+     "w": 254,
+     "h": 542,
+     "ax": 145.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/buu_kid/walkv_15.png",
+     "w": 310,
+     "h": 540,
+     "ax": 166.0,
+     "ay": 540
     }
    ]
   },
@@ -55242,454 +55740,6 @@ const SPRITES = {
      "h": 743,
      "ax": 392.0,
      "ay": 743
-    }
-   ]
-  }
- },
- "gohan_a_gsm": {
-  "walk": {
-   "scale": 0.5322,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_0.png",
-     "w": 283,
-     "h": 352,
-     "ax": 139.0,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_1.png",
-     "w": 284,
-     "h": 352,
-     "ax": 141.4,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_2.png",
-     "w": 264,
-     "h": 354,
-     "ax": 136.7,
-     "ay": 354
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_3.png",
-     "w": 264,
-     "h": 351,
-     "ax": 126.1,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_4.png",
-     "w": 291,
-     "h": 352,
-     "ax": 140.8,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_5.png",
-     "w": 287,
-     "h": 352,
-     "ax": 143.8,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_6.png",
-     "w": 265,
-     "h": 352,
-     "ax": 126.0,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/walk_7.png",
-     "w": 275,
-     "h": 357,
-     "ax": 132.0,
-     "ay": 357
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.5322,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_0.png",
-     "w": 226,
-     "h": 271,
-     "ax": 119.5,
-     "ay": 271
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_1.png",
-     "w": 243,
-     "h": 323,
-     "ax": 135.6,
-     "ay": 323
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_2.png",
-     "w": 242,
-     "h": 347,
-     "ax": 114.5,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_3.png",
-     "w": 207,
-     "h": 306,
-     "ax": 108.3,
-     "ay": 306
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_4.png",
-     "w": 198,
-     "h": 254,
-     "ax": 110.0,
-     "ay": 254
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_5.png",
-     "w": 207,
-     "h": 329,
-     "ax": 123.5,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_6.png",
-     "w": 214,
-     "h": 336,
-     "ax": 92.5,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/jump_7.png",
-     "w": 230,
-     "h": 277,
-     "ax": 122.1,
-     "ay": 277
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.5322,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_0.png",
-     "w": 309,
-     "h": 346,
-     "ax": 114.6,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_1.png",
-     "w": 270,
-     "h": 336,
-     "ax": 59.0,
-     "ay": 336
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_2.png",
-     "w": 322,
-     "h": 283,
-     "ax": 143.5,
-     "ay": 283
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_3.png",
-     "w": 343,
-     "h": 224,
-     "ax": 157.6,
-     "ay": 224
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_4.png",
-     "w": 389,
-     "h": 113,
-     "ax": 152.9,
-     "ay": 113
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_5.png",
-     "w": 307,
-     "h": 227,
-     "ax": 77.8,
-     "ay": 227
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_6.png",
-     "w": 246,
-     "h": 271,
-     "ax": 125.2,
-     "ay": 271
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/fall_7.png",
-     "w": 251,
-     "h": 293,
-     "ax": 141.2,
-     "ay": 293
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.5322,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_0.png",
-     "w": 258,
-     "h": 353,
-     "ax": 115.5,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_1.png",
-     "w": 299,
-     "h": 333,
-     "ax": 120.1,
-     "ay": 333
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_2.png",
-     "w": 289,
-     "h": 339,
-     "ax": 131.6,
-     "ay": 339
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_3.png",
-     "w": 214,
-     "h": 374,
-     "ax": 111.5,
-     "ay": 374
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_4.png",
-     "w": 228,
-     "h": 337,
-     "ax": 99.5,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_5.png",
-     "w": 310,
-     "h": 345,
-     "ax": 67.5,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_6.png",
-     "w": 284,
-     "h": 351,
-     "ax": 66.5,
-     "ay": 351
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/combo_7.png",
-     "w": 375,
-     "h": 272,
-     "ax": 119.0,
-     "ay": 272
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.5322,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_0.png",
-     "w": 257,
-     "h": 325,
-     "ax": 120.7,
-     "ay": 325
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_1.png",
-     "w": 270,
-     "h": 317,
-     "ax": 129.6,
-     "ay": 317
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_2.png",
-     "w": 354,
-     "h": 253,
-     "ax": 124.5,
-     "ay": 253
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_3.png",
-     "w": 267,
-     "h": 328,
-     "ax": 120.8,
-     "ay": 328
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_4.png",
-     "w": 239,
-     "h": 363,
-     "ax": 127.6,
-     "ay": 363
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_5.png",
-     "w": 242,
-     "h": 367,
-     "ax": 122.0,
-     "ay": 367
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_6.png",
-     "w": 334,
-     "h": 321,
-     "ax": 86.5,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/lowair_7.png",
-     "w": 232,
-     "h": 348,
-     "ax": 102.5,
-     "ay": 348
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.5322,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_0.png",
-     "w": 262,
-     "h": 299,
-     "ax": 135.0,
-     "ay": 299
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_1.png",
-     "w": 323,
-     "h": 233,
-     "ax": 141.1,
-     "ay": 233
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_2.png",
-     "w": 397,
-     "h": 290,
-     "ax": 159.3,
-     "ay": 290
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_3.png",
-     "w": 283,
-     "h": 303,
-     "ax": 161.1,
-     "ay": 303
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_4.png",
-     "w": 253,
-     "h": 318,
-     "ax": 135.5,
-     "ay": 318
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_5.png",
-     "w": 254,
-     "h": 343,
-     "ax": 132.4,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_6.png",
-     "w": 274,
-     "h": 364,
-     "ax": 118.0,
-     "ay": 364
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/dashcharge_7.png",
-     "w": 267,
-     "h": 351,
-     "ax": 127.2,
-     "ay": 351
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.5322,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_0.png",
-     "w": 263,
-     "h": 349,
-     "ax": 130.8,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_1.png",
-     "w": 406,
-     "h": 327,
-     "ax": 153.9,
-     "ay": 327
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_2.png",
-     "w": 327,
-     "h": 332,
-     "ax": 169.5,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_3.png",
-     "w": 268,
-     "h": 348,
-     "ax": 132.6,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_4.png",
-     "w": 291,
-     "h": 349,
-     "ax": 146.8,
-     "ay": 349
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_5.png",
-     "w": 346,
-     "h": 352,
-     "ax": 111.1,
-     "ay": 352
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_6.png",
-     "w": 297,
-     "h": 330,
-     "ax": 136.1,
-     "ay": 330
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/special_7.png",
-     "w": 396,
-     "h": 372,
-     "ax": 251.9,
-     "ay": 372
-    }
-   ]
-  },
-  "guard": {
-   "scale": 0.2727,
-   "frames": [
-    {
-     "src": "assets/sprites/gohan_a_gsm/guard_0.png",
-     "w": 503,
-     "h": 627,
-     "ax": 243.4,
-     "ay": 627
-    },
-    {
-     "src": "assets/sprites/gohan_a_gsm/guard_1.png",
-     "w": 575,
-     "h": 585,
-     "ax": 299.6,
-     "ay": 585
     }
    ]
   }
@@ -58176,6 +58226,454 @@ const SPRITES = {
      "h": 323,
      "ax": 88.0,
      "ay": 323
+    }
+   ]
+  }
+ },
+ "gohan_a_gsm": {
+  "walk": {
+   "scale": 0.5249,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_0.png",
+     "w": 304,
+     "h": 358,
+     "ax": 174.4,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_1.png",
+     "w": 306,
+     "h": 358,
+     "ax": 168.7,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_2.png",
+     "w": 286,
+     "h": 360,
+     "ax": 166.0,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_3.png",
+     "w": 291,
+     "h": 356,
+     "ax": 171.4,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_4.png",
+     "w": 305,
+     "h": 358,
+     "ax": 172.5,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_5.png",
+     "w": 308,
+     "h": 358,
+     "ax": 172.0,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_6.png",
+     "w": 294,
+     "h": 357,
+     "ax": 165.0,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/walk_7.png",
+     "w": 295,
+     "h": 362,
+     "ax": 160.5,
+     "ay": 362
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.5249,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_0.png",
+     "w": 236,
+     "h": 277,
+     "ax": 126.5,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_1.png",
+     "w": 242,
+     "h": 328,
+     "ax": 140.5,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_2.png",
+     "w": 241,
+     "h": 352,
+     "ax": 114.5,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_3.png",
+     "w": 220,
+     "h": 311,
+     "ax": 127.0,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_4.png",
+     "w": 202,
+     "h": 251,
+     "ax": 123.0,
+     "ay": 251
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_5.png",
+     "w": 215,
+     "h": 335,
+     "ax": 144.0,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_6.png",
+     "w": 217,
+     "h": 341,
+     "ax": 127.8,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/jump_7.png",
+     "w": 232,
+     "h": 281,
+     "ax": 123.5,
+     "ay": 281
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5249,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_0.png",
+     "w": 271,
+     "h": 351,
+     "ax": 134.3,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_1.png",
+     "w": 292,
+     "h": 342,
+     "ax": 110.6,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_2.png",
+     "w": 328,
+     "h": 284,
+     "ax": 152.9,
+     "ay": 284
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_3.png",
+     "w": 347,
+     "h": 237,
+     "ax": 186.5,
+     "ay": 237
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_4.png",
+     "w": 394,
+     "h": 110,
+     "ax": 190.5,
+     "ay": 110
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_5.png",
+     "w": 311,
+     "h": 233,
+     "ax": 132.0,
+     "ay": 233
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_6.png",
+     "w": 242,
+     "h": 277,
+     "ax": 130.0,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/fall_7.png",
+     "w": 257,
+     "h": 296,
+     "ax": 140.0,
+     "ay": 296
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5249,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_0.png",
+     "w": 264,
+     "h": 357,
+     "ax": 139.1,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_1.png",
+     "w": 309,
+     "h": 337,
+     "ax": 128.5,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_2.png",
+     "w": 335,
+     "h": 347,
+     "ax": 151.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_3.png",
+     "w": 240,
+     "h": 381,
+     "ax": 134.5,
+     "ay": 381
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_4.png",
+     "w": 230,
+     "h": 342,
+     "ax": 116.2,
+     "ay": 342
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_5.png",
+     "w": 308,
+     "h": 349,
+     "ax": 75.5,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_6.png",
+     "w": 280,
+     "h": 357,
+     "ax": 87.5,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/combo_7.png",
+     "w": 380,
+     "h": 278,
+     "ax": 140.0,
+     "ay": 278
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.5249,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_0.png",
+     "w": 250,
+     "h": 331,
+     "ax": 131.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_1.png",
+     "w": 267,
+     "h": 322,
+     "ax": 136.0,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_2.png",
+     "w": 330,
+     "h": 257,
+     "ax": 87.0,
+     "ay": 257
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_3.png",
+     "w": 266,
+     "h": 333,
+     "ax": 137.1,
+     "ay": 333
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_4.png",
+     "w": 235,
+     "h": 368,
+     "ax": 128.1,
+     "ay": 368
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_5.png",
+     "w": 245,
+     "h": 372,
+     "ax": 137.5,
+     "ay": 372
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_6.png",
+     "w": 340,
+     "h": 305,
+     "ax": 102.0,
+     "ay": 305
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/lowair_7.png",
+     "w": 200,
+     "h": 353,
+     "ax": 105.5,
+     "ay": 353
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.5249,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_0.png",
+     "w": 258,
+     "h": 319,
+     "ax": 136.0,
+     "ay": 319
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_1.png",
+     "w": 326,
+     "h": 248,
+     "ax": 163.5,
+     "ay": 248
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_2.png",
+     "w": 401,
+     "h": 296,
+     "ax": 159.0,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_3.png",
+     "w": 281,
+     "h": 306,
+     "ax": 160.0,
+     "ay": 306
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_4.png",
+     "w": 247,
+     "h": 324,
+     "ax": 126.5,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_5.png",
+     "w": 248,
+     "h": 347,
+     "ax": 126.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_6.png",
+     "w": 273,
+     "h": 366,
+     "ax": 137.0,
+     "ay": 366
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/dashcharge_7.png",
+     "w": 269,
+     "h": 354,
+     "ax": 141.5,
+     "ay": 354
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5249,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_0.png",
+     "w": 267,
+     "h": 354,
+     "ax": 128.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_1.png",
+     "w": 304,
+     "h": 335,
+     "ax": 142.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_2.png",
+     "w": 316,
+     "h": 347,
+     "ax": 158.0,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_3.png",
+     "w": 274,
+     "h": 354,
+     "ax": 140.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_4.png",
+     "w": 300,
+     "h": 356,
+     "ax": 147.5,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_5.png",
+     "w": 352,
+     "h": 357,
+     "ax": 140.5,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_6.png",
+     "w": 322,
+     "h": 334,
+     "ax": 194.0,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/special_7.png",
+     "w": 289,
+     "h": 375,
+     "ax": 142.5,
+     "ay": 375
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2706,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/guard_0.png",
+     "w": 523,
+     "h": 632,
+     "ax": 272.0,
+     "ay": 632
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/guard_1.png",
+     "w": 546,
+     "h": 591,
+     "ax": 278.3,
+     "ay": 591
     }
    ]
   }

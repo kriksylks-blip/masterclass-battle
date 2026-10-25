@@ -211,7 +211,10 @@ function pollPad() {
     // Une manette libre qui appuie sur l'écran de sélection fait entrer le joueur 2
     if (scene === 'select' && padOwner[gp.index] === undefined && [0, 2, 9].some(fresh)) joinPlayer(gp.index);
     const p = padOwner[gp.index] ?? 0, set = now[p];
-    for (const [a, list] of Object.entries(binds[p].pad)) if (list.some(i => btn[i])) set.add(a);
+    // Dans les menus, le bouton de droite (A sur Switch, B sur Xbox) sert toujours à revenir en arrière / annuler
+    const inMenu = scene !== 'play', back = i => inMenu && i === 1;
+    for (const [a, list] of Object.entries(binds[p].pad)) if (list.some(i => btn[i] && !back(i))) set.add(a);
+    if (inMenu && btn[1]) set.add('kick');
     if (btn[9]) set.add('start');
     const [ax, ay] = padAxes(gp);
     if (ax < -0.4) set.add('left');
@@ -811,7 +814,7 @@ const UG_MOVES = { ...NEWKICK(FIST),
 // ultime Hellzone Grenade : des boules d'énergie encerclent l'ennemi puis se referment sur lui (special 4-7).
 const PC_MOVES = { ...NEWKICK(FIST),
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 160], y: [-170, -50], dmg: 3, kb: 420, ki: 8, launch: -460, push: 1200, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 12, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
-  makanko: { dur: 1.3, cost: 35, beam: { hand: true, at: 0.62, end: 1.15, len: 1100, dmg: 0.75, thick: 0.42, color: '#ffe680', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.2)' }, call: 'MAKANKOSAPPO !', p: ['special', [0, 1, 2, 3], [0.3, 0.62, 1.2]] },
+  makanko: { dur: 1.3, cost: 35, beam: { hand: true, charge: [[56, -308], [66, -305]], ball: true, at: 0.62, end: 1.15, len: 1100, dmg: 0.75, thick: 0.42, color: '#ffe680', filter: 'hue-rotate(-150deg) saturate(1.8) brightness(1.2)' }, call: 'MAKANKOSAPPO !', p: ['special', [0, 1, 2, 3], [0.3, 0.62, 1.2]] },
 };
 // Majin Boo : gros coups de ventre et rayon d'antenne (special 0-3) ; en petit Boo, mêmes coups, plus vif.
 // Ultime : il imite le Kamehameha (rayon rose géant).
@@ -3541,7 +3544,7 @@ function updateFinalFlash(h) {
   if (!h.beamed && h.t >= 0.95) {
     h.beamed = true; flash = 0.8; shake = 22; say(h, h.char === 'gojo' ? 'VIOLET !!' : 'FLASH !!');
     audio.play('waveFire', 1.2, 0.6, 0); audio.play('ultraBoom', 0.9, 1.2, 0);
-    projs.push({ kind: 'beam', owner: h, move: 'ultra', at: 0.95, end: 2.2, len: 1200, thick: 1.8, dmg: (4 + h.power / 10) / 9, color: h.char === 'gojo' ? '#c97bff' : '#ffe680', filter: h.char === 'gojo' ? 'hue-rotate(70deg) saturate(1.8) brightness(1.1)' : 'hue-rotate(205deg) saturate(1.6) brightness(1.1)', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
+    projs.push({ kind: 'beam', hand: true, owner: h, move: 'ultra', at: 0.95, end: 2.2, len: 1200, thick: 1.8, dmg: (4 + h.power / 10) / 9, color: h.char === 'gojo' ? '#c97bff' : '#ffe680', filter: h.char === 'gojo' ? 'hue-rotate(70deg) saturate(1.8) brightness(1.1)' : 'hue-rotate(205deg) saturate(1.6) brightness(1.1)', t: 0, hit: new Set(), multiT: 0, dir: h.dir, gz: h.gz });
     score += 2000;
   }
   if (h.t > 2.3) h.state = 'idle';
@@ -6464,7 +6467,7 @@ const FACES = {
   card_ki: [0.571, 0.423, 4.13], card_luffy: [0.687, 0.345, 3.41], card_naruto: [0.623, 0.343, 3.25], card_tanjiro: [0.426, 0.325, 3.64],
   card_ve: [0.509, 0.404, 3.1], card_ze: [0.187, 0.344, 4.34], card_zoro: [0.482, 0.288, 3.9],
   card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.545, 0.192, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.444, 2.65], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], card_ug: [0.32, 0.39, 4.16], card_pc: [0.685, 0.307, 3.47],
-  card_mb: [0.58, 0.275, 3.0], card_kw: [0.629, 0.383, 2.76], card_uy: [0.32, 0.39, 4.16], card_up: [0.32, 0.39, 4.16], card_vm: [0.509, 0.404, 3.1], card_zw: [0.482, 0.288, 3.9], card_sh: [0.579, 0.132, 7.75], // cartes en pied : visage repéré sur la carte
+  card_mb: [0.58, 0.275, 3.0], card_kw: [0.629, 0.383, 2.76], card_uy: [0.665, 0.37, 3.6], card_up: [0.32, 0.39, 4.16], card_vm: [0.509, 0.404, 3.1], card_zw: [0.482, 0.288, 3.9], card_sh: [0.579, 0.132, 7.75], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
