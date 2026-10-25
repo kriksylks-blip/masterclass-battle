@@ -1539,6 +1539,7 @@ function startMove(h, name, chain = 0) {
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
   h.trailed = h.gfxed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1;
   if (m.call) say(h, m.call);
+  if (name === 'transmute' && FX.alchemy_v) animFX('alchemy_v', h.x + h.dir * 40, h.gz - 30, 300, 0.7); // Edward : cercle de transmutation filmé
   if ((name === h.C.special || name === h.C.special2) && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
   if (m.rubber) audio.stretch();
   if (m.trail) audio.slash();
@@ -3402,6 +3403,7 @@ function updateTitan(h) {
   if (!h.lit && h.t >= 0.4) {
     // la morsure : un éclair jaune frappe là où il se tient
     h.lit = true; flash = 0.7; shake = 18; audio.play('ultraBoom', 0.8, 1.3, 0);
+    if (FX.titan_bolt_v) animFX('titan_bolt_v', h.x, h.y - 200, 520, 0.9); // éclair filmé
     for (let k = 0; k < 6; k++) animFX('green_arc', h.x + rand(-40, 40), h.y - rand(40, 220), rand(60, 110), 0.3, { rot: rand(-1, 1), filter: 'hue-rotate(-70deg) saturate(1.6) brightness(1.3)' });
   }
   if (!h.risen && h.t >= TITAN.appear) {
@@ -3480,7 +3482,10 @@ const ALCH = { clap: 0.35, circle: 0.5, rise: 1.1, hit: 1.4, end: 2.3, at: 250 }
 function startAlchemy(h) { h.cut = h.clap = false; say(h, 'JE SUIS UN ALCHIMISTE !'); audio.play('ultraCharge', 0.85, 1.15, 0); }
 function updateAlchemy(h) {
   h.inv = Math.max(h.inv, 0.1); h.vx = 0;
-  if (!h.clap && h.t >= ALCH.clap) { h.clap = true; flash = 0.3; audio.slash(1.9); impactFX(h.x + h.dir * 40, h.y - 130, '#bfe8ff', true); }
+  if (!h.clap && h.t >= ALCH.clap) {
+    h.clap = true; flash = 0.3; audio.slash(1.9); impactFX(h.x + h.dir * 40, h.y - 130, '#bfe8ff', true);
+    if (FX.alchemy_v) animFX('alchemy_v', h.x + h.dir * ALCH.at, h.gz - 40, 520, ALCH.hit - ALCH.clap + 0.3); // cercle filmé
+  }
   const cx = h.x + h.dir * ALCH.at;
   if (h.t > ALCH.circle && h.t < ALCH.hit && Math.random() < 0.5) animFX('green_arc', cx + rand(-150, 150), h.gz - rand(0, 30), rand(30, 60), 0.15, { rot: rand(-1.5, 1.5), filter: 'hue-rotate(95deg) saturate(1.3) brightness(1.3)' });
   if (h.t > ALCH.rise && h.t < ALCH.hit + 0.2 && Math.random() < 0.8)
@@ -4676,9 +4681,10 @@ function drawFX(ghosts = false) {
     }
     if (f.type === 'muzzle' || f.type === 'shock') {
       ctx.save(); ctx.translate(sx, f.y); ctx.scale(f.dir || 1, 1); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k;
-      if (f.type === 'muzzle' && IMG.fx_muzzle) {
-        // éclair de bouche en image (Flow) : étoile et flammes vers l'avant, le départ au canon
-        const im = IMG.fx_muzzle, w = 110, hh = w * im.height / im.width;
+      const MV = f.type === 'muzzle' && FX.muzzle_v, mvf = MV && IMG[MV[Math.min(MV.length - 1, Math.floor(k * MV.length))].src];
+      if (f.type === 'muzzle' && (mvf || IMG.fx_muzzle)) {
+        // éclair de bouche filmé (ou en image) : étoile et flammes vers l'avant, le départ au canon
+        const im = mvf || IMG.fx_muzzle, w = mvf ? 150 : 110, hh = w * im.height / im.width;
         ctx.rotate(f.rot); ctx.globalAlpha = 1 - k * 0.6; ctx.drawImage(im, -w * 0.2, -hh / 2, w, hh);
       } else if (f.type === 'muzzle') {
         // éclair de bouche : une étoile jaune, longue vers l'avant

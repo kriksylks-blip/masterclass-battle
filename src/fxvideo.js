@@ -2811,6 +2811,177 @@ const FXV = {
    "w": 1269,
    "h": 492
   }
+ ],
+ "titan_bolt_v": [
+  {
+   "src": "assets/fx/titan_bolt_v_0.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_1.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_2.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_3.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_4.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_5.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_6.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_7.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_8.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_9.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_10.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_11.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_12.png",
+   "w": 1233,
+   "h": 715
+  },
+  {
+   "src": "assets/fx/titan_bolt_v_13.png",
+   "w": 1233,
+   "h": 715
+  }
+ ],
+ "alchemy_v": [
+  {
+   "src": "assets/fx/alchemy_v_0.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_1.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_2.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_3.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_4.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_5.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_6.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_7.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_8.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_9.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_10.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_11.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_12.png",
+   "w": 1105,
+   "h": 671
+  },
+  {
+   "src": "assets/fx/alchemy_v_13.png",
+   "w": 1105,
+   "h": 671
+  }
+ ],
+ "muzzle_v": [
+  {
+   "src": "assets/fx/muzzle_v_0.png",
+   "w": 705,
+   "h": 538
+  },
+  {
+   "src": "assets/fx/muzzle_v_1.png",
+   "w": 705,
+   "h": 538
+  },
+  {
+   "src": "assets/fx/muzzle_v_2.png",
+   "w": 705,
+   "h": 538
+  },
+  {
+   "src": "assets/fx/muzzle_v_3.png",
+   "w": 705,
+   "h": 538
+  },
+  {
+   "src": "assets/fx/muzzle_v_4.png",
+   "w": 705,
+   "h": 538
+  }
  ]
 };
 Object.assign(FX, FXV);
