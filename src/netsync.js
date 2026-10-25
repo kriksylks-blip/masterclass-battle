@@ -8,7 +8,9 @@
 // { '@': id } (persos visés par un tir, propriétaire d'une bombe…) ; les fonctions, sons et images sont ignorés.
 // Chargé avant game.js : tout ne sert qu'une fois la partie en ligne lancée.
 
-const NET_VER = 'state-3'; // l'hôte et l'invité doivent avoir le même code (même registre des données fixes)
+// l'hôte et l'invité doivent avoir le même code (même registre des données fixes) : la version de publication (?v=)
+// en fait partie, sinon un téléphone resté sur une ancienne version en cache jouait avec des données différentes
+const NET_VER = 'state-3-' + ((document.currentScript?.src || '').match(/[?&]v=(\w+)/)?.[1] || 'dev');
 const NET_HZ = 30;
 // Variables du jeu envoyées à chaque état (comparées : une variable inchangée n'est pas renvoyée)
 const NET_VARS = ['scene', 'players', 'enemies', 'bombs', 'projs', 'waves', 'stars', 'clones', 'zaps', 'kirin', 'blackFlames', 'crows', 'cutins',
