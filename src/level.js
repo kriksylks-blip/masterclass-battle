@@ -114,6 +114,9 @@ const LEVELS = [
     ['LA VILLE DE LIORE', 'LES AVENUES DE CENTRAL', 'LE 5E LABORATOIRE', 'LA SALLE DU PÈRE'], 'fm_chimera', 'fm_soldier'),
   themedLevel('rp', 'BLACK LAGOON — ROANAPUR', 'La ville où tout s\'achète',
     ['LE PORT DE ROANAPUR', 'LE YELLOW FLAG', 'LE MARCHÉ DE NUIT', 'L\'ENTREPÔT DE LA MAFIA'], 'rp_thug', 'rp_gunman'),
+  // monde de Majin Boo (25/10, images : tools/world_bu_prompts.js)
+  themedLevel('bu', 'DRAGON BALL Z — MAJIN BOO', 'Le démon rose s\'est réveillé',
+    ['LE GRAND TOURNOI', 'LE VAISSEAU DE BABIDI', 'LE PALAIS DE DIEU', 'DANS LE VENTRE DE BOO'], 'bu_brute', 'bu_minion'),
 ];
 // Images des niveaux : ciel, décor (plan moyen détouré, ou mur plein pour les intérieurs) et sol de chaque zone
 for (const L of LEVELS.slice(1)) {
@@ -171,7 +174,7 @@ const levelExtras = L => [...L.waves.map(w => w.vehicle).filter(Boolean), ...(L.
 // proportion : en travers de la chaussée ou étirée, elle paraissait déformée. Le train garde son échelle de profil.
 // Image assets/backgrounds/gates/<id>.png ; mondes à 4 zones : g1 (z1→z2), g3 (z2→z4), g2 (z4→z3, l'antre du boss).
 const GATES = { tokyo: ['tokyo_g1', 'tokyo_g2', 'tokyo_g3', 'tokyo_g4'] };
-for (const id of ['op', 'ds', 'bl', 'hx', 'nr', 'db', 'mh', 'rk', 'op2', 'nr2', 'ds2', 'db2', 'jk', 'sl', 'opm', 'bl2', 'aot', 'bk', 'fz', 'fm', 'rp'])
+for (const id of ['op', 'ds', 'bl', 'hx', 'nr', 'db', 'mh', 'rk', 'op2', 'nr2', 'ds2', 'db2', 'jk', 'sl', 'opm', 'bl2', 'aot', 'bk', 'fz', 'fm', 'rp', 'bu'])
   GATES[id] = [`${id}_g1`, `${id}_g3`, `${id}_g2`];
 for (const L of LEVELS) L.zones.forEach((Z, k) => { if (k) Z.gate = (GATES[L.id] || [])[k - 1]; });
 // Porte au fond de la rue : centre à GATE.dx avant la limite de zone, pied sur la bordure du fond, hauteur fixe
@@ -281,6 +284,8 @@ const ENEMY_INFO = {
   fm_chimera: ['CHIMÈRE', 'Homme-lion fusionné par l\'alchimie'], fm_soldier: ['SOLDAT D\'AMESTRIS', 'Tire au fusil — renvoie ses balles !'],
   fm_mini: ['ENVY', 'L\'homonculus qui change de forme'], fm_boss: ['KING BRADLEY', 'Le Fürher et ses deux sabres'],
   rp_thug: ['HOMME DE MAIN', 'Couteau à la main — se rue sur toi'], rp_gunman: ['TIREUR DU CARTEL', 'Tire au pistolet — renvoie ses balles !'],
+  bu_brute: ['SPOPOVICH', 'Une brute gonflée par la magie de Babidi'], bu_minion: ['GUERRIER DE BABIDI', 'Possédé par la magie — tire des boules d\'énergie'],
+  bu_mini: ['DABURA', 'Le roi des démons et son épée'], bu_boss: ['MAJIN BOO', 'Le démon rose qui change tout en bonbons'],
   rp_mini: ['EDA', 'La nonne aux deux pistolets'], rp_boss: ['ROBERTA', 'La bonne de la famille Lovelace, chien de chasse'],
   bl2_mini: ['GRIMMJOW', 'Sixième Espada, la panthère'],
 };
@@ -851,6 +856,7 @@ const STRIPS = {
   fz_z1: STRIP('curb_city', 46, 22), fz_z2: STRIP('rail_wood', 70, 26), fz_z3: STRIP('rubble', 70, 30), fz_z4: STRIP('rocks_grass', 60, 26),
   fm_z1: STRIP('rubble', 70, 30), fm_z2: STRIP('curb_city', 46, 22), fm_z3: STRIP('rubble', 70, 30), fm_z4: STRIP('rail_metal', 64, 24),
   rp_z1: STRIP('rail_metal', 64, 24), rp_z2: STRIP('rail_wood', 70, 26), rp_z3: STRIP('rail_metal', 64, 24), rp_z4: STRIP('curb_city', 46, 22),
+  bu_z1: STRIP('balustrade', 56, 22), bu_z2: STRIP('rubble', 70, 30), bu_z4: STRIP('balustrade', 56, 22), // le ventre de Boo (z3) : pas de bordure
   // routes B (le centre commercial est un intérieur : pas de bordure)
   op_z5: STRIP('curb_city', 46, 22), nr_z5: STRIP('rocks_grass', 60, 26),
 };

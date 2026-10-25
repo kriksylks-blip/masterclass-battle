@@ -3729,6 +3729,10 @@ Object.assign(ETYPES, {
   rp_thug: MINION('rp_thug', { lunge: true, slash: '#e8f0ff', hp: 6 }),
   rp_gunman: MINION('rp_gunman', { ranged: 'bullet' }),
   rp_boss: BOSS('rp_boss', { proj: 'beam', projColor: '#ffb070', adds: ['rp_thug', 'rp_gunman'], roar: 'CHIEN DE CHASSE !!' }),
+  // monde de Majin Boo (25/10)
+  bu_brute: MINION('bu_brute', { hp: 9, armor: true, dmg: 14, h: 245, speed: [90, 110], slash: '#ffe0f0' }),
+  bu_minion: MINION('bu_minion', { ranged: 'ki' }),
+  bu_boss: BOSS('bu_boss', { proj: 'beam', projColor: '#ff7ad8', adds: ['bu_brute', 'bu_minion'], roar: 'BOO VA TE CHANGER EN CHOCOLAT !!' }),
   bl2_boss: BOSS('bl2_boss', { proj: 'beam', projColor: '#6aff9a', adds: ['bl2_arrancar', 'bl2_fraccion'], roar: 'CERO OSCURAS.' }),
 });
 // Mini-boss, à mi-parcours de chaque monde : gabarit des boss (planches marche / attaque / spécial / chute), 70 % de
@@ -3737,7 +3741,7 @@ const MINI_ROAR = {
   tokyo: 'ÉCRASÉS !!', op: 'WHITE BLOW !!', ds: 'DORS…', bl: 'HIHIO ZABIMARU !!', hx: 'DOUBLE !', nr: 'SABAKU SÔSÔ !!',
   db: 'BODY CHANGE !!', mh: 'DÉSINTÉGRATION…', rk: 'SHUKUCHI !', op2: 'RANKYAKU !!', nr2: 'SHIKIGAMI NO MAI.', ds2: 'CHI GAMA !!',
   db2: 'ÉNERGIE ABSORBÉE.', jk: 'MUTATION OISIVE !', sl: 'FURTIVITÉ…', opm: 'SOUMETS-TOI !', bl2: 'GRAN REY CERO !!',
-  aot: 'TU NE PASSERAS PAS !', bk: 'COMBATS, GUERRIER NOIR !', fz: 'GAE BOLG !!', fm: 'TRANSFORMATION !', rp: 'ADIOS, AMIGO.',
+  aot: 'TU NE PASSERAS PAS !', bk: 'COMBATS, GUERRIER NOIR !', fz: 'GAE BOLG !!', fm: 'TRANSFORMATION !', rp: 'ADIOS, AMIGO.', bu: 'TU VAS TE CHANGER EN PIERRE !',
 };
 for (const L of LEVELS) {
   const B = ETYPES[L.boss];
@@ -5315,7 +5319,7 @@ function warmLevelLayers() {
 // Écran des univers, façon cinématique : les zones du monde défilent en fond (fondu + lent zoom), un grand bandeau
 // incliné à gauche (numéro, univers, lieu, zones), le boss en grand à droite, un carrousel de vignettes en
 // perspective en bas, et un coup de lame lumineux à chaque changement de monde.
-const LV_COLOR = { aot: '#c8a060', bk: '#b0101a', fz: '#ffd84a', fm: '#ff8a2a', rp: '#3ad1a0', tokyo: '#ff2d8a', op: '#ff5a2a', ds: '#ff3340', bl: '#e8e8ff', hx: '#3ad17a', nr: '#ff8a00', db: '#3ad1a0',
+const LV_COLOR = { bu: '#ff7ad8', aot: '#c8a060', bk: '#b0101a', fz: '#ffd84a', fm: '#ff8a2a', rp: '#3ad1a0', tokyo: '#ff2d8a', op: '#ff5a2a', ds: '#ff3340', bl: '#e8e8ff', hx: '#3ad17a', nr: '#ff8a00', db: '#3ad1a0',
   mh: '#2ab0ff', rk: '#c03aff', op2: '#ffb020', nr2: '#7a9cff', ds2: '#ff4fd8', db2: '#ffd040',
   jk: '#9a4aff', sl: '#3a8aff', opm: '#ffcf3a', bl2: '#cfe8ff' };
 // Calques d'une zone pour le fond (aperçus réduits chargés à la demande) ; null tant qu'ils ne sont pas arrivés

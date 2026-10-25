@@ -52383,5 +52383,867 @@ const SPRITES = {
     }
    ]
   }
+ },
+ "bu_minion": {
+  "walk": {
+   "scale": 0.5807,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_minion/walk_0.png",
+     "w": 294,
+     "h": 346,
+     "ax": 152.0,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/bu_minion/walk_1.png",
+     "w": 271,
+     "h": 343,
+     "ax": 122.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/bu_minion/walk_2.png",
+     "w": 221,
+     "h": 322,
+     "ax": 93.5,
+     "ay": 322
+    },
+    {
+     "src": "assets/sprites/bu_minion/walk_3.png",
+     "w": 326,
+     "h": 335,
+     "ax": 178.5,
+     "ay": 335
+    },
+    {
+     "src": "assets/sprites/bu_minion/walk_4.png",
+     "w": 283,
+     "h": 344,
+     "ax": 164.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/bu_minion/walk_5.png",
+     "w": 238,
+     "h": 346,
+     "ax": 133.5,
+     "ay": 346
+    },
+    {
+     "src": "assets/sprites/bu_minion/walk_6.png",
+     "w": 254,
+     "h": 353,
+     "ax": 136.0,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/bu_minion/walk_7.png",
+     "w": 344,
+     "h": 335,
+     "ax": 177.3,
+     "ay": 335
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.5807,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_minion/attack_0.png",
+     "w": 290,
+     "h": 358,
+     "ax": 135.5,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/bu_minion/attack_1.png",
+     "w": 265,
+     "h": 390,
+     "ax": 132.5,
+     "ay": 390
+    },
+    {
+     "src": "assets/sprites/bu_minion/attack_2.png",
+     "w": 384,
+     "h": 338,
+     "ax": 181.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/bu_minion/attack_3.png",
+     "w": 279,
+     "h": 336,
+     "ax": 138.0,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/bu_minion/attack_4.png",
+     "w": 278,
+     "h": 332,
+     "ax": 117.5,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/bu_minion/attack_5.png",
+     "w": 377,
+     "h": 331,
+     "ax": 173.0,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/bu_minion/attack_6.png",
+     "w": 349,
+     "h": 329,
+     "ax": 182.0,
+     "ay": 329
+    },
+    {
+     "src": "assets/sprites/bu_minion/attack_7.png",
+     "w": 267,
+     "h": 344,
+     "ax": 124.5,
+     "ay": 344
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5807,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_minion/fall_0.png",
+     "w": 266,
+     "h": 340,
+     "ax": 116.9,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/bu_minion/fall_1.png",
+     "w": 316,
+     "h": 317,
+     "ax": 123.7,
+     "ay": 317
+    },
+    {
+     "src": "assets/sprites/bu_minion/fall_2.png",
+     "w": 336,
+     "h": 285,
+     "ax": 134.0,
+     "ay": 285
+    },
+    {
+     "src": "assets/sprites/bu_minion/fall_3.png",
+     "w": 297,
+     "h": 187,
+     "ax": 164.5,
+     "ay": 187
+    },
+    {
+     "src": "assets/sprites/bu_minion/fall_4.png",
+     "w": 359,
+     "h": 147,
+     "ax": 174.0,
+     "ay": 147
+    },
+    {
+     "src": "assets/sprites/bu_minion/fall_5.png",
+     "w": 320,
+     "h": 232,
+     "ax": 167.8,
+     "ay": 232
+    },
+    {
+     "src": "assets/sprites/bu_minion/fall_6.png",
+     "w": 249,
+     "h": 283,
+     "ax": 129.0,
+     "ay": 283
+    },
+    {
+     "src": "assets/sprites/bu_minion/fall_7.png",
+     "w": 261,
+     "h": 314,
+     "ax": 113.5,
+     "ay": 314
+    }
+   ]
+  }
+ },
+ "bu_brute": {
+  "walk": {
+   "scale": 0.625,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_brute/walk_0.png",
+     "w": 334,
+     "h": 344,
+     "ax": 203.0,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/bu_brute/walk_1.png",
+     "w": 297,
+     "h": 313,
+     "ax": 148.5,
+     "ay": 313
+    },
+    {
+     "src": "assets/sprites/bu_brute/walk_2.png",
+     "w": 278,
+     "h": 345,
+     "ax": 149.0,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/bu_brute/walk_3.png",
+     "w": 277,
+     "h": 357,
+     "ax": 108.5,
+     "ay": 357
+    },
+    {
+     "src": "assets/sprites/bu_brute/walk_4.png",
+     "w": 334,
+     "h": 352,
+     "ax": 190.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/bu_brute/walk_5.png",
+     "w": 262,
+     "h": 325,
+     "ax": 134.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/bu_brute/walk_6.png",
+     "w": 280,
+     "h": 360,
+     "ax": 139.2,
+     "ay": 360
+    },
+    {
+     "src": "assets/sprites/bu_brute/walk_7.png",
+     "w": 273,
+     "h": 376,
+     "ax": 95.6,
+     "ay": 376
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.625,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_brute/attack_0.png",
+     "w": 357,
+     "h": 340,
+     "ax": 190.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/bu_brute/attack_1.png",
+     "w": 282,
+     "h": 372,
+     "ax": 157.5,
+     "ay": 372
+    },
+    {
+     "src": "assets/sprites/bu_brute/attack_2.png",
+     "w": 394,
+     "h": 324,
+     "ax": 189.0,
+     "ay": 324
+    },
+    {
+     "src": "assets/sprites/bu_brute/attack_3.png",
+     "w": 293,
+     "h": 321,
+     "ax": 136.5,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/bu_brute/attack_4.png",
+     "w": 308,
+     "h": 320,
+     "ax": 144.6,
+     "ay": 320
+    },
+    {
+     "src": "assets/sprites/bu_brute/attack_5.png",
+     "w": 374,
+     "h": 334,
+     "ax": 171.5,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/bu_brute/attack_6.png",
+     "w": 342,
+     "h": 292,
+     "ax": 201.0,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/bu_brute/attack_7.png",
+     "w": 264,
+     "h": 374,
+     "ax": 113.0,
+     "ay": 374
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.625,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_brute/fall_0.png",
+     "w": 251,
+     "h": 344,
+     "ax": 103.5,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/bu_brute/fall_1.png",
+     "w": 260,
+     "h": 330,
+     "ax": 136.9,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/bu_brute/fall_2.png",
+     "w": 312,
+     "h": 295,
+     "ax": 187.4,
+     "ay": 295
+    },
+    {
+     "src": "assets/sprites/bu_brute/fall_3.png",
+     "w": 342,
+     "h": 222,
+     "ax": 138.7,
+     "ay": 222
+    },
+    {
+     "src": "assets/sprites/bu_brute/fall_4.png",
+     "w": 416,
+     "h": 153,
+     "ax": 202.5,
+     "ay": 153
+    },
+    {
+     "src": "assets/sprites/bu_brute/fall_5.png",
+     "w": 297,
+     "h": 227,
+     "ax": 135.0,
+     "ay": 227
+    },
+    {
+     "src": "assets/sprites/bu_brute/fall_6.png",
+     "w": 255,
+     "h": 270,
+     "ax": 142.5,
+     "ay": 270
+    },
+    {
+     "src": "assets/sprites/bu_brute/fall_7.png",
+     "w": 268,
+     "h": 318,
+     "ax": 129.5,
+     "ay": 318
+    }
+   ]
+  }
+ },
+ "bu_boss": {
+  "walk": {
+   "scale": 0.6772,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_boss/walk_0.png",
+     "w": 319,
+     "h": 330,
+     "ax": 166.5,
+     "ay": 330
+    },
+    {
+     "src": "assets/sprites/bu_boss/walk_1.png",
+     "w": 281,
+     "h": 323,
+     "ax": 148.5,
+     "ay": 323
+    },
+    {
+     "src": "assets/sprites/bu_boss/walk_2.png",
+     "w": 280,
+     "h": 336,
+     "ax": 153.5,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/bu_boss/walk_3.png",
+     "w": 272,
+     "h": 347,
+     "ax": 151.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/bu_boss/walk_4.png",
+     "w": 318,
+     "h": 341,
+     "ax": 168.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/bu_boss/walk_5.png",
+     "w": 289,
+     "h": 326,
+     "ax": 158.0,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/bu_boss/walk_6.png",
+     "w": 286,
+     "h": 338,
+     "ax": 155.5,
+     "ay": 338
+    },
+    {
+     "src": "assets/sprites/bu_boss/walk_7.png",
+     "w": 301,
+     "h": 342,
+     "ax": 158.5,
+     "ay": 342
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6772,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_boss/attack_0.png",
+     "w": 313,
+     "h": 341,
+     "ax": 152.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/bu_boss/attack_1.png",
+     "w": 289,
+     "h": 374,
+     "ax": 149.0,
+     "ay": 374
+    },
+    {
+     "src": "assets/sprites/bu_boss/attack_2.png",
+     "w": 319,
+     "h": 286,
+     "ax": 168.5,
+     "ay": 286
+    },
+    {
+     "src": "assets/sprites/bu_boss/attack_3.png",
+     "w": 262,
+     "h": 311,
+     "ax": 137.0,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/bu_boss/attack_4.png",
+     "w": 275,
+     "h": 341,
+     "ax": 147.0,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/bu_boss/attack_5.png",
+     "w": 335,
+     "h": 347,
+     "ax": 159.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/bu_boss/attack_6.png",
+     "w": 327,
+     "h": 289,
+     "ax": 172.0,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/bu_boss/attack_7.png",
+     "w": 308,
+     "h": 343,
+     "ax": 151.2,
+     "ay": 343
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6772,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_boss/special_0.png",
+     "w": 300,
+     "h": 351,
+     "ax": 147.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/bu_boss/special_1.png",
+     "w": 307,
+     "h": 328,
+     "ax": 170.5,
+     "ay": 328
+    },
+    {
+     "src": "assets/sprites/bu_boss/special_2.png",
+     "w": 369,
+     "h": 345,
+     "ax": 178.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/bu_boss/special_3.png",
+     "w": 263,
+     "h": 348,
+     "ax": 148.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/bu_boss/special_4.png",
+     "w": 303,
+     "h": 264,
+     "ax": 162.5,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/bu_boss/special_5.png",
+     "w": 277,
+     "h": 369,
+     "ax": 150.0,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/bu_boss/special_6.png",
+     "w": 271,
+     "h": 294,
+     "ax": 145.0,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/bu_boss/special_7.png",
+     "w": 274,
+     "h": 372,
+     "ax": 147.5,
+     "ay": 372
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6772,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_boss/fall_0.png",
+     "w": 303,
+     "h": 311,
+     "ax": 166.5,
+     "ay": 311
+    },
+    {
+     "src": "assets/sprites/bu_boss/fall_1.png",
+     "w": 333,
+     "h": 300,
+     "ax": 137.5,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/bu_boss/fall_2.png",
+     "w": 318,
+     "h": 224,
+     "ax": 161.0,
+     "ay": 224
+    },
+    {
+     "src": "assets/sprites/bu_boss/fall_3.png",
+     "w": 315,
+     "h": 204,
+     "ax": 157.0,
+     "ay": 204
+    },
+    {
+     "src": "assets/sprites/bu_boss/fall_4.png",
+     "w": 367,
+     "h": 175,
+     "ax": 177.0,
+     "ay": 175
+    },
+    {
+     "src": "assets/sprites/bu_boss/fall_5.png",
+     "w": 291,
+     "h": 266,
+     "ax": 145.5,
+     "ay": 266
+    },
+    {
+     "src": "assets/sprites/bu_boss/fall_6.png",
+     "w": 259,
+     "h": 266,
+     "ax": 144.0,
+     "ay": 266
+    },
+    {
+     "src": "assets/sprites/bu_boss/fall_7.png",
+     "w": 279,
+     "h": 318,
+     "ax": 140.5,
+     "ay": 318
+    }
+   ]
+  }
+ },
+ "bu_mini": {
+  "walk": {
+   "scale": 0.6197,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_mini/walk_0.png",
+     "w": 319,
+     "h": 348,
+     "ax": 134.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/bu_mini/walk_1.png",
+     "w": 312,
+     "h": 337,
+     "ax": 135.0,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/bu_mini/walk_2.png",
+     "w": 313,
+     "h": 348,
+     "ax": 145.5,
+     "ay": 348
+    },
+    {
+     "src": "assets/sprites/bu_mini/walk_3.png",
+     "w": 316,
+     "h": 353,
+     "ax": 141.0,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/bu_mini/walk_4.png",
+     "w": 316,
+     "h": 352,
+     "ax": 133.0,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/bu_mini/walk_5.png",
+     "w": 317,
+     "h": 343,
+     "ax": 141.7,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/bu_mini/walk_6.png",
+     "w": 318,
+     "h": 353,
+     "ax": 154.0,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/bu_mini/walk_7.png",
+     "w": 316,
+     "h": 355,
+     "ax": 137.5,
+     "ay": 355
+    }
+   ]
+  },
+  "attack": {
+   "scale": 0.6197,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_mini/attack_0.png",
+     "w": 303,
+     "h": 364,
+     "ax": 125.0,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/bu_mini/attack_1.png",
+     "w": 272,
+     "h": 354,
+     "ax": 153.5,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/bu_mini/attack_2.png",
+     "w": 361,
+     "h": 347,
+     "ax": 137.5,
+     "ay": 347
+    },
+    {
+     "src": "assets/sprites/bu_mini/attack_3.png",
+     "w": 312,
+     "h": 312,
+     "ax": 113.5,
+     "ay": 312
+    },
+    {
+     "src": "assets/sprites/bu_mini/attack_4.png",
+     "w": 277,
+     "h": 343,
+     "ax": 151.5,
+     "ay": 343
+    },
+    {
+     "src": "assets/sprites/bu_mini/attack_5.png",
+     "w": 496,
+     "h": 326,
+     "ax": 146.3,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/bu_mini/attack_6.png",
+     "w": 300,
+     "h": 296,
+     "ax": 171.6,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/bu_mini/attack_7.png",
+     "w": 291,
+     "h": 378,
+     "ax": 131.0,
+     "ay": 378
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.6197,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_mini/special_0.png",
+     "w": 289,
+     "h": 361,
+     "ax": 133.5,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/bu_mini/special_1.png",
+     "w": 269,
+     "h": 344,
+     "ax": 144.4,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/bu_mini/special_2.png",
+     "w": 344,
+     "h": 351,
+     "ax": 155.5,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/bu_mini/special_3.png",
+     "w": 285,
+     "h": 362,
+     "ax": 125.0,
+     "ay": 362
+    },
+    {
+     "src": "assets/sprites/bu_mini/special_4.png",
+     "w": 302,
+     "h": 275,
+     "ax": 175.5,
+     "ay": 275
+    },
+    {
+     "src": "assets/sprites/bu_mini/special_5.png",
+     "w": 265,
+     "h": 358,
+     "ax": 141.2,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/bu_mini/special_6.png",
+     "w": 307,
+     "h": 286,
+     "ax": 155.0,
+     "ay": 286
+    },
+    {
+     "src": "assets/sprites/bu_mini/special_7.png",
+     "w": 289,
+     "h": 358,
+     "ax": 142.0,
+     "ay": 358
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.6197,
+   "frames": [
+    {
+     "src": "assets/sprites/bu_mini/fall_0.png",
+     "w": 320,
+     "h": 325,
+     "ax": 155.0,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/bu_mini/fall_1.png",
+     "w": 299,
+     "h": 309,
+     "ax": 92.0,
+     "ay": 309
+    },
+    {
+     "src": "assets/sprites/bu_mini/fall_2.png",
+     "w": 313,
+     "h": 272,
+     "ax": 120.0,
+     "ay": 272
+    },
+    {
+     "src": "assets/sprites/bu_mini/fall_3.png",
+     "w": 343,
+     "h": 300,
+     "ax": 182.0,
+     "ay": 300
+    },
+    {
+     "src": "assets/sprites/bu_mini/fall_4.png",
+     "w": 359,
+     "h": 148,
+     "ax": 165.8,
+     "ay": 148
+    },
+    {
+     "src": "assets/sprites/bu_mini/fall_5.png",
+     "w": 325,
+     "h": 238,
+     "ax": 215.0,
+     "ay": 238
+    },
+    {
+     "src": "assets/sprites/bu_mini/fall_6.png",
+     "w": 260,
+     "h": 277,
+     "ax": 143.6,
+     "ay": 277
+    },
+    {
+     "src": "assets/sprites/bu_mini/fall_7.png",
+     "w": 285,
+     "h": 343,
+     "ax": 134.0,
+     "ay": 343
+    }
+   ]
+  }
  }
 };
