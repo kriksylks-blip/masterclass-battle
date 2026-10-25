@@ -6317,11 +6317,11 @@ function outlined(text, x, y, size, fill = '#fff', align = 'center') {
 
 // Position du visage dans chaque image de carte (fraction de la largeur, de la hauteur) et taille d'affichage
 const FACES = {
-  card_go: [0.6, 0.37, 4], card_goku: [0.62, 0.34, 4], card_hero: [0.66, 0.36, 4], card_ic: [0.38, 0.31, 5.5],
-  card_ip: [0.55, 0.22, 4.2], card_iz: [0.62, 0.35, 4.4], card_ka: [0.46, 0.27, 4.4], card_kenshin: [0.54, 0.3, 4.4],
-  card_ki: [0.53, 0.36, 4], card_luffy: [0.725, 0.34, 4.4], card_naruto: [0.6, 0.33, 4.2], card_tanjiro: [0.42, 0.29, 4.4],
-  card_ve: [0.52, 0.37, 4], card_ze: [0.2, 0.36, 4.2], card_zoro: [0.47, 0.27, 4.4],
-  card_jw: [0.765, 0.185, 6.5], card_sk: [0.6, 0.22, 5], card_gh: [0.5, 0.42, 3.4], card_gs: [0.5, 0.43, 3.6], card_sa: [0.56, 0.12, 7.5], card_gj: [0.52, 0.155, 7.5], card_in: [0.68, 0.27, 3.8], card_tr: [0.62, 0.29, 4.4], card_ac: [0.36, 0.33, 4.2], card_gt: [0.5, 0.29, 4.2], card_sj: [0.52, 0.15, 4.4], card_st: [0.57, 0.19, 4.2], card_sb: [0.39, 0.33, 4.0], card_mk: [0.55, 0.21, 4.0], card_rv: [0.56, 0.3, 4.0], card_ga: [0.62, 0.18, 4.0], card_lv: [0.57, 0.19, 4.0], card_bk: [0.41, 0.3, 4.0], card_it: [0.66, 0.2, 4.2], card_er: [0.38, 0.34, 4.0], card_ed: [0.56, 0.28, 4.2], card_gi: [0.38, 0.16, 4.0], card_bo: [0.6, 0.33, 4.0], card_ns: [0.51, 0.4, 3.2], card_kb: [0.7, 0.47, 3.6], card_sy: [0.56, 0.36, 3.8], // cartes en pied : visage repéré sur la carte
+  card_go: [0.592, 0.419, 3.54], card_goku: [0.629, 0.383, 2.76], card_hero: [0.6, 0.37, 3.3], card_ic: [0.38, 0.289, 5.68],
+  card_ip: [0.56, 0.288, 4.34], card_iz: [0.584, 0.354, 3.9], card_ka: [0.473, 0.249, 4.2], card_kenshin: [0.553, 0.278, 3.9],
+  card_ki: [0.571, 0.423, 4.13], card_luffy: [0.687, 0.345, 3.41], card_naruto: [0.623, 0.343, 3.25], card_tanjiro: [0.426, 0.325, 3.64],
+  card_ve: [0.509, 0.404, 3.1], card_ze: [0.187, 0.344, 4.34], card_zoro: [0.482, 0.288, 3.9],
+  card_jw: [0.769, 0.168, 7.33], card_sk: [0.606, 0.265, 4.43], card_gh: [0.5, 0.467, 2.48], card_gs: [0.5, 0.43, 3.6], card_sa: [0.579, 0.132, 7.75], card_gj: [0.551, 0.165, 8.8], card_in: [0.664, 0.249, 3.37], card_tr: [0.611, 0.334, 3.9], card_ac: [0.406, 0.343, 4.01], card_gt: [0.513, 0.279, 4.73], card_sj: [0.52, 0.171, 4.55], card_st: [0.631, 0.316, 4.34], card_sb: [0.39, 0.373, 4.13], card_mk: [0.57, 0.265, 4.13], card_rv: [0.581, 0.31, 4.96], card_ga: [0.644, 0.312, 4.13], card_lv: [0.584, 0.231, 4.51], card_bk: [0.438, 0.3, 4.51], card_it: [0.702, 0.191, 4.34], card_er: [0.398, 0.371, 4.13], card_ed: [0.566, 0.302, 4.34], card_gi: [0.38, 0.215, 5.8], card_bo: [0.6, 0.385, 3.31], card_ns: [0.51, 0.4, 3.2], card_kb: [0.719, 0.495, 2.98], card_sy: [0.533, 0.366, 3.62], // cartes en pied : visage repéré sur la carte
 };
 // Portrait rond du personnage, centré sur son visage
 function medallion(C, x, y, r, ring) {
@@ -6654,7 +6654,8 @@ function drawSelect() {
   ctx.save(); ctx.globalAlpha = 0.16;
   for (let k = -2; k < 14; k++) {
     const x = k * 90 + (sceneT * 40) % 180;
-    ctx.fillStyle = k % 2 ? C.colors[0] : C.colors[1];
+    // à plusieurs, fond fixe et neutre : il ne saute plus d'un perso à l'autre quand les joueurs bougent ensemble
+    ctx.fillStyle = ps.length > 1 ? (k % 2 ? '#3a2a6a' : '#5a3a7a') : k % 2 ? C.colors[0] : C.colors[1];
     ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 45, 0); ctx.lineTo(x - 155, H); ctx.lineTo(x - 200, H); ctx.fill();
   }
   ctx.restore();
@@ -6765,14 +6766,14 @@ function selPanel(p, x, y, w, h, mirror, full) {
   // portrait : entre en glissant, avec une ombre pleine décalée aux couleurs du perso
   if (art) {
     const [fx, fy, fk] = FACES[C.card] || [0.5, 0.3, 4.2];
-    const R = full ? h * 0.24 : Math.min(w * 0.44, h * 0.27), s = Math.min(R * fk / art.height, 1.2 * (full ? 1 : 0.9)), iw = art.width * s, ih = art.height * s;
-    const e = fl * fl, slide = -dir * e * 160;
+    const R = full ? h * 0.24 : Math.min(w * 0.44, h * 0.27), s = Math.min(Math.max(R * fk / art.height, h * 0.95 / art.height), 1.2 * (full ? 1 : 0.9)), iw = art.width * s, ih = art.height * s;
+    const e = fl * fl, slide = -dir * e * (full ? 160 : 70);
     let ix = fcx - fx * iw, iy = fcy - fy * ih;
     iy = Math.max(iy, y + h - ih + 10 - (full ? 0 : 0)); // pas de vide sous le buste
     ctx.save(); ctx.globalAlpha = 1 - e * 0.8;
     if (mirror) { ctx.translate(2 * fcx, 0); ctx.scale(-1, 1); }
     ctx.shadowColor = C.colors[1] + 'cc'; ctx.shadowOffsetX = -12 * dir * RES; ctx.shadowOffsetY = 0;
-    if (sel.flash > 0 && p === (sel.focus || 0) || ready) ctx.filter = `brightness(${1 + (ready ? 0.15 + Math.sin(sceneT * 6) * 0.08 : sel.flash * 0.6)})`;
+    if (fl > 0 || ready) ctx.filter = `brightness(${1 + (ready ? 0.15 + Math.sin(sceneT * 6) * 0.08 : fl * 0.6)})`; // chaque panneau s'éclaire pour son joueur
     ctx.drawImage(art, ix + (mirror ? -slide : slide), iy, iw, ih);
     ctx.restore();
   }
