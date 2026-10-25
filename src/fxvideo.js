@@ -2982,6 +2982,140 @@ const FXV = {
    "w": 705,
    "h": 538
   }
+ ],
+ "ed_spike1_v": [
+  {
+   "src": "assets/fx/ed_spike1_v_0.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_1.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_2.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_3.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_4.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_5.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_6.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_7.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_8.png",
+   "w": 808,
+   "h": 680
+  },
+  {
+   "src": "assets/fx/ed_spike1_v_9.png",
+   "w": 808,
+   "h": 680
+  }
+ ],
+ "susanoo_sword_v": [
+  {
+   "src": "assets/fx/susanoo_sword_v_0.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_1.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_2.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_3.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_4.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_5.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_6.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_7.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_8.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_9.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_10.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_11.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_12.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_13.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_14.png",
+   "w": 1204,
+   "h": 720
+  },
+  {
+   "src": "assets/fx/susanoo_sword_v_15.png",
+   "w": 1204,
+   "h": 720
+  }
  ]
 };
 Object.assign(FX, FXV);

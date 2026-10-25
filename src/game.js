@@ -3253,7 +3253,11 @@ function updatePanzer(h, dt) {
 // ---------- Ultime de Livaï : le tourbillon du capitaine. Il traverse l'écran une fois en toupie, en spirale ----------
 // (il monte et descend en tournant), coupant tout sur son passage à intervalles réguliers, puis double entaille finale.
 const SPIRAL = { start: 0.3, run: 1.4, every: 0.12, height: 90, end: 2.3 };
-function startSpiral(h) { h.spinT = 0; h.cut = false; h.spinHits = new Map(); h.dir0 = h.dir; h.runX0 = h.x; say(h, 'TCH…'); audio.play('ultraCharge', 0.8, 1.4, 0); }
+function startSpiral(h) {
+  h.spinT = 0; h.cut = false; h.spinHits = new Map(); h.dir0 = h.dir; h.runX0 = h.x; say(h, 'TCH…'); audio.play('ultraCharge', 0.8, 1.4, 0);
+  // tornade de lames filmée qui l'accompagne pendant toute la course
+  gfx('blade_spin', h.x, h.y - 125, 360, SPIRAL.start + SPIRAL.run, { who: h.idx, dx: 0, dy: -125, alpha: 0.8 });
+}
 function updateSpiral(h) {
   h.inv = Math.max(h.inv, 0.1);
   const dmg = ULT_SOLO * (4 + h.power / 10), u = (h.t - SPIRAL.start) / SPIRAL.run;
@@ -3347,6 +3351,17 @@ function updateSusanoo(h) {
   if (h.t > SUSANOO.end) h.state = 'idle';
 }
 function drawSusanoo(h, sx) {
+  const SV = FX.susanoo_sword_v;
+  if (SV) {
+    // Susanoo filmé : il se forme, lève son épée de flammes et l'abat devant Itachi (l'épée est à gauche dans la vidéo)
+    const t = h.t, S = SUSANOO, f = SV[clamp(Math.floor(t / S.end * SV.length), 0, SV.length - 1)], im = IMG[f.src];
+    if (im) {
+      const a = Math.min(1, t / 0.3) * (t > S.end - 0.4 ? Math.max(0, (S.end - t) / 0.4) : 1), hh = Math.min(S.h, h.y - 30) * 1.15, w = hh * im.width / im.height;
+      ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a;
+      ctx.translate(sx + h.dir * 40, h.y + 10); ctx.scale(-h.dir, 1); ctx.drawImage(im, -w / 2, -hh, w, hh); ctx.restore();
+      return;
+    }
+  }
   const img = IMG.fx_susanoo;
   if (img) return drawSusanooImg(h, sx, img);
   const t = h.t, a = Math.min(1, t / SUSANOO.rise) * (t > SUSANOO.end - 0.4 ? Math.max(0, (SUSANOO.end - t) / 0.4) : 1);
@@ -4670,6 +4685,15 @@ function drawFX(ghosts = false) {
     }
     if (f.type === 'edspike') {
       // pics de pierre d'Edward : ils jaillissent du sol (étirés du bas vers le haut, petit rebond), restent, puis rentrent sous terre
+      const t0 = f.t, SV = FX.ed_spike1_v, sv = SV && IMG[SV[Math.min(SV.length - 1, Math.floor(t0 / 0.55 * SV.length))].src];
+      if (sv) {
+        // pic filmé : il jaillit avec ses éclairs bleus et sa poussière, puis rentre sous terre
+        const sink = clamp((t0 - 0.45) / 0.27, 0, 1), H = 200 * f.sc, w = H * sv.width / sv.height;
+        ctx.save(); ctx.beginPath(); ctx.rect(sx - w, f.y - H * 1.2, w * 2, H * 1.2 + 8); ctx.clip();
+        ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - sink * 0.6;
+        ctx.translate(sx, f.y + 8 + sink * H); ctx.scale(f.dir, 1); ctx.drawImage(sv, -w / 2, -H, w, H);
+        ctx.restore(); continue;
+      }
       const img = IMG.fx_ed_spike; if (!img) continue;
       const t = f.t, ob = u => 1 + 3.2 * Math.pow(u - 1, 3) + 2.2 * Math.pow(u - 1, 2);
       const rise = t < 0.15 ? Math.max(0, ob(t / 0.15)) : 1, sink = clamp((t - 0.45) / 0.27, 0, 1);
