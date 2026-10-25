@@ -625,7 +625,7 @@ const IN_MOVES = { ...SWORD,
   dash:  { dur: 0.6, on: 0.1, off: 0.45, reach: [0, 150], y: [-170, -30], dmg: 3, kb: 420, ki: 8, launch: -500, push: 1350, pushAt: 0.06, pushDur: 0.36, ghost: true, lean: 18, call: 'TOUT DROIT !', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.3, 0.48]] },
   // Crocs de la bête : il bondit et coupe en ciseaux avec ses deux lames
   fang:  { dur: 0.8, cost: 35, on: 0.2, off: 0.5, reach: [-60, 150], y: [-170, -30], dmg: 5, kb: 440, ki: 0, launch: -620, push: 1800, pushAt: 0.16, pushDur: 0.3, xcut: true,
-           call: 'CROCS DE LA BÊTE !', p: ['special', [0, 1, 2, 3], [0.16, 0.3, 0.55]], trail: { x: true, r: 130, at: 0.22, w: 30 } },
+           call: 'CROCS DE LA BÊTE !', p: ['special', [0, 1, 2, 3], [0.16, 0.3, 0.55]], trail: { x: true, r: 130, at: 0.22, w: 30 }, gfx: { n: 'fang_x', w: 320, life: 0.4, dx: 110, grow: 0.18 } },
 };
 // Trunks du futur : poings et pieds de saiyan, dégainage de l'épée, Burning Attack
 const TR_MOVES = { ...NEWKICK(FIST),
@@ -659,7 +659,7 @@ const SJ_MOVES = { ...FIST,
   spinback: { dur: 0.58, on: 0.10, off: 0.32, reach: [-60, 165], y: [-140, -10], dmg: 3, kb: 420, ki: 10, launch: -520, p: ['combo', [5, 6, 7], [0.12, 0.34]], trail: { a0: -3.1, a1: 3.1, r: 135, y: -60 }, call: 'PARAGE SHOT !' },
   dash:     { dur: 0.55, on: 0.12, off: 0.42, reach: [0, 160], y: [-160, -40], dmg: 3, kb: 430, ki: 8, launch: -480, push: 1250, pushAt: 0.06, pushDur: 0.32, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.18, 0.42]] },
   diable:   { dur: 0.78, cost: 35, on: 0.28, off: 0.5, reach: [-40, 185], y: [-190, -30], dmg: 5, kb: 650, ki: 0, launch: -620, push: 700, pushAt: 0.24, pushDur: 0.2, legFire: [0.04, 0.62],
-              call: 'DIABLE JAMBE !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.56]], trail: { a0: -3.1, a1: 3.1, r: 150, at: 0.12, w: 34 } },
+              call: 'DIABLE JAMBE !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.56]], trail: { a0: -3.1, a1: 3.1, r: 150, at: 0.12, w: 34 }, gfx: { n: 'sanji_spin', w: 330, life: 0.5, dx: 20, follow: true, spin: -1.5, grow: 0.15 } },
 };
 // Shoto : moitié glace, moitié feu. Spécial : un mur de pics de glace qui court au sol depuis sa main droite
 const ST_MOVES = { ...NEWKICK(FIST),
@@ -687,7 +687,7 @@ const MK_MOVES = { ...SWORD,
   heavy:  { dur: 0.52, on: 0.2, off: 0.32, reach: [20, 170], y: [-220, 0], dmg: 3, kb: 360, ki: 10, launch: -580, p: ['combo', [1, 2, 3], [0.18, 0.34]], trail: { a0: -1.7, a1: 1.2, r: 150, at: 0.18 } },
   dash:   { dur: 0.5, on: 0.08, off: 0.4, reach: [-20, 170], y: [-180, -40], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1900, pushAt: 0.05, pushDur: 0.3, ghost: true, xcut: true, lean: 22, call: 'GRAPPIN !', p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.22, 0.42]] },
   toupie: { dur: 0.9, cost: 35, on: 0.14, off: 0.66, multi: 0.1, reach: [-120, 160], y: [-230, -10], dmg: 1.1, kb: 120, ki: 0, launch: -380, push: 650, pushAt: 0.12, pushDur: 0.5, ghost: true,
-            call: 'TOUPIE !', p: ['special', [0, 1, 2, 3], [0.12, 0.36, 0.72]], trail: { a0: -3.1, a1: 3.1, r: 145, at: 0.14, w: 32 } },
+            call: 'TOUPIE !', p: ['special', [0, 1, 2, 3], [0.12, 0.36, 0.72]], trail: { a0: -3.1, a1: 3.1, r: 145, at: 0.14, w: 32 }, gfx: { n: 'blade_spin', w: 320, life: 0.62, dy: -125, follow: true, grow: 0.1, alpha: 0.7 } },
 };
 // Revy : poings et pieds au corps à corps (planche de combo : 0 garde, 1 coup de crosse, 2-3 bras tendu, 4 genou,
 // 5 pied avant) ; les pistolets sont réservés au spécial Two Hands (payé en ki) et à l'ultime, comme une énergie.
@@ -714,7 +714,7 @@ const GA_MOVES = { ...NEWKICK(FIST),
   punch:  { ...FIST.punch, dur: 0.26, cancel: 0.14 }, cross: { ...FIST.cross, dur: 0.28, cancel: 0.15 },
   dash:   { dur: 0.5, on: 0.18, off: 0.36, reach: [0, 150], y: [-170, -60], dmg: 3.2, kb: 480, ki: 8, launch: -480, push: 1500, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 18, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
   palm:   { dur: 0.85, cost: 35, on: 0.3, off: 0.44, reach: [0, 175], y: [-180, -60], dmg: 5.5, kb: 820, ki: 0, launch: -600, push: 500, pushAt: 0.26, pushDur: 0.12, shock: true,
-            call: 'PANZER KUNST !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.6]] },
+            call: 'PANZER KUNST !', p: ['special', [0, 1, 2, 3], [0.14, 0.28, 0.6]], gfx: { n: 'palm_wave', at: 0.3, w: 360, life: 0.4, dx: 210, dy: -120, grow: 0.25 } },
 };
 // Livaï : deux lames en prise inversée, plus petit et plus vif que Mikasa ; le spécial est un cyclone aérien
 // (special 0 bond, 1-2 rotation lames écartées, 3 réception), qui coupe plusieurs fois et soulève.
@@ -726,7 +726,7 @@ const LV_MOVES = { ...SWORD,
   heavy:  { dur: 0.50, on: 0.19, off: 0.31, reach: [20, 165], y: [-220, 0], dmg: 3, kb: 360, ki: 10, launch: -580, p: ['combo', [1, 2, 3], [0.17, 0.32]], trail: { a0: -1.7, a1: 1.2, r: 145, at: 0.17 } },
   dash:   { dur: 0.48, on: 0.07, off: 0.38, reach: [-20, 165], y: [-180, -40], dmg: 3, kb: 420, ki: 8, launch: -480, push: 2000, pushAt: 0.05, pushDur: 0.28, ghost: true, xcut: true, lean: 22, call: 'GRAPPIN !', p: ['dashcharge', [0, 1, 2, 3], [0.05, 0.2, 0.4]] },
   cyclone: { dur: 0.9, cost: 35, on: 0.12, off: 0.66, multi: 0.09, reach: [-130, 165], y: [-240, -10], dmg: 1.1, kb: 110, ki: 0, launch: -420, push: 600, pushAt: 0.1, pushDur: 0.5, ghost: true,
-             call: 'CYCLONE !', p: ['special', [0, 1, 2, 1, 2, 3], [0.1, 0.22, 0.34, 0.46, 0.66]], trail: { a0: -3.1, a1: 3.1, r: 150, at: 0.12, w: 30 } },
+             call: 'CYCLONE !', p: ['special', [0, 1, 2, 1, 2, 3], [0.1, 0.22, 0.34, 0.46, 0.66]], trail: { a0: -3.1, a1: 3.1, r: 150, at: 0.12, w: 30 }, gfx: { n: 'blade_spin', w: 330, life: 0.62, dy: -125, follow: true, grow: 0.1, alpha: 0.7, filter: 'hue-rotate(-20deg) saturate(0.6)' } },
 };
 // Baki : arts martiaux à mains nues, des coups énormes. Spécial : la frappe fouet (le bras relâché claque comme un fouet,
 // special 0-3). Dos du démon : le spécial devient le direct dévastateur (special 4-7).
@@ -734,7 +734,7 @@ const BK_MOVES = { ...NEWKICK(FIST),
   punch:     { ...FIST.punch, dmg: FIST.punch.dmg * 1.15 }, cross: { ...FIST.cross, dmg: FIST.cross.dmg * 1.15 }, uppercut: { ...FIST.uppercut, dmg: FIST.uppercut.dmg * 1.15 },
   dash:      { dur: 0.55, on: 0.16, off: 0.36, reach: [0, 155], y: [-180, -60], dmg: 3.4, kb: 520, ki: 8, launch: -480, push: 1450, pushAt: 0.06, pushDur: 0.28, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
   whip:      { dur: 0.78, cost: 35, on: 0.3, off: 0.42, reach: [0, 200], y: [-190, -70], dmg: 5, kb: 980, ki: 0, launch: -420, push: 300, pushAt: 0.26, pushDur: 0.1,
-               call: 'FRAPPE FOUET !', p: ['special', [0, 1, 2, 3], [0.16, 0.3, 0.6]], trail: { a0: -0.9, a1: 0.5, r: 175, at: 0.28, w: 26 } },
+               call: 'FRAPPE FOUET !', p: ['special', [0, 1, 2, 3], [0.16, 0.3, 0.6]], trail: { a0: -0.9, a1: 0.5, r: 175, at: 0.28, w: 26 }, gfx: { n: 'whip_arc', w: 400, h: 150, life: 0.3, dx: 160, dy: -135, grow: 0.1 } },
   demonfist: { dur: 0.9, cost: 35, on: 0.36, off: 0.5, reach: [0, 190], y: [-180, -70], dmg: 6.5, kb: 1100, ki: 0, launch: -650, push: 900, pushAt: 0.3, pushDur: 0.14, shock: true, lean: 14,
                call: 'DOS DU DÉMON !', p: ['special', [4, 5, 6, 7], [0.2, 0.34, 0.66]] },
 };
@@ -809,7 +809,7 @@ const GI_MOVES = { ...SWORD,
   heavy:  { dur: 0.56, on: 0.22, off: 0.36, reach: [20, 185], y: [-230, 0], dmg: 3.3, kb: 400, ki: 10, launch: -620, p: ['combo', [1, 2, 3], [0.2, 0.36]], trail: { a0: -1.7, a1: 1.2, r: 165, at: 0.2, w: 38 } },
   dash:   { dur: 0.5, on: 0.10, off: 0.38, reach: [-10, 200], y: [-170, -50], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1500, pushAt: 0.06, pushDur: 0.28, ghost: true, lean: 16, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.42]] },
   shirodemon: { dur: 0.82, cost: 35, on: 0.3, off: 0.46, reach: [-20, 230], y: [-220, -30], dmg: 5, kb: 700, ki: 0, launch: -560, push: 1200, pushAt: 0.16, pushDur: 0.24, ghost: true,
-                call: 'DÉMON BLANC !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.62]], trail: { a0: -0.6, a1: 0.6, r: 210, at: 0.3, w: 40 } },
+                call: 'DÉMON BLANC !', p: ['special', [0, 1, 2, 3], [0.14, 0.3, 0.62]], trail: { a0: -0.6, a1: 0.6, r: 210, at: 0.3, w: 40 }, gfx: { n: 'big_slash', w: 470, life: 0.34, dx: 150, dy: -125, grow: 0.12 } },
   gicrush:    { dur: 0.88, cost: 35, on: 0.38, off: 0.5, reach: [0, 200], y: [-240, 0], dmg: 6.2, kb: 900, ki: 0, launch: -700, push: 500, pushAt: 0.32, pushDur: 0.12, shock: true,
                 call: 'SHIROYASHA !', p: ['special', [4, 5, 6, 7], [0.18, 0.36, 0.66]], trail: { a0: -1.8, a1: 1.3, r: 185, at: 0.36, w: 44 } },
 };
@@ -1366,7 +1366,7 @@ const say = (h, text) => popups.push({ x: h.x, y: h.y - 235, t: 0, text, small: 
 function startMove(h, name, chain = 0) {
   const m = h.C.moves[name];
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
-  h.trailed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1;
+  h.trailed = h.gfxed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1;
   if (m.call) say(h, m.call);
   if ((name === h.C.special || name === h.C.special2) && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
   if (m.rubber) audio.stretch();
@@ -1864,7 +1864,13 @@ function moveEffects(h, speed) {
   if (h.state !== 'hekireki') h.hekiDone = false;
   if (m.trail && !h.trailed && h.t >= (m.trail.at ?? m.on)) {
     h.trailed = true;
-    slashFX(h.x + h.dir * 55, h.y + (m.trail.y ?? -110), h.dir, { ...m.trail, c: trailOf(h), element: elementOf(h) });
+    // une image qui suit le perso (toupie, anneau de feu) remplace la traînée dessinée
+    if (!(m.gfx?.follow && IMG['fx_' + m.gfx.n])) slashFX(h.x + h.dir * 55, h.y + (m.trail.y ?? -110), h.dir, { ...m.trail, c: trailOf(h), element: elementOf(h) });
+  }
+  // effet en image du coup (m.gfx, voir gfx) : à l'instant donné, sinon avec la traînée, sinon au début des dégâts
+  if (m.gfx && !h.gfxed && h.t >= (m.gfx.at ?? m.trail?.at ?? m.on)) {
+    h.gfxed = true; const G = m.gfx, dy = G.dy ?? -110;
+    gfx(G.n, h.x + h.dir * (G.dx || 0), h.y + dy, G.w, G.life, { dir: h.dir, spin: G.spin, grow: G.grow, rot: G.rot, h: G.h, filter: G.filter, alpha: G.alpha, ...(G.follow ? { who: h.idx, dx: G.dx || 0, dy } : {}) });
   }
   if (m.wheel && h.t > 0.05 && h.t < 0.5 && Math.random() < 0.8) {
     // Roue d'eau (ou de feu) : un cercle de lame qui tourne pendant le salto
@@ -2857,6 +2863,7 @@ function updateShining(h) {
     // la lame tombe du ciel : tout ce qui est devant est fendu
     h.cut = true; flash = 0.5; shake = 22; hitstop = 0.1; audio.slash(1.8);
     slashFX(h.x + h.dir * 120, h.y - 150, h.dir, { a0: -1.55, a1: 1.45, r: 220, w: 46, c: '#ffffff', life: 0.45 });
+    gfx('big_slash', h.x + h.dir * 150, h.y - 160, 560, 0.45, { dir: h.dir, rot: 0.95, grow: 0.1 });
     ultraHit(h, SHINE.reach, dmg * 0.55, 80, -40, 150, 0); // l'ennemi reste au sol : la Burning Attack le cueille
     say(h, 'SWORD !!');
   }
@@ -2878,6 +2885,7 @@ function updateDragonslayer(h) {
   if (!h.cut && h.t >= DRAGON.cut) {
     h.cut = true; flash = 0.5; shake = 28; hitstop = 0.14; audio.slash(2);
     slashFX(h.x + h.dir * 140, h.y - 150, h.dir, { a0: -1.6, a1: 1.5, r: 250, w: 60, c: '#d8d8d8', life: 0.5 });
+    gfx('big_slash', h.x + h.dir * 170, h.y - 150, 640, 0.5, { dir: h.dir, rot: 0.75, grow: 0.1, filter: 'saturate(0) brightness(1.1)' });
     ultraHit(h, DRAGON.reach, dmg * 0.6, 90, -40, 150, 0);
     say(h, 'HAAAAA !!');
   }
@@ -2908,6 +2916,7 @@ function updateHellMemories(h) {
     h.cut = true; flash = 0.5; shake = 26; hitstop = 0.12; audio.slash(1.9); audio.play('ultraBoom', 0.9, 1.3, 0);
     ultraHit(h, HELL.reach * 0.75, dmg * 0.6, 90, -90, 80, 0);
     animFX('rupture', h.x + h.dir * 90, h.gz - 70, 260, 0.5);
+    gfx('sanji_spin', h.x + h.dir * 90, h.gz - 40, 380, 0.5, { h: 120, grow: 0.5 }); // anneau de feu écrasé au sol
     for (let k = 0; k < 40; k++) particles.push({ x: h.x + h.dir * rand(0, 200), y: h.gz - rand(0, 40), vx: rand(-300, 300), vy: rand(-500, -150), t: 0, life: 0.6, c: Math.random() < 0.5 ? '#ff6a1a' : '#ffd060', r: rand(4, 9) });
     say(h, 'CONCASSÉ !!');
   }
@@ -2915,6 +2924,7 @@ function updateHellMemories(h) {
     // l'enfer remonte du sol : une colonne de flammes devant lui
     h.thrown = true; flash = 0.4; shake = 18;
     ultraHit(h, HELL.reach, dmg * 0.4, 100, -60);
+    for (let j = 0; j < 3; j++) gfx('hell_pillar', h.x + h.dir * (90 + j * 100), h.gz - 260 - j * 20, 180 + j * 30, 0.9 + j * 0.1, { h: 560 + j * 60, grow: 0.12 });
     for (let k = 0; k < 70; k++) particles.push({ x: h.x + h.dir * rand(20, HELL.reach), y: h.gz - rand(0, 30), vx: rand(-60, 60), vy: rand(-700, -300), t: 0, life: 0.7, c: Math.random() < 0.5 ? '#ff4a10' : '#ffc040', r: rand(5, 11) });
     popups.push({ x: h.x + h.dir * 220, y: h.y - 270, t: 0, text: 'HELL MEMORIES !!' });
     score += 2000;
@@ -3060,6 +3070,7 @@ function updatePanzer(h, dt) {
   if (!h.thrown && h.t >= PANZER.palm) {
     h.thrown = true; flash = 0.6; shake = 24; hitstop = 0.12; audio.play('ultraBoom', 1, 1.2, 0);
     shockFX(h.x + h.dir * 130, h.y - 120, h.dir);
+    gfx('palm_wave', h.x + h.dir * 260, h.y - 120, 480, 0.5, { dir: h.dir, grow: 0.3 });
     ultraHit(h, 280, dmg * 0.25, 90, -20);
     popups.push({ x: h.x + h.dir * 220, y: h.y - 270, t: 0, text: 'PANZER KUNST !!' });
     score += 2000;
@@ -3370,6 +3381,7 @@ function updateGinsan(h) {
   if (!h.cut && h.t >= GINSAN.smash) {
     h.cut = true; flash = 0.5; shake = 24; hitstop = 0.12; audio.play('ultraBoom', 0.9, 1.1, 0);
     slashFX(h.x + h.dir * 120, h.y - 130, h.dir, { a0: -1.8, a1: 1.3, r: 200, w: 46, c: '#ffffff', life: 0.4 });
+    gfx('big_slash', h.x + h.dir * 170, h.y - 140, 560, 0.45, { dir: h.dir, rot: 0.3, grow: 0.12 });
     shockFX(h.x + h.dir * 170, h.gz - 30, h.dir);
     ultraHit(h, 280, dmg * 0.3, 90, -40);
     score += 2000;
@@ -4284,6 +4296,10 @@ function fxImg(name, i, x, y, w, h, o = {}) {
   ctx.restore();
   return true;
 }
+// Effet en image fixe (assets/fx/<nom>.png, Flow image sur fond noir, tools/process_fx_images.py) : il apparaît
+// en un éclair, grandit un peu (o.grow), tourne (o.spin tours/s, o.rot), puis s'efface ; o.who : suit ce joueur
+// (décalage o.dx devant lui, o.dy en hauteur) ; o.dir : sens du coup (image tournée vers la droite)
+function gfx(name, x, y, w, life, o = {}) { if (IMG['fx_' + name]) fxs.push({ type: 'gimg', name, x, y, w, t: 0, life, ...o }); }
 // Effet animé qui joue ses étapes une fois (explosion, éclair…)
 function animFX(name, x, y, w, life, o = {}) { fxs.push({ type: 'anim', name, x, y, w, h: o.h, filter: o.filter, rot: o.rot, t: 0, life }); }
 // Teinte des petits arcs électriques (planche verte) selon le personnage
@@ -4339,6 +4355,17 @@ function drawFX(ghosts = false) {
     if ((f.type === 'ghost') !== ghosts) continue;
     if (f.t < 0) continue; // effet programmé un peu plus tard (coups en série)
     const k = f.t / f.life, sx = f.x - camX;
+    if (f.type === 'gimg') {
+      const img = IMG['fx_' + f.name]; if (!img) continue;
+      const P = f.who != null && players.find(q => q.idx === f.who), dir = f.dir || 1;
+      const x = P ? P.x + dir * (f.dx || 0) - camX : sx, y = P ? P.y + (f.dy || 0) : f.y;
+      const a = (f.alpha ?? 1) * Math.min(1, f.t / 0.05) * (k > 0.55 ? 1 - (k - 0.55) / 0.45 : 1), sc = 1 + (f.grow || 0) * k;
+      const w = f.w * sc, hh = (f.h ?? f.w * img.height / img.width) * sc;
+      ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a; if (f.filter) ctx.filter = f.filter;
+      ctx.translate(x, y); ctx.scale(dir, 1); ctx.rotate((f.rot || 0) + (f.spin || 0) * f.t * Math.PI * 2);
+      ctx.drawImage(img, -w / 2, -hh / 2, w, hh); ctx.restore();
+      continue;
+    }
     if (f.type === 'anim') {
       const n = FX[f.name] ? FX[f.name].length : 1;
       if (f.name === 'bolt') {
@@ -4412,7 +4439,11 @@ function drawFX(ghosts = false) {
     }
     if (f.type === 'muzzle' || f.type === 'shock') {
       ctx.save(); ctx.translate(sx, f.y); ctx.scale(f.dir || 1, 1); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k;
-      if (f.type === 'muzzle') {
+      if (f.type === 'muzzle' && IMG.fx_muzzle) {
+        // éclair de bouche en image (Flow) : étoile et flammes vers l'avant, le départ au canon
+        const im = IMG.fx_muzzle, w = 110, hh = w * im.height / im.width;
+        ctx.rotate(f.rot); ctx.globalAlpha = 1 - k * 0.6; ctx.drawImage(im, -w * 0.2, -hh / 2, w, hh);
+      } else if (f.type === 'muzzle') {
         // éclair de bouche : une étoile jaune, longue vers l'avant
         ctx.rotate(f.rot); ctx.fillStyle = '#fff6c0';
         ctx.beginPath(); ctx.moveTo(0, -7); ctx.lineTo(34, 0); ctx.lineTo(0, 7); ctx.lineTo(-6, 0); ctx.closePath(); ctx.fill();
@@ -4611,6 +4642,7 @@ function cannonFX(x, y, dir, big = 1) {
 // Explosion de l'obus : boule de feu, fumée noire qui monte, éclats, onde
 function blastFX(x, y, big = 1) {
   fxs.push({ type: 'blast', x, y, t: 0, life: 0.55, big });
+  gfx('cannon_boom', x, y - 20 * big, 250 * big, 0.5, { grow: 0.35 }); // boule de feu (image Flow) par-dessus
   for (let k = 0; k < 9; k++) fxs.push({ type: 'smoke', x: x + rand(-40, 40) * big, y: y + rand(-30, 10) * big, r: rand(16, 30) * big, vx: rand(-40, 40), vy: rand(-140, -60), t: -rand(0.05, 0.15), life: rand(0.8, 1.2), dark: true });
   for (let k = 0; k < 18; k++) particles.push({ x, y, vx: rand(-520, 520), vy: rand(-520, 120), t: 0, life: rand(0.3, 0.6), c: Math.random() < 0.4 ? '#ffe080' : Math.random() < 0.5 ? '#ff6a1a' : '#4a4038', r: rand(2, 5) });
   shake = Math.max(shake, 14 * big); hitstop = Math.max(hitstop, 0.05); audio.play('ultraBoom', 0.6 * big, 1.4, 0);

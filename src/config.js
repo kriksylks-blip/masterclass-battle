@@ -28,6 +28,9 @@ const ASSETS = {
     fx_katon: 'assets/fx/katon.png', fx_susanoo: 'assets/fx/susanoo.jpg',
     fx_rsh: 'assets/fx/rsh.png', fx_rsh_boom: 'assets/fx/rsh_boom.png', fx_amaterasu: 'assets/fx/amaterasu.png',
     fx_titan_rise: 'assets/fx/titan_rise.png', fx_titan_punch: 'assets/fx/titan_punch.png', fx_shoto_ice: 'assets/fx/shoto_ice.png', fx_shoto_fire: 'assets/fx/shoto_fire.png',
+    // Effets en images Flow (tools/fx5_prompts.js, tools/process_fx_images.py) : voir gfx() dans game.js
+    fx_sanji_spin: 'assets/fx/sanji_spin.png', fx_hell_pillar: 'assets/fx/hell_pillar.png', fx_blade_spin: 'assets/fx/blade_spin.png', fx_big_slash: 'assets/fx/big_slash.png',
+    fx_fang_x: 'assets/fx/fang_x.png', fx_palm_wave: 'assets/fx/palm_wave.png', fx_whip_arc: 'assets/fx/whip_arc.png', fx_muzzle: 'assets/fx/muzzle.png', fx_cannon_boom: 'assets/fx/cannon_boom.png',
     // Cartes de présentation des ennemis
     intro_thug: 'assets/ui/intro/thug.jpg', intro_brute: 'assets/ui/intro/brute.jpg', intro_ninja: 'assets/ui/intro/ninja.jpg',
     intro_biker: 'assets/ui/intro/biker.jpg', intro_samurai: 'assets/ui/intro/samurai.jpg', intro_boss: 'assets/ui/intro/boss.jpg',
