@@ -44,6 +44,7 @@ const FX_LAZY = {
   galick_body: ['vegeta'], galick_src: ['vegeta'], chidori_v: ['sasuke', 'kakashi'], hinokami_v: ['tanjiro'], hekireki_v: ['zenitsu'],
   entei_v: ['ace'], hiken_v: ['ace'], burning_v: ['trunks'], strikeair_v: ['saber'], katon_v: ['itachi'], vrasen_v: ['boruto'],
   rsh_v: ['naruto_s'], rasen_v: ['naruto', 'naruto_s', 'boruto'],
+  amaterasu_v: ['itachi'], ed_fist_v: ['edward'], titan_arm_v: ['eren'], rsh_boom_v: ['naruto_s'], ssj_aura_v: ['goku', 'vegeta', 'gohan', 'trunks', 'gohan_a'], demon_back_v: ['baki'], demon_back_s: ['baki'],
 };
 const lazyFxFor = chars => Object.entries(FX_LAZY).filter(([k, who]) => FX[k] && chars.some(id => who.includes(CHARS[id]?.base || id))).flatMap(([k]) => FX[k].map(f => f.src));
 const want = (key, src) => IMG[key] ? Promise.resolve() : PENDING[key] || (PENDING[key] = loadImage(key, src).finally(() => delete PENDING[key]));
@@ -3429,6 +3430,15 @@ function updateGrappler(h, dt) {
 // Visage de démon que dessinent les muscles du dos de Baki : esquissé en rouge sombre derrière ses épaules
 function drawDemonBack(h, sx) {
   const p = 0.75 + 0.25 * Math.sin(sceneT * 5);
+  // visage d'ogre filmé qui domine au-dessus de Baki : version opaque (traits sombres gardés, demon_back_s)
+  // puis la même image en mode lumineux par-dessus pour le flamboiement (demon_back_v)
+  const S = FX.demon_back_s, k = Math.floor(sceneT * 12), f = S && IMG[S[k % S.length].src];
+  if (f) {
+    const w = 270, hh = w * f.height / f.width, cx = sx - h.dir * 10, cy = h.y - 250;
+    ctx.save(); ctx.globalAlpha = 0.7 + 0.15 * p; ctx.drawImage(f, cx - w / 2, cy - hh / 2, w, hh); ctx.restore();
+    fxImg('demon_back_v', k, cx, cy, w, hh, { alpha: 0.35 * p });
+    return;
+  }
   ctx.save(); ctx.translate(sx - h.dir * 14, h.y - 150); ctx.scale(h.dir, 1); ctx.globalAlpha = 0.5 * p;
   ctx.strokeStyle = '#ff2a20'; ctx.fillStyle = 'rgba(120,0,10,0.35)'; ctx.lineWidth = 4; ctx.lineJoin = 'round';
   ctx.beginPath(); ctx.moveTo(-62, -40); ctx.quadraticCurveTo(-78, 30, -30, 72); ctx.quadraticCurveTo(0, 86, 30, 72); ctx.quadraticCurveTo(78, 30, 62, -40); ctx.quadraticCurveTo(0, -70, -62, -40); ctx.fill(); ctx.stroke();
@@ -3568,6 +3578,19 @@ function drawTitan(h, sx) {
     const w = rise.width * s * grow, hh = rise.height * s * grow, jit = g >= 1 ? rand(-2, 2) : 0;
     ctx.translate(sx - h.dir * 110 + jit, h.y); ctx.scale(h.dir, 1);
     ctx.drawImage(rise, -w / 2, -hh, w, hh);
+  } else if (FX.titan_arm_v && IMG[FX.titan_arm_v[19].src]) {
+    // le direct filmé (fond vert, tools/greenfx.py) : le bras jaillit (images 1-9), le poing frappe à l'image 11
+    // (poing à 85 % de la largeur, posé sur TITAN.fist), puis l'onde de choc et la vapeur (11-19)
+    const film = FX.titan_arm_v, u = (t - (TITAN.punch - 0.18)) / 0.18;
+    const k = u < 1 ? 1 + 2 * Math.floor(clamp(u, 0, 0.99) * 5) : 11 + Math.floor(clamp((t - TITAN.punch) / (TITAN.end - TITAN.punch), 0, 0.99) * 9);
+    const fr = IMG[film[k].src], H2 = 420, W2 = H2 * 16 / 9;
+    if (u < 1) { // le titan debout s'efface derrière le bras qui part
+      const w = rise.width * s, hh = rise.height * s;
+      ctx.save(); ctx.globalAlpha *= 1 - clamp(u, 0, 1); ctx.translate(sx - h.dir * 110, h.y); ctx.scale(h.dir, 1);
+      ctx.drawImage(rise, -w / 2, -hh, w, hh); ctx.restore();
+    }
+    ctx.translate(sx, h.y); ctx.scale(h.dir, 1);
+    ctx.drawImage(fr, TITAN.fist - 0.85 * W2, -150 - 0.45 * H2, W2, H2);
   } else {
     // le direct : le corps se jette en avant, le poing (à droite de l'image) part vers h.dir
     const u = clamp((t - (TITAN.punch - 0.18)) / 0.18, 0, 1), lunge = 90 * (1 - Math.pow(1 - u, 2));
@@ -3644,6 +3667,21 @@ function drawAlchemy(h, sx) {
   }
   if (t > ALCH.rise) {
     // le bras de pierre (assets/fx/ed_fist.png) surgit du cercle, frappe vers l'avant au moment du coup, puis s'effrite
+    // version filmée (fond vert, tools/greenfx.py) : images 2-6 le poing sort du sol, 7-13 le bras frappe à
+    // l'horizontale (poing à 92 % de l'image, posé sur la portée du coup), 14-17 il s'effrite
+    const film = FX.ed_fist_v;
+    if (film && IMG[film[17].src]) {
+      const k = t < ALCH.hit ? 2 + Math.floor(clamp((t - ALCH.rise) / (ALCH.hit - ALCH.rise), 0, 0.99) * 5)
+        : t < ALCH.end - 0.4 ? 7 + Math.floor(clamp((t - ALCH.hit) / (ALCH.end - 0.4 - ALCH.hit), 0, 0.99) * 7)
+        : 14 + Math.floor(clamp((t - (ALCH.end - 0.4)) / 0.4, 0, 0.99) * 4);
+      const fr = IMG[film[k].src], W2 = 620, H2 = W2 * 9 / 16, left = k < 7 ? -0.37 * W2 : 200 - 0.92 * W2;
+      ctx.save();
+      ctx.beginPath(); ctx.rect(cx - 900, gy - 700, 1800, 714); ctx.clip(); // rien sous le sol
+      ctx.translate(cx, gy + 14); ctx.scale(h.dir, 1);
+      ctx.drawImage(fr, left, -H2, W2, H2);
+      ctx.restore();
+      return;
+    }
     const img = IMG.fx_ed_fist;
     if (!img) return;
     const W2 = 340, H2 = W2 * img.height / img.width;
@@ -3710,7 +3748,13 @@ function updateDarkFX(dt) {
 function drawDarkFX() {
   for (const b of blackFlames) {
     const sx = b.x - camX, a = Math.max(0, Math.min(1, b.t / 0.15, (b.dur - b.t) / 0.4));
-    const img = IMG.fx_amaterasu;
+    const img = IMG.fx_amaterasu, film = FX.amaterasu_v, fr = film && IMG[film[Math.floor(b.t * 12) % film.length].src];
+    if (fr) {
+      // flammes noires filmées (fond vert, tools/greenfx.py) : elles naissent du sol et brûlent en boucle
+      const rise = Math.min(1, b.t / 0.25), hh = 240 * rise, ww = hh * fr.width / fr.height;
+      ctx.save(); ctx.globalAlpha = a; ctx.drawImage(fr, sx - ww / 2, b.y + 8 - hh, ww, hh); ctx.restore();
+      continue;
+    }
     if (img) {
       // flammes noires dessinées (assets/fx/amaterasu.png) : deux couches qui ondulent en décalé, lueur pourpre au pied
       const rise = Math.min(1, b.t / 0.25), hh = 230 * rise, ww = hh * img.width / img.height;
@@ -6552,6 +6596,10 @@ function drawPlayer(h) {
   if (h.state === 'charge' || h.state === 'transform') {
     const N = h.state === 'transform' ? h.nextForm : F, gold = N?.sheet && ['gold', 'goku_ssj', 'vegeta_ssj', 'trunks_ssj', 'gohan_ssj'].includes(N.sheet);
     const col = N?.aura ? N.aura[1] : gold ? '#ffd84a' : C.kiColor;
+    if (gold) { // flamme dorée filmée (tools/fxauto.py --loop) derrière le corps, pieds à la base de la flamme
+      const H = 340 * Math.min(1, 0.6 + h.t * 1.2);
+      fxImg('ssj_aura_v', Math.floor(sceneT * 14), sx, h.y + 12 - H / 2, H * 0.77, H, { alpha: 0.85 });
+    }
     bodyAura(h, sheet, anim, i, sx, col, h.state === 'transform' ? 0.6 + Math.min(h.t, 1) * 0.6 : 0.9 + Math.min(h.t, 1) * 0.3);
   } else if (F?.foxCloak && !h.out) {
     drawFoxCloak(h, sx, F.foxCloak); // le liseré rouge qui épouse le corps vient du filtre de la forme
@@ -6737,7 +6785,14 @@ function drawWaves() {
 
 // Explosion du Rasen-shuriken : la sphère de lames de vent jaillit, palpite en tournoyant puis se dissipe
 function drawRshBoom(b) {
-  const img = IMG.fx_rsh_boom, k = b.t / 1.1, sx = b.x - camX;
+  const film = FX.rsh_boom_v, sx = b.x - camX;
+  if (film && IMG[film[film.length - 1].src]) {
+    // dôme de vent filmé (tools/fxauto.py) : il gonfle, se hérisse d'aiguilles puis se dissipe en 1,1 s
+    const f = film[Math.min(film.length - 1, Math.floor(b.t / 1.1 * film.length))], w = 820 * b.rsh * 1.25, hh = w * f.h / f.w;
+    const cy = b.y - (b.rsh < 1 ? 0 : hh * 0.3);
+    return fxImg('rsh_boom_v', Math.min(film.length - 1, Math.floor(b.t / 1.1 * film.length)), sx, cy, w, hh);
+  }
+  const img = IMG.fx_rsh_boom, k = b.t / 1.1;
   const grow = Math.min(1, b.t / 0.22), sc = b.rsh * (0.35 + 0.65 * (1 - Math.pow(1 - grow, 3))) * (1 + Math.sin(b.t * 40) * 0.03);
   const w = 820 * sc, hh = w * img.height / img.width, cy = b.y - (b.rsh < 1 ? 0 : hh * 0.32);
   ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = k < 0.6 ? 1 : Math.max(0, (1 - k) / 0.4);
