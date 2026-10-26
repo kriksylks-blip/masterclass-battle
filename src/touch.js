@@ -26,12 +26,12 @@
       background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), rgba(255,255,255,.08) 60%, rgba(0,0,0,.25));
       border: 2px solid rgba(255,255,255,.55); box-shadow: 0 2px 8px rgba(0,0,0,.5); }
     #tc .btn.on { transform: scale(.9); background: rgba(255,225,77,.55); }
-    #tc .big { width: 88px; height: 88px; font-size: 17px; }
-    #tc .mbtn { width: 96px; height: 96px; font-size: 16px; display: none; }
+    #tc .big { width: calc(88px * var(--u)); height: calc(88px * var(--u)); font-size: calc(17px * var(--u)); }
+    #tc .mbtn { width: calc(96px * var(--u)); height: calc(96px * var(--u)); font-size: calc(16px * var(--u)); display: none; }
     #tc.menu .btn:not(.mbtn) { display: none !important; }
     #tc.menu .mbtn { display: flex; }
-    #tc .small { width: 64px; height: 64px; font-size: 13px; }
-    #tc .top { width: 58px; height: 40px; border-radius: 12px; font-size: 13px; }
+    #tc .small { width: calc(64px * var(--u)); height: calc(64px * var(--u)); font-size: calc(13px * var(--u)); }
+    #tc .top { width: calc(58px * var(--u)); height: calc(40px * var(--u)); border-radius: 12px; font-size: calc(13px * var(--u)); }
     #tc .ready { border-color: #ffe14d; box-shadow: 0 0 14px #ffe14d; animation: tcp .6s infinite alternate; }
     @keyframes tcp { to { box-shadow: 0 0 26px #ffe14d; } }
     #tc .stick { position: absolute; width: 156px; height: 156px; margin: -78px 0 0 -78px; border-radius: 50%;
@@ -49,17 +49,25 @@
   const root = document.createElement('div'); root.id = 'tc';
   root.innerHTML = `
     <div class="zone"><div class="hint">joystick : pose ton pouce ici</div><div class="stick"><div class="knob"></div></div></div>
-    <div class="btn big" data-a="jump"   style="right:120px; bottom:18px">SAUT</div>
-    <div class="btn big" data-a="kick"   style="right:23px; bottom:114px">GARDE</div>
-    <div class="btn big" data-a="punch"  style="right:216px;bottom:114px">ATTAQUE</div>
-    <div class="btn big" data-a="blast"  style="right:120px; bottom:211px">SPÉCIAL</div>
-    <div class="btn small" data-a="dash"  style="right:260px;bottom:231px">DASH</div>
-    <div class="btn small" data-a="ki"    style="right:29px; bottom:242px" id="tcKi">KI</div>
-    <div class="btn small" data-a="ultra" style="right:39px; bottom:322px" id="tcUlt">ULTIME</div>
-    <div class="btn top" data-a="pause" style="left:50%; top:6px; margin-left:-64px">❚❚</div>
-    <div class="btn top" data-a="tag"   style="left:50%; top:6px; margin-left:6px" id="tcTag">RELAIS</div>
-    <div class="btn big mbtn" data-m="ok"   style="right:143px;bottom:52px">VALIDER</div>
-    <div class="btn big mbtn" data-m="back" style="right:31px; bottom:156px">RETOUR</div>`;
+    <div class="btn big" data-a="jump"   data-p="8 6">SAUT</div>
+    <div class="btn big" data-a="punch"  data-p="102 6">ATTAQUE</div>
+    <div class="btn big" data-a="kick"   data-p="8 100">GARDE</div>
+    <div class="btn big" data-a="blast"  data-p="102 100">SPÉCIAL</div>
+    <div class="btn small" data-a="dash"  data-p="196 8">DASH</div>
+    <div class="btn small" data-a="ki"    data-p="196 76" id="tcKi">KI</div>
+    <div class="btn small" data-a="ultra" data-p="196 144" id="tcUlt">ULTIME</div>
+    <div class="btn top" data-a="pause" style="left:8px; top:6px">❚❚</div>
+    <div class="btn top" data-a="tag"   style="left:calc(8px + 64px * var(--u)); top:6px" id="tcTag">RELAIS</div>
+    <div class="btn big mbtn" data-m="ok"   data-p="8 6">VALIDER</div>
+    <div class="btn big mbtn" data-m="back" data-p="8 108">RETOUR</div>`;
+  // Boutons deux fois plus grands qu'à l'origine (--u = 2), en grille serrée à droite ; sur un petit téléphone, --u
+  // baisse juste assez pour que la colonne tienne dans la hauteur de l'écran (210 px à --u = 1)
+  for (const b of root.querySelectorAll('[data-p]')) {
+    const [r, bt] = b.dataset.p.split(' ');
+    b.style.right = `calc(${r}px * var(--u))`; b.style.bottom = `calc(${bt}px * var(--u))`;
+  }
+  const fit = () => root.style.setProperty('--u', Math.min(2, (innerHeight - 8) / 210, innerWidth * 0.62 / 262).toFixed(3));
+  fit(); addEventListener('resize', fit);
   document.body.appendChild(root);
   const turn = document.createElement('div'); turn.id = 'turn';
   turn.innerHTML = '<b>⟳</b>Tourne ton téléphone<br>à l\'horizontale';
