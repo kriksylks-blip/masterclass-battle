@@ -2280,7 +2280,8 @@ function drawZaps(dt) {
 // ---------- Black Whip d'Izuku ----------
 // Les fouets partent de la main tendue, filent vers les ennemis devant, s'enroulent autour et les ramènent.
 // Le boss est trop lourd : c'est Izuku qui se hisse jusqu'à lui.
-const whipHand = h => ({ x: h.x + h.dir * 100, y: h.y - 128 });
+// fouets noirs de Deku : ils partent de sa main tendue, repérée sur l'image affichée (handPoint), sinon d'un point fixe
+const whipHand = h => { const hp = handPoint(h); return hp ? { x: h.x + h.dir * (hp[0] + 4), y: h.y + hp[1] } : { x: h.x + h.dir * 100, y: h.y - 128 }; };
 function updateWhip(h, W) {
   const dt = 1 / 60, boost = h.boost ? h.boost.dmg : 1;
   if (!h.whips && h.t >= W.at) {
