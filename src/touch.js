@@ -55,21 +55,21 @@
     <div class="btn big" data-a="blast"  data-p="84 94">SPÉCIAL</div>
     <div class="btn small" data-a="dash"  data-p="172 138">DASH</div>
     <div class="btn small" data-a="ki"    data-p="20 138" id="tcKi">KI</div>
-    <div class="btn small" data-a="ultra" data-p="252 112" id="tcUlt">ULTIME</div>
+    <div class="btn small" data-a="ultra" data-p="56 210" id="tcUlt">ULTIME</div>
     <div class="btn top" data-a="pause" style="left:50%; top:6px; margin-left:calc(-64px * var(--u))">❚❚</div>
     <div class="btn top" data-a="tag"   style="left:50%; top:6px; margin-left:calc(6px * var(--u))" id="tcTag">RELAIS</div>
     <div class="btn big mbtn" data-m="ok"   data-p="120 6">VALIDER</div>
     <div class="btn big mbtn" data-m="back" data-p="8 80">RETOUR</div>`;
-  // Disposition d'origine (croix Saut / Garde / Attaque / Spécial, Dash et Ki au-dessus, Ultime à gauche de Dash), boutons 1,6 fois
-  // plus grands (--u = 1,6) et serrés ; sur un petit téléphone, --u baisse juste assez pour tenir en hauteur (210 px à --u = 1 : 1,6 tient dès 344 px de haut)
+  // Disposition d'origine (croix Saut / Garde / Attaque / Spécial, Dash et Ki au-dessus, Ultime au-dessus de Ki, un peu à gauche), boutons 1,6 fois
+  // plus grands (--u = 1,6) et serrés ; sur un petit téléphone, --u baisse juste assez pour tenir en hauteur (276 px à --u = 1)
   for (const b of root.querySelectorAll('[data-p]')) {
     const [r, bt] = b.dataset.p.split(' ');
     b.style.right = `calc(${r}px * var(--u) * var(--g))`; b.style.bottom = `calc(${bt}px * var(--u) * var(--g))`;
   }
-  // --g écarte les boutons (sans les grossir) quand l'écran a de la place en hauteur, jusqu'à 1,7 fois l'écart serré
+  // --g écarte les boutons (sans les grossir) quand l'écran a de la place en hauteur, jusqu'à 1,35 fois l'écart serré
   const fit = () => {
-    const u = Math.min(1.6, (innerHeight - 8) / 210, innerWidth * 0.68 / 316);
-    const g = Math.max(1, Math.min(1.7, (innerHeight * 0.85 - 64 * u) / (138 * u), (innerWidth * 0.7 - 64 * u) / (252 * u)));
+    const u = Math.min(1.6, (innerHeight - 8) / 276, innerWidth * 0.68 / 236);
+    const g = Math.max(1, Math.min(1.35, (innerHeight * 0.9 - 64 * u) / (210 * u), (innerWidth * 0.7 - 64 * u) / (172 * u)));
     root.style.setProperty('--u', u.toFixed(3)); root.style.setProperty('--g', g.toFixed(3));
   };
   fit(); addEventListener('resize', fit);
