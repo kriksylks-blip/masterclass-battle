@@ -35362,601 +35362,6 @@ const SPRITES = {
    ]
   }
  },
- "gally": {
-  "walk": {
-   "scale": 0.3227,
-   "rate": 29.08,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/walkv_0.png",
-     "w": 226,
-     "h": 536,
-     "ax": 113.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/gally/walkv_1.png",
-     "w": 226,
-     "h": 538,
-     "ax": 117.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/gally/walkv_2.png",
-     "w": 242,
-     "h": 538,
-     "ax": 135.5,
-     "ay": 538
-    },
-    {
-     "src": "assets/sprites/gally/walkv_3.png",
-     "w": 312,
-     "h": 530,
-     "ax": 170.0,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/gally/walkv_4.png",
-     "w": 348,
-     "h": 520,
-     "ax": 209.5,
-     "ay": 520
-    },
-    {
-     "src": "assets/sprites/gally/walkv_5.png",
-     "w": 352,
-     "h": 518,
-     "ax": 227.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/gally/walkv_6.png",
-     "w": 330,
-     "h": 520,
-     "ax": 224.5,
-     "ay": 520
-    },
-    {
-     "src": "assets/sprites/gally/walkv_7.png",
-     "w": 290,
-     "h": 528,
-     "ax": 183.5,
-     "ay": 528
-    },
-    {
-     "src": "assets/sprites/gally/walkv_8.png",
-     "w": 230,
-     "h": 532,
-     "ax": 121.5,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/gally/walkv_9.png",
-     "w": 227,
-     "h": 532,
-     "ax": 113.0,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/gally/walkv_10.png",
-     "w": 254,
-     "h": 530,
-     "ax": 132.5,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/gally/walkv_11.png",
-     "w": 304,
-     "h": 520,
-     "ax": 164.5,
-     "ay": 520
-    },
-    {
-     "src": "assets/sprites/gally/walkv_12.png",
-     "w": 322,
-     "h": 518,
-     "ax": 184.5,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/gally/walkv_13.png",
-     "w": 337,
-     "h": 518,
-     "ax": 207.0,
-     "ay": 518
-    },
-    {
-     "src": "assets/sprites/gally/walkv_14.png",
-     "w": 309,
-     "h": 525,
-     "ax": 182.5,
-     "ay": 525
-    },
-    {
-     "src": "assets/sprites/gally/walkv_15.png",
-     "w": 284,
-     "h": 529,
-     "ax": 161.5,
-     "ay": 529
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.4986,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/jump_0.png",
-     "w": 226,
-     "h": 283,
-     "ax": 115.1,
-     "ay": 283
-    },
-    {
-     "src": "assets/sprites/gally/jump_1.png",
-     "w": 204,
-     "h": 321,
-     "ax": 107.6,
-     "ay": 321
-    },
-    {
-     "src": "assets/sprites/gally/jump_2.png",
-     "w": 178,
-     "h": 348,
-     "ax": 94.3,
-     "ay": 348
-    },
-    {
-     "src": "assets/sprites/gally/jump_3.png",
-     "w": 157,
-     "h": 254,
-     "ax": 65.9,
-     "ay": 254
-    },
-    {
-     "src": "assets/sprites/gally/jump_4.png",
-     "w": 119,
-     "h": 224,
-     "ax": 58.7,
-     "ay": 224
-    },
-    {
-     "src": "assets/sprites/gally/jump_5.png",
-     "w": 197,
-     "h": 329,
-     "ax": 103.0,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/gally/jump_6.png",
-     "w": 190,
-     "h": 332,
-     "ax": 89.6,
-     "ay": 332
-    },
-    {
-     "src": "assets/sprites/gally/jump_7.png",
-     "w": 175,
-     "h": 299,
-     "ax": 76.2,
-     "ay": 299
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.4986,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/fall_0.png",
-     "w": 229,
-     "h": 329,
-     "ax": 101.8,
-     "ay": 329
-    },
-    {
-     "src": "assets/sprites/gally/fall_1.png",
-     "w": 282,
-     "h": 323,
-     "ax": 88.4,
-     "ay": 323
-    },
-    {
-     "src": "assets/sprites/gally/fall_2.png",
-     "w": 304,
-     "h": 249,
-     "ax": 136.6,
-     "ay": 249
-    },
-    {
-     "src": "assets/sprites/gally/fall_3.png",
-     "w": 317,
-     "h": 189,
-     "ax": 158.5,
-     "ay": 189
-    },
-    {
-     "src": "assets/sprites/gally/fall_4.png",
-     "w": 342,
-     "h": 107,
-     "ax": 171.0,
-     "ay": 107
-    },
-    {
-     "src": "assets/sprites/gally/fall_5.png",
-     "w": 325,
-     "h": 210,
-     "ax": 237.1,
-     "ay": 210
-    },
-    {
-     "src": "assets/sprites/gally/fall_6.png",
-     "w": 231,
-     "h": 247,
-     "ax": 145.8,
-     "ay": 247
-    },
-    {
-     "src": "assets/sprites/gally/fall_7.png",
-     "w": 221,
-     "h": 317,
-     "ax": 112.4,
-     "ay": 317
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.4986,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/combo_0.png",
-     "w": 244,
-     "h": 340,
-     "ax": 110.9,
-     "ay": 340
-    },
-    {
-     "src": "assets/sprites/gally/combo_1.png",
-     "w": 257,
-     "h": 340,
-     "ax": 96.5,
-     "ay": 340
-    },
-    {
-     "src": "assets/sprites/gally/combo_2.png",
-     "w": 292,
-     "h": 330,
-     "ax": 133.3,
-     "ay": 330
-    },
-    {
-     "src": "assets/sprites/gally/combo_3.png",
-     "w": 204,
-     "h": 362,
-     "ax": 101.1,
-     "ay": 362
-    },
-    {
-     "src": "assets/sprites/gally/combo_4.png",
-     "w": 177,
-     "h": 350,
-     "ax": 91.8,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/gally/combo_5.png",
-     "w": 287,
-     "h": 344,
-     "ax": 119.5,
-     "ay": 344
-    },
-    {
-     "src": "assets/sprites/gally/combo_6.png",
-     "w": 254,
-     "h": 347,
-     "ax": 86.1,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/gally/combo_7.png",
-     "w": 301,
-     "h": 245,
-     "ax": 96.4,
-     "ay": 245
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.4986,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/lowair_0.png",
-     "w": 185,
-     "h": 280,
-     "ax": 87.2,
-     "ay": 280
-    },
-    {
-     "src": "assets/sprites/gally/lowair_1.png",
-     "w": 173,
-     "h": 252,
-     "ax": 94.6,
-     "ay": 252
-    },
-    {
-     "src": "assets/sprites/gally/lowair_2.png",
-     "w": 346,
-     "h": 241,
-     "ax": 135.5,
-     "ay": 241
-    },
-    {
-     "src": "assets/sprites/gally/lowair_3.png",
-     "w": 220,
-     "h": 271,
-     "ax": 127.8,
-     "ay": 271
-    },
-    {
-     "src": "assets/sprites/gally/lowair_4.png",
-     "w": 154,
-     "h": 287,
-     "ax": 70.1,
-     "ay": 287
-    },
-    {
-     "src": "assets/sprites/gally/lowair_5.png",
-     "w": 186,
-     "h": 366,
-     "ax": 113.9,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/gally/lowair_6.png",
-     "w": 353,
-     "h": 257,
-     "ax": 101.0,
-     "ay": 257
-    },
-    {
-     "src": "assets/sprites/gally/lowair_7.png",
-     "w": 176,
-     "h": 358,
-     "ax": 79.8,
-     "ay": 358
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.4986,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/dashcharge_0.png",
-     "w": 276,
-     "h": 271,
-     "ax": 142.0,
-     "ay": 271
-    },
-    {
-     "src": "assets/sprites/gally/dashcharge_1.png",
-     "w": 310,
-     "h": 291,
-     "ax": 183.0,
-     "ay": 291
-    },
-    {
-     "src": "assets/sprites/gally/dashcharge_2.png",
-     "w": 331,
-     "h": 337,
-     "ax": 180.2,
-     "ay": 337
-    },
-    {
-     "src": "assets/sprites/gally/dashcharge_3.png",
-     "w": 260,
-     "h": 355,
-     "ax": 118.8,
-     "ay": 355
-    },
-    {
-     "src": "assets/sprites/gally/dashcharge_4.png",
-     "w": 253,
-     "h": 346,
-     "ax": 118.8,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/gally/dashcharge_5.png",
-     "w": 254,
-     "h": 346,
-     "ax": 124.3,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/gally/dashcharge_6.png",
-     "w": 277,
-     "h": 367,
-     "ax": 139.0,
-     "ay": 367
-    },
-    {
-     "src": "assets/sprites/gally/dashcharge_7.png",
-     "w": 261,
-     "h": 364,
-     "ax": 119.4,
-     "ay": 364
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.4986,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/special_0.png",
-     "w": 260,
-     "h": 356,
-     "ax": 118.9,
-     "ay": 356
-    },
-    {
-     "src": "assets/sprites/gally/special_1.png",
-     "w": 252,
-     "h": 341,
-     "ax": 134.6,
-     "ay": 341
-    },
-    {
-     "src": "assets/sprites/gally/special_2.png",
-     "w": 324,
-     "h": 334,
-     "ax": 178.4,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/gally/special_3.png",
-     "w": 255,
-     "h": 347,
-     "ax": 129.6,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/gally/special_4.png",
-     "w": 217,
-     "h": 284,
-     "ax": 116.5,
-     "ay": 284
-    },
-    {
-     "src": "assets/sprites/gally/special_5.png",
-     "w": 221,
-     "h": 345,
-     "ax": 125.0,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/gally/special_6.png",
-     "w": 334,
-     "h": 262,
-     "ax": 132.4,
-     "ay": 262
-    },
-    {
-     "src": "assets/sprites/gally/special_7.png",
-     "w": 246,
-     "h": 333,
-     "ax": 112.6,
-     "ay": 333
-    }
-   ]
-  },
-  "guard": {
-   "scale": 0.2253,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/guard_0.png",
-     "w": 474,
-     "h": 687,
-     "ax": 235.7,
-     "ay": 687
-    },
-    {
-     "src": "assets/sprites/gally/guard_1.png",
-     "w": 595,
-     "h": 644,
-     "ax": 316.5,
-     "ay": 644
-    }
-   ]
-  },
-  "idle": {
-   "scale": 0.2171,
-   "rate": 7.06,
-   "frames": [
-    {
-     "src": "assets/sprites/gally/idlev_0.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_1.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_2.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_3.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_4.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_5.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_6.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_7.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_8.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_9.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_10.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    },
-    {
-     "src": "assets/sprites/gally/idlev_11.png",
-     "w": 559,
-     "h": 796,
-     "ax": 247.5,
-     "ay": 796
-    }
-   ]
-  }
- },
  "levi": {
   "walk": {
    "scale": 0.3217,
@@ -41581,601 +40986,6 @@ const SPRITES = {
      "h": 794,
      "ax": 219.0,
      "ay": 794
-    }
-   ]
-  }
- },
- "baki": {
-  "walk": {
-   "scale": 0.3448,
-   "rate": 29.09,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/walkv_0.png",
-     "w": 142,
-     "h": 546,
-     "ax": 57.5,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/baki/walkv_1.png",
-     "w": 175,
-     "h": 546,
-     "ax": 77.5,
-     "ay": 546
-    },
-    {
-     "src": "assets/sprites/baki/walkv_2.png",
-     "w": 257,
-     "h": 542,
-     "ax": 112.5,
-     "ay": 542
-    },
-    {
-     "src": "assets/sprites/baki/walkv_3.png",
-     "w": 288,
-     "h": 540,
-     "ax": 127.5,
-     "ay": 540
-    },
-    {
-     "src": "assets/sprites/baki/walkv_4.png",
-     "w": 310,
-     "h": 534,
-     "ax": 160.5,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/baki/walkv_5.png",
-     "w": 290,
-     "h": 532,
-     "ax": 168.5,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/baki/walkv_6.png",
-     "w": 264,
-     "h": 536,
-     "ax": 154.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/baki/walkv_7.png",
-     "w": 198,
-     "h": 530,
-     "ax": 112.5,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/baki/walkv_8.png",
-     "w": 146,
-     "h": 534,
-     "ax": 68.5,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/baki/walkv_9.png",
-     "w": 160,
-     "h": 536,
-     "ax": 76.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/baki/walkv_10.png",
-     "w": 248,
-     "h": 532,
-     "ax": 108.5,
-     "ay": 532
-    },
-    {
-     "src": "assets/sprites/baki/walkv_11.png",
-     "w": 282,
-     "h": 529,
-     "ax": 128.5,
-     "ay": 529
-    },
-    {
-     "src": "assets/sprites/baki/walkv_12.png",
-     "w": 300,
-     "h": 530,
-     "ax": 157.5,
-     "ay": 530
-    },
-    {
-     "src": "assets/sprites/baki/walkv_13.png",
-     "w": 280,
-     "h": 534,
-     "ax": 160.5,
-     "ay": 534
-    },
-    {
-     "src": "assets/sprites/baki/walkv_14.png",
-     "w": 252,
-     "h": 536,
-     "ax": 144.5,
-     "ay": 536
-    },
-    {
-     "src": "assets/sprites/baki/walkv_15.png",
-     "w": 188,
-     "h": 544,
-     "ax": 103.5,
-     "ay": 544
-    }
-   ]
-  },
-  "jump": {
-   "scale": 0.5124,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/jump_0.png",
-     "w": 165,
-     "h": 253,
-     "ax": 73.9,
-     "ay": 253
-    },
-    {
-     "src": "assets/sprites/baki/jump_1.png",
-     "w": 165,
-     "h": 311,
-     "ax": 82.9,
-     "ay": 311
-    },
-    {
-     "src": "assets/sprites/baki/jump_2.png",
-     "w": 182,
-     "h": 359,
-     "ax": 84.2,
-     "ay": 359
-    },
-    {
-     "src": "assets/sprites/baki/jump_3.png",
-     "w": 175,
-     "h": 240,
-     "ax": 82.4,
-     "ay": 240
-    },
-    {
-     "src": "assets/sprites/baki/jump_4.png",
-     "w": 128,
-     "h": 222,
-     "ax": 60.0,
-     "ay": 222
-    },
-    {
-     "src": "assets/sprites/baki/jump_5.png",
-     "w": 157,
-     "h": 314,
-     "ax": 73.5,
-     "ay": 314
-    },
-    {
-     "src": "assets/sprites/baki/jump_6.png",
-     "w": 134,
-     "h": 308,
-     "ax": 52.7,
-     "ay": 308
-    },
-    {
-     "src": "assets/sprites/baki/jump_7.png",
-     "w": 134,
-     "h": 259,
-     "ax": 57.4,
-     "ay": 259
-    }
-   ]
-  },
-  "fall": {
-   "scale": 0.5124,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/fall_0.png",
-     "w": 234,
-     "h": 372,
-     "ax": 102.1,
-     "ay": 372
-    },
-    {
-     "src": "assets/sprites/baki/fall_1.png",
-     "w": 297,
-     "h": 356,
-     "ax": 108.0,
-     "ay": 356
-    },
-    {
-     "src": "assets/sprites/baki/fall_2.png",
-     "w": 323,
-     "h": 253,
-     "ax": 143.9,
-     "ay": 253
-    },
-    {
-     "src": "assets/sprites/baki/fall_3.png",
-     "w": 293,
-     "h": 196,
-     "ax": 115.5,
-     "ay": 196
-    },
-    {
-     "src": "assets/sprites/baki/fall_4.png",
-     "w": 436,
-     "h": 143,
-     "ax": 218.0,
-     "ay": 143
-    },
-    {
-     "src": "assets/sprites/baki/fall_5.png",
-     "w": 298,
-     "h": 242,
-     "ax": 179.7,
-     "ay": 242
-    },
-    {
-     "src": "assets/sprites/baki/fall_6.png",
-     "w": 268,
-     "h": 274,
-     "ax": 170.0,
-     "ay": 274
-    },
-    {
-     "src": "assets/sprites/baki/fall_7.png",
-     "w": 235,
-     "h": 352,
-     "ax": 112.7,
-     "ay": 352
-    }
-   ]
-  },
-  "combo": {
-   "scale": 0.5124,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/combo_0.png",
-     "w": 212,
-     "h": 345,
-     "ax": 96.5,
-     "ay": 345
-    },
-    {
-     "src": "assets/sprites/baki/combo_1.png",
-     "w": 278,
-     "h": 340,
-     "ax": 111.8,
-     "ay": 340
-    },
-    {
-     "src": "assets/sprites/baki/combo_2.png",
-     "w": 302,
-     "h": 340,
-     "ax": 128.2,
-     "ay": 340
-    },
-    {
-     "src": "assets/sprites/baki/combo_3.png",
-     "w": 247,
-     "h": 361,
-     "ax": 127.9,
-     "ay": 361
-    },
-    {
-     "src": "assets/sprites/baki/combo_4.png",
-     "w": 181,
-     "h": 359,
-     "ax": 97.6,
-     "ay": 359
-    },
-    {
-     "src": "assets/sprites/baki/combo_5.png",
-     "w": 299,
-     "h": 347,
-     "ax": 129.8,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/baki/combo_6.png",
-     "w": 270,
-     "h": 366,
-     "ax": 96.8,
-     "ay": 366
-    },
-    {
-     "src": "assets/sprites/baki/combo_7.png",
-     "w": 334,
-     "h": 221,
-     "ax": 93.8,
-     "ay": 221
-    }
-   ]
-  },
-  "lowair": {
-   "scale": 0.5124,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/lowair_0.png",
-     "w": 229,
-     "h": 326,
-     "ax": 116.2,
-     "ay": 326
-    },
-    {
-     "src": "assets/sprites/baki/lowair_1.png",
-     "w": 258,
-     "h": 305,
-     "ax": 134.5,
-     "ay": 305
-    },
-    {
-     "src": "assets/sprites/baki/lowair_2.png",
-     "w": 350,
-     "h": 258,
-     "ax": 130.1,
-     "ay": 258
-    },
-    {
-     "src": "assets/sprites/baki/lowair_3.png",
-     "w": 270,
-     "h": 293,
-     "ax": 172.1,
-     "ay": 293
-    },
-    {
-     "src": "assets/sprites/baki/lowair_4.png",
-     "w": 172,
-     "h": 290,
-     "ax": 76.2,
-     "ay": 290
-    },
-    {
-     "src": "assets/sprites/baki/lowair_5.png",
-     "w": 183,
-     "h": 363,
-     "ax": 97.0,
-     "ay": 363
-    },
-    {
-     "src": "assets/sprites/baki/lowair_6.png",
-     "w": 336,
-     "h": 249,
-     "ax": 155.3,
-     "ay": 249
-    },
-    {
-     "src": "assets/sprites/baki/lowair_7.png",
-     "w": 165,
-     "h": 359,
-     "ax": 69.9,
-     "ay": 359
-    }
-   ]
-  },
-  "dashcharge": {
-   "scale": 0.5124,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/dashcharge_0.png",
-     "w": 222,
-     "h": 327,
-     "ax": 125.3,
-     "ay": 327
-    },
-    {
-     "src": "assets/sprites/baki/dashcharge_1.png",
-     "w": 305,
-     "h": 284,
-     "ax": 170.3,
-     "ay": 284
-    },
-    {
-     "src": "assets/sprites/baki/dashcharge_2.png",
-     "w": 352,
-     "h": 334,
-     "ax": 169.5,
-     "ay": 334
-    },
-    {
-     "src": "assets/sprites/baki/dashcharge_3.png",
-     "w": 229,
-     "h": 353,
-     "ax": 100.9,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/baki/dashcharge_4.png",
-     "w": 238,
-     "h": 268,
-     "ax": 136.5,
-     "ay": 268
-    },
-    {
-     "src": "assets/sprites/baki/dashcharge_5.png",
-     "w": 239,
-     "h": 347,
-     "ax": 127.0,
-     "ay": 347
-    },
-    {
-     "src": "assets/sprites/baki/dashcharge_6.png",
-     "w": 309,
-     "h": 362,
-     "ax": 157.5,
-     "ay": 362
-    },
-    {
-     "src": "assets/sprites/baki/dashcharge_7.png",
-     "w": 221,
-     "h": 343,
-     "ax": 97.6,
-     "ay": 343
-    }
-   ]
-  },
-  "special": {
-   "scale": 0.5124,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/special_0.png",
-     "w": 154,
-     "h": 365,
-     "ax": 67.3,
-     "ay": 365
-    },
-    {
-     "src": "assets/sprites/baki/special_1.png",
-     "w": 243,
-     "h": 343,
-     "ax": 123.6,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/baki/special_2.png",
-     "w": 323,
-     "h": 343,
-     "ax": 148.4,
-     "ay": 343
-    },
-    {
-     "src": "assets/sprites/baki/special_3.png",
-     "w": 220,
-     "h": 350,
-     "ax": 97.9,
-     "ay": 350
-    },
-    {
-     "src": "assets/sprites/baki/special_4.png",
-     "w": 268,
-     "h": 327,
-     "ax": 156.8,
-     "ay": 327
-    },
-    {
-     "src": "assets/sprites/baki/special_5.png",
-     "w": 299,
-     "h": 346,
-     "ax": 163.8,
-     "ay": 346
-    },
-    {
-     "src": "assets/sprites/baki/special_6.png",
-     "w": 331,
-     "h": 353,
-     "ax": 153.1,
-     "ay": 353
-    },
-    {
-     "src": "assets/sprites/baki/special_7.png",
-     "w": 232,
-     "h": 368,
-     "ax": 101.5,
-     "ay": 368
-    }
-   ]
-  },
-  "guard": {
-   "scale": 0.2462,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/guard_0.png",
-     "w": 452,
-     "h": 680,
-     "ax": 204.9,
-     "ay": 680
-    },
-    {
-     "src": "assets/sprites/baki/guard_1.png",
-     "w": 644,
-     "h": 700,
-     "ax": 342.7,
-     "ay": 700
-    }
-   ]
-  },
-  "idle": {
-   "scale": 0.2238,
-   "rate": 4.5,
-   "frames": [
-    {
-     "src": "assets/sprites/baki/idlev_0.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_1.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_2.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_3.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_4.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_5.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_6.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_7.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_8.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_9.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_10.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
-    },
-    {
-     "src": "assets/sprites/baki/idlev_11.png",
-     "w": 480,
-     "h": 790,
-     "ax": 215.1,
-     "ay": 790
     }
    ]
   }
@@ -59704,6 +58514,1196 @@ const SPRITES = {
      "h": 591,
      "ax": 278.3,
      "ay": 591
+    }
+   ]
+  }
+ },
+ "gally": {
+  "walk": {
+   "scale": 0.3209,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/walkv_0.png",
+     "w": 292,
+     "h": 516,
+     "ax": 197.5,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/gally/walkv_1.png",
+     "w": 266,
+     "h": 524,
+     "ax": 177.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/gally/walkv_2.png",
+     "w": 246,
+     "h": 527,
+     "ax": 157.5,
+     "ay": 527
+    },
+    {
+     "src": "assets/sprites/gally/walkv_3.png",
+     "w": 194,
+     "h": 533,
+     "ax": 107.5,
+     "ay": 533
+    },
+    {
+     "src": "assets/sprites/gally/walkv_4.png",
+     "w": 187,
+     "h": 534,
+     "ax": 102.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/gally/walkv_5.png",
+     "w": 203,
+     "h": 532,
+     "ax": 119.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/gally/walkv_6.png",
+     "w": 282,
+     "h": 524,
+     "ax": 153.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/gally/walkv_7.png",
+     "w": 316,
+     "h": 515,
+     "ax": 185.5,
+     "ay": 515
+    },
+    {
+     "src": "assets/sprites/gally/walkv_8.png",
+     "w": 298,
+     "h": 514,
+     "ax": 202.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/gally/walkv_9.png",
+     "w": 272,
+     "h": 514,
+     "ax": 189.5,
+     "ay": 514
+    },
+    {
+     "src": "assets/sprites/gally/walkv_10.png",
+     "w": 236,
+     "h": 523,
+     "ax": 150.5,
+     "ay": 523
+    },
+    {
+     "src": "assets/sprites/gally/walkv_11.png",
+     "w": 188,
+     "h": 528,
+     "ax": 101.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/walkv_12.png",
+     "w": 176,
+     "h": 528,
+     "ax": 89.5,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/walkv_13.png",
+     "w": 214,
+     "h": 524,
+     "ax": 123.5,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/gally/walkv_14.png",
+     "w": 282,
+     "h": 513,
+     "ax": 156.5,
+     "ay": 513
+    },
+    {
+     "src": "assets/sprites/gally/walkv_15.png",
+     "w": 299,
+     "h": 512,
+     "ax": 173.5,
+     "ay": 512
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.4804,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/jump_0.png",
+     "w": 197,
+     "h": 257,
+     "ax": 96.3,
+     "ay": 257
+    },
+    {
+     "src": "assets/sprites/gally/jump_1.png",
+     "w": 193,
+     "h": 325,
+     "ax": 100.0,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/gally/jump_2.png",
+     "w": 184,
+     "h": 356,
+     "ax": 90.6,
+     "ay": 356
+    },
+    {
+     "src": "assets/sprites/gally/jump_3.png",
+     "w": 136,
+     "h": 250,
+     "ax": 59.3,
+     "ay": 250
+    },
+    {
+     "src": "assets/sprites/gally/jump_4.png",
+     "w": 113,
+     "h": 224,
+     "ax": 54.4,
+     "ay": 224
+    },
+    {
+     "src": "assets/sprites/gally/jump_5.png",
+     "w": 179,
+     "h": 334,
+     "ax": 85.9,
+     "ay": 334
+    },
+    {
+     "src": "assets/sprites/gally/jump_6.png",
+     "w": 119,
+     "h": 358,
+     "ax": 56.1,
+     "ay": 358
+    },
+    {
+     "src": "assets/sprites/gally/jump_7.png",
+     "w": 178,
+     "h": 280,
+     "ax": 89.6,
+     "ay": 280
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.4804,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/fall_0.png",
+     "w": 190,
+     "h": 351,
+     "ax": 75.8,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/gally/fall_1.png",
+     "w": 294,
+     "h": 327,
+     "ax": 102.2,
+     "ay": 327
+    },
+    {
+     "src": "assets/sprites/gally/fall_2.png",
+     "w": 315,
+     "h": 209,
+     "ax": 143.7,
+     "ay": 209
+    },
+    {
+     "src": "assets/sprites/gally/fall_3.png",
+     "w": 277,
+     "h": 206,
+     "ax": 88.3,
+     "ay": 206
+    },
+    {
+     "src": "assets/sprites/gally/fall_4.png",
+     "w": 391,
+     "h": 103,
+     "ax": 195.5,
+     "ay": 103
+    },
+    {
+     "src": "assets/sprites/gally/fall_5.png",
+     "w": 328,
+     "h": 204,
+     "ax": 164.0,
+     "ay": 204
+    },
+    {
+     "src": "assets/sprites/gally/fall_6.png",
+     "w": 237,
+     "h": 240,
+     "ax": 147.2,
+     "ay": 240
+    },
+    {
+     "src": "assets/sprites/gally/fall_7.png",
+     "w": 235,
+     "h": 307,
+     "ax": 129.4,
+     "ay": 307
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.4804,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/combo_0.png",
+     "w": 177,
+     "h": 339,
+     "ax": 94.5,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/gally/combo_1.png",
+     "w": 267,
+     "h": 336,
+     "ax": 120.5,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/gally/combo_2.png",
+     "w": 286,
+     "h": 331,
+     "ax": 129.5,
+     "ay": 331
+    },
+    {
+     "src": "assets/sprites/gally/combo_3.png",
+     "w": 206,
+     "h": 351,
+     "ax": 104.7,
+     "ay": 351
+    },
+    {
+     "src": "assets/sprites/gally/combo_4.png",
+     "w": 137,
+     "h": 354,
+     "ax": 67.6,
+     "ay": 354
+    },
+    {
+     "src": "assets/sprites/gally/combo_5.png",
+     "w": 275,
+     "h": 341,
+     "ax": 109.1,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/gally/combo_6.png",
+     "w": 256,
+     "h": 340,
+     "ax": 85.6,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/gally/combo_7.png",
+     "w": 307,
+     "h": 222,
+     "ax": 110.1,
+     "ay": 222
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.4804,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/lowair_0.png",
+     "w": 173,
+     "h": 289,
+     "ax": 84.9,
+     "ay": 289
+    },
+    {
+     "src": "assets/sprites/gally/lowair_1.png",
+     "w": 242,
+     "h": 276,
+     "ax": 78.7,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/gally/lowair_2.png",
+     "w": 346,
+     "h": 255,
+     "ax": 110.6,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/gally/lowair_3.png",
+     "w": 187,
+     "h": 293,
+     "ax": 83.6,
+     "ay": 293
+    },
+    {
+     "src": "assets/sprites/gally/lowair_4.png",
+     "w": 144,
+     "h": 274,
+     "ax": 67.8,
+     "ay": 274
+    },
+    {
+     "src": "assets/sprites/gally/lowair_5.png",
+     "w": 206,
+     "h": 332,
+     "ax": 99.3,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/gally/lowair_6.png",
+     "w": 321,
+     "h": 294,
+     "ax": 113.1,
+     "ay": 294
+    },
+    {
+     "src": "assets/sprites/gally/lowair_7.png",
+     "w": 177,
+     "h": 362,
+     "ax": 75.8,
+     "ay": 362
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.4804,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/dashcharge_0.png",
+     "w": 264,
+     "h": 283,
+     "ax": 131.6,
+     "ay": 283
+    },
+    {
+     "src": "assets/sprites/gally/dashcharge_1.png",
+     "w": 333,
+     "h": 303,
+     "ax": 193.8,
+     "ay": 303
+    },
+    {
+     "src": "assets/sprites/gally/dashcharge_2.png",
+     "w": 405,
+     "h": 321,
+     "ax": 222.7,
+     "ay": 321
+    },
+    {
+     "src": "assets/sprites/gally/dashcharge_3.png",
+     "w": 257,
+     "h": 352,
+     "ax": 142.8,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/gally/dashcharge_4.png",
+     "w": 180,
+     "h": 296,
+     "ax": 77.4,
+     "ay": 296
+    },
+    {
+     "src": "assets/sprites/gally/dashcharge_5.png",
+     "w": 240,
+     "h": 336,
+     "ax": 116.4,
+     "ay": 336
+    },
+    {
+     "src": "assets/sprites/gally/dashcharge_6.png",
+     "w": 286,
+     "h": 369,
+     "ax": 155.3,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/gally/dashcharge_7.png",
+     "w": 254,
+     "h": 366,
+     "ax": 137.9,
+     "ay": 366
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.4804,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/special_0.png",
+     "w": 245,
+     "h": 341,
+     "ax": 112.3,
+     "ay": 341
+    },
+    {
+     "src": "assets/sprites/gally/special_1.png",
+     "w": 220,
+     "h": 339,
+     "ax": 95.7,
+     "ay": 339
+    },
+    {
+     "src": "assets/sprites/gally/special_2.png",
+     "w": 350,
+     "h": 337,
+     "ax": 179.7,
+     "ay": 337
+    },
+    {
+     "src": "assets/sprites/gally/special_3.png",
+     "w": 235,
+     "h": 350,
+     "ax": 103.3,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/gally/special_4.png",
+     "w": 153,
+     "h": 264,
+     "ax": 77.2,
+     "ay": 264
+    },
+    {
+     "src": "assets/sprites/gally/special_5.png",
+     "w": 172,
+     "h": 291,
+     "ax": 79.1,
+     "ay": 291
+    },
+    {
+     "src": "assets/sprites/gally/special_6.png",
+     "w": 403,
+     "h": 249,
+     "ax": 201.5,
+     "ay": 249
+    },
+    {
+     "src": "assets/sprites/gally/special_7.png",
+     "w": 230,
+     "h": 285,
+     "ax": 119.3,
+     "ay": 285
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2293,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/guard_0.png",
+     "w": 384,
+     "h": 675,
+     "ax": 202.3,
+     "ay": 675
+    },
+    {
+     "src": "assets/sprites/gally/guard_1.png",
+     "w": 517,
+     "h": 637,
+     "ax": 269.7,
+     "ay": 637
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.309,
+   "rate": 9.29,
+   "frames": [
+    {
+     "src": "assets/sprites/gally/idlev_0.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_1.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_2.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_3.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_4.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_5.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_6.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_7.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_8.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_9.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_10.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    },
+    {
+     "src": "assets/sprites/gally/idlev_11.png",
+     "w": 272,
+     "h": 528,
+     "ax": 142.2,
+     "ay": 528
+    }
+   ]
+  }
+ },
+ "baki": {
+  "walk": {
+   "scale": 0.3384,
+   "rate": 29.09,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/walkv_0.png",
+     "w": 223,
+     "h": 548,
+     "ax": 116.5,
+     "ay": 548
+    },
+    {
+     "src": "assets/sprites/baki/walkv_1.png",
+     "w": 242,
+     "h": 546,
+     "ax": 137.5,
+     "ay": 546
+    },
+    {
+     "src": "assets/sprites/baki/walkv_2.png",
+     "w": 282,
+     "h": 542,
+     "ax": 164.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/baki/walkv_3.png",
+     "w": 324,
+     "h": 534,
+     "ax": 192.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/walkv_4.png",
+     "w": 324,
+     "h": 530,
+     "ax": 216.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/baki/walkv_5.png",
+     "w": 314,
+     "h": 532,
+     "ax": 207.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/baki/walkv_6.png",
+     "w": 288,
+     "h": 536,
+     "ax": 177.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/baki/walkv_7.png",
+     "w": 254,
+     "h": 540,
+     "ax": 138.5,
+     "ay": 540
+    },
+    {
+     "src": "assets/sprites/baki/walkv_8.png",
+     "w": 238,
+     "h": 544,
+     "ax": 117.5,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/baki/walkv_9.png",
+     "w": 242,
+     "h": 544,
+     "ax": 118.5,
+     "ay": 544
+    },
+    {
+     "src": "assets/sprites/baki/walkv_10.png",
+     "w": 264,
+     "h": 538,
+     "ax": 134.5,
+     "ay": 538
+    },
+    {
+     "src": "assets/sprites/baki/walkv_11.png",
+     "w": 304,
+     "h": 532,
+     "ax": 164.5,
+     "ay": 532
+    },
+    {
+     "src": "assets/sprites/baki/walkv_12.png",
+     "w": 320,
+     "h": 530,
+     "ax": 188.5,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/baki/walkv_13.png",
+     "w": 314,
+     "h": 536,
+     "ax": 186.5,
+     "ay": 536
+    },
+    {
+     "src": "assets/sprites/baki/walkv_14.png",
+     "w": 287,
+     "h": 542,
+     "ax": 164.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/baki/walkv_15.png",
+     "w": 248,
+     "h": 544,
+     "ax": 133.5,
+     "ay": 544
+    }
+   ]
+  },
+  "jump": {
+   "scale": 0.5124,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/jump_0.png",
+     "w": 175,
+     "h": 260,
+     "ax": 71.9,
+     "ay": 260
+    },
+    {
+     "src": "assets/sprites/baki/jump_1.png",
+     "w": 231,
+     "h": 325,
+     "ax": 130.5,
+     "ay": 325
+    },
+    {
+     "src": "assets/sprites/baki/jump_2.png",
+     "w": 219,
+     "h": 378,
+     "ax": 109.2,
+     "ay": 378
+    },
+    {
+     "src": "assets/sprites/baki/jump_3.png",
+     "w": 161,
+     "h": 259,
+     "ax": 70.3,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/baki/jump_4.png",
+     "w": 139,
+     "h": 229,
+     "ax": 63.4,
+     "ay": 229
+    },
+    {
+     "src": "assets/sprites/baki/jump_5.png",
+     "w": 191,
+     "h": 340,
+     "ax": 102.5,
+     "ay": 340
+    },
+    {
+     "src": "assets/sprites/baki/jump_6.png",
+     "w": 186,
+     "h": 376,
+     "ax": 92.6,
+     "ay": 376
+    },
+    {
+     "src": "assets/sprites/baki/jump_7.png",
+     "w": 148,
+     "h": 282,
+     "ax": 62.5,
+     "ay": 282
+    }
+   ]
+  },
+  "fall": {
+   "scale": 0.5124,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/fall_0.png",
+     "w": 189,
+     "h": 355,
+     "ax": 96.2,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/baki/fall_1.png",
+     "w": 210,
+     "h": 344,
+     "ax": 87.6,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/baki/fall_2.png",
+     "w": 259,
+     "h": 297,
+     "ax": 100.0,
+     "ay": 297
+    },
+    {
+     "src": "assets/sprites/baki/fall_3.png",
+     "w": 327,
+     "h": 222,
+     "ax": 149.8,
+     "ay": 222
+    },
+    {
+     "src": "assets/sprites/baki/fall_4.png",
+     "w": 384,
+     "h": 144,
+     "ax": 192.0,
+     "ay": 144
+    },
+    {
+     "src": "assets/sprites/baki/fall_5.png",
+     "w": 294,
+     "h": 232,
+     "ax": 170.6,
+     "ay": 232
+    },
+    {
+     "src": "assets/sprites/baki/fall_6.png",
+     "w": 251,
+     "h": 255,
+     "ax": 156.9,
+     "ay": 255
+    },
+    {
+     "src": "assets/sprites/baki/fall_7.png",
+     "w": 194,
+     "h": 355,
+     "ax": 99.7,
+     "ay": 355
+    }
+   ]
+  },
+  "combo": {
+   "scale": 0.5124,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/combo_0.png",
+     "w": 215,
+     "h": 350,
+     "ax": 108.5,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/baki/combo_1.png",
+     "w": 294,
+     "h": 350,
+     "ax": 111.7,
+     "ay": 350
+    },
+    {
+     "src": "assets/sprites/baki/combo_2.png",
+     "w": 314,
+     "h": 352,
+     "ax": 123.1,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/baki/combo_3.png",
+     "w": 226,
+     "h": 369,
+     "ax": 109.8,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/baki/combo_4.png",
+     "w": 167,
+     "h": 370,
+     "ax": 86.4,
+     "ay": 370
+    },
+    {
+     "src": "assets/sprites/baki/combo_5.png",
+     "w": 322,
+     "h": 345,
+     "ax": 147.5,
+     "ay": 345
+    },
+    {
+     "src": "assets/sprites/baki/combo_6.png",
+     "w": 334,
+     "h": 361,
+     "ax": 138.0,
+     "ay": 361
+    },
+    {
+     "src": "assets/sprites/baki/combo_7.png",
+     "w": 327,
+     "h": 231,
+     "ax": 109.6,
+     "ay": 231
+    }
+   ]
+  },
+  "lowair": {
+   "scale": 0.5124,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/lowair_0.png",
+     "w": 202,
+     "h": 281,
+     "ax": 105.0,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/baki/lowair_1.png",
+     "w": 244,
+     "h": 276,
+     "ax": 123.7,
+     "ay": 276
+    },
+    {
+     "src": "assets/sprites/baki/lowair_2.png",
+     "w": 339,
+     "h": 218,
+     "ax": 113.1,
+     "ay": 218
+    },
+    {
+     "src": "assets/sprites/baki/lowair_3.png",
+     "w": 290,
+     "h": 240,
+     "ax": 192.4,
+     "ay": 240
+    },
+    {
+     "src": "assets/sprites/baki/lowair_4.png",
+     "w": 161,
+     "h": 281,
+     "ax": 69.8,
+     "ay": 281
+    },
+    {
+     "src": "assets/sprites/baki/lowair_5.png",
+     "w": 305,
+     "h": 284,
+     "ax": 153.7,
+     "ay": 284
+    },
+    {
+     "src": "assets/sprites/baki/lowair_6.png",
+     "w": 369,
+     "h": 259,
+     "ax": 101.9,
+     "ay": 259
+    },
+    {
+     "src": "assets/sprites/baki/lowair_7.png",
+     "w": 202,
+     "h": 361,
+     "ax": 92.7,
+     "ay": 361
+    }
+   ]
+  },
+  "dashcharge": {
+   "scale": 0.5124,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/dashcharge_0.png",
+     "w": 239,
+     "h": 355,
+     "ax": 141.7,
+     "ay": 355
+    },
+    {
+     "src": "assets/sprites/baki/dashcharge_1.png",
+     "w": 354,
+     "h": 292,
+     "ax": 206.9,
+     "ay": 292
+    },
+    {
+     "src": "assets/sprites/baki/dashcharge_2.png",
+     "w": 378,
+     "h": 362,
+     "ax": 193.4,
+     "ay": 362
+    },
+    {
+     "src": "assets/sprites/baki/dashcharge_3.png",
+     "w": 237,
+     "h": 369,
+     "ax": 121.1,
+     "ay": 369
+    },
+    {
+     "src": "assets/sprites/baki/dashcharge_4.png",
+     "w": 244,
+     "h": 326,
+     "ax": 137.3,
+     "ay": 326
+    },
+    {
+     "src": "assets/sprites/baki/dashcharge_5.png",
+     "w": 253,
+     "h": 371,
+     "ax": 125.7,
+     "ay": 371
+    },
+    {
+     "src": "assets/sprites/baki/dashcharge_6.png",
+     "w": 322,
+     "h": 379,
+     "ax": 164.1,
+     "ay": 379
+    },
+    {
+     "src": "assets/sprites/baki/dashcharge_7.png",
+     "w": 248,
+     "h": 366,
+     "ax": 137.3,
+     "ay": 366
+    }
+   ]
+  },
+  "special": {
+   "scale": 0.5124,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/special_0.png",
+     "w": 181,
+     "h": 364,
+     "ax": 74.3,
+     "ay": 364
+    },
+    {
+     "src": "assets/sprites/baki/special_1.png",
+     "w": 241,
+     "h": 352,
+     "ax": 113.8,
+     "ay": 352
+    },
+    {
+     "src": "assets/sprites/baki/special_2.png",
+     "w": 379,
+     "h": 349,
+     "ax": 180.3,
+     "ay": 349
+    },
+    {
+     "src": "assets/sprites/baki/special_3.png",
+     "w": 191,
+     "h": 365,
+     "ax": 87.1,
+     "ay": 365
+    },
+    {
+     "src": "assets/sprites/baki/special_4.png",
+     "w": 264,
+     "h": 344,
+     "ax": 137.7,
+     "ay": 344
+    },
+    {
+     "src": "assets/sprites/baki/special_5.png",
+     "w": 342,
+     "h": 332,
+     "ax": 184.1,
+     "ay": 332
+    },
+    {
+     "src": "assets/sprites/baki/special_6.png",
+     "w": 362,
+     "h": 353,
+     "ax": 166.2,
+     "ay": 353
+    },
+    {
+     "src": "assets/sprites/baki/special_7.png",
+     "w": 229,
+     "h": 348,
+     "ax": 126.2,
+     "ay": 348
+    }
+   ]
+  },
+  "guard": {
+   "scale": 0.2536,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/guard_0.png",
+     "w": 503,
+     "h": 660,
+     "ax": 248.0,
+     "ay": 660
+    },
+    {
+     "src": "assets/sprites/baki/guard_1.png",
+     "w": 618,
+     "h": 653,
+     "ax": 348.4,
+     "ay": 653
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3416,
+   "rate": 5.05,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/idlev_0.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_1.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_2.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_3.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_4.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_5.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_6.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_7.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_8.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_9.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_10.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
+    },
+    {
+     "src": "assets/sprites/baki/idlev_11.png",
+     "w": 321,
+     "h": 534,
+     "ax": 139.5,
+     "ay": 534
     }
    ]
   }
