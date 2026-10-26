@@ -53,20 +53,20 @@
     <div class="btn big" data-a="kick"   data-p="8 50">GARDE</div>
     <div class="btn big" data-a="punch"  data-p="160 50">ATTAQUE</div>
     <div class="btn big" data-a="blast"  data-p="84 94">SPÉCIAL</div>
-    <div class="btn small" data-a="dash"  data-p="172 142">DASH</div>
-    <div class="btn small" data-a="ki"    data-p="20 142" id="tcKi">KI</div>
-    <div class="btn small" data-a="ultra" data-p="96 186" id="tcUlt">ULTIME</div>
+    <div class="btn small" data-a="dash"  data-p="172 138">DASH</div>
+    <div class="btn small" data-a="ki"    data-p="20 138" id="tcKi">KI</div>
+    <div class="btn small" data-a="ultra" data-p="252 112" id="tcUlt">ULTIME</div>
     <div class="btn top" data-a="pause" style="left:50%; top:6px; margin-left:calc(-64px * var(--u))">❚❚</div>
     <div class="btn top" data-a="tag"   style="left:50%; top:6px; margin-left:calc(6px * var(--u))" id="tcTag">RELAIS</div>
     <div class="btn big mbtn" data-m="ok"   data-p="120 6">VALIDER</div>
     <div class="btn big mbtn" data-m="back" data-p="8 80">RETOUR</div>`;
-  // Disposition d'origine (croix Saut / Garde / Attaque / Spécial, Dash et Ki au-dessus, Ultime en haut), boutons 1,6 fois
-  // plus grands (--u = 1,6) et serrés ; sur un petit téléphone, --u baisse juste assez pour tenir en hauteur (250 px à --u = 1)
+  // Disposition d'origine (croix Saut / Garde / Attaque / Spécial, Dash et Ki au-dessus, Ultime à gauche de Dash), boutons 1,6 fois
+  // plus grands (--u = 1,6) et serrés ; sur un petit téléphone, --u baisse juste assez pour tenir en hauteur (210 px à --u = 1 : 1,6 tient dès 344 px de haut)
   for (const b of root.querySelectorAll('[data-p]')) {
     const [r, bt] = b.dataset.p.split(' ');
     b.style.right = `calc(${r}px * var(--u))`; b.style.bottom = `calc(${bt}px * var(--u))`;
   }
-  const fit = () => root.style.setProperty('--u', Math.min(1.6, (innerHeight - 8) / 250, innerWidth * 0.55 / 236).toFixed(3));
+  const fit = () => root.style.setProperty('--u', Math.min(1.6, (innerHeight - 8) / 210, innerWidth * 0.68 / 316).toFixed(3));
   fit(); addEventListener('resize', fit);
   document.body.appendChild(root);
   const turn = document.createElement('div'); turn.id = 'turn';
