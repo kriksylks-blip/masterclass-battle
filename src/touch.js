@@ -26,17 +26,17 @@
       background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), rgba(255,255,255,.08) 60%, rgba(0,0,0,.25));
       border: 2px solid rgba(255,255,255,.55); box-shadow: 0 2px 8px rgba(0,0,0,.5); }
     #tc .btn.on { transform: scale(.9); background: rgba(255,225,77,.55); }
-    #tc .big { width: 68px; height: 68px; font-size: 15px; }
-    #tc .mbtn { width: 76px; height: 76px; font-size: 14px; display: none; }
+    #tc .big { width: 88px; height: 88px; font-size: 17px; }
+    #tc .mbtn { width: 96px; height: 96px; font-size: 16px; display: none; }
     #tc.menu .btn:not(.mbtn) { display: none !important; }
     #tc.menu .mbtn { display: flex; }
-    #tc .small { width: 50px; height: 50px; font-size: 11px; }
-    #tc .top { width: 44px; height: 30px; border-radius: 10px; font-size: 11px; }
+    #tc .small { width: 64px; height: 64px; font-size: 13px; }
+    #tc .top { width: 58px; height: 40px; border-radius: 12px; font-size: 13px; }
     #tc .ready { border-color: #ffe14d; box-shadow: 0 0 14px #ffe14d; animation: tcp .6s infinite alternate; }
     @keyframes tcp { to { box-shadow: 0 0 26px #ffe14d; } }
-    #tc .stick { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%;
+    #tc .stick { position: absolute; width: 156px; height: 156px; margin: -78px 0 0 -78px; border-radius: 50%;
       border: 2px solid rgba(255,255,255,.4); background: rgba(255,255,255,.08); display: none; }
-    #tc .knob { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%;
+    #tc .knob { position: absolute; left: 50%; top: 50%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%;
       background: rgba(255,255,255,.45); border: 2px solid #fff; }
     #tc .hint { position: absolute; left: 6%; bottom: 14%; color: rgba(255,255,255,.35); font: 700 12px sans-serif; }
     #turn { position: fixed; inset: 0; z-index: 9; display: none; background: #05030c; color: #fff; font: 700 20px sans-serif;
@@ -49,17 +49,17 @@
   const root = document.createElement('div'); root.id = 'tc';
   root.innerHTML = `
     <div class="zone"><div class="hint">joystick : pose ton pouce ici</div><div class="stick"><div class="knob"></div></div></div>
-    <div class="btn big" data-a="jump"   style="right:92px; bottom:14px">SAUT</div>
-    <div class="btn big" data-a="kick"   style="right:18px; bottom:88px">GARDE</div>
-    <div class="btn big" data-a="punch"  style="right:166px;bottom:88px">ATTAQUE</div>
-    <div class="btn big" data-a="blast"  style="right:92px; bottom:162px">SPÉCIAL</div>
-    <div class="btn small" data-a="dash"  style="right:200px;bottom:178px">DASH</div>
-    <div class="btn small" data-a="ki"    style="right:22px; bottom:186px" id="tcKi">KI</div>
-    <div class="btn small" data-a="ultra" style="right:30px; bottom:248px" id="tcUlt">ULTIME</div>
-    <div class="btn top" data-a="pause" style="left:50%; top:6px; margin-left:-50px">❚❚</div>
+    <div class="btn big" data-a="jump"   style="right:120px; bottom:18px">SAUT</div>
+    <div class="btn big" data-a="kick"   style="right:23px; bottom:114px">GARDE</div>
+    <div class="btn big" data-a="punch"  style="right:216px;bottom:114px">ATTAQUE</div>
+    <div class="btn big" data-a="blast"  style="right:120px; bottom:211px">SPÉCIAL</div>
+    <div class="btn small" data-a="dash"  style="right:260px;bottom:231px">DASH</div>
+    <div class="btn small" data-a="ki"    style="right:29px; bottom:242px" id="tcKi">KI</div>
+    <div class="btn small" data-a="ultra" style="right:39px; bottom:322px" id="tcUlt">ULTIME</div>
+    <div class="btn top" data-a="pause" style="left:50%; top:6px; margin-left:-64px">❚❚</div>
     <div class="btn top" data-a="tag"   style="left:50%; top:6px; margin-left:6px" id="tcTag">RELAIS</div>
-    <div class="btn big mbtn" data-m="ok"   style="right:110px;bottom:40px">VALIDER</div>
-    <div class="btn big mbtn" data-m="back" style="right:24px; bottom:120px">RETOUR</div>`;
+    <div class="btn big mbtn" data-m="ok"   style="right:143px;bottom:52px">VALIDER</div>
+    <div class="btn big mbtn" data-m="back" style="right:31px; bottom:156px">RETOUR</div>`;
   document.body.appendChild(root);
   const turn = document.createElement('div'); turn.id = 'turn';
   turn.innerHTML = '<b>⟳</b>Tourne ton téléphone<br>à l\'horizontale';
@@ -132,7 +132,7 @@
 
   // Joystick flottant : il apparaît là où le pouce se pose, dans la moitié gauche
   const zone = root.querySelector('.zone'), stick = root.querySelector('.stick'), knob = root.querySelector('.knob'), hint = root.querySelector('.hint');
-  const R = 50, held = new Set();
+  const R = 65, held = new Set();
   let sid = null, ox = 0, oy = 0;
   const setDirs = dirs => {
     if (paused && typeof menuMove === 'function') {
