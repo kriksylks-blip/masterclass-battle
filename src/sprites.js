@@ -24435,112 +24435,112 @@ const SPRITES = {
      "src": "assets/sprites/jk_boss/walkv_15.png",
      "w": 362,
      "h": 524,
-     "ax": 181.5,
+     "ax": 180.5,
      "ay": 524
     },
     {
      "src": "assets/sprites/jk_boss/walkv_14.png",
      "w": 360,
      "h": 528,
-     "ax": 179.5,
+     "ax": 180.5,
      "ay": 528
     },
     {
      "src": "assets/sprites/jk_boss/walkv_13.png",
      "w": 356,
      "h": 530,
-     "ax": 177.5,
+     "ax": 178.5,
      "ay": 530
     },
     {
      "src": "assets/sprites/jk_boss/walkv_12.png",
      "w": 358,
      "h": 528,
-     "ax": 168.5,
+     "ax": 189.5,
      "ay": 528
     },
     {
      "src": "assets/sprites/jk_boss/walkv_11.png",
      "w": 356,
      "h": 526,
-     "ax": 167.5,
+     "ax": 188.5,
      "ay": 526
     },
     {
      "src": "assets/sprites/jk_boss/walkv_10.png",
      "w": 362,
      "h": 522,
-     "ax": 175.5,
+     "ax": 186.5,
      "ay": 522
     },
     {
      "src": "assets/sprites/jk_boss/walkv_9.png",
      "w": 364,
      "h": 518,
-     "ax": 180.5,
+     "ax": 183.5,
      "ay": 518
     },
     {
      "src": "assets/sprites/jk_boss/walkv_8.png",
      "w": 356,
      "h": 516,
-     "ax": 180.5,
+     "ax": 175.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/jk_boss/walkv_7.png",
      "w": 360,
      "h": 516,
-     "ax": 181.5,
+     "ax": 178.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/jk_boss/walkv_6.png",
      "w": 360,
      "h": 522,
-     "ax": 181.5,
+     "ax": 178.5,
      "ay": 522
     },
     {
      "src": "assets/sprites/jk_boss/walkv_5.png",
      "w": 362,
      "h": 518,
-     "ax": 177.5,
+     "ax": 184.5,
      "ay": 518
     },
     {
      "src": "assets/sprites/jk_boss/walkv_4.png",
      "w": 362,
      "h": 516,
-     "ax": 178.5,
+     "ax": 183.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/jk_boss/walkv_3.png",
      "w": 360,
      "h": 512,
-     "ax": 169.5,
+     "ax": 190.5,
      "ay": 512
     },
     {
      "src": "assets/sprites/jk_boss/walkv_2.png",
      "w": 356,
      "h": 514,
-     "ax": 177.5,
+     "ax": 178.5,
      "ay": 514
     },
     {
      "src": "assets/sprites/jk_boss/walkv_1.png",
      "w": 360,
      "h": 516,
-     "ax": 180.5,
+     "ax": 179.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/jk_boss/walkv_0.png",
      "w": 374,
      "h": 520,
-     "ax": 188.5,
+     "ax": 185.5,
      "ay": 520
     }
    ]
@@ -27363,112 +27363,112 @@ const SPRITES = {
      "src": "assets/sprites/bl_mini/walkv_0.png",
      "w": 248,
      "h": 538,
-     "ax": 131.5,
+     "ax": 116.5,
      "ay": 538
     },
     {
      "src": "assets/sprites/bl_mini/walkv_1.png",
      "w": 220,
      "h": 544,
-     "ax": 116.5,
+     "ax": 103.5,
      "ay": 544
     },
     {
      "src": "assets/sprites/bl_mini/walkv_2.png",
      "w": 206,
      "h": 546,
-     "ax": 110.5,
+     "ax": 95.5,
      "ay": 546
     },
     {
      "src": "assets/sprites/bl_mini/walkv_3.png",
      "w": 256,
      "h": 544,
-     "ax": 153.5,
+     "ax": 102.5,
      "ay": 544
     },
     {
      "src": "assets/sprites/bl_mini/walkv_4.png",
      "w": 272,
      "h": 542,
-     "ax": 164.5,
+     "ax": 107.5,
      "ay": 542
     },
     {
      "src": "assets/sprites/bl_mini/walkv_5.png",
      "w": 301,
      "h": 536,
-     "ax": 181.5,
+     "ax": 119.5,
      "ay": 536
     },
     {
      "src": "assets/sprites/bl_mini/walkv_6.png",
      "w": 308,
      "h": 530,
-     "ax": 184.5,
+     "ax": 123.5,
      "ay": 530
     },
     {
      "src": "assets/sprites/bl_mini/walkv_7.png",
      "w": 300,
      "h": 528,
-     "ax": 178.5,
+     "ax": 121.5,
      "ay": 528
     },
     {
      "src": "assets/sprites/bl_mini/walkv_8.png",
      "w": 232,
      "h": 530,
-     "ax": 133.5,
+     "ax": 98.5,
      "ay": 530
     },
     {
      "src": "assets/sprites/bl_mini/walkv_9.png",
      "w": 213,
      "h": 532,
-     "ax": 113.5,
+     "ax": 99.5,
      "ay": 532
     },
     {
      "src": "assets/sprites/bl_mini/walkv_10.png",
      "w": 236,
      "h": 536,
-     "ax": 125.5,
+     "ax": 110.5,
      "ay": 536
     },
     {
      "src": "assets/sprites/bl_mini/walkv_11.png",
      "w": 252,
      "h": 536,
-     "ax": 133.5,
+     "ax": 118.5,
      "ay": 536
     },
     {
      "src": "assets/sprites/bl_mini/walkv_12.png",
      "w": 272,
      "h": 534,
-     "ax": 146.0,
+     "ax": 126.0,
      "ay": 534
     },
     {
      "src": "assets/sprites/bl_mini/walkv_13.png",
      "w": 292,
      "h": 532,
-     "ax": 153.5,
+     "ax": 138.5,
      "ay": 532
     },
     {
      "src": "assets/sprites/bl_mini/walkv_14.png",
      "w": 284,
      "h": 532,
-     "ax": 149.5,
+     "ax": 134.5,
      "ay": 532
     },
     {
      "src": "assets/sprites/bl_mini/walkv_15.png",
      "w": 260,
      "h": 536,
-     "ax": 137.0,
+     "ax": 123.0,
      "ay": 536
     }
    ]
@@ -28764,112 +28764,112 @@ const SPRITES = {
      "src": "assets/sprites/rk_mini/walkv_0.png",
      "w": 354,
      "h": 524,
-     "ax": 146.5,
+     "ax": 207.5,
      "ay": 524
     },
     {
      "src": "assets/sprites/rk_mini/walkv_1.png",
      "w": 352,
      "h": 522,
-     "ax": 143.5,
+     "ax": 208.5,
      "ay": 522
     },
     {
      "src": "assets/sprites/rk_mini/walkv_2.png",
      "w": 350,
      "h": 518,
-     "ax": 140.5,
+     "ax": 209.5,
      "ay": 518
     },
     {
      "src": "assets/sprites/rk_mini/walkv_3.png",
      "w": 352,
      "h": 514,
-     "ax": 139.5,
+     "ax": 212.5,
      "ay": 514
     },
     {
      "src": "assets/sprites/rk_mini/walkv_4.png",
      "w": 354,
      "h": 510,
-     "ax": 140.5,
+     "ax": 213.5,
      "ay": 510
     },
     {
      "src": "assets/sprites/rk_mini/walkv_5.png",
      "w": 356,
      "h": 514,
-     "ax": 143.5,
+     "ax": 212.5,
      "ay": 514
     },
     {
      "src": "assets/sprites/rk_mini/walkv_6.png",
      "w": 360,
      "h": 516,
-     "ax": 145.5,
+     "ax": 214.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/rk_mini/walkv_7.png",
      "w": 362,
      "h": 516,
-     "ax": 144.5,
+     "ax": 217.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/rk_mini/walkv_8.png",
      "w": 362,
      "h": 514,
-     "ax": 142.5,
+     "ax": 219.5,
      "ay": 514
     },
     {
      "src": "assets/sprites/rk_mini/walkv_9.png",
      "w": 362,
      "h": 516,
-     "ax": 142.5,
+     "ax": 219.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/rk_mini/walkv_10.png",
      "w": 362,
      "h": 516,
-     "ax": 142.5,
+     "ax": 219.5,
      "ay": 516
     },
     {
      "src": "assets/sprites/rk_mini/walkv_11.png",
      "w": 362,
      "h": 522,
-     "ax": 143.5,
+     "ax": 218.5,
      "ay": 522
     },
     {
      "src": "assets/sprites/rk_mini/walkv_12.png",
      "w": 362,
      "h": 524,
-     "ax": 145.5,
+     "ax": 216.5,
      "ay": 524
     },
     {
      "src": "assets/sprites/rk_mini/walkv_13.png",
      "w": 360,
      "h": 528,
-     "ax": 149.5,
+     "ax": 210.5,
      "ay": 528
     },
     {
      "src": "assets/sprites/rk_mini/walkv_14.png",
      "w": 360,
      "h": 530,
-     "ax": 149.5,
+     "ax": 210.5,
      "ay": 530
     },
     {
      "src": "assets/sprites/rk_mini/walkv_15.png",
      "w": 356,
      "h": 530,
-     "ax": 149.5,
+     "ax": 206.5,
      "ay": 530
     }
    ]
