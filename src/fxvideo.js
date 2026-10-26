@@ -2972,6 +2972,43 @@ const FXV = {
    "w": 560,
    "h": 335
   }
+ ],
+ "comet_gold_v": [
+  {
+   "src": "assets/fx/comet_gold_v_9.png",
+   "w": 560,
+   "h": 308
+  },
+  {
+   "src": "assets/fx/comet_gold_v_10.png",
+   "w": 560,
+   "h": 308
+  },
+  {
+   "src": "assets/fx/comet_gold_v_11.png",
+   "w": 560,
+   "h": 308
+  },
+  {
+   "src": "assets/fx/comet_gold_v_12.png",
+   "w": 560,
+   "h": 308
+  },
+  {
+   "src": "assets/fx/comet_gold_v_13.png",
+   "w": 560,
+   "h": 308
+  },
+  {
+   "src": "assets/fx/comet_gold_v_14.png",
+   "w": 560,
+   "h": 308
+  },
+  {
+   "src": "assets/fx/comet_gold_v_15.png",
+   "w": 560,
+   "h": 308
+  }
  ]
 };
 Object.assign(FX, FXV);

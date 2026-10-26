@@ -37,9 +37,9 @@ const PENDING = {};
 // effets filmés lourds : chargés seulement quand un de leurs persos joue (sinon le téléphone sature au démarrage)
 const FX_LAZY = {
   sanji_spin_v: ['sanji'], hell_pillar_v: ['sanji'], blade_spin_v: ['mikasa', 'levi'], big_slash_v: ['gintoki', 'trunks', 'guts'],
-  fang_x_v: ['inosuke'], palm_wave_v: ['gally'], whip_arc_v: ['baki'], cannon_boom_v: ['revy', 'itachi', 'piccolo'],
+  fang_x_v: ['inosuke'], palm_wave_v: ['gally'], whip_arc_v: ['baki'], cannon_boom_v: ['revy', 'itachi', 'piccolo', 'seiya'],
   shoto_ice_v: ['shoto'], shoto_fire_v: ['shoto'], titan_bolt_v: ['eren'], alchemy_v: ['edward'], muzzle_v: ['revy'],
-  ed_spike1_v: ['edward'], susanoo_sword_v: ['itachi'],
+  ed_spike1_v: ['edward'], susanoo_sword_v: ['itachi'], comet_gold_v: ['seiya'],
   getsuga_v: ['ichigo'], genki_v: ['goku'], gigant_v: ['luffy'], violet_orb: ['gojo'], violet_body: ['gojo'], zoro_x: ['zoro'],
   galick_body: ['vegeta'], galick_src: ['vegeta'], chidori_v: ['sasuke', 'kakashi'], hinokami_v: ['tanjiro'], hekireki_v: ['zenitsu'],
   entei_v: ['ace'], hiken_v: ['ace'], burning_v: ['trunks'], strikeair_v: ['saber'], katon_v: ['itachi'], vrasen_v: ['boruto'],
@@ -94,9 +94,8 @@ function requireGame(chars, L) {
   const keep = new Set([...frames, ...bgs, ...intros, ...cuts, ...fxv]);
   // pendant le combat, on libère aussi la vitrine de la sélection et les aperçus des niveaux (~270 Mo décodés) :
   // ils reviennent au retour dans les menus (menuImages). Sinon un téléphone sature et n'affiche plus les persos.
-  for (const id of chars) keep.add(CHARS[id]?.card); // portraits : seulement ceux des persos en jeu (les autres reviennent avec les menus)
-  const cards = new Set(Object.values(CHARS).map(C => C.card));
-  for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin|pv)_/.test(k) || lazy.has(k) || cards.has(k)) && !keep.has(k)) delete IMG[k];
+  // les portraits restent chargés : la grille de sélection s'affiche tout de suite au retour de partie
+  for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin|pv)_/.test(k) || lazy.has(k)) && !keep.has(k)) delete IMG[k];
   menuImagesOk = false;
   for (const k of Object.keys(layerCache)) delete layerCache[k]; // vignettes des niveaux déjà réduites : refaites au besoin
   if (typeof harmCache !== 'undefined') for (const k of Object.keys(harmCache)) if (!bgs.some(b => k.startsWith(b))) delete harmCache[k]; // décors harmonisés des autres niveaux
@@ -1010,7 +1009,7 @@ const JW_MOVES = { ...SWORD,
 // Saitama : un poing banal… qui suffit
 const SA_MOVES = { ...NEWKICK(FIST),
   dash:    { dur: 0.55, on: 0.12, off: 0.42, reach: [0, 130], y: [-150, -40], dmg: 3, kb: 520, ki: 8, launch: -520, push: 1150, pushAt: 0.08, pushDur: 0.34, call: 'COURSE NORMALE', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.2, 0.45]] },
-  serious: { dur: 1.0, cost: 35, on: 0.55, off: 0.72, reach: [0, 190], y: [-180, -40], dmg: 7, kb: 900, ki: 0, launch: -760, push: 500, pushAt: 0.5, pushDur: 0.15, boom: true, fistGlow: [0.05, 0.55],
+  serious: { dur: 1.0, cost: 35, on: 0.55, off: 0.72, reach: [0, 190], y: [-180, -40], dmg: 7, kb: 900, ki: 0, launch: -760, push: 500, pushAt: 0.5, pushDur: 0.15, boom: true, fistGlow: [0.05, 0.55], fistAt: [[-80, -275], [150, -200]],
              call: 'COUP DE POING NORMAL.', p: ['special', [0, 1, 2, 3], [0.3, 0.55, 0.85]] },
 };
 // Gojo : l'infini, Rouge et Bleu
@@ -4896,7 +4895,7 @@ function updateProjs(dt) {
       // AP Shot : il éclate dans le premier ennemi touché ; météores : petit éclat ; Comète : traverse et explose
       if (p.kind === 'apshot') { animFX('explosion', e.x, p.y, 240, 0.45); shake = Math.max(shake, 14); audio.play('ultraBoom', 0.7, 1.4, 0); p.done = true; break; }
       if (p.kind === 'meteor') { burst(e.x - p.dir * 20, p.y, '#e8f6ff', 4); if (!p.pierce) { p.done = true; break; } continue; } // ultime : ils traversent
-      if (p.kind === 'comet') { flash = Math.max(flash, 0.3); shake = Math.max(shake, 16); burst(e.x, p.y, '#e8f6ff', 18); continue; }
+      if (p.kind === 'comet') { flash = Math.max(flash, 0.5); shake = Math.max(shake, 24); hitstop = Math.max(hitstop, 0.08); burst(e.x, p.y, '#fff3b0', 30); gfx('cannon_boom', e.x, p.y, 380, 0.5, { filter: 'hue-rotate(25deg) brightness(1.2)' }); continue; }
       if (p.kind === 'katon') { blastFX(e.x - p.dir * 10, p.y, 0.8); animFX('explosion', e.x, p.y, 220, 0.45, { filter: 'hue-rotate(-15deg) saturate(1.6)' }); continue; }
       if (p.kind === 'bullet') { p.done = true; if (h) h.ki = Math.min(100, h.ki + p.ki); impactFX(e.x - p.dir * 20, p.y, '#ffe0a0', false); break; }
       if (p.kind === 'airshot' || p.kind === 'red') animFX('explosion', e.x, e.y - 110, 200, 0.4, p.kind === 'red' ? { filter: 'hue-rotate(-30deg) saturate(2)' } : {});
@@ -5004,7 +5003,7 @@ const fadeCanvas = document.createElement('canvas');
 // finissait par dépasser la limite de mémoire des canvas de Safari sur iPhone : plus rien ne s'y dessinait.
 const SCRATCH = document.createElement('canvas');
 function scratchCanvas(w, h) { SCRATCH.width = w; SCRATCH.height = h; return SCRATCH; }
-const FILMED_PROJ = { katon: ['katon_v', 130, 0.74], hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9] };
+const FILMED_PROJ = { katon: ['katon_v', 130, 0.74], hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9], comet: ['comet_gold_v', 330, 0.97] }; // Comète de Pégase (armure d'or) : grande comète dorée filmée
 function drawProjs() {
   for (const p of projs) {
     const sx = p.x - camX;
@@ -6471,7 +6470,13 @@ function drawPlayer(h) {
     const close = h.t > 0.75; // mains ramenées devant la poitrine
     for (const o of close ? [0] : [-78, 70]) energyBall(sx + h.dir * (close ? 60 : o), h.y - (close ? 118 : 128), 6 + 18 * Math.min(1, h.t / 0.8), true);
   }
-  if (m?.fistGlow && h.t >= m.fistGlow[0] && h.t <= m.fistGlow[1]) fxImg('nen', 1 + Math.floor(h.t * 12) % 3, sx + h.dir * 40, h.y - 110, 30 + 70 * (h.t / m.fistGlow[1]));
+  if (m?.fistGlow && h.t >= m.fistGlow[0] && h.t <= m.fistGlow[1]) {
+    // fistAt : position du poing sur chaque étape de la planche (pixels de la planche, par rapport au pied d'appui)
+    let fx = sx + h.dir * 40, fy = h.y - 110;
+    const [an, fi] = h.C.pose(h), A = m.fistAt && SPRITES[sheetFor(h, an)]?.[an];
+    if (A) { const c = m.fistAt[clamp(fi, 0, m.fistAt.length - 1)]; fx = sx + h.dir * c[0] * A.scale; fy = h.y + c[1] * A.scale; }
+    fxImg('nen', 1 + Math.floor(h.t * 12) % 3, fx, fy, 30 + 70 * (h.t / m.fistGlow[1]));
+  }
   // À deux : un repère de couleur au-dessus de la tête
   if (players.length > 1 && !h.out) {
     const y = h.y - 222, c = COLORS_P[h.idx];
