@@ -64,9 +64,14 @@
   // plus grands (--u = 1,6) et serrés ; sur un petit téléphone, --u baisse juste assez pour tenir en hauteur (210 px à --u = 1 : 1,6 tient dès 344 px de haut)
   for (const b of root.querySelectorAll('[data-p]')) {
     const [r, bt] = b.dataset.p.split(' ');
-    b.style.right = `calc(${r}px * var(--u))`; b.style.bottom = `calc(${bt}px * var(--u))`;
+    b.style.right = `calc(${r}px * var(--u) * var(--g))`; b.style.bottom = `calc(${bt}px * var(--u) * var(--g))`;
   }
-  const fit = () => root.style.setProperty('--u', Math.min(1.6, (innerHeight - 8) / 210, innerWidth * 0.68 / 316).toFixed(3));
+  // --g écarte les boutons (sans les grossir) quand l'écran a de la place en hauteur, jusqu'à 1,7 fois l'écart serré
+  const fit = () => {
+    const u = Math.min(1.6, (innerHeight - 8) / 210, innerWidth * 0.68 / 316);
+    const g = Math.max(1, Math.min(1.7, (innerHeight * 0.85 - 64 * u) / (138 * u), (innerWidth * 0.7 - 64 * u) / (252 * u)));
+    root.style.setProperty('--u', u.toFixed(3)); root.style.setProperty('--g', g.toFixed(3));
+  };
   fit(); addEventListener('resize', fit);
   document.body.appendChild(root);
   const turn = document.createElement('div'); turn.id = 'turn';
