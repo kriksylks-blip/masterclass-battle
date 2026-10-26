@@ -1299,7 +1299,7 @@ const CHARS = {
     forms: [{ ki: 50, name: "ARMURE D'OR", sheet: 'seiya_gold', fallback: ['seiya', 'sepia(0.7) saturate(2.4) hue-rotate(-12deg) brightness(1.2)'], speed: 1.3, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,215,90,0.5)', '#ffd84a'], glow: '#ffcf40', sparks: '#fff3b0', bar: ['#8a5a00', '#ffe066'], color: '#ffe066', hit: '#fff3b0' }],
     moves: SY_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'meteor', special2: 'comet', speed: 285, pose: stdPose, ultra: [startPegasus, updatePegasus],
-    ultraPose: h => h.t < PEGA.trace ? ['dashcharge', 4] : h.t < PEGA.rain ? ['dashcharge', 6] : h.t < PEGA.end - 0.3 ? ['special', 2 + Math.floor(h.t * 14) % 2] : ['special', 7],
+    ultraPose: h => h.t < PEGA.trace ? ['dashcharge', 4] : h.t < PEGA.rain ? ['dashcharge', 6] : h.t < pegaHit(h) ? ['special', 2 + Math.floor(h.t * 14) % 2] : ['special', h.formUltra ? 6 : 7],
   },
   gohan_a: {
     name: 'SANGOHAN', title: 'Le guerrier ultime', sheet: 'gohan_a', card: 'card_ug',
@@ -3811,28 +3811,44 @@ function updateCluster(h) {
 }
 
 // ---------- Ultime de Seiya : il trace la constellation de Pégase, puis une pluie de météores s'abat ----------
-const PEGA = { trace: 0.6, rain: 0.9, end: 2.3, reach: 700 };
-function startPegasus(h) { h.hitT = 0; h.punched = false; say(h, 'BRÛLE, MON COSMOS !'); audio.play('ultraCharge', 0.9, 1.1, 0); }
+// En armure d'or : constellation dorée, déluge de météores d'or, puis la Comète de Pégase géante (filmée) qui balaie la rue.
+const PEGA = { trace: 0.6, rain: 0.9, end: 2.3, reach: 700, gold: { rain: 0.85, comet: 1.95, end: 2.7 } };
+const pegaEnd = h => h.formUltra ? PEGA.gold.end : PEGA.end;
+const pegaHit = h => h.formUltra ? PEGA.gold.comet : PEGA.end - 0.3;
+function startPegasus(h) { h.hitT = 0; h.punched = false; say(h, 'BRÛLE, MON COSMOS !'); audio.play('ultraCharge', 0.9, h.formUltra ? 0.9 : 1.1, 0); }
 function updatePegasus(h) {
   h.inv = Math.max(h.inv, 0.1);
+  const G = h.formUltra, rain = G ? PEGA.gold.rain : PEGA.rain;
   if (h.t < PEGA.trace && Math.random() < 0.9) {
     // les étoiles de la constellation s'allument autour de lui
-    const a = rand(0, Math.PI * 2), d = rand(60, 150);
-    particles.push({ x: h.x + Math.cos(a) * d, y: h.y - 140 + Math.sin(a) * d, vx: 0, vy: 0, t: 0, life: 0.6, c: '#e8f6ff', r: rand(2, 4) });
+    for (let k = 0; k < (G ? 3 : 1); k++) {
+      const a = rand(0, Math.PI * 2), d = rand(60, G ? 220 : 150);
+      particles.push({ x: h.x + Math.cos(a) * d, y: h.y - 140 + Math.sin(a) * d, vx: 0, vy: 0, t: 0, life: 0.6, c: G ? '#ffe680' : '#e8f6ff', r: rand(2, G ? 6 : 4) });
+    }
   }
-  if (h.t > PEGA.rain && h.t < PEGA.end - 0.3 && h.t - h.hitT > 0.05) {
+  if (G && h.t < rain && Math.random() < 0.7) {
+    // le cosmos doré monte en colonne autour de lui
+    particles.push({ x: h.x + rand(-90, 90), y: h.y - rand(0, 60), vx: rand(-30, 30), vy: rand(-520, -280), t: 0, life: 0.6, c: Math.random() < 0.5 ? '#ffd84a' : '#fff3b0', r: rand(3, 7) });
+    if (h.t > 0.3) shake = Math.max(shake, 4);
+  }
+  if (h.t > rain && h.t < pegaHit(h) - 0.05 && h.t - h.hitT > (G ? 0.028 : 0.05)) {
     h.hitT = h.t;
-    projs.push({ kind: 'meteor', owner: h, x: h.x + h.dir * 60, y: h.y - 130 + rand(-60, 60), gz: h.gz + rand(-50, 50), dir: h.dir, t: 0, speed: rand(1200, 1500), life: 0.6, scale: rand(0.9, 1.3), hit: new Set(), dmg: ULT_SOLO * (0.3 + h.power / 300), kb: 60, launch: 0, steady: true, pierce: true });
+    projs.push({ kind: 'meteor', owner: h, gold: G, x: h.x + h.dir * 60, y: h.y - 130 + rand(-70, 70), gz: h.gz + rand(-50, 50), dir: h.dir, t: 0, speed: rand(1200, 1600), life: 0.6, scale: rand(0.9, 1.3) * (G ? 1.35 : 1), hit: new Set(), dmg: ULT_SOLO * (0.3 + h.power / 300) * (G ? 0.7 : 1), kb: 60, launch: 0, steady: true, pierce: true });
     if (Math.random() < 0.3) audio.whoosh(2);
   }
-  if (!h.punched && h.t >= PEGA.end - 0.3) {
-    h.punched = true; flash = 0.8; shake = 26; hitstop = 0.12; audio.play('ultraBoom', 1.2, 1.2, 0);
-    popups.push({ x: h.x + h.dir * 300, y: h.y - 280, t: 0, text: 'PEGASUS RYU SEI KEN !!' });
-    ultraHit(h, PEGA.reach, ULT_SOLO * (3 + h.power / 12), 140);
-    for (let k = 0; k < 4; k++) burst(h.x + h.dir * (150 + k * 140), h.y - 130, '#e8f6ff', 14);
+  if (!h.punched && h.t >= pegaHit(h)) {
+    h.punched = true; flash = 0.8; shake = G ? 34 : 26; hitstop = G ? 0.16 : 0.12; audio.play('ultraBoom', 1.2, G ? 0.9 : 1.2, 0);
+    popups.push({ x: h.x + h.dir * 300, y: h.y - 280, t: 0, text: G ? 'PEGASUS SUI SEI KEN !!' : 'PEGASUS RYU SEI KEN !!' });
+    ultraHit(h, PEGA.reach + (G ? 200 : 0), ULT_SOLO * (3 + h.power / 12), 140);
+    if (G) {
+      // la Comète de Pégase géante, dorée, qui traverse tout l'écran
+      projs.push({ kind: 'comet', gold: true, owner: h, x: h.x + h.dir * 90, y: h.y - 130, gz: h.gz, dir: h.dir, t: 0, speed: 1300, life: 1.1, scale: 2.1, hit: new Set(), dmg: ULT_SOLO * 0.8, kb: 900, launch: -760, steady: true, pierce: true });
+      gfx('cannon_boom', h.x + h.dir * 170, h.y - 130, 360, 0.4, { filter: 'hue-rotate(25deg) brightness(1.2)' });
+    }
+    for (let k = 0; k < 4; k++) burst(h.x + h.dir * (150 + k * 140), h.y - 130, G ? '#fff3b0' : '#e8f6ff', 14);
     score += 2000;
   }
-  if (h.t > PEGA.end) h.state = 'idle';
+  if (h.t > pegaEnd(h)) h.state = 'idle';
 }
 
 // ---------- Ultime de Naruto : Kurama, le renard à neuf queues, bondit sur les ennemis ----------
@@ -4909,7 +4925,8 @@ function updateProjs(dt) {
       // AP Shot : il éclate dans le premier ennemi touché ; météores : petit éclat ; Comète : traverse et explose
       if (p.kind === 'apshot') { animFX('explosion', e.x, p.y, 240, 0.45); shake = Math.max(shake, 14); audio.play('ultraBoom', 0.7, 1.4, 0); p.done = true; break; }
       if (p.kind === 'meteor') { burst(e.x - p.dir * 20, p.y, '#e8f6ff', 4); if (!p.pierce) { p.done = true; break; } continue; } // ultime : ils traversent
-      if (p.kind === 'comet') { flash = Math.max(flash, 0.5); shake = Math.max(shake, 24); hitstop = Math.max(hitstop, 0.08); burst(e.x, p.y, '#fff3b0', 30); gfx('cannon_boom', e.x, p.y, 380, 0.5, { filter: 'hue-rotate(25deg) brightness(1.2)' }); continue; }
+      if (p.kind === 'comet' && p.gold) { flash = Math.max(flash, 0.5); shake = Math.max(shake, 24); hitstop = Math.max(hitstop, 0.08); burst(e.x, p.y, '#fff3b0', 30); gfx('cannon_boom', e.x, p.y, 380, 0.5, { filter: 'hue-rotate(25deg) brightness(1.2)' }); continue; }
+      if (p.kind === 'comet') { flash = Math.max(flash, 0.3); shake = Math.max(shake, 16); burst(e.x, p.y, '#e8f6ff', 18); continue; }
       if (p.kind === 'katon') { blastFX(e.x - p.dir * 10, p.y, 0.8); animFX('explosion', e.x, p.y, 220, 0.45, { filter: 'hue-rotate(-15deg) saturate(1.6)' }); continue; }
       if (p.kind === 'bullet') { p.done = true; if (h) h.ki = Math.min(100, h.ki + p.ki); impactFX(e.x - p.dir * 20, p.y, '#ffe0a0', false); break; }
       if (p.kind === 'airshot' || p.kind === 'red') animFX('explosion', e.x, e.y - 110, 200, 0.4, p.kind === 'red' ? { filter: 'hue-rotate(-30deg) saturate(2)' } : {});
@@ -5017,7 +5034,7 @@ const fadeCanvas = document.createElement('canvas');
 // finissait par dépasser la limite de mémoire des canvas de Safari sur iPhone : plus rien ne s'y dessinait.
 const SCRATCH = document.createElement('canvas');
 function scratchCanvas(w, h) { SCRATCH.width = w; SCRATCH.height = h; return SCRATCH; }
-const FILMED_PROJ = { katon: ['katon_v', 130, 0.74], hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9], comet: ['comet_gold_v', 330, 0.97] }; // Comète de Pégase (armure d'or) : grande comète dorée filmée
+const FILMED_PROJ = { katon: ['katon_v', 130, 0.74], hiken: ['hiken_v', 130, 0.89], burning: ['burning_v', 120, 0.67], strikeair: ['strikeair_v', 120, 0.9], gcomet: ['comet_gold_v', 330, 0.97] }; // gcomet : comète dorée filmée de l'ultime de Seiya en armure d'or
 function drawProjs() {
   for (const p of projs) {
     const sx = p.x - camX;
@@ -5065,7 +5082,7 @@ function drawProjs() {
       continue;
     }
     // Tirs filmés (fond noir, mode lumineux) : [effet, hauteur affichée, position de la pointe dans l'image (0-1)]
-    const filmed = FILMED_PROJ[p.kind];
+    const filmed = FILMED_PROJ[p.gold && p.kind === 'comet' ? 'gcomet' : p.kind];
     if (filmed && FX[filmed[0]]) {
       const L = FX[filmed[0]], f = L[Math.floor(p.t * 16) % L.length], img = IMG[f.src];
       if (img) {
@@ -5305,10 +5322,11 @@ function drawProjs() {
       // Météores et Comète de Pégase : des poings de lumière (traînée bleue, éclat blanc) ; la Comète est un grand éclat
       const big = p.kind === 'comet', r = (big ? 42 : 12) * (p.scale || 1), L = r * (big ? 3.2 : 5);
       const g = ctx.createLinearGradient(-L, 0, r, 0);
-      g.addColorStop(0, 'rgba(80,160,255,0)'); g.addColorStop(0.7, 'rgba(160,215,255,0.85)'); g.addColorStop(1, '#ffffff');
+      if (p.gold) { g.addColorStop(0, 'rgba(255,170,30,0)'); g.addColorStop(0.7, 'rgba(255,220,110,0.9)'); g.addColorStop(1, '#ffffff'); } // armure d'or : cosmos doré
+      else { g.addColorStop(0, 'rgba(80,160,255,0)'); g.addColorStop(0.7, 'rgba(160,215,255,0.85)'); g.addColorStop(1, '#ffffff'); }
       ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(-L / 2 + r / 2, 0, L / 2 + r / 2, r * 0.8, 0, 0, 7); ctx.fill();
       const c = ctx.createRadialGradient(r * 0.4, 0, 1, r * 0.4, 0, r * 1.4);
-      c.addColorStop(0, '#ffffff'); c.addColorStop(0.5, 'rgba(200,235,255,0.8)'); c.addColorStop(1, 'rgba(120,190,255,0)');
+      c.addColorStop(0, '#ffffff'); c.addColorStop(0.5, p.gold ? 'rgba(255,230,140,0.85)' : 'rgba(200,235,255,0.8)'); c.addColorStop(1, p.gold ? 'rgba(255,170,40,0)' : 'rgba(120,190,255,0)');
       ctx.fillStyle = c; ctx.beginPath(); ctx.arc(r * 0.4, 0, r * 1.4, 0, 7); ctx.fill();
       if (big) { ctx.globalAlpha = 0.7; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3; for (let k = 0; k < 6; k++) { const a = k * 1.047 + p.t * 6; ctx.beginPath(); ctx.moveTo(r * 0.4, 0); ctx.lineTo(r * 0.4 + Math.cos(a) * r * 2, Math.sin(a) * r * 2); ctx.stroke(); } }
       ctx.restore(); continue;

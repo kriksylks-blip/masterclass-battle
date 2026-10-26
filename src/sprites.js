@@ -57856,112 +57856,112 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/walkv_0.png",
      "w": 462,
      "h": 548,
-     "ax": 229.5,
+     "ax": 232.5,
      "ay": 548
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_1.png",
      "w": 465,
      "h": 550,
-     "ax": 232.0,
+     "ax": 233.0,
      "ay": 550
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_2.png",
      "w": 468,
      "h": 550,
-     "ax": 233.5,
+     "ax": 234.5,
      "ay": 550
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_3.png",
      "w": 470,
      "h": 546,
-     "ax": 234.5,
+     "ax": 235.5,
      "ay": 546
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_4.png",
      "w": 488,
      "h": 536,
-     "ax": 251.0,
+     "ax": 237.0,
      "ay": 536
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_5.png",
      "w": 476,
      "h": 527,
-     "ax": 238.5,
+     "ax": 237.5,
      "ay": 527
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_6.png",
      "w": 474,
      "h": 526,
-     "ax": 236.5,
+     "ax": 237.5,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_7.png",
      "w": 474,
      "h": 528,
-     "ax": 236.5,
+     "ax": 237.5,
      "ay": 528
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_8.png",
      "w": 471,
      "h": 530,
-     "ax": 235.0,
+     "ax": 236.0,
      "ay": 530
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_9.png",
      "w": 468,
      "h": 535,
-     "ax": 233.5,
+     "ax": 234.5,
      "ay": 535
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_10.png",
      "w": 464,
      "h": 536,
-     "ax": 231.5,
+     "ax": 232.5,
      "ay": 536
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_11.png",
      "w": 464,
      "h": 531,
-     "ax": 231.5,
+     "ax": 232.5,
      "ay": 531
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_12.png",
      "w": 462,
      "h": 534,
-     "ax": 228.5,
+     "ax": 233.5,
      "ay": 534
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_13.png",
      "w": 463,
      "h": 534,
-     "ax": 228.5,
+     "ax": 234.5,
      "ay": 534
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_14.png",
      "w": 466,
      "h": 541,
-     "ax": 229.5,
+     "ax": 236.5,
      "ay": 541
     },
     {
      "src": "assets/sprites/zoro_wano/walkv_15.png",
      "w": 462,
      "h": 543,
-     "ax": 228.5,
+     "ax": 233.5,
      "ay": 543
     }
    ]
