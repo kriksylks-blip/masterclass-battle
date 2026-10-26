@@ -45,6 +45,7 @@ const FX_LAZY = {
   entei_v: ['ace'], hiken_v: ['ace'], burning_v: ['trunks'], strikeair_v: ['saber'], katon_v: ['itachi'], vrasen_v: ['boruto'],
   rsh_v: ['naruto_s'], rasen_v: ['naruto', 'naruto_s', 'boruto'],
   amaterasu_v: ['itachi'], ed_fist_v: ['edward'], titan_arm_v: ['eren'], rsh_boom_v: ['naruto_s'], ssj_aura_v: ['goku', 'vegeta', 'gohan', 'trunks', 'gohan_a'], demon_back_v: ['baki'], demon_back_s: ['baki'],
+  map_vortex_v: [], map_seal_v: [], map_portal_v: [], // carte du mode histoire : chargés par menuImages
 };
 const lazyFxFor = chars => Object.entries(FX_LAZY).filter(([k, who]) => FX[k] && chars.some(id => who.includes(CHARS[id]?.base || id))).flatMap(([k]) => FX[k].map(f => f.src));
 const want = (key, src) => IMG[key] ? Promise.resolve() : PENDING[key] || (PENDING[key] = loadImage(key, src).finally(() => delete PENDING[key]));
@@ -66,6 +67,13 @@ function menuImages() {
   for (const src of showcaseFrames()) want(src, src);
   for (const L of LEVELS) for (const key of levelPreviewKeys(L)) want('pv_' + key, `assets/web/preview/${key}.webp`);
   for (const C of Object.values(CHARS)) want(C.card, `assets/ui/${C.card}.png`);
+}
+// Carte du mode histoire : nébuleuse peinte et effets filmés (Sceau, Fracture, portail), chargés à la première visite
+let mapImagesOk = false;
+function mapImages() {
+  if (mapImagesOk) return; mapImagesOk = true;
+  want('map_nebula', 'assets/ui/map_nebula.jpg');
+  for (const k of ['map_vortex_v', 'map_seal_v', 'map_portal_v']) for (const f of FX[k] || []) want(f.src, f.src);
 }
 // Vitrine de la sélection : la garde (ou la respiration filmée) de chaque perso
 const showcaseFrames = () => Object.values(CHARS).flatMap(C => {
@@ -97,7 +105,7 @@ function requireGame(chars, L) {
   // ils reviennent au retour dans les menus (menuImages). Sinon un téléphone sature et n'affiche plus les persos.
   // les portraits restent chargés : la grille de sélection s'affiche tout de suite au retour de partie
   for (const k of Object.keys(IMG)) if ((k.startsWith('assets/sprites/') || ASSETS.backgrounds[k] || /^(intro|cutin|pv)_/.test(k) || lazy.has(k)) && !keep.has(k)) delete IMG[k];
-  menuImagesOk = false;
+  menuImagesOk = false; mapImagesOk = false;
   for (const k of Object.keys(layerCache)) delete layerCache[k]; // vignettes des niveaux déjà réduites : refaites au besoin
   if (typeof harmCache !== 'undefined') for (const k of Object.keys(harmCache)) if (!bgs.some(b => k.startsWith(b))) delete harmCache[k]; // décors harmonisés des autres niveaux
   const todo = [...frames.map(src => [src, src]), ...fxv.map(src => [src, src]), ...bgs.map(k => [k, ASSETS.backgrounds[k]]), ...intros.map(k => [k, ASSETS.ui[k]]),

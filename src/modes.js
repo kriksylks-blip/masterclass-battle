@@ -263,7 +263,9 @@ const STORY = {
     outro: [['B', 'Trop tard. Le Sceau a volé en seize éclats, et chacun s\'est trouvé un maître.'],
       ['N', 'Un jeune boxeur a tout vu depuis le toit de sa salle. Ippo n\'a jamais quitté Tokyo. Il prend son sac quand même.'],
       ['N', 'Dans l\'arène clandestine sous le Dôme de Tokyo, un garçon aux cheveux rouges a senti le Sceau se briser. Baki referme le poing : enfin des adversaires qui ne viennent pas de ce monde.'],
-      ['N', 'Une faille aspire Kuro-Oni, et {H} avec lui. Ippo saute derrière, Baki aussi. La Masterclass compte trois élèves.']],
+      ['N', 'Une faille aspire Kuro-Oni, et {H} avec lui. Ippo saute derrière, Baki aussi. La Masterclass compte trois élèves.'],
+      ['N', 'De l\'autre côté s\'étend l\'Entre-Mondes, un ciel sans fond où chaque monde flotte comme une planète. Les failles les relient.'],
+      ['N', 'Au centre tourne ce qui reste du Sceau, autour du tourbillon de la Fracture. Il y manque seize éclats.']],
   },
   op: {
     title: 'CHAPITRE 1 — LA VILLE DU COMMENCEMENT',
@@ -404,16 +406,27 @@ let storyDlg = null; // dialogue en cours : { lines, k, t, then }
 function storyLevelIndex(node) { return LEVELS.findIndex(L => L.id === STORY_ORDER[node]); }
 function openMap(arrive = false) {
   scene = 'map'; sceneT = 0;
-  map.from = map.at = story.node; map.hop = 0;
+  map.from = map.at = story.node; map.hop = 0; map.goal = -1;
   if (arrive && story.node + 1 < STORY_ORDER.length) { map.at = story.node + 1; map.hop = 0.001; }
 }
-const map = { at: 0, from: 0, hop: 0, cursor: 0 };
+const map = { at: 0, from: 0, hop: 0, cursor: 0, goal: -1, flash: 0 };
+// voyage vers une planète débloquée (toucher sur mobile) : une faille après l'autre jusqu'à elle
+function mapGoTo(k) {
+  if (k < 0 || k >= story.unlocked || map.hop) return;
+  if (k === story.node) { map.goal = -1; return; }
+  map.goal = k; map.from = story.node; map.at = story.node + Math.sign(k - story.node); map.hop = 0.001; audio.whoosh(0.8);
+}
 function updateMap(dt) {
   if (map.hop > 0) {
     map.hop += dt / 1.1;
-    if (map.hop >= 1) { map.hop = 0; map.from = map.at; story.node = map.at; saveStory(); audio.play('hitHeavy', 0.5); }
+    if (map.hop >= 1) map.flash = 1;
+    if (map.hop >= 1) {
+      map.hop = 0; map.from = map.at; story.node = map.at; saveStory(); audio.play('hitHeavy', 0.5);
+      if (map.goal >= 0 && map.goal !== story.node) mapGoTo(map.goal); else map.goal = -1; // trajet de plusieurs cases
+    }
     return;
   }
+  if (map.flash > 0) map.flash = Math.max(0, map.flash - dt / 0.45);
   const hit = a => anyPressed(a);
   const d = hit('right') || hit('up') ? 1 : hit('left') || hit('down') ? -1 : 0;
   if (d) {
@@ -512,6 +525,14 @@ function mapPath(k, u) {
   const v = 1 - u;
   return [v * v * x0 + 2 * v * u * cx + u * u * x1, v * v * y0 + 2 * v * u * cy + u * u * y1];
 }
+// image k d'un effet filmé de la carte (fond noir : à dessiner en mode lumineux) ; false s'il n'est pas encore chargé
+function mapFx(name, k, x, y, w, a = 1) {
+  const L = FX[name], f = L && IMG[L[((k % L.length) + L.length) % L.length].src];
+  if (!f) return false;
+  const h = w * f.height / f.width;
+  ctx.globalAlpha = a; ctx.drawImage(f, x - w / 2, y - h / 2, w, h); ctx.globalAlpha = 1;
+  return true;
+}
 // vortex : bras en spirale qui tournent (à dessiner en mode lumineux)
 function mapVortex(x, y, r, t, col, arms = 3, a = 1) {
   if (r < 1) return;
@@ -535,8 +556,13 @@ function drawMap() {
   const g = ctx.createRadialGradient(MAP_CX, MAP_CY, 30, MAP_CX, MAP_CY, 640);
   g.addColorStop(0, '#2a0838'); g.addColorStop(0.45, '#0e0626'); g.addColorStop(1, '#020008');
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  const neb = IMG.map_nebula;
+  if (neb) { // nébuleuse peinte (Flow), qui dérive et respire lentement
+    const z = 1.08 + 0.03 * Math.sin(t * 0.15), nw = W * z, nh = H * z;
+    ctx.drawImage(neb, (W - nw) / 2 + Math.sin(t * 0.07) * 18, (H - nh) / 2 + Math.cos(t * 0.05) * 10, nw, nh);
+  }
   ctx.globalCompositeOperation = 'lighter';
-  for (const [nx, ny, nr, col] of [[170, 150, 260, 'rgba(120,40,200,0.16)'], [800, 400, 300, 'rgba(30,110,200,0.14)'], [760, 110, 200, 'rgba(220,40,110,0.12)'], [220, 450, 220, 'rgba(40,160,180,0.1)']]) {
+  if (!neb) for (const [nx, ny, nr, col] of [[170, 150, 260, 'rgba(120,40,200,0.16)'], [800, 400, 300, 'rgba(30,110,200,0.14)'], [760, 110, 200, 'rgba(220,40,110,0.12)'], [220, 450, 220, 'rgba(40,160,180,0.1)']]) {
     const x = nx + Math.sin(t * 0.1 + nr) * 20, ng = ctx.createRadialGradient(x, ny, 0, x, ny, nr);
     ng.addColorStop(0, col); ng.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = ng; ctx.fillRect(x - nr, ny - nr, nr * 2, nr * 2);
   }
@@ -550,9 +576,20 @@ function drawMap() {
   }
   ctx.globalAlpha = 1;
   // cœur : le tourbillon rouge de la Fracture, qui se referme à mesure que les éclats reviennent
-  mapVortex(MAP_CX, MAP_CY, 70 - 42 * shards / N, -t * 0.7, '#ff2850', 4, 0.9);
-  // le Sceau : anneau de seize éclats ; ceux qui sont rapportés brillent, les autres manquent
-  for (let i = 0; i < N; i++) {
+  const fk = Math.floor(t * 12);
+  // le Sceau filmé : les éclats qui manquent y font des trous (secteurs assombris), ceux qui sont rapportés brillent ;
+  // la Fracture tourne par-dessus, et se referme à mesure que les éclats reviennent
+  const sealOk = mapFx('map_seal_v', fk, MAP_CX, MAP_CY + 4, 270, 0.55 + 0.45 * shards / N);
+  if (sealOk) {
+    ctx.globalCompositeOperation = 'source-over'; ctx.lineWidth = 22;
+    for (let i = shards; i < N; i++) {
+      const a0 = t * 0.25 + i * 6.283 / N;
+      ctx.strokeStyle = 'rgba(6,2,16,0.8)'; ctx.beginPath(); ctx.ellipse(MAP_CX, MAP_CY + 9, 107, 40, 0, a0, a0 + 6.283 / N); ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'lighter';
+  }
+  if (!mapFx('map_vortex_v', fk, MAP_CX, MAP_CY, 250 * (1 - 0.55 * shards / N), 0.95)) mapVortex(MAP_CX, MAP_CY, 70 - 42 * shards / N, -t * 0.7, '#ff2850', 4, 0.9);
+  if (!sealOk) for (let i = 0; i < N; i++) {
     const a0 = t * 0.25 + i * 6.283 / N, a1 = a0 + 6.283 / N * 0.8, got = i < shards;
     ctx.globalAlpha = got ? 0.95 : 0.18; ctx.strokeStyle = got ? '#ffe14d' : '#c0b0ff'; ctx.lineWidth = got ? 6 : 3;
     ctx.beginPath(); ctx.ellipse(MAP_CX, MAP_CY, 78, 30, 0, a0, a1); ctx.stroke();
@@ -617,7 +654,9 @@ function drawMap() {
       const a = t * 1.6 + k, ex = x + Math.cos(a) * r * 1.3, ey = y + Math.sin(a) * r * 0.45 - r * 0.1;
       ctx.fillStyle = '#ffe14d'; ctx.beginPath(); ctx.moveTo(ex, ey - 6); ctx.lineTo(ex + 3.5, ey); ctx.lineTo(ex, ey + 6); ctx.lineTo(ex - 3.5, ey); ctx.fill();
     }
-    ctx.font = `bold ${cur ? 12 : 10}px sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = open ? '#fff' : '#8a7090';
+    ctx.font = `bold ${cur ? 12 : 10}px sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = open ? '#fff' : '#b8a0c0';
+    ctx.strokeStyle = 'rgba(4,0,12,0.9)'; ctx.lineWidth = 3; ctx.lineJoin = 'round';
+    ctx.strokeText((id === 'tokyo' ? 'TOKYO' : STORY[id]?.title.split(' — ')[1] || L?.name || id).replace(/^(LA |LE |L')/, ''), x, y + r + 13);
     ctx.fillText((id === 'tokyo' ? 'TOKYO' : STORY[id]?.title.split(' — ')[1] || L?.name || id).replace(/^(LA |LE |L')/, ''), x, y + r + 13);
   }
   // voyage : un vortex s'ouvre au départ et à l'arrivée, les combattants filent le long de la faille
@@ -628,8 +667,9 @@ function drawMap() {
     [px, py] = mapPath(a, fw ? e : 1 - e);
     const [fx, fy] = MAP_NODES[map.from], [tx, ty] = MAP_NODES[map.at];
     ctx.globalCompositeOperation = 'lighter';
-    mapVortex(fx, fy, 40 * Math.min(1, (1 - k) * 3), t * 2, '#9ad8ff');
-    mapVortex(tx, ty, 40 * Math.min(1, k * 2.5), t * 2, '#ffe14d');
+    // portail filmé : il s'ouvre et se referme au départ, s'ouvre à l'arrivée (il s'y referme ensuite, map.flash)
+    if (!mapFx('map_portal_v', Math.floor(Math.min(1, k * 1.4) * 15), fx, fy, 150)) mapVortex(fx, fy, 40 * Math.min(1, (1 - k) * 3), t * 2, '#9ad8ff');
+    if (!mapFx('map_portal_v', Math.floor(Math.max(0, k - 0.35) / 0.65 * 9), tx, ty, 150)) mapVortex(tx, ty, 40 * Math.min(1, k * 2.5), t * 2, '#ffe14d');
     for (let j = 1; j <= 8; j++) { // traînée
       const [qx, qy] = mapPath(a, Math.max(0, Math.min(1, fw ? e - j * 0.03 : 1 - e + j * 0.03)));
       ctx.globalAlpha = glow * (1 - j / 9) * 0.8; ctx.fillStyle = '#bfe8ff'; ctx.beginPath(); ctx.arc(qx, qy, 7 - j * 0.6, 0, 7); ctx.fill();
@@ -637,7 +677,9 @@ function drawMap() {
     ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
   } else {
     [px, py] = MAP_NODES[map.at];
-    py -= MAP_NODES[map.at][2] * 1.4;
+    if (map.flash > 0) { ctx.globalCompositeOperation = 'lighter'; mapFx('map_portal_v', 9 + Math.floor((1 - map.flash) * 6.9), px, py, 150); ctx.globalCompositeOperation = 'source-over'; }
+    const rr = MAP_NODES[map.at][2] * 1.4;
+    py += py - rr - 44 < 74 ? rr + 70 : -rr; // tout en haut : sous la planète (le bandeau les cacherait)
   }
   (sel.chars || []).forEach((c, q) => {
     const C = CHARS[c], bob = Math.sin(t * 4 + q) * 3;
@@ -675,7 +717,7 @@ function updateModes(dt) {
 }
 function drawModes() {
   if (scene === 'options') { drawOptions(); return true; }
-  if (scene === 'map') { menuImages(); drawMap(); return true; }
+  if (scene === 'map') { menuImages(); mapImages(); drawMap(); return true; }
   if (scene === 'story') { drawDialogue(); return true; }
   if (scene === 'online') { drawOnline(); return true; }
   return false;

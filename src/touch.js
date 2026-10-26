@@ -236,7 +236,14 @@
       const n = LEVELS.length; levelPick = ((levelPick + d) % n + n) % n; lvSel.flash = 1; click();
       return;
     }
-    if (scene === 'map') { press(x < W * 0.3 ? 'left' : x > W * 0.7 ? 'right' : 'punch'); return; } // carte du mode histoire
+    if (scene === 'map') { // carte du mode histoire : toucher une planète débloquée y mène ; toucher la sienne y entre
+      if (map.hop) return;
+      let best = -1, bd = 1e9;
+      MAP_NODES.forEach(([nx, ny, r], k) => { const d = Math.hypot(x - nx, y - ny); if (k < story.unlocked && d < r * 1.6 + 12 && d < bd) { bd = d; best = k; } });
+      if (best < 0) return;
+      if (best === story.node) press('punch'); else { mapGoTo(best); click(); }
+      return;
+    }
     press('punch'); // histoire, en ligne, fin de niveau : toucher = continuer
   }
 
