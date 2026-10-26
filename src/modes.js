@@ -234,11 +234,13 @@ function updateAssists() {
 // ---------- Mode histoire ----------
 // Ordre des mondes sur le plateau (identifiants de LEVELS) et position des cases (écran 960 × 540)
 const STORY_ORDER = ['tokyo', 'op', 'ds', 'hx', 'nr', 'bl', 'mh', 'rk', 'sl', 'op2', 'ds2', 'jk', 'nr2', 'opm', 'bl2', 'db', 'db2'];
-const MAP_NODES = [
-  [80, 418], [192, 396], [304, 424], [416, 396], [528, 424], [640, 396], [752, 424], [868, 396],
-  [826, 284], [706, 262], [586, 290], [466, 262], [346, 290], [226, 262],
-  [170, 150], [330, 128], [490, 150],
-];
+// Les mondes sont des planètes sur une spirale autour du Sceau brisé (galaxie inclinée vue de biais, écran 960 × 540) :
+// Tokyo au bord, le Cell Game tout près du cœur de la Fracture. [x, y, rayon]
+const MAP_CX = 480, MAP_CY = 254;
+const MAP_NODES = STORY_ORDER.map((_, k) => {
+  const th = Math.PI / 2 + k * 0.66, rho = 1 - 0.64 * k / 16, y = MAP_CY + 170 * rho * Math.sin(th);
+  return [MAP_CX + 430 * rho * Math.cos(th), y, 36 * Math.pow(rho, 0.55) * (0.8 + 0.2 * (y - MAP_CY) / 170)];
+});
 // Les maîtres recrutés dans chaque monde : la Masterclass (affichée en bas du plateau)
 const RECRUITS = {
   tokyo: ['ippo', 'baki'], op: ['luffy', 'ace'], ds: ['tanjiro'], hx: ['gon', 'killua'], nr: ['naruto', 'kakashi', 'boruto'], bl: ['ichigo', 'eren'], mh: ['izuku', 'shoto', 'bakugo'],
@@ -495,49 +497,151 @@ function wrapText(txt, x, y, maxW, lh) {
   if (line) ctx.fillText(line, x, y);
 }
 
-// Plateau : chemin lumineux entre les mondes, chaque case montre son décor ; les médaillons des
-// combattants sautent de case en case.
-const mapStars = Array.from({ length: 120 }, () => [Math.random() * 960, Math.random() * 540, Math.random() * 1.6 + 0.3, Math.random() * 6]);
-function drawMap() {
-  const t = sceneT;
-  const g = ctx.createRadialGradient(W / 2, H / 2, 50, W / 2, H / 2, 700);
-  g.addColorStop(0, '#2a0a4a'); g.addColorStop(0.6, '#10042a'); g.addColorStop(1, '#030010');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  for (const [x, y, r, p] of mapStars) { ctx.globalAlpha = 0.4 + 0.4 * Math.sin(t * 2 + p); ctx.fillStyle = '#fff'; ctx.fillRect(x, y, r, r); }
-  ctx.globalAlpha = 1;
-  // faille écarlate en fond
-  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.strokeStyle = 'rgba(255,40,80,0.25)'; ctx.lineWidth = 3;
-  ctx.beginPath(); for (let k = 0; k <= 30; k++) { const x = 500 + Math.sin(k * 1.7 + t) * 18 + k * 2, y = k * 18; k ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); ctx.restore();
-  // chemin
-  for (let k = 0; k + 1 < MAP_NODES.length; k++) {
-    const [x0, y0] = MAP_NODES[k], [x1, y1] = MAP_NODES[k + 1], open = k + 1 < story.unlocked;
-    ctx.save(); ctx.setLineDash([6, 10]); ctx.lineDashOffset = -t * 30;
-    ctx.strokeStyle = open ? '#ffe14d' : 'rgba(255,255,255,0.18)'; ctx.lineWidth = open ? 4 : 3;
-    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.quadraticCurveTo((x0 + x1) / 2, Math.min(y0, y1) - 30, x1, y1); ctx.stroke(); ctx.restore();
+// Carte : l'Entre-Mondes. Le Sceau des Mille Mondes, brisé, tourne au centre ; chaque monde est une planète dont la
+// surface montre son décor. Les failles relient les planètes ; on passe de l'une à l'autre par un vortex. Chaque éclat
+// rapporté reprend sa place dans le Sceau, et le tourbillon rouge de la Fracture rétrécit d'autant.
+const mapRnd = (k => () => (k = (k * 16807) % 2147483647) / 2147483647)(7);
+const mapStars = Array.from({ length: 170 }, () => [mapRnd() * 960, mapRnd() * 540, mapRnd() * 1.5 + 0.3, mapRnd() * 6, mapRnd() < 0.5 ? 0.3 : 1]);
+// poussière de la galaxie : [angle, rayon (0-1), taille, teinte]
+const mapDust = Array.from({ length: 260 }, () => [mapRnd() * 7, 0.18 + Math.pow(mapRnd(), 0.7) * 0.95, mapRnd() * 1.6 + 0.4, mapRnd() < 0.5 ? '#ff8ae6' : '#8ad8ff']);
+const mapCracks = STORY_ORDER.map(() => Array.from({ length: 2 }, () => { const a = mapRnd() * 7; return Array.from({ length: 4 }, () => [a + (mapRnd() - 0.5) * 0.9, mapRnd()]); }));
+// point u (0-1) de la faille qui va de la planète k à la suivante : courbe qui s'écarte du centre
+function mapPath(k, u) {
+  const [x0, y0] = MAP_NODES[k], [x1, y1] = MAP_NODES[k + 1], mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
+  const d = Math.hypot(mx - MAP_CX, (my - MAP_CY) * 2.5) || 1, cx = mx + (mx - MAP_CX) / d * 46, cy = my + (my - MAP_CY) * 2.5 / d * 20;
+  const v = 1 - u;
+  return [v * v * x0 + 2 * v * u * cx + u * u * x1, v * v * y0 + 2 * v * u * cy + u * u * y1];
+}
+// vortex : bras en spirale qui tournent (à dessiner en mode lumineux)
+function mapVortex(x, y, r, t, col, arms = 3, a = 1) {
+  if (r < 1) return;
+  ctx.strokeStyle = col; ctx.lineWidth = Math.max(1.5, r * 0.09);
+  for (let b = 0; b < arms; b++) {
+    ctx.globalAlpha = a * 0.8; ctx.beginPath();
+    for (let i = 0; i <= 16; i++) {
+      const u = i / 16, an = t * 3 + b * 6.283 / arms + u * 4.2, rr = r * (0.12 + u * 0.88);
+      const px = x + Math.cos(an) * rr, py = y + Math.sin(an) * rr * 0.55;
+      i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+    }
+    ctx.stroke();
   }
-  // cases
+  ctx.globalAlpha = a; const g = ctx.createRadialGradient(x, y, 0, x, y, r * 0.5);
+  g.addColorStop(0, '#fff'); g.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = g;
+  ctx.beginPath(); ctx.ellipse(x, y, r * 0.5, r * 0.3, 0, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
+}
+function drawMap() {
+  const t = sceneT, shards = story.done.filter(id => id !== 'tokyo').length, N = STORY_ORDER.length - 1;
+  // fond : espace profond et nébuleuses
+  const g = ctx.createRadialGradient(MAP_CX, MAP_CY, 30, MAP_CX, MAP_CY, 640);
+  g.addColorStop(0, '#2a0838'); g.addColorStop(0.45, '#0e0626'); g.addColorStop(1, '#020008');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.globalCompositeOperation = 'lighter';
+  for (const [nx, ny, nr, col] of [[170, 150, 260, 'rgba(120,40,200,0.16)'], [800, 400, 300, 'rgba(30,110,200,0.14)'], [760, 110, 200, 'rgba(220,40,110,0.12)'], [220, 450, 220, 'rgba(40,160,180,0.1)']]) {
+    const x = nx + Math.sin(t * 0.1 + nr) * 20, ng = ctx.createRadialGradient(x, ny, 0, x, ny, nr);
+    ng.addColorStop(0, col); ng.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = ng; ctx.fillRect(x - nr, ny - nr, nr * 2, nr * 2);
+  }
+  ctx.fillStyle = '#fff';
+  for (const [x, y, r, p, z] of mapStars) { ctx.globalAlpha = (0.35 + 0.35 * Math.sin(t * 2 + p)) * (z < 1 ? 0.6 : 1); ctx.fillRect((x - t * 4 * z + 960) % 960, y, r, r); }
+  // poussière de la galaxie qui tourne autour du Sceau (plus vite près du centre)
+  for (const [a0, rr, sz, col] of mapDust) {
+    const a = a0 + t * 0.05 / rr;
+    ctx.globalAlpha = 0.25 + 0.3 * (1 - rr); ctx.fillStyle = col;
+    ctx.fillRect(MAP_CX + Math.cos(a) * rr * 470, MAP_CY + Math.sin(a) * rr * 185, sz, sz);
+  }
+  ctx.globalAlpha = 1;
+  // cœur : le tourbillon rouge de la Fracture, qui se referme à mesure que les éclats reviennent
+  mapVortex(MAP_CX, MAP_CY, 70 - 42 * shards / N, -t * 0.7, '#ff2850', 4, 0.9);
+  // le Sceau : anneau de seize éclats ; ceux qui sont rapportés brillent, les autres manquent
+  for (let i = 0; i < N; i++) {
+    const a0 = t * 0.25 + i * 6.283 / N, a1 = a0 + 6.283 / N * 0.8, got = i < shards;
+    ctx.globalAlpha = got ? 0.95 : 0.18; ctx.strokeStyle = got ? '#ffe14d' : '#c0b0ff'; ctx.lineWidth = got ? 6 : 3;
+    ctx.beginPath(); ctx.ellipse(MAP_CX, MAP_CY, 78, 30, 0, a0, a1); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+  // failles entre les planètes : lumineuses et parcourues d'étincelles une fois ouvertes, à peine visibles sinon
+  for (let k = 0; k + 1 < MAP_NODES.length; k++) {
+    const open = k + 1 < story.unlocked;
+    ctx.strokeStyle = open ? 'rgba(140,200,255,0.55)' : 'rgba(255,255,255,0.08)'; ctx.lineWidth = open ? 3 : 2;
+    ctx.beginPath(); for (let i = 0; i <= 12; i++) { const [x, y] = mapPath(k, i / 12); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke();
+    if (!open) continue;
+    ctx.fillStyle = '#e0f4ff';
+    for (let j = 0; j < 4; j++) { const [x, y] = mapPath(k, (t * 0.35 + j / 4) % 1); ctx.fillRect(x - 1.5, y - 1.5, 3, 3); }
+  }
+  // rayons qui relient au Sceau les mondes dont l'éclat est rapporté
+  ctx.lineWidth = 1;
   STORY_ORDER.forEach((id, k) => {
-    const [x, y] = MAP_NODES[k], L = LEVELS.find(l => l.id === id), open = k < story.unlocked, cur = k === story.node && !map.hop;
-    const r = cur ? 40 : 32;
-    ctx.save(); ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.clip();
-    if (L) drawLevelThumb(L, x - r * 1.78, y - r, r * 3.56, r * 2, cur ? t * 40 : 0);
-    if (!open) { ctx.fillStyle = 'rgba(5,0,15,0.75)'; ctx.fillRect(x - r, y - r, 2 * r, 2 * r); }
-    ctx.restore();
-    ctx.lineWidth = cur ? 5 : 3; ctx.strokeStyle = story.done.includes(id) ? '#7fff9a' : open ? '#ffe14d' : 'rgba(255,255,255,0.35)';
-    if (cur) { ctx.shadowColor = '#ffe14d'; ctx.shadowBlur = 20; }
-    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke(); ctx.shadowBlur = 0;
-    if (!open) outlined('🔒', x, y + 8, 20, '#fff');
-    if (story.done.includes(id)) outlined('★', x + r * 0.75, y - r * 0.6, 18, '#7fff9a');
-    ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = open ? '#fff' : '#8a80a8';
-    ctx.fillText(L ? L.name.split(' — ')[0] : id, x, y + r + 14);
+    if (!story.done.includes(id) || id === 'tokyo') return;
+    const [x, y] = MAP_NODES[k]; ctx.strokeStyle = `rgba(255,225,77,${0.1 + 0.06 * Math.sin(t * 3 + k)})`;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(MAP_CX, MAP_CY); ctx.stroke();
   });
-  // médaillons des combattants qui sautent de case en case
-  const [fx, fy] = MAP_NODES[map.from], [tx, ty] = MAP_NODES[map.at];
+  ctx.globalCompositeOperation = 'source-over';
+  // planètes, des plus lointaines (en haut) aux plus proches
+  const order = STORY_ORDER.map((_, k) => k).sort((a, b) => MAP_NODES[a][1] - MAP_NODES[b][1]);
+  for (const k of order) {
+    const id = STORY_ORDER[k], [x, y, r0] = MAP_NODES[k], L = LEVELS.find(l => l.id === id), open = k < story.unlocked;
+    const cur = k === story.node && !map.hop, r = cur ? r0 * 1.4 : r0, col = LV_COLOR[id] || '#8ad8ff', done = story.done.includes(id);
+    // atmosphère
+    ctx.globalCompositeOperation = 'lighter';
+    const ag = ctx.createRadialGradient(x, y, r * 0.8, x, y, r * (cur ? 1.7 : 1.4));
+    ag.addColorStop(0, open ? col : '#401020'); ag.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.globalAlpha = open ? (cur ? 0.7 + 0.2 * Math.sin(t * 4) : 0.45) : 0.5; ctx.fillStyle = ag;
+    ctx.beginPath(); ctx.arc(x, y, r * 1.7, 0, 7); ctx.fill();
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+    // surface : le décor du monde qui défile, comme une planète qui tourne
+    ctx.save(); ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.clip();
+    if (L) drawLevelThumb(L, x - r * 2.4, y - r * 1.25, r * 4.8, r * 2.7, open ? t * (cur ? 40 : 14) + k * 300 : k * 300);
+    // ombre de la sphère (lumière venue d'en haut à gauche)
+    const sg = ctx.createRadialGradient(x - r * 0.4, y - r * 0.45, r * 0.15, x, y, r * 1.05);
+    sg.addColorStop(0, 'rgba(255,255,255,0.18)'); sg.addColorStop(0.5, 'rgba(0,0,0,0)'); sg.addColorStop(1, 'rgba(0,0,12,0.85)');
+    ctx.fillStyle = sg; ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+    if (!open) {
+      // monde encore englouti par la Fracture : éteint et fendu de rouge
+      ctx.fillStyle = 'rgba(8,0,14,0.62)'; ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+      ctx.strokeStyle = `rgba(255,40,80,${0.35 + 0.25 * Math.sin(t * 3 + k)})`; ctx.lineWidth = 1;
+      for (const cr of mapCracks[k]) {
+        ctx.beginPath(); ctx.moveTo(x, y);
+        cr.forEach(([a, d], i) => { const rr = r * (i + 1) / 4 * (0.7 + d * 0.5); ctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); });
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+    ctx.strokeStyle = cur ? '#ffe14d' : open ? col : 'rgba(255,60,90,0.35)'; ctx.lineWidth = cur ? 3 : 1.5;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke();
+    // anneau incliné autour de la planète choisie
+    if (cur) {
+      ctx.strokeStyle = 'rgba(255,225,77,0.8)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.ellipse(x, y, r * 1.6, r * 0.42, -0.25, 0.12, 3.02); ctx.stroke();
+    }
+    // éclat rapporté : un cristal qui gravite autour de la planète
+    if (done && id !== 'tokyo') {
+      const a = t * 1.6 + k, ex = x + Math.cos(a) * r * 1.3, ey = y + Math.sin(a) * r * 0.45 - r * 0.1;
+      ctx.fillStyle = '#ffe14d'; ctx.beginPath(); ctx.moveTo(ex, ey - 6); ctx.lineTo(ex + 3.5, ey); ctx.lineTo(ex, ey + 6); ctx.lineTo(ex - 3.5, ey); ctx.fill();
+    }
+    ctx.font = `bold ${cur ? 12 : 10}px sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = open ? '#fff' : '#8a7090';
+    ctx.fillText((id === 'tokyo' ? 'TOKYO' : STORY[id]?.title.split(' — ')[1] || L?.name || id).replace(/^(LA |LE |L')/, ''), x, y + r + 13);
+  }
+  // voyage : un vortex s'ouvre au départ et à l'arrivée, les combattants filent le long de la faille
   const k = map.hop ? Math.min(1, map.hop) : 1, e = k * k * (3 - 2 * k);
-  const px = fx + (tx - fx) * e, py = fy + (ty - fy) * e - Math.sin(Math.PI * k) * 70 * (map.hop ? 1 : 0);
+  let px, py;
+  if (map.hop) {
+    const a = Math.min(map.from, map.at), fw = map.at > map.from, glow = Math.sin(Math.PI * k);
+    [px, py] = mapPath(a, fw ? e : 1 - e);
+    const [fx, fy] = MAP_NODES[map.from], [tx, ty] = MAP_NODES[map.at];
+    ctx.globalCompositeOperation = 'lighter';
+    mapVortex(fx, fy, 40 * Math.min(1, (1 - k) * 3), t * 2, '#9ad8ff');
+    mapVortex(tx, ty, 40 * Math.min(1, k * 2.5), t * 2, '#ffe14d');
+    for (let j = 1; j <= 8; j++) { // traînée
+      const [qx, qy] = mapPath(a, Math.max(0, Math.min(1, fw ? e - j * 0.03 : 1 - e + j * 0.03)));
+      ctx.globalAlpha = glow * (1 - j / 9) * 0.8; ctx.fillStyle = '#bfe8ff'; ctx.beginPath(); ctx.arc(qx, qy, 7 - j * 0.6, 0, 7); ctx.fill();
+    }
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  } else {
+    [px, py] = MAP_NODES[map.at];
+    py -= MAP_NODES[map.at][2] * 1.4;
+  }
   (sel.chars || []).forEach((c, q) => {
     const C = CHARS[c], bob = Math.sin(t * 4 + q) * 3;
-    medallion(C, px - 20 + q * 26, py - 62 + bob - q * 6, 20, COLORS_P[q]);
+    medallion(C, px - 13 * (sel.chars.length - 1) + q * 26, py - 26 + bob - q * 4, map.hop ? 16 : 18, COLORS_P[q]);
   });
   // panneau du monde choisi
   const id = STORY_ORDER[story.node], S = STORY[id], L = LEVELS.find(l => l.id === id);
@@ -557,7 +661,7 @@ function drawMap() {
   }
   ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, H - 30, W, 30);
   ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#cfd3ff';
-  ctx.fillText(`${K('left')} ${K('right')} se déplacer sur le plateau     ${K('punch')} ou Entrée : entrer dans ce monde     ${K('kick')} retour     Difficulté : ${DIFF().name} — ${OPTS.lives} vies`, W / 2, H - 10);
+  ctx.fillText(`${K('left')} ${K('right')} voyager entre les mondes     ${K('punch')} ou Entrée : entrer dans ce monde     ${K('kick')} retour     Difficulté : ${DIFF().name} — ${OPTS.lives} vies`, W / 2, H - 10);
 }
 
 // ---------- Aiguillage des scènes ajoutées (appelé par update / draw de game.js) ----------
