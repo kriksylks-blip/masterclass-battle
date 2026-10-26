@@ -3687,6 +3687,558 @@ const SPRITES = {
      "ay": 532
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_0.png",
+     "w": 213,
+     "h": 329,
+     "ax": 104.9,
+     "ay": 329.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_1.png",
+     "w": 213,
+     "h": 329,
+     "ax": 104.2,
+     "ay": 329.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_2.png",
+     "w": 213,
+     "h": 331,
+     "ax": 103.1,
+     "ay": 331.3
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_3.png",
+     "w": 207,
+     "h": 333,
+     "ax": 101.9,
+     "ay": 333.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_4.png",
+     "w": 207,
+     "h": 335,
+     "ax": 102.3,
+     "ay": 334.5
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_5.png",
+     "w": 213,
+     "h": 335,
+     "ax": 105.3,
+     "ay": 335.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_6.png",
+     "w": 251,
+     "h": 333,
+     "ax": 109.5,
+     "ay": 333.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_7.png",
+     "w": 271,
+     "h": 332,
+     "ax": 111.9,
+     "ay": 332.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_8.png",
+     "w": 260,
+     "h": 334,
+     "ax": 110.7,
+     "ay": 333.9
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_9.png",
+     "w": 245,
+     "h": 335,
+     "ax": 107.6,
+     "ay": 334.5
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_10.png",
+     "w": 226,
+     "h": 336,
+     "ax": 104.8,
+     "ay": 335.8
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_11.png",
+     "w": 208,
+     "h": 336,
+     "ax": 103.6,
+     "ay": 335.8
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_12.png",
+     "w": 205,
+     "h": 329,
+     "ax": 103.5,
+     "ay": 329.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_13.png",
+     "w": 205,
+     "h": 328,
+     "ax": 106.6,
+     "ay": 328.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_14.png",
+     "w": 205,
+     "h": 327,
+     "ax": 111.6,
+     "ay": 326.9
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_15.png",
+     "w": 207,
+     "h": 324,
+     "ax": 118.7,
+     "ay": 324.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_16.png",
+     "w": 214,
+     "h": 323,
+     "ax": 121.8,
+     "ay": 323.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_17.png",
+     "w": 207,
+     "h": 324,
+     "ax": 118.0,
+     "ay": 324.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_18.png",
+     "w": 205,
+     "h": 331,
+     "ax": 111.6,
+     "ay": 330.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_19.png",
+     "w": 224,
+     "h": 330,
+     "ax": 110.4,
+     "ay": 330.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_20.png",
+     "w": 265,
+     "h": 328,
+     "ax": 112.3,
+     "ay": 327.5
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_21.png",
+     "w": 265,
+     "h": 326,
+     "ax": 113.3,
+     "ay": 326.3
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_22.png",
+     "w": 262,
+     "h": 326,
+     "ax": 112.3,
+     "ay": 325.6
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_23.png",
+     "w": 229,
+     "h": 328,
+     "ax": 114.1,
+     "ay": 328.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_24.png",
+     "w": 212,
+     "h": 328,
+     "ax": 118.2,
+     "ay": 328.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_25.png",
+     "w": 209,
+     "h": 327,
+     "ax": 130.8,
+     "ay": 326.9
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_26.png",
+     "w": 227,
+     "h": 324,
+     "ax": 136.7,
+     "ay": 324.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_27.png",
+     "w": 217,
+     "h": 328,
+     "ax": 126.4,
+     "ay": 328.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_28.png",
+     "w": 123,
+     "h": 332,
+     "ax": 51.1,
+     "ay": 344.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_29.png",
+     "w": 133,
+     "h": 335,
+     "ax": 60.8,
+     "ay": 347.8
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_30.png",
+     "w": 155,
+     "h": 337,
+     "ax": 72.2,
+     "ay": 349.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_31.png",
+     "w": 167,
+     "h": 338,
+     "ax": 80.6,
+     "ay": 350.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_32.png",
+     "w": 185,
+     "h": 337,
+     "ax": 97.8,
+     "ay": 349.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_33.png",
+     "w": 190,
+     "h": 338,
+     "ax": 103.8,
+     "ay": 350.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_34.png",
+     "w": 191,
+     "h": 338,
+     "ax": 103.7,
+     "ay": 350.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_35.png",
+     "w": 188,
+     "h": 338,
+     "ax": 101.4,
+     "ay": 350.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_36.png",
+     "w": 185,
+     "h": 338,
+     "ax": 98.3,
+     "ay": 350.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_37.png",
+     "w": 184,
+     "h": 337,
+     "ax": 95.7,
+     "ay": 349.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_38.png",
+     "w": 170,
+     "h": 337,
+     "ax": 77.4,
+     "ay": 349.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_39.png",
+     "w": 150,
+     "h": 339,
+     "ax": 57.5,
+     "ay": 350.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_40.png",
+     "w": 131,
+     "h": 338,
+     "ax": 44.5,
+     "ay": 348.5
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_41.png",
+     "w": 135,
+     "h": 340,
+     "ax": 53.8,
+     "ay": 348.5
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_42.png",
+     "w": 175,
+     "h": 341,
+     "ax": 85.1,
+     "ay": 348.5
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_43.png",
+     "w": 188,
+     "h": 346,
+     "ax": 111.1,
+     "ay": 354.8
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_44.png",
+     "w": 226,
+     "h": 342,
+     "ax": 167.2,
+     "ay": 352.3
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_45.png",
+     "w": 219,
+     "h": 336,
+     "ax": 171.6,
+     "ay": 344.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_46.png",
+     "w": 303,
+     "h": 335,
+     "ax": 176.6,
+     "ay": 343.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_47.png",
+     "w": 373,
+     "h": 333,
+     "ax": 191.3,
+     "ay": 342.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_48.png",
+     "w": 308,
+     "h": 328,
+     "ax": 117.5,
+     "ay": 337.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_49.png",
+     "w": 307,
+     "h": 328,
+     "ax": 123.3,
+     "ay": 337.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_50.png",
+     "w": 308,
+     "h": 328,
+     "ax": 116.9,
+     "ay": 337.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_51.png",
+     "w": 307,
+     "h": 329,
+     "ax": 103.1,
+     "ay": 337.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_52.png",
+     "w": 231,
+     "h": 332,
+     "ax": 92.3,
+     "ay": 339.6
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_53.png",
+     "w": 188,
+     "h": 322,
+     "ax": 86.0,
+     "ay": 325.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_54.png",
+     "w": 207,
+     "h": 311,
+     "ax": 122.6,
+     "ay": 313.6
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_55.png",
+     "w": 299,
+     "h": 302,
+     "ax": 155.1,
+     "ay": 304.1
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_56.png",
+     "w": 299,
+     "h": 304,
+     "ax": 160.0,
+     "ay": 306.6
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_57.png",
+     "w": 300,
+     "h": 307,
+     "ax": 162.0,
+     "ay": 309.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_58.png",
+     "w": 304,
+     "h": 311,
+     "ax": 164.7,
+     "ay": 313.6
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_59.png",
+     "w": 305,
+     "h": 311,
+     "ax": 165.5,
+     "ay": 313.6
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_60.png",
+     "w": 307,
+     "h": 310,
+     "ax": 165.6,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_61.png",
+     "w": 307,
+     "h": 310,
+     "ax": 165.8,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_62.png",
+     "w": 307,
+     "h": 310,
+     "ax": 165.8,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_63.png",
+     "w": 307,
+     "h": 310,
+     "ax": 165.8,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_64.png",
+     "w": 307,
+     "h": 310,
+     "ax": 165.9,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_65.png",
+     "w": 279,
+     "h": 314,
+     "ax": 160.2,
+     "ay": 315.5
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_66.png",
+     "w": 255,
+     "h": 316,
+     "ax": 154.6,
+     "ay": 317.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_67.png",
+     "w": 218,
+     "h": 318,
+     "ax": 142.7,
+     "ay": 319.3
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_68.png",
+     "w": 210,
+     "h": 326,
+     "ax": 120.5,
+     "ay": 325.6
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_69.png",
+     "w": 213,
+     "h": 329,
+     "ax": 107.9,
+     "ay": 329.4
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_70.png",
+     "w": 213,
+     "h": 328,
+     "ax": 106.1,
+     "ay": 328.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_71.png",
+     "w": 213,
+     "h": 329,
+     "ax": 105.6,
+     "ay": 328.8
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_72.png",
+     "w": 213,
+     "h": 329,
+     "ax": 105.1,
+     "ay": 328.8
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_73.png",
+     "w": 213,
+     "h": 331,
+     "ax": 104.5,
+     "ay": 330.7
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_74.png",
+     "w": 213,
+     "h": 331,
+     "ax": 103.9,
+     "ay": 331.3
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_75.png",
+     "w": 213,
+     "h": 332,
+     "ax": 103.3,
+     "ay": 332.0
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_76.png",
+     "w": 213,
+     "h": 333,
+     "ax": 102.9,
+     "ay": 333.2
+    },
+    {
+     "src": "assets/sprites/goku_ssj/cmbv_77.png",
+     "w": 213,
+     "h": 333,
+     "ax": 102.7,
+     "ay": 333.2
+    }
+   ]
   }
  },
  "kakashi": {
@@ -6065,6 +6617,558 @@ const SPRITES = {
      "h": 535,
      "ax": 130.8,
      "ay": 535
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/vegeta/cmbv_0.png",
+     "w": 145,
+     "h": 282,
+     "ax": 74.6,
+     "ay": 281.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_1.png",
+     "w": 145,
+     "h": 281,
+     "ax": 74.1,
+     "ay": 281.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_2.png",
+     "w": 144,
+     "h": 280,
+     "ax": 72.4,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_3.png",
+     "w": 139,
+     "h": 288,
+     "ax": 69.2,
+     "ay": 287.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_4.png",
+     "w": 135,
+     "h": 290,
+     "ax": 66.8,
+     "ay": 289.8
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_5.png",
+     "w": 133,
+     "h": 288,
+     "ax": 65.2,
+     "ay": 288.2
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_6.png",
+     "w": 133,
+     "h": 288,
+     "ax": 64.3,
+     "ay": 288.2
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_7.png",
+     "w": 134,
+     "h": 290,
+     "ax": 65.7,
+     "ay": 289.8
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_8.png",
+     "w": 177,
+     "h": 294,
+     "ax": 69.3,
+     "ay": 293.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_9.png",
+     "w": 192,
+     "h": 294,
+     "ax": 72.1,
+     "ay": 293.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_10.png",
+     "w": 191,
+     "h": 294,
+     "ax": 73.9,
+     "ay": 293.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_11.png",
+     "w": 190,
+     "h": 293,
+     "ax": 73.7,
+     "ay": 293.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_12.png",
+     "w": 191,
+     "h": 291,
+     "ax": 75.2,
+     "ay": 290.9
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_13.png",
+     "w": 187,
+     "h": 288,
+     "ax": 77.6,
+     "ay": 287.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_14.png",
+     "w": 174,
+     "h": 287,
+     "ax": 80.7,
+     "ay": 286.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_15.png",
+     "w": 154,
+     "h": 286,
+     "ax": 86.7,
+     "ay": 286.0
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_16.png",
+     "w": 148,
+     "h": 284,
+     "ax": 98.8,
+     "ay": 284.4
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_17.png",
+     "w": 215,
+     "h": 281,
+     "ax": 108.8,
+     "ay": 282.2
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_18.png",
+     "w": 219,
+     "h": 281,
+     "ax": 113.1,
+     "ay": 282.2
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_19.png",
+     "w": 219,
+     "h": 282,
+     "ax": 113.4,
+     "ay": 283.3
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_20.png",
+     "w": 219,
+     "h": 283,
+     "ax": 114.4,
+     "ay": 283.8
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_21.png",
+     "w": 216,
+     "h": 283,
+     "ax": 112.5,
+     "ay": 284.4
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_22.png",
+     "w": 197,
+     "h": 287,
+     "ax": 103.0,
+     "ay": 286.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_23.png",
+     "w": 113,
+     "h": 288,
+     "ax": 55.1,
+     "ay": 296.4
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_24.png",
+     "w": 97,
+     "h": 288,
+     "ax": 39.1,
+     "ay": 299.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_25.png",
+     "w": 102,
+     "h": 292,
+     "ax": 43.7,
+     "ay": 301.8
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_26.png",
+     "w": 106,
+     "h": 293,
+     "ax": 46.6,
+     "ay": 301.8
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_27.png",
+     "w": 105,
+     "h": 292,
+     "ax": 47.0,
+     "ay": 300.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_28.png",
+     "w": 106,
+     "h": 293,
+     "ax": 49.1,
+     "ay": 299.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_29.png",
+     "w": 106,
+     "h": 292,
+     "ax": 48.4,
+     "ay": 298.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_30.png",
+     "w": 106,
+     "h": 292,
+     "ax": 47.1,
+     "ay": 298.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_31.png",
+     "w": 106,
+     "h": 293,
+     "ax": 46.4,
+     "ay": 298.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_32.png",
+     "w": 106,
+     "h": 293,
+     "ax": 45.8,
+     "ay": 298.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_33.png",
+     "w": 107,
+     "h": 294,
+     "ax": 43.6,
+     "ay": 296.4
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_34.png",
+     "w": 99,
+     "h": 295,
+     "ax": 40.6,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_35.png",
+     "w": 114,
+     "h": 294,
+     "ax": 48.1,
+     "ay": 294.2
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_36.png",
+     "w": 130,
+     "h": 294,
+     "ax": 59.3,
+     "ay": 293.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_37.png",
+     "w": 166,
+     "h": 293,
+     "ax": 87.2,
+     "ay": 293.7
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_38.png",
+     "w": 242,
+     "h": 285,
+     "ax": 167.3,
+     "ay": 286.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_39.png",
+     "w": 228,
+     "h": 286,
+     "ax": 153.0,
+     "ay": 287.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_40.png",
+     "w": 158,
+     "h": 285,
+     "ax": 95.0,
+     "ay": 286.0
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_41.png",
+     "w": 198,
+     "h": 284,
+     "ax": 96.5,
+     "ay": 284.9
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_42.png",
+     "w": 260,
+     "h": 279,
+     "ax": 94.3,
+     "ay": 280.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_43.png",
+     "w": 251,
+     "h": 277,
+     "ax": 85.0,
+     "ay": 278.4
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_44.png",
+     "w": 239,
+     "h": 278,
+     "ax": 73.1,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_45.png",
+     "w": 215,
+     "h": 278,
+     "ax": 58.5,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_46.png",
+     "w": 189,
+     "h": 279,
+     "ax": 55.1,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_47.png",
+     "w": 159,
+     "h": 279,
+     "ax": 62.7,
+     "ay": 280.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_48.png",
+     "w": 154,
+     "h": 282,
+     "ax": 52.1,
+     "ay": 283.3
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_49.png",
+     "w": 150,
+     "h": 281,
+     "ax": 55.6,
+     "ay": 282.2
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_50.png",
+     "w": 150,
+     "h": 278,
+     "ax": 64.5,
+     "ay": 279.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_51.png",
+     "w": 157,
+     "h": 277,
+     "ax": 86.0,
+     "ay": 277.9
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_52.png",
+     "w": 173,
+     "h": 267,
+     "ax": 122.0,
+     "ay": 268.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_53.png",
+     "w": 258,
+     "h": 259,
+     "ax": 142.0,
+     "ay": 260.4
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_54.png",
+     "w": 257,
+     "h": 260,
+     "ax": 145.6,
+     "ay": 261.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_55.png",
+     "w": 247,
+     "h": 261,
+     "ax": 145.0,
+     "ay": 262.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_56.png",
+     "w": 247,
+     "h": 262,
+     "ax": 144.4,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_57.png",
+     "w": 247,
+     "h": 262,
+     "ax": 143.3,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_58.png",
+     "w": 247,
+     "h": 260,
+     "ax": 143.5,
+     "ay": 261.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_59.png",
+     "w": 248,
+     "h": 262,
+     "ax": 143.9,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_60.png",
+     "w": 248,
+     "h": 261,
+     "ax": 143.5,
+     "ay": 262.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_61.png",
+     "w": 247,
+     "h": 262,
+     "ax": 143.3,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_62.png",
+     "w": 248,
+     "h": 260,
+     "ax": 144.4,
+     "ay": 261.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_63.png",
+     "w": 247,
+     "h": 262,
+     "ax": 144.4,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_64.png",
+     "w": 247,
+     "h": 262,
+     "ax": 144.5,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_65.png",
+     "w": 247,
+     "h": 262,
+     "ax": 144.7,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_66.png",
+     "w": 247,
+     "h": 262,
+     "ax": 144.6,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_67.png",
+     "w": 246,
+     "h": 261,
+     "ax": 143.4,
+     "ay": 262.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_68.png",
+     "w": 202,
+     "h": 268,
+     "ax": 130.9,
+     "ay": 269.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_69.png",
+     "w": 202,
+     "h": 267,
+     "ax": 126.5,
+     "ay": 268.1
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_70.png",
+     "w": 149,
+     "h": 278,
+     "ax": 103.0,
+     "ay": 279.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_71.png",
+     "w": 149,
+     "h": 278,
+     "ax": 97.1,
+     "ay": 279.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_72.png",
+     "w": 144,
+     "h": 287,
+     "ax": 76.3,
+     "ay": 286.6
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_73.png",
+     "w": 141,
+     "h": 290,
+     "ax": 67.4,
+     "ay": 289.8
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_74.png",
+     "w": 141,
+     "h": 292,
+     "ax": 65.4,
+     "ay": 292.0
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_75.png",
+     "w": 140,
+     "h": 291,
+     "ax": 64.1,
+     "ay": 291.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_76.png",
+     "w": 140,
+     "h": 291,
+     "ax": 63.8,
+     "ay": 291.5
+    },
+    {
+     "src": "assets/sprites/vegeta/cmbv_77.png",
+     "w": 139,
+     "h": 289,
+     "ax": 63.7,
+     "ay": 289.3
     }
    ]
   }
@@ -8549,6 +9653,558 @@ const SPRITES = {
      "h": 530,
      "ax": 154.4,
      "ay": 530
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_0.png",
+     "w": 173,
+     "h": 290,
+     "ax": 95.3,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_1.png",
+     "w": 173,
+     "h": 290,
+     "ax": 94.8,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_2.png",
+     "w": 172,
+     "h": 292,
+     "ax": 93.7,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_3.png",
+     "w": 171,
+     "h": 294,
+     "ax": 92.4,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_4.png",
+     "w": 171,
+     "h": 294,
+     "ax": 91.1,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_5.png",
+     "w": 169,
+     "h": 297,
+     "ax": 89.6,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_6.png",
+     "w": 169,
+     "h": 297,
+     "ax": 88.0,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_7.png",
+     "w": 168,
+     "h": 299,
+     "ax": 85.8,
+     "ay": 299.1
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_8.png",
+     "w": 165,
+     "h": 302,
+     "ax": 85.0,
+     "ay": 302.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_9.png",
+     "w": 164,
+     "h": 302,
+     "ax": 81.2,
+     "ay": 302.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_10.png",
+     "w": 164,
+     "h": 303,
+     "ax": 80.2,
+     "ay": 303.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_11.png",
+     "w": 164,
+     "h": 303,
+     "ax": 80.6,
+     "ay": 303.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_12.png",
+     "w": 186,
+     "h": 303,
+     "ax": 83.9,
+     "ay": 303.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_13.png",
+     "w": 210,
+     "h": 300,
+     "ax": 88.5,
+     "ay": 300.2
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_14.png",
+     "w": 210,
+     "h": 300,
+     "ax": 90.7,
+     "ay": 300.2
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_15.png",
+     "w": 201,
+     "h": 297,
+     "ax": 90.9,
+     "ay": 298.0
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_16.png",
+     "w": 185,
+     "h": 295,
+     "ax": 93.8,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_17.png",
+     "w": 169,
+     "h": 296,
+     "ax": 100.0,
+     "ay": 296.3
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_18.png",
+     "w": 221,
+     "h": 290,
+     "ax": 115.2,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_19.png",
+     "w": 226,
+     "h": 289,
+     "ax": 120.8,
+     "ay": 289.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_20.png",
+     "w": 226,
+     "h": 290,
+     "ax": 122.2,
+     "ay": 290.7
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_21.png",
+     "w": 226,
+     "h": 291,
+     "ax": 122.0,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_22.png",
+     "w": 226,
+     "h": 291,
+     "ax": 120.7,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_23.png",
+     "w": 199,
+     "h": 293,
+     "ax": 115.0,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_24.png",
+     "w": 175,
+     "h": 295,
+     "ax": 106.9,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_25.png",
+     "w": 163,
+     "h": 301,
+     "ax": 97.5,
+     "ay": 300.8
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_26.png",
+     "w": 164,
+     "h": 302,
+     "ax": 89.6,
+     "ay": 301.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_27.png",
+     "w": 165,
+     "h": 303,
+     "ax": 84.2,
+     "ay": 303.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_28.png",
+     "w": 136,
+     "h": 312,
+     "ax": 66.7,
+     "ay": 311.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_29.png",
+     "w": 131,
+     "h": 312,
+     "ax": 58.2,
+     "ay": 311.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_30.png",
+     "w": 131,
+     "h": 313,
+     "ax": 55.8,
+     "ay": 312.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_31.png",
+     "w": 130,
+     "h": 314,
+     "ax": 58.5,
+     "ay": 313.2
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_32.png",
+     "w": 129,
+     "h": 314,
+     "ax": 59.2,
+     "ay": 313.7
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_33.png",
+     "w": 129,
+     "h": 315,
+     "ax": 59.2,
+     "ay": 314.8
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_34.png",
+     "w": 129,
+     "h": 315,
+     "ax": 58.2,
+     "ay": 314.8
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_35.png",
+     "w": 152,
+     "h": 316,
+     "ax": 66.6,
+     "ay": 315.4
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_36.png",
+     "w": 229,
+     "h": 311,
+     "ax": 74.7,
+     "ay": 311.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_37.png",
+     "w": 229,
+     "h": 311,
+     "ax": 75.2,
+     "ay": 311.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_38.png",
+     "w": 245,
+     "h": 304,
+     "ax": 75.7,
+     "ay": 304.7
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_39.png",
+     "w": 248,
+     "h": 304,
+     "ax": 74.9,
+     "ay": 304.7
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_40.png",
+     "w": 246,
+     "h": 305,
+     "ax": 71.7,
+     "ay": 305.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_41.png",
+     "w": 229,
+     "h": 306,
+     "ax": 67.9,
+     "ay": 307.0
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_42.png",
+     "w": 183,
+     "h": 309,
+     "ax": 64.1,
+     "ay": 309.2
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_43.png",
+     "w": 162,
+     "h": 310,
+     "ax": 65.3,
+     "ay": 310.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_44.png",
+     "w": 168,
+     "h": 309,
+     "ax": 68.7,
+     "ay": 309.2
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_45.png",
+     "w": 182,
+     "h": 301,
+     "ax": 76.0,
+     "ay": 301.4
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_46.png",
+     "w": 175,
+     "h": 296,
+     "ax": 76.6,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_47.png",
+     "w": 158,
+     "h": 293,
+     "ax": 76.2,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_48.png",
+     "w": 170,
+     "h": 285,
+     "ax": 118.5,
+     "ay": 286.8
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_49.png",
+     "w": 254,
+     "h": 279,
+     "ax": 133.6,
+     "ay": 281.2
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_50.png",
+     "w": 255,
+     "h": 281,
+     "ax": 138.9,
+     "ay": 282.3
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_51.png",
+     "w": 257,
+     "h": 282,
+     "ax": 140.3,
+     "ay": 283.4
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_52.png",
+     "w": 258,
+     "h": 283,
+     "ax": 141.3,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_53.png",
+     "w": 258,
+     "h": 284,
+     "ax": 141.3,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_54.png",
+     "w": 259,
+     "h": 283,
+     "ax": 141.8,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_55.png",
+     "w": 259,
+     "h": 283,
+     "ax": 141.5,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_56.png",
+     "w": 259,
+     "h": 283,
+     "ax": 141.4,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_57.png",
+     "w": 259,
+     "h": 283,
+     "ax": 141.4,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_58.png",
+     "w": 259,
+     "h": 283,
+     "ax": 141.4,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_59.png",
+     "w": 259,
+     "h": 283,
+     "ax": 141.4,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_60.png",
+     "w": 259,
+     "h": 283,
+     "ax": 141.4,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_61.png",
+     "w": 258,
+     "h": 283,
+     "ax": 141.4,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_62.png",
+     "w": 258,
+     "h": 283,
+     "ax": 141.4,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_63.png",
+     "w": 258,
+     "h": 283,
+     "ax": 141.3,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_64.png",
+     "w": 258,
+     "h": 283,
+     "ax": 140.5,
+     "ay": 284.5
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_65.png",
+     "w": 223,
+     "h": 289,
+     "ax": 134.2,
+     "ay": 290.7
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_66.png",
+     "w": 223,
+     "h": 289,
+     "ax": 129.8,
+     "ay": 290.7
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_67.png",
+     "w": 169,
+     "h": 297,
+     "ax": 115.0,
+     "ay": 298.0
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_68.png",
+     "w": 165,
+     "h": 303,
+     "ax": 97.8,
+     "ay": 303.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_69.png",
+     "w": 165,
+     "h": 303,
+     "ax": 91.9,
+     "ay": 303.6
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_70.png",
+     "w": 157,
+     "h": 305,
+     "ax": 84.3,
+     "ay": 305.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_71.png",
+     "w": 159,
+     "h": 304,
+     "ax": 83.8,
+     "ay": 304.2
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_72.png",
+     "w": 164,
+     "h": 296,
+     "ax": 86.6,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_73.png",
+     "w": 168,
+     "h": 292,
+     "ax": 89.6,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_74.png",
+     "w": 168,
+     "h": 292,
+     "ax": 91.5,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_75.png",
+     "w": 171,
+     "h": 290,
+     "ax": 92.8,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_76.png",
+     "w": 171,
+     "h": 290,
+     "ax": 93.4,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/vegeta_ssj/cmbv_77.png",
+     "w": 172,
+     "h": 292,
+     "ax": 93.3,
+     "ay": 292.4
     }
    ]
   }
@@ -14469,6 +16125,558 @@ const SPRITES = {
      "h": 586,
      "ax": 186.3,
      "ay": 586
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/goku/cmbv_0.png",
+     "w": 193,
+     "h": 286,
+     "ax": 93.3,
+     "ay": 285.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_1.png",
+     "w": 191,
+     "h": 285,
+     "ax": 92.5,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_2.png",
+     "w": 187,
+     "h": 285,
+     "ax": 90.7,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_3.png",
+     "w": 187,
+     "h": 286,
+     "ax": 88.4,
+     "ay": 285.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_4.png",
+     "w": 187,
+     "h": 287,
+     "ax": 86.6,
+     "ay": 287.0
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_5.png",
+     "w": 187,
+     "h": 288,
+     "ax": 86.0,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_6.png",
+     "w": 203,
+     "h": 289,
+     "ax": 86.5,
+     "ay": 289.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_7.png",
+     "w": 223,
+     "h": 289,
+     "ax": 87.3,
+     "ay": 289.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_8.png",
+     "w": 222,
+     "h": 289,
+     "ax": 87.5,
+     "ay": 289.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_9.png",
+     "w": 220,
+     "h": 289,
+     "ax": 87.1,
+     "ay": 289.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_10.png",
+     "w": 213,
+     "h": 290,
+     "ax": 86.6,
+     "ay": 290.3
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_11.png",
+     "w": 200,
+     "h": 291,
+     "ax": 86.6,
+     "ay": 291.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_12.png",
+     "w": 187,
+     "h": 292,
+     "ax": 87.6,
+     "ay": 292.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_13.png",
+     "w": 187,
+     "h": 291,
+     "ax": 90.0,
+     "ay": 291.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_14.png",
+     "w": 208,
+     "h": 289,
+     "ax": 93.7,
+     "ay": 288.6
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_15.png",
+     "w": 233,
+     "h": 285,
+     "ax": 97.8,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_16.png",
+     "w": 227,
+     "h": 283,
+     "ax": 102.4,
+     "ay": 283.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_17.png",
+     "w": 202,
+     "h": 283,
+     "ax": 108.1,
+     "ay": 283.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_18.png",
+     "w": 198,
+     "h": 278,
+     "ax": 122.3,
+     "ay": 278.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_19.png",
+     "w": 242,
+     "h": 276,
+     "ax": 130.0,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_20.png",
+     "w": 246,
+     "h": 274,
+     "ax": 132.6,
+     "ay": 273.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_21.png",
+     "w": 246,
+     "h": 273,
+     "ax": 133.5,
+     "ay": 272.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_22.png",
+     "w": 248,
+     "h": 271,
+     "ax": 133.9,
+     "ay": 270.6
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_23.png",
+     "w": 247,
+     "h": 268,
+     "ax": 133.3,
+     "ay": 268.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_24.png",
+     "w": 240,
+     "h": 269,
+     "ax": 130.6,
+     "ay": 269.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_25.png",
+     "w": 219,
+     "h": 271,
+     "ax": 123.7,
+     "ay": 271.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_26.png",
+     "w": 187,
+     "h": 275,
+     "ax": 112.5,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_27.png",
+     "w": 174,
+     "h": 279,
+     "ax": 92.9,
+     "ay": 282.1
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_28.png",
+     "w": 159,
+     "h": 298,
+     "ax": 76.1,
+     "ay": 302.3
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_29.png",
+     "w": 130,
+     "h": 302,
+     "ax": 68.6,
+     "ay": 306.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_30.png",
+     "w": 103,
+     "h": 302,
+     "ax": 57.9,
+     "ay": 306.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_31.png",
+     "w": 110,
+     "h": 302,
+     "ax": 66.5,
+     "ay": 306.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_32.png",
+     "w": 120,
+     "h": 300,
+     "ax": 71.7,
+     "ay": 304.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_33.png",
+     "w": 128,
+     "h": 296,
+     "ax": 73.6,
+     "ay": 300.1
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_34.png",
+     "w": 128,
+     "h": 294,
+     "ax": 72.2,
+     "ay": 298.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_35.png",
+     "w": 127,
+     "h": 294,
+     "ax": 72.3,
+     "ay": 298.0
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_36.png",
+     "w": 126,
+     "h": 294,
+     "ax": 73.5,
+     "ay": 298.0
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_37.png",
+     "w": 124,
+     "h": 296,
+     "ax": 74.1,
+     "ay": 300.1
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_38.png",
+     "w": 127,
+     "h": 299,
+     "ax": 73.9,
+     "ay": 303.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_39.png",
+     "w": 138,
+     "h": 301,
+     "ax": 76.1,
+     "ay": 305.6
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_40.png",
+     "w": 149,
+     "h": 302,
+     "ax": 77.0,
+     "ay": 307.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_41.png",
+     "w": 158,
+     "h": 303,
+     "ax": 75.9,
+     "ay": 308.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_42.png",
+     "w": 185,
+     "h": 305,
+     "ax": 90.8,
+     "ay": 308.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_43.png",
+     "w": 278,
+     "h": 298,
+     "ax": 161.3,
+     "ay": 302.3
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_44.png",
+     "w": 273,
+     "h": 296,
+     "ax": 159.3,
+     "ay": 300.1
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_45.png",
+     "w": 232,
+     "h": 297,
+     "ax": 129.5,
+     "ay": 301.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_46.png",
+     "w": 277,
+     "h": 300,
+     "ax": 191.7,
+     "ay": 304.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_47.png",
+     "w": 184,
+     "h": 300,
+     "ax": 80.4,
+     "ay": 303.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_48.png",
+     "w": 386,
+     "h": 292,
+     "ax": 205.3,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_49.png",
+     "w": 332,
+     "h": 290,
+     "ax": 151.8,
+     "ay": 294.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_50.png",
+     "w": 272,
+     "h": 289,
+     "ax": 82.0,
+     "ay": 294.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_51.png",
+     "w": 273,
+     "h": 291,
+     "ax": 72.0,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_52.png",
+     "w": 203,
+     "h": 292,
+     "ax": 75.8,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_53.png",
+     "w": 180,
+     "h": 291,
+     "ax": 79.5,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_54.png",
+     "w": 197,
+     "h": 286,
+     "ax": 105.8,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_55.png",
+     "w": 218,
+     "h": 278,
+     "ax": 137.8,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_56.png",
+     "w": 268,
+     "h": 271,
+     "ax": 149.4,
+     "ay": 271.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_57.png",
+     "w": 271,
+     "h": 269,
+     "ax": 153.4,
+     "ay": 268.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_58.png",
+     "w": 272,
+     "h": 262,
+     "ax": 154.9,
+     "ay": 261.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_59.png",
+     "w": 272,
+     "h": 260,
+     "ax": 155.4,
+     "ay": 259.6
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_60.png",
+     "w": 272,
+     "h": 261,
+     "ax": 155.5,
+     "ay": 260.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_61.png",
+     "w": 272,
+     "h": 262,
+     "ax": 155.4,
+     "ay": 261.8
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_62.png",
+     "w": 272,
+     "h": 262,
+     "ax": 155.2,
+     "ay": 262.3
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_63.png",
+     "w": 272,
+     "h": 264,
+     "ax": 155.0,
+     "ay": 264.0
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_64.png",
+     "w": 272,
+     "h": 265,
+     "ax": 154.7,
+     "ay": 264.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_65.png",
+     "w": 266,
+     "h": 265,
+     "ax": 152.8,
+     "ay": 265.1
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_66.png",
+     "w": 252,
+     "h": 267,
+     "ax": 148.6,
+     "ay": 267.3
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_67.png",
+     "w": 229,
+     "h": 268,
+     "ax": 140.0,
+     "ay": 269.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_68.png",
+     "w": 197,
+     "h": 273,
+     "ax": 117.5,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_69.png",
+     "w": 190,
+     "h": 277,
+     "ax": 103.9,
+     "ay": 280.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_70.png",
+     "w": 185,
+     "h": 283,
+     "ax": 93.6,
+     "ay": 285.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_71.png",
+     "w": 183,
+     "h": 288,
+     "ax": 87.2,
+     "ay": 289.2
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_72.png",
+     "w": 182,
+     "h": 291,
+     "ax": 83.1,
+     "ay": 291.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_73.png",
+     "w": 175,
+     "h": 291,
+     "ax": 79.1,
+     "ay": 291.4
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_74.png",
+     "w": 172,
+     "h": 290,
+     "ax": 76.3,
+     "ay": 289.7
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_75.png",
+     "w": 171,
+     "h": 288,
+     "ax": 74.8,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_76.png",
+     "w": 170,
+     "h": 286,
+     "ax": 74.9,
+     "ay": 285.9
+    },
+    {
+     "src": "assets/sprites/goku/cmbv_77.png",
+     "w": 171,
+     "h": 286,
+     "ax": 74.9,
+     "ay": 285.9
     }
    ]
   }

@@ -921,20 +921,42 @@ const SY_MOVES = { ...NEWKICK(FIST),
 };
 // Sangohan adulte (saga Boo, Gohan ultime) : poings et pieds puissants ; spécial Kamehameha (special 0-3),
 // ruée de coups en forme (special 4-7). Ultime : un Kamehameha géant chargé longuement.
-// Combo filmé (vidéo Flow, tools/video2anim.py -> animation 'cmb', 74 images à 20 i/s) : direct du gauche (3-11), gros
-// direct du droit (12-20), genou montant (21-33), coup de pied retourné (34-46), direct final en grand pas (47-67).
-// Chaque coup joue sa tranche plus vite que la vidéo ; la frappe tombe quand le poing ou le pied est tendu.
-// Les tenues sans animation filmée gardent leurs poses de planche (p).
-const ugCmb = (frames, fps, dur) => ({ anim: 'cmb', frames, fps, from: 0, to: dur, last: frames[frames.length - 1] });
+// Combos filmés (vidéo Flow -> tools/video2anim.py -> animation 'cmb' de la planche) : chaque coup du combo joue sa
+// tranche d'images (CMB[planche][coup]) sur toute sa durée, plus vite que la vidéo ; la frappe tombe quand le poing ou le
+// pied est tendu (tranches choisies pour que ce soit vers le tiers du coup). Une planche sans tranche (tenue, forme pas
+// encore filmée) garde ses poses de planche (p). cmbAnyForm : les formes du perso reprennent la vidéo de base.
+const CMB = {
+  // Sangohan adulte : direct du gauche, gros direct du droit, genou montant, coup de pied retourné, direct final en grand pas
+  gohan_a: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [12, 13, 14, 15, 16, 17, 18, 19, 20], kick: [21, 22, 23, 24, 26, 28, 30, 31, 32, 33],
+    roundhouse: [34, 35, 36, 38, 39, 40, 41, 42, 43, 44, 45, 46], finisher: [47, 48, 49, 50, 51, 52, 53, 55, 57, 59, 61, 63, 64, 65, 66, 67, 69] },
+  // Sangoku et Vegeta (forme normale et Super Saiyan) : même enchaînement ; le coup de pied qui part en arrière pendant la
+  // rotation est sauté (il frapperait derrière), ainsi que les images à traînée verte mal détourée
+  goku: { punch: [4, 5, 6, 7, 8, 9, 10, 11, 12], cross: [16, 17, 18, 19, 20, 21, 22, 24, 26], kick: [29, 30, 31, 32, 33, 34, 35, 37, 39, 40],
+    roundhouse: [40, 41, 42, 46, 47, 48, 49, 50, 51, 52, 53, 54], finisher: [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 64, 66, 67, 68, 69, 70, 71] },
+  goku_ssj: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [16, 17, 19, 20, 21, 22, 23, 24, 25], kick: [28, 29, 31, 32, 33, 34, 35, 36, 37, 38],
+    roundhouse: [40, 41, 42, 47, 48, 49, 50, 51, 52, 53, 54, 55], finisher: [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 64, 65, 66, 67, 68, 69, 70] },
+  vegeta: { punch: [5, 6, 7, 8, 9, 10, 11, 12, 13], cross: [15, 16, 17, 18, 19, 20, 21, 22, 23], kick: [23, 24, 25, 26, 27, 28, 29, 31, 33, 35],
+    roundhouse: [36, 37, 40, 41, 42, 45, 46, 47, 48, 49, 50, 51], finisher: [50, 51, 52, 55, 56, 57, 58, 59, 60, 61, 62, 64, 66, 68, 69, 70, 71] },
+  vegeta_ssj: { punch: [10, 11, 12, 13, 14, 15, 16, 17, 18], cross: [16, 17, 18, 19, 20, 21, 22, 24, 26], kick: [27, 28, 29, 30, 31, 32, 33, 34, 35],
+    roundhouse: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45], finisher: [46, 47, 48, 49, 50, 51, 52, 54, 56, 58, 60, 62, 64, 65, 66, 67, 68] },
+};
+// réglages communs des coups filmés : plus d'élan à chaque coup, l'ennemi reste à portée jusqu'au dernier
+const CMB_T = {
+  punch:      { dur: 0.3, on: 0.1, off: 0.2, cancel: 0.2, push: 260, pushAt: 0.06, pushDur: 0.1 },
+  cross:      { dur: 0.34, on: 0.08, off: 0.22, cancel: 0.22, push: 380, pushAt: 0.04, pushDur: 0.12 },
+  kick:       { dur: 0.4, on: 0.08, off: 0.25, cancel: 0.25, push: 320, pushAt: 0.04, pushDur: 0.12 },
+  roundhouse: { dur: 0.48, on: 0.12, off: 0.3, cancel: 0.3, dmg: 2.3, kb: 300, push: 460, pushAt: 0.06, pushDur: 0.14, shock: true },
+  finisher:   { ...FINISHER, dur: 0.7, on: 0.15, off: 0.33, lean: 0 },
+};
+// coups filmés d'un jeu de coups ; fin : les autres coups finaux qui reprennent la tranche du direct final
+const filmed = (M, fin = []) => {
+  const out = { ...M };
+  for (const [k, T] of Object.entries(CMB_T)) out[k] = { ...M[k], ...T, cmb: k };
+  for (const k of fin) out[k] = { ...out.finisher, launch: -520, push: 900, p: M[k]?.p, cmb: 'finisher' };
+  return out;
+};
 const UG_FIST = NEWKICK(FIST);
-const UG_MOVES = { ...UG_FIST,
-  punch:      { ...UG_FIST.punch, dur: 0.3, on: 0.1, off: 0.2, cancel: 0.2, push: 260, pushAt: 0.06, pushDur: 0.1, cyc: ugCmb([3, 4, 5, 6, 7, 8, 9, 10, 11], 30, 0.3) },
-  cross:      { ...UG_FIST.cross, dur: 0.34, on: 0.08, off: 0.22, cancel: 0.22, push: 380, pushAt: 0.04, pushDur: 0.12, cyc: ugCmb([12, 13, 14, 15, 16, 17, 18, 19, 20], 28, 0.34) },
-  kick:       { ...UG_FIST.kick, dur: 0.4, on: 0.08, off: 0.25, cancel: 0.25, push: 320, pushAt: 0.04, pushDur: 0.12, cyc: ugCmb([21, 22, 23, 24, 26, 28, 30, 31, 32, 33], 26, 0.4) },
-  roundhouse: { ...UG_FIST.roundhouse, dur: 0.48, on: 0.12, off: 0.3, cancel: 0.3, dmg: 2.3, kb: 300, push: 460, pushAt: 0.06, pushDur: 0.14, shock: true,
-                cyc: ugCmb([34, 35, 36, 38, 39, 40, 41, 42, 43, 44, 45, 46], 26, 0.48) },
-  finisher:   { ...FINISHER, dur: 0.7, on: 0.15, off: 0.33, lean: 0, cyc: ugCmb([47, 48, 49, 50, 51, 52, 53, 55, 57, 59, 61, 63, 64, 65, 66, 67, 69], 24, 0.7) },
-  spinback:   { ...FINISHER, dur: 0.7, on: 0.15, off: 0.33, lean: 0, launch: -520, push: 900, p: UG_FIST.spinback.p, cyc: ugCmb([47, 48, 49, 50, 51, 52, 53, 55, 57, 59, 61, 63, 64, 65, 66, 67, 69], 24, 0.7) },
+const UG_MOVES = { ...filmed(UG_FIST, ['spinback']),
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 140], y: [-150, -50], dmg: 3, kb: 440, ki: 8, launch: -480, push: 1300, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
   kamehameha: { dur: 1.35, cost: 35, beam: { hand: true, at: 0.55, end: 1.2, len: 950, dmg: 0.6, color: '#7fd8ff' }, call: 'KAMEHAMEHA !', p: ['special', [0, 1, 2, 3], [0.25, 0.55, 1.22]] },
   gorush: { dur: 0.9, cost: 35, on: 0.2, off: 0.62, multi: 0.12, reach: [0, 170], y: [-200, -40], dmg: 1.6, kb: 160, ki: 0, launch: -300, push: 900, pushAt: 0.12, pushDur: 0.4, ghost: true, shock: true, call: 'HAAAA !', p: ['special', [4, 5, 6, 7], [0.14, 0.34, 0.6]] },
@@ -1085,7 +1107,7 @@ const CHARS = {
       { ki: 100, name: 'ULTRA INSTINCT', sheet: 'goku_ui', fallback: ['goku_ssj', 'grayscale(1) brightness(1.3) contrast(1.05)'], speed: 1.55, dmg: 2.2, at: 0.6, end: 1.1,
         aura: ['rgba(200,220,255,0.55)', '#dfeaff'], sparks: '#eef6ff', glow: '#a9c4ff', dodge: 0.45, bar: ['#5a6aa8', '#ffffff'], color: '#e8f0ff', hit: '#ffffff' },
     ],
-    moves: GK_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'], launcher: 'uppercut' },
+    moves: filmed(GK_MOVES), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'], launcher: 'uppercut' },
     special: 'kamehameha', speed: 260, pose: stdPose, ultra: [startGenki, updateGenki], ultraPose: genkiPose,
   },
   gohan: {
@@ -1333,7 +1355,7 @@ const CHARS = {
     // Gohan ultime (le pouvoir libéré par le Vieux Kaioshin) : pas de cheveux dorés, une aura blanche et des éclairs
     forms: [{ ki: 50, name: 'GOHAN ULTIME', sheet: 'gohan_a_ult', fallback: ['gohan_a', 'brightness(1.08) contrast(1.05)'], speed: 1.35, dmg: 1.9, at: 0.6, end: 1.0,
       aura: ['rgba(235,245,255,0.55)', '#ffffff'], sparks: '#ffffff', glow: '#cfe6ff', bar: ['#5a6aa8', '#ffffff'], color: '#e8f4ff', hit: '#ffffff' }],
-    moves: UG_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: UG_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' }, cmbAnyForm: true,
     special: 'kamehameha', special2: 'gorush', speed: 270, pose: stdPose, ultra: [startKameMax, updateKameMax],
     ultraPose: h => ['special', h.t < KMAX.fire - 0.45 ? 0 : h.t < KMAX.fire ? 1 : h.t < KMAX.end - 0.3 ? 2 : 3],
   },
@@ -1432,7 +1454,7 @@ const CHARS = {
     colors: ['#2a2f8a', '#ffd23b'], kiColor: '#c9a0ff', hit: '#e8d0ff', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
     labels: { blast: 'GALICK GUN', ultra: 'FINAL FLASH' },
     forms: [{ ki: 50, name: 'SUPER SAIYAN', sheet: 'vegeta_ssj', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
-    moves: VE_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(VE_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'galick', speed: 255, pose: stdPose, ultra: [startFinalFlash, updateFinalFlash],
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < 0.75 ? 5 : h.t < 0.95 ? 6 : 7],
   },
@@ -6560,6 +6582,12 @@ function footPoint(h) {
 // planche forcée le temps d'un ultime (Gohan en Super Saiyan 2), sinon celle de la forme
 const formSheet = h => (h.state === 'ultra' && h.ultraSheet) || h.boost?.sheet;
 const sheetFor = (h, anim) => formSheet(h) && SPRITES[formSheet(h)]?.[anim] ? formSheet(h) : h.C.sheet;
+// planche dont le combo filmé joue ce coup (forme comprise), ou null : on garde alors les poses de planche
+function cmbSheet(h, seg) {
+  const fs = formSheet(h), ok = sh => CMB[sh]?.[seg] && SPRITES[sh]?.cmb;
+  if (fs && ok(fs)) return fs;
+  return (!fs || h.C.cmbAnyForm) && ok(h.C.sheet) ? h.C.sheet : null;
+}
 
 // Personnages à planches de 8 étapes (Sangoku, Zoro, Naruto, Tanjiro) : walk, jump, fall,
 // combo (garde, 3 poings | 4 pieds), lowair (accroupi | en l'air), dashcharge (dash | charge), special (spécial | ultime).
@@ -6568,7 +6596,8 @@ function stdPose(h) {
   const t = h.t, m = h.move;
   if (POSE_STATES.includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
-  if (m && m.cyc && t >= m.cyc.from && SPRITES[sheetFor(h, m.cyc.anim)]?.[m.cyc.anim]) return [m.cyc.anim, t < m.cyc.to ? m.cyc.frames[Math.floor((t - m.cyc.from) * m.cyc.fps) % m.cyc.frames.length] : m.cyc.last];
+  if (m && m.cmb) { const sh = cmbSheet(h, m.cmb); if (sh) { const fr = CMB[sh][m.cmb]; return ['cmb', fr[Math.min(fr.length - 1, Math.floor(t / m.dur * fr.length))]]; } }
+  if (m && m.cyc && t >= m.cyc.from) return [m.cyc.anim, t < m.cyc.to ? m.cyc.frames[Math.floor((t - m.cyc.from) * m.cyc.fps) % m.cyc.frames.length] : m.cyc.last];
   if (m && m.p) { const [a, f, marks] = m.p, v = f[Math.min(step(t, marks || []), f.length - 1)]; return Array.isArray(v) ? v : [a, v]; }
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h), i = Math.floor(h.walkT * fps) % n; return ['walk', h.back ? n - 1 - i : i]; }
