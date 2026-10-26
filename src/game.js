@@ -36,7 +36,7 @@ addEventListener('resize', fitCanvas);
 const PENDING = {};
 // effets filmés lourds : chargés seulement quand un de leurs persos joue (sinon le téléphone sature au démarrage)
 const FX_LAZY = {
-  sanji_spin_v: ['sanji'], hell_pillar_v: ['sanji'], blade_spin_v: ['mikasa', 'levi'], big_slash_v: ['gintoki', 'trunks', 'guts', 'kenshin'],
+  sanji_spin_v: ['sanji'], hell_pillar_v: ['sanji'], blade_spin_v: ['mikasa', 'levi'], big_slash_v: ['gintoki', 'trunks', 'guts', 'kenshin', 'zoro'],
   fang_x_v: ['inosuke', 'kenshin'], palm_wave_v: ['gally'], whip_arc_v: ['baki'], cannon_boom_v: ['revy', 'itachi', 'piccolo', 'seiya'],
   shoto_ice_v: ['shoto'], shoto_fire_v: ['shoto'], titan_bolt_v: ['eren'], alchemy_v: ['edward'], muzzle_v: ['revy'],
   ed_spike1_v: ['edward'], susanoo_sword_v: ['itachi'], comet_gold_v: ['seiya'],
@@ -996,7 +996,10 @@ const IP_MOVES = {
   // boxeur : pas de coups de pied. Crochet, coup au foie, puis Gazelle Punch (accroupi, il jaillit en uppercut)
   kick:     { ...FIST.cross, p: ['combo', [4]], reach: [0, 135], y: [-175, -110], dmg: 1.9, kb: 260 },
   roundhouse: { ...FIST.cross, p: ['combo', [5]], reach: [0, 130], y: [-130, -60], dmg: 2.2, kb: 200, call: 'LIVER BLOW !' },
-  spinback: { ...FIST.spinback, p: ['combo', [6, 7], [0.14]], launch: -820, call: 'GAZELLE PUNCH !' },
+  spinback: { ...FIST.spinback, p: ['combo', [6, 7], [0.14]], launch: -820, call: 'SMASH !' },
+  // spécial : Gazelle Punch, accroupi puis il jaillit vers le haut en uppercut, propulsé par les jambes
+  gazelle:  { dur: 0.8, cost: 35, on: 0.3, off: 0.5, reach: [0, 160], y: [-240, -40], dmg: 5.5, kb: 300, ki: 0, launch: -980, push: 1100, pushAt: 0.24, pushDur: 0.18, lean: 10, ghost: true,
+              fistGlow: [0.05, 0.3], call: 'GAZELLE PUNCH !', p: ['combo', [6, 7, 0], [0.26, 0.62]] },
   ckick:    { ...FIST.ckick, y: [-90, -20] }, airkick: FIST.airkick,
   dash:     { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 120], y: [-150, -60], dmg: 3, kb: 420, ki: 8, launch: -480, push: 1000, pushAt: 0.05, pushDur: 0.3, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.4]] },
   dempsey:  { dur: 1.7, cost: 35, on: 0.25, off: 1.55, multi: 0.13, reach: [0, 150], y: [-160, -60], dmg: 0.75, kb: 60, ki: 0, push: 220, pushAt: 0.2, pushDur: 1.4, keepPush: true,
@@ -1079,8 +1082,8 @@ const CHARS = {
     labels: { blast: '36 POUND HO', ultra: 'SANZEN SEKAI' },
     forms: [{ ki: 50, name: 'ASURA', filter: 'contrast(1.2) brightness(0.92) saturate(1.2)', speed: 1.2, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(120,20,90,0.55)', '#b04bff'], ghosts: true, bar: ['#6a1b8a', '#d08bff'], color: '#c070ff', trail: '#e3b8ff' }],
     moves: Z_MOVES, chain: { punch: ['punch', 'cross', 'rising'], kick: ['kick', 'spin', 'leap'], launcher: 'rising' },
-    special: 'poundho', speed: 240, pose: stdPose, ultra: [startSanzen, updateSanzen], chargeFrame: 6,
-    ultraPose: h => h.t < SANZEN.spin ? ['special', 4 + Math.floor(h.t * 14) % 3] : h.t < SANZEN.dash ? ['dashcharge', 1] : ['dashcharge', h.t < SANZEN.dash + 0.25 ? 2 : 3],
+    special: 'poundho', speed: 240, pose: stdPose, ultra: [startAsura, updateAsura], chargeFrame: 6,
+    ultraPose: h => h.t < ASURA.dash - 0.15 ? ['special', 4 + Math.floor(h.t * 10) % 3] : h.t < ASURA.dash ? ['dashcharge', 1] : h.t < ASURA.dashEnd + 0.15 ? ['dashcharge', 2] : ['dashcharge', 3],
   },
   naruto: {
     name: 'NARUTO ENFANT', title: 'Le ninja de Konoha', sheet: 'naruto', card: 'card_naruto',
@@ -1373,7 +1376,7 @@ const CHARS = {
              glow: '#ff2a3a', arcs: 'hue-rotate(95deg) saturate(1.2) brightness(1.2)', handArcs: true }],
     moves: KA_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'chidori', speed: 265, pose: stdPose, ultra: [startKamui, updateKamui], chargeFrame: 5,
-    ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < 0.8 ? 5 : h.t < 1.8 ? 6 : 7],
+    ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < KAMUI.pull ? 5 : h.t < KAMUI.spit ? 6 : 7],
   },
   ichigo: {
     name: 'ICHIGO', title: 'Le shinigami remplaçant', sheet: 'ichigo', card: 'card_ic',
@@ -1432,11 +1435,11 @@ const CHARS = {
   ippo: {
     name: 'IPPO', title: 'Le boxeur au cœur vaillant', sheet: 'ippo', card: 'card_ip',
     colors: ['#c81e2a', '#ffffff'], kiColor: '#ffb0a0', hit: '#ffe0d0', stats: [['PUISSANCE', 5], ['VITESSE', 3], ['PORTÉE', 2]],
-    labels: { blast: 'DEMPSEY ROLL', ultra: 'DEMPSEY ROLL MAX' },
+    labels: { blast: 'GAZELLE PUNCH', ultra: 'DEMPSEY ROLL' },
     forms: [{ ki: 50, name: 'ESPRIT DE COMBAT', filter: 'contrast(1.12) saturate(1.2)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,60,40,0.45)', '#ff6a4a'], bar: ['#a01010', '#ff9a8a'], color: '#ff6a4a' }],
     moves: IP_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
-    special: 'dempsey', speed: 240, pose: stdPose, ultra: [startDempseyMax, updateDempseyMax],
-    ultraPose: h => h.t < DMAX.end - 0.5 ? ['special', 1 + Math.floor(h.t * 10) % 6] : ['special', 7],
+    special: 'gazelle', speed: 240, pose: stdPose, ultra: [startDempseyMax, updateDempseyMax],
+    ultraPose: dempseyPose,
   },
   jinwoo: {
     name: 'JIN-WOO', title: 'Le monarque des ombres', sheet: 'jinwoo', card: 'card_jw',
@@ -2721,6 +2724,48 @@ function updateSanzen(h, dt) {
   if (h.t > SANZEN.end) { h.state = 'idle'; h.cut = false; }
 }
 
+// ---------- Ultime de Zoro : Kyūtōryū Ashura puis Sanzen Sekai. Son aura de démon fait apparaître deux autres Zoro
+// à ses côtés (neuf sabres), il traverse la rue d'un trait… et, une fois rengainé, tout ce qu'il a croisé est tranché ----------
+const ASURA = { aura: 0.85, dash: 1.1, dashEnd: 1.42, cut: 1.85, end: 2.55, speed: 1900 };
+function startAsura(h) { h.hitSet = new Set(); h.cut = false; h.asuraT = 0; say(h, 'KYŪTŌRYŪ… ASHURA !'); audio.play('ultraCharge', 0.7, 0.9, 0); }
+function updateAsura(h, dt) {
+  h.inv = Math.max(h.inv, 0.1);
+  if (h.t < ASURA.dash) {
+    // l'aura du démon : fumée rouge sombre qui monte, et deux Zoro fantômes qui apparaissent de part et d'autre
+    for (let k = 0; k < 2; k++) particles.push({ x: h.x + rand(-80, 80), y: h.y - rand(0, 40), vx: rand(-40, 40), vy: rand(-380, -160), t: 0, life: 0.6, c: Math.random() < 0.6 ? '#7a0a1a' : '#2a0008', r: rand(4, 9) });
+    if (h.t > 0.25 && h.t - h.asuraT > 0.05) {
+      h.asuraT = h.t; const a = Math.min(1, (h.t - 0.25) / 0.4), [anim, i] = h.C.pose(h), sh = sheetFor(h, anim);
+      for (const off of [-1, 1]) fxs.push({ type: 'ghost', x: h.x + off * 70 * a, y: h.y - 8 * a, dir: h.dir, sheet: sh, anim, i, t: 0, life: 0.09, alpha: 0.85 * a, filter: 'sepia(1) saturate(5) hue-rotate(-45deg) brightness(0.55) contrast(1.4)' });
+      shake = Math.max(shake, 3 + 5 * a);
+    }
+    if (Math.random() < 0.35) slashFX(h.x + rand(-90, 90), h.y - rand(70, 190), h.dir, { a0: rand(-3, 0), a1: rand(0, 3), r: rand(60, 110), c: '#ff5a6a', life: 0.16, w: 8 });
+    if (h.t > ASURA.aura && !h.saidA) { h.saidA = true; say(h, 'SANZEN SEKAI !'); audio.slash(0.8); }
+  } else if (h.t < ASURA.dashEnd) {
+    // la traversée : un seul trait vert, trois silhouettes qui filent
+    const nx = clamp(h.x + h.dir * ASURA.speed * dt, camX + 40, camX + W - 40);
+    for (const e of enemies) {
+      if (!e.alive || h.hitSet.has(e) || e.state === 'down' || Math.abs(e.gz - h.gz) > 90) continue;
+      if ((e.x - h.x) * h.dir > -20 && (e.x - nx) * h.dir < 60) { h.hitSet.add(e); e.sanzen = true; e.flash = 0.2; }
+    }
+    h.x = nx; afterImage(h, 0.3, 0.55, '#3aff8a');
+    for (let k = 0; k < 3; k++) particles.push({ x: h.x - h.dir * rand(20, 120), y: h.y - rand(40, 200), vx: -h.dir * rand(600, 1100), vy: 0, t: 0, life: 0.25, c: k ? '#b8ffd0' : '#ffffff', r: rand(2, 4) });
+  } else if (!h.cut && h.t >= ASURA.cut) {
+    // il rengaine… et tout cède d'un coup
+    h.cut = true; h.saidA = false; flash = 0.75; shake = 32; hitstop = 0.16;
+    audio.play('ultraBoom', 1.2, 1.1, 0); audio.slash(1.8);
+    popups.push({ x: h.x - h.dir * 260, y: h.y - 300, t: 0, text: 'SANZEN SEKAI !!' });
+    if (FX.big_slash_v || IMG.fx_big_slash) gfx('big_slash', h.x - h.dir * 300, h.y - 130, 700, 0.5, { dir: h.dir, rot: 0.3, grow: 0.12 });
+    for (const e of enemies) if (e.sanzen) {
+      e.sanzen = false;
+      damageEnemy(e, ULT_SOLO * (4.6 + h.power / 9), 520 * h.dir, -880, e.x, e.y - 110, hitOf(h));
+      if (FX.zoro_x) animFX('zoro_x', e.x, e.y - 110 * WORLD, 360 * WORLD, 0.55);
+      for (const a of [0.5, -0.5, 1.4]) slashFX(e.x, e.y - 110, h.dir, { a0: a - 1.4, a1: a + 1.4, r: 140, c: '#b8ffd0', life: 0.5, w: 20 });
+    }
+    score += 2000;
+  }
+  if (h.t > ASURA.end) { h.state = 'idle'; h.cut = false; h.saidA = false; }
+}
+
 // ---------- Ultime de Tanjiro : la danse du dieu du feu, trois grands arcs de flammes ----------
 const HINOKAMI = { cuts: [0.45, 0.85, 1.25], end: 1.75, reach: 340 };
 function startHinokami(h) {
@@ -2801,33 +2846,55 @@ function updateAmakakeru(h, dt) {
   if (h.t > AMA.end) h.state = 'idle';
 }
 
-// ---------- Ultime de Kakashi : Kamui, une distorsion qui aspire les ennemis ----------
-function startKamui(h) { h.vortex = null; say(h, 'KAMUI !'); audio.play('ultraCharge', 0.7, 0.8, 0); }
+// ---------- Ultime de Kakashi : Kamui. Son Mangekyō s'ouvre sur l'ennemi, l'espace se tord et aspire tout ce qui
+// est autour : les ennemis tournoient, rapetissent et disparaissent dans l'autre dimension… qui les recrache brisés ----------
+const KAMUI = { open: 0.55, pull: 0.85, close: 2.05, spit: 2.3, end: 2.9, r: 185, reach: 520 };
+function startKamui(h) { h.vortex = null; h.cut = false; say(h, 'MANGEKYŌ SHARINGAN…'); audio.play('ultraCharge', 0.7, 0.8, 0); }
 function updateKamui(h, dt) {
   h.inv = Math.max(h.inv, 0.1);
-  if (!h.vortex && h.t >= 0.8) {
-    const e = nearestEnemy(h, 600);
-    h.vortex = { x: e ? e.x : h.x + h.dir * 280, y: (e ? e.gz : h.gz) - 110, gz: e ? e.gz : h.gz, hitT: 0 };
-    fxs.push({ type: 'vortex', x: h.vortex.x, y: h.vortex.y, r: 150, t: 0, life: 1.1 });
-    flash = 0.4; shake = 14;
+  if (!h.vortex && h.t >= KAMUI.open) {
+    const e = nearestEnemy(h, 700);
+    h.vortex = { x: e ? e.x : h.x + h.dir * 300, y: (e ? e.gz : h.gz) - 120, gz: e ? e.gz : h.gz, hitT: 0, eaten: [] };
+    fxs.push({ type: 'vortex', x: h.vortex.x, y: h.vortex.y, r: KAMUI.r, t: 0, life: KAMUI.close - KAMUI.open + 0.15 });
+    say(h, 'KAMUI !'); flash = 0.35; shake = 16; audio.play('ultraBoom', 0.6, 0.6, 0);
   }
-  const V = h.vortex;
-  if (V && h.t < 1.9) {
+  const V = h.vortex, dmg = ULT_SOLO * (4 + h.power / 10);
+  if (V && h.t >= KAMUI.pull && h.t < KAMUI.close) {
+    shake = Math.max(shake, 5);
     for (const e of enemies) {
-      if (!e.alive || e.state === 'down' || Math.abs(e.x - V.x) > 320 || Math.abs(e.gz - V.gz) > 120) continue;
-      e.x += (V.x - e.x) * Math.min(1, dt * 4); e.gz += (V.gz - e.gz) * Math.min(1, dt * 3); if (e.state !== 'knock') e.y = e.gz;
+      if (!e.alive || e.kamui || e.state === 'down' || Math.abs(e.x - V.x) > KAMUI.reach || Math.abs(e.gz - V.gz) > 160) continue;
+      // aspiré de plus en plus vite vers le cœur, en décollant du sol
+      const k = Math.min(1, dt * (2.5 + 3 * (h.t - KAMUI.pull)));
+      e.x += (V.x - e.x) * k; e.gz += (V.gz - e.gz) * k; e.y += (V.y + 90 - e.y) * k * 0.6; e.state = 'hurt'; e.t = 0; e.dir = Math.sign(V.x - e.x) || e.dir;
+      if (Math.abs(e.x - V.x) < 60) { e.kamui = { t: 0 }; e.x = V.x; e.y = V.y + 100; V.eaten.push(e); audio.whoosh(1.5); }
     }
-    if (h.t - V.hitT > 0.2) {
-      V.hitT = h.t;
-      for (const e of enemies) if (e.alive && e.state !== 'down' && Math.abs(e.x - V.x) < 90 && Math.abs(e.gz - V.gz) < 80) damageEnemy(e, (4 + h.power / 10) / 6, 0, null, e.x, e.y - 110, '#c9a0ff');
+    if (Math.random() < 0.9) { // débris et poussière happés par la spirale
+      const a = rand(0, 7), d = rand(KAMUI.r, KAMUI.r * 1.8);
+      particles.push({ x: V.x + Math.cos(a) * d, y: V.y + Math.sin(a) * d * 0.8, vx: -Math.cos(a) * d * 1.8, vy: -Math.sin(a) * d * 1.4, t: 0, life: 0.5, c: Math.random() < 0.5 ? '#b58cff' : '#2a1640', r: rand(3, 7) });
     }
+    if (h.t - V.hitT > 0.2) { V.hitT = h.t; for (const e of V.eaten) if (e.alive) { e.hp -= dmg / 30; e.flash = 0.1; } }
   }
-  if (V && h.t >= 1.9 && !h.cut) {
-    h.cut = true; flash = 0.6; shake = 22; audio.play('ultraBoom', 1, 1.4, 0);
-    for (const e of enemies) if (e.alive && e.state !== 'down' && Math.abs(e.x - V.x) < 160) damageEnemy(e, 3, 600 * (Math.sign(e.x - V.x) || h.dir), -800, e.x, e.y - 110, '#c9a0ff');
+  if (V && h.t >= KAMUI.close && !h.cut) {
+    // la distorsion se referme d'un coup
+    h.cut = true; flash = 0.5; shake = 18; audio.play('ultraBoom', 0.8, 1.6, 0);
+    burst(V.x, V.y, '#c9a0ff', 24);
+  }
+  if (V && h.t >= KAMUI.spit && !V.spat) {
+    // l'autre dimension les recrache, projetés dans tous les sens
+    V.spat = true; flash = 0.8; shake = 30; hitstop = 0.12; audio.play('ultraBoom', 1.2, 0.9, 0);
+    popups.push({ x: V.x, y: V.y - 170, t: 0, text: 'KAMUI !!' });
+    ring(V.x, V.y);
+    gfx('cannon_boom', V.x, V.y, 420, 0.5, { filter: 'hue-rotate(220deg) saturate(1.6)' });
+    V.eaten.forEach((e, k) => {
+      e.kamui = null; e.x = V.x; e.y = V.y + 60; e.gz = V.gz + (k % 2 ? 30 : -30);
+      const side = k % 2 ? -1 : 1;
+      damageEnemy(e, dmg * 0.6, 700 * side * h.dir, -900 - k * 80, e.x, e.y, '#c9a0ff');
+    });
+    for (const e of enemies) if (!V.eaten.includes(e) && e.alive && e.state !== 'down' && Math.abs(e.x - V.x) < 220 && Math.abs(e.gz - V.gz) < 100)
+      damageEnemy(e, dmg * 0.5, 600 * (Math.sign(e.x - V.x) || h.dir), -800, e.x, e.y - 110, '#c9a0ff');
     score += 2000;
   }
-  if (h.t > 2.3) { h.state = 'idle'; h.cut = false; }
+  if (h.t > KAMUI.end) { h.state = 'idle'; h.cut = false; for (const e of V?.eaten || []) if (e.kamui) { e.kamui = null; e.y = e.gz; } }
 }
 
 // ---------- Ultime de Sasuke : Kirin, un dragon de foudre tombé du ciel sur tous les ennemis ----------
@@ -3585,11 +3652,10 @@ function drawAlchemy(h, sx) {
     const jitter = up < 1 ? (Math.random() - 0.5) * 6 : 0;
     ctx.save();
     ctx.beginPath(); ctx.rect(cx - 600, gy - 700, 1200, 714); ctx.clip(); // rien sous le sol
-    ctx.translate(cx + jitter, gy + 14 + (1 - e) * H2 + crumble * 40);
+    ctx.translate(cx + jitter, gy + 14 + (1 - e) * H2 + crumble * crumble * H2 * 1.1);
     ctx.scale(h.dir, 1);
     // la frappe : il se jette en avant et pivote un peu
     ctx.translate(-150 + punch * 110, 0); ctx.rotate(-0.12 + punch * 0.16);
-    ctx.globalAlpha = 1 - crumble;
     ctx.drawImage(img, 0, -H2, W2, H2);
     ctx.restore();
   }
@@ -3756,27 +3822,55 @@ function updateHellzone(h) {
   if (h.t > HZ.end) { h.state = 'idle'; h.hzC = null; h.hz = []; }
 }
 
-// ---------- Ultime d'Ippo : un Dempsey Roll qui ne s'arrête plus, puis le coup final ----------
-const DMAX = { end: 2.8 };
-function startDempseyMax(h) { h.hitT = 0; h.punched = false; say(h, 'DEMPSEY ROLL !!'); }
+// ---------- Ultime d'Ippo : le Dempsey Roll. Garde peek-a-boo, il fonce au contact, puis son buste trace un 8 couché
+// (animation filmée 'dempsey') et chaque passage lâche un crochet, de plus en plus vite ; le dernier crochet soulève
+// l'adversaire, et un smash final l'envoie au tapis ----------
+const DMAX = { guard: 0.35, roll: 0.6, rollEnd: 2.45, smash: 2.62, end: 3.1 };
+const dempseyPhase = h => { const u = Math.max(0, h.t - DMAX.roll); return (SPRITES.ippo?.dempsey?.rate || 21) * (u + 0.35 * u * u); };
+function dempseyPose(h) {
+  if (h.t < DMAX.guard) return ['special', 0];
+  if (h.t < DMAX.roll) return ['dashcharge', 2];
+  if (h.t < DMAX.rollEnd) return SPRITES.ippo?.dempsey ? ['dempsey', Math.floor(dempseyPhase(h)) % SPRITES.ippo.dempsey.frames.length] : ['special', 1 + Math.floor(h.t * 12) % 6];
+  if (h.t < DMAX.smash) return ['combo', 6];
+  return h.t < DMAX.end - 0.3 ? ['combo', 7] : ['special', 7];
+}
+function startDempseyMax(h) { h.hitT = 0; h.punched = false; h.dF = -1; h.dN = 0; say(h, 'DEMPSEY ROLL !!'); audio.play('ultraCharge', 0.8, 1.3, 0); }
 function updateDempseyMax(h, dt) {
   h.inv = Math.max(h.inv, 0.1);
-  if (h.t < DMAX.end - 0.5) {
-    h.x = clamp(h.x + h.dir * 160 * dt, camX + 40, camX + W - 40);
-    if (h.t - h.hitT > 0.11) {
-      h.hitT = h.t; audio.hit(false);
+  const dmg = ULT_SOLO * (4 + h.power / 10);
+  if (h.t >= DMAX.guard && h.t < DMAX.roll) {
+    // il fonce au contact, tête rentrée dans la garde
+    const e = nearestEnemy(h, 700);
+    if (!e || Math.abs(e.x - h.x) > 120) h.x = clamp(h.x + h.dir * 1300 * dt, camX + 40, camX + W - 40);
+    if (Math.random() < 0.6) afterImage(h, 0.25, 0.45);
+  } else if (h.t >= DMAX.roll && h.t < DMAX.rollEnd) {
+    const ph = dempseyPhase(h), n = SPRITES.ippo?.dempsey?.frames.length || 14, f = Math.floor(ph) % n;
+    // le 8 couché que trace sa tête : une traînée dorée
+    const th = ph / n * Math.PI * 2, d = 1 + Math.sin(th) ** 2;
+    for (let k = 0; k < 2; k++) particles.push({ x: h.x + h.dir * (75 + 55 * Math.cos(th + k * 0.15) / d), y: h.y - 170 + 40 * Math.sin(th + k * 0.15) * Math.cos(th + k * 0.15) / d, vx: 0, vy: 0, t: 0, life: 0.35, c: k ? '#fff1b0' : '#ffb030', r: 7 });
+    if (Math.random() < 0.35) afterImage(h, 0.15, 0.3, '#ffcf60');
+    h.x = clamp(h.x + h.dir * 40 * dt, camX + 40, camX + W - 40);
+    // un crochet à chaque passage (deux par tour de 8)
+    if (f !== h.dF && (f === 0 || f === Math.round(n / 2))) {
+      h.dN++; const left = f === 0;
+      audio.hit(true); shake = Math.max(shake, 8 + Math.min(10, h.dN)); hitstop = Math.max(hitstop, 0.03);
       for (const e of enemies) {
         const dx = (e.x - h.x) * h.dir;
-        if (!e.alive || e.state === 'down' || dx < -10 || dx > 170 || Math.abs(e.gz - h.gz) > 50) continue;
-        if (e.state !== 'knock') { e.x = h.x + h.dir * 110; }
-        damageEnemy(e, 0.45, 40 * h.dir, null, e.x, e.y - 120, hitOf(h));
+        if (!e.alive || e.state === 'down' || dx < -10 || dx > 190 || Math.abs(e.gz - h.gz) > 70) continue;
+        e.x = h.x + h.dir * 115; e.dir = -h.dir;
+        damageEnemy(e, dmg * 0.045, 30 * h.dir, null, e.x - h.dir * 20, e.y - (left ? 150 : 125), hitOf(h));
+        impactFX(e.x - h.dir * 30, e.y - (left ? 150 : 125), '#ffd060', h.dN % 3 === 0);
       }
+      if (h.dN % 4 === 0) popups.push({ x: h.x + h.dir * 60, y: h.y - 250, t: 0, text: h.dN < 9 ? 'DEMPSEY ROLL !' : 'ENCORE !!' });
     }
-  } else if (!h.punched) {
-    h.punched = true; flash = 0.7; shake = 26; hitstop = 0.12; audio.play('ultraBoom', 1.2, 1.1, 0);
-    animFX('explosion', h.x + h.dir * 140, h.y - 130, 340, 0.55);
-    popups.push({ x: h.x + h.dir * 160, y: h.y - 260, t: 0, text: 'K.O. !!' });
-    ultraHit(h, 260, ULT_SOLO * (3 + h.power / 15), 70);
+    h.dF = f;
+  } else if (h.t >= DMAX.smash && !h.punched) {
+    // le smash final : il jaillit en uppercut, l'adversaire part dans le ciel
+    h.punched = true; flash = 0.8; shake = 30; hitstop = 0.16; audio.play('ultraBoom', 1.3, 1.1, 0);
+    animFX('explosion', h.x + h.dir * 120, h.y - 170, 380, 0.55);
+    gfx('cannon_boom', h.x + h.dir * 130, h.y - 170, 360, 0.45, { filter: 'hue-rotate(10deg) brightness(1.2)' });
+    popups.push({ x: h.x + h.dir * 160, y: h.y - 300, t: 0, text: 'K.O. !!' });
+    ultraHit(h, 260, dmg * 0.55, 90, -40, 300, -1150);
     score += 2000;
   }
   if (h.t > DMAX.end) h.state = 'idle';
@@ -3812,10 +3906,12 @@ function updateCluster(h) {
 
 // ---------- Ultime de Seiya : il trace la constellation de Pégase, puis une pluie de météores s'abat ----------
 // En armure d'or : constellation dorée, déluge de météores d'or, puis la Comète de Pégase géante (filmée) qui balaie la rue.
-const PEGA = { trace: 0.6, rain: 0.9, end: 2.3, reach: 700, gold: { rain: 0.85, comet: 1.95, end: 2.7 } };
+const PEGA = { trace: 0.6, rain: 0.9, end: 2.6, reach: 700, comet: 1.9, gold: { rain: 0.85, comet: 1.95, end: 2.7 } };
 const pegaEnd = h => h.formUltra ? PEGA.gold.end : PEGA.end;
-const pegaHit = h => h.formUltra ? PEGA.gold.comet : PEGA.end - 0.3;
-function startPegasus(h) { h.hitT = 0; h.punched = false; say(h, 'BRÛLE, MON COSMOS !'); audio.play('ultraCharge', 0.9, h.formUltra ? 0.9 : 1.1, 0); }
+const pegaHit = h => h.formUltra ? PEGA.gold.comet : PEGA.comet;
+function startPegasus(h) {
+  h.hitT = 0; h.punched = false; say(h, 'BRÛLE, MON COSMOS !');
+  fxs.push({ type: 'constel', x: h.x + h.dir * 170, y: h.y - 280, dir: h.dir, t: 0, life: pegaEnd(h) - 0.2, gold: h.formUltra }); audio.play('ultraCharge', 0.9, h.formUltra ? 0.9 : 1.1, 0); }
 function updatePegasus(h) {
   h.inv = Math.max(h.inv, 0.1);
   const G = h.formUltra, rain = G ? PEGA.gold.rain : PEGA.rain;
@@ -3831,15 +3927,20 @@ function updatePegasus(h) {
     particles.push({ x: h.x + rand(-90, 90), y: h.y - rand(0, 60), vx: rand(-30, 30), vy: rand(-520, -280), t: 0, life: 0.6, c: Math.random() < 0.5 ? '#ffd84a' : '#fff3b0', r: rand(3, 7) });
     if (h.t > 0.3) shake = Math.max(shake, 4);
   }
-  if (h.t > rain && h.t < pegaHit(h) - 0.05 && h.t - h.hitT > (G ? 0.028 : 0.05)) {
+  if (h.t > rain && h.t < pegaHit(h) - 0.05 && h.t - h.hitT > (G ? 0.028 : 0.034)) {
     h.hitT = h.t;
-    projs.push({ kind: 'meteor', owner: h, gold: G, x: h.x + h.dir * 60, y: h.y - 130 + rand(-70, 70), gz: h.gz + rand(-50, 50), dir: h.dir, t: 0, speed: rand(1200, 1600), life: 0.6, scale: rand(0.9, 1.3) * (G ? 1.35 : 1), hit: new Set(), dmg: ULT_SOLO * (0.3 + h.power / 300) * (G ? 0.7 : 1), kb: 60, launch: 0, steady: true, pierce: true });
+    projs.push({ kind: 'meteor', owner: h, gold: G, x: h.x + h.dir * 60, y: h.y - 130 + rand(-70, 70), gz: h.gz + rand(-50, 50), dir: h.dir, t: 0, speed: rand(1200, 1600), life: 0.6, scale: rand(0.9, 1.3) * (G ? 1.35 : 1.15), hit: new Set(), dmg: ULT_SOLO * (0.3 + h.power / 300) * (G ? 0.7 : 1), kb: 60, launch: 0, steady: true, pierce: true });
     if (Math.random() < 0.3) audio.whoosh(2);
   }
   if (!h.punched && h.t >= pegaHit(h)) {
     h.punched = true; flash = 0.8; shake = G ? 34 : 26; hitstop = G ? 0.16 : 0.12; audio.play('ultraBoom', 1.2, G ? 0.9 : 1.2, 0);
     popups.push({ x: h.x + h.dir * 300, y: h.y - 280, t: 0, text: G ? 'PEGASUS SUI SEI KEN !!' : 'PEGASUS RYU SEI KEN !!' });
     ultraHit(h, PEGA.reach + (G ? 200 : 0), ULT_SOLO * (3 + h.power / 12), 140);
+    if (!G) {
+      // les météores se rassemblent en une grande comète bleue qui balaie la rue
+      projs.push({ kind: 'comet', owner: h, x: h.x + h.dir * 90, y: h.y - 130, gz: h.gz, dir: h.dir, t: 0, speed: 1250, life: 1.0, scale: 1.8, hit: new Set(), dmg: ULT_SOLO * 0.6, kb: 800, launch: -720, steady: true, pierce: true });
+      gfx('cannon_boom', h.x + h.dir * 160, h.y - 130, 320, 0.4, { filter: 'hue-rotate(190deg) saturate(1.3) brightness(1.2)' });
+    }
     if (G) {
       // la Comète de Pégase géante, dorée, qui traverse tout l'écran
       projs.push({ kind: 'comet', gold: true, owner: h, x: h.x + h.dir * 90, y: h.y - 130, gz: h.gz, dir: h.dir, t: 0, speed: 1300, life: 1.1, scale: 2.1, hit: new Set(), dmg: ULT_SOLO * 0.8, kb: 900, launch: -760, steady: true, pierce: true });
@@ -4313,6 +4414,7 @@ function updateEnemy(e, dt) {
   if (e.cool > 0) e.cool -= dt * (DIFF().aggr - 1); // difficulté : attaques plus ou moins rapprochées
   const T = ETYPES[e.type], h = targetOf(e);
   if (e.eject) { updateEject(e, dt); return; }
+  if (e.kamui) { e.kamui.t += dt; e.flash = Math.max(0, e.flash - dt); return; } // aspiré dans l'autre dimension (Kamui de Kakashi)
   e.t += dt; e.flash = Math.max(0, e.flash - dt);
   if (e.hop) return; // en plein saut par-dessus un trou (updatePits)
   const dx = h.x - e.x, dist = Math.abs(dx), dz = h.gz - e.gz;
@@ -4700,22 +4802,73 @@ function drawFX(ghosts = false) {
       continue;
     }
     if (f.type === 'vortex') {
-      // Kamui : une distorsion qui tourne et aspire
-      ctx.save(); ctx.translate(sx, f.y); ctx.globalCompositeOperation = 'lighter';
-      const R = f.r * Math.min(1, f.t / 0.3) * (k > 0.85 ? (1 - k) / 0.15 : 1);
-      for (let j = 0; j < 4; j++) {
-        ctx.strokeStyle = j % 2 ? 'rgba(160,90,255,0.7)' : 'rgba(255,255,255,0.5)'; ctx.lineWidth = 6 - j;
-        ctx.beginPath();
-        for (let q = 0; q < 50; q++) { const a = q * 0.3 + j * 1.6 - f.t * 9, r = R * (1 - q / 50); ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r * 0.85); }
-        ctx.stroke();
+      // Kamui : l'espace se tord en spirale (le décor lui-même tourne, de plus en plus vite vers le centre)
+      const R = f.r * Math.min(1, f.t / 0.35) * (k > 0.88 ? Math.max(0, (1 - k) / 0.12) : 1);
+      if (R > 4) {
+        const M = ctx.getTransform(), px = M.a * sx + M.e, py = M.d * f.y + M.f, PR = Math.ceil(R * M.a);
+        const S = scratchCanvas(PR * 2, PR * 2), sg = S.getContext('2d');
+        sg.drawImage(ctx.canvas, px - PR, py - PR, PR * 2, PR * 2, 0, 0, PR * 2, PR * 2);
+        ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
+        const twist = Math.min(1, f.t / 0.6);
+        for (let j = 0; j < 10; j++) {
+          const u = j / 10, r = PR * (1 - u);
+          ctx.save(); ctx.beginPath(); ctx.arc(px, py, r, 0, 7); ctx.clip();
+          ctx.translate(px, py); ctx.rotate(-(u * u * 4.5 * twist + f.t * (0.8 + u * 3))); const sc = 1 + u * 0.25; ctx.scale(sc, sc * 0.92);
+          ctx.drawImage(S, -PR, -PR); ctx.restore();
+        }
+        const gr = ctx.createRadialGradient(px, py, 0, px, py, PR);
+        gr.addColorStop(0, 'rgba(8,0,18,1)'); gr.addColorStop(0.18, 'rgba(25,0,45,0.92)'); gr.addColorStop(0.45, 'rgba(80,25,150,0.35)'); gr.addColorStop(1, 'rgba(90,40,170,0)');
+        ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(px, py, PR, 0, 7); ctx.fill();
+        ctx.restore();
+        ctx.save(); ctx.translate(sx, f.y); ctx.globalCompositeOperation = 'lighter';
+        for (let j = 0; j < 5; j++) {
+          ctx.strokeStyle = j % 2 ? 'rgba(170,100,255,0.55)' : 'rgba(255,255,255,0.35)'; ctx.lineWidth = 5 - j * 0.7;
+          ctx.beginPath();
+          for (let q = 0; q < 60; q++) { const a = q * 0.26 + j * 1.25 - f.t * 10, r = R * 1.05 * (1 - q / 60); ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r * 0.9); }
+          ctx.stroke();
+        }
+        ctx.restore();
       }
-      ctx.restore();
+      if (f.t < 0.5) {
+        // le Mangekyō de Kakashi (trois lames courbes noires sur fond rouge) s'ouvre puis se fond dans la spirale
+        const a = f.t < 0.12 ? f.t / 0.12 : 1 - (f.t - 0.12) / 0.38, r = 70 + f.t * 120, rot = f.t * 9;
+        ctx.save(); ctx.translate(sx, f.y); ctx.globalAlpha = Math.max(0, a);
+        ctx.fillStyle = '#d10f1f'; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill();
+        ctx.lineWidth = r * 0.08; ctx.strokeStyle = '#120006'; ctx.stroke();
+        ctx.fillStyle = '#120006';
+        for (let b = 0; b < 3; b++) {
+          ctx.save(); ctx.rotate(rot + b * Math.PI * 2 / 3); ctx.beginPath();
+          ctx.moveTo(0, 0); ctx.quadraticCurveTo(r * 0.95, -r * 0.3, r * 0.92, r * 0.42); ctx.quadraticCurveTo(r * 0.55, r * 0.05, 0, 0); ctx.fill(); ctx.restore();
+        }
+        ctx.beginPath(); ctx.arc(0, 0, r * 0.17, 0, 7); ctx.fill();
+        ctx.restore();
+      }
       continue;
+    }
+    if (f.type === 'constel') {
+      // Constellation de Pégase : le grand carré, l'encolure et la tête, les pattes avant ; tracée trait après trait
+      const P = [[0, 0], [100, -12], [108, 80], [6, 74], [-48, 30], [-100, 52], [-150, 34], [-178, 50], [150, -58], [205, -64], [160, 120], [215, 150]];
+      const E = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [4, 5], [5, 6], [6, 7], [1, 8], [8, 9], [2, 10], [10, 11]];
+      const prog = Math.min(1, f.t / 0.75) * E.length, fade = k > 0.85 ? (1 - k) / 0.15 : 1, c = f.gold ? '255,215,110' : '150,205,255';
+      ctx.save(); ctx.translate(sx, f.y); ctx.scale(-(f.dir || 1) * 1.25, 1.25); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = fade;
+      ctx.strokeStyle = `rgba(${c},0.8)`; ctx.lineWidth = 3; ctx.shadowColor = `rgb(${c})`; ctx.shadowBlur = 14;
+      E.forEach(([a, b], n) => {
+        const u = clamp(prog - n, 0, 1); if (!u) return;
+        ctx.beginPath(); ctx.moveTo(P[a][0], P[a][1]); ctx.lineTo(P[a][0] + (P[b][0] - P[a][0]) * u, P[a][1] + (P[b][1] - P[a][1]) * u); ctx.stroke();
+      });
+      ctx.shadowBlur = 0;
+      P.forEach(([x, y], n) => {
+        if (prog < n * 0.9) return;
+        const tw = 7 + Math.sin(f.t * 12 + n) * 2, g = ctx.createRadialGradient(x, y, 0, x, y, tw * 3);
+        g.addColorStop(0, '#ffffff'); g.addColorStop(0.3, `rgba(${c},0.9)`); g.addColorStop(1, `rgba(${c},0)`);
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, tw * 3, 0, 7); ctx.fill();
+      });
+      ctx.restore(); continue;
     }
     if (f.type === 'ghost') {
       ctx.globalAlpha = (f.alpha ?? 0.5) * (1 - k);
       drawAnim.lean = f.lean || 0;
-      drawAnim(f.sheet, f.anim, f.i, sx, f.y, f.dir, f.col ? tintFilter(f.col) : 'brightness(1.8) saturate(0.4)');
+      drawAnim(f.sheet, f.anim, f.i, sx, f.y, f.dir, f.filter || (f.col ? tintFilter(f.col) : 'brightness(1.8) saturate(0.4)'));
       drawAnim.lean = 0;
       ctx.globalAlpha = 1;
       continue;
@@ -4749,7 +4902,7 @@ function drawFX(ghosts = false) {
     if (f.type === 'edspike') {
       // pics de pierre d'Edward : ils jaillissent du sol (étirés du bas vers le haut, petit rebond), restent, puis rentrent sous terre
       const t0 = f.t, SV = FX.ed_spike1_v, sv = SV && IMG[SV[Math.min(SV.length - 1, Math.floor(t0 / 0.55 * SV.length))].src];
-      if (sv) {
+      if (sv && !IMG.fx_ed_spike) {
         // pic filmé : il jaillit avec ses éclairs bleus et sa poussière, puis rentre sous terre
         const sink = clamp((t0 - 0.45) / 0.27, 0, 1), H = 200 * f.sc, w = H * sv.width / sv.height;
         ctx.save(); ctx.beginPath(); ctx.rect(sx - w, f.y - H * 1.2, w * 2, H * 1.2 + 8); ctx.clip();
@@ -4764,7 +4917,14 @@ function drawFX(ghosts = false) {
       ctx.save(); ctx.beginPath(); ctx.rect(sx - w, f.y - H * 1.4, w * 2, H * 1.4 + 6); ctx.clip();
       ctx.translate(sx, f.y + 6 + sink * H); ctx.scale(f.dir, 1); ctx.globalAlpha = 1 - sink * 0.6;
       ctx.drawImage(img, f.half ? img.width / 2 : 0, 0, img.width / 2, img.height, -w / 2, -H * rise, w, H * rise);
-      ctx.restore(); continue;
+      ctx.restore();
+      if (sv && t0 < 0.5) {
+        // par-dessus la pierre (opaque), les éclairs bleus du pic filmé, en lumière
+        const H2 = 200 * f.sc, w2 = H2 * sv.width / sv.height;
+        ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.55 * (1 - t0 / 0.5);
+        ctx.translate(sx, f.y + 8); ctx.scale(f.dir, 1); ctx.drawImage(sv, -w2 / 2, -H2, w2, H2); ctx.restore();
+      }
+      continue;
     }
     if (f.type === 'muzzle' || f.type === 'shock') {
       ctx.save(); ctx.translate(sx, f.y); ctx.scale(f.dir || 1, 1); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1 - k;
@@ -6524,6 +6684,12 @@ function drawEnemy(e) {
     const [anim, i] = enemyPose(e), own = !!SPRITES[T.sheet];
     drawAnim.grow = e.eject.sky ? Math.max(0.2, 1 - e.eject.t * 1.1) : 0;
     drawAnim(own ? T.sheet : T.alt, anim, i, sx, e.y, e.dir, own ? '' : T.altTint, e.eject.rot);
+    drawAnim.grow = 0; return;
+  }
+  if (e.kamui) { // Kamui : il tournoie en rapetissant au cœur de la distorsion, puis disparaît
+    const g = 1 - e.kamui.t / 0.55; if (g <= 0.05) return;
+    const [anim, i] = enemyPose(e), own = !!SPRITES[T.sheet];
+    drawAnim.grow = g; drawAnim(own ? T.sheet : T.alt, anim, i, sx, e.y, e.dir, (own ? '' : T.altTint) + ' brightness(0.7) saturate(0.6)', e.kamui.t * 14);
     drawAnim.grow = 0; return;
   }
   if (!e.alive && e.t > 0.6 && Math.floor(e.t * 15) % 2) return; // clignote avant de disparaître

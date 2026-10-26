@@ -7762,6 +7762,110 @@ const SPRITES = {
      "ay": 798
     }
    ]
+  },
+  "dempsey": {
+   "scale": 0.3019,
+   "rate": 21.0,
+   "frames": [
+    {
+     "src": "assets/sprites/ippo/dempseyv_0.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_1.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_2.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_3.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_4.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_5.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_6.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_7.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_8.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_9.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_10.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_11.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_12.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    },
+    {
+     "src": "assets/sprites/ippo/dempseyv_13.png",
+     "w": 462,
+     "h": 516,
+     "ax": 172.0,
+     "ay": 516
+    }
+   ]
   }
  },
  "vegeta_ssj": {
