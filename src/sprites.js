@@ -55308,6 +55308,96 @@ const SPRITES = {
      "ay": 632
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3395,
+   "rate": 6.13,
+   "frames": [
+    {
+     "src": "assets/sprites/goku_whis/idlev_0.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_1.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_2.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_3.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_4.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_5.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_6.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_7.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_8.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_9.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_10.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    },
+    {
+     "src": "assets/sprites/goku_whis/idlev_11.png",
+     "w": 342,
+     "h": 542,
+     "ax": 168.5,
+     "ay": 542
+    }
+   ]
   }
  },
  "goku_whis_ssj": {
@@ -55813,6 +55903,96 @@ const SPRITES = {
      "ay": 743
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3885,
+   "rate": 9.29,
+   "frames": [
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_0.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_1.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_2.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_3.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_4.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_5.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_6.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_7.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_8.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_9.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_10.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/goku_whis_ssj/idlev_11.png",
+     "w": 328,
+     "h": 530,
+     "ax": 157.9,
+     "ay": 530
+    }
+   ]
   }
  },
  "gohan_a_pic": {
@@ -56316,6 +56496,96 @@ const SPRITES = {
      "h": 585,
      "ax": 339.0,
      "ay": 585
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3592,
+   "rate": 9.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_0.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_1.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_2.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_3.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_4.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_5.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_6.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_7.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_8.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_9.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_10.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_pic/idlev_11.png",
+     "w": 336,
+     "h": 530,
+     "ax": 165.9,
+     "ay": 530
     }
    ]
   }
@@ -57833,6 +58103,96 @@ const SPRITES = {
      "ay": 592
     }
    ]
+  },
+  "idle": {
+   "scale": 0.3359,
+   "rate": 8.47,
+   "frames": [
+    {
+     "src": "assets/sprites/zoro_wano/idlev_0.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_1.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_2.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_3.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_4.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_5.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_6.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_7.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_8.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_9.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_10.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    },
+    {
+     "src": "assets/sprites/zoro_wano/idlev_11.png",
+     "w": 468,
+     "h": 526,
+     "ax": 205.2,
+     "ay": 526
+    }
+   ]
   }
  },
  "saitama_casual": {
@@ -58336,6 +58696,96 @@ const SPRITES = {
      "h": 593,
      "ax": 338.0,
      "ay": 593
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3299,
+   "rate": 6.55,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama_casual/idlev_0.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_1.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_2.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_3.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_4.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_5.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_6.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_7.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_8.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_9.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_10.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
+    },
+    {
+     "src": "assets/sprites/saitama_casual/idlev_11.png",
+     "w": 242,
+     "h": 524,
+     "ax": 112.0,
+     "ay": 524
     }
    ]
   }
@@ -59144,6 +59594,96 @@ const SPRITES = {
      "h": 591,
      "ax": 278.3,
      "ay": 591
+    }
+   ]
+  },
+  "idle": {
+   "scale": 0.3576,
+   "rate": 6.86,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_0.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_1.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_2.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_3.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_4.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_5.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_6.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_7.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_8.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_9.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_10.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
+    },
+    {
+     "src": "assets/sprites/gohan_a_gsm/idlev_11.png",
+     "w": 410,
+     "h": 530,
+     "ax": 225.6,
+     "ay": 530
     }
    ]
   }
