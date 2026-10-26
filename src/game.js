@@ -704,8 +704,6 @@ const KS_MOVES = {
   dash:     { dur: 0.58, on: 0.10, off: 0.40, reach: [-90, 90], y: [-160, -40], dmg: 3, kb: 300, ki: 8, launch: -450, push: 1300, pushAt: 0.08, pushDur: 0.3, xcut: true, ghost: true, call: 'SHINSOKU !', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.36, 0.5]] },
   // Kuzu Ryu Sen (26/10) : il fond sur l'ennemi et frappe les neuf points vitaux d'un coup ; neuf entailles lumineuses
   // en étoile, puis une grande croix qui projette tout ce qui est devant
-  kuzuryu:  { dur: 1.0, cost: 35, on: 0.2, off: 0.6, multi: 0.05, reach: [-60, 200], y: [-240, 0], dmg: 0.55, kb: 30, ki: 0, push: 1500, pushAt: 0.16, pushDur: 0.26, ghost: true,
-              kuzu: { from: 0.2, to: 0.6, finale: 0.64, dmg: 4, launch: -820, kb: 900 }, call: 'KUZU RYU SEN !', p: ['special', [0, 1, 6, 1, 7], [0.16, 0.34, 0.46, 0.6]] },
   doryu:    { dur: 0.75, cost: 35, proj: { at: 0.32, kind: 'rocks', speed: 700, dmg: 4, kb: 420, launch: -620, life: 1.0, low: true, scale: 1.4 }, call: 'DO RYU SEN !', p: ['special', [0, 1, 2, 3], [0.18, 0.34, 0.6]] },
 };
 // Jeux de coups de base, à compléter par le dash et le coup spécial de chaque personnage
@@ -1106,11 +1104,11 @@ const CHARS = {
   kenshin: {
     name: 'KENSHIN', title: 'Le vagabond au sabre inversé', sheet: 'kenshin', card: 'card_kenshin',
     colors: ['#c2185b', '#ffe0ef'], kiColor: '#ffc0dc', hit: '#ffe0ef', trail: '#ffd6e8', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
-    labels: { blast: 'KUZU RYU SEN', ultra: 'AMAKAKERU RYU' },
+    labels: { blast: 'DO RYU SEN', ultra: 'KUZU RYU SEN' },
     forms: [{ ki: 50, name: 'BATTOSAI', filter: 'contrast(1.18) saturate(0.85) brightness(0.92)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(150,0,30,0.5)', '#ff3355'], bar: ['#8a0020', '#ff5070'], color: '#ff3355', trail: '#ff5070', hit: '#ffb0c0' }],
     moves: KS_MOVES, chain: { punch: ['punch', 'cross', 'ryusho'], kick: ['kick', 'ryukan', 'ryutsui'], launcher: 'ryusho' },
-    special: 'kuzuryu', speed: 275, pose: stdPose, ultra: [startAmakakeru, updateAmakakeru],
-    ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < AMA.dash ? 5 : h.t < AMA.dashEnd ? 6 : 7],
+    special: 'doryu', speed: 275, pose: stdPose, ultra: [startAmakakeru, updateAmakakeru],
+    ultraPose: h => h.t < AMA.rushEnd ? ['special', 4] : h.t < AMA.cross - 0.04 ? ['combo', [2, 5, 3, 6, 7, 1][Math.floor(h.t / 0.07) % 6]] : h.t < AMA.cross + 0.25 ? ['combo', 7] : h.t < AMA.dash ? ['special', 4] : h.t < AMA.dashEnd + 0.2 ? ['combo', 1] : ['special', 7],
   },
   sasuke: {
     name: 'SASUKE', title: 'Le vengeur au Sharingan', sheet: 'sasuke', card: 'card_sk',
@@ -1571,7 +1569,7 @@ const say = (h, text) => popups.push({ x: h.x, y: h.y - 235, t: 0, text, small: 
 function startMove(h, name, chain = 0) {
   const m = h.C.moves[name];
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
-  h.trailed = h.gfxed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1; h.kuzuT = -1; h.kuzuN = 0;
+  h.trailed = h.gfxed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1;
   if (m.call) say(h, m.call);
   if (name === 'transmute' && FX.alchemy_v) animFX('alchemy_v', h.x + h.dir * 40, h.gz - 30, 300, 0.7); // Edward : cercle de transmutation filmé
   if ((name === h.C.special || name === h.C.special2) && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
@@ -2118,22 +2116,6 @@ function moveEffects(h, speed) {
   // tirs de pistolet (Revy) : chacun part du bout du canon dessiné à cet instant
   if (m.shots) while (h.shotN < m.shots.at.length && h.t >= m.shots.at[h.shotN]) { const last = h.shotN === m.shots.at.length - 1; fireBullet(h, last && m.shots.last ? { ...m.shots, ...m.shots.last } : m.shots); h.shotN++; }
   if (m.ama && !h.struck && h.t >= m.ama.at) { h.struck = true; amaterasu(h, m.ama); }
-  if (m.kuzu) {
-    const Q = m.kuzu, cx = h.x + h.dir * 110, cy = h.y - 120;
-    // les neuf coups : une entaille lumineuse à chaque fois, sous un angle différent (étoile à neuf branches)
-    if (h.t >= Q.from && h.t < Q.to && h.t - (h.kuzuT ?? -1) >= (Q.to - Q.from) / 9) {
-      h.kuzuT = h.t; h.kuzuN = (h.kuzuN || 0) + 1; const a = h.kuzuN * 2.79;
-      slashFX(cx, cy, h.dir, { a0: a, a1: a + 2.2, r: 120, w: 26, c: '#ffffff', life: 0.22 });
-      audio.slash(1.2 + (h.kuzuN % 3) * 0.15); shake = Math.max(shake, 5);
-      if (h.kuzuN % 3 === 0) gfx('big_slash', cx, cy, 380, 0.3, { dir: h.dir, rot: a });
-    }
-    if (!h.struck && h.t >= Q.finale) {
-      // la croix finale : tout ce qui est devant est projeté
-      h.struck = true; h.kuzuN = 0; flash = 0.6; shake = 26; hitstop = 0.12; audio.play('ultraBoom', 0.9, 1.3, 0);
-      gfx('fang_x', cx + h.dir * 40, cy, 520, 0.5, { dir: h.dir, grow: 0.2 });
-      for (const e of enemies) { const dx = (e.x - h.x) * h.dir; if (e.alive && e.state !== 'down' && dx > -40 && dx < 260 && Math.abs(e.gz - h.gz) <= 90) damageEnemy(e, Q.dmg * (h.boost ? h.boost.dmg : 1), Q.kb * h.dir, Q.launch, e.x, e.y - 110, hitOf(h)); }
-    }
-  }
   if (m.strike && !h.struck && h.t >= m.strike.at) {
     // La foudre tombe sur les ennemis devant (Narukami de Killua)
     h.struck = true; shake = Math.max(shake, 12); flash = 0.3; audio.play('waveHit', 1, 1.4); audio.sweep(0.3, 6000, 1500, 0.3, 1);
@@ -2762,44 +2744,55 @@ function updateHinokami(h) {
   if (h.t > HINOKAMI.end) h.state = 'idle';
 }
 
-// ---------- Ultime de Kenshin : Kuzu Ryu Sen (neuf coups à la fois) puis Amakakeru Ryu no Hirameki ----------
-const AMA = { nine: 0.5, dash: 0.95, dashEnd: 1.2, end: 1.7, speed: 1700 };
+// ---------- Ultime de Kenshin : Kuzu Ryu Sen (ruée + neuf coups en étoile + croix) puis Amakakeru Ryu no Hirameki ----------
+const AMA = { rush: 0.12, rushEnd: 0.3, from: 0.3, to: 0.84, cross: 0.9, dash: 1.3, dashEnd: 1.55, end: 2.05, speed: 1700 };
+// les grandes entailles filmées restent tournées vers l'avant (un angle trop grand les retournait vers l'arrière)
+const AMA_ROT = [0.95, 0.3, 0.65];
 function startAmakakeru(h) {
-  h.hitSet = new Set(); h.nined = false; h.cut = false;
-  audio.play('ultraCharge', 0.7, 1.6, 0);
+  h.hitSet = new Set(); h.kuzuN = 0; h.kuzuT = -1; h.crossed = false; h.cut = false;
+  say(h, 'KUZU RYU SEN !'); audio.play('ultraCharge', 0.7, 1.6, 0);
 }
 
 function updateAmakakeru(h, dt) {
   h.inv = Math.max(h.inv, 0.1);
-  const dmg = ULT_SOLO * (4 + h.power / 10);
-  if (!h.nined && h.t >= AMA.nine) {
-    // Neuf coups simultanés, venus de toutes les directions
-    h.nined = true; say(h, 'KUZU RYU SEN !'); shake = 14; audio.slash(1.5);
-    for (const e of enemies) {
-      const dx = (e.x - h.x) * h.dir;
-      if (!e.alive || e.state === 'down' || dx < -40 || dx > 300 || Math.abs(e.gz - h.gz) > 60) continue;
-      for (let k = 0; k < 9; k++) {
-        const a = k / 9 * Math.PI * 2;
-        fxs.push({ type: 'slash', x: e.x + Math.cos(a) * 30, y: e.y - 110 + Math.sin(a) * 30, dir: 1, t: -k * 0.02, life: 0.3, r: 70, w: 16, a0: a - 0.6, a1: a + 0.6, cross: false, c: trailOf(h) });
-      }
-      damageEnemy(e, dmg * 0.4, 200 * h.dir, null, e.x, e.y - 110, hitOf(h));
-    }
+  const dmg = ULT_SOLO * (4 + h.power / 10), cx = h.x + h.dir * 110, cy = h.y - 120;
+  const front = (a, b) => enemies.filter(e => { const dx = (e.x - h.x) * h.dir; return e.alive && e.state !== 'down' && dx > a && dx < b && Math.abs(e.gz - h.gz) <= 90; });
+  if (h.t >= AMA.rush && h.t < AMA.rushEnd) {
+    // ruée jusqu'au premier ennemi
+    const e = front(-20, 700).sort((a, b) => Math.abs(a.x - h.x) - Math.abs(b.x - h.x))[0];
+    if (!e || Math.abs(e.x - h.x) > 120) h.x = clamp(h.x + h.dir * 1500 * dt, camX + 40, camX + W - 40);
+    if (Math.random() < 0.6) afterImage(h);
+  }
+  if (h.t >= AMA.from && h.t < AMA.to && h.t - h.kuzuT >= (AMA.to - AMA.from) / 9) {
+    // les neuf coups : une entaille sous un angle différent à chaque fois (étoile à neuf branches)
+    h.kuzuT = h.t; h.kuzuN++; const a = h.kuzuN * 2.79;
+    slashFX(cx, cy, h.dir, { a0: a, a1: a + 2.2, r: 120, w: 26, c: '#ffffff', life: 0.22 });
+    audio.slash(1.2 + (h.kuzuN % 3) * 0.15); shake = Math.max(shake, 5);
+    if (h.kuzuN % 3 === 0) gfx('big_slash', cx, cy, 380, 0.3, { dir: h.dir, rot: AMA_ROT[(h.kuzuN / 3 - 1) % 3] });
+    for (const e of front(-60, 220)) damageEnemy(e, dmg * 0.05, 30 * h.dir, null, e.x, e.y - 110, hitOf(h));
+  }
+  if (!h.crossed && h.t >= AMA.cross) {
+    // la croix finale : tout ce qui est devant est projeté
+    h.crossed = true; flash = 0.6; shake = 26; hitstop = 0.12; audio.play('ultraBoom', 0.9, 1.3, 0);
+    gfx('fang_x', cx + h.dir * 40, cy, 520, 0.5, { dir: h.dir, grow: 0.2 });
+    for (const e of front(-40, 260)) damageEnemy(e, dmg * 0.35, 900 * h.dir, -820, e.x, e.y - 110, hitOf(h));
   }
   if (h.t >= AMA.dash && h.t < AMA.dashEnd) {
-    // Le dégainage le plus rapide : il traverse la rue, laissant des images rémanentes
+    // Amakakeru : le dégainage le plus rapide, il traverse la rue en laissant des images rémanentes
+    if (!h.amaSaid) { h.amaSaid = true; say(h, 'AMAKAKERU RYU NO HIRAMEKI !'); audio.slash(1.8); }
     const nx = clamp(h.x + h.dir * AMA.speed * dt, camX + 40, camX + W - 40);
     for (const e of enemies) {
-      if (!e.alive || h.hitSet.has(e) || e.state === 'down' || Math.abs(e.gz - h.gz) > 70) continue;
-      if ((e.x - h.x) * h.dir > -20 && (e.x - nx) * h.dir < 40) { h.hitSet.add(e); e.sanzen = true; }
+      if (!e.alive || h.hitSet.has(e) || Math.abs(e.gz - h.gz) > 90) continue;
+      if ((e.x - h.x) * h.dir > -20 && (e.x - nx) * h.dir < 60) { h.hitSet.add(e); e.sanzen = true; }
     }
     h.x = nx;
-    if (Math.random() < 0.5) afterImage(h);
+    if (Math.random() < 0.6) afterImage(h);
   } else if (h.t >= AMA.dashEnd && !h.cut) {
-    h.cut = true; flash = 0.7; shake = 28; hitstop = 0.14;
-    say(h, 'AMAKAKERU RYU NO HIRAMEKI !'); audio.play('ultraBoom', 1.2, 1.3, 0); audio.slash(1.8);
+    h.cut = true; h.amaSaid = false; flash = 0.7; shake = 28; hitstop = 0.14; audio.play('ultraBoom', 1.2, 1.3, 0);
+    gfx('big_slash', h.x - h.dir * 220, h.y - 140, 480, 0.4, { dir: h.dir, rot: 0.45, grow: 0.1 });
     for (const e of enemies) if (e.sanzen) {
       e.sanzen = false;
-      damageEnemy(e, dmg * 0.8, 500 * h.dir, -850, e.x, e.y - 110, hitOf(h));
+      damageEnemy(e, dmg * 0.5, 500 * h.dir, -850, e.x, e.y - 110, hitOf(h));
       slashFX(e.x, e.y - 110, h.dir, { x: true, r: 130, c: trailOf(h), life: 0.45, w: 20 });
     }
     slashFX(h.x - h.dir * 200, h.y - 110, h.dir, { a0: -0.15, a1: 0.15, r: 320, w: 40, c: '#ffffff', life: 0.4 });
