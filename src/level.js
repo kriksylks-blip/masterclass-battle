@@ -157,7 +157,7 @@ zoneOf('sl_z4').collapse = { from: 6400, to: 7000, speed: 90 };
 // ---------- Route au choix ----------
 // Avant la 4e zone de certains mondes, une seconde porte (plus à gauche) mène à un autre lieu : entrer par elle
 // remplace le décor et le nom de la zone pour la partie. Images : <monde>_z5_mid / _mid2 / _ground et la porte <monde>_gb.
-const ROUTE = { dx: 620, slot: 2 };
+const ROUTE = { dx: 760, slot: 2 }; // dx : la seconde porte, bien séparée de la première (sinon on croit à un doublon)
 const ROUTES = { op: 'LES TOITS DE LOGUETOWN', nr: 'LA FORÊT DE BAMBOUS', jk: 'LE CENTRE COMMERCIAL ABANDONNÉ' };
 for (const [id, name] of Object.entries(ROUTES)) {
   const L = levelOf(id), Z = L.zones[ROUTE.slot];
@@ -372,9 +372,11 @@ const camLimit = () => Math.min(level.lock ?? Infinity, LEVEL_END - W, nextZone(
 function updateTransition(dt) {
   const Z = nextZone();
   if (!level.trans) {
-    if (!Z || !level.cleared || camX < Z.from - W - 4) return false;
-    // route B : remonter jusqu'à la seconde porte, au fond de la rue
+    if (!Z || !level.cleared) return false;
+    // route B : remonter jusqu'à la seconde porte, au fond de la rue (plus à gauche : la caméra peut ne pas être
+    // encore arrivée au bout de la zone, on n'attend donc pas qu'elle y soit)
     const byB = !!routeGate(Z) && players.some(h => !h.out && Math.abs(h.x - (Z.from - ROUTE.dx)) < 60 && h.gz < Z_TOP + 30 && h.vz < 0); // il faut monter vers elle
+    if (!byB && camX < Z.from - W - 4) return false;
     if (!byB && !players.some(h => !h.out && h.x > Z.from - (gateImg(Z) ? GATE.dx + 70 : 120))) return false;
     level.trans = { t: 0, Z, jumped: false, vt: 0, route: byB };
     level.goT = 0; audio.whoosh(0.8);
@@ -454,12 +456,15 @@ function drawGates() {
       const cx = Z.from - GATE.dx - camX, h = drawGateAt(img, cx), B = routeGate(Z);
       if (!B) continue;
       const bx = Z.from - ROUTE.dx - camX, hb = drawGateAt(B, bx);
-      // deux routes : l'étiquette de chaque porte, une fois la voie libre
-      if (level.cleared && nextZone() === Z && camX > Z.from - W - 300) {
-        const bob = Math.sin(performance.now() / 180) * 4;
+      // deux routes : l'étiquette de chaque porte dès qu'elles sont à l'écran (sans elle, deux portes côte à côte
+      // ressemblent à un doublon), et l'invitation à choisir une fois la voie libre
+      if (nextZone() === Z && camX > Z.from - W - 300) {
+        const free = level.cleared, bob = free ? Math.sin(performance.now() / 180) * 4 : 0;
         // jamais sous la barre de vie et le score (haut de l'écran)
-        if (h) outlined(`▼ ${Z.name}`, cx, Math.max(GATE.base - h - 14, 128) + bob, 15, '#ffe14d');
-        if (hb) outlined(`▼ ${LVL.route.name}`, bx, Math.max(GATE.base - hb - 14, 128) + bob, 15, '#7dd8ff');
+        const ty = Math.max(GATE.base - Math.max(h, hb) - 14, 128);
+        if (h) outlined(`${free ? '▼ ' : ''}${Z.name}`, cx, ty + bob, 17, '#ffe14d');
+        if (hb) outlined(`${free ? '▼ ' : ''}${LVL.route.name}`, bx, ty + bob, 17, '#7dd8ff');
+        if (free && h && hb) outlined('CHOISIS TA ROUTE', (cx + bx) / 2, ty - 26, 18, '#ffffff');
       }
       continue;
     }
