@@ -36,8 +36,8 @@ addEventListener('resize', fitCanvas);
 const PENDING = {};
 // effets filmés lourds : chargés seulement quand un de leurs persos joue (sinon le téléphone sature au démarrage)
 const FX_LAZY = {
-  sanji_spin_v: ['sanji'], hell_pillar_v: ['sanji'], blade_spin_v: ['mikasa', 'levi'], big_slash_v: ['gintoki', 'trunks', 'guts'],
-  fang_x_v: ['inosuke'], palm_wave_v: ['gally'], whip_arc_v: ['baki'], cannon_boom_v: ['revy', 'itachi', 'piccolo', 'seiya'],
+  sanji_spin_v: ['sanji'], hell_pillar_v: ['sanji'], blade_spin_v: ['mikasa', 'levi'], big_slash_v: ['gintoki', 'trunks', 'guts', 'kenshin'],
+  fang_x_v: ['inosuke', 'kenshin'], palm_wave_v: ['gally'], whip_arc_v: ['baki'], cannon_boom_v: ['revy', 'itachi', 'piccolo', 'seiya'],
   shoto_ice_v: ['shoto'], shoto_fire_v: ['shoto'], titan_bolt_v: ['eren'], alchemy_v: ['edward'], muzzle_v: ['revy'],
   ed_spike1_v: ['edward'], susanoo_sword_v: ['itachi'], comet_gold_v: ['seiya'],
   getsuga_v: ['ichigo'], genki_v: ['goku'], gigant_v: ['luffy'], violet_orb: ['gojo'], violet_body: ['gojo'], zoro_x: ['zoro'],
@@ -702,6 +702,10 @@ const KS_MOVES = {
   ckick:    { dur: 0.40, on: 0.10, off: 0.26, reach: [20, 170], y: [-50, 0], dmg: 2, kb: 200, ki: 8, launch: -380, p: ['lowair', [1, 2, 3], [0.08, 0.3]], trail: { a0: 0.2, a1: 1.3, r: 110, y: -40 } },
   airkick:  { dur: 0.52, on: 0.07, off: 0.46, reach: [10, 160], y: [-110, 40], dmg: 2.5, kb: 300, ki: 8, launch: -520, p: ['lowair', [5, 6, 7], [0.05, 0.4]], trail: { a0: -3.1, a1: 3.1, r: 100, at: 0.06 } },
   dash:     { dur: 0.58, on: 0.10, off: 0.40, reach: [-90, 90], y: [-160, -40], dmg: 3, kb: 300, ki: 8, launch: -450, push: 1300, pushAt: 0.08, pushDur: 0.3, xcut: true, ghost: true, call: 'SHINSOKU !', p: ['dashcharge', [0, 1, 2, 3], [0.08, 0.36, 0.5]] },
+  // Kuzu Ryu Sen (26/10) : il fond sur l'ennemi et frappe les neuf points vitaux d'un coup ; neuf entailles lumineuses
+  // en étoile, puis une grande croix qui projette tout ce qui est devant
+  kuzuryu:  { dur: 1.0, cost: 35, on: 0.2, off: 0.6, multi: 0.05, reach: [-60, 200], y: [-240, 0], dmg: 0.55, kb: 30, ki: 0, push: 1500, pushAt: 0.16, pushDur: 0.26, ghost: true,
+              kuzu: { from: 0.2, to: 0.6, finale: 0.64, dmg: 4, launch: -820, kb: 900 }, call: 'KUZU RYU SEN !', p: ['special', [0, 1, 6, 1, 7], [0.16, 0.34, 0.46, 0.6]] },
   doryu:    { dur: 0.75, cost: 35, proj: { at: 0.32, kind: 'rocks', speed: 700, dmg: 4, kb: 420, launch: -620, life: 1.0, low: true, scale: 1.4 }, call: 'DO RYU SEN !', p: ['special', [0, 1, 2, 3], [0.18, 0.34, 0.6]] },
 };
 // Jeux de coups de base, à compléter par le dash et le coup spécial de chaque personnage
@@ -1102,10 +1106,10 @@ const CHARS = {
   kenshin: {
     name: 'KENSHIN', title: 'Le vagabond au sabre inversé', sheet: 'kenshin', card: 'card_kenshin',
     colors: ['#c2185b', '#ffe0ef'], kiColor: '#ffc0dc', hit: '#ffe0ef', trail: '#ffd6e8', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
-    labels: { blast: 'DO RYU SEN', ultra: 'AMAKAKERU RYU' },
+    labels: { blast: 'KUZU RYU SEN', ultra: 'AMAKAKERU RYU' },
     forms: [{ ki: 50, name: 'BATTOSAI', filter: 'contrast(1.18) saturate(0.85) brightness(0.92)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(150,0,30,0.5)', '#ff3355'], bar: ['#8a0020', '#ff5070'], color: '#ff3355', trail: '#ff5070', hit: '#ffb0c0' }],
     moves: KS_MOVES, chain: { punch: ['punch', 'cross', 'ryusho'], kick: ['kick', 'ryukan', 'ryutsui'], launcher: 'ryusho' },
-    special: 'doryu', speed: 275, pose: stdPose, ultra: [startAmakakeru, updateAmakakeru],
+    special: 'kuzuryu', speed: 275, pose: stdPose, ultra: [startAmakakeru, updateAmakakeru],
     ultraPose: h => ['special', h.t < 0.4 ? 4 : h.t < AMA.dash ? 5 : h.t < AMA.dashEnd ? 6 : 7],
   },
   sasuke: {
@@ -1567,7 +1571,7 @@ const say = (h, text) => popups.push({ x: h.x, y: h.y - 235, t: 0, text, small: 
 function startMove(h, name, chain = 0) {
   const m = h.C.moves[name];
   h.state = name; h.t = 0; h.move = m; h.hitSet = new Set(); h.multiT = 0; h.chain = chain; h.buffer = null;
-  h.trailed = h.gfxed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1;
+  h.trailed = h.gfxed = h.thrown = h.ported = h.beamed = h.struck = h.stopped = h.cloned = h.leanGo = false; h.shotN = 0; h.metT = -1; h.kuzuT = -1; h.kuzuN = 0;
   if (m.call) say(h, m.call);
   if (name === 'transmute' && FX.alchemy_v) animFX('alchemy_v', h.x + h.dir * 40, h.gz - 30, 300, 0.7); // Edward : cercle de transmutation filmé
   if ((name === h.C.special || name === h.C.special2) && !m.beam) audio.voice(h, 'special'); // rayon : le cri part avec le tir (voir m.beam)
@@ -2114,6 +2118,22 @@ function moveEffects(h, speed) {
   // tirs de pistolet (Revy) : chacun part du bout du canon dessiné à cet instant
   if (m.shots) while (h.shotN < m.shots.at.length && h.t >= m.shots.at[h.shotN]) { const last = h.shotN === m.shots.at.length - 1; fireBullet(h, last && m.shots.last ? { ...m.shots, ...m.shots.last } : m.shots); h.shotN++; }
   if (m.ama && !h.struck && h.t >= m.ama.at) { h.struck = true; amaterasu(h, m.ama); }
+  if (m.kuzu) {
+    const Q = m.kuzu, cx = h.x + h.dir * 110, cy = h.y - 120;
+    // les neuf coups : une entaille lumineuse à chaque fois, sous un angle différent (étoile à neuf branches)
+    if (h.t >= Q.from && h.t < Q.to && h.t - (h.kuzuT ?? -1) >= (Q.to - Q.from) / 9) {
+      h.kuzuT = h.t; h.kuzuN = (h.kuzuN || 0) + 1; const a = h.kuzuN * 2.79;
+      slashFX(cx, cy, h.dir, { a0: a, a1: a + 2.2, r: 120, w: 26, c: '#ffffff', life: 0.22 });
+      audio.slash(1.2 + (h.kuzuN % 3) * 0.15); shake = Math.max(shake, 5);
+      if (h.kuzuN % 3 === 0) gfx('big_slash', cx, cy, 380, 0.3, { dir: h.dir, rot: a });
+    }
+    if (!h.struck && h.t >= Q.finale) {
+      // la croix finale : tout ce qui est devant est projeté
+      h.struck = true; h.kuzuN = 0; flash = 0.6; shake = 26; hitstop = 0.12; audio.play('ultraBoom', 0.9, 1.3, 0);
+      gfx('fang_x', cx + h.dir * 40, cy, 520, 0.5, { dir: h.dir, grow: 0.2 });
+      for (const e of enemies) { const dx = (e.x - h.x) * h.dir; if (e.alive && e.state !== 'down' && dx > -40 && dx < 260 && Math.abs(e.gz - h.gz) <= 90) damageEnemy(e, Q.dmg * (h.boost ? h.boost.dmg : 1), Q.kb * h.dir, Q.launch, e.x, e.y - 110, hitOf(h)); }
+    }
+  }
   if (m.strike && !h.struck && h.t >= m.strike.at) {
     // La foudre tombe sur les ennemis devant (Narukami de Killua)
     h.struck = true; shake = Math.max(shake, 12); flash = 0.3; audio.play('waveHit', 1, 1.4); audio.sweep(0.3, 6000, 1500, 0.3, 1);
