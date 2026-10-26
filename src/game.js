@@ -976,7 +976,7 @@ const VE_MOVES = { ...NEWKICK(FIST),
 // Gon : Jajanken
 const GO_MOVES = { ...FIST,
   dash:     { dur: 0.6, on: 0.12, off: 0.4, reach: [10, 230], y: [-150, -60], dmg: 2.5, kb: 300, ki: 8, launch: -420, call: 'CANNE À PÊCHE !', p: ['dashcharge', [0, 1, 2, 3], [0.12, 0.3, 0.45]], trail: { a0: -0.4, a1: 0.4, r: 200, at: 0.12, w: 10 } },
-  jajanken: { dur: 1.05, cost: 35, on: 0.62, off: 0.78, reach: [0, 160], y: [-170, -60], dmg: 6, kb: 760, ki: 0, launch: -720, push: 500, pushAt: 0.58, pushDur: 0.15, boom: true, fistGlow: [0.05, 0.62],
+  jajanken: { dur: 1.05, cost: 35, on: 0.62, off: 0.78, reach: [0, 160], y: [-170, -60], dmg: 6, kb: 760, ki: 0, launch: -720, push: 500, pushAt: 0.58, pushDur: 0.15, boom: true, fistGlow: [0.05, 0.62], fistAt: [[-65, -188], [-42, -250], [149, -200]], fistSize: 0.6,
               call: 'JAJANKEN… GU !', p: ['special', [0, 1, 2, 3], [0.3, 0.6, 0.9]] },
 };
 // Killua : Godspeed
@@ -2120,7 +2120,7 @@ function moveEffects(h, speed) {
     // la décharge part de sa main tendue et rebondit d'un ennemi au suivant, du plus proche au plus loin
     const hit = enemies.filter(e => { const dx = (e.x - h.x) * h.dir; return e.alive && e.state !== 'down' && dx > 20 && dx < m.strike.range && Math.abs(e.gz - h.gz) <= 90; })
       .sort((a, b) => (a.x - b.x) * h.dir);
-    let from = { x: h.x + h.dir * 70, y: h.y - 120 };
+    const hp = handPoint(h); let from = hp ? { x: h.x + h.dir * (hp[0] + 4), y: h.y + hp[1] } : { x: h.x + h.dir * 70, y: h.y - 120 }; // depuis sa main tendue
     if (!hit.length) zaps.push({ x1: from.x, y1: from.y, x2: from.x + h.dir * 420, y2: from.y + rand(-30, 30), t: 0, life: 0.3, seed: rand(0, 99) });
     for (const e of hit) {
       const to = { x: e.x, y: e.y - 110 };
@@ -6476,7 +6476,7 @@ function drawPlayer(h) {
     let fx = sx + h.dir * 40, fy = h.y - 110;
     const [an, fi] = h.C.pose(h), A = m.fistAt && SPRITES[sheetFor(h, an)]?.[an];
     if (A) { const c = m.fistAt[clamp(fi, 0, m.fistAt.length - 1)]; fx = sx + h.dir * c[0] * A.scale; fy = h.y + c[1] * A.scale; }
-    fxImg('nen', 1 + Math.floor(h.t * 12) % 3, fx, fy, 30 + 70 * (h.t / m.fistGlow[1]));
+    fxImg('nen', 1 + Math.floor(h.t * 12) % 3, fx, fy, (30 + 70 * (h.t / m.fistGlow[1])) * (m.fistSize || 1));
   }
   // À deux : un repère de couleur au-dessus de la tête
   if (players.length > 1 && !h.out) {
