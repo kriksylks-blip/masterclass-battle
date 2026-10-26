@@ -60,13 +60,13 @@
     <div class="btn top" data-a="tag"   style="left:calc(8px + 64px * var(--u)); top:6px" id="tcTag">RELAIS</div>
     <div class="btn big mbtn" data-m="ok"   data-p="8 6">VALIDER</div>
     <div class="btn big mbtn" data-m="back" data-p="8 108">RETOUR</div>`;
-  // Boutons deux fois plus grands qu'à l'origine (--u = 2), en grille serrée à droite ; sur un petit téléphone, --u
+  // Boutons 1,4 fois plus grands qu'à l'origine (--u = 1,4), en grille serrée à droite ; sur un petit téléphone, --u
   // baisse juste assez pour que la colonne tienne dans la hauteur de l'écran (210 px à --u = 1)
   for (const b of root.querySelectorAll('[data-p]')) {
     const [r, bt] = b.dataset.p.split(' ');
     b.style.right = `calc(${r}px * var(--u))`; b.style.bottom = `calc(${bt}px * var(--u))`;
   }
-  const fit = () => root.style.setProperty('--u', Math.min(2, (innerHeight - 8) / 210, innerWidth * 0.62 / 262).toFixed(3));
+  const fit = () => root.style.setProperty('--u', Math.min(1.4, (innerHeight - 8) / 210, innerWidth * 0.62 / 262).toFixed(3));
   fit(); addEventListener('resize', fit);
   document.body.appendChild(root);
   const turn = document.createElement('div'); turn.id = 'turn';
