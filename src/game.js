@@ -949,7 +949,10 @@ const GI_MOVES = { ...SWORD,
 };
 // Ichigo : grand sabre, Getsuga Tensho
 const IC_MOVES = { ...SWORD,
-  punch: { ...SWORD.punch, reach: [20, 175], dmg: 1.6 }, cross: { ...SWORD.cross, reach: [20, 175], dmg: 1.8 }, rising: { ...SWORD.rising, reach: [10, 175] },
+  // grands gestes : lame levée puis abattue (3 -> 2), armée derrière puis balayée devant (5 -> 0), du bas vers le haut (2 -> 3)
+  punch: { ...SWORD.punch, dur: 0.36, on: 0.1, off: 0.22, cancel: 0.22, reach: [20, 185], y: [-230, 0], dmg: 1.6, p: ['combo', [3, 2], [0.09]], trail: { a0: -1.9, a1: 1.1, r: 175, at: 0.09, w: 40 } },
+  cross: { ...SWORD.cross, dur: 0.38, on: 0.1, off: 0.22, cancel: 0.22, reach: [20, 190], dmg: 1.8, p: ['combo', [5, 0], [0.1]], trail: { a0: -0.9, a1: 0.5, r: 195, at: 0.1, w: 42 } },
+  rising: { ...SWORD.rising, reach: [10, 180], p: ['combo', [2, 3], [0.1]], trail: { a0: 1.3, a1: -1.7, r: 175, at: 0.1, w: 40 } },
   dash:    { dur: 0.55, on: 0.12, off: 0.40, reach: [-60, 140], y: [-170, -40], dmg: 3, kb: 380, ki: 8, launch: -450, push: 1250, pushAt: 0.08, pushDur: 0.3, ghost: true, xcut: true, call: 'SHUNPO !', p: ['dashcharge', [0, 1, 2, 7], [0.08, 0.3, 0.48]] },
   getsuga: { dur: 0.75, cost: 35, proj: { at: 0.3, kind: 'getsuga', speed: 900, dmg: 4, kb: 420, launch: -480, life: 1.1 }, call: 'GETSUGA TENSHO !', p: ['special', [0, 1, 2, 3], [0.18, 0.32, 0.6]], trail: { a0: -1.6, a1: 1.0, r: 170, at: 0.26, w: 40 } },
 };
@@ -5528,6 +5531,10 @@ function levelLayers(L, bw) {
   if (L.far && pv('far')) C.far = bake(pv('far'), pv('far').width * LAYERS.far.h / pv('far').height * k, LAYERS.far.h * k);
   if (mid) C.mid = bake(mid, mid.width * LAYERS.mid.h / mid.height * k, LAYERS.mid.h * k);
   if (gr) C.gr = bake(gr, LAYERS.street.w * k, LAYERS.street.h * k);
+  // image pas encore chargée (retour de partie, connexion lente) : on la demande et on ne garde pas ce calque
+  // incomplet, sinon la vignette restait vide pour toujours
+  const miss = [Z.sky || L.sky, Z.mid, Z.ground].filter(k2 => k2 && !pv(k2));
+  if (miss.length) { miss.forEach(k2 => want('pv_' + k2, `assets/web/preview/${k2}.webp`)); return C; }
   return (layerCache[key] = C);
 }
 function drawLevelThumb(L, x, y, w, h, scroll = 0) {

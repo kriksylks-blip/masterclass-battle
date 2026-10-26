@@ -31697,112 +31697,112 @@ const SPRITES = {
      "src": "assets/sprites/guts/walkv_0.png",
      "w": 436,
      "h": 546,
-     "ax": 196.5,
+     "ax": 168.7,
      "ay": 546
     },
     {
      "src": "assets/sprites/guts/walkv_1.png",
      "w": 456,
      "h": 553,
-     "ax": 191.5,
+     "ax": 173.2,
      "ay": 553
     },
     {
      "src": "assets/sprites/guts/walkv_2.png",
      "w": 480,
      "h": 558,
-     "ax": 186.5,
+     "ax": 175.2,
      "ay": 558
     },
     {
      "src": "assets/sprites/guts/walkv_3.png",
      "w": 500,
      "h": 564,
-     "ax": 173.5,
+     "ax": 168.7,
      "ay": 564
     },
     {
      "src": "assets/sprites/guts/walkv_4.png",
      "w": 520,
      "h": 564,
-     "ax": 164.5,
+     "ax": 164.2,
      "ay": 564
     },
     {
      "src": "assets/sprites/guts/walkv_5.png",
      "w": 566,
      "h": 554,
-     "ax": 169.5,
+     "ax": 182.2,
      "ay": 554
     },
     {
      "src": "assets/sprites/guts/walkv_6.png",
      "w": 599,
      "h": 546,
-     "ax": 178.5,
+     "ax": 207.7,
      "ay": 546
     },
     {
      "src": "assets/sprites/guts/walkv_7.png",
      "w": 620,
      "h": 538,
-     "ax": 185.5,
+     "ax": 228.7,
      "ay": 538
     },
     {
      "src": "assets/sprites/guts/walkv_8.png",
      "w": 624,
      "h": 540,
-     "ax": 192.5,
+     "ax": 243.2,
      "ay": 540
     },
     {
      "src": "assets/sprites/guts/walkv_9.png",
      "w": 622,
      "h": 542,
-     "ax": 211.5,
+     "ax": 258.7,
      "ay": 542
     },
     {
      "src": "assets/sprites/guts/walkv_10.png",
      "w": 610,
      "h": 550,
-     "ax": 225.5,
+     "ax": 266.7,
      "ay": 550
     },
     {
      "src": "assets/sprites/guts/walkv_11.png",
      "w": 586,
      "h": 555,
-     "ax": 255.5,
+     "ax": 259.2,
      "ay": 555
     },
     {
      "src": "assets/sprites/guts/walkv_12.png",
      "w": 532,
      "h": 552,
-     "ax": 270.5,
+     "ax": 230.2,
      "ay": 552
     },
     {
      "src": "assets/sprites/guts/walkv_13.png",
      "w": 484,
      "h": 544,
-     "ax": 244.5,
+     "ax": 199.7,
      "ay": 544
     },
     {
      "src": "assets/sprites/guts/walkv_14.png",
      "w": 436,
      "h": 542,
-     "ax": 210.5,
+     "ax": 167.7,
      "ay": 542
     },
     {
      "src": "assets/sprites/guts/walkv_15.png",
      "w": 422,
      "h": 546,
-     "ax": 198.5,
+     "ax": 161.2,
      "ay": 546
     }
    ]
@@ -47512,7 +47512,7 @@ const SPRITES = {
     },
     {
      "src": "assets/sprites/ichigo/combo_2.png",
-     "w": 356,
+     "w": 355,
      "h": 296,
      "ax": 151.5,
      "ay": 296
