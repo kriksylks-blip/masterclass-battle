@@ -49,24 +49,24 @@
   const root = document.createElement('div'); root.id = 'tc';
   root.innerHTML = `
     <div class="zone"><div class="hint">joystick : pose ton pouce ici</div><div class="stick"><div class="knob"></div></div></div>
-    <div class="btn big" data-a="jump"   data-p="8 6">SAUT</div>
-    <div class="btn big" data-a="punch"  data-p="102 6">ATTAQUE</div>
-    <div class="btn big" data-a="kick"   data-p="8 100">GARDE</div>
-    <div class="btn big" data-a="blast"  data-p="102 100">SPÉCIAL</div>
-    <div class="btn small" data-a="dash"  data-p="196 8">DASH</div>
-    <div class="btn small" data-a="ki"    data-p="196 76" id="tcKi">KI</div>
-    <div class="btn small" data-a="ultra" data-p="196 144" id="tcUlt">ULTIME</div>
-    <div class="btn top" data-a="pause" style="left:8px; top:6px">❚❚</div>
-    <div class="btn top" data-a="tag"   style="left:calc(8px + 64px * var(--u)); top:6px" id="tcTag">RELAIS</div>
-    <div class="btn big mbtn" data-m="ok"   data-p="8 6">VALIDER</div>
-    <div class="btn big mbtn" data-m="back" data-p="8 108">RETOUR</div>`;
-  // Boutons 1,4 fois plus grands qu'à l'origine (--u = 1,4), en grille serrée à droite ; sur un petit téléphone, --u
-  // baisse juste assez pour que la colonne tienne dans la hauteur de l'écran (210 px à --u = 1)
+    <div class="btn big" data-a="jump"   data-p="84 6">SAUT</div>
+    <div class="btn big" data-a="kick"   data-p="8 50">GARDE</div>
+    <div class="btn big" data-a="punch"  data-p="160 50">ATTAQUE</div>
+    <div class="btn big" data-a="blast"  data-p="84 94">SPÉCIAL</div>
+    <div class="btn small" data-a="dash"  data-p="172 142">DASH</div>
+    <div class="btn small" data-a="ki"    data-p="20 142" id="tcKi">KI</div>
+    <div class="btn small" data-a="ultra" data-p="96 186" id="tcUlt">ULTIME</div>
+    <div class="btn top" data-a="pause" style="left:50%; top:6px; margin-left:calc(-64px * var(--u))">❚❚</div>
+    <div class="btn top" data-a="tag"   style="left:50%; top:6px; margin-left:calc(6px * var(--u))" id="tcTag">RELAIS</div>
+    <div class="btn big mbtn" data-m="ok"   data-p="120 6">VALIDER</div>
+    <div class="btn big mbtn" data-m="back" data-p="8 80">RETOUR</div>`;
+  // Disposition d'origine (croix Saut / Garde / Attaque / Spécial, Dash et Ki au-dessus, Ultime en haut), boutons 1,6 fois
+  // plus grands (--u = 1,6) et serrés ; sur un petit téléphone, --u baisse juste assez pour tenir en hauteur (250 px à --u = 1)
   for (const b of root.querySelectorAll('[data-p]')) {
     const [r, bt] = b.dataset.p.split(' ');
     b.style.right = `calc(${r}px * var(--u))`; b.style.bottom = `calc(${bt}px * var(--u))`;
   }
-  const fit = () => root.style.setProperty('--u', Math.min(1.4, (innerHeight - 8) / 210, innerWidth * 0.62 / 262).toFixed(3));
+  const fit = () => root.style.setProperty('--u', Math.min(1.6, (innerHeight - 8) / 250, innerWidth * 0.55 / 236).toFixed(3));
   fit(); addEventListener('resize', fit);
   document.body.appendChild(root);
   const turn = document.createElement('div'); turn.id = 'turn';
