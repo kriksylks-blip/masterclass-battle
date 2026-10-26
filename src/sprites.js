@@ -51682,6 +51682,530 @@ const SPRITES = {
      "ay": 528
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_a/cmbv_0.png",
+     "w": 193,
+     "h": 298,
+     "ax": 90.1,
+     "ay": 298.1
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_1.png",
+     "w": 193,
+     "h": 298,
+     "ax": 89.4,
+     "ay": 298.1
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_2.png",
+     "w": 193,
+     "h": 299,
+     "ax": 88.3,
+     "ay": 298.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_3.png",
+     "w": 193,
+     "h": 303,
+     "ax": 87.4,
+     "ay": 302.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_4.png",
+     "w": 193,
+     "h": 304,
+     "ax": 87.1,
+     "ay": 303.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_5.png",
+     "w": 201,
+     "h": 304,
+     "ax": 87.6,
+     "ay": 304.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_6.png",
+     "w": 228,
+     "h": 303,
+     "ax": 88.7,
+     "ay": 302.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_7.png",
+     "w": 236,
+     "h": 302,
+     "ax": 89.8,
+     "ay": 301.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_8.png",
+     "w": 236,
+     "h": 300,
+     "ax": 90.5,
+     "ay": 300.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_9.png",
+     "w": 233,
+     "h": 298,
+     "ax": 90.9,
+     "ay": 297.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_10.png",
+     "w": 221,
+     "h": 296,
+     "ax": 91.0,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_11.png",
+     "w": 204,
+     "h": 295,
+     "ax": 91.7,
+     "ay": 295.2
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_12.png",
+     "w": 194,
+     "h": 295,
+     "ax": 96.3,
+     "ay": 294.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_13.png",
+     "w": 199,
+     "h": 294,
+     "ax": 107.9,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_14.png",
+     "w": 225,
+     "h": 292,
+     "ax": 118.5,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_15.png",
+     "w": 247,
+     "h": 290,
+     "ax": 124.9,
+     "ay": 291.2
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_16.png",
+     "w": 248,
+     "h": 289,
+     "ax": 126.0,
+     "ay": 290.6
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_17.png",
+     "w": 245,
+     "h": 290,
+     "ax": 123.1,
+     "ay": 291.2
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_18.png",
+     "w": 208,
+     "h": 292,
+     "ax": 112.8,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_19.png",
+     "w": 197,
+     "h": 296,
+     "ax": 105.8,
+     "ay": 296.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_20.png",
+     "w": 196,
+     "h": 303,
+     "ax": 99.7,
+     "ay": 303.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_21.png",
+     "w": 180,
+     "h": 315,
+     "ax": 87.5,
+     "ay": 315.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_22.png",
+     "w": 140,
+     "h": 314,
+     "ax": 65.0,
+     "ay": 326.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_23.png",
+     "w": 152,
+     "h": 326,
+     "ax": 77.8,
+     "ay": 337.1
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_24.png",
+     "w": 162,
+     "h": 327,
+     "ax": 89.3,
+     "ay": 335.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_25.png",
+     "w": 165,
+     "h": 324,
+     "ax": 94.4,
+     "ay": 331.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_26.png",
+     "w": 165,
+     "h": 321,
+     "ax": 94.0,
+     "ay": 327.9
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_27.png",
+     "w": 165,
+     "h": 318,
+     "ax": 92.0,
+     "ay": 323.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_28.png",
+     "w": 162,
+     "h": 311,
+     "ax": 86.8,
+     "ay": 316.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_29.png",
+     "w": 162,
+     "h": 308,
+     "ax": 84.3,
+     "ay": 314.1
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_30.png",
+     "w": 161,
+     "h": 307,
+     "ax": 82.0,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_31.png",
+     "w": 165,
+     "h": 308,
+     "ax": 83.7,
+     "ay": 314.1
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_32.png",
+     "w": 170,
+     "h": 314,
+     "ax": 86.0,
+     "ay": 319.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_33.png",
+     "w": 152,
+     "h": 308,
+     "ax": 78.1,
+     "ay": 325.6
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_34.png",
+     "w": 136,
+     "h": 314,
+     "ax": 68.1,
+     "ay": 319.9
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_35.png",
+     "w": 133,
+     "h": 308,
+     "ax": 75.3,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_36.png",
+     "w": 155,
+     "h": 303,
+     "ax": 103.9,
+     "ay": 306.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_37.png",
+     "w": 166,
+     "h": 300,
+     "ax": 119.2,
+     "ay": 303.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_38.png",
+     "w": 295,
+     "h": 295,
+     "ax": 114.3,
+     "ay": 294.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_39.png",
+     "w": 295,
+     "h": 291,
+     "ax": 112.2,
+     "ay": 291.2
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_40.png",
+     "w": 288,
+     "h": 292,
+     "ax": 105.6,
+     "ay": 291.2
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_41.png",
+     "w": 285,
+     "h": 294,
+     "ax": 100.8,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_42.png",
+     "w": 276,
+     "h": 296,
+     "ax": 97.7,
+     "ay": 294.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_43.png",
+     "w": 229,
+     "h": 302,
+     "ax": 99.2,
+     "ay": 303.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_44.png",
+     "w": 187,
+     "h": 307,
+     "ax": 90.1,
+     "ay": 310.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_45.png",
+     "w": 148,
+     "h": 302,
+     "ax": 66.0,
+     "ay": 317.0
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_46.png",
+     "w": 163,
+     "h": 307,
+     "ax": 73.6,
+     "ay": 316.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_47.png",
+     "w": 190,
+     "h": 299,
+     "ax": 92.7,
+     "ay": 309.6
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_48.png",
+     "w": 216,
+     "h": 294,
+     "ax": 115.4,
+     "ay": 295.2
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_49.png",
+     "w": 217,
+     "h": 291,
+     "ax": 121.4,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_50.png",
+     "w": 220,
+     "h": 288,
+     "ax": 131.3,
+     "ay": 288.9
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_51.png",
+     "w": 264,
+     "h": 284,
+     "ax": 143.1,
+     "ay": 285.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_52.png",
+     "w": 266,
+     "h": 283,
+     "ax": 147.4,
+     "ay": 283.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_53.png",
+     "w": 268,
+     "h": 283,
+     "ax": 149.4,
+     "ay": 283.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_54.png",
+     "w": 268,
+     "h": 283,
+     "ax": 150.6,
+     "ay": 283.8
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_55.png",
+     "w": 268,
+     "h": 283,
+     "ax": 150.7,
+     "ay": 284.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_56.png",
+     "w": 267,
+     "h": 283,
+     "ax": 150.6,
+     "ay": 284.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_57.png",
+     "w": 267,
+     "h": 283,
+     "ax": 150.2,
+     "ay": 284.3
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_58.png",
+     "w": 265,
+     "h": 284,
+     "ax": 149.2,
+     "ay": 284.9
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_59.png",
+     "w": 265,
+     "h": 284,
+     "ax": 149.5,
+     "ay": 284.9
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_60.png",
+     "w": 265,
+     "h": 284,
+     "ax": 149.2,
+     "ay": 285.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_61.png",
+     "w": 265,
+     "h": 284,
+     "ax": 148.7,
+     "ay": 285.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_62.png",
+     "w": 264,
+     "h": 284,
+     "ax": 146.4,
+     "ay": 285.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_63.png",
+     "w": 228,
+     "h": 289,
+     "ax": 137.5,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_64.png",
+     "w": 213,
+     "h": 294,
+     "ax": 125.2,
+     "ay": 294.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_65.png",
+     "w": 203,
+     "h": 298,
+     "ax": 110.2,
+     "ay": 298.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_66.png",
+     "w": 195,
+     "h": 302,
+     "ax": 98.1,
+     "ay": 302.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_67.png",
+     "w": 190,
+     "h": 304,
+     "ax": 90.2,
+     "ay": 305.0
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_68.png",
+     "w": 188,
+     "h": 305,
+     "ax": 85.5,
+     "ay": 305.0
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_69.png",
+     "w": 188,
+     "h": 303,
+     "ax": 84.0,
+     "ay": 302.7
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_70.png",
+     "w": 188,
+     "h": 302,
+     "ax": 83.2,
+     "ay": 301.5
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_71.png",
+     "w": 188,
+     "h": 300,
+     "ax": 82.7,
+     "ay": 300.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_72.png",
+     "w": 188,
+     "h": 300,
+     "ax": 82.5,
+     "ay": 300.4
+    },
+    {
+     "src": "assets/sprites/gohan_a/cmbv_73.png",
+     "w": 188,
+     "h": 303,
+     "ax": 82.8,
+     "ay": 302.7
+    }
+   ]
   }
  },
  "piccolo": {

@@ -921,7 +921,20 @@ const SY_MOVES = { ...NEWKICK(FIST),
 };
 // Sangohan adulte (saga Boo, Gohan ultime) : poings et pieds puissants ; spécial Kamehameha (special 0-3),
 // ruée de coups en forme (special 4-7). Ultime : un Kamehameha géant chargé longuement.
-const UG_MOVES = { ...NEWKICK(FIST),
+// Combo filmé (vidéo Flow, tools/video2anim.py -> animation 'cmb', 74 images à 20 i/s) : direct du gauche (3-11), gros
+// direct du droit (12-20), genou montant (21-33), coup de pied retourné (34-46), direct final en grand pas (47-67).
+// Chaque coup joue sa tranche plus vite que la vidéo ; la frappe tombe quand le poing ou le pied est tendu.
+// Les tenues sans animation filmée gardent leurs poses de planche (p).
+const ugCmb = (frames, fps, dur) => ({ anim: 'cmb', frames, fps, from: 0, to: dur, last: frames[frames.length - 1] });
+const UG_FIST = NEWKICK(FIST);
+const UG_MOVES = { ...UG_FIST,
+  punch:      { ...UG_FIST.punch, dur: 0.3, on: 0.1, off: 0.2, cancel: 0.2, push: 260, pushAt: 0.06, pushDur: 0.1, cyc: ugCmb([3, 4, 5, 6, 7, 8, 9, 10, 11], 30, 0.3) },
+  cross:      { ...UG_FIST.cross, dur: 0.34, on: 0.08, off: 0.22, cancel: 0.22, push: 380, pushAt: 0.04, pushDur: 0.12, cyc: ugCmb([12, 13, 14, 15, 16, 17, 18, 19, 20], 28, 0.34) },
+  kick:       { ...UG_FIST.kick, dur: 0.4, on: 0.08, off: 0.25, cancel: 0.25, push: 320, pushAt: 0.04, pushDur: 0.12, cyc: ugCmb([21, 22, 23, 24, 26, 28, 30, 31, 32, 33], 26, 0.4) },
+  roundhouse: { ...UG_FIST.roundhouse, dur: 0.48, on: 0.12, off: 0.3, cancel: 0.3, dmg: 2.3, kb: 300, push: 460, pushAt: 0.06, pushDur: 0.14, shock: true,
+                cyc: ugCmb([34, 35, 36, 38, 39, 40, 41, 42, 43, 44, 45, 46], 26, 0.48) },
+  finisher:   { ...FINISHER, dur: 0.7, on: 0.15, off: 0.33, lean: 0, cyc: ugCmb([47, 48, 49, 50, 51, 52, 53, 55, 57, 59, 61, 63, 64, 65, 66, 67, 69], 24, 0.7) },
+  spinback:   { ...FINISHER, dur: 0.7, on: 0.15, off: 0.33, lean: 0, launch: -520, push: 900, p: UG_FIST.spinback.p, cyc: ugCmb([47, 48, 49, 50, 51, 52, 53, 55, 57, 59, 61, 63, 64, 65, 66, 67, 69], 24, 0.7) },
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 140], y: [-150, -50], dmg: 3, kb: 440, ki: 8, launch: -480, push: 1300, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
   kamehameha: { dur: 1.35, cost: 35, beam: { hand: true, at: 0.55, end: 1.2, len: 950, dmg: 0.6, color: '#7fd8ff' }, call: 'KAMEHAMEHA !', p: ['special', [0, 1, 2, 3], [0.25, 0.55, 1.22]] },
   gorush: { dur: 0.9, cost: 35, on: 0.2, off: 0.62, multi: 0.12, reach: [0, 170], y: [-200, -40], dmg: 1.6, kb: 160, ki: 0, launch: -300, push: 900, pushAt: 0.12, pushDur: 0.4, ghost: true, shock: true, call: 'HAAAA !', p: ['special', [4, 5, 6, 7], [0.14, 0.34, 0.6]] },
@@ -6555,7 +6568,7 @@ function stdPose(h) {
   const t = h.t, m = h.move;
   if (POSE_STATES.includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
-  if (m && m.cyc && t >= m.cyc.from) return [m.cyc.anim, t < m.cyc.to ? m.cyc.frames[Math.floor((t - m.cyc.from) * m.cyc.fps) % m.cyc.frames.length] : m.cyc.last];
+  if (m && m.cyc && t >= m.cyc.from && SPRITES[sheetFor(h, m.cyc.anim)]?.[m.cyc.anim]) return [m.cyc.anim, t < m.cyc.to ? m.cyc.frames[Math.floor((t - m.cyc.from) * m.cyc.fps) % m.cyc.frames.length] : m.cyc.last];
   if (m && m.p) { const [a, f, marks] = m.p, v = f[Math.min(step(t, marks || []), f.length - 1)]; return Array.isArray(v) ? v : [a, v]; }
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h), i = Math.floor(h.walkT * fps) % n; return ['walk', h.back ? n - 1 - i : i]; }
