@@ -41663,6 +41663,558 @@ const SPRITES = {
      "ay": 784
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/shoto/cmbv_0.png",
+     "w": 146,
+     "h": 294,
+     "ax": 66.0,
+     "ay": 294.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_1.png",
+     "w": 145,
+     "h": 294,
+     "ax": 65.6,
+     "ay": 294.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_2.png",
+     "w": 145,
+     "h": 295,
+     "ax": 64.9,
+     "ay": 295.4
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_3.png",
+     "w": 144,
+     "h": 295,
+     "ax": 63.9,
+     "ay": 295.4
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_4.png",
+     "w": 144,
+     "h": 293,
+     "ax": 62.8,
+     "ay": 293.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_5.png",
+     "w": 145,
+     "h": 291,
+     "ax": 62.0,
+     "ay": 290.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_6.png",
+     "w": 145,
+     "h": 291,
+     "ax": 62.0,
+     "ay": 290.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_7.png",
+     "w": 148,
+     "h": 292,
+     "ax": 63.5,
+     "ay": 292.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_8.png",
+     "w": 199,
+     "h": 292,
+     "ax": 67.2,
+     "ay": 292.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_9.png",
+     "w": 208,
+     "h": 291,
+     "ax": 69.2,
+     "ay": 290.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_10.png",
+     "w": 207,
+     "h": 291,
+     "ax": 70.3,
+     "ay": 290.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_11.png",
+     "w": 201,
+     "h": 290,
+     "ax": 71.2,
+     "ay": 289.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_12.png",
+     "w": 187,
+     "h": 289,
+     "ax": 72.8,
+     "ay": 288.6
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_13.png",
+     "w": 157,
+     "h": 287,
+     "ax": 76.9,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_14.png",
+     "w": 162,
+     "h": 285,
+     "ax": 87.8,
+     "ay": 285.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_15.png",
+     "w": 172,
+     "h": 283,
+     "ax": 100.5,
+     "ay": 282.9
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_16.png",
+     "w": 237,
+     "h": 280,
+     "ax": 109.6,
+     "ay": 279.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_17.png",
+     "w": 237,
+     "h": 278,
+     "ax": 112.4,
+     "ay": 278.4
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_18.png",
+     "w": 237,
+     "h": 277,
+     "ax": 114.8,
+     "ay": 277.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_19.png",
+     "w": 233,
+     "h": 276,
+     "ax": 115.4,
+     "ay": 276.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_20.png",
+     "w": 224,
+     "h": 274,
+     "ax": 116.4,
+     "ay": 275.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_21.png",
+     "w": 206,
+     "h": 273,
+     "ax": 116.9,
+     "ay": 273.9
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_22.png",
+     "w": 177,
+     "h": 276,
+     "ax": 112.2,
+     "ay": 276.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_23.png",
+     "w": 138,
+     "h": 282,
+     "ax": 66.0,
+     "ay": 294.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_24.png",
+     "w": 141,
+     "h": 292,
+     "ax": 63.6,
+     "ay": 303.3
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_25.png",
+     "w": 153,
+     "h": 300,
+     "ax": 74.1,
+     "ay": 310.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_26.png",
+     "w": 164,
+     "h": 303,
+     "ax": 88.8,
+     "ay": 313.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_27.png",
+     "w": 167,
+     "h": 306,
+     "ax": 97.2,
+     "ay": 315.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_28.png",
+     "w": 155,
+     "h": 308,
+     "ax": 93.6,
+     "ay": 318.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_29.png",
+     "w": 140,
+     "h": 308,
+     "ax": 75.3,
+     "ay": 318.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_30.png",
+     "w": 126,
+     "h": 309,
+     "ax": 58.3,
+     "ay": 318.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_31.png",
+     "w": 85,
+     "h": 308,
+     "ax": 33.6,
+     "ay": 315.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_32.png",
+     "w": 138,
+     "h": 304,
+     "ax": 49.0,
+     "ay": 311.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_33.png",
+     "w": 250,
+     "h": 291,
+     "ax": 172.4,
+     "ay": 296.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_34.png",
+     "w": 264,
+     "h": 285,
+     "ax": 104.3,
+     "ay": 290.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_35.png",
+     "w": 275,
+     "h": 282,
+     "ax": 118.4,
+     "ay": 286.3
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_36.png",
+     "w": 293,
+     "h": 278,
+     "ax": 118.9,
+     "ay": 282.9
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_37.png",
+     "w": 291,
+     "h": 275,
+     "ax": 108.5,
+     "ay": 280.6
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_38.png",
+     "w": 257,
+     "h": 274,
+     "ax": 97.3,
+     "ay": 279.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_39.png",
+     "w": 233,
+     "h": 276,
+     "ax": 79.3,
+     "ay": 281.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_40.png",
+     "w": 201,
+     "h": 280,
+     "ax": 62.2,
+     "ay": 284.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_41.png",
+     "w": 177,
+     "h": 281,
+     "ax": 53.7,
+     "ay": 285.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_42.png",
+     "w": 176,
+     "h": 281,
+     "ax": 62.5,
+     "ay": 285.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_43.png",
+     "w": 172,
+     "h": 277,
+     "ax": 74.5,
+     "ay": 281.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_44.png",
+     "w": 179,
+     "h": 274,
+     "ax": 93.3,
+     "ay": 278.4
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_45.png",
+     "w": 191,
+     "h": 268,
+     "ax": 118.8,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_46.png",
+     "w": 278,
+     "h": 262,
+     "ax": 144.0,
+     "ay": 266.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_47.png",
+     "w": 287,
+     "h": 261,
+     "ax": 149.2,
+     "ay": 265.9
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_48.png",
+     "w": 272,
+     "h": 260,
+     "ax": 149.9,
+     "ay": 264.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_49.png",
+     "w": 273,
+     "h": 259,
+     "ax": 149.3,
+     "ay": 263.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_50.png",
+     "w": 274,
+     "h": 259,
+     "ax": 149.0,
+     "ay": 263.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_51.png",
+     "w": 275,
+     "h": 258,
+     "ax": 150.0,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_52.png",
+     "w": 276,
+     "h": 258,
+     "ax": 150.5,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_53.png",
+     "w": 276,
+     "h": 259,
+     "ax": 151.6,
+     "ay": 263.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_54.png",
+     "w": 276,
+     "h": 258,
+     "ax": 150.6,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_55.png",
+     "w": 276,
+     "h": 258,
+     "ax": 151.1,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_56.png",
+     "w": 276,
+     "h": 258,
+     "ax": 150.5,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_57.png",
+     "w": 276,
+     "h": 259,
+     "ax": 151.1,
+     "ay": 263.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_58.png",
+     "w": 277,
+     "h": 258,
+     "ax": 151.7,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_59.png",
+     "w": 277,
+     "h": 258,
+     "ax": 151.3,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_60.png",
+     "w": 276,
+     "h": 259,
+     "ax": 151.0,
+     "ay": 263.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_61.png",
+     "w": 277,
+     "h": 259,
+     "ax": 151.3,
+     "ay": 263.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_62.png",
+     "w": 263,
+     "h": 261,
+     "ax": 144.3,
+     "ay": 265.4
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_63.png",
+     "w": 223,
+     "h": 268,
+     "ax": 129.7,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_64.png",
+     "w": 195,
+     "h": 273,
+     "ax": 118.4,
+     "ay": 277.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_65.png",
+     "w": 170,
+     "h": 280,
+     "ax": 105.3,
+     "ay": 281.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_66.png",
+     "w": 161,
+     "h": 284,
+     "ax": 91.4,
+     "ay": 286.3
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_67.png",
+     "w": 146,
+     "h": 294,
+     "ax": 69.1,
+     "ay": 294.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_68.png",
+     "w": 145,
+     "h": 294,
+     "ax": 66.2,
+     "ay": 294.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_69.png",
+     "w": 145,
+     "h": 294,
+     "ax": 65.1,
+     "ay": 294.2
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_70.png",
+     "w": 145,
+     "h": 293,
+     "ax": 64.5,
+     "ay": 293.1
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_71.png",
+     "w": 144,
+     "h": 292,
+     "ax": 64.1,
+     "ay": 292.0
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_72.png",
+     "w": 144,
+     "h": 291,
+     "ax": 63.6,
+     "ay": 290.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_73.png",
+     "w": 144,
+     "h": 290,
+     "ax": 63.2,
+     "ay": 289.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_74.png",
+     "w": 144,
+     "h": 290,
+     "ax": 62.9,
+     "ay": 289.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_75.png",
+     "w": 144,
+     "h": 290,
+     "ax": 63.0,
+     "ay": 289.7
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_76.png",
+     "w": 144,
+     "h": 291,
+     "ax": 63.2,
+     "ay": 290.8
+    },
+    {
+     "src": "assets/sprites/shoto/cmbv_77.png",
+     "w": 144,
+     "h": 292,
+     "ax": 63.3,
+     "ay": 292.0
+    }
+   ]
   }
  },
  "saber": {
@@ -44638,6 +45190,558 @@ const SPRITES = {
      "ay": 528
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/itachi/cmbv_0.png",
+     "w": 159,
+     "h": 280,
+     "ax": 76.9,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_1.png",
+     "w": 159,
+     "h": 280,
+     "ax": 76.9,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_2.png",
+     "w": 159,
+     "h": 280,
+     "ax": 76.7,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_3.png",
+     "w": 159,
+     "h": 280,
+     "ax": 76.0,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_4.png",
+     "w": 159,
+     "h": 280,
+     "ax": 74.7,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_5.png",
+     "w": 159,
+     "h": 280,
+     "ax": 73.2,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_6.png",
+     "w": 160,
+     "h": 280,
+     "ax": 72.1,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_7.png",
+     "w": 159,
+     "h": 281,
+     "ax": 72.2,
+     "ay": 281.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_8.png",
+     "w": 174,
+     "h": 281,
+     "ax": 74.2,
+     "ay": 281.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_9.png",
+     "w": 198,
+     "h": 279,
+     "ax": 76.7,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_10.png",
+     "w": 191,
+     "h": 278,
+     "ax": 78.6,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_11.png",
+     "w": 178,
+     "h": 278,
+     "ax": 79.8,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_12.png",
+     "w": 169,
+     "h": 278,
+     "ax": 82.8,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_13.png",
+     "w": 166,
+     "h": 275,
+     "ax": 94.8,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_14.png",
+     "w": 209,
+     "h": 271,
+     "ax": 101.8,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_15.png",
+     "w": 209,
+     "h": 271,
+     "ax": 104.1,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_16.png",
+     "w": 208,
+     "h": 270,
+     "ax": 104.2,
+     "ay": 270.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_17.png",
+     "w": 203,
+     "h": 271,
+     "ax": 102.0,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_18.png",
+     "w": 161,
+     "h": 275,
+     "ax": 91.4,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_19.png",
+     "w": 151,
+     "h": 278,
+     "ax": 76.3,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_20.png",
+     "w": 145,
+     "h": 282,
+     "ax": 64.6,
+     "ay": 283.2
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_21.png",
+     "w": 147,
+     "h": 286,
+     "ax": 61.4,
+     "ay": 286.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_22.png",
+     "w": 140,
+     "h": 288,
+     "ax": 62.0,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_23.png",
+     "w": 139,
+     "h": 287,
+     "ax": 61.3,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_24.png",
+     "w": 140,
+     "h": 287,
+     "ax": 64.9,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_25.png",
+     "w": 145,
+     "h": 287,
+     "ax": 69.7,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_26.png",
+     "w": 152,
+     "h": 287,
+     "ax": 72.8,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_27.png",
+     "w": 156,
+     "h": 287,
+     "ax": 71.8,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_28.png",
+     "w": 162,
+     "h": 290,
+     "ax": 69.5,
+     "ay": 289.6
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_29.png",
+     "w": 163,
+     "h": 290,
+     "ax": 67.0,
+     "ay": 289.6
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_30.png",
+     "w": 158,
+     "h": 291,
+     "ax": 66.5,
+     "ay": 290.7
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_31.png",
+     "w": 149,
+     "h": 291,
+     "ax": 64.1,
+     "ay": 291.7
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_32.png",
+     "w": 145,
+     "h": 292,
+     "ax": 57.6,
+     "ay": 292.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_33.png",
+     "w": 188,
+     "h": 287,
+     "ax": 105.1,
+     "ay": 290.7
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_34.png",
+     "w": 229,
+     "h": 285,
+     "ax": 145.4,
+     "ay": 288.5
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_35.png",
+     "w": 222,
+     "h": 284,
+     "ax": 138.0,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_36.png",
+     "w": 164,
+     "h": 282,
+     "ax": 86.9,
+     "ay": 285.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_37.png",
+     "w": 240,
+     "h": 280,
+     "ax": 93.5,
+     "ay": 282.1
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_38.png",
+     "w": 260,
+     "h": 279,
+     "ax": 87.8,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_39.png",
+     "w": 245,
+     "h": 279,
+     "ax": 91.2,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_40.png",
+     "w": 220,
+     "h": 279,
+     "ax": 90.3,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_41.png",
+     "w": 191,
+     "h": 280,
+     "ax": 81.5,
+     "ay": 281.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_42.png",
+     "w": 170,
+     "h": 280,
+     "ax": 77.3,
+     "ay": 282.1
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_43.png",
+     "w": 164,
+     "h": 279,
+     "ax": 68.3,
+     "ay": 281.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_44.png",
+     "w": 175,
+     "h": 277,
+     "ax": 79.7,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_45.png",
+     "w": 176,
+     "h": 276,
+     "ax": 85.2,
+     "ay": 276.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_46.png",
+     "w": 178,
+     "h": 274,
+     "ax": 91.8,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_47.png",
+     "w": 182,
+     "h": 270,
+     "ax": 99.1,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_48.png",
+     "w": 204,
+     "h": 268,
+     "ax": 103.9,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_49.png",
+     "w": 204,
+     "h": 268,
+     "ax": 105.4,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_50.png",
+     "w": 204,
+     "h": 268,
+     "ax": 106.3,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_51.png",
+     "w": 205,
+     "h": 268,
+     "ax": 106.6,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_52.png",
+     "w": 205,
+     "h": 268,
+     "ax": 106.7,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_53.png",
+     "w": 205,
+     "h": 268,
+     "ax": 106.4,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_54.png",
+     "w": 205,
+     "h": 268,
+     "ax": 106.1,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_55.png",
+     "w": 202,
+     "h": 268,
+     "ax": 104.1,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_56.png",
+     "w": 196,
+     "h": 269,
+     "ax": 102.0,
+     "ay": 270.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_57.png",
+     "w": 182,
+     "h": 271,
+     "ax": 97.0,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_58.png",
+     "w": 161,
+     "h": 274,
+     "ax": 89.3,
+     "ay": 273.6
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_59.png",
+     "w": 160,
+     "h": 275,
+     "ax": 85.1,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_60.png",
+     "w": 159,
+     "h": 277,
+     "ax": 81.7,
+     "ay": 276.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_61.png",
+     "w": 159,
+     "h": 277,
+     "ax": 79.7,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_62.png",
+     "w": 159,
+     "h": 279,
+     "ax": 78.1,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_63.png",
+     "w": 160,
+     "h": 279,
+     "ax": 77.0,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_64.png",
+     "w": 160,
+     "h": 279,
+     "ax": 76.4,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_65.png",
+     "w": 160,
+     "h": 279,
+     "ax": 75.9,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_66.png",
+     "w": 160,
+     "h": 278,
+     "ax": 75.5,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_67.png",
+     "w": 160,
+     "h": 278,
+     "ax": 75.2,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_68.png",
+     "w": 160,
+     "h": 278,
+     "ax": 74.8,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_69.png",
+     "w": 160,
+     "h": 277,
+     "ax": 74.5,
+     "ay": 277.3
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_70.png",
+     "w": 160,
+     "h": 278,
+     "ax": 74.3,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_71.png",
+     "w": 160,
+     "h": 278,
+     "ax": 74.3,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_72.png",
+     "w": 160,
+     "h": 278,
+     "ax": 74.3,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_73.png",
+     "w": 160,
+     "h": 279,
+     "ax": 74.4,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_74.png",
+     "w": 160,
+     "h": 280,
+     "ax": 74.7,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_75.png",
+     "w": 160,
+     "h": 280,
+     "ax": 75.0,
+     "ay": 280.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_76.png",
+     "w": 160,
+     "h": 281,
+     "ax": 75.3,
+     "ay": 281.0
+    },
+    {
+     "src": "assets/sprites/itachi/cmbv_77.png",
+     "w": 160,
+     "h": 281,
+     "ax": 75.6,
+     "ay": 281.0
+    }
+   ]
   }
  },
  "eren": {
@@ -45828,6 +46932,558 @@ const SPRITES = {
      "ay": 814
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/edward/cmbv_0.png",
+     "w": 194,
+     "h": 259,
+     "ax": 108.4,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_1.png",
+     "w": 194,
+     "h": 259,
+     "ax": 108.7,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_2.png",
+     "w": 195,
+     "h": 258,
+     "ax": 110.2,
+     "ay": 258.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_3.png",
+     "w": 188,
+     "h": 258,
+     "ax": 104.9,
+     "ay": 258.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_4.png",
+     "w": 184,
+     "h": 259,
+     "ax": 102.6,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_5.png",
+     "w": 219,
+     "h": 260,
+     "ax": 97.7,
+     "ay": 260.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_6.png",
+     "w": 229,
+     "h": 261,
+     "ax": 98.9,
+     "ay": 261.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_7.png",
+     "w": 227,
+     "h": 260,
+     "ax": 106.1,
+     "ay": 260.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_8.png",
+     "w": 186,
+     "h": 259,
+     "ax": 103.8,
+     "ay": 266.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_9.png",
+     "w": 168,
+     "h": 260,
+     "ax": 100.3,
+     "ay": 267.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_10.png",
+     "w": 185,
+     "h": 263,
+     "ax": 96.7,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_11.png",
+     "w": 195,
+     "h": 264,
+     "ax": 95.0,
+     "ay": 271.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_12.png",
+     "w": 196,
+     "h": 265,
+     "ax": 94.9,
+     "ay": 272.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_13.png",
+     "w": 192,
+     "h": 265,
+     "ax": 97.8,
+     "ay": 272.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_14.png",
+     "w": 192,
+     "h": 264,
+     "ax": 98.8,
+     "ay": 271.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_15.png",
+     "w": 232,
+     "h": 264,
+     "ax": 97.1,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_16.png",
+     "w": 195,
+     "h": 265,
+     "ax": 95.6,
+     "ay": 271.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_17.png",
+     "w": 175,
+     "h": 267,
+     "ax": 89.8,
+     "ay": 273.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_18.png",
+     "w": 236,
+     "h": 267,
+     "ax": 123.9,
+     "ay": 273.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_19.png",
+     "w": 259,
+     "h": 266,
+     "ax": 147.2,
+     "ay": 272.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_20.png",
+     "w": 249,
+     "h": 266,
+     "ax": 147.1,
+     "ay": 272.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_21.png",
+     "w": 212,
+     "h": 266,
+     "ax": 120.5,
+     "ay": 272.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_22.png",
+     "w": 134,
+     "h": 267,
+     "ax": 60.6,
+     "ay": 273.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_23.png",
+     "w": 150,
+     "h": 270,
+     "ax": 62.7,
+     "ay": 275.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_24.png",
+     "w": 163,
+     "h": 271,
+     "ax": 68.3,
+     "ay": 275.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_25.png",
+     "w": 168,
+     "h": 267,
+     "ax": 66.4,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_26.png",
+     "w": 177,
+     "h": 262,
+     "ax": 67.3,
+     "ay": 265.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_27.png",
+     "w": 186,
+     "h": 259,
+     "ax": 75.8,
+     "ay": 262.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_28.png",
+     "w": 201,
+     "h": 254,
+     "ax": 96.1,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_29.png",
+     "w": 200,
+     "h": 252,
+     "ax": 107.4,
+     "ay": 253.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_30.png",
+     "w": 204,
+     "h": 243,
+     "ax": 123.1,
+     "ay": 243.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_31.png",
+     "w": 249,
+     "h": 242,
+     "ax": 134.7,
+     "ay": 242.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_32.png",
+     "w": 251,
+     "h": 244,
+     "ax": 137.2,
+     "ay": 245.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_33.png",
+     "w": 251,
+     "h": 242,
+     "ax": 137.7,
+     "ay": 242.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_34.png",
+     "w": 252,
+     "h": 241,
+     "ax": 138.8,
+     "ay": 241.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_35.png",
+     "w": 251,
+     "h": 240,
+     "ax": 138.4,
+     "ay": 240.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_36.png",
+     "w": 251,
+     "h": 239,
+     "ax": 138.6,
+     "ay": 239.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_37.png",
+     "w": 252,
+     "h": 237,
+     "ax": 139.5,
+     "ay": 237.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_38.png",
+     "w": 251,
+     "h": 236,
+     "ax": 139.1,
+     "ay": 236.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_39.png",
+     "w": 251,
+     "h": 237,
+     "ax": 138.8,
+     "ay": 237.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_40.png",
+     "w": 251,
+     "h": 237,
+     "ax": 138.5,
+     "ay": 237.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_41.png",
+     "w": 251,
+     "h": 237,
+     "ax": 138.3,
+     "ay": 237.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_42.png",
+     "w": 251,
+     "h": 237,
+     "ax": 138.2,
+     "ay": 237.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_43.png",
+     "w": 251,
+     "h": 237,
+     "ax": 138.2,
+     "ay": 237.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_44.png",
+     "w": 251,
+     "h": 237,
+     "ax": 138.2,
+     "ay": 237.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_45.png",
+     "w": 233,
+     "h": 240,
+     "ax": 131.7,
+     "ay": 240.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_46.png",
+     "w": 218,
+     "h": 243,
+     "ax": 126.2,
+     "ay": 243.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_47.png",
+     "w": 193,
+     "h": 246,
+     "ax": 118.2,
+     "ay": 247.5
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_48.png",
+     "w": 180,
+     "h": 253,
+     "ax": 105.8,
+     "ay": 254.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_49.png",
+     "w": 176,
+     "h": 255,
+     "ax": 100.5,
+     "ay": 256.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_50.png",
+     "w": 172,
+     "h": 259,
+     "ax": 94.7,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_51.png",
+     "w": 172,
+     "h": 260,
+     "ax": 92.8,
+     "ay": 260.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_52.png",
+     "w": 173,
+     "h": 260,
+     "ax": 89.8,
+     "ay": 260.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_53.png",
+     "w": 176,
+     "h": 259,
+     "ax": 89.1,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_54.png",
+     "w": 180,
+     "h": 259,
+     "ax": 90.2,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_55.png",
+     "w": 188,
+     "h": 259,
+     "ax": 96.7,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_56.png",
+     "w": 192,
+     "h": 259,
+     "ax": 98.9,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_57.png",
+     "w": 192,
+     "h": 257,
+     "ax": 98.5,
+     "ay": 257.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_58.png",
+     "w": 188,
+     "h": 256,
+     "ax": 94.9,
+     "ay": 256.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_59.png",
+     "w": 186,
+     "h": 257,
+     "ax": 93.7,
+     "ay": 257.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_60.png",
+     "w": 182,
+     "h": 258,
+     "ax": 90.9,
+     "ay": 258.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_61.png",
+     "w": 179,
+     "h": 260,
+     "ax": 89.3,
+     "ay": 260.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_62.png",
+     "w": 174,
+     "h": 261,
+     "ax": 86.3,
+     "ay": 261.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_63.png",
+     "w": 173,
+     "h": 262,
+     "ax": 87.3,
+     "ay": 262.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_64.png",
+     "w": 173,
+     "h": 262,
+     "ax": 89.0,
+     "ay": 262.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_65.png",
+     "w": 173,
+     "h": 261,
+     "ax": 90.3,
+     "ay": 261.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_66.png",
+     "w": 173,
+     "h": 259,
+     "ax": 91.6,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_67.png",
+     "w": 173,
+     "h": 257,
+     "ax": 92.9,
+     "ay": 257.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_68.png",
+     "w": 173,
+     "h": 254,
+     "ax": 93.8,
+     "ay": 254.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_69.png",
+     "w": 173,
+     "h": 255,
+     "ax": 94.0,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_70.png",
+     "w": 173,
+     "h": 253,
+     "ax": 93.5,
+     "ay": 253.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_71.png",
+     "w": 173,
+     "h": 255,
+     "ax": 92.5,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_72.png",
+     "w": 173,
+     "h": 257,
+     "ax": 91.1,
+     "ay": 257.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_73.png",
+     "w": 173,
+     "h": 260,
+     "ax": 89.4,
+     "ay": 260.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_74.png",
+     "w": 173,
+     "h": 261,
+     "ax": 87.9,
+     "ay": 261.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_75.png",
+     "w": 173,
+     "h": 262,
+     "ax": 86.4,
+     "ay": 262.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_76.png",
+     "w": 173,
+     "h": 261,
+     "ax": 85.1,
+     "ay": 261.4
+    },
+    {
+     "src": "assets/sprites/edward/cmbv_77.png",
+     "w": 173,
+     "h": 261,
+     "ax": 84.1,
+     "ay": 261.4
+    }
+   ]
   }
  },
  "gintoki": {
@@ -47016,6 +48672,558 @@ const SPRITES = {
      "h": 528,
      "ax": 156.6,
      "ay": 528
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/trunks/cmbv_0.png",
+     "w": 165,
+     "h": 285,
+     "ax": 80.1,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_1.png",
+     "w": 165,
+     "h": 285,
+     "ax": 79.9,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_2.png",
+     "w": 165,
+     "h": 285,
+     "ax": 79.2,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_3.png",
+     "w": 179,
+     "h": 282,
+     "ax": 92.9,
+     "ay": 282.9
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_4.png",
+     "w": 179,
+     "h": 282,
+     "ax": 93.7,
+     "ay": 282.9
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_5.png",
+     "w": 195,
+     "h": 281,
+     "ax": 96.5,
+     "ay": 281.3
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_6.png",
+     "w": 194,
+     "h": 281,
+     "ax": 99.5,
+     "ay": 281.3
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_7.png",
+     "w": 221,
+     "h": 278,
+     "ax": 104.6,
+     "ay": 278.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_8.png",
+     "w": 181,
+     "h": 283,
+     "ax": 111.9,
+     "ay": 284.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_9.png",
+     "w": 227,
+     "h": 282,
+     "ax": 118.5,
+     "ay": 282.9
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_10.png",
+     "w": 228,
+     "h": 281,
+     "ax": 121.2,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_11.png",
+     "w": 228,
+     "h": 281,
+     "ax": 122.0,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_12.png",
+     "w": 228,
+     "h": 280,
+     "ax": 121.3,
+     "ay": 281.3
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_13.png",
+     "w": 228,
+     "h": 280,
+     "ax": 116.2,
+     "ay": 281.3
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_14.png",
+     "w": 143,
+     "h": 291,
+     "ax": 72.3,
+     "ay": 298.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_15.png",
+     "w": 149,
+     "h": 300,
+     "ax": 73.3,
+     "ay": 306.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_16.png",
+     "w": 154,
+     "h": 304,
+     "ax": 78.6,
+     "ay": 309.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_17.png",
+     "w": 154,
+     "h": 307,
+     "ax": 82.5,
+     "ay": 311.8
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_18.png",
+     "w": 147,
+     "h": 307,
+     "ax": 79.6,
+     "ay": 312.9
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_19.png",
+     "w": 147,
+     "h": 306,
+     "ax": 80.5,
+     "ay": 310.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_20.png",
+     "w": 147,
+     "h": 306,
+     "ax": 82.4,
+     "ay": 308.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_21.png",
+     "w": 148,
+     "h": 304,
+     "ax": 84.4,
+     "ay": 304.2
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_22.png",
+     "w": 155,
+     "h": 316,
+     "ax": 79.8,
+     "ay": 308.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_23.png",
+     "w": 246,
+     "h": 300,
+     "ax": 94.4,
+     "ay": 295.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_24.png",
+     "w": 245,
+     "h": 300,
+     "ax": 90.3,
+     "ay": 294.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_25.png",
+     "w": 237,
+     "h": 287,
+     "ax": 165.9,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_26.png",
+     "w": 241,
+     "h": 285,
+     "ax": 169.8,
+     "ay": 281.3
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_27.png",
+     "w": 241,
+     "h": 286,
+     "ax": 167.9,
+     "ay": 283.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_28.png",
+     "w": 271,
+     "h": 288,
+     "ax": 185.0,
+     "ay": 287.8
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_29.png",
+     "w": 268,
+     "h": 288,
+     "ax": 192.3,
+     "ay": 290.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_30.png",
+     "w": 277,
+     "h": 288,
+     "ax": 203.0,
+     "ay": 290.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_31.png",
+     "w": 259,
+     "h": 285,
+     "ax": 175.1,
+     "ay": 287.8
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_32.png",
+     "w": 210,
+     "h": 269,
+     "ax": 135.6,
+     "ay": 270.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_33.png",
+     "w": 301,
+     "h": 265,
+     "ax": 166.8,
+     "ay": 266.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_34.png",
+     "w": 301,
+     "h": 264,
+     "ax": 177.8,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_35.png",
+     "w": 301,
+     "h": 258,
+     "ax": 174.5,
+     "ay": 259.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_36.png",
+     "w": 262,
+     "h": 258,
+     "ax": 165.8,
+     "ay": 259.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_37.png",
+     "w": 262,
+     "h": 259,
+     "ax": 162.1,
+     "ay": 260.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_38.png",
+     "w": 263,
+     "h": 259,
+     "ax": 161.8,
+     "ay": 260.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_39.png",
+     "w": 262,
+     "h": 259,
+     "ax": 161.3,
+     "ay": 260.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_40.png",
+     "w": 262,
+     "h": 259,
+     "ax": 161.0,
+     "ay": 260.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_41.png",
+     "w": 262,
+     "h": 259,
+     "ax": 160.9,
+     "ay": 260.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_42.png",
+     "w": 262,
+     "h": 259,
+     "ax": 160.8,
+     "ay": 260.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_43.png",
+     "w": 262,
+     "h": 259,
+     "ax": 160.8,
+     "ay": 260.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_44.png",
+     "w": 262,
+     "h": 259,
+     "ax": 160.6,
+     "ay": 260.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_45.png",
+     "w": 252,
+     "h": 262,
+     "ax": 159.9,
+     "ay": 262.8
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_46.png",
+     "w": 252,
+     "h": 262,
+     "ax": 158.0,
+     "ay": 262.8
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_47.png",
+     "w": 200,
+     "h": 270,
+     "ax": 139.7,
+     "ay": 270.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_48.png",
+     "w": 181,
+     "h": 277,
+     "ax": 110.0,
+     "ay": 278.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_49.png",
+     "w": 181,
+     "h": 277,
+     "ax": 106.9,
+     "ay": 278.0
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_50.png",
+     "w": 170,
+     "h": 280,
+     "ax": 88.6,
+     "ay": 281.3
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_51.png",
+     "w": 170,
+     "h": 280,
+     "ax": 87.1,
+     "ay": 281.3
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_52.png",
+     "w": 166,
+     "h": 283,
+     "ax": 81.3,
+     "ay": 283.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_53.png",
+     "w": 165,
+     "h": 283,
+     "ax": 80.3,
+     "ay": 283.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_54.png",
+     "w": 165,
+     "h": 283,
+     "ax": 79.6,
+     "ay": 283.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_55.png",
+     "w": 165,
+     "h": 285,
+     "ax": 79.1,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_56.png",
+     "w": 165,
+     "h": 285,
+     "ax": 78.7,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_57.png",
+     "w": 165,
+     "h": 286,
+     "ax": 78.4,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_58.png",
+     "w": 165,
+     "h": 287,
+     "ax": 78.1,
+     "ay": 286.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_59.png",
+     "w": 164,
+     "h": 287,
+     "ax": 78.0,
+     "ay": 286.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_60.png",
+     "w": 164,
+     "h": 287,
+     "ax": 78.1,
+     "ay": 286.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_61.png",
+     "w": 164,
+     "h": 287,
+     "ax": 78.4,
+     "ay": 286.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_62.png",
+     "w": 165,
+     "h": 287,
+     "ax": 78.7,
+     "ay": 286.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_63.png",
+     "w": 165,
+     "h": 287,
+     "ax": 79.1,
+     "ay": 286.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_64.png",
+     "w": 165,
+     "h": 286,
+     "ax": 79.6,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_65.png",
+     "w": 165,
+     "h": 285,
+     "ax": 79.9,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_66.png",
+     "w": 165,
+     "h": 285,
+     "ax": 80.1,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_67.png",
+     "w": 165,
+     "h": 283,
+     "ax": 80.3,
+     "ay": 283.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_68.png",
+     "w": 165,
+     "h": 282,
+     "ax": 80.5,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_69.png",
+     "w": 165,
+     "h": 282,
+     "ax": 80.7,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_70.png",
+     "w": 165,
+     "h": 282,
+     "ax": 80.7,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_71.png",
+     "w": 165,
+     "h": 282,
+     "ax": 80.7,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_72.png",
+     "w": 165,
+     "h": 282,
+     "ax": 80.5,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_73.png",
+     "w": 165,
+     "h": 283,
+     "ax": 80.3,
+     "ay": 283.5
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_74.png",
+     "w": 165,
+     "h": 285,
+     "ax": 80.0,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_75.png",
+     "w": 165,
+     "h": 286,
+     "ax": 79.7,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_76.png",
+     "w": 165,
+     "h": 286,
+     "ax": 79.5,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/trunks/cmbv_77.png",
+     "w": 165,
+     "h": 287,
+     "ax": 79.2,
+     "ay": 286.7
     }
    ]
   }
@@ -49939,6 +52147,558 @@ const SPRITES = {
      "h": 801,
      "ax": 329.5,
      "ay": 801
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/boruto/cmbv_0.png",
+     "w": 184,
+     "h": 243,
+     "ax": 103.4,
+     "ay": 243.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_1.png",
+     "w": 177,
+     "h": 243,
+     "ax": 102.8,
+     "ay": 243.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_2.png",
+     "w": 172,
+     "h": 243,
+     "ax": 101.6,
+     "ay": 243.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_3.png",
+     "w": 172,
+     "h": 247,
+     "ax": 99.1,
+     "ay": 246.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_4.png",
+     "w": 171,
+     "h": 251,
+     "ax": 96.4,
+     "ay": 250.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_5.png",
+     "w": 178,
+     "h": 252,
+     "ax": 95.1,
+     "ay": 252.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_6.png",
+     "w": 210,
+     "h": 253,
+     "ax": 95.0,
+     "ay": 253.3
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_7.png",
+     "w": 219,
+     "h": 253,
+     "ax": 93.9,
+     "ay": 253.3
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_8.png",
+     "w": 201,
+     "h": 252,
+     "ax": 91.8,
+     "ay": 252.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_9.png",
+     "w": 179,
+     "h": 251,
+     "ax": 89.9,
+     "ay": 250.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_10.png",
+     "w": 172,
+     "h": 249,
+     "ax": 89.1,
+     "ay": 248.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_11.png",
+     "w": 172,
+     "h": 247,
+     "ax": 89.3,
+     "ay": 246.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_12.png",
+     "w": 172,
+     "h": 246,
+     "ax": 90.8,
+     "ay": 245.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_13.png",
+     "w": 187,
+     "h": 246,
+     "ax": 94.2,
+     "ay": 245.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_14.png",
+     "w": 216,
+     "h": 244,
+     "ax": 98.5,
+     "ay": 244.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_15.png",
+     "w": 220,
+     "h": 242,
+     "ax": 101.7,
+     "ay": 242.1
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_16.png",
+     "w": 204,
+     "h": 243,
+     "ax": 104.5,
+     "ay": 243.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_17.png",
+     "w": 179,
+     "h": 243,
+     "ax": 109.8,
+     "ay": 244.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_18.png",
+     "w": 212,
+     "h": 237,
+     "ax": 125.5,
+     "ay": 238.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_19.png",
+     "w": 232,
+     "h": 235,
+     "ax": 133.4,
+     "ay": 235.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_20.png",
+     "w": 233,
+     "h": 234,
+     "ax": 135.6,
+     "ay": 234.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_21.png",
+     "w": 232,
+     "h": 234,
+     "ax": 135.5,
+     "ay": 234.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_22.png",
+     "w": 228,
+     "h": 236,
+     "ax": 132.4,
+     "ay": 236.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_23.png",
+     "w": 189,
+     "h": 244,
+     "ax": 112.8,
+     "ay": 245.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_24.png",
+     "w": 150,
+     "h": 249,
+     "ax": 92.4,
+     "ay": 254.3
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_25.png",
+     "w": 127,
+     "h": 258,
+     "ax": 65.7,
+     "ay": 263.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_26.png",
+     "w": 115,
+     "h": 265,
+     "ax": 47.1,
+     "ay": 272.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_27.png",
+     "w": 132,
+     "h": 268,
+     "ax": 61.1,
+     "ay": 277.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_28.png",
+     "w": 161,
+     "h": 273,
+     "ax": 92.6,
+     "ay": 283.2
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_29.png",
+     "w": 165,
+     "h": 275,
+     "ax": 98.7,
+     "ay": 284.2
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_30.png",
+     "w": 167,
+     "h": 276,
+     "ax": 101.8,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_31.png",
+     "w": 166,
+     "h": 277,
+     "ax": 100.9,
+     "ay": 282.3
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_32.png",
+     "w": 162,
+     "h": 272,
+     "ax": 96.6,
+     "ay": 277.2
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_33.png",
+     "w": 138,
+     "h": 262,
+     "ax": 70.2,
+     "ay": 266.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_34.png",
+     "w": 124,
+     "h": 259,
+     "ax": 55.2,
+     "ay": 264.1
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_35.png",
+     "w": 113,
+     "h": 257,
+     "ax": 53.5,
+     "ay": 261.7
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_36.png",
+     "w": 165,
+     "h": 256,
+     "ax": 88.4,
+     "ay": 260.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_37.png",
+     "w": 234,
+     "h": 254,
+     "ax": 126.4,
+     "ay": 258.9
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_38.png",
+     "w": 267,
+     "h": 248,
+     "ax": 154.3,
+     "ay": 252.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_39.png",
+     "w": 255,
+     "h": 250,
+     "ax": 150.9,
+     "ay": 254.3
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_40.png",
+     "w": 222,
+     "h": 254,
+     "ax": 141.8,
+     "ay": 258.9
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_41.png",
+     "w": 198,
+     "h": 256,
+     "ax": 130.0,
+     "ay": 260.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_42.png",
+     "w": 185,
+     "h": 256,
+     "ax": 119.2,
+     "ay": 260.3
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_43.png",
+     "w": 180,
+     "h": 249,
+     "ax": 113.2,
+     "ay": 250.1
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_44.png",
+     "w": 175,
+     "h": 245,
+     "ax": 114.6,
+     "ay": 245.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_45.png",
+     "w": 177,
+     "h": 241,
+     "ax": 122.8,
+     "ay": 242.1
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_46.png",
+     "w": 205,
+     "h": 237,
+     "ax": 138.4,
+     "ay": 238.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_47.png",
+     "w": 248,
+     "h": 235,
+     "ax": 148.1,
+     "ay": 235.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_48.png",
+     "w": 237,
+     "h": 232,
+     "ax": 137.5,
+     "ay": 232.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_49.png",
+     "w": 237,
+     "h": 231,
+     "ax": 138.9,
+     "ay": 231.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_50.png",
+     "w": 237,
+     "h": 232,
+     "ax": 139.4,
+     "ay": 232.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_51.png",
+     "w": 237,
+     "h": 233,
+     "ax": 139.1,
+     "ay": 233.7
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_52.png",
+     "w": 237,
+     "h": 234,
+     "ax": 138.9,
+     "ay": 234.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_53.png",
+     "w": 234,
+     "h": 236,
+     "ax": 137.8,
+     "ay": 236.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_54.png",
+     "w": 230,
+     "h": 236,
+     "ax": 136.7,
+     "ay": 237.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_55.png",
+     "w": 222,
+     "h": 237,
+     "ax": 134.2,
+     "ay": 238.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_56.png",
+     "w": 212,
+     "h": 238,
+     "ax": 131.1,
+     "ay": 239.3
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_57.png",
+     "w": 199,
+     "h": 239,
+     "ax": 126.1,
+     "ay": 240.2
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_58.png",
+     "w": 175,
+     "h": 243,
+     "ax": 117.6,
+     "ay": 244.0
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_59.png",
+     "w": 174,
+     "h": 245,
+     "ax": 113.0,
+     "ay": 245.8
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_60.png",
+     "w": 173,
+     "h": 247,
+     "ax": 108.7,
+     "ay": 247.7
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_61.png",
+     "w": 174,
+     "h": 249,
+     "ax": 104.6,
+     "ay": 249.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_62.png",
+     "w": 175,
+     "h": 251,
+     "ax": 101.8,
+     "ay": 251.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_63.png",
+     "w": 176,
+     "h": 252,
+     "ax": 99.5,
+     "ay": 251.9
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_64.png",
+     "w": 175,
+     "h": 251,
+     "ax": 97.6,
+     "ay": 251.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_65.png",
+     "w": 175,
+     "h": 251,
+     "ax": 96.5,
+     "ay": 250.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_66.png",
+     "w": 174,
+     "h": 250,
+     "ax": 95.8,
+     "ay": 249.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_67.png",
+     "w": 174,
+     "h": 249,
+     "ax": 95.1,
+     "ay": 248.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_68.png",
+     "w": 173,
+     "h": 249,
+     "ax": 94.4,
+     "ay": 248.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_69.png",
+     "w": 173,
+     "h": 249,
+     "ax": 93.9,
+     "ay": 248.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_70.png",
+     "w": 174,
+     "h": 250,
+     "ax": 93.6,
+     "ay": 249.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_71.png",
+     "w": 174,
+     "h": 250,
+     "ax": 93.6,
+     "ay": 249.6
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_72.png",
+     "w": 175,
+     "h": 251,
+     "ax": 93.8,
+     "ay": 250.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_73.png",
+     "w": 176,
+     "h": 252,
+     "ax": 94.3,
+     "ay": 252.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_74.png",
+     "w": 176,
+     "h": 252,
+     "ax": 95.0,
+     "ay": 252.4
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_75.png",
+     "w": 176,
+     "h": 252,
+     "ax": 95.7,
+     "ay": 251.9
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_76.png",
+     "w": 176,
+     "h": 251,
+     "ax": 96.4,
+     "ay": 251.5
+    },
+    {
+     "src": "assets/sprites/boruto/cmbv_77.png",
+     "w": 176,
+     "h": 251,
+     "ax": 96.8,
+     "ay": 250.5
     }
    ]
   }
@@ -56900,6 +59660,558 @@ const SPRITES = {
      "h": 796,
      "ax": 324.7,
      "ay": 796
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/naruto/cmbv_0.png",
+     "w": 218,
+     "h": 280,
+     "ax": 113.3,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_1.png",
+     "w": 218,
+     "h": 280,
+     "ax": 113.1,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_2.png",
+     "w": 218,
+     "h": 280,
+     "ax": 112.1,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_3.png",
+     "w": 218,
+     "h": 278,
+     "ax": 109.9,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_4.png",
+     "w": 218,
+     "h": 277,
+     "ax": 106.9,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_5.png",
+     "w": 218,
+     "h": 276,
+     "ax": 104.2,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_6.png",
+     "w": 218,
+     "h": 278,
+     "ax": 102.7,
+     "ay": 277.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_7.png",
+     "w": 218,
+     "h": 280,
+     "ax": 103.7,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_8.png",
+     "w": 232,
+     "h": 282,
+     "ax": 107.3,
+     "ay": 282.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_9.png",
+     "w": 251,
+     "h": 281,
+     "ax": 111.3,
+     "ay": 281.4
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_10.png",
+     "w": 254,
+     "h": 280,
+     "ax": 114.7,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_11.png",
+     "w": 255,
+     "h": 279,
+     "ax": 116.5,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_12.png",
+     "w": 252,
+     "h": 278,
+     "ax": 117.7,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_13.png",
+     "w": 224,
+     "h": 279,
+     "ax": 119.9,
+     "ay": 278.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_14.png",
+     "w": 218,
+     "h": 278,
+     "ax": 123.0,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_15.png",
+     "w": 220,
+     "h": 276,
+     "ax": 128.4,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_16.png",
+     "w": 222,
+     "h": 274,
+     "ax": 136.0,
+     "ay": 273.9
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_17.png",
+     "w": 235,
+     "h": 272,
+     "ax": 141.8,
+     "ay": 271.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_18.png",
+     "w": 246,
+     "h": 270,
+     "ax": 144.3,
+     "ay": 269.6
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_19.png",
+     "w": 228,
+     "h": 273,
+     "ax": 143.4,
+     "ay": 272.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_20.png",
+     "w": 215,
+     "h": 279,
+     "ax": 135.7,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_21.png",
+     "w": 204,
+     "h": 280,
+     "ax": 115.9,
+     "ay": 286.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_22.png",
+     "w": 187,
+     "h": 288,
+     "ax": 86.1,
+     "ay": 296.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_23.png",
+     "w": 205,
+     "h": 304,
+     "ax": 106.3,
+     "ay": 311.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_24.png",
+     "w": 215,
+     "h": 306,
+     "ax": 112.7,
+     "ay": 313.6
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_25.png",
+     "w": 217,
+     "h": 307,
+     "ax": 113.6,
+     "ay": 314.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_26.png",
+     "w": 218,
+     "h": 307,
+     "ax": 114.3,
+     "ay": 314.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_27.png",
+     "w": 218,
+     "h": 307,
+     "ax": 113.6,
+     "ay": 314.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_28.png",
+     "w": 216,
+     "h": 309,
+     "ax": 111.0,
+     "ay": 316.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_29.png",
+     "w": 210,
+     "h": 296,
+     "ax": 104.8,
+     "ay": 317.9
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_30.png",
+     "w": 229,
+     "h": 289,
+     "ax": 104.9,
+     "ay": 319.6
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_31.png",
+     "w": 260,
+     "h": 307,
+     "ax": 110.1,
+     "ay": 319.0
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_32.png",
+     "w": 257,
+     "h": 314,
+     "ax": 104.6,
+     "ay": 316.9
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_33.png",
+     "w": 194,
+     "h": 307,
+     "ax": 74.9,
+     "ay": 310.4
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_34.png",
+     "w": 270,
+     "h": 305,
+     "ax": 146.4,
+     "ay": 308.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_35.png",
+     "w": 271,
+     "h": 303,
+     "ax": 168.6,
+     "ay": 306.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_36.png",
+     "w": 232,
+     "h": 304,
+     "ax": 160.0,
+     "ay": 307.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_37.png",
+     "w": 224,
+     "h": 305,
+     "ax": 145.0,
+     "ay": 308.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_38.png",
+     "w": 201,
+     "h": 309,
+     "ax": 120.3,
+     "ay": 312.6
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_39.png",
+     "w": 199,
+     "h": 313,
+     "ax": 112.8,
+     "ay": 315.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_40.png",
+     "w": 200,
+     "h": 314,
+     "ax": 110.1,
+     "ay": 316.9
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_41.png",
+     "w": 200,
+     "h": 311,
+     "ax": 107.6,
+     "ay": 315.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_42.png",
+     "w": 198,
+     "h": 310,
+     "ax": 104.3,
+     "ay": 311.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_43.png",
+     "w": 189,
+     "h": 295,
+     "ax": 100.8,
+     "ay": 294.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_44.png",
+     "w": 207,
+     "h": 286,
+     "ax": 98.1,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_45.png",
+     "w": 217,
+     "h": 279,
+     "ax": 99.9,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_46.png",
+     "w": 219,
+     "h": 275,
+     "ax": 106.5,
+     "ay": 275.0
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_47.png",
+     "w": 219,
+     "h": 273,
+     "ax": 118.7,
+     "ay": 272.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_48.png",
+     "w": 224,
+     "h": 269,
+     "ax": 139.3,
+     "ay": 268.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_49.png",
+     "w": 269,
+     "h": 267,
+     "ax": 154.0,
+     "ay": 267.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_50.png",
+     "w": 271,
+     "h": 267,
+     "ax": 159.1,
+     "ay": 267.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_51.png",
+     "w": 273,
+     "h": 266,
+     "ax": 160.9,
+     "ay": 266.4
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_52.png",
+     "w": 273,
+     "h": 265,
+     "ax": 160.8,
+     "ay": 265.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_53.png",
+     "w": 274,
+     "h": 264,
+     "ax": 161.6,
+     "ay": 264.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_54.png",
+     "w": 274,
+     "h": 264,
+     "ax": 161.9,
+     "ay": 264.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_55.png",
+     "w": 273,
+     "h": 264,
+     "ax": 161.8,
+     "ay": 264.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_56.png",
+     "w": 273,
+     "h": 264,
+     "ax": 161.5,
+     "ay": 264.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_57.png",
+     "w": 274,
+     "h": 264,
+     "ax": 162.2,
+     "ay": 264.2
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_58.png",
+     "w": 273,
+     "h": 265,
+     "ax": 161.8,
+     "ay": 265.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_59.png",
+     "w": 273,
+     "h": 265,
+     "ax": 161.5,
+     "ay": 265.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_60.png",
+     "w": 273,
+     "h": 265,
+     "ax": 161.0,
+     "ay": 265.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_61.png",
+     "w": 266,
+     "h": 266,
+     "ax": 158.5,
+     "ay": 266.4
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_62.png",
+     "w": 253,
+     "h": 267,
+     "ax": 153.6,
+     "ay": 267.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_63.png",
+     "w": 223,
+     "h": 272,
+     "ax": 144.8,
+     "ay": 272.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_64.png",
+     "w": 222,
+     "h": 275,
+     "ax": 136.9,
+     "ay": 275.0
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_65.png",
+     "w": 220,
+     "h": 277,
+     "ax": 130.3,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_66.png",
+     "w": 220,
+     "h": 279,
+     "ax": 125.4,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_67.png",
+     "w": 219,
+     "h": 280,
+     "ax": 120.0,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_68.png",
+     "w": 218,
+     "h": 280,
+     "ax": 115.8,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_69.png",
+     "w": 218,
+     "h": 280,
+     "ax": 114.3,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_70.png",
+     "w": 218,
+     "h": 280,
+     "ax": 113.7,
+     "ay": 279.8
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_71.png",
+     "w": 218,
+     "h": 280,
+     "ax": 113.3,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_72.png",
+     "w": 218,
+     "h": 280,
+     "ax": 112.6,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_73.png",
+     "w": 218,
+     "h": 282,
+     "ax": 111.8,
+     "ay": 282.5
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_74.png",
+     "w": 218,
+     "h": 284,
+     "ax": 111.0,
+     "ay": 283.6
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_75.png",
+     "w": 218,
+     "h": 284,
+     "ax": 110.3,
+     "ay": 284.1
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_76.png",
+     "w": 218,
+     "h": 286,
+     "ax": 109.6,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/naruto/cmbv_77.png",
+     "w": 218,
+     "h": 286,
+     "ax": 109.3,
+     "ay": 285.7
     }
    ]
   }
@@ -70230,6 +73542,558 @@ const SPRITES = {
      "h": 534,
      "ax": 139.5,
      "ay": 534
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/baki/cmbv_0.png",
+     "w": 176,
+     "h": 287,
+     "ax": 86.0,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_1.png",
+     "w": 176,
+     "h": 287,
+     "ax": 85.4,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_2.png",
+     "w": 176,
+     "h": 288,
+     "ax": 84.1,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_3.png",
+     "w": 176,
+     "h": 287,
+     "ax": 82.1,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_4.png",
+     "w": 176,
+     "h": 286,
+     "ax": 80.2,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_5.png",
+     "w": 176,
+     "h": 284,
+     "ax": 79.2,
+     "ay": 284.7
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_6.png",
+     "w": 176,
+     "h": 284,
+     "ax": 79.4,
+     "ay": 284.7
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_7.png",
+     "w": 177,
+     "h": 285,
+     "ax": 81.3,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_8.png",
+     "w": 197,
+     "h": 284,
+     "ax": 84.3,
+     "ay": 284.7
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_9.png",
+     "w": 226,
+     "h": 280,
+     "ax": 87.5,
+     "ay": 280.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_10.png",
+     "w": 228,
+     "h": 278,
+     "ax": 90.5,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_11.png",
+     "w": 219,
+     "h": 279,
+     "ax": 93.6,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_12.png",
+     "w": 197,
+     "h": 279,
+     "ax": 97.6,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_13.png",
+     "w": 185,
+     "h": 278,
+     "ax": 107.1,
+     "ay": 278.1
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_14.png",
+     "w": 217,
+     "h": 274,
+     "ax": 115.0,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_15.png",
+     "w": 241,
+     "h": 272,
+     "ax": 120.3,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_16.png",
+     "w": 241,
+     "h": 272,
+     "ax": 122.2,
+     "ay": 273.2
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_17.png",
+     "w": 219,
+     "h": 276,
+     "ax": 109.9,
+     "ay": 277.0
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_18.png",
+     "w": 141,
+     "h": 280,
+     "ax": 75.8,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_19.png",
+     "w": 113,
+     "h": 286,
+     "ax": 51.8,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_20.png",
+     "w": 114,
+     "h": 290,
+     "ax": 51.5,
+     "ay": 295.7
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_21.png",
+     "w": 129,
+     "h": 291,
+     "ax": 65.9,
+     "ay": 297.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_22.png",
+     "w": 134,
+     "h": 292,
+     "ax": 71.6,
+     "ay": 297.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_23.png",
+     "w": 131,
+     "h": 292,
+     "ax": 70.5,
+     "ay": 297.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_24.png",
+     "w": 123,
+     "h": 291,
+     "ax": 63.4,
+     "ay": 296.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_25.png",
+     "w": 114,
+     "h": 289,
+     "ax": 51.2,
+     "ay": 294.6
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_26.png",
+     "w": 104,
+     "h": 287,
+     "ax": 39.6,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_27.png",
+     "w": 107,
+     "h": 285,
+     "ax": 41.4,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_28.png",
+     "w": 139,
+     "h": 280,
+     "ax": 58.7,
+     "ay": 282.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_29.png",
+     "w": 155,
+     "h": 278,
+     "ax": 74.0,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_30.png",
+     "w": 170,
+     "h": 278,
+     "ax": 92.5,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_31.png",
+     "w": 198,
+     "h": 278,
+     "ax": 123.2,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_32.png",
+     "w": 233,
+     "h": 279,
+     "ax": 158.2,
+     "ay": 281.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_33.png",
+     "w": 187,
+     "h": 278,
+     "ax": 125.8,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_34.png",
+     "w": 113,
+     "h": 278,
+     "ax": 69.0,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_35.png",
+     "w": 146,
+     "h": 278,
+     "ax": 73.0,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_36.png",
+     "w": 183,
+     "h": 277,
+     "ax": 70.3,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_37.png",
+     "w": 212,
+     "h": 277,
+     "ax": 65.7,
+     "ay": 281.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_38.png",
+     "w": 223,
+     "h": 283,
+     "ax": 76.2,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_39.png",
+     "w": 215,
+     "h": 285,
+     "ax": 76.6,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_40.png",
+     "w": 206,
+     "h": 286,
+     "ax": 73.5,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_41.png",
+     "w": 199,
+     "h": 287,
+     "ax": 71.7,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_42.png",
+     "w": 196,
+     "h": 284,
+     "ax": 70.4,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_43.png",
+     "w": 203,
+     "h": 277,
+     "ax": 88.4,
+     "ay": 278.1
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_44.png",
+     "w": 202,
+     "h": 277,
+     "ax": 98.4,
+     "ay": 278.1
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_45.png",
+     "w": 203,
+     "h": 277,
+     "ax": 109.3,
+     "ay": 278.1
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_46.png",
+     "w": 205,
+     "h": 275,
+     "ax": 120.9,
+     "ay": 275.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_47.png",
+     "w": 250,
+     "h": 273,
+     "ax": 132.9,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_48.png",
+     "w": 253,
+     "h": 270,
+     "ax": 133.4,
+     "ay": 271.6
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_49.png",
+     "w": 254,
+     "h": 270,
+     "ax": 134.5,
+     "ay": 271.6
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_50.png",
+     "w": 256,
+     "h": 270,
+     "ax": 135.2,
+     "ay": 271.6
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_51.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.6,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_52.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.7,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_53.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.8,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_54.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.8,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_55.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.8,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_56.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.8,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_57.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.8,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_58.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.8,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_59.png",
+     "w": 257,
+     "h": 269,
+     "ax": 135.8,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_60.png",
+     "w": 257,
+     "h": 270,
+     "ax": 135.8,
+     "ay": 271.6
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_61.png",
+     "w": 242,
+     "h": 272,
+     "ax": 131.8,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_62.png",
+     "w": 224,
+     "h": 274,
+     "ax": 125.1,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_63.png",
+     "w": 190,
+     "h": 278,
+     "ax": 113.9,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_64.png",
+     "w": 187,
+     "h": 280,
+     "ax": 107.5,
+     "ay": 281.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_65.png",
+     "w": 184,
+     "h": 282,
+     "ax": 101.7,
+     "ay": 283.1
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_66.png",
+     "w": 179,
+     "h": 285,
+     "ax": 94.6,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_67.png",
+     "w": 176,
+     "h": 286,
+     "ax": 88.6,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_68.png",
+     "w": 176,
+     "h": 285,
+     "ax": 86.8,
+     "ay": 286.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_69.png",
+     "w": 176,
+     "h": 285,
+     "ax": 85.8,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_70.png",
+     "w": 176,
+     "h": 285,
+     "ax": 85.2,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_71.png",
+     "w": 176,
+     "h": 285,
+     "ax": 84.7,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_72.png",
+     "w": 176,
+     "h": 285,
+     "ax": 84.3,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_73.png",
+     "w": 176,
+     "h": 285,
+     "ax": 84.0,
+     "ay": 286.4
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_74.png",
+     "w": 176,
+     "h": 286,
+     "ax": 83.8,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_75.png",
+     "w": 176,
+     "h": 287,
+     "ax": 83.8,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_76.png",
+     "w": 176,
+     "h": 287,
+     "ax": 83.9,
+     "ay": 288.6
+    },
+    {
+     "src": "assets/sprites/baki/cmbv_77.png",
+     "w": 176,
+     "h": 288,
+     "ax": 84.1,
+     "ay": 289.1
     }
    ]
   }
