@@ -981,6 +981,21 @@ const CMB = {
     finisher: [43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59] },
   trunks: { punch: [3, 4, 5, 6, 7, 8, 8, 9, 9], cross: [8, 9, 10, 11, 12, 13, 13, 14, 14], kick: [14, 15, 16, 17, 18, 19, 20, 21, 22, 22],
     finisher: [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48] },
+  buu_kid: { punch: [6, 7, 8, 9, 10, 11, 12, 12, 13], cross: [14, 15, 16, 17, 18, 19, 20, 21, 21], kick: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    roundhouse: [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 42], finisher: [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 58, 60, 62, 64, 65, 66] },
+  gally: { punch: [6, 7, 8, 9, 10, 11, 12, 12, 13], cross: [14, 15, 16, 17, 18, 19, 20, 21, 22], kick: [24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
+    roundhouse: [34, 35, 36, 37, 38, 39, 40, 41, 42, 42, 43, 43], finisher: [44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 55, 57, 59, 61, 62, 63, 64] },
+  // Ultra Instinct : le coup de pied latéral part en arrière (sauté) ; Blue : le direct final aussi (finisher : poses)
+  goku_ui: { punch: [6, 7, 8, 9, 10, 11, 12, 12, 13], cross: [15, 16, 17, 18, 19, 20, 21, 23, 25], kick: [27, 28, 29, 30, 31, 32, 33, 34, 35, 35],
+    roundhouse: [35, 36, 37, 38, 38, 39, 39, 40, 40, 41, 41, 41], finisher: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66] },
+  goku_blue: { punch: [7, 8, 9, 10, 11, 11, 12, 12, 13], cross: [14, 15, 16, 17, 18, 19, 20, 21, 22], kick: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
+    roundhouse: [40, 41, 42, 43, 43, 44, 44, 45, 45, 46, 46, 47] },
+  // Sanji : mains dans les poches, uniquement des coups de pied
+  sanji: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [17, 18, 19, 20, 21, 22, 23, 24, 25], kick: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
+    roundhouse: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45], finisher: [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 59, 61, 62, 63, 64] },
+  // Ippo : boxe — jab, direct, crochet au corps, uppercut, crochet final (traînée verte 54-57 sautée)
+  ippo: { punch: [7, 8, 9, 10, 11, 12, 12, 13, 13], cross: [14, 15, 16, 17, 18, 19, 20, 21, 22], kick: [23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
+    roundhouse: [32, 33, 34, 35, 36, 37, 37, 38, 38, 39, 39, 40], finisher: [47, 48, 49, 50, 51, 52, 53, 58, 58, 59, 59, 60, 60, 61, 62, 63, 64] },
 };
 // réglages communs des coups filmés : plus d'élan à chaque coup, l'ennemi reste à portée jusqu'au dernier
 const CMB_T = {
@@ -1256,7 +1271,7 @@ const CHARS = {
     labels: { blast: 'DIABLE JAMBE', ultra: 'HELL MEMORIES' },
     // Diable Jambe : la jambe reste en feu, chaque coup de pied brûle
     forms: [{ ki: 50, name: 'DIABLE JAMBE', filter: 'saturate(1.25) contrast(1.08)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,90,20,0.45)', '#ff6a1a'], legFire: true, bar: ['#c02000', '#ffb040'], color: '#ff6a1a', trail: '#ffb040', hit: '#ffd0a0', element: 'fire' }],
-    moves: SJ_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(SJ_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'diable', speed: 285, pose: stdPose, ultra: [startHellMemories, updateHellMemories],
     ultraPose: h => ['special', h.t < HELL.leap ? 0 : h.t < HELL.rise ? 4 : h.t < HELL.slam ? 5 : h.t < HELL.slam + 0.35 ? 6 : 7],
   },
@@ -1306,7 +1321,7 @@ const CHARS = {
     labels: { blast: 'FRAPPE DE PAUME', ultra: 'PANZER KUNST' },
     // corps du Berserker : les jointures du corps cybernétique s'allument en bleu, elle va plus vite
     forms: [{ ki: 50, name: 'BERSERKER BODY', filter: 'contrast(1.1) saturate(1.2)', speed: 1.4, dmg: 1.6, at: 0.6, end: 1.0, aura: ['rgba(80,160,255,0.45)', '#5ab0ff'], glow: '#7ac8ff', ghosts: true, bar: ['#1050a0', '#7ac8ff'], color: '#7ac8ff', trail: '#bfe4ff', hit: '#d8f0ff' }],
-    moves: GA_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(GA_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'palm', speed: 285, pose: stdPose, ultra: [startPanzer, updatePanzer],
     ultraPose: h => h.t < PANZER.rush ? ['special', 0] : h.t < PANZER.leap ? ['combo', [1, 2, 5, 6][Math.floor(h.t / 0.1) % 4]] : h.t < PANZER.kick ? ['special', 5] : h.t < PANZER.palm ? ['special', 6] : h.t < PANZER.end - 0.2 ? ['special', 2] : ['special', 3],
   },
@@ -1429,7 +1444,7 @@ const CHARS = {
     colors: ['#ff7ad8', '#3a1a4a'], kiColor: '#ff9ae0', hit: '#ffe0f6', stats: [['PUISSANCE', 5], ['VITESSE', 5], ['PORTÉE', 3]],
     labels: { blast: 'RAYON DESTRUCTEUR', ultra: 'KAMEHAMEHA DE BOO' },
     forms: [{ ki: 50, name: 'FOLIE DESTRUCTRICE', filter: 'saturate(1.4) contrast(1.1)', speed: 1.35, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,120,210,0.55)', '#ff7ad8'], sparks: '#ffd0f0', glow: '#ff4fc0', bar: ['#a0207a', '#ffb0e8'], color: '#ff9ae0', hit: '#ffe0f6' }],
-    moves: KD_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(KD_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'vapor', speed: 300, pose: stdPose, ultra: [startKameMax, updateKameMax],
     ultraPose: h => ['special', h.t < KMAX.fire - 0.45 ? 0 : h.t < KMAX.fire ? 1 : h.t < KMAX.end - 0.3 ? 2 : 3],
   },
@@ -1525,7 +1540,7 @@ const CHARS = {
     colors: ['#c81e2a', '#ffffff'], kiColor: '#ffb0a0', hit: '#ffe0d0', stats: [['PUISSANCE', 5], ['VITESSE', 3], ['PORTÉE', 2]],
     labels: { blast: 'GAZELLE PUNCH', ultra: 'DEMPSEY ROLL' },
     forms: [{ ki: 50, name: 'ESPRIT DE COMBAT', filter: 'contrast(1.12) saturate(1.2)', speed: 1.25, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,60,40,0.45)', '#ff6a4a'], bar: ['#a01010', '#ff9a8a'], color: '#ff6a4a' }],
-    moves: IP_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(IP_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'gazelle', speed: 240, pose: stdPose, ultra: [startDempseyMax, updateDempseyMax],
     ultraPose: dempseyPose,
   },
