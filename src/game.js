@@ -995,7 +995,9 @@ const CMB = {
     roundhouse: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45], finisher: [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 59, 61, 62, 63, 64] },
   // Ippo : boxe — jab, direct, crochet au corps, uppercut, crochet final (traînée verte 54-57 sautée)
   ippo: { punch: [7, 8, 9, 10, 11, 12, 12, 13, 13], cross: [14, 15, 16, 17, 18, 19, 20, 21, 22], kick: [23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
-    roundhouse: [32, 33, 34, 35, 36, 37, 37, 38, 38, 39, 39, 40], finisher: [47, 48, 49, 50, 51, 52, 53, 58, 58, 59, 59, 60, 60, 61, 62, 63, 64] },
+    roundhouse: [32, 33, 34, 35, 36, 37, 37, 38, 38, 39, 39, 40], finisher: [47, 48, 49, 50, 51, 52, 53, 58, 58, 59, 59, 60, 60, 61, 62, 63, 64],
+    // coup chargé : bras arrière armé pendant la charge, puis le crochet du final au relâchement
+    charge: [50, 51], mega: [52, 53, 58, 59, 59, 60, 60, 61, 62, 63] },
 };
 // réglages communs des coups filmés : plus d'élan à chaque coup, l'ennemi reste à portée jusqu'au dernier
 const CMB_T = {
@@ -1758,6 +1760,9 @@ function airPose(h) {
   if (h.state === 'dive') return hero ? pick(['jumpkick', 4]) : pick(['lowair', 6]);
   if (h.state === 'dodge') return h.dodge?.back ? (hero ? pick(['jump', 3]) : pick(['jump', 3], ['lowair', 1])) : hero ? pick(['dash', 1]) : pick(['dashcharge', 1]);
   // garde et coup chargé armé : planche 'guard' de chaque perso (étape 0 garde, 1 armé), sinon l'ancienne pose
+  const cs = seg => cmbSheet(h, seg), cf = seg => CMB[cs(seg)][seg]; // coup chargé filmé (CMB charge / mega)
+  if (h.state === 'smashcharge' && cs('charge')) return ['cmb', cf('charge')[Math.floor(h.t * 8) % cf('charge').length]];
+  if (h.state === 'megasmash' && cs('mega')) return ['cmb', cf('mega')[Math.min(cf('mega').length - 1, Math.floor(h.t / MEGA_MOVE.dur * cf('mega').length))]];
   if (h.state === 'smashcharge') return hero ? pick(['guard', 1], ['charge', 1]) : pick(['guard', 1], ['dashcharge', 4]);
   if (h.state === 'guard') return hero ? pick(['guard', 0], ['punch', 0]) : pick(['guard', 0], ['combo', 0]);
   if (h.state === 'megasmash') return hero ? pick(['pcombo', h.t < 0.1 ? 1 : 4]) : pick(['combo', h.t < 0.1 ? 0 : 2]);
