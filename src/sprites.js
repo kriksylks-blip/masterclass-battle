@@ -6576,6 +6576,558 @@ const SPRITES = {
      "ay": 799
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/izuku/cmbv_0.png",
+     "w": 189,
+     "h": 272,
+     "ax": 94.0,
+     "ay": 272.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_1.png",
+     "w": 190,
+     "h": 272,
+     "ax": 93.3,
+     "ay": 272.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_2.png",
+     "w": 190,
+     "h": 273,
+     "ax": 91.3,
+     "ay": 273.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_3.png",
+     "w": 190,
+     "h": 272,
+     "ax": 88.5,
+     "ay": 272.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_4.png",
+     "w": 190,
+     "h": 273,
+     "ax": 86.7,
+     "ay": 272.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_5.png",
+     "w": 193,
+     "h": 276,
+     "ax": 90.0,
+     "ay": 275.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_6.png",
+     "w": 214,
+     "h": 276,
+     "ax": 97.6,
+     "ay": 275.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_7.png",
+     "w": 300,
+     "h": 273,
+     "ax": 105.1,
+     "ay": 272.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_8.png",
+     "w": 221,
+     "h": 272,
+     "ax": 103.2,
+     "ay": 271.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_9.png",
+     "w": 204,
+     "h": 272,
+     "ax": 99.9,
+     "ay": 271.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_10.png",
+     "w": 195,
+     "h": 270,
+     "ax": 101.1,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_11.png",
+     "w": 195,
+     "h": 269,
+     "ax": 106.2,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_12.png",
+     "w": 201,
+     "h": 268,
+     "ax": 120.3,
+     "ay": 268.3
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_13.png",
+     "w": 251,
+     "h": 259,
+     "ax": 134.8,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_14.png",
+     "w": 263,
+     "h": 255,
+     "ax": 148.5,
+     "ay": 255.3
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_15.png",
+     "w": 303,
+     "h": 255,
+     "ax": 168.3,
+     "ay": 254.7
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_16.png",
+     "w": 326,
+     "h": 257,
+     "ax": 185.8,
+     "ay": 257.3
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_17.png",
+     "w": 351,
+     "h": 282,
+     "ax": 184.8,
+     "ay": 282.3
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_18.png",
+     "w": 262,
+     "h": 276,
+     "ax": 165.5,
+     "ay": 276.1
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_19.png",
+     "w": 240,
+     "h": 253,
+     "ax": 140.7,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_20.png",
+     "w": 186,
+     "h": 260,
+     "ax": 111.8,
+     "ay": 261.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_21.png",
+     "w": 159,
+     "h": 272,
+     "ax": 82.6,
+     "ay": 275.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_22.png",
+     "w": 126,
+     "h": 296,
+     "ax": 49.9,
+     "ay": 304.6
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_23.png",
+     "w": 140,
+     "h": 318,
+     "ax": 76.4,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_24.png",
+     "w": 148,
+     "h": 318,
+     "ax": 90.6,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_25.png",
+     "w": 243,
+     "h": 312,
+     "ax": 126.5,
+     "ay": 312.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_26.png",
+     "w": 258,
+     "h": 312,
+     "ax": 134.6,
+     "ay": 310.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_27.png",
+     "w": 280,
+     "h": 312,
+     "ax": 131.3,
+     "ay": 307.8
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_28.png",
+     "w": 199,
+     "h": 313,
+     "ax": 120.1,
+     "ay": 306.2
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_29.png",
+     "w": 184,
+     "h": 315,
+     "ax": 111.5,
+     "ay": 306.7
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_30.png",
+     "w": 178,
+     "h": 325,
+     "ax": 99.2,
+     "ay": 316.1
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_31.png",
+     "w": 251,
+     "h": 306,
+     "ax": 134.5,
+     "ay": 296.8
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_32.png",
+     "w": 267,
+     "h": 300,
+     "ax": 98.0,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_33.png",
+     "w": 264,
+     "h": 302,
+     "ax": 90.3,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_34.png",
+     "w": 256,
+     "h": 303,
+     "ax": 75.0,
+     "ay": 297.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_35.png",
+     "w": 295,
+     "h": 299,
+     "ax": 111.4,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_36.png",
+     "w": 325,
+     "h": 296,
+     "ax": 141.5,
+     "ay": 293.2
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_37.png",
+     "w": 347,
+     "h": 292,
+     "ax": 156.4,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_38.png",
+     "w": 266,
+     "h": 289,
+     "ax": 159.5,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_39.png",
+     "w": 267,
+     "h": 289,
+     "ax": 169.8,
+     "ay": 288.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_40.png",
+     "w": 257,
+     "h": 290,
+     "ax": 168.9,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_41.png",
+     "w": 294,
+     "h": 290,
+     "ax": 180.7,
+     "ay": 290.1
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_42.png",
+     "w": 317,
+     "h": 285,
+     "ax": 182.0,
+     "ay": 284.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_43.png",
+     "w": 210,
+     "h": 269,
+     "ax": 89.5,
+     "ay": 268.8
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_44.png",
+     "w": 214,
+     "h": 264,
+     "ax": 106.1,
+     "ay": 263.6
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_45.png",
+     "w": 238,
+     "h": 260,
+     "ax": 149.6,
+     "ay": 259.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_46.png",
+     "w": 347,
+     "h": 253,
+     "ax": 253.5,
+     "ay": 252.7
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_47.png",
+     "w": 493,
+     "h": 255,
+     "ax": 337.3,
+     "ay": 254.7
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_48.png",
+     "w": 595,
+     "h": 295,
+     "ax": 391.0,
+     "ay": 293.2
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_49.png",
+     "w": 619,
+     "h": 315,
+     "ax": 413.7,
+     "ay": 312.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_50.png",
+     "w": 623,
+     "h": 325,
+     "ax": 420.3,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_51.png",
+     "w": 636,
+     "h": 325,
+     "ax": 430.8,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_52.png",
+     "w": 455,
+     "h": 324,
+     "ax": 245.6,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_53.png",
+     "w": 455,
+     "h": 324,
+     "ax": 244.2,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_54.png",
+     "w": 456,
+     "h": 324,
+     "ax": 237.3,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_55.png",
+     "w": 456,
+     "h": 324,
+     "ax": 210.7,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_56.png",
+     "w": 263,
+     "h": 259,
+     "ax": 184.7,
+     "ay": 258.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_57.png",
+     "w": 457,
+     "h": 324,
+     "ax": 175.7,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_58.png",
+     "w": 263,
+     "h": 259,
+     "ax": 155.9,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_59.png",
+     "w": 263,
+     "h": 259,
+     "ax": 137.4,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_60.png",
+     "w": 263,
+     "h": 259,
+     "ax": 132.5,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_61.png",
+     "w": 263,
+     "h": 259,
+     "ax": 131.9,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_62.png",
+     "w": 262,
+     "h": 259,
+     "ax": 131.7,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_63.png",
+     "w": 262,
+     "h": 259,
+     "ax": 131.6,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_64.png",
+     "w": 262,
+     "h": 259,
+     "ax": 131.5,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_65.png",
+     "w": 262,
+     "h": 259,
+     "ax": 131.5,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_66.png",
+     "w": 262,
+     "h": 259,
+     "ax": 131.6,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_67.png",
+     "w": 262,
+     "h": 259,
+     "ax": 131.7,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_68.png",
+     "w": 263,
+     "h": 259,
+     "ax": 131.9,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_69.png",
+     "w": 263,
+     "h": 259,
+     "ax": 131.9,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_70.png",
+     "w": 263,
+     "h": 259,
+     "ax": 131.4,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_71.png",
+     "w": 258,
+     "h": 260,
+     "ax": 127.9,
+     "ay": 259.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_72.png",
+     "w": 247,
+     "h": 264,
+     "ax": 120.3,
+     "ay": 263.1
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_73.png",
+     "w": 222,
+     "h": 270,
+     "ax": 107.8,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_74.png",
+     "w": 210,
+     "h": 272,
+     "ax": 101.9,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_75.png",
+     "w": 191,
+     "h": 273,
+     "ax": 96.0,
+     "ay": 273.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_76.png",
+     "w": 188,
+     "h": 273,
+     "ax": 93.7,
+     "ay": 273.5
+    },
+    {
+     "src": "assets/sprites/izuku/cmbv_77.png",
+     "w": 188,
+     "h": 271,
+     "ax": 93.0,
+     "ay": 270.9
+    }
+   ]
   }
  },
  "vegeta": {
@@ -18310,6 +18862,558 @@ const SPRITES = {
      "ay": 542
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan/cmbv_0.png",
+     "w": 138,
+     "h": 214,
+     "ax": 70.3,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_1.png",
+     "w": 138,
+     "h": 214,
+     "ax": 70.1,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_2.png",
+     "w": 138,
+     "h": 214,
+     "ax": 69.9,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_3.png",
+     "w": 138,
+     "h": 214,
+     "ax": 69.5,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_4.png",
+     "w": 138,
+     "h": 215,
+     "ax": 68.6,
+     "ay": 215.0
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_5.png",
+     "w": 138,
+     "h": 216,
+     "ax": 67.3,
+     "ay": 216.2
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_6.png",
+     "w": 138,
+     "h": 216,
+     "ax": 65.6,
+     "ay": 216.2
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_7.png",
+     "w": 139,
+     "h": 216,
+     "ax": 64.2,
+     "ay": 215.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_8.png",
+     "w": 139,
+     "h": 212,
+     "ax": 61.9,
+     "ay": 211.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_9.png",
+     "w": 139,
+     "h": 212,
+     "ax": 60.9,
+     "ay": 212.5
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_10.png",
+     "w": 140,
+     "h": 213,
+     "ax": 62.3,
+     "ay": 213.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_11.png",
+     "w": 142,
+     "h": 214,
+     "ax": 66.1,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_12.png",
+     "w": 162,
+     "h": 213,
+     "ax": 72.8,
+     "ay": 213.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_13.png",
+     "w": 146,
+     "h": 214,
+     "ax": 78.8,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_14.png",
+     "w": 144,
+     "h": 214,
+     "ax": 83.9,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_15.png",
+     "w": 150,
+     "h": 211,
+     "ax": 91.0,
+     "ay": 210.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_16.png",
+     "w": 175,
+     "h": 208,
+     "ax": 97.1,
+     "ay": 208.4
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_17.png",
+     "w": 177,
+     "h": 206,
+     "ax": 99.2,
+     "ay": 205.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_18.png",
+     "w": 178,
+     "h": 205,
+     "ax": 102.2,
+     "ay": 205.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_19.png",
+     "w": 170,
+     "h": 206,
+     "ax": 98.7,
+     "ay": 205.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_20.png",
+     "w": 150,
+     "h": 212,
+     "ax": 90.8,
+     "ay": 210.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_21.png",
+     "w": 124,
+     "h": 217,
+     "ax": 76.4,
+     "ay": 216.6
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_22.png",
+     "w": 99,
+     "h": 225,
+     "ax": 44.9,
+     "ay": 229.4
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_23.png",
+     "w": 103,
+     "h": 233,
+     "ax": 50.9,
+     "ay": 237.2
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_24.png",
+     "w": 105,
+     "h": 235,
+     "ax": 53.1,
+     "ay": 238.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_25.png",
+     "w": 106,
+     "h": 236,
+     "ax": 56.0,
+     "ay": 239.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_26.png",
+     "w": 106,
+     "h": 236,
+     "ax": 56.7,
+     "ay": 239.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_27.png",
+     "w": 106,
+     "h": 235,
+     "ax": 57.5,
+     "ay": 238.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_28.png",
+     "w": 105,
+     "h": 228,
+     "ax": 57.4,
+     "ay": 232.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_29.png",
+     "w": 103,
+     "h": 225,
+     "ax": 55.3,
+     "ay": 229.0
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_30.png",
+     "w": 98,
+     "h": 222,
+     "ax": 49.3,
+     "ay": 226.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_31.png",
+     "w": 82,
+     "h": 221,
+     "ax": 29.0,
+     "ay": 225.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_32.png",
+     "w": 115,
+     "h": 224,
+     "ax": 46.2,
+     "ay": 228.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_33.png",
+     "w": 140,
+     "h": 223,
+     "ax": 61.2,
+     "ay": 228.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_34.png",
+     "w": 138,
+     "h": 222,
+     "ax": 63.6,
+     "ay": 226.5
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_35.png",
+     "w": 165,
+     "h": 218,
+     "ax": 64.3,
+     "ay": 223.2
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_36.png",
+     "w": 196,
+     "h": 215,
+     "ax": 65.5,
+     "ay": 219.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_37.png",
+     "w": 193,
+     "h": 215,
+     "ax": 64.2,
+     "ay": 218.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_38.png",
+     "w": 189,
+     "h": 217,
+     "ax": 62.9,
+     "ay": 220.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_39.png",
+     "w": 175,
+     "h": 219,
+     "ax": 59.5,
+     "ay": 222.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_40.png",
+     "w": 149,
+     "h": 222,
+     "ax": 56.9,
+     "ay": 225.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_41.png",
+     "w": 121,
+     "h": 224,
+     "ax": 55.1,
+     "ay": 227.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_42.png",
+     "w": 109,
+     "h": 226,
+     "ax": 45.3,
+     "ay": 229.0
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_43.png",
+     "w": 101,
+     "h": 219,
+     "ax": 51.4,
+     "ay": 224.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_44.png",
+     "w": 124,
+     "h": 221,
+     "ax": 64.1,
+     "ay": 220.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_45.png",
+     "w": 138,
+     "h": 214,
+     "ax": 70.1,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_46.png",
+     "w": 145,
+     "h": 211,
+     "ax": 76.3,
+     "ay": 210.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_47.png",
+     "w": 151,
+     "h": 205,
+     "ax": 82.4,
+     "ay": 205.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_48.png",
+     "w": 154,
+     "h": 203,
+     "ax": 87.5,
+     "ay": 203.4
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_49.png",
+     "w": 158,
+     "h": 204,
+     "ax": 94.6,
+     "ay": 204.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_50.png",
+     "w": 163,
+     "h": 203,
+     "ax": 104.2,
+     "ay": 204.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_51.png",
+     "w": 194,
+     "h": 203,
+     "ax": 113.5,
+     "ay": 203.4
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_52.png",
+     "w": 196,
+     "h": 200,
+     "ax": 116.5,
+     "ay": 201.0
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_53.png",
+     "w": 198,
+     "h": 198,
+     "ax": 118.7,
+     "ay": 198.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_54.png",
+     "w": 198,
+     "h": 198,
+     "ax": 119.2,
+     "ay": 199.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_55.png",
+     "w": 198,
+     "h": 198,
+     "ax": 119.4,
+     "ay": 198.5
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_56.png",
+     "w": 198,
+     "h": 198,
+     "ax": 119.3,
+     "ay": 198.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_57.png",
+     "w": 198,
+     "h": 198,
+     "ax": 119.1,
+     "ay": 198.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_58.png",
+     "w": 198,
+     "h": 198,
+     "ax": 118.9,
+     "ay": 198.9
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_59.png",
+     "w": 198,
+     "h": 198,
+     "ax": 118.3,
+     "ay": 199.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_60.png",
+     "w": 177,
+     "h": 200,
+     "ax": 112.1,
+     "ay": 201.0
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_61.png",
+     "w": 160,
+     "h": 203,
+     "ax": 103.7,
+     "ay": 203.4
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_62.png",
+     "w": 150,
+     "h": 208,
+     "ax": 89.1,
+     "ay": 207.5
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_63.png",
+     "w": 144,
+     "h": 211,
+     "ax": 79.0,
+     "ay": 210.8
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_64.png",
+     "w": 142,
+     "h": 212,
+     "ax": 75.2,
+     "ay": 211.7
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_65.png",
+     "w": 139,
+     "h": 214,
+     "ax": 71.7,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_66.png",
+     "w": 138,
+     "h": 215,
+     "ax": 70.5,
+     "ay": 215.0
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_67.png",
+     "w": 138,
+     "h": 215,
+     "ax": 70.4,
+     "ay": 215.0
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_68.png",
+     "w": 138,
+     "h": 214,
+     "ax": 70.4,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_69.png",
+     "w": 138,
+     "h": 213,
+     "ax": 70.4,
+     "ay": 213.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_70.png",
+     "w": 138,
+     "h": 213,
+     "ax": 70.4,
+     "ay": 213.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_71.png",
+     "w": 138,
+     "h": 213,
+     "ax": 70.4,
+     "ay": 213.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_72.png",
+     "w": 138,
+     "h": 212,
+     "ax": 70.4,
+     "ay": 212.5
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_73.png",
+     "w": 138,
+     "h": 212,
+     "ax": 70.4,
+     "ay": 212.5
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_74.png",
+     "w": 138,
+     "h": 212,
+     "ax": 70.3,
+     "ay": 212.5
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_75.png",
+     "w": 138,
+     "h": 213,
+     "ax": 70.1,
+     "ay": 213.3
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_76.png",
+     "w": 138,
+     "h": 214,
+     "ax": 70.0,
+     "ay": 214.1
+    },
+    {
+     "src": "assets/sprites/gohan/cmbv_77.png",
+     "w": 138,
+     "h": 214,
+     "ax": 70.0,
+     "ay": 214.1
+    }
+   ]
   }
  },
  "gohan_ssj": {
@@ -18842,6 +19946,558 @@ const SPRITES = {
      "h": 528,
      "ax": 160.0,
      "ay": 528
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_0.png",
+     "w": 139,
+     "h": 236,
+     "ax": 71.2,
+     "ay": 235.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_1.png",
+     "w": 139,
+     "h": 233,
+     "ax": 69.9,
+     "ay": 232.8
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_2.png",
+     "w": 139,
+     "h": 231,
+     "ax": 68.5,
+     "ay": 231.0
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_3.png",
+     "w": 140,
+     "h": 234,
+     "ax": 68.3,
+     "ay": 233.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_4.png",
+     "w": 142,
+     "h": 236,
+     "ax": 70.2,
+     "ay": 236.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_5.png",
+     "w": 150,
+     "h": 238,
+     "ax": 74.6,
+     "ay": 238.3
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_6.png",
+     "w": 169,
+     "h": 237,
+     "ax": 78.3,
+     "ay": 237.4
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_7.png",
+     "w": 175,
+     "h": 236,
+     "ax": 81.0,
+     "ay": 236.0
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_8.png",
+     "w": 170,
+     "h": 234,
+     "ax": 79.2,
+     "ay": 233.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_9.png",
+     "w": 162,
+     "h": 234,
+     "ax": 81.0,
+     "ay": 233.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_10.png",
+     "w": 151,
+     "h": 234,
+     "ax": 85.0,
+     "ay": 233.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_11.png",
+     "w": 150,
+     "h": 235,
+     "ax": 90.0,
+     "ay": 234.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_12.png",
+     "w": 148,
+     "h": 229,
+     "ax": 98.4,
+     "ay": 229.2
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_13.png",
+     "w": 192,
+     "h": 222,
+     "ax": 106.1,
+     "ay": 222.8
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_14.png",
+     "w": 193,
+     "h": 223,
+     "ax": 108.9,
+     "ay": 223.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_15.png",
+     "w": 193,
+     "h": 225,
+     "ax": 110.9,
+     "ay": 225.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_16.png",
+     "w": 193,
+     "h": 225,
+     "ax": 110.6,
+     "ay": 226.0
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_17.png",
+     "w": 194,
+     "h": 226,
+     "ax": 109.7,
+     "ay": 226.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_18.png",
+     "w": 126,
+     "h": 238,
+     "ax": 73.7,
+     "ay": 241.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_19.png",
+     "w": 115,
+     "h": 246,
+     "ax": 56.1,
+     "ay": 248.3
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_20.png",
+     "w": 118,
+     "h": 255,
+     "ax": 55.7,
+     "ay": 256.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_21.png",
+     "w": 111,
+     "h": 261,
+     "ax": 49.5,
+     "ay": 261.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_22.png",
+     "w": 96,
+     "h": 267,
+     "ax": 50.0,
+     "ay": 271.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_23.png",
+     "w": 95,
+     "h": 268,
+     "ax": 48.4,
+     "ay": 277.4
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_24.png",
+     "w": 97,
+     "h": 269,
+     "ax": 48.6,
+     "ay": 278.3
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_25.png",
+     "w": 101,
+     "h": 269,
+     "ax": 49.6,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_26.png",
+     "w": 101,
+     "h": 269,
+     "ax": 50.4,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_27.png",
+     "w": 97,
+     "h": 266,
+     "ax": 45.6,
+     "ay": 269.2
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_28.png",
+     "w": 112,
+     "h": 254,
+     "ax": 56.9,
+     "ay": 256.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_29.png",
+     "w": 105,
+     "h": 252,
+     "ax": 55.4,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_30.png",
+     "w": 100,
+     "h": 250,
+     "ax": 41.8,
+     "ay": 251.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_31.png",
+     "w": 95,
+     "h": 249,
+     "ax": 33.8,
+     "ay": 251.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_32.png",
+     "w": 109,
+     "h": 251,
+     "ax": 47.9,
+     "ay": 251.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_33.png",
+     "w": 122,
+     "h": 251,
+     "ax": 55.1,
+     "ay": 252.8
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_34.png",
+     "w": 142,
+     "h": 250,
+     "ax": 72.0,
+     "ay": 251.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_35.png",
+     "w": 184,
+     "h": 240,
+     "ax": 117.4,
+     "ay": 244.2
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_36.png",
+     "w": 193,
+     "h": 238,
+     "ax": 123.7,
+     "ay": 241.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_37.png",
+     "w": 201,
+     "h": 235,
+     "ax": 130.7,
+     "ay": 239.2
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_38.png",
+     "w": 138,
+     "h": 235,
+     "ax": 85.1,
+     "ay": 238.3
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_39.png",
+     "w": 86,
+     "h": 236,
+     "ax": 47.6,
+     "ay": 238.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_40.png",
+     "w": 142,
+     "h": 235,
+     "ax": 52.3,
+     "ay": 236.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_41.png",
+     "w": 176,
+     "h": 233,
+     "ax": 50.6,
+     "ay": 234.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_42.png",
+     "w": 186,
+     "h": 234,
+     "ax": 51.2,
+     "ay": 235.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_43.png",
+     "w": 156,
+     "h": 238,
+     "ax": 55.4,
+     "ay": 240.1
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_44.png",
+     "w": 132,
+     "h": 241,
+     "ax": 52.9,
+     "ay": 242.8
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_45.png",
+     "w": 139,
+     "h": 237,
+     "ax": 55.1,
+     "ay": 241.0
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_46.png",
+     "w": 149,
+     "h": 235,
+     "ax": 53.6,
+     "ay": 239.2
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_47.png",
+     "w": 155,
+     "h": 234,
+     "ax": 54.3,
+     "ay": 237.4
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_48.png",
+     "w": 144,
+     "h": 232,
+     "ax": 49.6,
+     "ay": 233.3
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_49.png",
+     "w": 145,
+     "h": 230,
+     "ax": 61.0,
+     "ay": 231.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_50.png",
+     "w": 153,
+     "h": 235,
+     "ax": 76.8,
+     "ay": 236.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_51.png",
+     "w": 156,
+     "h": 231,
+     "ax": 92.0,
+     "ay": 231.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_52.png",
+     "w": 184,
+     "h": 223,
+     "ax": 110.4,
+     "ay": 223.7
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_53.png",
+     "w": 196,
+     "h": 221,
+     "ax": 117.2,
+     "ay": 221.9
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_54.png",
+     "w": 196,
+     "h": 221,
+     "ax": 118.9,
+     "ay": 222.4
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_55.png",
+     "w": 196,
+     "h": 224,
+     "ax": 119.6,
+     "ay": 224.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_56.png",
+     "w": 196,
+     "h": 225,
+     "ax": 119.9,
+     "ay": 225.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_57.png",
+     "w": 196,
+     "h": 225,
+     "ax": 120.0,
+     "ay": 226.0
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_58.png",
+     "w": 196,
+     "h": 226,
+     "ax": 120.0,
+     "ay": 226.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_59.png",
+     "w": 196,
+     "h": 225,
+     "ax": 120.0,
+     "ay": 225.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_60.png",
+     "w": 196,
+     "h": 225,
+     "ax": 120.0,
+     "ay": 226.0
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_61.png",
+     "w": 196,
+     "h": 225,
+     "ax": 120.0,
+     "ay": 225.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_62.png",
+     "w": 196,
+     "h": 224,
+     "ax": 120.0,
+     "ay": 224.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_63.png",
+     "w": 196,
+     "h": 224,
+     "ax": 119.8,
+     "ay": 224.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_64.png",
+     "w": 196,
+     "h": 224,
+     "ax": 118.7,
+     "ay": 224.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_65.png",
+     "w": 167,
+     "h": 229,
+     "ax": 108.3,
+     "ay": 229.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_66.png",
+     "w": 167,
+     "h": 229,
+     "ax": 105.2,
+     "ay": 229.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_67.png",
+     "w": 142,
+     "h": 235,
+     "ax": 92.4,
+     "ay": 234.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_68.png",
+     "w": 139,
+     "h": 239,
+     "ax": 78.2,
+     "ay": 239.2
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_69.png",
+     "w": 138,
+     "h": 240,
+     "ax": 72.5,
+     "ay": 240.1
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_70.png",
+     "w": 138,
+     "h": 238,
+     "ax": 70.7,
+     "ay": 238.3
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_71.png",
+     "w": 139,
+     "h": 237,
+     "ax": 71.2,
+     "ay": 237.4
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_72.png",
+     "w": 139,
+     "h": 235,
+     "ax": 72.1,
+     "ay": 234.6
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_73.png",
+     "w": 139,
+     "h": 233,
+     "ax": 72.7,
+     "ay": 232.8
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_74.png",
+     "w": 139,
+     "h": 233,
+     "ax": 72.5,
+     "ay": 232.8
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_75.png",
+     "w": 139,
+     "h": 236,
+     "ax": 71.8,
+     "ay": 235.5
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_76.png",
+     "w": 139,
+     "h": 237,
+     "ax": 71.0,
+     "ay": 237.4
+    },
+    {
+     "src": "assets/sprites/gohan_ssj/cmbv_77.png",
+     "w": 139,
+     "h": 239,
+     "ax": 70.4,
+     "ay": 239.2
     }
    ]
   }
@@ -56026,6 +57682,558 @@ const SPRITES = {
      "ay": 794
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/bakugo/cmbv_0.png",
+     "w": 220,
+     "h": 269,
+     "ax": 103.8,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_1.png",
+     "w": 220,
+     "h": 270,
+     "ax": 103.6,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_2.png",
+     "w": 220,
+     "h": 270,
+     "ax": 103.6,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_3.png",
+     "w": 220,
+     "h": 273,
+     "ax": 104.5,
+     "ay": 273.5
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_4.png",
+     "w": 228,
+     "h": 276,
+     "ax": 104.9,
+     "ay": 276.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_5.png",
+     "w": 232,
+     "h": 278,
+     "ax": 105.0,
+     "ay": 277.6
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_6.png",
+     "w": 236,
+     "h": 277,
+     "ax": 106.5,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_7.png",
+     "w": 241,
+     "h": 277,
+     "ax": 111.4,
+     "ay": 276.6
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_8.png",
+     "w": 241,
+     "h": 274,
+     "ax": 115.3,
+     "ay": 274.5
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_9.png",
+     "w": 228,
+     "h": 272,
+     "ax": 124.2,
+     "ay": 272.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_10.png",
+     "w": 207,
+     "h": 268,
+     "ax": 142.0,
+     "ay": 268.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_11.png",
+     "w": 266,
+     "h": 266,
+     "ax": 165.4,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_12.png",
+     "w": 294,
+     "h": 263,
+     "ax": 177.1,
+     "ay": 263.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_13.png",
+     "w": 284,
+     "h": 268,
+     "ax": 179.0,
+     "ay": 268.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_14.png",
+     "w": 284,
+     "h": 270,
+     "ax": 174.4,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_15.png",
+     "w": 277,
+     "h": 271,
+     "ax": 156.3,
+     "ay": 271.9
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_16.png",
+     "w": 195,
+     "h": 272,
+     "ax": 134.4,
+     "ay": 272.9
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_17.png",
+     "w": 189,
+     "h": 269,
+     "ax": 105.7,
+     "ay": 270.9
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_18.png",
+     "w": 189,
+     "h": 298,
+     "ax": 98.9,
+     "ay": 296.8
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_19.png",
+     "w": 175,
+     "h": 314,
+     "ax": 85.6,
+     "ay": 313.5
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_20.png",
+     "w": 164,
+     "h": 319,
+     "ax": 80.3,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_21.png",
+     "w": 160,
+     "h": 312,
+     "ax": 79.3,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_22.png",
+     "w": 159,
+     "h": 309,
+     "ax": 78.4,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_23.png",
+     "w": 159,
+     "h": 306,
+     "ax": 77.6,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_24.png",
+     "w": 158,
+     "h": 306,
+     "ax": 77.0,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_25.png",
+     "w": 158,
+     "h": 306,
+     "ax": 77.0,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_26.png",
+     "w": 158,
+     "h": 306,
+     "ax": 77.3,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_27.png",
+     "w": 172,
+     "h": 287,
+     "ax": 88.8,
+     "ay": 323.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_28.png",
+     "w": 204,
+     "h": 310,
+     "ax": 116.2,
+     "ay": 318.2
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_29.png",
+     "w": 216,
+     "h": 302,
+     "ax": 122.8,
+     "ay": 309.8
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_30.png",
+     "w": 210,
+     "h": 305,
+     "ax": 103.4,
+     "ay": 313.0
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_31.png",
+     "w": 246,
+     "h": 307,
+     "ax": 124.2,
+     "ay": 315.0
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_32.png",
+     "w": 294,
+     "h": 310,
+     "ax": 159.8,
+     "ay": 318.2
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_33.png",
+     "w": 295,
+     "h": 310,
+     "ax": 159.5,
+     "ay": 318.2
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_34.png",
+     "w": 289,
+     "h": 309,
+     "ax": 156.7,
+     "ay": 317.6
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_35.png",
+     "w": 284,
+     "h": 308,
+     "ax": 154.7,
+     "ay": 316.6
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_36.png",
+     "w": 269,
+     "h": 308,
+     "ax": 143.9,
+     "ay": 316.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_37.png",
+     "w": 246,
+     "h": 306,
+     "ax": 129.1,
+     "ay": 314.0
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_38.png",
+     "w": 234,
+     "h": 277,
+     "ax": 118.0,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_39.png",
+     "w": 229,
+     "h": 269,
+     "ax": 119.1,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_40.png",
+     "w": 227,
+     "h": 265,
+     "ax": 117.4,
+     "ay": 265.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_41.png",
+     "w": 228,
+     "h": 267,
+     "ax": 115.5,
+     "ay": 267.2
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_42.png",
+     "w": 230,
+     "h": 269,
+     "ax": 113.4,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_43.png",
+     "w": 221,
+     "h": 273,
+     "ax": 111.8,
+     "ay": 273.5
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_44.png",
+     "w": 215,
+     "h": 274,
+     "ax": 110.4,
+     "ay": 274.0
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_45.png",
+     "w": 214,
+     "h": 271,
+     "ax": 111.0,
+     "ay": 270.9
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_46.png",
+     "w": 218,
+     "h": 268,
+     "ax": 116.7,
+     "ay": 267.7
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_47.png",
+     "w": 213,
+     "h": 266,
+     "ax": 132.4,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_48.png",
+     "w": 286,
+     "h": 262,
+     "ax": 161.9,
+     "ay": 262.0
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_49.png",
+     "w": 289,
+     "h": 263,
+     "ax": 174.3,
+     "ay": 262.5
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_50.png",
+     "w": 287,
+     "h": 265,
+     "ax": 178.0,
+     "ay": 265.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_51.png",
+     "w": 286,
+     "h": 268,
+     "ax": 178.6,
+     "ay": 267.7
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_52.png",
+     "w": 286,
+     "h": 268,
+     "ax": 178.5,
+     "ay": 267.7
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_53.png",
+     "w": 285,
+     "h": 267,
+     "ax": 178.0,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_54.png",
+     "w": 285,
+     "h": 265,
+     "ax": 177.5,
+     "ay": 265.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_55.png",
+     "w": 285,
+     "h": 265,
+     "ax": 177.3,
+     "ay": 264.6
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_56.png",
+     "w": 285,
+     "h": 264,
+     "ax": 177.3,
+     "ay": 264.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_57.png",
+     "w": 285,
+     "h": 264,
+     "ax": 177.0,
+     "ay": 264.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_58.png",
+     "w": 285,
+     "h": 264,
+     "ax": 175.5,
+     "ay": 264.1
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_59.png",
+     "w": 261,
+     "h": 269,
+     "ax": 167.9,
+     "ay": 268.8
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_60.png",
+     "w": 228,
+     "h": 271,
+     "ax": 157.2,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_61.png",
+     "w": 213,
+     "h": 271,
+     "ax": 142.8,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_62.png",
+     "w": 210,
+     "h": 271,
+     "ax": 127.6,
+     "ay": 270.9
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_63.png",
+     "w": 205,
+     "h": 270,
+     "ax": 112.8,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_64.png",
+     "w": 210,
+     "h": 270,
+     "ax": 105.0,
+     "ay": 270.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_65.png",
+     "w": 213,
+     "h": 269,
+     "ax": 100.9,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_66.png",
+     "w": 220,
+     "h": 269,
+     "ax": 104.2,
+     "ay": 268.8
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_67.png",
+     "w": 220,
+     "h": 269,
+     "ax": 104.0,
+     "ay": 268.8
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_68.png",
+     "w": 220,
+     "h": 269,
+     "ax": 103.8,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_69.png",
+     "w": 220,
+     "h": 270,
+     "ax": 103.6,
+     "ay": 269.8
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_70.png",
+     "w": 220,
+     "h": 271,
+     "ax": 103.5,
+     "ay": 270.9
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_71.png",
+     "w": 220,
+     "h": 271,
+     "ax": 103.3,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_72.png",
+     "w": 220,
+     "h": 271,
+     "ax": 102.9,
+     "ay": 271.4
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_73.png",
+     "w": 220,
+     "h": 273,
+     "ax": 102.6,
+     "ay": 272.9
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_74.png",
+     "w": 220,
+     "h": 273,
+     "ax": 102.3,
+     "ay": 273.5
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_75.png",
+     "w": 220,
+     "h": 274,
+     "ax": 102.0,
+     "ay": 274.0
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_76.png",
+     "w": 220,
+     "h": 274,
+     "ax": 102.3,
+     "ay": 274.5
+    },
+    {
+     "src": "assets/sprites/bakugo/cmbv_77.png",
+     "w": 221,
+     "h": 275,
+     "ax": 102.6,
+     "ay": 275.0
+    }
+   ]
   }
  },
  "seiya": {
@@ -56619,6 +58827,558 @@ const SPRITES = {
      "h": 806,
      "ax": 301.6,
      "ay": 806
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/seiya/cmbv_0.png",
+     "w": 194,
+     "h": 261,
+     "ax": 98.5,
+     "ay": 260.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_1.png",
+     "w": 194,
+     "h": 262,
+     "ax": 98.1,
+     "ay": 261.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_2.png",
+     "w": 194,
+     "h": 263,
+     "ax": 97.1,
+     "ay": 262.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_3.png",
+     "w": 194,
+     "h": 265,
+     "ax": 95.9,
+     "ay": 264.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_4.png",
+     "w": 210,
+     "h": 264,
+     "ax": 95.4,
+     "ay": 263.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_5.png",
+     "w": 234,
+     "h": 262,
+     "ax": 96.1,
+     "ay": 261.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_6.png",
+     "w": 240,
+     "h": 260,
+     "ax": 97.4,
+     "ay": 259.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_7.png",
+     "w": 228,
+     "h": 260,
+     "ax": 100.3,
+     "ay": 259.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_8.png",
+     "w": 194,
+     "h": 261,
+     "ax": 107.0,
+     "ay": 259.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_9.png",
+     "w": 201,
+     "h": 260,
+     "ax": 119.9,
+     "ay": 258.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_10.png",
+     "w": 229,
+     "h": 255,
+     "ax": 134.1,
+     "ay": 255.2
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_11.png",
+     "w": 274,
+     "h": 253,
+     "ax": 139.1,
+     "ay": 252.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_12.png",
+     "w": 254,
+     "h": 252,
+     "ax": 139.9,
+     "ay": 251.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_13.png",
+     "w": 254,
+     "h": 250,
+     "ax": 139.1,
+     "ay": 249.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_14.png",
+     "w": 254,
+     "h": 249,
+     "ax": 138.6,
+     "ay": 248.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_15.png",
+     "w": 254,
+     "h": 250,
+     "ax": 138.3,
+     "ay": 249.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_16.png",
+     "w": 254,
+     "h": 250,
+     "ax": 137.8,
+     "ay": 249.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_17.png",
+     "w": 254,
+     "h": 250,
+     "ax": 135.0,
+     "ay": 249.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_18.png",
+     "w": 163,
+     "h": 262,
+     "ax": 94.5,
+     "ay": 263.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_19.png",
+     "w": 137,
+     "h": 260,
+     "ax": 69.9,
+     "ay": 268.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_20.png",
+     "w": 125,
+     "h": 267,
+     "ax": 50.1,
+     "ay": 275.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_21.png",
+     "w": 139,
+     "h": 271,
+     "ax": 60.7,
+     "ay": 280.2
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_22.png",
+     "w": 149,
+     "h": 275,
+     "ax": 70.0,
+     "ay": 283.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_23.png",
+     "w": 171,
+     "h": 279,
+     "ax": 89.1,
+     "ay": 287.8
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_24.png",
+     "w": 178,
+     "h": 280,
+     "ax": 96.7,
+     "ay": 288.8
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_25.png",
+     "w": 182,
+     "h": 280,
+     "ax": 100.0,
+     "ay": 288.8
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_26.png",
+     "w": 166,
+     "h": 280,
+     "ax": 85.6,
+     "ay": 288.8
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_27.png",
+     "w": 120,
+     "h": 278,
+     "ax": 55.5,
+     "ay": 286.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_28.png",
+     "w": 213,
+     "h": 273,
+     "ax": 137.1,
+     "ay": 281.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_29.png",
+     "w": 136,
+     "h": 270,
+     "ax": 73.6,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_30.png",
+     "w": 225,
+     "h": 268,
+     "ax": 94.6,
+     "ay": 275.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_31.png",
+     "w": 338,
+     "h": 266,
+     "ax": 177.4,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_32.png",
+     "w": 307,
+     "h": 265,
+     "ax": 143.1,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_33.png",
+     "w": 269,
+     "h": 268,
+     "ax": 94.7,
+     "ay": 275.2
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_34.png",
+     "w": 163,
+     "h": 271,
+     "ax": 82.4,
+     "ay": 276.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_35.png",
+     "w": 122,
+     "h": 273,
+     "ax": 71.3,
+     "ay": 277.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_36.png",
+     "w": 134,
+     "h": 273,
+     "ax": 66.4,
+     "ay": 275.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_37.png",
+     "w": 148,
+     "h": 272,
+     "ax": 71.0,
+     "ay": 274.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_38.png",
+     "w": 210,
+     "h": 261,
+     "ax": 105.5,
+     "ay": 260.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_39.png",
+     "w": 210,
+     "h": 259,
+     "ax": 110.4,
+     "ay": 258.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_40.png",
+     "w": 213,
+     "h": 256,
+     "ax": 122.0,
+     "ay": 255.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_41.png",
+     "w": 218,
+     "h": 253,
+     "ax": 136.3,
+     "ay": 252.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_42.png",
+     "w": 260,
+     "h": 250,
+     "ax": 147.0,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_43.png",
+     "w": 261,
+     "h": 246,
+     "ax": 149.8,
+     "ay": 246.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_44.png",
+     "w": 262,
+     "h": 245,
+     "ax": 150.7,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_45.png",
+     "w": 263,
+     "h": 244,
+     "ax": 150.9,
+     "ay": 244.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_46.png",
+     "w": 263,
+     "h": 243,
+     "ax": 151.0,
+     "ay": 243.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_47.png",
+     "w": 263,
+     "h": 243,
+     "ax": 151.2,
+     "ay": 243.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_48.png",
+     "w": 263,
+     "h": 244,
+     "ax": 151.3,
+     "ay": 244.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_49.png",
+     "w": 263,
+     "h": 244,
+     "ax": 151.2,
+     "ay": 244.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_50.png",
+     "w": 263,
+     "h": 244,
+     "ax": 151.0,
+     "ay": 244.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_51.png",
+     "w": 263,
+     "h": 245,
+     "ax": 150.9,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_52.png",
+     "w": 263,
+     "h": 245,
+     "ax": 150.9,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_53.png",
+     "w": 263,
+     "h": 245,
+     "ax": 150.9,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_54.png",
+     "w": 263,
+     "h": 245,
+     "ax": 150.9,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_55.png",
+     "w": 263,
+     "h": 245,
+     "ax": 150.9,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_56.png",
+     "w": 263,
+     "h": 245,
+     "ax": 150.9,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_57.png",
+     "w": 263,
+     "h": 245,
+     "ax": 151.1,
+     "ay": 245.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_58.png",
+     "w": 243,
+     "h": 248,
+     "ax": 145.2,
+     "ay": 247.6
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_59.png",
+     "w": 220,
+     "h": 251,
+     "ax": 139.0,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_60.png",
+     "w": 207,
+     "h": 254,
+     "ax": 131.3,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_61.png",
+     "w": 201,
+     "h": 257,
+     "ax": 121.7,
+     "ay": 256.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_62.png",
+     "w": 197,
+     "h": 260,
+     "ax": 113.4,
+     "ay": 259.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_63.png",
+     "w": 188,
+     "h": 267,
+     "ax": 100.5,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_64.png",
+     "w": 185,
+     "h": 270,
+     "ax": 93.9,
+     "ay": 268.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_65.png",
+     "w": 184,
+     "h": 271,
+     "ax": 90.7,
+     "ay": 270.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_66.png",
+     "w": 184,
+     "h": 272,
+     "ax": 88.7,
+     "ay": 271.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_67.png",
+     "w": 184,
+     "h": 272,
+     "ax": 86.5,
+     "ay": 271.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_68.png",
+     "w": 184,
+     "h": 270,
+     "ax": 83.8,
+     "ay": 269.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_69.png",
+     "w": 184,
+     "h": 269,
+     "ax": 81.6,
+     "ay": 268.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_70.png",
+     "w": 184,
+     "h": 267,
+     "ax": 80.2,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_71.png",
+     "w": 184,
+     "h": 266,
+     "ax": 79.6,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_72.png",
+     "w": 184,
+     "h": 267,
+     "ax": 80.2,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_73.png",
+     "w": 184,
+     "h": 270,
+     "ax": 81.9,
+     "ay": 269.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_74.png",
+     "w": 182,
+     "h": 272,
+     "ax": 83.8,
+     "ay": 271.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_75.png",
+     "w": 180,
+     "h": 273,
+     "ax": 85.8,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_76.png",
+     "w": 180,
+     "h": 274,
+     "ax": 87.7,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/seiya/cmbv_77.png",
+     "w": 178,
+     "h": 273,
+     "ax": 88.2,
+     "ay": 272.7
     }
    ]
   }

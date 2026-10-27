@@ -954,6 +954,18 @@ const CMB = {
     roundhouse: [31, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44], finisher: [43, 44, 45, 46, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63, 64, 65] },
   ace: { punch: [4, 5, 6, 7, 8, 9, 10, 11, 12], cross: [12, 13, 14, 15, 16, 17, 18, 19, 20], kick: [19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
     roundhouse: [29, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44], finisher: [43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 59, 61, 62] },
+  // Deku : les images où la vidéo a écrit des onomatopées (« ドッ ») sont sautées
+  izuku: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [12, 13, 14, 15, 16, 17, 18, 19, 20], kick: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    roundhouse: [31, 32, 33, 34, 35, 38, 39, 40, 41, 42, 43, 44], finisher: [43, 44, 45, 46, 47, 56, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68] },
+  gohan: { punch: [9, 10, 11, 12, 12, 13, 13, 14, 14], cross: [14, 15, 16, 17, 18, 19, 20, 21, 22], kick: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    roundhouse: [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43], finisher: [47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63] },
+  gohan_ssj: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [11, 12, 13, 14, 15, 16, 17, 18, 19], kick: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+    roundhouse: [32, 33, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48], finisher: [49, 50, 51, 52, 53, 54, 55, 56, 57, 59, 61, 63, 64, 65, 66, 67, 68] },
+  seiya: { punch: [2, 3, 4, 5, 6, 7, 8, 8, 9], cross: [9, 10, 11, 12, 13, 14, 15, 16, 17], kick: [19, 20, 21, 22, 23, 24, 25, 26, 26, 27],
+    roundhouse: [26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38], finisher: [39, 40, 41, 42, 43, 44, 45, 46, 47, 49, 51, 53, 55, 57, 59, 61, 62] },
+  // Bakugo : son coup de pied part en arrière dans la vidéo (roundhouse non filmé, poses de planche) ; flashs verdâtres sautés
+  bakugo: { punch: [3, 4, 5, 6, 7, 8, 9, 9, 10], cross: [10, 11, 12, 12, 12, 16, 17, 18, 19], kick: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+    finisher: [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62] },
 };
 // réglages communs des coups filmés : plus d'élan à chaque coup, l'ennemi reste à portée jusqu'au dernier
 const CMB_T = {
@@ -1131,7 +1143,7 @@ const CHARS = {
     labels: { blast: 'MASENKO', ultra: 'KAMEHAMEHA PÈRE-FILS' },
     // Super Saiyan 2 : cheveux dorés dressés (planches à part), éclairs bleus autour du corps
     forms: [{ ki: 50, name: 'SUPER SAIYAN 2', sheet: 'gohan_ssj', speed: 1.35, dmg: 1.9, at: 0.6, end: 1.0, aura: ['rgba(255,220,90,0.6)', '#ffd84a'], sparks: true, bar: ['#ffb300', '#fff07a'], color: '#ffe066', hit: '#fff3b0' }],
-    moves: GH_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(GH_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'masenko', speed: 265, pose: stdPose, ultra: [startFatherSon, updateFatherSon], extraSheets: ['goku'], // l'esprit de Sangoku
     ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < FSK.fire ? 5 : h.t < FSK.fire + 0.5 ? 6 : 7],
   },
@@ -1348,7 +1360,7 @@ const CHARS = {
     labels: { blast: 'AP SHOT', ultra: 'GRENADE CLUSTER' },
     // Explosion maximale : il transpire la nitroglycérine, aura orangée crépitante ; le spécial devient le Howitzer Impact
     forms: [{ ki: 50, name: 'EXPLOSION MAXIMALE', filter: 'contrast(1.12) saturate(1.15)', speed: 1.3, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(255,150,40,0.45)', '#ffb040'], glow: '#ff8a20', sparks: '#ffd060', bar: ['#6a2a00', '#ffb040'], color: '#ffb040', hit: '#fff0c0' }],
-    moves: KB_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(KB_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'apshot', special2: 'howitzer', speed: 280, pose: stdPose, ultra: [startCluster, updateCluster],
     // accroupi, puis il décolle en s'aidant de ses explosions, tourne en l'air (vol / plongée) et retombe accroupi
     ultraPose: h => h.t < 0.12 ? ['dashcharge', 4] : h.t < CLUSTER.rise ? ['special', 4] : h.t < CLUSTER.end - 0.35 ? ['special', 5 + Math.floor(h.t * 6) % 2] : ['special', 7],
@@ -1359,7 +1371,7 @@ const CHARS = {
     labels: { blast: 'MÉTÉORES DE PÉGASE', ultra: 'PLUIE DE MÉTÉORES' },
     // Armure d'or : il revêt l'armure du Sagittaire (planches seiya_gold), son cosmos doré brûle ; le spécial devient la Comète de Pégase
     forms: [{ ki: 50, name: "ARMURE D'OR", sheet: 'seiya_gold', fallback: ['seiya', 'sepia(0.7) saturate(2.4) hue-rotate(-12deg) brightness(1.2)'], speed: 1.3, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(255,215,90,0.5)', '#ffd84a'], glow: '#ffcf40', sparks: '#fff3b0', bar: ['#8a5a00', '#ffe066'], color: '#ffe066', hit: '#fff3b0' }],
-    moves: SY_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(SY_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'meteor', special2: 'comet', speed: 285, pose: stdPose, ultra: [startPegasus, updatePegasus],
     ultraPose: h => h.t < PEGA.trace ? ['dashcharge', 4] : h.t < PEGA.rain ? ['dashcharge', 6] : h.t < pegaHit(h) ? ['special', 2 + Math.floor(h.t * 14) % 2] : ['special', h.formUltra ? 6 : 7],
   },
@@ -1460,7 +1472,7 @@ const CHARS = {
     colors: ['#1d6b45', '#7dff9a'], kiColor: '#9dffb0', hit: '#d8ffe0', stats: [['PUISSANCE', 5], ['VITESSE', 4], ['PORTÉE', 3]],
     labels: { blast: 'BLACK WHIP', ultra: 'UNITED STATES OF SMASH' },
     forms: [{ ki: 50, name: 'DARK DEKU', sheet: 'izuku_dark', speed: 1.45, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(20,120,60,0.55)', '#3dff7a'], arcs: true, arcRate: 0.1, bar: ['#0a4a24', '#5dff8a'], color: '#3dff7a' }],
-    moves: IZ_MOVES, chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
+    moves: filmed(IZ_MOVES, ['spinback']), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback'], launcher: 'uppercut' },
     special: 'blackwhip', speed: 265, pose: stdPose, ultra: [startSmash, updateSmash],
     ultraPose: h => ['special', h.t < 0.5 ? 4 : h.t < SMASH.hit - 0.1 ? 5 : h.t < SMASH.hit + 0.4 ? 6 : 7],
   },
