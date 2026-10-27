@@ -4834,6 +4834,558 @@ const SPRITES = {
      "ay": 538
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/kakashi/cmbv_0.png",
+     "w": 189,
+     "h": 293,
+     "ax": 95.5,
+     "ay": 292.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_1.png",
+     "w": 189,
+     "h": 293,
+     "ax": 94.5,
+     "ay": 292.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_2.png",
+     "w": 188,
+     "h": 293,
+     "ax": 92.9,
+     "ay": 292.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_3.png",
+     "w": 184,
+     "h": 298,
+     "ax": 91.0,
+     "ay": 298.3
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_4.png",
+     "w": 181,
+     "h": 300,
+     "ax": 87.6,
+     "ay": 300.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_5.png",
+     "w": 180,
+     "h": 300,
+     "ax": 85.6,
+     "ay": 300.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_6.png",
+     "w": 181,
+     "h": 297,
+     "ax": 84.2,
+     "ay": 297.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_7.png",
+     "w": 181,
+     "h": 295,
+     "ax": 83.9,
+     "ay": 295.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_8.png",
+     "w": 187,
+     "h": 295,
+     "ax": 87.8,
+     "ay": 295.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_9.png",
+     "w": 228,
+     "h": 295,
+     "ax": 92.4,
+     "ay": 295.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_10.png",
+     "w": 235,
+     "h": 295,
+     "ax": 96.4,
+     "ay": 295.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_11.png",
+     "w": 232,
+     "h": 294,
+     "ax": 100.2,
+     "ay": 294.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_12.png",
+     "w": 215,
+     "h": 294,
+     "ax": 104.6,
+     "ay": 293.8
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_13.png",
+     "w": 191,
+     "h": 287,
+     "ax": 115.8,
+     "ay": 287.1
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_14.png",
+     "w": 209,
+     "h": 283,
+     "ax": 127.1,
+     "ay": 282.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_15.png",
+     "w": 253,
+     "h": 278,
+     "ax": 136.2,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_16.png",
+     "w": 254,
+     "h": 275,
+     "ax": 139.2,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_17.png",
+     "w": 254,
+     "h": 272,
+     "ax": 138.0,
+     "ay": 273.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_18.png",
+     "w": 232,
+     "h": 279,
+     "ax": 132.1,
+     "ay": 278.8
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_19.png",
+     "w": 187,
+     "h": 288,
+     "ax": 116.7,
+     "ay": 289.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_20.png",
+     "w": 166,
+     "h": 296,
+     "ax": 90.4,
+     "ay": 302.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_21.png",
+     "w": 154,
+     "h": 301,
+     "ax": 76.2,
+     "ay": 311.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_22.png",
+     "w": 146,
+     "h": 312,
+     "ax": 76.0,
+     "ay": 318.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_23.png",
+     "w": 149,
+     "h": 318,
+     "ax": 79.1,
+     "ay": 320.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_24.png",
+     "w": 162,
+     "h": 316,
+     "ax": 80.8,
+     "ay": 318.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_25.png",
+     "w": 175,
+     "h": 310,
+     "ax": 81.2,
+     "ay": 313.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_26.png",
+     "w": 178,
+     "h": 306,
+     "ax": 81.3,
+     "ay": 309.5
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_27.png",
+     "w": 178,
+     "h": 306,
+     "ax": 81.8,
+     "ay": 309.5
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_28.png",
+     "w": 179,
+     "h": 311,
+     "ax": 80.4,
+     "ay": 313.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_29.png",
+     "w": 179,
+     "h": 313,
+     "ax": 78.5,
+     "ay": 315.1
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_30.png",
+     "w": 193,
+     "h": 309,
+     "ax": 83.4,
+     "ay": 316.8
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_31.png",
+     "w": 212,
+     "h": 315,
+     "ax": 97.7,
+     "ay": 315.6
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_32.png",
+     "w": 215,
+     "h": 313,
+     "ax": 101.7,
+     "ay": 314.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_33.png",
+     "w": 266,
+     "h": 307,
+     "ax": 157.4,
+     "ay": 308.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_34.png",
+     "w": 259,
+     "h": 306,
+     "ax": 155.4,
+     "ay": 307.3
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_35.png",
+     "w": 180,
+     "h": 306,
+     "ax": 89.3,
+     "ay": 307.3
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_36.png",
+     "w": 237,
+     "h": 304,
+     "ax": 157.7,
+     "ay": 306.1
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_37.png",
+     "w": 217,
+     "h": 305,
+     "ax": 120.8,
+     "ay": 308.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_38.png",
+     "w": 251,
+     "h": 303,
+     "ax": 107.2,
+     "ay": 308.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_39.png",
+     "w": 246,
+     "h": 298,
+     "ax": 104.1,
+     "ay": 302.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_40.png",
+     "w": 154,
+     "h": 291,
+     "ax": 80.6,
+     "ay": 295.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_41.png",
+     "w": 115,
+     "h": 284,
+     "ax": 52.7,
+     "ay": 288.3
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_42.png",
+     "w": 164,
+     "h": 279,
+     "ax": 94.4,
+     "ay": 283.8
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_43.png",
+     "w": 120,
+     "h": 278,
+     "ax": 75.7,
+     "ay": 282.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_44.png",
+     "w": 122,
+     "h": 277,
+     "ax": 69.4,
+     "ay": 281.6
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_45.png",
+     "w": 134,
+     "h": 279,
+     "ax": 76.0,
+     "ay": 282.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_46.png",
+     "w": 155,
+     "h": 280,
+     "ax": 73.8,
+     "ay": 282.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_47.png",
+     "w": 178,
+     "h": 284,
+     "ax": 76.2,
+     "ay": 284.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_48.png",
+     "w": 181,
+     "h": 290,
+     "ax": 72.1,
+     "ay": 290.5
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_49.png",
+     "w": 185,
+     "h": 293,
+     "ax": 85.4,
+     "ay": 292.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_50.png",
+     "w": 188,
+     "h": 295,
+     "ax": 98.0,
+     "ay": 295.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_51.png",
+     "w": 190,
+     "h": 289,
+     "ax": 111.8,
+     "ay": 289.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_52.png",
+     "w": 196,
+     "h": 285,
+     "ax": 128.7,
+     "ay": 284.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_53.png",
+     "w": 256,
+     "h": 280,
+     "ax": 140.5,
+     "ay": 280.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_54.png",
+     "w": 258,
+     "h": 277,
+     "ax": 144.4,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_55.png",
+     "w": 259,
+     "h": 275,
+     "ax": 145.8,
+     "ay": 275.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_56.png",
+     "w": 260,
+     "h": 274,
+     "ax": 146.5,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_57.png",
+     "w": 260,
+     "h": 273,
+     "ax": 147.3,
+     "ay": 273.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_58.png",
+     "w": 261,
+     "h": 274,
+     "ax": 147.8,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_59.png",
+     "w": 261,
+     "h": 274,
+     "ax": 148.2,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_60.png",
+     "w": 261,
+     "h": 274,
+     "ax": 148.4,
+     "ay": 274.3
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_61.png",
+     "w": 261,
+     "h": 275,
+     "ax": 148.5,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_62.png",
+     "w": 261,
+     "h": 275,
+     "ax": 148.4,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_63.png",
+     "w": 261,
+     "h": 275,
+     "ax": 147.7,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_64.png",
+     "w": 256,
+     "h": 275,
+     "ax": 145.8,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_65.png",
+     "w": 244,
+     "h": 276,
+     "ax": 141.6,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_66.png",
+     "w": 219,
+     "h": 278,
+     "ax": 134.0,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_67.png",
+     "w": 192,
+     "h": 280,
+     "ax": 124.5,
+     "ay": 280.4
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_68.png",
+     "w": 184,
+     "h": 285,
+     "ax": 110.8,
+     "ay": 285.5
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_69.png",
+     "w": 188,
+     "h": 288,
+     "ax": 104.4,
+     "ay": 288.3
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_70.png",
+     "w": 188,
+     "h": 290,
+     "ax": 99.5,
+     "ay": 289.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_71.png",
+     "w": 188,
+     "h": 292,
+     "ax": 96.5,
+     "ay": 291.6
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_72.png",
+     "w": 188,
+     "h": 293,
+     "ax": 94.5,
+     "ay": 292.7
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_73.png",
+     "w": 187,
+     "h": 294,
+     "ax": 92.8,
+     "ay": 293.8
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_74.png",
+     "w": 185,
+     "h": 296,
+     "ax": 91.1,
+     "ay": 295.5
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_75.png",
+     "w": 184,
+     "h": 297,
+     "ax": 89.2,
+     "ay": 297.2
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_76.png",
+     "w": 182,
+     "h": 299,
+     "ax": 87.4,
+     "ay": 298.9
+    },
+    {
+     "src": "assets/sprites/kakashi/cmbv_77.png",
+     "w": 181,
+     "h": 301,
+     "ax": 86.2,
+     "ay": 300.6
+    }
+   ]
   }
  },
  "zenitsu": {
@@ -7766,6 +8318,558 @@ const SPRITES = {
      "ay": 800
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gon/cmbv_0.png",
+     "w": 179,
+     "h": 243,
+     "ax": 98.6,
+     "ay": 242.9
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_1.png",
+     "w": 178,
+     "h": 246,
+     "ax": 96.6,
+     "ay": 246.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_2.png",
+     "w": 178,
+     "h": 250,
+     "ax": 91.9,
+     "ay": 249.9
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_3.png",
+     "w": 177,
+     "h": 255,
+     "ax": 84.5,
+     "ay": 254.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_4.png",
+     "w": 173,
+     "h": 255,
+     "ax": 78.9,
+     "ay": 255.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_5.png",
+     "w": 168,
+     "h": 255,
+     "ax": 75.8,
+     "ay": 255.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_6.png",
+     "w": 165,
+     "h": 257,
+     "ax": 75.4,
+     "ay": 257.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_7.png",
+     "w": 166,
+     "h": 258,
+     "ax": 78.7,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_8.png",
+     "w": 191,
+     "h": 257,
+     "ax": 83.7,
+     "ay": 257.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_9.png",
+     "w": 190,
+     "h": 257,
+     "ax": 85.6,
+     "ay": 257.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_10.png",
+     "w": 188,
+     "h": 258,
+     "ax": 85.5,
+     "ay": 257.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_11.png",
+     "w": 187,
+     "h": 258,
+     "ax": 85.0,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_12.png",
+     "w": 186,
+     "h": 258,
+     "ax": 84.2,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_13.png",
+     "w": 180,
+     "h": 256,
+     "ax": 83.4,
+     "ay": 256.4
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_14.png",
+     "w": 168,
+     "h": 252,
+     "ax": 83.1,
+     "ay": 251.7
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_15.png",
+     "w": 168,
+     "h": 247,
+     "ax": 84.2,
+     "ay": 247.1
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_16.png",
+     "w": 168,
+     "h": 242,
+     "ax": 86.8,
+     "ay": 242.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_17.png",
+     "w": 169,
+     "h": 242,
+     "ax": 92.1,
+     "ay": 241.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_18.png",
+     "w": 172,
+     "h": 240,
+     "ax": 102.1,
+     "ay": 240.6
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_19.png",
+     "w": 175,
+     "h": 238,
+     "ax": 116.3,
+     "ay": 239.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_20.png",
+     "w": 212,
+     "h": 237,
+     "ax": 125.6,
+     "ay": 237.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_21.png",
+     "w": 213,
+     "h": 237,
+     "ax": 129.5,
+     "ay": 237.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_22.png",
+     "w": 213,
+     "h": 238,
+     "ax": 130.0,
+     "ay": 238.7
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_23.png",
+     "w": 210,
+     "h": 239,
+     "ax": 129.3,
+     "ay": 239.7
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_24.png",
+     "w": 200,
+     "h": 241,
+     "ax": 126.1,
+     "ay": 241.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_25.png",
+     "w": 182,
+     "h": 243,
+     "ax": 121.1,
+     "ay": 243.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_26.png",
+     "w": 170,
+     "h": 247,
+     "ax": 116.2,
+     "ay": 247.1
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_27.png",
+     "w": 171,
+     "h": 252,
+     "ax": 111.1,
+     "ay": 251.7
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_28.png",
+     "w": 157,
+     "h": 268,
+     "ax": 92.7,
+     "ay": 271.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_29.png",
+     "w": 137,
+     "h": 274,
+     "ax": 76.0,
+     "ay": 276.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_30.png",
+     "w": 115,
+     "h": 277,
+     "ax": 62.5,
+     "ay": 279.6
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_31.png",
+     "w": 100,
+     "h": 279,
+     "ax": 54.1,
+     "ay": 281.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_32.png",
+     "w": 97,
+     "h": 280,
+     "ax": 50.4,
+     "ay": 282.4
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_33.png",
+     "w": 96,
+     "h": 278,
+     "ax": 51.9,
+     "ay": 280.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_34.png",
+     "w": 98,
+     "h": 275,
+     "ax": 55.0,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_35.png",
+     "w": 105,
+     "h": 274,
+     "ax": 58.4,
+     "ay": 276.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_36.png",
+     "w": 125,
+     "h": 273,
+     "ax": 66.6,
+     "ay": 275.9
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_37.png",
+     "w": 172,
+     "h": 273,
+     "ax": 100.0,
+     "ay": 275.4
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_38.png",
+     "w": 191,
+     "h": 269,
+     "ax": 125.9,
+     "ay": 272.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_39.png",
+     "w": 179,
+     "h": 263,
+     "ax": 126.7,
+     "ay": 266.6
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_40.png",
+     "w": 231,
+     "h": 262,
+     "ax": 132.6,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_41.png",
+     "w": 205,
+     "h": 257,
+     "ax": 65.5,
+     "ay": 262.0
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_42.png",
+     "w": 233,
+     "h": 256,
+     "ax": 76.3,
+     "ay": 260.1
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_43.png",
+     "w": 209,
+     "h": 255,
+     "ax": 80.2,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_44.png",
+     "w": 199,
+     "h": 259,
+     "ax": 75.5,
+     "ay": 262.9
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_45.png",
+     "w": 176,
+     "h": 262,
+     "ax": 72.4,
+     "ay": 264.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_46.png",
+     "w": 137,
+     "h": 264,
+     "ax": 66.9,
+     "ay": 266.6
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_47.png",
+     "w": 99,
+     "h": 266,
+     "ax": 55.7,
+     "ay": 267.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_48.png",
+     "w": 161,
+     "h": 257,
+     "ax": 70.9,
+     "ay": 257.8
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_49.png",
+     "w": 177,
+     "h": 252,
+     "ax": 80.8,
+     "ay": 252.7
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_50.png",
+     "w": 176,
+     "h": 247,
+     "ax": 86.4,
+     "ay": 248.0
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_51.png",
+     "w": 217,
+     "h": 242,
+     "ax": 119.7,
+     "ay": 242.9
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_52.png",
+     "w": 243,
+     "h": 241,
+     "ax": 147.4,
+     "ay": 241.1
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_53.png",
+     "w": 275,
+     "h": 233,
+     "ax": 178.8,
+     "ay": 232.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_54.png",
+     "w": 282,
+     "h": 231,
+     "ax": 196.5,
+     "ay": 230.4
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_55.png",
+     "w": 250,
+     "h": 230,
+     "ax": 168.0,
+     "ay": 229.5
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_56.png",
+     "w": 254,
+     "h": 233,
+     "ax": 170.4,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_57.png",
+     "w": 241,
+     "h": 233,
+     "ax": 152.5,
+     "ay": 232.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_58.png",
+     "w": 227,
+     "h": 231,
+     "ax": 147.6,
+     "ay": 232.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_59.png",
+     "w": 227,
+     "h": 231,
+     "ax": 145.0,
+     "ay": 232.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_60.png",
+     "w": 227,
+     "h": 230,
+     "ax": 144.5,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_61.png",
+     "w": 227,
+     "h": 230,
+     "ax": 143.9,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_62.png",
+     "w": 227,
+     "h": 230,
+     "ax": 143.4,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_63.png",
+     "w": 227,
+     "h": 230,
+     "ax": 143.1,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_64.png",
+     "w": 227,
+     "h": 230,
+     "ax": 143.1,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_65.png",
+     "w": 227,
+     "h": 230,
+     "ax": 143.0,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_66.png",
+     "w": 227,
+     "h": 230,
+     "ax": 142.8,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_67.png",
+     "w": 226,
+     "h": 230,
+     "ax": 141.7,
+     "ay": 231.3
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_68.png",
+     "w": 210,
+     "h": 233,
+     "ax": 137.3,
+     "ay": 234.1
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_69.png",
+     "w": 199,
+     "h": 235,
+     "ax": 132.8,
+     "ay": 236.0
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_70.png",
+     "w": 184,
+     "h": 238,
+     "ax": 126.9,
+     "ay": 238.7
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_71.png",
+     "w": 176,
+     "h": 242,
+     "ax": 117.7,
+     "ay": 243.4
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_72.png",
+     "w": 174,
+     "h": 246,
+     "ax": 108.3,
+     "ay": 247.1
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_73.png",
+     "w": 170,
+     "h": 255,
+     "ax": 96.7,
+     "ay": 255.0
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_74.png",
+     "w": 168,
+     "h": 258,
+     "ax": 89.1,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_75.png",
+     "w": 168,
+     "h": 258,
+     "ax": 86.1,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_76.png",
+     "w": 168,
+     "h": 258,
+     "ax": 84.3,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/gon/cmbv_77.png",
+     "w": 168,
+     "h": 257,
+     "ax": 83.3,
+     "ay": 257.3
+    }
+   ]
   }
  },
  "killua": {
@@ -8359,6 +9463,558 @@ const SPRITES = {
      "h": 528,
      "ax": 155.1,
      "ay": 528
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/killua/cmbv_0.png",
+     "w": 155,
+     "h": 267,
+     "ax": 81.1,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_1.png",
+     "w": 155,
+     "h": 267,
+     "ax": 80.7,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_2.png",
+     "w": 155,
+     "h": 266,
+     "ax": 79.2,
+     "ay": 266.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_3.png",
+     "w": 155,
+     "h": 265,
+     "ax": 76.7,
+     "ay": 264.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_4.png",
+     "w": 155,
+     "h": 264,
+     "ax": 74.7,
+     "ay": 263.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_5.png",
+     "w": 155,
+     "h": 265,
+     "ax": 73.9,
+     "ay": 264.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_6.png",
+     "w": 155,
+     "h": 266,
+     "ax": 74.3,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_7.png",
+     "w": 157,
+     "h": 269,
+     "ax": 76.0,
+     "ay": 268.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_8.png",
+     "w": 197,
+     "h": 268,
+     "ax": 78.4,
+     "ay": 267.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_9.png",
+     "w": 193,
+     "h": 267,
+     "ax": 80.6,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_10.png",
+     "w": 179,
+     "h": 267,
+     "ax": 82.7,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_11.png",
+     "w": 160,
+     "h": 267,
+     "ax": 85.2,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_12.png",
+     "w": 157,
+     "h": 267,
+     "ax": 88.0,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_13.png",
+     "w": 158,
+     "h": 263,
+     "ax": 90.3,
+     "ay": 262.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_14.png",
+     "w": 157,
+     "h": 261,
+     "ax": 89.2,
+     "ay": 260.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_15.png",
+     "w": 157,
+     "h": 256,
+     "ax": 88.0,
+     "ay": 256.5
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_16.png",
+     "w": 157,
+     "h": 255,
+     "ax": 88.2,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_17.png",
+     "w": 158,
+     "h": 255,
+     "ax": 92.9,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_18.png",
+     "w": 165,
+     "h": 256,
+     "ax": 104.6,
+     "ay": 256.5
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_19.png",
+     "w": 190,
+     "h": 255,
+     "ax": 114.3,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_20.png",
+     "w": 220,
+     "h": 254,
+     "ax": 118.2,
+     "ay": 254.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_21.png",
+     "w": 220,
+     "h": 253,
+     "ax": 119.4,
+     "ay": 253.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_22.png",
+     "w": 221,
+     "h": 252,
+     "ax": 120.0,
+     "ay": 252.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_23.png",
+     "w": 221,
+     "h": 249,
+     "ax": 120.2,
+     "ay": 249.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_24.png",
+     "w": 219,
+     "h": 248,
+     "ax": 121.0,
+     "ay": 248.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_25.png",
+     "w": 210,
+     "h": 249,
+     "ax": 120.8,
+     "ay": 249.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_26.png",
+     "w": 194,
+     "h": 251,
+     "ax": 117.1,
+     "ay": 251.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_27.png",
+     "w": 153,
+     "h": 263,
+     "ax": 94.2,
+     "ay": 263.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_28.png",
+     "w": 98,
+     "h": 277,
+     "ax": 42.1,
+     "ay": 285.1
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_29.png",
+     "w": 104,
+     "h": 280,
+     "ax": 47.0,
+     "ay": 291.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_30.png",
+     "w": 109,
+     "h": 277,
+     "ax": 53.6,
+     "ay": 294.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_31.png",
+     "w": 113,
+     "h": 276,
+     "ax": 58.9,
+     "ay": 297.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_32.png",
+     "w": 114,
+     "h": 275,
+     "ax": 61.8,
+     "ay": 299.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_33.png",
+     "w": 115,
+     "h": 276,
+     "ax": 63.0,
+     "ay": 300.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_34.png",
+     "w": 111,
+     "h": 280,
+     "ax": 58.0,
+     "ay": 300.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_35.png",
+     "w": 105,
+     "h": 285,
+     "ax": 47.2,
+     "ay": 299.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_36.png",
+     "w": 97,
+     "h": 289,
+     "ax": 34.8,
+     "ay": 296.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_37.png",
+     "w": 100,
+     "h": 289,
+     "ax": 34.1,
+     "ay": 291.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_38.png",
+     "w": 159,
+     "h": 267,
+     "ax": 71.7,
+     "ay": 270.8
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_39.png",
+     "w": 227,
+     "h": 263,
+     "ax": 72.0,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_40.png",
+     "w": 232,
+     "h": 262,
+     "ax": 78.0,
+     "ay": 263.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_41.png",
+     "w": 239,
+     "h": 263,
+     "ax": 77.3,
+     "ay": 264.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_42.png",
+     "w": 232,
+     "h": 264,
+     "ax": 73.2,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_43.png",
+     "w": 215,
+     "h": 266,
+     "ax": 65.2,
+     "ay": 267.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_44.png",
+     "w": 199,
+     "h": 266,
+     "ax": 65.1,
+     "ay": 269.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_45.png",
+     "w": 171,
+     "h": 265,
+     "ax": 63.5,
+     "ay": 267.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_46.png",
+     "w": 131,
+     "h": 267,
+     "ax": 64.0,
+     "ay": 268.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_47.png",
+     "w": 116,
+     "h": 267,
+     "ax": 58.1,
+     "ay": 267.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_48.png",
+     "w": 169,
+     "h": 260,
+     "ax": 95.4,
+     "ay": 260.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_49.png",
+     "w": 173,
+     "h": 256,
+     "ax": 108.8,
+     "ay": 256.5
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_50.png",
+     "w": 179,
+     "h": 251,
+     "ax": 125.1,
+     "ay": 251.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_51.png",
+     "w": 245,
+     "h": 246,
+     "ax": 143.4,
+     "ay": 246.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_52.png",
+     "w": 254,
+     "h": 244,
+     "ax": 148.8,
+     "ay": 245.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_53.png",
+     "w": 247,
+     "h": 244,
+     "ax": 150.3,
+     "ay": 244.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_54.png",
+     "w": 248,
+     "h": 243,
+     "ax": 150.7,
+     "ay": 243.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_55.png",
+     "w": 249,
+     "h": 242,
+     "ax": 151.0,
+     "ay": 242.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_56.png",
+     "w": 249,
+     "h": 242,
+     "ax": 151.2,
+     "ay": 242.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_57.png",
+     "w": 248,
+     "h": 241,
+     "ax": 151.1,
+     "ay": 241.1
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_58.png",
+     "w": 248,
+     "h": 241,
+     "ax": 150.9,
+     "ay": 241.1
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_59.png",
+     "w": 248,
+     "h": 242,
+     "ax": 150.7,
+     "ay": 242.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_60.png",
+     "w": 247,
+     "h": 241,
+     "ax": 150.6,
+     "ay": 242.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_61.png",
+     "w": 247,
+     "h": 241,
+     "ax": 150.3,
+     "ay": 242.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_62.png",
+     "w": 247,
+     "h": 241,
+     "ax": 150.1,
+     "ay": 242.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_63.png",
+     "w": 247,
+     "h": 241,
+     "ax": 149.3,
+     "ay": 242.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_64.png",
+     "w": 236,
+     "h": 243,
+     "ax": 145.1,
+     "ay": 244.2
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_65.png",
+     "w": 216,
+     "h": 247,
+     "ax": 136.8,
+     "ay": 247.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_66.png",
+     "w": 191,
+     "h": 250,
+     "ax": 125.6,
+     "ay": 250.3
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_67.png",
+     "w": 169,
+     "h": 254,
+     "ax": 112.0,
+     "ay": 254.4
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_68.png",
+     "w": 160,
+     "h": 262,
+     "ax": 96.1,
+     "ay": 261.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_69.png",
+     "w": 157,
+     "h": 265,
+     "ax": 87.5,
+     "ay": 264.6
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_70.png",
+     "w": 156,
+     "h": 267,
+     "ax": 82.6,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_71.png",
+     "w": 156,
+     "h": 267,
+     "ax": 81.6,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_72.png",
+     "w": 156,
+     "h": 267,
+     "ax": 81.3,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_73.png",
+     "w": 155,
+     "h": 266,
+     "ax": 81.1,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_74.png",
+     "w": 155,
+     "h": 266,
+     "ax": 80.7,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_75.png",
+     "w": 155,
+     "h": 266,
+     "ax": 80.4,
+     "ay": 265.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_76.png",
+     "w": 155,
+     "h": 267,
+     "ax": 80.1,
+     "ay": 266.7
+    },
+    {
+     "src": "assets/sprites/killua/cmbv_77.png",
+     "w": 155,
+     "h": 267,
+     "ax": 79.9,
+     "ay": 266.7
     }
    ]
   }
@@ -13213,6 +14869,558 @@ const SPRITES = {
      "ay": 530
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/saitama/cmbv_0.png",
+     "w": 156,
+     "h": 275,
+     "ax": 73.2,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_1.png",
+     "w": 156,
+     "h": 275,
+     "ax": 72.9,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_2.png",
+     "w": 156,
+     "h": 275,
+     "ax": 72.5,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_3.png",
+     "w": 154,
+     "h": 269,
+     "ax": 74.6,
+     "ay": 269.4
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_4.png",
+     "w": 153,
+     "h": 263,
+     "ax": 76.7,
+     "ay": 263.1
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_5.png",
+     "w": 159,
+     "h": 258,
+     "ax": 78.9,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_6.png",
+     "w": 160,
+     "h": 254,
+     "ax": 80.3,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_7.png",
+     "w": 164,
+     "h": 251,
+     "ax": 86.2,
+     "ay": 250.5
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_8.png",
+     "w": 172,
+     "h": 248,
+     "ax": 97.9,
+     "ay": 248.4
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_9.png",
+     "w": 175,
+     "h": 248,
+     "ax": 103.9,
+     "ay": 248.4
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_10.png",
+     "w": 178,
+     "h": 251,
+     "ax": 108.9,
+     "ay": 250.5
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_11.png",
+     "w": 175,
+     "h": 251,
+     "ax": 109.9,
+     "ay": 251.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_12.png",
+     "w": 211,
+     "h": 249,
+     "ax": 111.7,
+     "ay": 250.5
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_13.png",
+     "w": 246,
+     "h": 247,
+     "ax": 124.6,
+     "ay": 247.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_14.png",
+     "w": 249,
+     "h": 246,
+     "ax": 130.3,
+     "ay": 247.4
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_15.png",
+     "w": 252,
+     "h": 245,
+     "ax": 134.4,
+     "ay": 246.3
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_16.png",
+     "w": 251,
+     "h": 245,
+     "ax": 135.3,
+     "ay": 246.3
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_17.png",
+     "w": 249,
+     "h": 245,
+     "ax": 134.8,
+     "ay": 246.3
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_18.png",
+     "w": 239,
+     "h": 245,
+     "ax": 125.8,
+     "ay": 246.3
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_19.png",
+     "w": 191,
+     "h": 251,
+     "ax": 109.2,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_20.png",
+     "w": 159,
+     "h": 265,
+     "ax": 94.5,
+     "ay": 270.4
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_21.png",
+     "w": 151,
+     "h": 274,
+     "ax": 82.3,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_22.png",
+     "w": 145,
+     "h": 279,
+     "ax": 73.1,
+     "ay": 282.0
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_23.png",
+     "w": 136,
+     "h": 278,
+     "ax": 64.3,
+     "ay": 280.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_24.png",
+     "w": 135,
+     "h": 278,
+     "ax": 62.0,
+     "ay": 280.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_25.png",
+     "w": 138,
+     "h": 277,
+     "ax": 61.3,
+     "ay": 279.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_26.png",
+     "w": 142,
+     "h": 277,
+     "ax": 61.3,
+     "ay": 279.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_27.png",
+     "w": 142,
+     "h": 276,
+     "ax": 63.3,
+     "ay": 278.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_28.png",
+     "w": 144,
+     "h": 275,
+     "ax": 68.6,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_29.png",
+     "w": 145,
+     "h": 275,
+     "ax": 70.5,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_30.png",
+     "w": 145,
+     "h": 275,
+     "ax": 75.5,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_31.png",
+     "w": 158,
+     "h": 275,
+     "ax": 83.3,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_32.png",
+     "w": 170,
+     "h": 275,
+     "ax": 90.2,
+     "ay": 277.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_33.png",
+     "w": 235,
+     "h": 274,
+     "ax": 137.9,
+     "ay": 278.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_34.png",
+     "w": 281,
+     "h": 272,
+     "ax": 128.1,
+     "ay": 276.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_35.png",
+     "w": 310,
+     "h": 269,
+     "ax": 134.9,
+     "ay": 273.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_36.png",
+     "w": 319,
+     "h": 269,
+     "ax": 147.1,
+     "ay": 273.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_37.png",
+     "w": 304,
+     "h": 267,
+     "ax": 140.4,
+     "ay": 271.5
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_38.png",
+     "w": 207,
+     "h": 264,
+     "ax": 100.5,
+     "ay": 268.3
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_39.png",
+     "w": 210,
+     "h": 265,
+     "ax": 92.8,
+     "ay": 268.3
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_40.png",
+     "w": 199,
+     "h": 268,
+     "ax": 85.7,
+     "ay": 269.4
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_41.png",
+     "w": 198,
+     "h": 269,
+     "ax": 84.8,
+     "ay": 271.5
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_42.png",
+     "w": 220,
+     "h": 265,
+     "ax": 96.8,
+     "ay": 266.2
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_43.png",
+     "w": 247,
+     "h": 260,
+     "ax": 129.8,
+     "ay": 261.0
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_44.png",
+     "w": 274,
+     "h": 258,
+     "ax": 134.2,
+     "ay": 258.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_45.png",
+     "w": 190,
+     "h": 257,
+     "ax": 101.6,
+     "ay": 257.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_46.png",
+     "w": 231,
+     "h": 255,
+     "ax": 122.0,
+     "ay": 255.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_47.png",
+     "w": 287,
+     "h": 254,
+     "ax": 123.2,
+     "ay": 254.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_48.png",
+     "w": 271,
+     "h": 252,
+     "ax": 127.1,
+     "ay": 252.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_49.png",
+     "w": 276,
+     "h": 251,
+     "ax": 130.7,
+     "ay": 252.1
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_50.png",
+     "w": 279,
+     "h": 251,
+     "ax": 134.9,
+     "ay": 251.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_51.png",
+     "w": 280,
+     "h": 251,
+     "ax": 139.0,
+     "ay": 251.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_52.png",
+     "w": 278,
+     "h": 251,
+     "ax": 141.6,
+     "ay": 251.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_53.png",
+     "w": 274,
+     "h": 251,
+     "ax": 142.1,
+     "ay": 251.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_54.png",
+     "w": 274,
+     "h": 252,
+     "ax": 145.4,
+     "ay": 252.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_55.png",
+     "w": 268,
+     "h": 252,
+     "ax": 144.0,
+     "ay": 252.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_56.png",
+     "w": 266,
+     "h": 252,
+     "ax": 144.4,
+     "ay": 252.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_57.png",
+     "w": 263,
+     "h": 252,
+     "ax": 143.5,
+     "ay": 253.1
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_58.png",
+     "w": 255,
+     "h": 253,
+     "ax": 136.7,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_59.png",
+     "w": 251,
+     "h": 253,
+     "ax": 134.4,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_60.png",
+     "w": 249,
+     "h": 253,
+     "ax": 132.1,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_61.png",
+     "w": 246,
+     "h": 253,
+     "ax": 129.5,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_62.png",
+     "w": 240,
+     "h": 253,
+     "ax": 126.3,
+     "ay": 253.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_63.png",
+     "w": 217,
+     "h": 255,
+     "ax": 122.2,
+     "ay": 255.8
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_64.png",
+     "w": 202,
+     "h": 258,
+     "ax": 117.5,
+     "ay": 258.9
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_65.png",
+     "w": 190,
+     "h": 262,
+     "ax": 112.9,
+     "ay": 262.0
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_66.png",
+     "w": 189,
+     "h": 265,
+     "ax": 109.4,
+     "ay": 265.2
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_67.png",
+     "w": 186,
+     "h": 267,
+     "ax": 104.4,
+     "ay": 267.3
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_68.png",
+     "w": 178,
+     "h": 271,
+     "ax": 93.9,
+     "ay": 271.5
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_69.png",
+     "w": 172,
+     "h": 273,
+     "ax": 88.4,
+     "ay": 272.5
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_70.png",
+     "w": 166,
+     "h": 274,
+     "ax": 81.7,
+     "ay": 273.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_71.png",
+     "w": 158,
+     "h": 274,
+     "ax": 74.9,
+     "ay": 273.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_72.png",
+     "w": 154,
+     "h": 275,
+     "ax": 71.2,
+     "ay": 274.6
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_73.png",
+     "w": 149,
+     "h": 276,
+     "ax": 66.3,
+     "ay": 275.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_74.png",
+     "w": 149,
+     "h": 276,
+     "ax": 66.4,
+     "ay": 275.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_75.png",
+     "w": 150,
+     "h": 276,
+     "ax": 67.2,
+     "ay": 275.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_76.png",
+     "w": 151,
+     "h": 276,
+     "ax": 68.0,
+     "ay": 275.7
+    },
+    {
+     "src": "assets/sprites/saitama/cmbv_77.png",
+     "w": 153,
+     "h": 275,
+     "ax": 69.9,
+     "ay": 274.6
+    }
+   ]
   }
  },
  "gojo": {
@@ -13808,6 +16016,558 @@ const SPRITES = {
      "ay": 538
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/gojo/cmbv_0.png",
+     "w": 217,
+     "h": 311,
+     "ax": 102.3,
+     "ay": 311.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_1.png",
+     "w": 217,
+     "h": 311,
+     "ax": 102.0,
+     "ay": 311.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_2.png",
+     "w": 217,
+     "h": 311,
+     "ax": 101.5,
+     "ay": 311.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_3.png",
+     "w": 217,
+     "h": 314,
+     "ax": 101.0,
+     "ay": 313.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_4.png",
+     "w": 217,
+     "h": 316,
+     "ax": 101.4,
+     "ay": 315.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_5.png",
+     "w": 217,
+     "h": 317,
+     "ax": 103.3,
+     "ay": 317.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_6.png",
+     "w": 237,
+     "h": 316,
+     "ax": 106.2,
+     "ay": 315.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_7.png",
+     "w": 272,
+     "h": 315,
+     "ax": 110.3,
+     "ay": 314.7
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_8.png",
+     "w": 267,
+     "h": 313,
+     "ax": 111.9,
+     "ay": 312.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_9.png",
+     "w": 256,
+     "h": 310,
+     "ax": 112.2,
+     "ay": 310.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_10.png",
+     "w": 237,
+     "h": 308,
+     "ax": 112.3,
+     "ay": 307.6
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_11.png",
+     "w": 216,
+     "h": 306,
+     "ax": 111.1,
+     "ay": 306.4
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_12.png",
+     "w": 216,
+     "h": 306,
+     "ax": 115.0,
+     "ay": 306.4
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_13.png",
+     "w": 229,
+     "h": 303,
+     "ax": 128.1,
+     "ay": 304.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_14.png",
+     "w": 274,
+     "h": 303,
+     "ax": 135.9,
+     "ay": 304.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_15.png",
+     "w": 275,
+     "h": 301,
+     "ax": 138.2,
+     "ay": 302.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_16.png",
+     "w": 274,
+     "h": 299,
+     "ax": 139.7,
+     "ay": 299.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_17.png",
+     "w": 271,
+     "h": 297,
+     "ax": 141.0,
+     "ay": 298.6
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_18.png",
+     "w": 224,
+     "h": 302,
+     "ax": 132.6,
+     "ay": 302.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_19.png",
+     "w": 206,
+     "h": 306,
+     "ax": 121.4,
+     "ay": 307.6
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_20.png",
+     "w": 190,
+     "h": 305,
+     "ax": 104.5,
+     "ay": 312.3
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_21.png",
+     "w": 169,
+     "h": 310,
+     "ax": 83.5,
+     "ay": 317.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_22.png",
+     "w": 153,
+     "h": 314,
+     "ax": 70.1,
+     "ay": 320.7
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_23.png",
+     "w": 130,
+     "h": 322,
+     "ax": 66.7,
+     "ay": 323.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_24.png",
+     "w": 139,
+     "h": 316,
+     "ax": 75.7,
+     "ay": 317.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_25.png",
+     "w": 150,
+     "h": 314,
+     "ax": 83.4,
+     "ay": 314.7
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_26.png",
+     "w": 153,
+     "h": 312,
+     "ax": 85.1,
+     "ay": 313.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_27.png",
+     "w": 145,
+     "h": 312,
+     "ax": 79.7,
+     "ay": 313.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_28.png",
+     "w": 148,
+     "h": 315,
+     "ax": 84.0,
+     "ay": 315.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_29.png",
+     "w": 149,
+     "h": 315,
+     "ax": 86.3,
+     "ay": 316.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_30.png",
+     "w": 149,
+     "h": 316,
+     "ax": 86.9,
+     "ay": 317.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_31.png",
+     "w": 151,
+     "h": 317,
+     "ax": 87.8,
+     "ay": 318.3
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_32.png",
+     "w": 158,
+     "h": 321,
+     "ax": 90.7,
+     "ay": 321.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_33.png",
+     "w": 194,
+     "h": 318,
+     "ax": 99.9,
+     "ay": 323.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_34.png",
+     "w": 234,
+     "h": 315,
+     "ax": 143.4,
+     "ay": 319.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_35.png",
+     "w": 272,
+     "h": 311,
+     "ax": 186.5,
+     "ay": 315.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_36.png",
+     "w": 280,
+     "h": 308,
+     "ax": 196.0,
+     "ay": 313.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_37.png",
+     "w": 217,
+     "h": 306,
+     "ax": 148.7,
+     "ay": 311.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_38.png",
+     "w": 410,
+     "h": 302,
+     "ax": 229.5,
+     "ay": 304.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_39.png",
+     "w": 401,
+     "h": 300,
+     "ax": 209.4,
+     "ay": 302.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_40.png",
+     "w": 294,
+     "h": 299,
+     "ax": 103.7,
+     "ay": 302.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_41.png",
+     "w": 287,
+     "h": 299,
+     "ax": 87.2,
+     "ay": 302.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_42.png",
+     "w": 198,
+     "h": 299,
+     "ax": 83.1,
+     "ay": 303.4
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_43.png",
+     "w": 173,
+     "h": 302,
+     "ax": 79.6,
+     "ay": 306.4
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_44.png",
+     "w": 191,
+     "h": 303,
+     "ax": 79.5,
+     "ay": 308.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_45.png",
+     "w": 222,
+     "h": 299,
+     "ax": 96.5,
+     "ay": 305.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_46.png",
+     "w": 228,
+     "h": 293,
+     "ax": 89.8,
+     "ay": 299.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_47.png",
+     "w": 256,
+     "h": 289,
+     "ax": 111.2,
+     "ay": 293.3
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_48.png",
+     "w": 223,
+     "h": 289,
+     "ax": 84.6,
+     "ay": 293.3
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_49.png",
+     "w": 227,
+     "h": 294,
+     "ax": 98.3,
+     "ay": 298.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_50.png",
+     "w": 236,
+     "h": 299,
+     "ax": 113.5,
+     "ay": 301.6
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_51.png",
+     "w": 272,
+     "h": 298,
+     "ax": 158.6,
+     "ay": 300.4
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_52.png",
+     "w": 348,
+     "h": 296,
+     "ax": 166.8,
+     "ay": 296.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_53.png",
+     "w": 343,
+     "h": 300,
+     "ax": 158.6,
+     "ay": 301.6
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_54.png",
+     "w": 310,
+     "h": 294,
+     "ax": 157.9,
+     "ay": 295.7
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_55.png",
+     "w": 314,
+     "h": 293,
+     "ax": 158.5,
+     "ay": 294.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_56.png",
+     "w": 315,
+     "h": 291,
+     "ax": 159.3,
+     "ay": 292.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_57.png",
+     "w": 317,
+     "h": 290,
+     "ax": 160.1,
+     "ay": 290.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_58.png",
+     "w": 317,
+     "h": 290,
+     "ax": 160.3,
+     "ay": 290.9
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_59.png",
+     "w": 317,
+     "h": 290,
+     "ax": 160.3,
+     "ay": 291.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_60.png",
+     "w": 317,
+     "h": 290,
+     "ax": 160.3,
+     "ay": 291.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_61.png",
+     "w": 317,
+     "h": 290,
+     "ax": 160.4,
+     "ay": 291.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_62.png",
+     "w": 317,
+     "h": 290,
+     "ax": 160.4,
+     "ay": 291.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_63.png",
+     "w": 316,
+     "h": 290,
+     "ax": 160.8,
+     "ay": 291.5
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_64.png",
+     "w": 310,
+     "h": 291,
+     "ax": 159.2,
+     "ay": 292.1
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_65.png",
+     "w": 298,
+     "h": 291,
+     "ax": 157.5,
+     "ay": 293.3
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_66.png",
+     "w": 281,
+     "h": 294,
+     "ax": 152.3,
+     "ay": 295.7
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_67.png",
+     "w": 258,
+     "h": 297,
+     "ax": 144.4,
+     "ay": 298.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_68.png",
+     "w": 227,
+     "h": 303,
+     "ax": 127.9,
+     "ay": 304.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_69.png",
+     "w": 222,
+     "h": 308,
+     "ax": 116.9,
+     "ay": 307.6
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_70.png",
+     "w": 218,
+     "h": 310,
+     "ax": 108.4,
+     "ay": 310.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_71.png",
+     "w": 216,
+     "h": 311,
+     "ax": 102.6,
+     "ay": 311.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_72.png",
+     "w": 216,
+     "h": 311,
+     "ax": 100.3,
+     "ay": 311.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_73.png",
+     "w": 216,
+     "h": 310,
+     "ax": 98.9,
+     "ay": 310.0
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_74.png",
+     "w": 216,
+     "h": 309,
+     "ax": 96.7,
+     "ay": 308.8
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_75.png",
+     "w": 216,
+     "h": 308,
+     "ax": 95.6,
+     "ay": 308.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_76.png",
+     "w": 216,
+     "h": 308,
+     "ax": 94.9,
+     "ay": 308.2
+    },
+    {
+     "src": "assets/sprites/gojo/cmbv_77.png",
+     "w": 216,
+     "h": 309,
+     "ax": 94.4,
+     "ay": 308.8
+    }
+   ]
   }
  },
  "sasuke": {
@@ -14401,6 +17161,558 @@ const SPRITES = {
      "h": 534,
      "ax": 203.7,
      "ay": 534
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/sasuke/cmbv_0.png",
+     "w": 221,
+     "h": 287,
+     "ax": 112.1,
+     "ay": 286.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_1.png",
+     "w": 222,
+     "h": 288,
+     "ax": 111.9,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_2.png",
+     "w": 212,
+     "h": 291,
+     "ax": 111.1,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_3.png",
+     "w": 205,
+     "h": 294,
+     "ax": 105.2,
+     "ay": 293.6
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_4.png",
+     "w": 198,
+     "h": 294,
+     "ax": 99.9,
+     "ay": 293.6
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_5.png",
+     "w": 246,
+     "h": 290,
+     "ax": 104.5,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_6.png",
+     "w": 247,
+     "h": 289,
+     "ax": 106.7,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_7.png",
+     "w": 247,
+     "h": 288,
+     "ax": 107.6,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_8.png",
+     "w": 227,
+     "h": 286,
+     "ax": 107.3,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_9.png",
+     "w": 213,
+     "h": 285,
+     "ax": 111.1,
+     "ay": 285.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_10.png",
+     "w": 209,
+     "h": 285,
+     "ax": 123.6,
+     "ay": 284.7
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_11.png",
+     "w": 212,
+     "h": 284,
+     "ax": 131.5,
+     "ay": 283.6
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_12.png",
+     "w": 257,
+     "h": 279,
+     "ax": 136.6,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_13.png",
+     "w": 264,
+     "h": 278,
+     "ax": 138.1,
+     "ay": 278.1
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_14.png",
+     "w": 264,
+     "h": 278,
+     "ax": 139.1,
+     "ay": 278.1
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_15.png",
+     "w": 264,
+     "h": 279,
+     "ax": 139.6,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_16.png",
+     "w": 259,
+     "h": 280,
+     "ax": 138.4,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_17.png",
+     "w": 240,
+     "h": 283,
+     "ax": 136.1,
+     "ay": 282.5
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_18.png",
+     "w": 216,
+     "h": 284,
+     "ax": 131.9,
+     "ay": 283.6
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_19.png",
+     "w": 215,
+     "h": 284,
+     "ax": 124.5,
+     "ay": 283.6
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_20.png",
+     "w": 212,
+     "h": 283,
+     "ax": 117.0,
+     "ay": 282.5
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_21.png",
+     "w": 210,
+     "h": 279,
+     "ax": 112.8,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_22.png",
+     "w": 203,
+     "h": 295,
+     "ax": 105.3,
+     "ay": 294.7
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_23.png",
+     "w": 171,
+     "h": 310,
+     "ax": 89.6,
+     "ay": 331.1
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_24.png",
+     "w": 166,
+     "h": 312,
+     "ax": 87.0,
+     "ay": 332.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_25.png",
+     "w": 157,
+     "h": 314,
+     "ax": 81.9,
+     "ay": 330.0
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_26.png",
+     "w": 153,
+     "h": 313,
+     "ax": 79.7,
+     "ay": 325.6
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_27.png",
+     "w": 155,
+     "h": 312,
+     "ax": 80.9,
+     "ay": 321.1
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_28.png",
+     "w": 166,
+     "h": 300,
+     "ax": 86.7,
+     "ay": 314.5
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_29.png",
+     "w": 173,
+     "h": 281,
+     "ax": 89.1,
+     "ay": 312.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_30.png",
+     "w": 181,
+     "h": 312,
+     "ax": 92.2,
+     "ay": 307.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_31.png",
+     "w": 190,
+     "h": 320,
+     "ax": 88.0,
+     "ay": 302.4
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_32.png",
+     "w": 227,
+     "h": 313,
+     "ax": 121.6,
+     "ay": 296.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_33.png",
+     "w": 224,
+     "h": 300,
+     "ax": 135.0,
+     "ay": 285.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_34.png",
+     "w": 181,
+     "h": 295,
+     "ax": 106.7,
+     "ay": 283.1
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_35.png",
+     "w": 275,
+     "h": 289,
+     "ax": 119.8,
+     "ay": 280.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_36.png",
+     "w": 281,
+     "h": 288,
+     "ax": 102.0,
+     "ay": 279.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_37.png",
+     "w": 290,
+     "h": 288,
+     "ax": 104.5,
+     "ay": 282.5
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_38.png",
+     "w": 237,
+     "h": 296,
+     "ax": 98.1,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_39.png",
+     "w": 216,
+     "h": 297,
+     "ax": 93.1,
+     "ay": 298.0
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_40.png",
+     "w": 193,
+     "h": 297,
+     "ax": 87.5,
+     "ay": 299.1
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_41.png",
+     "w": 196,
+     "h": 287,
+     "ax": 87.2,
+     "ay": 287.5
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_42.png",
+     "w": 195,
+     "h": 283,
+     "ax": 100.2,
+     "ay": 284.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_43.png",
+     "w": 206,
+     "h": 273,
+     "ax": 124.5,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_44.png",
+     "w": 210,
+     "h": 268,
+     "ax": 141.5,
+     "ay": 269.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_45.png",
+     "w": 296,
+     "h": 263,
+     "ax": 157.6,
+     "ay": 263.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_46.png",
+     "w": 297,
+     "h": 262,
+     "ax": 161.6,
+     "ay": 262.7
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_47.png",
+     "w": 297,
+     "h": 262,
+     "ax": 162.2,
+     "ay": 262.7
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_48.png",
+     "w": 299,
+     "h": 262,
+     "ax": 163.6,
+     "ay": 262.7
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_49.png",
+     "w": 298,
+     "h": 263,
+     "ax": 162.4,
+     "ay": 263.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_50.png",
+     "w": 298,
+     "h": 264,
+     "ax": 162.8,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_51.png",
+     "w": 299,
+     "h": 264,
+     "ax": 163.3,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_52.png",
+     "w": 298,
+     "h": 264,
+     "ax": 162.8,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_53.png",
+     "w": 299,
+     "h": 263,
+     "ax": 163.5,
+     "ay": 263.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_54.png",
+     "w": 299,
+     "h": 264,
+     "ax": 163.2,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_55.png",
+     "w": 298,
+     "h": 264,
+     "ax": 163.0,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_56.png",
+     "w": 298,
+     "h": 263,
+     "ax": 163.0,
+     "ay": 263.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_57.png",
+     "w": 298,
+     "h": 263,
+     "ax": 163.2,
+     "ay": 263.8
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_58.png",
+     "w": 298,
+     "h": 264,
+     "ax": 163.3,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_59.png",
+     "w": 298,
+     "h": 264,
+     "ax": 163.1,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_60.png",
+     "w": 298,
+     "h": 264,
+     "ax": 162.4,
+     "ay": 264.9
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_61.png",
+     "w": 288,
+     "h": 265,
+     "ax": 159.9,
+     "ay": 266.0
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_62.png",
+     "w": 281,
+     "h": 267,
+     "ax": 155.7,
+     "ay": 268.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_63.png",
+     "w": 247,
+     "h": 273,
+     "ax": 144.9,
+     "ay": 273.7
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_64.png",
+     "w": 214,
+     "h": 278,
+     "ax": 139.3,
+     "ay": 279.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_65.png",
+     "w": 214,
+     "h": 281,
+     "ax": 132.2,
+     "ay": 282.5
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_66.png",
+     "w": 212,
+     "h": 287,
+     "ax": 121.1,
+     "ay": 288.0
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_67.png",
+     "w": 210,
+     "h": 289,
+     "ax": 112.6,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_68.png",
+     "w": 207,
+     "h": 291,
+     "ax": 104.1,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_69.png",
+     "w": 207,
+     "h": 290,
+     "ax": 102.9,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_70.png",
+     "w": 207,
+     "h": 289,
+     "ax": 102.7,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_71.png",
+     "w": 207,
+     "h": 289,
+     "ax": 102.6,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_72.png",
+     "w": 207,
+     "h": 289,
+     "ax": 102.7,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_73.png",
+     "w": 206,
+     "h": 289,
+     "ax": 101.7,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_74.png",
+     "w": 206,
+     "h": 290,
+     "ax": 102.1,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_75.png",
+     "w": 205,
+     "h": 290,
+     "ax": 101.5,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_76.png",
+     "w": 205,
+     "h": 291,
+     "ax": 102.0,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/sasuke/cmbv_77.png",
+     "w": 204,
+     "h": 292,
+     "ax": 101.3,
+     "ay": 293.6
     }
    ]
   }
@@ -34356,6 +37668,558 @@ const SPRITES = {
      "h": 520,
      "ax": 120.8,
      "ay": 520
+    }
+   ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/ace/cmbv_0.png",
+     "w": 148,
+     "h": 292,
+     "ax": 65.9,
+     "ay": 291.8
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_1.png",
+     "w": 147,
+     "h": 291,
+     "ax": 65.5,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_2.png",
+     "w": 147,
+     "h": 290,
+     "ax": 65.2,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_3.png",
+     "w": 146,
+     "h": 291,
+     "ax": 64.5,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_4.png",
+     "w": 147,
+     "h": 292,
+     "ax": 64.8,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_5.png",
+     "w": 156,
+     "h": 292,
+     "ax": 66.1,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_6.png",
+     "w": 173,
+     "h": 292,
+     "ax": 68.3,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_7.png",
+     "w": 196,
+     "h": 289,
+     "ax": 70.8,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_8.png",
+     "w": 208,
+     "h": 287,
+     "ax": 72.0,
+     "ay": 287.9
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_9.png",
+     "w": 202,
+     "h": 285,
+     "ax": 72.6,
+     "ay": 286.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_10.png",
+     "w": 188,
+     "h": 282,
+     "ax": 73.1,
+     "ay": 283.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_11.png",
+     "w": 170,
+     "h": 282,
+     "ax": 74.2,
+     "ay": 282.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_12.png",
+     "w": 157,
+     "h": 283,
+     "ax": 78.9,
+     "ay": 283.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_13.png",
+     "w": 170,
+     "h": 278,
+     "ax": 100.6,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_14.png",
+     "w": 223,
+     "h": 274,
+     "ax": 111.3,
+     "ay": 275.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_15.png",
+     "w": 236,
+     "h": 271,
+     "ax": 114.5,
+     "ay": 272.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_16.png",
+     "w": 237,
+     "h": 269,
+     "ax": 116.7,
+     "ay": 270.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_17.png",
+     "w": 239,
+     "h": 269,
+     "ax": 119.0,
+     "ay": 270.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_18.png",
+     "w": 209,
+     "h": 273,
+     "ax": 114.8,
+     "ay": 275.6
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_19.png",
+     "w": 157,
+     "h": 279,
+     "ax": 92.5,
+     "ay": 282.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_20.png",
+     "w": 128,
+     "h": 280,
+     "ax": 58.4,
+     "ay": 289.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_21.png",
+     "w": 129,
+     "h": 283,
+     "ax": 62.1,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_22.png",
+     "w": 141,
+     "h": 285,
+     "ax": 71.9,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_23.png",
+     "w": 166,
+     "h": 283,
+     "ax": 96.7,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_24.png",
+     "w": 167,
+     "h": 283,
+     "ax": 97.3,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_25.png",
+     "w": 167,
+     "h": 283,
+     "ax": 97.8,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_26.png",
+     "w": 167,
+     "h": 283,
+     "ax": 97.4,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_27.png",
+     "w": 162,
+     "h": 283,
+     "ax": 96.9,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_28.png",
+     "w": 169,
+     "h": 286,
+     "ax": 92.7,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_29.png",
+     "w": 173,
+     "h": 289,
+     "ax": 89.6,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_30.png",
+     "w": 220,
+     "h": 288,
+     "ax": 128.9,
+     "ay": 294.6
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_31.png",
+     "w": 264,
+     "h": 286,
+     "ax": 166.7,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_32.png",
+     "w": 260,
+     "h": 285,
+     "ax": 155.7,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_33.png",
+     "w": 251,
+     "h": 287,
+     "ax": 151.7,
+     "ay": 293.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_34.png",
+     "w": 223,
+     "h": 291,
+     "ax": 154.1,
+     "ay": 294.6
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_35.png",
+     "w": 202,
+     "h": 292,
+     "ax": 161.9,
+     "ay": 295.8
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_36.png",
+     "w": 309,
+     "h": 291,
+     "ax": 168.6,
+     "ay": 294.6
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_37.png",
+     "w": 291,
+     "h": 285,
+     "ax": 112.0,
+     "ay": 289.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_38.png",
+     "w": 281,
+     "h": 276,
+     "ax": 100.8,
+     "ay": 280.1
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_39.png",
+     "w": 268,
+     "h": 274,
+     "ax": 97.4,
+     "ay": 278.9
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_40.png",
+     "w": 238,
+     "h": 277,
+     "ax": 92.9,
+     "ay": 281.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_41.png",
+     "w": 199,
+     "h": 281,
+     "ax": 87.8,
+     "ay": 285.7
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_42.png",
+     "w": 167,
+     "h": 285,
+     "ax": 68.5,
+     "ay": 289.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_43.png",
+     "w": 160,
+     "h": 289,
+     "ax": 71.1,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_44.png",
+     "w": 164,
+     "h": 286,
+     "ax": 80.5,
+     "ay": 287.9
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_45.png",
+     "w": 185,
+     "h": 280,
+     "ax": 109.2,
+     "ay": 282.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_46.png",
+     "w": 314,
+     "h": 288,
+     "ax": 122.6,
+     "ay": 289.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_47.png",
+     "w": 319,
+     "h": 292,
+     "ax": 123.3,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_48.png",
+     "w": 257,
+     "h": 272,
+     "ax": 122.9,
+     "ay": 273.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_49.png",
+     "w": 258,
+     "h": 271,
+     "ax": 121.5,
+     "ay": 272.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_50.png",
+     "w": 258,
+     "h": 270,
+     "ax": 120.6,
+     "ay": 271.1
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_51.png",
+     "w": 258,
+     "h": 270,
+     "ax": 121.4,
+     "ay": 271.1
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_52.png",
+     "w": 258,
+     "h": 271,
+     "ax": 121.0,
+     "ay": 271.7
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_53.png",
+     "w": 257,
+     "h": 271,
+     "ax": 120.5,
+     "ay": 272.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_54.png",
+     "w": 257,
+     "h": 272,
+     "ax": 120.1,
+     "ay": 273.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_55.png",
+     "w": 257,
+     "h": 272,
+     "ax": 120.2,
+     "ay": 273.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_56.png",
+     "w": 257,
+     "h": 272,
+     "ax": 121.6,
+     "ay": 273.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_57.png",
+     "w": 243,
+     "h": 273,
+     "ax": 120.0,
+     "ay": 275.6
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_58.png",
+     "w": 197,
+     "h": 278,
+     "ax": 105.4,
+     "ay": 281.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_59.png",
+     "w": 174,
+     "h": 278,
+     "ax": 97.3,
+     "ay": 283.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_60.png",
+     "w": 156,
+     "h": 282,
+     "ax": 86.6,
+     "ay": 287.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_61.png",
+     "w": 152,
+     "h": 286,
+     "ax": 80.6,
+     "ay": 289.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_62.png",
+     "w": 150,
+     "h": 292,
+     "ax": 73.6,
+     "ay": 291.8
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_63.png",
+     "w": 147,
+     "h": 294,
+     "ax": 68.0,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_64.png",
+     "w": 148,
+     "h": 292,
+     "ax": 65.7,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_65.png",
+     "w": 148,
+     "h": 291,
+     "ax": 63.9,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_66.png",
+     "w": 148,
+     "h": 291,
+     "ax": 62.7,
+     "ay": 290.7
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_67.png",
+     "w": 148,
+     "h": 289,
+     "ax": 61.8,
+     "ay": 289.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_68.png",
+     "w": 148,
+     "h": 288,
+     "ax": 61.3,
+     "ay": 287.9
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_69.png",
+     "w": 148,
+     "h": 289,
+     "ax": 61.3,
+     "ay": 289.0
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_70.png",
+     "w": 148,
+     "h": 290,
+     "ax": 61.9,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_71.png",
+     "w": 148,
+     "h": 291,
+     "ax": 62.8,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_72.png",
+     "w": 148,
+     "h": 294,
+     "ax": 64.2,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_73.png",
+     "w": 150,
+     "h": 295,
+     "ax": 65.2,
+     "ay": 294.6
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_74.png",
+     "w": 151,
+     "h": 295,
+     "ax": 66.6,
+     "ay": 294.6
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_75.png",
+     "w": 152,
+     "h": 294,
+     "ax": 67.6,
+     "ay": 293.5
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_76.png",
+     "w": 152,
+     "h": 292,
+     "ax": 68.4,
+     "ay": 292.4
+    },
+    {
+     "src": "assets/sprites/ace/cmbv_77.png",
+     "w": 152,
+     "h": 290,
+     "ax": 69.0,
+     "ay": 290.2
     }
    ]
   }
