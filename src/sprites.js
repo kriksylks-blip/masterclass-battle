@@ -22209,7 +22209,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/combo_0.png",
      "w": 300,
      "h": 332,
-     "ax": 99.5,
+     "ax": 200.5,
      "ay": 332
     },
     {
@@ -22223,7 +22223,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/combo_2.png",
      "w": 304,
      "h": 320,
-     "ax": 138.0,
+     "ax": 166.0,
      "ay": 320
     },
     {
@@ -22498,7 +22498,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/fall_7.png",
      "w": 308,
      "h": 345,
-     "ax": 102.5,
+     "ax": 205.5,
      "ay": 345
     }
    ]
@@ -22571,7 +22571,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/dashcharge_0.png",
      "w": 308,
      "h": 342,
-     "ax": 102.5,
+     "ax": 205.5,
      "ay": 342
     },
     {
@@ -22620,7 +22620,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/dashcharge_7.png",
      "w": 303,
      "h": 349,
-     "ax": 102.0,
+     "ax": 201.0,
      "ay": 349
     }
    ]
@@ -22632,7 +22632,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/special_0.png",
      "w": 298,
      "h": 330,
-     "ax": 98.5,
+     "ax": 199.5,
      "ay": 330
     },
     {
@@ -22653,7 +22653,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/special_3.png",
      "w": 289,
      "h": 323,
-     "ax": 96.5,
+     "ax": 192.5,
      "ay": 323
     },
     {
@@ -22693,7 +22693,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro/guard_0.png",
      "w": 582,
      "h": 672,
-     "ax": 195.0,
+     "ax": 387.0,
      "ay": 672
     },
     {
@@ -22713,84 +22713,84 @@ const SPRITES = {
      "src": "assets/sprites/zoro/idlev_0.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_1.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_2.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_3.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_4.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_5.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_6.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_7.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_8.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_9.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_10.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     },
     {
      "src": "assets/sprites/zoro/idlev_11.png",
      "w": 480,
      "h": 542,
-     "ax": 184.2,
+     "ax": 295.8,
      "ay": 542
     }
    ]
@@ -73588,7 +73588,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/combo_0.png",
      "w": 299,
      "h": 335,
-     "ax": 123.8,
+     "ax": 175.2,
      "ay": 335
     },
     {
@@ -73602,7 +73602,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/combo_2.png",
      "w": 304,
      "h": 324,
-     "ax": 152.6,
+     "ax": 151.4,
      "ay": 324
     },
     {
@@ -73877,7 +73877,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/fall_7.png",
      "w": 308,
      "h": 349,
-     "ax": 106.5,
+     "ax": 201.5,
      "ay": 349
     }
    ]
@@ -73950,7 +73950,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/dashcharge_0.png",
      "w": 327,
      "h": 342,
-     "ax": 160.1,
+     "ax": 166.9,
      "ay": 342
     },
     {
@@ -73999,7 +73999,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/dashcharge_7.png",
      "w": 302,
      "h": 347,
-     "ax": 138.2,
+     "ax": 163.8,
      "ay": 347
     }
    ]
@@ -74011,7 +74011,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/special_0.png",
      "w": 298,
      "h": 330,
-     "ax": 122.5,
+     "ax": 175.5,
      "ay": 330
     },
     {
@@ -74032,7 +74032,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/special_3.png",
      "w": 289,
      "h": 323,
-     "ax": 123.3,
+     "ax": 165.7,
      "ay": 323
     },
     {
@@ -74072,7 +74072,7 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/guard_0.png",
      "w": 582,
      "h": 674,
-     "ax": 249.0,
+     "ax": 333.0,
      "ay": 674
     },
     {
@@ -74092,84 +74092,84 @@ const SPRITES = {
      "src": "assets/sprites/zoro_wano/idlev_0.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_1.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_2.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_3.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_4.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_5.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_6.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_7.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_8.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_9.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_10.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     },
     {
      "src": "assets/sprites/zoro_wano/idlev_11.png",
      "w": 468,
      "h": 526,
-     "ax": 205.2,
+     "ax": 262.8,
      "ay": 526
     }
    ]
