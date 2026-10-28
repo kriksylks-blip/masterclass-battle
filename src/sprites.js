@@ -22794,6 +22794,558 @@ const SPRITES = {
      "ay": 542
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/zoro/cmbv_0.png",
+     "w": 255,
+     "h": 282,
+     "ax": 99.4,
+     "ay": 281.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_1.png",
+     "w": 255,
+     "h": 282,
+     "ax": 99.6,
+     "ay": 281.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_2.png",
+     "w": 256,
+     "h": 282,
+     "ax": 99.7,
+     "ay": 281.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_3.png",
+     "w": 256,
+     "h": 282,
+     "ax": 99.5,
+     "ay": 281.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_4.png",
+     "w": 258,
+     "h": 282,
+     "ax": 99.8,
+     "ay": 281.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_5.png",
+     "w": 264,
+     "h": 279,
+     "ax": 102.2,
+     "ay": 279.4
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_6.png",
+     "w": 264,
+     "h": 281,
+     "ax": 102.6,
+     "ay": 280.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_7.png",
+     "w": 266,
+     "h": 279,
+     "ax": 108.2,
+     "ay": 279.4
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_8.png",
+     "w": 291,
+     "h": 276,
+     "ax": 111.2,
+     "ay": 276.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_9.png",
+     "w": 298,
+     "h": 276,
+     "ax": 130.4,
+     "ay": 276.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_10.png",
+     "w": 251,
+     "h": 277,
+     "ax": 108.7,
+     "ay": 277.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_11.png",
+     "w": 241,
+     "h": 285,
+     "ax": 109.9,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_12.png",
+     "w": 240,
+     "h": 289,
+     "ax": 109.7,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_13.png",
+     "w": 271,
+     "h": 292,
+     "ax": 108.3,
+     "ay": 292.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_14.png",
+     "w": 311,
+     "h": 287,
+     "ax": 105.8,
+     "ay": 287.0
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_15.png",
+     "w": 324,
+     "h": 275,
+     "ax": 106.0,
+     "ay": 275.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_16.png",
+     "w": 350,
+     "h": 267,
+     "ax": 109.5,
+     "ay": 266.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_17.png",
+     "w": 360,
+     "h": 264,
+     "ax": 106.5,
+     "ay": 264.4
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_18.png",
+     "w": 397,
+     "h": 260,
+     "ax": 157.4,
+     "ay": 260.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_19.png",
+     "w": 486,
+     "h": 261,
+     "ax": 243.2,
+     "ay": 260.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_20.png",
+     "w": 486,
+     "h": 261,
+     "ax": 234.9,
+     "ay": 260.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_21.png",
+     "w": 399,
+     "h": 263,
+     "ax": 234.1,
+     "ay": 262.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_22.png",
+     "w": 403,
+     "h": 263,
+     "ax": 230.4,
+     "ay": 263.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_23.png",
+     "w": 388,
+     "h": 268,
+     "ax": 224.0,
+     "ay": 267.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_24.png",
+     "w": 382,
+     "h": 334,
+     "ax": 216.9,
+     "ay": 334.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_25.png",
+     "w": 382,
+     "h": 334,
+     "ax": 220.5,
+     "ay": 334.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_26.png",
+     "w": 332,
+     "h": 329,
+     "ax": 177.2,
+     "ay": 328.9
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_27.png",
+     "w": 292,
+     "h": 330,
+     "ax": 142.5,
+     "ay": 330.0
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_28.png",
+     "w": 263,
+     "h": 333,
+     "ax": 104.0,
+     "ay": 332.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_29.png",
+     "w": 265,
+     "h": 333,
+     "ax": 104.7,
+     "ay": 333.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_30.png",
+     "w": 269,
+     "h": 333,
+     "ax": 105.0,
+     "ay": 333.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_31.png",
+     "w": 267,
+     "h": 324,
+     "ax": 102.0,
+     "ay": 323.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_32.png",
+     "w": 272,
+     "h": 301,
+     "ax": 105.0,
+     "ay": 301.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_33.png",
+     "w": 350,
+     "h": 299,
+     "ax": 186.8,
+     "ay": 299.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_34.png",
+     "w": 364,
+     "h": 305,
+     "ax": 207.0,
+     "ay": 305.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_35.png",
+     "w": 397,
+     "h": 303,
+     "ax": 231.8,
+     "ay": 303.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_36.png",
+     "w": 483,
+     "h": 302,
+     "ax": 242.1,
+     "ay": 302.0
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_37.png",
+     "w": 537,
+     "h": 293,
+     "ax": 270.5,
+     "ay": 293.4
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_38.png",
+     "w": 556,
+     "h": 276,
+     "ax": 280.8,
+     "ay": 276.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_39.png",
+     "w": 558,
+     "h": 276,
+     "ax": 280.6,
+     "ay": 276.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_40.png",
+     "w": 560,
+     "h": 276,
+     "ax": 290.5,
+     "ay": 276.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_41.png",
+     "w": 560,
+     "h": 275,
+     "ax": 297.4,
+     "ay": 275.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_42.png",
+     "w": 560,
+     "h": 275,
+     "ax": 295.5,
+     "ay": 275.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_43.png",
+     "w": 478,
+     "h": 270,
+     "ax": 227.6,
+     "ay": 270.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_44.png",
+     "w": 473,
+     "h": 267,
+     "ax": 228.1,
+     "ay": 267.6
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_45.png",
+     "w": 428,
+     "h": 261,
+     "ax": 238.3,
+     "ay": 263.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_46.png",
+     "w": 470,
+     "h": 260,
+     "ax": 249.7,
+     "ay": 262.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_47.png",
+     "w": 458,
+     "h": 260,
+     "ax": 258.7,
+     "ay": 262.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_48.png",
+     "w": 399,
+     "h": 289,
+     "ax": 238.9,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_49.png",
+     "w": 307,
+     "h": 292,
+     "ax": 146.4,
+     "ay": 293.9
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_50.png",
+     "w": 307,
+     "h": 290,
+     "ax": 145.3,
+     "ay": 291.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_51.png",
+     "w": 286,
+     "h": 290,
+     "ax": 144.0,
+     "ay": 291.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_52.png",
+     "w": 286,
+     "h": 287,
+     "ax": 144.6,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_53.png",
+     "w": 285,
+     "h": 287,
+     "ax": 144.6,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_54.png",
+     "w": 285,
+     "h": 287,
+     "ax": 144.7,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_55.png",
+     "w": 284,
+     "h": 287,
+     "ax": 145.0,
+     "ay": 289.1
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_56.png",
+     "w": 284,
+     "h": 288,
+     "ax": 145.2,
+     "ay": 290.2
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_57.png",
+     "w": 285,
+     "h": 289,
+     "ax": 145.5,
+     "ay": 291.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_58.png",
+     "w": 284,
+     "h": 290,
+     "ax": 145.6,
+     "ay": 292.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_59.png",
+     "w": 284,
+     "h": 291,
+     "ax": 145.6,
+     "ay": 292.9
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_60.png",
+     "w": 284,
+     "h": 292,
+     "ax": 145.6,
+     "ay": 293.9
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_61.png",
+     "w": 285,
+     "h": 292,
+     "ax": 146.2,
+     "ay": 293.9
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_62.png",
+     "w": 285,
+     "h": 292,
+     "ax": 146.2,
+     "ay": 294.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_63.png",
+     "w": 285,
+     "h": 292,
+     "ax": 146.2,
+     "ay": 294.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_64.png",
+     "w": 285,
+     "h": 292,
+     "ax": 146.2,
+     "ay": 294.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_65.png",
+     "w": 285,
+     "h": 292,
+     "ax": 146.2,
+     "ay": 294.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_66.png",
+     "w": 285,
+     "h": 292,
+     "ax": 146.0,
+     "ay": 294.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_67.png",
+     "w": 284,
+     "h": 292,
+     "ax": 145.2,
+     "ay": 294.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_68.png",
+     "w": 281,
+     "h": 268,
+     "ax": 140.8,
+     "ay": 269.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_69.png",
+     "w": 277,
+     "h": 264,
+     "ax": 135.6,
+     "ay": 266.5
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_70.png",
+     "w": 275,
+     "h": 268,
+     "ax": 129.9,
+     "ay": 269.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_71.png",
+     "w": 259,
+     "h": 276,
+     "ax": 112.6,
+     "ay": 277.3
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_72.png",
+     "w": 256,
+     "h": 284,
+     "ax": 105.6,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_73.png",
+     "w": 291,
+     "h": 286,
+     "ax": 140.1,
+     "ay": 285.9
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_74.png",
+     "w": 380,
+     "h": 285,
+     "ax": 173.3,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_75.png",
+     "w": 380,
+     "h": 285,
+     "ax": 173.2,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_76.png",
+     "w": 379,
+     "h": 285,
+     "ax": 172.2,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/zoro/cmbv_77.png",
+     "w": 379,
+     "h": 285,
+     "ax": 172.1,
+     "ay": 284.8
+    }
+   ]
   }
  },
  "op_pirate": {

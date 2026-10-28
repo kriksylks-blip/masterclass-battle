@@ -994,6 +994,9 @@ const CMB = {
   sanji: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [17, 18, 19, 20, 21, 22, 23, 24, 25], kick: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
     roundhouse: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45], finisher: [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 59, 61, 62, 63, 64] },
   // Ippo : boxe — jab, direct, crochet au corps, uppercut, crochet final (traînée verte 54-57 sautée)
+  // Zoro : trois sabres — taille en diagonale, revers horizontal, coup montant, doubles arcs, croix finale (traînées filmées)
+  zoro: { punch: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], cross: [17, 18, 19, 20, 21, 22, 23], kick: [24, 25, 26, 27, 28, 29, 30, 31],
+    roundhouse: [31, 32, 33, 34, 35, 35, 36, 36, 37, 37], finisher: [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 54] },
   ippo: { punch: [7, 8, 9, 10, 11, 12, 12, 13, 13], cross: [14, 15, 16, 17, 18, 19, 20, 21, 22], kick: [23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
     roundhouse: [32, 33, 34, 35, 36, 37, 37, 38, 38, 39, 39, 40], finisher: [47, 48, 49, 50, 51, 52, 53, 58, 58, 59, 59, 60, 60, 61, 62, 63, 64],
     // coup chargé : bras arrière armé pendant la charge, puis le crochet du final au relâchement
@@ -1016,6 +1019,10 @@ const filmed = (M, fin = [], alias = {}) => {
   for (const k of fin) out[k] = { ...out.finisher, launch: -520, push: 900, p: M[k]?.p, cmb: 'finisher' };
   return out;
 };
+// Zoro filmé : cinq coups de sabre (les traînées de lame sont dans la vidéo, pas de traînée dessinée en plus) ;
+// le coup sauté (leap, fin neutre) reprend la croix finale
+const Z_CMB = filmed({ ...Z_MOVES, finisher: { ...FINISHER, call: 'ONI GIRI !' } }, ['leap'], { spin: 'roundhouse' });
+for (const k of ['punch', 'cross', 'kick', 'spin', 'finisher', 'leap']) Z_CMB[k] = { ...Z_CMB[k], trail: undefined };
 const UG_FIST = NEWKICK(FIST);
 const UG_MOVES = { ...filmed(UG_FIST, ['spinback']),
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 140], y: [-150, -50], dmg: 3, kb: 440, ki: 8, launch: -480, push: 1300, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
@@ -1186,7 +1193,7 @@ const CHARS = {
     colors: ['#1f8a3a', '#e8f5d0'], kiColor: '#b8ffcf', hit: '#e8fff0', trail: '#e9fff2', stats: [['PUISSANCE', 5], ['VITESSE', 3], ['PORTÉE', 4]],
     labels: { blast: '36 POUND HO', ultra: 'SANZEN SEKAI' },
     forms: [{ ki: 50, name: 'ASURA', filter: 'contrast(1.2) brightness(0.92) saturate(1.2)', speed: 1.2, dmg: 1.8, at: 0.6, end: 1.0, aura: ['rgba(120,20,90,0.55)', '#b04bff'], ghosts: true, bar: ['#6a1b8a', '#d08bff'], color: '#c070ff', trail: '#e3b8ff' }],
-    moves: Z_MOVES, chain: { punch: ['punch', 'cross', 'rising'], kick: ['kick', 'spin', 'leap'], launcher: 'rising' },
+    moves: Z_CMB, chain: { punch: ['punch', 'cross', 'kick', 'spin', 'finisher'], kick: ['kick', 'spin', 'leap'], launcher: 'rising' },
     special: 'poundho', speed: 240, pose: stdPose, ultra: [startAsura, updateAsura], chargeFrame: 6,
     ultraPose: h => h.t < ASURA.dash - 0.15 ? ['special', 4 + Math.floor(h.t * 10) % 3] : h.t < ASURA.dash ? ['dashcharge', 1] : h.t < ASURA.dashEnd + 0.15 ? ['dashcharge', 2] : ['dashcharge', 3],
   },
