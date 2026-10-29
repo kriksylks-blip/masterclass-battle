@@ -97,6 +97,7 @@ function netHostTick(dt) {
   const seen = new Set(), msg = netFull ? { t: 's', full: 1, v: {}, o: {}, a: {}, sc: {} } : { t: 's', v: {}, o: {}, a: {}, sc: {} };
   if (netFull) { for (const k of Object.keys(netLast)) delete netLast[k]; netFull = false; }
   msg.lvl = LVL?.id;
+  msg.hl = gameLoading && scene === 'play' ? 1 : 0; // l'hôte charge encore la partie : les invités l'attendent
   for (const n of NET_SCALARS) msg.sc[n] = netEnc(NETV[n].get(), seen);
   for (const n of [...NET_VARS, ...NET_OBJS]) {
     const e = netEnc(NETV[n].get(), seen) ?? null, s = JSON.stringify(e);
@@ -148,6 +149,7 @@ function netApply(txt) {
   netConsts();
   const m = JSON.parse(txt);
   netGen++;
+  net.hostLoading = !!m.hl;
   if (m.lvl && (!LVL || LVL.id !== m.lvl)) { const k = LEVELS.findIndex(L => L.id === m.lvl); if (k >= 0) setLevel(k); }
   for (const [n, v] of Object.entries(m.v)) NETV[n].set(netDec(v));
   for (const [n, v] of Object.entries(m.o)) { const o = NETV[n].get(); if (o && v) { const d = netDec(v); for (const k of Object.keys(d)) if (k !== '__g') o[k] = d[k]; } }

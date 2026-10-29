@@ -997,7 +997,9 @@ const CMB = {
   // Luffy : Pistol, Pistol de l'autre bras, Gatling, Whip (jambe étirée), Bazooka
   luffy: { punch: [7, 8, 9, 10, 11, 12, 13, 14, 15], cross: [18, 19, 20, 21, 22, 23, 24, 25, 26],
     kick: [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41], roundhouse: [45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57],
-    finisher: [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71] },
+    finisher: [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71],
+    // coup chargé : bras armé en arrière, puis un Pistol qui s'étire loin devant
+    charge: [18, 19], mega: [20, 21, 22, 23, 23, 24, 25, 26] },
   // Kenshin : dégainage éclair, revers montant, grand coup horizontal, tour sur lui-même, frappe finale vers le bas
   kenshin: { punch: [7, 9, 11, 12, 13, 14, 15, 16, 17], cross: [19, 20, 21, 22, 23, 24, 25], kick: [28, 30, 31, 32, 33, 34, 35, 35, 35, 35],
     roundhouse: [36, 37, 37, 38, 38, 39, 39, 40, 40, 41, 42, 42], finisher: [51, 53, 64, 65, 66, 67, 67, 67, 67, 67, 68, 69, 70, 71] },
@@ -1827,6 +1829,8 @@ for (const C of Object.values(CHARS)) {
     y: [Math.min(u.y[0], -260), Math.max(u.y[1], -40)], dmg: u.dmg * 1.3, launch: -900, push: u.push ?? 380, pushAt: u.pushAt ?? 0.02, pushDur: u.pushDur ?? 0.14,
     rise: 115, shock: true };
 }
+// Luffy : le coup chargé est un Pistol élastique, il porte bien plus loin
+CHARS.luffy.moves.megasmash = { ...MEGA_MOVE, reach: [10, 270], rubber: true, call: 'GOMU GOMU NO… PISTOL !' };
 for (const C of Object.values(CHARS)) { C.moves.airdash ??= AIRDASH_MOVE; C.moves.dive ??= DIVE_MOVE; C.moves.megasmash ??= MEGA_MOVE; if (C.pose === stdPose && !C.moves.thrust) C.moves.finisher ??= FINISHER; }
 // Combos des combattants à mains nues (24/10) : deux coups de poing, deux coups de pied, puis le finish choisi par la
 // direction (finishOf) — le même bouton enchaîne poings et pieds, comme dans les jeux de combat
@@ -6367,6 +6371,7 @@ function heroPose(h) {
 // lowair (accroupi, balayage | piétinement en l'air), rocket (fusée | charge), gigant.
 function luffyPose(h) {
   const t = h.t;
+  if (h.state === 'megasmash' && !cmbSheet(h, 'mega')) return ['punch', 1 + step(t, [0.1, 0.3])]; // Gear 5 : Pistol de sa planche
   if (POSE_STATES.includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
   const m = h.move; // combo filmé (sans tranche pour la planche affichée, ex. Gear 5 : poses de planche)
@@ -7659,9 +7664,18 @@ function draw() {
   if (scene === 'select') { menuImages(); drawSelect(); return; }
   if (scene === 'levels') { menuImages(); drawLevels(); return; }
   if (drawModes()) return;
+  // invité en ligne : l'hôte charge encore la partie (ou ne donne plus de nouvelles) -> écran d'attente
+  const hostWait = net.role === 'guest' && scene === 'play' && (net.hostLoading || (net.live && performance.now() - (net.lastState || 0) > 1500));
+  if (hostWait && !gameLoading) {
+    ctx.fillStyle = '#05030c'; ctx.fillRect(0, 0, W, H);
+    outlined('EN ATTENTE DE CONNEXION DE L’HÔTE…', W / 2, H / 2 - 10, 34);
+    outlined('La partie démarre dès que l’hôte est prêt', W / 2, H / 2 + 34, 16, '#cfd3ff');
+    return;
+  }
   if (gameLoading && scene === 'play') {
     ctx.fillStyle = '#05030c'; ctx.fillRect(0, 0, W, H);
     outlined('CHARGEMENT…', W / 2, H / 2 - 10, 40);
+    if (hostWait) outlined('puis attente de l’hôte', W / 2, H / 2 + 70, 16, '#cfd3ff');
     const k = gameLoading.done / Math.max(1, gameLoading.total);
     ctx.fillStyle = 'rgba(255,255,255,0.15)'; ctx.fillRect(W / 2 - 200, H / 2 + 30, 400, 10);
     ctx.fillStyle = '#ffe14d'; ctx.fillRect(W / 2 - 200, H / 2 + 30, 400 * k, 10);

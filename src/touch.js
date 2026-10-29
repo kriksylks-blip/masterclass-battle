@@ -30,6 +30,7 @@
     #tc .mbtn { width: calc(96px * var(--u)); height: calc(96px * var(--u)); font-size: calc(16px * var(--u)); display: none; }
     #tc.menu .btn:not(.mbtn) { display: none !important; }
     #tc.menu .mbtn { display: flex; }
+    #tc.busy > * { display: none !important; } /* chargements : aucun bouton */
     #tc .small { width: calc(64px * var(--u)); height: calc(64px * var(--u)); font-size: calc(13px * var(--u)); }
     #tc .top { width: calc(58px * var(--u)); height: calc(40px * var(--u)); border-radius: 12px; font-size: calc(13px * var(--u)); }
     #tc .ready { border-color: #ffe14d; box-shadow: 0 0 14px #ffe14d; animation: tcp .6s infinite alternate; }
@@ -308,6 +309,9 @@
     const td = h?.reserve ? 'flex' : 'none';
     if (tag.style.display !== td) tag.style.display = td;
     root.classList.toggle('menu', !!inMenu());
+    // chargement du jeu ou d'une partie (et invité qui attend l'hôte) : on masque tous les boutons
+    const busy = typeof scene !== 'undefined' && (scene === 'loading' || (scene === 'play' && (!!gameLoading || (typeof net !== 'undefined' && net.role === 'guest' && net.hostLoading))));
+    root.classList.toggle('busy', busy);
     requestAnimationFrame(tick);
   };
   tick();
