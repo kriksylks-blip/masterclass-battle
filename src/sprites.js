@@ -3080,6 +3080,558 @@ const SPRITES = {
      "ay": 798
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/kenshin/cmbv_0.png",
+     "w": 268,
+     "h": 245,
+     "ax": 153.6,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_1.png",
+     "w": 268,
+     "h": 245,
+     "ax": 153.6,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_2.png",
+     "w": 268,
+     "h": 245,
+     "ax": 153.6,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_3.png",
+     "w": 268,
+     "h": 245,
+     "ax": 153.4,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_4.png",
+     "w": 268,
+     "h": 245,
+     "ax": 152.3,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_5.png",
+     "w": 267,
+     "h": 245,
+     "ax": 153.7,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_6.png",
+     "w": 267,
+     "h": 245,
+     "ax": 151.6,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_7.png",
+     "w": 244,
+     "h": 248,
+     "ax": 131.7,
+     "ay": 247.9
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_8.png",
+     "w": 274,
+     "h": 251,
+     "ax": 164.0,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_9.png",
+     "w": 344,
+     "h": 251,
+     "ax": 235.0,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_10.png",
+     "w": 377,
+     "h": 251,
+     "ax": 271.0,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_11.png",
+     "w": 393,
+     "h": 251,
+     "ax": 288.7,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_12.png",
+     "w": 341,
+     "h": 248,
+     "ax": 239.7,
+     "ay": 247.9
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_13.png",
+     "w": 319,
+     "h": 246,
+     "ax": 195.9,
+     "ay": 246.5
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_14.png",
+     "w": 376,
+     "h": 248,
+     "ax": 162.7,
+     "ay": 247.9
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_15.png",
+     "w": 385,
+     "h": 245,
+     "ax": 168.4,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_16.png",
+     "w": 389,
+     "h": 245,
+     "ax": 168.8,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_17.png",
+     "w": 389,
+     "h": 245,
+     "ax": 168.1,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_18.png",
+     "w": 387,
+     "h": 245,
+     "ax": 166.4,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_19.png",
+     "w": 385,
+     "h": 245,
+     "ax": 160.2,
+     "ay": 245.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_20.png",
+     "w": 355,
+     "h": 247,
+     "ax": 148.5,
+     "ay": 247.9
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_21.png",
+     "w": 322,
+     "h": 251,
+     "ax": 137.7,
+     "ay": 251.6
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_22.png",
+     "w": 268,
+     "h": 252,
+     "ax": 129.5,
+     "ay": 252.6
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_23.png",
+     "w": 241,
+     "h": 254,
+     "ax": 127.4,
+     "ay": 254.5
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_24.png",
+     "w": 283,
+     "h": 254,
+     "ax": 169.3,
+     "ay": 254.5
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_25.png",
+     "w": 299,
+     "h": 254,
+     "ax": 187.7,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_26.png",
+     "w": 300,
+     "h": 254,
+     "ax": 190.8,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_27.png",
+     "w": 320,
+     "h": 254,
+     "ax": 216.2,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_28.png",
+     "w": 339,
+     "h": 265,
+     "ax": 242.3,
+     "ay": 265.8
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_29.png",
+     "w": 241,
+     "h": 253,
+     "ax": 145.1,
+     "ay": 253.5
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_30.png",
+     "w": 286,
+     "h": 252,
+     "ax": 185.4,
+     "ay": 252.6
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_31.png",
+     "w": 319,
+     "h": 254,
+     "ax": 217.2,
+     "ay": 254.5
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_32.png",
+     "w": 305,
+     "h": 254,
+     "ax": 211.1,
+     "ay": 255.4
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_33.png",
+     "w": 386,
+     "h": 250,
+     "ax": 171.4,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_34.png",
+     "w": 390,
+     "h": 245,
+     "ax": 176.6,
+     "ay": 246.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_35.png",
+     "w": 392,
+     "h": 245,
+     "ax": 173.0,
+     "ay": 246.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_36.png",
+     "w": 224,
+     "h": 245,
+     "ax": 144.2,
+     "ay": 247.9
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_37.png",
+     "w": 220,
+     "h": 250,
+     "ax": 136.3,
+     "ay": 251.6
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_38.png",
+     "w": 235,
+     "h": 251,
+     "ax": 148.2,
+     "ay": 258.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_39.png",
+     "w": 281,
+     "h": 254,
+     "ax": 188.4,
+     "ay": 261.1
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_40.png",
+     "w": 305,
+     "h": 257,
+     "ax": 216.1,
+     "ay": 263.0
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_41.png",
+     "w": 309,
+     "h": 281,
+     "ax": 197.5,
+     "ay": 284.6
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_42.png",
+     "w": 248,
+     "h": 289,
+     "ax": 131.6,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_43.png",
+     "w": 193,
+     "h": 287,
+     "ax": 80.0,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_44.png",
+     "w": 191,
+     "h": 287,
+     "ax": 80.3,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_45.png",
+     "w": 168,
+     "h": 287,
+     "ax": 78.4,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_46.png",
+     "w": 184,
+     "h": 287,
+     "ax": 83.4,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_47.png",
+     "w": 204,
+     "h": 287,
+     "ax": 87.3,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_48.png",
+     "w": 227,
+     "h": 288,
+     "ax": 98.2,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_49.png",
+     "w": 232,
+     "h": 289,
+     "ax": 109.7,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_50.png",
+     "w": 237,
+     "h": 289,
+     "ax": 126.3,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_51.png",
+     "w": 241,
+     "h": 287,
+     "ax": 146.1,
+     "ay": 288.4
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_52.png",
+     "w": 263,
+     "h": 291,
+     "ax": 167.7,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_53.png",
+     "w": 271,
+     "h": 294,
+     "ax": 176.4,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_54.png",
+     "w": 271,
+     "h": 289,
+     "ax": 180.2,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_55.png",
+     "w": 271,
+     "h": 290,
+     "ax": 180.4,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_56.png",
+     "w": 271,
+     "h": 291,
+     "ax": 179.9,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_57.png",
+     "w": 271,
+     "h": 289,
+     "ax": 178.9,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_58.png",
+     "w": 271,
+     "h": 289,
+     "ax": 178.1,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_59.png",
+     "w": 271,
+     "h": 289,
+     "ax": 177.7,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_60.png",
+     "w": 271,
+     "h": 289,
+     "ax": 177.7,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_61.png",
+     "w": 271,
+     "h": 289,
+     "ax": 177.8,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_62.png",
+     "w": 271,
+     "h": 289,
+     "ax": 177.6,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_63.png",
+     "w": 271,
+     "h": 289,
+     "ax": 176.4,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_64.png",
+     "w": 281,
+     "h": 290,
+     "ax": 172.7,
+     "ay": 292.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_65.png",
+     "w": 320,
+     "h": 249,
+     "ax": 167.5,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_66.png",
+     "w": 322,
+     "h": 237,
+     "ax": 162.3,
+     "ay": 238.4
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_67.png",
+     "w": 310,
+     "h": 238,
+     "ax": 154.7,
+     "ay": 240.3
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_68.png",
+     "w": 269,
+     "h": 250,
+     "ax": 159.0,
+     "ay": 250.2
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_69.png",
+     "w": 269,
+     "h": 251,
+     "ax": 154.2,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_70.png",
+     "w": 270,
+     "h": 251,
+     "ax": 153.2,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_71.png",
+     "w": 270,
+     "h": 251,
+     "ax": 153.2,
+     "ay": 250.7
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_72.png",
+     "w": 270,
+     "h": 250,
+     "ax": 153.3,
+     "ay": 249.8
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_73.png",
+     "w": 270,
+     "h": 248,
+     "ax": 153.5,
+     "ay": 247.9
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_74.png",
+     "w": 269,
+     "h": 247,
+     "ax": 153.6,
+     "ay": 246.9
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_75.png",
+     "w": 268,
+     "h": 244,
+     "ax": 153.6,
+     "ay": 244.1
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_76.png",
+     "w": 268,
+     "h": 244,
+     "ax": 153.6,
+     "ay": 244.1
+    },
+    {
+     "src": "assets/sprites/kenshin/cmbv_77.png",
+     "w": 268,
+     "h": 243,
+     "ax": 153.6,
+     "ay": 243.2
+    }
+   ]
   }
  },
  "goku_ssj": {

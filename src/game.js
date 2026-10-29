@@ -994,6 +994,9 @@ const CMB = {
   sanji: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [17, 18, 19, 20, 21, 22, 23, 24, 25], kick: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
     roundhouse: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45], finisher: [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 59, 61, 62, 63, 64] },
   // Ippo : boxe — jab, direct, crochet au corps, uppercut, crochet final (traînée verte 54-57 sautée)
+  // Kenshin : dégainage éclair, revers montant, grand coup horizontal, tour sur lui-même, frappe finale vers le bas
+  kenshin: { punch: [7, 9, 11, 12, 13, 14, 15, 16, 17], cross: [19, 20, 21, 22, 23, 24, 25], kick: [28, 30, 31, 32, 33, 34, 35, 35, 35, 35],
+    roundhouse: [36, 37, 37, 38, 38, 39, 39, 40, 40, 41, 42, 42], finisher: [51, 53, 64, 65, 66, 67, 67, 67, 67, 67, 68, 69, 70, 71] },
   // Zoro : trois sabres — taille en diagonale, revers horizontal, coup montant, doubles arcs, croix finale (traînées filmées)
   zoro: { punch: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], cross: [17, 18, 19, 20, 21, 22, 23], kick: [24, 25, 26, 27, 28, 29, 30, 31],
     roundhouse: [31, 32, 33, 34, 35, 35, 36, 36, 37, 37], finisher: [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 54],
@@ -1025,6 +1028,9 @@ const filmed = (M, fin = [], alias = {}) => {
 // le coup sauté (leap, fin neutre) reprend la croix finale
 const Z_CMB = filmed({ ...Z_MOVES, finisher: { ...FINISHER, call: 'ONI GIRI !' } }, ['leap'], { spin: 'roundhouse' });
 for (const k of ['punch', 'cross', 'kick', 'spin', 'finisher', 'leap']) Z_CMB[k] = { ...Z_CMB[k], trail: undefined };
+// Kenshin filmé : cinq coups de sabre ; la vidéo trace ses traînées sur les trois premiers, le jeu sur le tour et la frappe finale
+const KS_CMB = filmed({ ...KS_MOVES, finisher: { ...FINISHER, call: 'RYU TSUI SEN !', trail: { a0: -1.7, a1: 1.3, r: 155, at: 0.15, w: 36 } } }, ['ryutsui'], { ryukan: 'roundhouse' });
+for (const k of ['punch', 'cross', 'kick']) KS_CMB[k] = { ...KS_CMB[k], trail: undefined };
 const UG_FIST = NEWKICK(FIST);
 const UG_MOVES = { ...filmed(UG_FIST, ['spinback']),
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 140], y: [-150, -50], dmg: 3, kb: 440, ki: 8, launch: -480, push: 1300, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
@@ -1223,7 +1229,7 @@ const CHARS = {
     colors: ['#c2185b', '#ffe0ef'], kiColor: '#ffc0dc', hit: '#ffe0ef', trail: '#ffd6e8', stats: [['PUISSANCE', 4], ['VITESSE', 5], ['PORTÉE', 4]],
     labels: { blast: 'DO RYU SEN', ultra: 'KUZU RYU SEN' },
     forms: [{ ki: 50, name: 'BATTOSAI', filter: 'contrast(1.18) saturate(0.85) brightness(0.92)', speed: 1.25, dmg: 1.7, at: 0.6, end: 1.0, aura: ['rgba(150,0,30,0.5)', '#ff3355'], bar: ['#8a0020', '#ff5070'], color: '#ff3355', trail: '#ff5070', hit: '#ffb0c0' }],
-    moves: KS_MOVES, chain: { punch: ['punch', 'cross', 'ryusho'], kick: ['kick', 'ryukan', 'ryutsui'], launcher: 'ryusho' },
+    moves: KS_CMB, chain: { punch: ['punch', 'cross', 'kick', 'ryukan', 'finisher'], kick: ['kick', 'ryukan', 'ryutsui'], launcher: 'ryusho' },
     special: 'doryu', speed: 275, pose: stdPose, ultra: [startAmakakeru, updateAmakakeru],
     ultraPose: h => h.t < AMA.rushEnd ? ['special', 4] : h.t < AMA.cross - 0.04 ? ['combo', [2, 5, 3, 6, 7, 1][Math.floor(h.t / 0.07) % 6]] : h.t < AMA.cross + 0.25 ? ['combo', 7] : h.t < AMA.dash ? ['special', 4] : h.t < AMA.dashEnd + 0.2 ? ['combo', 1] : ['special', 7],
   },
