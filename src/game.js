@@ -1189,7 +1189,7 @@ const CHARS = {
       { ki: 75, name: 'SUPER SAIYAN BLUE', sheet: 'goku_blue', fallback: ['goku_ssj', 'hue-rotate(165deg) saturate(1.5) brightness(1.08)'], speed: 1.42, dmg: 2.0, at: 0.6, end: 1.0,
         aura: ['rgba(70,200,255,0.6)', '#4fd2ff'], sparks: true, glow: '#2ab4ff', bar: ['#0a5ad0', '#9fe8ff'], color: '#7fe0ff', hit: '#d8f6ff' },
       // Ultra Instinct : le corps esquive seul une partie des coups (dodge)
-      { ki: 100, name: 'ULTRA INSTINCT', sheet: 'goku_ui', fallback: ['goku_ssj', 'grayscale(1) brightness(1.3) contrast(1.05)'], speed: 1.55, dmg: 2.2, at: 0.6, end: 1.1,
+      { ki: 90, name: 'ULTRA INSTINCT', sheet: 'goku_ui', fallback: ['goku_ssj', 'grayscale(1) brightness(1.3) contrast(1.05)'], speed: 1.55, dmg: 2.2, at: 0.6, end: 1.1,
         aura: ['rgba(200,220,255,0.55)', '#dfeaff'], sparks: '#eef6ff', glow: '#a9c4ff', dodge: 0.45, bar: ['#5a6aa8', '#ffffff'], color: '#e8f0ff', hit: '#ffffff' },
     ],
     moves: filmed(GK_MOVES), chain: { punch: ['punch', 'cross', 'finisher'], kick: ['kick', 'roundhouse', 'spinback', 'telekick'], launcher: 'uppercut' },
@@ -2083,6 +2083,7 @@ function updatePlayer(h, dt) {
       }
       else if (pressed.has('transform')) {
         if (h.boost && formAfter(h)) { h.nextForm = formAfter(h); h.boost = null; h.state = 'transform'; h.t = 0; h.vx = 0; audio.tone(160, 1, 'sawtooth', 0.08, 260); }
+        else if (stepUp(h)) denied(h, `IL FAUT ${C.forms[C.forms.indexOf(h.boost) + 1].ki} DE KI`); // palier suivant pas encore chargé : on ne redescend pas
         else if (h.boost) powerDown(h);
         else if (formFor(h)) { h.nextForm = formFor(h); h.state = 'transform'; h.t = 0; h.vx = 0; audio.tone(120, 1, 'sawtooth', 0.08, 200); }
         else denied(h, 'IL FAUT 50 DE KI');
