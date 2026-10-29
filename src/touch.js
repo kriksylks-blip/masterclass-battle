@@ -301,9 +301,9 @@
     }
     const h = typeof players !== 'undefined' && scene === 'play' ? players?.[0] : null;
     ult.classList.toggle('ready', !!h && h.ki >= KI.ultra);
-    const canForm = !!h && !h.boost && h.ki >= KI.transform;
+    const canForm = !!h && (h.boost ? !!formAfter(h) : h.ki >= KI.transform); // palier suivant (Sangoku) compris
     ki.classList.toggle('ready', canForm);
-    const kt = h?.boost ? 'KI ▼' : canForm ? 'TRANSFO' : 'KI';
+    const kt = canForm ? 'TRANSFO' : h?.boost ? (stepUp(h) ? 'KI' : 'KI ▼') : 'KI';
     if (ki.textContent !== kt) ki.textContent = kt; // seulement s'il change : sinon le téléphone refait la page à chaque image
     const td = h?.reserve ? 'flex' : 'none';
     if (tag.style.display !== td) tag.style.display = td;

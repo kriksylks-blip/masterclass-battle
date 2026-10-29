@@ -2485,6 +2485,558 @@ const SPRITES = {
      "ay": 538
     }
    ]
+  },
+  "cmb": {
+   "scale": 0.625,
+   "rate": 20.0,
+   "frames": [
+    {
+     "src": "assets/sprites/luffy/cmbv_0.png",
+     "w": 213,
+     "h": 287,
+     "ax": 107.6,
+     "ay": 287.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_1.png",
+     "w": 216,
+     "h": 288,
+     "ax": 104.8,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_2.png",
+     "w": 222,
+     "h": 289,
+     "ax": 100.8,
+     "ay": 289.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_3.png",
+     "w": 233,
+     "h": 288,
+     "ax": 97.5,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_4.png",
+     "w": 235,
+     "h": 288,
+     "ax": 96.0,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_5.png",
+     "w": 235,
+     "h": 288,
+     "ax": 96.0,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_6.png",
+     "w": 235,
+     "h": 288,
+     "ax": 98.9,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_7.png",
+     "w": 216,
+     "h": 286,
+     "ax": 109.7,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_8.png",
+     "w": 272,
+     "h": 277,
+     "ax": 129.7,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_9.png",
+     "w": 364,
+     "h": 275,
+     "ax": 145.7,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_10.png",
+     "w": 364,
+     "h": 275,
+     "ax": 152.1,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_11.png",
+     "w": 364,
+     "h": 275,
+     "ax": 152.4,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_12.png",
+     "w": 364,
+     "h": 275,
+     "ax": 147.8,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_13.png",
+     "w": 275,
+     "h": 277,
+     "ax": 138.5,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_14.png",
+     "w": 226,
+     "h": 279,
+     "ax": 129.6,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_15.png",
+     "w": 205,
+     "h": 282,
+     "ax": 123.1,
+     "ay": 280.4
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_16.png",
+     "w": 204,
+     "h": 284,
+     "ax": 116.9,
+     "ay": 282.6
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_17.png",
+     "w": 206,
+     "h": 286,
+     "ax": 113.0,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_18.png",
+     "w": 213,
+     "h": 288,
+     "ax": 111.4,
+     "ay": 287.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_19.png",
+     "w": 235,
+     "h": 287,
+     "ax": 113.9,
+     "ay": 287.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_20.png",
+     "w": 294,
+     "h": 286,
+     "ax": 121.2,
+     "ay": 285.9
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_21.png",
+     "w": 391,
+     "h": 285,
+     "ax": 130.9,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_22.png",
+     "w": 391,
+     "h": 285,
+     "ax": 132.8,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_23.png",
+     "w": 349,
+     "h": 286,
+     "ax": 126.2,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_24.png",
+     "w": 284,
+     "h": 285,
+     "ax": 116.3,
+     "ay": 283.7
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_25.png",
+     "w": 222,
+     "h": 285,
+     "ax": 109.0,
+     "ay": 283.7
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_26.png",
+     "w": 205,
+     "h": 284,
+     "ax": 108.9,
+     "ay": 282.6
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_27.png",
+     "w": 208,
+     "h": 280,
+     "ax": 120.1,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_28.png",
+     "w": 273,
+     "h": 275,
+     "ax": 139.5,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_29.png",
+     "w": 298,
+     "h": 274,
+     "ax": 158.1,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_30.png",
+     "w": 333,
+     "h": 273,
+     "ax": 169.3,
+     "ay": 271.6
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_31.png",
+     "w": 331,
+     "h": 274,
+     "ax": 172.5,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_32.png",
+     "w": 320,
+     "h": 274,
+     "ax": 167.4,
+     "ay": 272.7
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_33.png",
+     "w": 312,
+     "h": 275,
+     "ax": 155.6,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_34.png",
+     "w": 314,
+     "h": 276,
+     "ax": 142.4,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_35.png",
+     "w": 309,
+     "h": 275,
+     "ax": 136.3,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_36.png",
+     "w": 332,
+     "h": 274,
+     "ax": 137.8,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_37.png",
+     "w": 332,
+     "h": 274,
+     "ax": 141.2,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_38.png",
+     "w": 325,
+     "h": 274,
+     "ax": 141.7,
+     "ay": 273.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_39.png",
+     "w": 307,
+     "h": 275,
+     "ax": 140.7,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_40.png",
+     "w": 320,
+     "h": 275,
+     "ax": 140.3,
+     "ay": 274.9
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_41.png",
+     "w": 298,
+     "h": 276,
+     "ax": 135.3,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_42.png",
+     "w": 229,
+     "h": 276,
+     "ax": 124.5,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_43.png",
+     "w": 216,
+     "h": 277,
+     "ax": 126.8,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_44.png",
+     "w": 232,
+     "h": 276,
+     "ax": 143.1,
+     "ay": 282.6
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_45.png",
+     "w": 252,
+     "h": 278,
+     "ax": 165.8,
+     "ay": 284.8
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_46.png",
+     "w": 273,
+     "h": 282,
+     "ax": 186.9,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_47.png",
+     "w": 292,
+     "h": 283,
+     "ax": 203.2,
+     "ay": 289.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_48.png",
+     "w": 268,
+     "h": 280,
+     "ax": 181.9,
+     "ay": 287.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_49.png",
+     "w": 269,
+     "h": 275,
+     "ax": 183.2,
+     "ay": 282.6
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_50.png",
+     "w": 378,
+     "h": 269,
+     "ax": 170.4,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_51.png",
+     "w": 391,
+     "h": 269,
+     "ax": 177.1,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_52.png",
+     "w": 401,
+     "h": 269,
+     "ax": 181.1,
+     "ay": 277.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_53.png",
+     "w": 407,
+     "h": 270,
+     "ax": 193.2,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_54.png",
+     "w": 412,
+     "h": 270,
+     "ax": 216.0,
+     "ay": 278.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_55.png",
+     "w": 390,
+     "h": 272,
+     "ax": 210.5,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_56.png",
+     "w": 307,
+     "h": 276,
+     "ax": 199.9,
+     "ay": 280.4
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_57.png",
+     "w": 316,
+     "h": 282,
+     "ax": 211.2,
+     "ay": 280.4
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_58.png",
+     "w": 270,
+     "h": 270,
+     "ax": 115.2,
+     "ay": 269.4
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_59.png",
+     "w": 274,
+     "h": 268,
+     "ax": 122.5,
+     "ay": 267.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_60.png",
+     "w": 274,
+     "h": 268,
+     "ax": 124.1,
+     "ay": 267.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_61.png",
+     "w": 273,
+     "h": 269,
+     "ax": 124.2,
+     "ay": 268.3
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_62.png",
+     "w": 273,
+     "h": 270,
+     "ax": 124.2,
+     "ay": 269.4
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_63.png",
+     "w": 273,
+     "h": 272,
+     "ax": 124.4,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_64.png",
+     "w": 273,
+     "h": 272,
+     "ax": 124.6,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_65.png",
+     "w": 273,
+     "h": 272,
+     "ax": 124.7,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_66.png",
+     "w": 273,
+     "h": 272,
+     "ax": 124.6,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_67.png",
+     "w": 272,
+     "h": 272,
+     "ax": 122.6,
+     "ay": 270.5
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_68.png",
+     "w": 265,
+     "h": 277,
+     "ax": 120.7,
+     "ay": 276.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_69.png",
+     "w": 257,
+     "h": 280,
+     "ax": 118.0,
+     "ay": 279.3
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_70.png",
+     "w": 245,
+     "h": 285,
+     "ax": 113.8,
+     "ay": 283.7
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_71.png",
+     "w": 226,
+     "h": 289,
+     "ax": 108.9,
+     "ay": 288.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_72.png",
+     "w": 214,
+     "h": 294,
+     "ax": 105.1,
+     "ay": 292.6
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_73.png",
+     "w": 204,
+     "h": 298,
+     "ax": 101.6,
+     "ay": 297.0
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_74.png",
+     "w": 204,
+     "h": 299,
+     "ax": 100.6,
+     "ay": 298.1
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_75.png",
+     "w": 204,
+     "h": 300,
+     "ax": 100.5,
+     "ay": 299.2
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_76.png",
+     "w": 204,
+     "h": 301,
+     "ax": 100.5,
+     "ay": 300.3
+    },
+    {
+     "src": "assets/sprites/luffy/cmbv_77.png",
+     "w": 204,
+     "h": 301,
+     "ax": 100.5,
+     "ay": 300.3
+    }
+   ]
   }
  },
  "kenshin": {

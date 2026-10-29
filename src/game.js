@@ -994,6 +994,10 @@ const CMB = {
   sanji: { punch: [3, 4, 5, 6, 7, 8, 9, 10, 11], cross: [17, 18, 19, 20, 21, 22, 23, 24, 25], kick: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
     roundhouse: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45], finisher: [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 59, 61, 62, 63, 64] },
   // Ippo : boxe — jab, direct, crochet au corps, uppercut, crochet final (traînée verte 54-57 sautée)
+  // Luffy : Pistol, Pistol de l'autre bras, Gatling, Whip (jambe étirée), Bazooka
+  luffy: { punch: [7, 8, 9, 10, 11, 12, 13, 14, 15], cross: [18, 19, 20, 21, 22, 23, 24, 25, 26],
+    kick: [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41], roundhouse: [45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57],
+    finisher: [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71] },
   // Kenshin : dégainage éclair, revers montant, grand coup horizontal, tour sur lui-même, frappe finale vers le bas
   kenshin: { punch: [7, 9, 11, 12, 13, 14, 15, 16, 17], cross: [19, 20, 21, 22, 23, 24, 25], kick: [28, 30, 31, 32, 33, 34, 35, 35, 35, 35],
     roundhouse: [36, 37, 37, 38, 38, 39, 39, 40, 40, 41, 42, 42], finisher: [51, 53, 64, 65, 66, 67, 67, 67, 67, 67, 68, 69, 70, 71] },
@@ -1031,6 +1035,11 @@ for (const k of ['punch', 'cross', 'kick', 'spin', 'finisher', 'leap']) Z_CMB[k]
 // Kenshin filmé : cinq coups de sabre ; la vidéo trace ses traînées sur les trois premiers, le jeu sur le tour et la frappe finale
 const KS_CMB = filmed({ ...KS_MOVES, finisher: { ...FINISHER, call: 'RYU TSUI SEN !', trail: { a0: -1.7, a1: 1.3, r: 155, at: 0.15, w: 36 } } }, ['ryutsui'], { ryukan: 'roundhouse' });
 for (const k of ['punch', 'cross', 'kick']) KS_CMB[k] = { ...KS_CMB[k], trail: undefined };
+// Luffy filmé : Pistol, Pistol de l'autre bras, Gatling, Whip, Bazooka final (ses bras s'étirent dans la vidéo) ;
+// le coup de hache (fin neutre) reprend le Bazooka
+const LF_CMB = filmed({ ...L_MOVES, finisher: { ...FINISHER, rubber: true, call: 'BAZOOKA !' } }, ['axe'], { punch2: 'cross', gatling: 'kick', whip: 'roundhouse' });
+delete LF_CMB.cross; delete LF_CMB.roundhouse;
+LF_CMB.gatling = { ...LF_CMB.gatling, dur: 0.62, off: 0.5, cancel: 0.5, multi: 0.09 }; // la rafale dure un peu plus que le coup de pied filmé
 const UG_FIST = NEWKICK(FIST);
 const UG_MOVES = { ...filmed(UG_FIST, ['spinback']),
   dash:   { dur: 0.5, on: 0.12, off: 0.36, reach: [0, 140], y: [-150, -50], dmg: 3, kb: 440, ki: 8, launch: -480, push: 1300, pushAt: 0.06, pushDur: 0.3, ghost: true, lean: 14, p: ['dashcharge', [0, 1, 2, 3], [0.06, 0.2, 0.38]] },
@@ -1165,7 +1174,7 @@ const CHARS = {
       // Chargé à bloc : le Gear 5, tout blanc, avec son nuage autour du cou
       { ki: 100, name: 'GEAR 5', sheet: 'luffy5', speed: 1.4, dmg: 1.9, at: 0.6, end: 1.1, cloud: true, aura: ['rgba(255,255,255,0.45)', '#ffffff'], bar: ['#d9d2ff', '#ffffff'], color: '#ffffff', hit: '#ffffff' },
     ],
-    moves: L_MOVES, chain: { punch: ['punch', 'punch2', 'gatling'], kick: ['kick', 'whip', 'axe'], launcher: 'rocket' },
+    moves: LF_CMB, chain: { punch: ['punch', 'punch2', 'gatling', 'whip', 'finisher'], kick: ['kick', 'whip', 'axe'], launcher: 'rocket' },
     special: 'bazooka', speed: 265, pose: luffyPose, ultra: [startGigant, updateGigant],
   },
   goku: {
@@ -1657,6 +1666,8 @@ const elementOf = h => h.boost?.element || h.C.element;
 const formFor = h => h.C.formSteps ? h.C.forms.find(f => h.ki >= f.ki) : h.C.forms.filter(f => h.ki >= f.ki).pop();
 // Forme suivante quand on est déjà transformé (paliers) : la prochaine que le ki permet
 const formAfter = h => { const fs = h.C.forms; return fs.slice(fs.indexOf(h.boost) + 1).find(f => h.ki >= f.ki); };
+// Formes par paliers (Sangoku) : on peut recharger le ki dans une forme qui a un palier au-dessus (SSJ -> Blue -> Ultra Instinct)
+const stepUp = h => !!(h.C.formSteps && h.boost && h.C.forms.indexOf(h.boost) < h.C.forms.length - 1);
 
 // ---------- État du jeu ----------
 let scene = 'loading';
@@ -1937,7 +1948,7 @@ function updatePlayer(h, dt) {
 
   // Charge du ki : tant que le bouton est tenu
   if (h.state === 'charge') {
-    if (!held('charge') || h.boost) h.state = 'idle';
+    if (!held('charge') || (h.boost && !stepUp(h))) h.state = 'idle';
     else {
       h.ki = Math.min(100, h.ki + dt * KI.chargeRate);
       if (Math.random() < 0.6) particles.push({ x: h.x + rand(-60, 60), y: h.y - rand(0, 40), vx: 0, vy: rand(-320, -160), t: 0, life: 0.5, c: C.kiColor, r: rand(2, 4) });
@@ -2076,7 +2087,7 @@ function updatePlayer(h, dt) {
         else if (formFor(h)) { h.nextForm = formFor(h); h.state = 'transform'; h.t = 0; h.vx = 0; audio.tone(120, 1, 'sawtooth', 0.08, 200); }
         else denied(h, 'IL FAUT 50 DE KI');
       }
-      else if (held('charge') && !h.boost) { h.state = 'charge'; h.t = 0; }
+      else if (held('charge') && (!h.boost || stepUp(h))) { h.state = 'charge'; h.t = 0; }
       }
     } else {
       h.state = 'jump';
@@ -6357,9 +6368,12 @@ function luffyPose(h) {
   const t = h.t;
   if (POSE_STATES.includes(h.state)) return airPose(h);
   if (h.state === 'juggle') return jugglePose(h);
+  const m = h.move; // combo filmé (sans tranche pour la planche affichée, ex. Gear 5 : poses de planche)
+  if (m && m.cmb) { const sh = cmbSheet(h, m.cmb); if (sh) { const fr = CMB[sh][m.cmb]; return ['cmb', fr[Math.min(fr.length - 1, Math.floor(t / m.dur * fr.length))]]; } }
   switch (h.state) {
     case 'walk': { const [n, fps] = walkCycle(h), i = Math.floor(h.walkT * fps) % n; return ['walk', h.back ? n - 1 - i : i]; }
     case 'crouch': return ['lowair', t < 0.06 ? 0 : 1];
+    case 'finisher': return ['bazooka', step(t, [0.12, 0.2, 0.5])];
     case 'ckick': return ['lowair', 1 + step(t, [0.1, 0.32])];
     case 'punch': case 'punch2': return ['punch', 1 + step(t, [0.12, 0.3])];
     case 'gatling': return ['gatling', t < 0.13 ? 0 : t > 0.8 ? 3 : 1 + Math.floor(t * 14) % 2];
@@ -7064,7 +7078,7 @@ function drawPlayerHUD(h) {
   drawLivesAndPartner(h, x, w, right, 104);
   bar(x, 34, w, 16, h.hp / h.maxHp, '#ff3355', '#ffb13b', h.out ? `${C.name} — K.O.` : C.name, right);
   const L = C.labels, k = (a) => K(a, p), cost = C.moves[C.special].cost, F = h.boost, next = formFor(h) || C.forms[0], up = F && formAfter(h);
-  const kiLabel = F ? (up ? `${F.name} → ${up.name} [${k('transform')}]` : h.ki >= KI.formUltra ? `${F.name} — ${L.ultra} [${k('ultra')}]` : F.name)
+  const kiLabel = F ? (up ? `${F.name} → ${up.name} [${k('transform')}]` : stepUp(h) ? `${F.name} — charge pour ${C.forms[C.forms.indexOf(F) + 1].name} [${k('charge')}]` : h.ki >= KI.formUltra ? `${F.name} — ${L.ultra} [${k('ultra')}]` : F.name)
     : h.ki >= KI.ultra ? `${L.ultra} PRÊT [${k('ultra')}]` : h.ki >= KI.transform ? `KI — ${next.name} [${k('transform')}]`
       : h.ki >= cost ? `KI — ${L.blast} [${k('blast')}]` : `KI  (charge : ${k('charge')})`;
   bar(x, 74, w, 11, h.ki / 100, F ? F.bar[0] : '#2a7bff', F ? F.bar[1] : '#7ff0ff', kiLabel, right);
