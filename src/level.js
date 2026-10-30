@@ -355,7 +355,7 @@ function updateLevel(dt) {
     if (wv) level.wave++;
     if (wv && isEndless()) ENDLESS.wave++;
     if (wv && wv.boss && isEndless()) endlessNextTour(); // mode infini : le monde recommence, plus dur
-    else if (wv && wv.boss) { level.bossDead = true; scene = 'clear'; sceneT = 0; audio.tone(523, 0.6, 'triangle', 0.2, 500); }
+    else if (wv && wv.boss) { level.bossDead = true; scene = 'clear'; sceneT = 0; levelCleared(); audio.tone(523, 0.6, 'triangle', 0.2, 500); }
   }
   level.goT = Math.max(0, level.goT - dt);
 

@@ -10,7 +10,7 @@ const DIFFS = [
   { name: 'DIFFICILE', dmg: 1.35, hp: 1.3, aggr: 1.3, desc: 'Ennemis plus résistants et plus vifs' },
   { name: 'LÉGENDE', dmg: 1.8, hp: 1.6, aggr: 1.6, desc: 'Pour les maîtres : chaque erreur se paie' },
 ];
-const OPTS = { diff: 1, lives: 3, tag: false, music: 7 };
+const OPTS = { diff: 1, lives: 3, tag: false, music: 7, unlockAll: false };
 try { Object.assign(OPTS, JSON.parse(localStorage.getItem('kfm_opts') || '{}')); } catch (e) { }
 const saveOpts = () => { try { localStorage.setItem('kfm_opts', JSON.stringify(OPTS)); } catch (e) { } };
 const DIFF = () => DIFFS[OPTS.diff] || DIFFS[1];
@@ -53,26 +53,33 @@ function drawTitleMenu() {
 }
 
 // ---------- Options ----------
-const OPT_ROWS = ['diff', 'lives', 'tag', 'music', 'binds', 'reset', 'back'];
+const OPT_ROWS = ['diff', 'lives', 'tag', 'unlock', 'music', 'binds', 'reset', 'back'];
 const optMenu = { row: 0, msg: '' };
+const RESET_ASK = 'Appuie encore pour tout effacer : histoire, recrues, notes et défis';
 function openOptions() { scene = 'options'; sceneT = 0; optMenu.row = 0; optMenu.msg = ''; }
 function updateOptions() {
   const hit = a => anyPressed(a);
   const n = OPT_ROWS.length, id = OPT_ROWS[optMenu.row];
-  if (hit('up')) { optMenu.row = (optMenu.row + n - 1) % n; audio.tone(620, 0.05, 'triangle', 0.06); }
-  if (hit('down')) { optMenu.row = (optMenu.row + 1) % n; audio.tone(620, 0.05, 'triangle', 0.06); }
+  if (hit('up')) { optMenu.row = (optMenu.row + n - 1) % n; optMenu.msg = ''; audio.tone(620, 0.05, 'triangle', 0.06); }
+  if (hit('down')) { optMenu.row = (optMenu.row + 1) % n; optMenu.msg = ''; audio.tone(620, 0.05, 'triangle', 0.06); }
   const d = hit('left') ? -1 : hit('right') ? 1 : 0;
   if (d) {
     if (id === 'diff') OPTS.diff = clamp(OPTS.diff + d, 0, DIFFS.length - 1);
     if (id === 'lives') OPTS.lives = clamp(OPTS.lives + d, 1, 9);
     if (id === 'tag') OPTS.tag = !OPTS.tag;
+    if (id === 'unlock') OPTS.unlockAll = !OPTS.unlockAll;
     if (id === 'music') OPTS.music = clamp(OPTS.music + d, 0, 10);
     saveOpts(); applyOpts(); audio.tone(700 + d * 80, 0.06, 'triangle', 0.08);
   }
   if (sceneT > 0.2 && ['start', 'punch', 'jump'].some(hit)) {
     if (id === 'tag') { OPTS.tag = !OPTS.tag; saveOpts(); }
+    if (id === 'unlock') { OPTS.unlockAll = !OPTS.unlockAll; saveOpts(); }
     if (id === 'binds') { paused = true; openMenu('binds'); }
-    if (id === 'reset') { story.unlocked = 1; story.node = 0; saveStory(); optMenu.msg = 'Progression du mode histoire effacée'; }
+    if (id === 'reset') {
+      // deux appuis : le premier prévient, le second efface (histoire, recrues, notes et défis)
+      if (optMenu.msg !== RESET_ASK) optMenu.msg = RESET_ASK;
+      else { story.unlocked = 1; story.node = 0; story.done = []; saveStory(); prog.cleared = []; prog.ranks = {}; prog.ch = {}; saveProg(); optMenu.msg = 'Progression effacée'; }
+    }
     if (id === 'back') { scene = 'title'; sceneT = 0; }
     audio.tone(880, 0.1, 'triangle', 0.1);
   }
@@ -87,15 +94,16 @@ function drawOptions() {
   const rows = {
     diff: ['DIFFICULTÉ', `◀  ${D.name}  ▶`, D.desc],
     lives: ['VIES PAR NIVEAU', `◀  ${OPTS.lives}  ▶`, `${'♥'.repeat(OPTS.lives)} — à chaque K.O., une vie en moins ; on repart à ${OPTS.lives} au niveau suivant`],
+    unlock: ['TOUT DÉBLOQUER', OPTS.unlockAll ? '◀  OUI  ▶' : '◀  NON  ▶', OPTS.unlockAll ? 'Tous les combattants et toutes les tenues sont jouables' : `Sinon : termine les mondes pour recruter leurs maîtres, réussis les défis pour les tenues (${lockedCount()} à gagner)`],
     tag: ['ÉQUIPE DE DEUX (RELAIS)', OPTS.tag ? '◀  OUI  ▶' : '◀  NON  ▶', `Chaque joueur choisit 2 combattants : ${K('tag')} pour passer le relais, ${K('tag')} avec les deux jauges pleines = attaque à deux`],
     music: ['VOLUME DE LA MUSIQUE', `◀  ${'▮'.repeat(OPTS.music)}${'▯'.repeat(10 - OPTS.music)}  ▶`, ''],
     binds: ['TOUCHES ET MANETTES', 'MODIFIER…', 'Clavier et manette de chaque joueur'],
-    reset: ['MODE HISTOIRE', 'EFFACER LA PROGRESSION', `Mondes débloqués : ${story.unlocked} / ${STORY_ORDER.length}`],
+    reset: ['PROGRESSION', 'TOUT EFFACER', `Mondes de l'histoire : ${story.unlocked} / ${STORY_ORDER.length}  ·  défis réussis : ${Object.keys(prog.ch).length}`],
     back: ['', 'RETOUR', ''],
   };
   OPT_ROWS.forEach((id, k) => {
-    const [label, value, help] = rows[id], on = k === optMenu.row, y = 130 + k * 52;
-    if (on) { ctx.fillStyle = 'rgba(255,225,77,0.14)'; ctx.fillRect(120, y - 28, W - 240, 46); ctx.fillStyle = '#ffe14d'; ctx.fillRect(120, y - 28, 5, 46); }
+    const [label, value, help] = rows[id], on = k === optMenu.row, y = 124 + k * 47;
+    if (on) { ctx.fillStyle = 'rgba(255,225,77,0.14)'; ctx.fillRect(120, y - 28, W - 240, 44); ctx.fillStyle = '#ffe14d'; ctx.fillRect(120, y - 28, 5, 44); }
     outlined(label, 150, y, 20, on ? '#fff' : '#cfd3ff', 'left');
     outlined(value, W - 150, y, 22, on ? '#ffe14d' : '#fff', 'right');
     if (on && help) { ctx.font = 'italic 13px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#ffd6e8'; ctx.fillText(help, 150, y + 14); }
@@ -110,6 +118,7 @@ function drawOptions() {
 // Appelé quand un joueur tombe K.O. (vie à 0) : relais automatique vers le partenaire s'il tient encore,
 // sinon une vie en moins et retour en jeu ; sans vie, il reste au tapis.
 function onKO(h) {
+  run.kos++;
   if (h.reserve && h.reserve.hp > 0) { h.koSwap = 1.2; return; }
   h.lives = Math.max(0, (h.lives ?? 0) - 1);
 }
@@ -658,6 +667,7 @@ function drawMap() {
     ctx.strokeStyle = 'rgba(4,0,12,0.9)'; ctx.lineWidth = 3; ctx.lineJoin = 'round';
     ctx.strokeText((id === 'tokyo' ? 'TOKYO' : STORY[id]?.title.split(' — ')[1] || L?.name || id).replace(/^(LA |LE |L')/, ''), x, y + r + 13);
     ctx.fillText((id === 'tokyo' ? 'TOKYO' : STORY[id]?.title.split(' — ')[1] || L?.name || id).replace(/^(LA |LE |L')/, ''), x, y + r + 13);
+    if (open) rankBadge(prog.ranks[id], x + r * 0.85, y - r * 0.8, cur ? 16 : 12);
   }
   // voyage : un vortex s'ouvre au départ et à l'arrivée, les combattants filent le long de la faille
   const k = map.hop ? Math.min(1, map.hop) : 1, e = k * k * (3 - 2 * k);
@@ -692,6 +702,9 @@ function drawMap() {
   outlined(S.title, 24, 56, 18, '#fff', 'left');
   outlined(`ÉCLATS : ${story.done.filter(id => id !== 'tokyo').length} / ${STORY_ORDER.length - 1}`, W - 24, 30, 20, '#7fff9a', 'right');
   if (L) outlined(`BOSS : ${ENEMY_INFO[L.boss]?.[0] || ''}`, W - 24, 56, 16, '#ff6070', 'right');
+  // défis du monde choisi, sous le bandeau
+  ctx.fillStyle = 'rgba(10,0,25,0.7)'; ctx.fillRect(W - 330, 70, 330, 62);
+  drawChallenges(id, W - 320, 87, 12, 18, 290);
   // la Masterclass : les maîtres recrutés dans les mondes terminés
   const crew = STORY_ORDER.filter(id => story.done.includes(id)).flatMap(id => RECRUITS[id] || []).filter(c => CHARS[c]);
   if (crew.length) {

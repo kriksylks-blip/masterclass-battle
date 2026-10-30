@@ -1695,6 +1695,7 @@ function resetGame(chars = ['hero'], lv = levelPick) {
   if (scene !== 'loading') requireGame([...players, ...players.map(h => h.reserve).filter(Boolean)].map(h => h.cid || h.char), LVL); // pas pour la partie fictive du démarrage
   resetLevel();
   camX = 0; shake = 0; flash = 0; hitstop = 0; score = 0; combo = 0; comboT = 0; kills = 0; spawnT = 1.5; sceneT = 0; paused = false;
+  runReset();
 }
 
 // ---------- Joueurs ----------
@@ -2549,13 +2550,13 @@ function hurtHero(h, dmg, dir, big = false) {
     if (sceneT - (h.guardPressT ?? -9) < GUARD.parry) {
       flash = 0.3; hitstop = Math.max(hitstop, 0.14); shake = Math.max(shake, 8); h.ki = Math.min(100, h.ki + 12); h.inv = 0.3;
       ring(h.x + h.dir * 40, h.y - 120); impactFX(h.x + h.dir * 50, h.y - 120, '#ffffff', true); audio.tone(1500, 0.18, 'square', 0.08, 900); audio.slash(1.6);
-      popups.push({ x: h.x, y: h.y - 240, t: 0, text: 'PARADE !', c: '#9fe8ff' });
+      popups.push({ x: h.x, y: h.y - 240, t: 0, text: 'PARADE !', c: '#9fe8ff' }); run.parries++;
       // l'attaquant le plus proche devant lui est déséquilibré : on peut contre-attaquer
       const foe = enemies.filter(e => e.alive && !['knock', 'down'].includes(e.state) && (e.x - h.x) * h.dir > -20 && Math.abs(e.x - h.x) < 280 && Math.abs(e.gz - h.gz) < 60).sort((a, b) => Math.abs(a.x - h.x) - Math.abs(b.x - h.x))[0];
       if (foe && !ETYPES[foe.type].isBoss) { foe.state = 'hurt'; foe.t = -0.6; foe.vx = h.dir * 160; foe.atk = null; foe.hitDone = true; }
       return;
     }
-    h.guard -= dmg * GUARD.cost; h.hp -= dmg * GUARD.chip * DIFF().dmg; h.vx = dir * 160; h.inv = 0.25;
+    h.guard -= dmg * GUARD.cost; h.hp -= dmg * GUARD.chip * DIFF().dmg; runHurt(dmg * GUARD.chip * DIFF().dmg); h.vx = dir * 160; h.inv = 0.25;
     shake = Math.max(shake, 5); audio.tone(420, 0.1, 'square', 0.06, -120); burst(h.x + h.dir * 40, h.y - 120, '#bfefff', 10);
     if (h.guard <= 0) {
       h.guard = 0; h.state = 'hurt'; h.t = -0.5; h.vx = dir * 260;
@@ -2565,7 +2566,7 @@ function hurtHero(h, dmg, dir, big = false) {
     return;
   }
   dmg *= DIFF().dmg * endlessDmg();
-  h.hp -= dmg; combo = 0;
+  h.hp -= dmg; combo = 0; runHurt(dmg);
   shake = 10; hitstop = 0.07; audio.hurt();
   burst(h.x, h.y - 120, '#ff4d6d', 14);
   impactFX(h.x, h.y - 120, '#ff4d6d', false);
@@ -5789,6 +5790,9 @@ function leavePlayer(p) {
   audio.tone(300, 0.15, 'triangle', 0.1, -100);
 }
 
+// Perso ou tenue verrouillé (src/progress.js) : petit buzz, le panneau tremble et rappelle comment le débloquer
+function selDeny(p) { audio.tone(150, 0.16, 'square', 0.07, -40); sel.deny = sel.deny || [0, 0, 0, 0]; sel.deny[p] = 1; }
+
 // Cartes par rangée sur l'écran de sélection
 const selCols = () => { const n = CHAR_IDS.length; return n <= 3 ? n : n <= 6 ? 3 : n <= 8 ? 4 : n <= 10 ? 5 : 6; };
 
@@ -5801,6 +5805,7 @@ function updateSelect(dt) {
   sel.cur = (sel.cur + d * Math.min(1, dt * 9) + n) % n;
   sel.flash = Math.max(0, (sel.flash || 0) - dt * 3);
   sel.pf = (sel.pf || [0, 0, 0, 0]).map(v => Math.max(0, v - dt * 4));
+  sel.deny = (sel.deny || [0, 0, 0, 0]).map(v => Math.max(0, v - dt * 2.5));
   for (let p = 0; p < 4; p++) {
     if (!sel.joined[p] || (p > 0 && sel.skip)) continue;
     const I = INPUT[p], hit = a => I.pressed.has(a);
@@ -5808,7 +5813,8 @@ function updateSelect(dt) {
       // 2e temps : le perso est choisi, gauche / droite font défiler ses tenues, poing valide, pied revient à la grille
       const nv = variantsOf(sel.pick[p]).length, dv = hit('left') || hit('up') ? -1 : hit('right') || hit('down') || hit('blast') ? 1 : 0;
       if (dv) { sel.vari[p] = (sel.vari[p] + dv + nv) % nv; sel.focus = p; sel.pf[p] = 1; audio.tone(880, 0.05, 'sine', 0.05, 120); }
-      if (hit('punch') || hit('jump') || hit('start')) {
+      if ((hit('punch') || hit('jump') || hit('start')) && isLocked(charAt(sel.pick[p], sel.vari[p]))) selDeny(p);
+      else if (hit('punch') || hit('jump') || hit('start')) {
         sel.outfit[p] = false;
         if (OPTS.tag && sel.first[p] === null && n > 1) { sel.first[p] = sel.pick[p]; sel.firstVar[p] = sel.vari[p]; sel.pick[p] = (sel.pick[p] + 1) % n; sel.vari[p] = 0; }
         else sel.ready[p] = true;
@@ -5830,7 +5836,8 @@ function updateSelect(dt) {
         sel.pick[p] = k; sel.vari[p] = 0; sel.focus = p; sel.flash = 1; sel.pf[p] = 1;
         audio.tone(1250 + p * 90, 0.025, 'sine', 0.03); // petit clic discret
       }
-      if (nv > 1 && (hit('punch') || hit('jump') || hit('start'))) {
+      if (isLocked(CHAR_IDS[sel.pick[p]]) && (hit('punch') || hit('jump') || hit('start') || (hit('blast') && nv < 2))) selDeny(p);
+      else if (nv > 1 && (hit('punch') || hit('jump') || hit('start'))) {
         // perso à plusieurs tenues : on passe au choix de la tenue
         sel.outfit[p] = true; sel.focus = p; sel.pf[p] = 1; audio.tone(740, 0.12, 'sine', 0.07, 160);
       } else if (hit('punch') || hit('jump') || hit('start') || (hit('blast') && nv < 2)) {
@@ -6001,6 +6008,13 @@ function drawLevels() {
   outlined(place || L.sub, ix, 124, 42, '#fff', 'left');
   ctx.font = 'italic bold 16px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#ffd6e8'; if (place) ctx.fillText(L.sub, ix + 4, 152);
   if (isEndless()) outlined(`RECORD : ${bestScore(L.id) || '—'}`, ix, 186, 20, '#9fe8ff', 'left');
+  else {
+    // meilleure note et défis du monde (src/progress.js)
+    const rk = prog.ranks[L.id];
+    outlined('MEILLEURE NOTE', ix, 190, 16, '#cfd3ff', 'left');
+    if (rk) outlined(rk, ix + 150, 194, 30, RANK_COLOR[rk], 'left'); else outlined('—', ix + 150, 192, 22, '#888', 'left');
+    drawChallenges(L.id, ix, 224, 13, 20, W - ix - 30);
+  }
   // zones : celle qu'on voit en fond s'allume
   L.zones.forEach((Z, k) => {
     const y = H - 40 - (nz - k) * 26, on = k === zi, zx = lvSplitX(y) + 30 + fl * 40;
@@ -6079,6 +6093,7 @@ function drawLevels() {
     ctx.fillText(String(k + 1).padStart(2, '0'), -w / 2 + 8, h / 2 - 8);
     ctx.font = `bold ${Math.round(12 * sc + 1)}px sans-serif`; ctx.fillStyle = on ? '#fff' : '#d8d0ec';
     ctx.fillText(Lk.name.split(' — ')[0], -w / 2 + 8 + 34 * sc, h / 2 - 9);
+    if (!isEndless()) rankBadge(prog.ranks[Lk.id], w / 2 - 16 * sc, -h / 2 + 16 * sc, 18 * sc);
     ctx.restore();
   }
   // fondu en haut et en bas de la colonne
@@ -6171,6 +6186,7 @@ function update(dt) {
     camX = Math.max(camX, Math.min(lead - W * (players.length > 1 ? 0.6 : 0.4), trail - 60, camLimit()));
 
     if (scene === 'play') {
+      run.time += dt; run.maxCombo = Math.max(run.maxCombo, combo);
       updateLevel(dt);
       // Un ennemi parti trop loin hors de l'écran revient au bord (sinon il bloquerait la fin du niveau)
       // Une fois entré à l'écran, un ennemi n'en ressort plus (sinon il frapperait hors de portée du joueur)
@@ -6184,7 +6200,7 @@ function update(dt) {
       }
     }
     // Après une victoire, on enchaîne sur le choix du niveau (le suivant est présélectionné)
-    if (scene === 'clear' && sceneT > 1.5 && ['start', 'punch'].some(anyPressed)) {
+    if (scene === 'clear' && sceneT > (run.result ? 2.2 : 1.5) && ['start', 'punch'].some(anyPressed)) {
       if (gameMode === 'story') storyCleared(); else { levelPick = (levelPick + 1) % LEVELS.length; openLevels(); }
     }
     if (scene === 'gameover' && isEndless() && sceneT > 1.5 && anyPressed('pause')) { scene = 'title'; sceneT = 0; }
@@ -7458,6 +7474,7 @@ function selTile(k, x, y, s, ps) {
   else { ctx.fillStyle = `rgba(255,255,255,${0.1 + Math.sin(sceneT * 8) * 0.06})`; ctx.fillRect(x, y, s, s); }
   // reflet en biais
   ctx.fillStyle = 'rgba(255,255,255,0.07)'; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + s * 0.6, y); ctx.lineTo(x, y + s * 0.6); ctx.fill();
+  if (isLocked(id)) { ctx.fillStyle = on ? 'rgba(5,0,15,0.55)' : 'rgba(5,0,15,0.72)'; ctx.fillRect(x, y, s, s); drawLock(x + s - s * 0.2, y + s * 0.2, s * 0.24, on ? '#ffe14d' : 'rgba(255,225,77,0.75)'); }
   ctx.restore();
   ctx.strokeStyle = 'rgba(0,0,0,0.9)'; ctx.lineWidth = 1; ctx.strokeRect(x + 0.5, y + 0.5, s - 1, s - 1);
   ps.filter(p => sel.ready[p] && selPickOf(p) === k).forEach(p => { ctx.fillStyle = COLORS_P[p] + '55'; ctx.fillRect(x, y, s, s); });
@@ -7465,7 +7482,7 @@ function selTile(k, x, y, s, ps) {
 
 // Grand panneau d'un joueur. mirror : J2 regarde vers la gauche ; full : panneau du joueur seul (avec sa garde en jeu)
 function selPanel(p, x, y, w, h, mirror, full) {
-  const id = charAt(selPickOf(p), selVarOf(p)), C = CHARS[id], art = IMG[C.card], fl = sel.pf?.[p] || 0, ready = sel.ready[p];
+  const id = charAt(selPickOf(p), selVarOf(p)), C = CHARS[id], art = IMG[C.card], fl = sel.pf?.[p] || 0, ready = sel.ready[p], locked = !ready && isLocked(id);
   const sk = Math.min(40, w * 0.12), dir = mirror ? -1 : 1;
   const frame = () => {
     ctx.beginPath();
@@ -7506,6 +7523,7 @@ function selPanel(p, x, y, w, h, mirror, full) {
     if (mirror) { ctx.translate(2 * fcx, 0); ctx.scale(-1, 1); }
     ctx.shadowColor = C.colors[1] + 'cc'; ctx.shadowOffsetX = -12 * dir * RES; ctx.shadowOffsetY = 0;
     if (fl > 0 || ready) ctx.filter = `brightness(${1 + (ready ? 0.15 + Math.sin(sceneT * 6) * 0.08 : fl * 0.6)})`; // chaque panneau s'éclaire pour son joueur
+    if (locked) ctx.filter = 'brightness(0.25) saturate(0.3)';
     ctx.drawImage(art, ix + (mirror ? -slide : slide), iy, iw, ih);
     ctx.restore();
   }
@@ -7552,6 +7570,18 @@ function selPanel(p, x, y, w, h, mirror, full) {
     medallion(F, mx, y + 92, 26, COLORS_P[p]); outlined('★', mx + 20, y + 120, 16, COLORS_P[p]);
   }
   if (ready) { ctx.save(); ctx.translate(x + w / 2, y + h * 0.5); ctx.rotate(-0.2); outlined('PRÊT !', 0, 0, full ? 64 : 40, COLORS_P[p]); ctx.restore(); }
+  if (locked) {
+    // verrouillé : bandeau avec le cadenas et ce qu'il faut faire ; il tremble quand on essaie de le choisir
+    const dn = sel.deny?.[p] || 0, yy = y + h * (full ? 0.44 : 0.4) + Math.sin(dn * 40) * dn * 8, [l1, l2] = lockHint(id), fs = full ? 15 : 11;
+    ctx.fillStyle = `rgba(5,0,15,${0.82 + dn * 0.1})`; ctx.fillRect(x, yy - 34, w, full ? 86 : 72);
+    ctx.fillStyle = dn > 0 ? '#ff3355' : '#ffe14d'; ctx.fillRect(x, yy - 34, w, 2); ctx.fillRect(x, yy + (full ? 50 : 36), w, 2);
+    drawLock(x + w / 2, yy - 14, full ? 24 : 18, dn > 0 ? '#ff3355' : '#ffe14d');
+    outlined('VERROUILLÉ', x + w / 2, yy + (full ? 14 : 8), full ? 20 : 14, dn > 0 ? '#ff3355' : '#ffe14d');
+    for (const [k, txt] of [l1, l2].entries()) {
+      let sz = fs; const fnt = () => (ctx.font = `italic 900 ${sz}px Impact, "Arial Black", sans-serif`); fnt(); while (sz > 8 && ctx.measureText(txt).width > w - 16) { sz--; fnt(); }
+      outlined(txt, x + w / 2, yy + (full ? 32 : 22) + k * (fs + 3), sz, '#fff');
+    }
+  }
   else if (sel.outfit?.[p]) {
     const yy = y + h * 0.68, bob = Math.sin(sceneT * 6) * 4;
     ctx.fillStyle = 'rgba(5,0,15,0.78)'; ctx.fillRect(x, yy - 26, w, 44);
@@ -7724,7 +7754,8 @@ function draw() {
     outlined('GAME OVER', W / 2, H / 2 - 10, 90, '#ff3355');
     if (sceneT > 1.5) outlined(gameMode === 'story' ? 'ENTRÉE : retour au plateau pour réessayer' : 'ENTRÉE pour revenir au titre', W / 2, H / 2 + 60, 26);
   }
-  if (scene === 'clear') {
+  if (scene === 'clear' && run.result) drawClear();
+  else if (scene === 'clear') {
     ctx.fillStyle = `rgba(0,10,40,${Math.min(sceneT, 0.5)})`; ctx.fillRect(0, 0, W, H);
     outlined('NIVEAU TERMINÉ !', W / 2, H / 2 - 10, 80, '#7ff0ff');
     if (sceneT > 1.5) outlined(`Score : ${score} — ENTRÉE`, W / 2, H / 2 + 60, 26);
